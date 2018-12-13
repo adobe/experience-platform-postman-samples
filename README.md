@@ -15,8 +15,6 @@ The purpose of this repository is to collect Postman samples that show how to in
 
    ![](/images/postman.png)
 
-1. Import the [Adobe Experience Platform Environment](postman/Adobe Experience Platform.postman_environment.json) file into Postman.
-
 1. Select the [Adobe Experience Platform Environment](postman/Adobe%20Experience%20Platform.postman_environment.json) file to import the environment.
 
    ![](/images/postman_after_env_import.png)
