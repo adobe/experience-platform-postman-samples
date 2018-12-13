@@ -34,7 +34,7 @@ The purpose of this repository is to collect Postman samples that show how to in
 
    Also fill out the `ldap` field with your user id so you'll be able to uniquely identify and data you create.
 
-1. Copy the contents of your `private.key` and use it as the value for `secret`.
+1. Copy the contents of your `private.key` and use it as the value for `privateKey`.
 
    **For MacOS & Linux platform**
 
