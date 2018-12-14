@@ -1,7 +1,8 @@
 {
 	"info": {
-		"_postman_id": "cb4c8204-dfa1-4863-9324-ba9514e9000c",
+		"_postman_id": "cc3260cb-f03b-41f4-b107-b3e8c5096e58",
 		"name": "Adobe Experience Platform",
+		"description": "Postman Collection for Adobe Experience Platform\n\nWhat is Adobe Experience Platform ?\n\nAdobe Experience Platform is the most powerful, flexible, and open system on the market for building and managing complete solutions that drive customer experience. Experience Platform enables organizations to centralize and standardize customer data and content from any system and apply data science and machine learning to dramatically improve the design and delivery of rich, personalized experiences.\n\nBuilt on open APIs, Experience Platform exposes the full functionality of the system to developers, supporting the easy integration of enterprise solutions using familiar tools. Experience Platform also supports partners to build and integrate their own products and technologies as needed.\n\nThis power and flexibility makes Experience Platform unique in the market. It gives partners, customers, and a community of developers a foundation on which to build innovations that drive The Experience Business: exceeding customer expectations by delivering a continually improving, fully-personalized experience drawn from a 360-degree view of the customer and their individual preferences.\n\nAdobe Experience Platform delivers an open system complete with data foundation, machine learning, and value-added services that help you control, customize, and integrate your data. Together with Platform, you can create experiences that surprise and delight your customers, cement brand loyalty, and drive business value.\n\nNotes:\nhttps://www.adobe.io/apis/experienceplatform/home.html\nhttps://www.adobe.io/apis/experienceplatform/home/overview.html",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -6531,6 +6532,7 @@
 					"_postman_isSubFolder": true
 				}
 			],
+			"description": "Catalog Service RESTful API Resource 1.0.0 \n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/foundation/catalog\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -7079,6 +7081,29 @@
 					"description": "Folder for batches",
 					"_postman_isSubFolder": true
 				}
+			],
+			"description": "Adobe Experience Platform Data Ingestion v2 \n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/foundation/import\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f26ff486-6a12-4ed4-bea5-402fca8d5a99",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a6cab933-6344-4fdd-a88c-ecb52d23edd7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -7456,6 +7481,29 @@
 					],
 					"description": "Folder for health-detailed",
 					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Data Access API 1.0.0 \n\nThe Data Access API provides users with the capability for data access and egress on Adobe Experience Platform.\n\nThis includes, but not limited to, the following operations:\nAccess and download Dataset files under a batch\nRetrieve HEADER information regarding files\nParallel / Resumable downloads using HTTP Range headers\nPagination Support for Directory listings\nAn in depth technical overview of the Data Access API can be found here:\nhttps://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md\nTutorial for getting started with the Data Access API:\nhttps://www.adobe.io/apis/cloudplatform/dataservices/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md\n\nNotes:\n* PLATFORM Gateway URL: https://platform.adobe.io/\n* Base path for this API: /data/foundation/export\n* All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nTerms of service:\nhttps://www.adobe.com/legal/terms.html\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d0d59149-8584-44c2-9e6b-da5207ff5a45",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6bb2d128-04e0-4be0-9150-46a3930a3af4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -9883,6 +9931,29 @@
 					],
 					"_postman_isSubFolder": true
 				}
+			],
+			"description": "https://www.adobe.io/apis/experienceplatform/home/api-reference.html#!acpdr/swagger-specs/catalog.yaml\n\nAdobe Experience Platform Unified Profile Service APIs beta \n\nUnified Profile APIs provide mechanisms for ingesting, deleting and accessing Profiles, and for working with Profile Segments from creating, previewing, and estimating segments to exporting segment audiences to datasets that can be used throughout Adobe Experience Platform.\nTerminology\n\nTerms &\tDefinitions\nAudience:\tThe collection of profiles that meet the segment definition criteria\nPredicate:\tA Predicate is the object encapsulation of a query written in PQL. Also referred to as Segment Definition\nProfile:\tAn object following the standard XDM Profile schema representing the profile data of a user\nSegmentation:\tDividing a large group of customers, prospects, or consumers (Profiles) into smaller groups that share similar traits and will respond similarly to marketing strategies\nSegment:\tAlso Definition. The rule set defining how to subdivide a customer base, such as 'Men over 50’. Once conceptualized, segments are then defined in terms of the conditions that must be met to qualify for a segment\n\nThe Unified Profile APIs\nName &\tDescription\nProfile Configuration API:\tWork with Merge Policies which control the way Unified Profile Service merges Profile fragments across datasets\nProfile Access API:\tGet a Unified Profile, or paginated list of ExperienceEvents for a given ID and Namespace\nProfile Export API:\tExport audience members to a dataset which can be used throughout Adobe Experience Platform\nProfile Preview API:\tSessionless summary view of the audience membership of a given PQL Predicate Expression\nProfile Segment Definitions API:\tBuild a query that describes a subset of your user base, based on attributes of Profiles or time series events\nProfile Segment Jobs API:\tApply an existing Segment Definition to your user base and build a dataset representing members of your segment accessible to all Adobe Experience Platform capabilities\n\nTerms of service\nhttps://www.adobe.com/legal/terms.html\n\nFind out more about Unified Profile\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "73eb17fb-3599-493f-bf11-0501b73b71b3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf001e3c-d2a5-492b-b6ef-2e8eaf2f528a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -10268,6 +10339,29 @@
 					],
 					"description": "Folder for identities",
 					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Adobe Experience Platform Identity Namespace Service 0.0.1 \n\nAdobe Experience Platform Identity Namespace Service API is used to query and create Namespaces used with Identity Service & Profile Service APIs\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/core/idnamespace\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nThe developer - Website\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation.html",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d6640d03-043c-41dd-9726-2afe06fd96dc",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6525a3e-23a6-4ec4-8ca0-ce3927f16e46",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -12200,6 +12294,29 @@
 					"description": "Folder for insights",
 					"_postman_isSubFolder": true
 				}
+			],
+			"description": "Sensei Unified Machine Learning API beta \n\nThis API provides a mechanism for Data Scientists to organize and manage ML services from algorithm onboarding through experimentation and to service deployment.\nSome common terminology used in this API document:\n\nTerms &\tDefinitions\n\nML Algorithm:\tAn algorithm that can learn from data and improve from experience, without human intervention. For example, linear regressions, logistic regression, Naive Bayes, Random Forest, and KNN\nML library:\tA machine learning library or framework, typically language-specific, that provides fast, extensible implementations of cutting-edge machine learning algorithms. For example, TensorFlow, Caffe, Mlib (Spark), and H2O.\nSensei Engine:\tA project in a ML framework of the developer’s choice. This constitutes templatized code and bindings in the language of choice for preprocessing, training, evaluation, and prediction.\nSensei ML instance:\tThe conceptual entity that is an instance of a Sensei Engine for a particular tenant made up of specific data, parameters, and Sensei code.\nTrained models:\tOne of many models created via the process of experimenting and feature engineering before arriving at a validated, evaluated, and finalized model.\nExperiment:\tThe process by which a model’s reliability and generalization is validated by scoring on a small fraction of real live traffic. This process can include changing datasets, changing features, changing learning parameters and hardware.\nPublished model:\tA finalized and versioned model arrived at after training, validation, and evaluation.\nSensei runtime:\tThe shell in which a Sensei ML instance executes.\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/sensei\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header ‘Content-Type: application/json’\n\nTerms of service\nhttps://www.adobe.com/legal/terms.html\n\nFind out more about Sensei\nhttps://www.adobe.io/apis/cloudplatform/sensei.html\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "434865b6-b7c2-4cac-80a3-102b28b1a700",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b29d5e14-79b7-4a75-ac3e-2eaa146ebdf0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -12503,7 +12620,52 @@
 					"description": "Folder for queries",
 					"_postman_isSubFolder": true
 				}
+			],
+			"description": "Experience Query Service API 1.0.0 \n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/foundation/query\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header ‘Content-Type: application/json’",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "61d3ac66-0f36-4082-885c-37856dc3088d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef92ea13-f5b8-4656-a403-9438adbad5de",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0441f2e3-b7e8-487b-807d-680fb9913484",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "06cd240a-3c71-448a-8bbb-82997957b887",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
