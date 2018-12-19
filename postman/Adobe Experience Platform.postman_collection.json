@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cc3260cb-f03b-41f4-b107-b3e8c5096e58",
+		"_postman_id": "13c95540-5bbb-4489-818e-63b27ee784cb",
 		"name": "Adobe Experience Platform",
 		"description": "Postman Collection for Adobe Experience Platform\n\nWhat is Adobe Experience Platform ?\n\nAdobe Experience Platform is the most powerful, flexible, and open system on the market for building and managing complete solutions that drive customer experience. Experience Platform enables organizations to centralize and standardize customer data and content from any system and apply data science and machine learning to dramatically improve the design and delivery of rich, personalized experiences.\n\nBuilt on open APIs, Experience Platform exposes the full functionality of the system to developers, supporting the easy integration of enterprise solutions using familiar tools. Experience Platform also supports partners to build and integrate their own products and technologies as needed.\n\nThis power and flexibility makes Experience Platform unique in the market. It gives partners, customers, and a community of developers a foundation on which to build innovations that drive The Experience Business: exceeding customer expectations by delivering a continually improving, fully-personalized experience drawn from a 360-degree view of the customer and their individual preferences.\n\nAdobe Experience Platform delivers an open system complete with data foundation, machine learning, and value-added services that help you control, customize, and integrate your data. Together with Platform, you can create experiences that surprise and delight your customers, cement brand loyalty, and drive business value.\n\nNotes:\nhttps://www.adobe.io/apis/experienceplatform/home.html\nhttps://www.adobe.io/apis/experienceplatform/home/overview.html",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -7894,6 +7894,29 @@
 							"_postman_isSubFolder": true
 						}
 					],
+					"description": "Unified Profile Configuration API 18.8.1 \nExperience Platform Unified Profile Configuration API\n\n\nUse this API to control the manner by which Unified Profile merges XDM Schema objects on Adobe Experience Platform. \n\nFor more information, see Unified Profile Overview.\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/core/ups/config\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nTerms of service:\nhttps://www.adobe.com/legal/terms.html\n",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "65b0f2d8-9419-4b5c-ba98-e061a52cefd1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "88807d63-53c4-4675-bb63-96b9ec772d01",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
 					"_postman_isSubFolder": true
 				},
 				{
@@ -8230,6 +8253,29 @@
 							],
 							"description": "Folder for health",
 							"_postman_isSubFolder": true
+						}
+					],
+					"description": "Unified Profile Access API 18.8.1 \nAdobe Experience Platform Unified Profile Access API\n\nWork with XDM Model objects individually on Experience Platform using Unified Profile Access API.\nFor more information, see Unified Profile Overview.\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/core/ups/access\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nTerms of service:\nhttps://www.adobe.com/legal/terms.html",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f4c17e57-0a51-4e92-a100-9c71601f6510",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e2b0adb-4ba7-4828-80b2-81dec84300a7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"_postman_isSubFolder": true
@@ -8607,6 +8653,29 @@
 							],
 							"description": "Folder for version",
 							"_postman_isSubFolder": true
+						}
+					],
+					"description": "Unified Profile Export API 18.8.1 \nExperience Platform Unified Profile Export API\n\nUse this API to export Profile Segment audience members to a dataset where they can be used by Adobe Experience Platform solutions.\n\nFor more information, see Unified Profile Overview.\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/core/ups/export\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nTerms of service:\nhttps://www.adobe.com/legal/terms.html",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ecc0061a-386f-4858-8104-ddd240c377b9",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "43fbaa00-7696-48a2-b4b9-a3d011f8ddde",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"_postman_isSubFolder": true
@@ -9081,6 +9150,29 @@
 							"_postman_isSubFolder": true
 						}
 					],
+					"description": "Unified Profile Export API 18.8.1 \nExperience Platform Unified Profile Export API\n\nUse this API to export Profile Segment audience members to a dataset where they can be used by Adobe Experience Platform solutions.\n\nFor more information, see Unified Profile Overview.\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/core/ups/export\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nTerms of service:\nhttps://www.adobe.com/legal/terms.html",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2d24cc9e-be2e-4fa4-b95f-b282d616ee43",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a6340bc-78bd-497e-bff4-e7a86b8764ec",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
 					"_postman_isSubFolder": true
 				},
 				{
@@ -9490,6 +9582,29 @@
 							],
 							"description": "Folder for segment",
 							"_postman_isSubFolder": true
+						}
+					],
+					"description": "Unified Profile Segment Jobs API 18.8.1 \nExperience Platform Unified Profile Segment Jobs API\n\nOnce your Segment has been built, use Unified Profile Segment Jobs to build the resulting audience which then can be exported to a dataset.\n\nFor more information, see Unified Profile Overview.\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/core/ups\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nTerms of service:\nhttps://www.adobe.com/legal/terms.html",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1f936dd6-fdb4-487b-8103-a70b666a67a4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "01241502-e1b7-4220-bdd4-7508a04c2c0b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"_postman_isSubFolder": true
@@ -9927,6 +10042,29 @@
 							],
 							"description": "Folder for preview",
 							"_postman_isSubFolder": true
+						}
+					],
+					"description": "Unified Profile Preview API 18.8.1 \nExperience Platform Unified Profile Preview API\n\nRun your PQL Predicate using Unified Profile Preview Service for a summary of the resulting Profile Segment.\n\nFor more information, see Unified Profile Overview.\nhttps://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md\n\nNotes:\nPLATFORM Gateway URL: https://platform.adobe.io/\nBase path for this API: /data/core/ups\nAll requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json’.\n\nTerms of service:\nhttps://www.adobe.com/legal/terms.html",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f0cd1840-ee45-4977-9369-d14d866f3852",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "59444bf0-d16c-40bc-9f95-c3d1ef4bc925",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"_postman_isSubFolder": true
