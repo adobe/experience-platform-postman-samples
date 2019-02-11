@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "ccee3a8d-141d-4f0a-a9a5-182f40f5a09f",
+		"name": "Unified Profile Configuration API",
+		"description": "Use this API to control the manner by which Unified Profile merges XDM schema objects on Adobe Experience Platform. \n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups/config\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mergePolicies",
+			"item": [
+				{
+					"name": "Returns a list of Profile Merge Policies.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{clientID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{OrgID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/config/mergePolicies?",
+							"protocol": "https",
+							"host": [
+								"{{PLATFORM_GATEWAY}}"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "{{order}}",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "{{id}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creates a new Profile MergePolicy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{clientID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{OrgID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/config/mergePolicies",
+							"protocol": "https",
+							"host": [
+								"{{PLATFORM_GATEWAY}}"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patches a merge policy when provided with merge policy id as query param. Primary use is to make a merge policy default for a (schema,imsOrg) pair",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{clientID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{OrgID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/config/mergePolicies",
+							"protocol": "https",
+							"host": [
+								"{{PLATFORM_GATEWAY}}"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Returns the Profile MergePolicy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{clientID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{OrgID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/config/mergePolicies/{{MERGEPOLICY_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PLATFORM_GATEWAY}}"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies",
+								"{{MERGEPOLICY_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patches a merge policy given it's internal id. Primary use is to make a merge policy default for a (schema,imsOrg) pair.",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{clientID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{OrgID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/config/mergePolicies/{{MERGEPOLICY_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PLATFORM_GATEWAY}}"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies",
+								"{{MERGEPOLICY_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletes the mergepolicy given it's internal id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{clientID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{OrgID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/config/mergePolicies/{{MERGEPOLICY_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PLATFORM_GATEWAY}}"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies",
+								"{{MERGEPOLICY_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for mergePolicies"
+		}
+	]
+}

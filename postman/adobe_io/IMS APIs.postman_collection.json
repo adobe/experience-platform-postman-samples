@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "aa6371b7-5194-48a6-8053-81e263eff234",
+		"name": "IMS APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Access Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b487a85-7fb9-4935-82ea-734ff4b7631f",
+						"exec": [
+							"var json = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"AUTHORIZATION_TOKEN\", json.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ADOBE_LOGIN_HOST}}/ims/token/v1?grant_type=authorization_code&client_id={{IMS_CLIENT_ID}}&client_secret={{IMS_CLIENT_SECRET}}&code={{IMS_CLIENT_CODE}}",
+					"protocol": "https",
+					"host": [
+						"{{ADOBE_LOGIN_HOST}}"
+					],
+					"path": [
+						"ims",
+						"token",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "client_id",
+							"value": "{{IMS_CLIENT_ID}}"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{IMS_CLIENT_SECRET}}"
+						},
+						{
+							"key": "code",
+							"value": "{{IMS_CLIENT_CODE}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Org Name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTHORIZATION_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ADOBE_LOGIN_HOST}}/ims/organizations/178C4BC05BA74CFD0A495DB6@AdobeOrg?client_id={{IMS_CLIENT_ID}}",
+					"protocol": "https",
+					"host": [
+						"{{ADOBE_LOGIN_HOST}}"
+					],
+					"path": [
+						"ims",
+						"organizations",
+						"178C4BC05BA74CFD0A495DB6@AdobeOrg"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "{{IMS_CLIENT_ID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IMS: Get Product Context",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bearer_token",
+							"value": "{{access_token}}",
+							"type": "text"
+						},
+						{
+							"key": "org_id",
+							"value": "4904382559E679670A49422D",
+							"type": "text"
+						},
+						{
+							"key": "auth_src",
+							"value": "AdobeOrg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{IMS}}/ims/fetch_pc_by_org/v1",
+					"host": [
+						"{{IMS}}"
+					],
+					"path": [
+						"ims",
+						"fetch_pc_by_org",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orgs you are added to",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{IMS}}/ims/admin_organizations/v6?guid=89D657BB50F9280A0A490D36&auth_src=AdobeID",
+					"host": [
+						"{{IMS}}"
+					],
+					"path": [
+						"ims",
+						"admin_organizations",
+						"v6"
+					],
+					"query": [
+						{
+							"key": "guid",
+							"value": "89D657BB50F9280A0A490D36"
+						},
+						{
+							"key": "auth_src",
+							"value": "AdobeID"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orgs Members and Groups",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ADOBE_LOGIN_HOST}}/ims/admin_members/v3?org_id=2C5C67F85B2A5C1B0A494238&auth_src=AdobeOrg",
+					"host": [
+						"{{ADOBE_LOGIN_HOST}}"
+					],
+					"path": [
+						"ims",
+						"admin_members",
+						"v3"
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "2C5C67F85B2A5C1B0A494238"
+						},
+						{
+							"key": "auth_src",
+							"value": "AdobeOrg"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

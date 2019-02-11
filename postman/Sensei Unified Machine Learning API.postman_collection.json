@@ -1,0 +1,1704 @@
+{
+  "info": {
+    "_postman_id": "8a34bb64-a52c-4ac0-866b-37e9212a6e33",
+    "name": "Sensei Unified Machine Learning API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "engines",
+      "item": [
+        {
+          "name": "Get a list of all Engines",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=engineListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/engines?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "engines"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "disabled": true
+                },
+                {
+                  "key": "orderby",
+                  "value": "-updated",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Lists all engines providing mechanisms for pagination, filtering, and sorting."
+          },
+          "response": []
+        },
+        {
+          "name": "Add a new Engine",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "engine",
+                  "value": "{{engine}}",
+                  "type": "text"
+                },
+                {
+                  "key": "defaultArtifact",
+                  "value": "{{defaultArtifact}}",
+                  "type": "text"
+                },
+                {
+                  "key": "preprocessOverrideArtifact",
+                  "value": "{{preprocessOverrideArtifact}}",
+                  "type": "text"
+                },
+                {
+                  "key": "trainOverrideArtifact",
+                  "value": "{{trainOverrideArtifact}}",
+                  "type": "text"
+                },
+                {
+                  "key": "batchScoreOverrideArtifact",
+                  "value": "{{batchScoreOverrideArtifact}}",
+                  "type": "text"
+                },
+                {
+                  "key": "validateOverrideArtifact",
+                  "value": "{{validateOverrideArtifact}}",
+                  "type": "text"
+                },
+                {
+                  "key": "evaluateOverrideArtifact",
+                  "value": "{{evaluateOverrideArtifact}}",
+                  "type": "text"
+                },
+                {
+                  "key": "publishOverrideArtifact",
+                  "value": "{{publishOverrideArtifact}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/engines",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "engines"]
+            },
+            "description": "Creates a new Engine"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Docker Registry information",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=enginesDockerRegistryInfo.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/engines/dockerRegistry",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "engines", "dockerRegistry"]
+            },
+            "description": "Get Docker Registry information for use in ."
+          },
+          "response": []
+        },
+        {
+          "name": "Returns Engine by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/engines/{{ENGINE_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "engines", "{{ENGINE_ID}}"]
+            },
+            "description": "Retrieves a specific engine"
+          },
+          "response": []
+        },
+        {
+          "name": "Update an Engine by id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+              },
+              {
+                "key": "If-Match",
+                "value": "{{If-Match}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Engine object to be updated"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/engines/{{ENGINE_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "engines", "{{ENGINE_ID}}"]
+            },
+            "description": "Updates a specific engine"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an existing Engine",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/engines/{{ENGINE_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "engines", "{{ENGINE_ID}}"]
+            },
+            "description": "Deletes a specific engine"
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for engines"
+    },
+    {
+      "name": "mlInstances",
+      "item": [
+        {
+          "name": "Get List of MLInstances matching given criteria",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=mlInstanceListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/mlInstances?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "mlInstances"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "disabled": true
+                },
+                {
+                  "key": "orderby",
+                  "value": "-updated",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "MLInstances may be searched by name or tags."
+          },
+          "response": []
+        },
+        {
+          "name": "Add a new ML Instance",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "MLInstance object that needs to be added. Note that a valid `engineId` has to be listed in the object."
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/mlInstances",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "mlInstances"]
+            },
+            "description": "Creates a new MLInstance of an Engine"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete ML instances for engineId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/mlInstances?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "mlInstances"],
+              "query": [
+                {
+                  "key": "engineId",
+                  "value": "{{engineId}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Deletes all ML instances for provided engineId"
+          },
+          "response": []
+        },
+        {
+          "name": "Returns MLInstance by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/mlInstances/:mlInstanceId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "mlInstances", ":mlInstanceId"],
+              "variable": [
+                {
+                  "key": "mlInstanceId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update a ML Instance by id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+              },
+              {
+                "key": "If-Match",
+                "value": "{{If-Match}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "MLInstance object to be updated"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/mlInstances/:mlInstanceId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "mlInstances", ":mlInstanceId"],
+              "variable": [
+                {
+                  "key": "mlInstanceId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an existing MLInstance",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/mlInstances/:mlInstanceId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "mlInstances", ":mlInstanceId"],
+              "variable": [
+                {
+                  "key": "mlInstanceId"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for mlInstances"
+    },
+    {
+      "name": "experiments",
+      "item": [
+        {
+          "name": "Get All Experiments for an ML Instance",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experimentListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "experiments"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "disabled": true
+                },
+                {
+                  "key": "orderby",
+                  "value": "-updated",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Experiment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Experiment object that needs to be created"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "experiments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete experiments for mlInstanceId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "experiments"],
+              "query": [
+                {
+                  "key": "mlInstanceId",
+                  "value": "{{mlInstanceId}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Deletes all Experiments for provided mlInstance"
+          },
+          "response": []
+        },
+        {
+          "name": "Read an Experiment using Experiment ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments/:experimentId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "experiments", ":experimentId"],
+              "variable": [
+                {
+                  "key": "experimentId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update an Experiment using Experiment ID",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+              },
+              {
+                "key": "If-Match",
+                "value": "{{If-Match}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Experiment object to be updated"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments/:experimentId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "experiments", ":experimentId"],
+              "variable": [
+                {
+                  "key": "experimentId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an Experiment using Experiment ID",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments/:experimentId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "experiments", ":experimentId"],
+              "variable": [
+                {
+                  "key": "experimentId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get List of all Experiment Runs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments/:experimentId/runs?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "sensei",
+                "experiments",
+                ":experimentId",
+                "runs"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "disabled": true
+                },
+                {
+                  "key": "orderby",
+                  "value": "-updated",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "experimentId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Run an experiment with parameter values",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Run object that needs to be added"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments/:experimentId/runs",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "sensei",
+                "experiments",
+                ":experimentId",
+                "runs"
+              ],
+              "variable": [
+                {
+                  "key": "experimentId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get the Run status and info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments/:experimentId/runs/:experimentRunId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "sensei",
+                "experiments",
+                ":experimentId",
+                "runs",
+                ":experimentRunId"
+              ],
+              "variable": [
+                {
+                  "key": "experimentId"
+                },
+                {
+                  "key": "experimentRunId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get the Run status and info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunStatus.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/experiments/:experimentId/runs/:experimentRunId/status",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "sensei",
+                "experiments",
+                ":experimentId",
+                "runs",
+                ":experimentRunId",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "experimentId"
+                },
+                {
+                  "key": "experimentRunId"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for experiments"
+    },
+    {
+      "name": "models",
+      "item": [
+        {
+          "name": "Get List of all Models",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=modelListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "disabled": true
+                },
+                {
+                  "key": "orderby",
+                  "value": "-updated",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "List all models providing mechanisms for pagination, filtering, and sorting."
+          },
+          "response": []
+        },
+        {
+          "name": "Registers a generated Model",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "modelArtifact",
+                  "value": "{{modelArtifact}}",
+                  "type": "text"
+                },
+                {
+                  "key": "model",
+                  "value": "{{model}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models"]
+            },
+            "description": "Creates a model for a particular engine and mlinstance"
+          },
+          "response": []
+        },
+        {
+          "name": "Returns a Model by Id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models/:modelId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models", ":modelId"],
+              "variable": [
+                {
+                  "key": "modelId"
+                }
+              ]
+            },
+            "description": "Retrieves a specific model"
+          },
+          "response": []
+        },
+        {
+          "name": "Update a Model by Id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+              },
+              {
+                "key": "If-Match",
+                "value": "{{If-Match}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Model object to be updated"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models/:modelId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models", ":modelId"],
+              "variable": [
+                {
+                  "key": "modelId"
+                }
+              ]
+            },
+            "description": "Update an existing model"
+          },
+          "response": []
+        },
+        {
+          "name": "Deletes a Model by Id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models/:modelId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models", ":modelId"],
+              "variable": [
+                {
+                  "key": "modelId"
+                }
+              ]
+            },
+            "description": "Deletes a specific model"
+          },
+          "response": []
+        },
+        {
+          "name": "Returns a binary model artifact by model Id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models/:modelId/artifact",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models", ":modelId", "artifact"],
+              "variable": [
+                {
+                  "key": "modelId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get List of all Model Transcodings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscodingListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models/:modelId/transcodings?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models", ":modelId", "transcodings"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "disabled": true
+                },
+                {
+                  "key": "orderby",
+                  "value": "-updated",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "modelId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Creates a model transcoding",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Model Transcoding to be created"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models/:modelId/transcodings",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "models", ":modelId", "transcodings"],
+              "variable": [
+                {
+                  "key": "modelId"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Returns a Model Transcoding by Id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/models/:modelId/transcodings/:modelTranscodingId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "sensei",
+                "models",
+                ":modelId",
+                "transcodings",
+                ":modelTranscodingId"
+              ],
+              "variable": [
+                {
+                  "key": "modelId"
+                },
+                {
+                  "key": "modelTranscodingId"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for models"
+    },
+    {
+      "name": "insights",
+      "item": [
+        {
+          "name": "Get a list of insights",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=insightListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/insights?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "insights"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "disabled": true
+                },
+                {
+                  "key": "orderby",
+                  "value": "-updated",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Lists all insights for all experiment runs"
+          },
+          "response": []
+        },
+        {
+          "name": "Add a new model insight",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Insight object that needs to be added"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/insights",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "insights"]
+            },
+            "description": "Creates a new model insight"
+          },
+          "response": []
+        },
+        {
+          "name": "Returns Insight by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/insights/:insightId",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "insights", ":insightId"],
+              "variable": [
+                {
+                  "key": "insightId"
+                }
+              ]
+            },
+            "description": "Retrieves a specific insight"
+          },
+          "response": []
+        },
+        {
+          "name": "Get a list of default metrics for algorithms",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.sensei+json;profile=defaultMetricsListing.v1.json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/sensei/insights/metrics",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "sensei", "insights", "metrics"]
+            },
+            "description": "Lists all default metrics available for algorithms"
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for insights"
+    }
+  ]
+}
