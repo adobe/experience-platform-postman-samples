@@ -1,24 +1,24 @@
-# Project Title
-
-Loading CSV File to AEP using Custom Fields
+# Loading CSV File to AEP using Custom Fields
 
 ## Getting Started
 
-Loading a CSV file into platform and demonstrating how to query it is one of the most common questions we get from Onboarding.  In the attached Video and using the Postman collection here, you can walk through this process and get an idea of how this operation is conducted at the API level.
+Loading a CSV file into platform and demonstrating how to query it is one of the most common questions we get from Onboarding.  In the attached Video and using the Postman collection here, you can walk through this process and get an idea of how this operation is conducted at the API level.  [The accompanying video](https://adobe-my.sharepoint.com/:v:/p/silverst/EZ4a9_BzE1hBvagkrc-G6xcBSvRP-7j_8RuO45l_CwNDJQ?e=P2z28u) for this Postman collection is available from OneDrive.  Please contact silverst@adobe.com if you have problems accessing. 
 
 ### Prerequisites
 
-AEP Access via Stage - This is running against Stage environment which requires VPN access - https://ui-stage-va7.dev.cloud.adobe.io/ga/home
+There are a number of systems that you need access to in order to fully leverage the samples.  This represents a list of the most commonly used resources.
 
-IMS Org setup including JWT Token or Service Token for API access to AEP - API Client ID, Secret, and Code will need to be substituted into the Global Environment file -Global Variables.postman_globals.json
+**AEP Access via Stage** - This is running against Stage environment which requires VPN access - https://ui-stage-va7.dev.cloud.adobe.io/ga/home
 
-Modify the Environment variable with your IMS Org ID within the IMS Org Environment file - values and variables within this file are being set via Javascript embedded within the Postman scripts - IMS Org Level Variables.postman_environment.json
+**IMS Org setup including JWT Token or Service Token for API access to AEP** - API Client ID, Secret, and Code will need to be substituted into the Global Environment file -Global Variables.postman_globals.json
 
-Standalone Postman version 2.1 and greater is needed to run the Postman files Create Custom Class for CSV.postman_collection.json
+**Modify the Environment variable with your IMS Org ID within the IMS Org Environment file** - values and variables within this file are being set via Javascript embedded within the Postman scripts - IMS Org Level Variables.postman_environment.json
 
-Bootstrapper UI access is required https://bootstrapper-stg.corp.adobe.com/  Please create an account if you don't have one
+**Standalone Postman version 2.1 and greater** - We are leveraging Postman extensively and it is needed to run the Postman files Create Custom Class for CSV.postman_collection.json There are a number of different tools for interacting with API's and this is the current standard for our efforts.
 
-PSQL is needed to execute the Queries in Query Service - Follow the instructions for installing Postgres and within the binary folder there is the psql executable that will allow you to execute queries from Terminal
+**Bootstrapper UI access** https://bootstrapper-stg.corp.adobe.com/  Please create an account if you don't have one
+
+**PSQL** is needed to execute the Queries in Query Service - Follow the instructions for installing Postgres and within the binary folder there is the psql executable that will allow you to execute queries from Terminal
 
 
 ## Following the Steps
