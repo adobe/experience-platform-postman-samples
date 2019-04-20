@@ -1,10 +1,10 @@
 ## Adobe Experience Platform Postman Samples
 
-A repository that collects Postman samples work with the Adobe Experience Platform.
+A repository that collects Postman samples work with Adobe Experience Platform.
 
 ## Goals
 
-The purpose of this repository is to collect Postman samples that show how to interact with the Adobe Experience Platform. Each of the samples will use a common Postman Environment file in order to make it easier to switch between separate collections.
+The purpose of this repository is to collect Postman samples that show how to interact with Adobe Experience Platform. Each of the samples will use a common Postman Environment file in order to make it easier to switch between separate collections.
 
 ### Usage
 
@@ -64,6 +64,8 @@ The purpose of this repository is to collect Postman samples that show how to in
 
 @ToDo
 
+### Reference
+See also the [Medium post on the Adobe Techblog](https://medium.com/adobetech/using-postman-for-jwt-authentication-on-adobe-i-o-7573428ffe7f) around the usage of Postman with Adobe I/O.
 ### Contributing
 
 Contributions are welcomed! Read the [Contributing Guide](CONTRIBUTING.md) for more information.
