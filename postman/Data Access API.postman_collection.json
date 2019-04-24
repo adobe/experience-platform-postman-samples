@@ -1,348 +1,319 @@
 {
-	"info": {
-		"_postman_id": "c54d8826-e31a-4ef6-92c7-569d2c866a04",
-		"name": "Data Access API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "batches",
-			"item": [
-				{
-					"name": "Get dataset files under a batch.",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/batches/{{BATCH_ID}}/files?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"export",
-								"batches",
-								"{{BATCH_ID}}",
-								"files"
-							],
-							"query": [
-								{
-									"key": "start",
-									"value": "{{start}}",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								}
-							]
-						},
-						"description": "List all dataset files under a batch."
-					},
-					"response": []
-				},
-				{
-					"name": "Get dataset files under a failed batch",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/batches/{{BATCH_ID}}/failed?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"export",
-								"batches",
-								"{{BATCH_ID}}",
-								"failed"
-							],
-							"query": [
-								{
-									"key": "start",
-									"value": "{{start}}",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								},
-								{
-									"key": "path",
-									"value": "{{path}}",
-									"disabled": true
-								}
-							]
-						},
-						"description": "List all files under failed batch"
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for batches"
-		},
-		{
-			"name": "files",
-			"item": [
-				{
-					"name": "Access / Download a file",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json, application/octet-stream"
-							},
-							{
-								"key": "Range",
-								"value": "{{Range}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/files/{{FILE_ID}}?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"export",
-								"files",
-								"{{FILE_ID}}"
-							],
-							"query": [
-								{
-									"key": "start",
-									"value": "{{start}}",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								},
-								{
-									"key": "path",
-									"value": "{{path}}",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Returns either a complete file, or a directory of chunked data that make up the file. The response contains a data array that may contain a single entry, or a list of files belonging to that directory.\n"
-					},
-					"response": []
-				},
-				{
-					"name": "Get headers regarding a file",
-					"request": {
-						"method": "HEAD",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/files/{{FILE_ID}}?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"export",
-								"files",
-								"{{FILE_ID}}"
-							],
-							"query": [
-								{
-									"key": "path",
-									"value": "{{path}}",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Retrieves headers in response with a file's metadata. The response header will indicate information regarding the specified file."
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for files"
-		},
-		{
-			"name": "datasets",
-			"item": [
-				{
-					"name": "Preview files",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/datasets/{{DATASET_ID}}/preview",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"export",
-								"datasets",
-								"{{DATASET_ID}}",
-								"preview"
-							]
-						},
-						"description": "Preview the first 100 rows of CSV or Parquet files"
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for datasets"
-		},
-		{
-			"name": "health-detailed",
-			"item": [
-				{
-					"name": "Perform health check on dependent services",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/health-detailed",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"export",
-								"health-detailed"
-							]
-						},
-						"description": "Returns health status for all dependent services"
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for health-detailed"
-		}
-	]
+  "info": {
+    "_postman_id": "c54d8826-e31a-4ef6-92c7-569d2c866a04",
+    "name": "Data Access API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "batches",
+      "item": [
+        {
+          "name": "Get dataset files under a batch.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/batches/{{BATCH_ID}}/files?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "foundation",
+                "export",
+                "batches",
+                "{{BATCH_ID}}",
+                "files"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "List all dataset files under a batch."
+          },
+          "response": []
+        },
+        {
+          "name": "Get dataset files under a failed batch",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/batches/{{BATCH_ID}}/failed?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "foundation",
+                "export",
+                "batches",
+                "{{BATCH_ID}}",
+                "failed"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                },
+                {
+                  "key": "path",
+                  "value": "{{path}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "List all files under failed batch"
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for batches"
+    },
+    {
+      "name": "files",
+      "item": [
+        {
+          "name": "Access / Download a file",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json, application/octet-stream"
+              },
+              {
+                "key": "Range",
+                "value": "{{Range}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/files/{{FILE_ID}}?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "export", "files", "{{FILE_ID}}"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                },
+                {
+                  "key": "path",
+                  "value": "{{path}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Returns either a complete file, or a directory of chunked data that make up the file. The response contains a data array that may contain a single entry, or a list of files belonging to that directory.\n"
+          },
+          "response": []
+        },
+        {
+          "name": "Get headers regarding a file",
+          "request": {
+            "method": "HEAD",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/files/{{FILE_ID}}?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "export", "files", "{{FILE_ID}}"],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "{{path}}",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieves headers in response with a file's metadata. The response header will indicate information regarding the specified file."
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for files"
+    },
+    {
+      "name": "datasets",
+      "item": [
+        {
+          "name": "Preview files",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/datasets/{{DATASET_ID}}/preview",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "foundation",
+                "export",
+                "datasets",
+                "{{DATASET_ID}}",
+                "preview"
+              ]
+            },
+            "description": "Preview the first 100 rows of CSV or Parquet files"
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for datasets"
+    },
+    {
+      "name": "health-detailed",
+      "item": [
+        {
+          "name": "Perform health check on dependent services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/health-detailed",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "export", "health-detailed"]
+            },
+            "description": "Returns health status for all dependent services"
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for health-detailed"
+    }
+  ]
 }

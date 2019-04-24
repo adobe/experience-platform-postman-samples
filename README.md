@@ -25,9 +25,9 @@ The purpose of this repository is to collect Postman samples that show how to in
 
 1. Fill out the values for:
 
-   - clientID
+   - API_KEY
    - clientSecret
-   - OrgID
+   - IMS_ORG
    - TechAcctID
 
    that you generated when you created your **new integration**.
@@ -65,7 +65,9 @@ The purpose of this repository is to collect Postman samples that show how to in
 @ToDo
 
 ### Reference
+
 See also the [Medium post on the Adobe Techblog](https://medium.com/adobetech/using-postman-for-jwt-authentication-on-adobe-i-o-7573428ffe7f) around the usage of Postman with Adobe I/O.
+
 ### Contributing
 
 Contributions are welcomed! Read the [Contributing Guide](CONTRIBUTING.md) for more information.

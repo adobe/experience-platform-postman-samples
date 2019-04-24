@@ -1,354 +1,328 @@
 {
-	"info": {
-		"_postman_id": "e3ccbcb3-bd0f-4a7f-8e00-e5905701148d",
-		"name": "Identity Namespace API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "identities",
-			"item": [
-				{
-					"name": "Lists all namespaces available to the client `x-gw-ims-org-id`",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"idnamespace",
-								"identities",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create namespace under `x-gw-ims-org-id` IMS Org .",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "Namespace details as a JSON input"
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"idnamespace",
-								"identities",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/{{IDENTITY_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"idnamespace",
-								"identities",
-								"{{IDENTITY_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update namespace owned by `x-gw-ims-org-id` and having the given `id`.",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "Namespace details as a JSON input"
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/{{IDENTITY_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"idnamespace",
-								"identities",
-								"{{IDENTITY_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete namespace owned by `x-gw-ims-org-id` and identified by the given `id`.",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/{{IDENTITY_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"idnamespace",
-								"identities",
-								"{{IDENTITY_ID}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for identities"
-		},
-		{
-			"name": "orgs",
-			"item": [
-				{
-					"name": "Lists shared namespaces for the given `{OrgID}` or all owned if `{OrgID}` == `x-gw-ims-org-id`",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/orgs/{{OrgID}}/identities/",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"idnamespace",
-								"orgs",
-								"{{OrgID}}",
-								"identities",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/orgs/{{OrgID}}/identities/{{IDENTITY_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"idnamespace",
-								"orgs",
-								"{{OrgID}}",
-								"identities",
-								"{{IDENTITY_ID}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for orgs"
-		}
-	]
+  "info": {
+    "_postman_id": "e3ccbcb3-bd0f-4a7f-8e00-e5905701148d",
+    "name": "Identity Namespace API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "identities",
+      "item": [
+        {
+          "name": "Lists all namespaces available to the client `x-gw-ims-org-id`",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "idnamespace", "identities", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create namespace under `x-gw-ims-org-id` IMS Org .",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Namespace details as a JSON input"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "idnamespace", "identities", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/{{IDENTITY_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "idnamespace",
+                "identities",
+                "{{IDENTITY_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update namespace owned by `x-gw-ims-org-id` and having the given `id`.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Namespace details as a JSON input"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/{{IDENTITY_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "idnamespace",
+                "identities",
+                "{{IDENTITY_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete namespace owned by `x-gw-ims-org-id` and identified by the given `id`.",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/{{IDENTITY_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "idnamespace",
+                "identities",
+                "{{IDENTITY_ID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for identities"
+    },
+    {
+      "name": "orgs",
+      "item": [
+        {
+          "name": "Lists shared namespaces for the given `{IMS_ORG}` or all owned if `{IMS_ORG}` == `x-gw-ims-org-id`",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/orgs/{{IMS_ORG}}/identities/",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "idnamespace",
+                "orgs",
+                "{{IMS_ORG}}",
+                "identities",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/orgs/{{IMS_ORG}}/identities/{{IDENTITY_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "idnamespace",
+                "orgs",
+                "{{IMS_ORG}}",
+                "identities",
+                "{{IDENTITY_ID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for orgs"
+    }
+  ]
 }

@@ -1,305 +1,268 @@
 {
-	"info": {
-		"_postman_id": "55aa1a3d-3698-4ae0-9573-0f9674a6b541",
-		"name": "Query Service API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "queries",
-			"item": [
-				{
-					"name": "Fetches a list of queries for this IMS organization.",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"query",
-								"queries"
-							],
-							"query": [
-								{
-									"key": "orderby",
-									"value": "{{orderby}}",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								},
-								{
-									"key": "start",
-									"value": "{{start}}",
-									"disabled": true
-								},
-								{
-									"key": "property",
-									"value": "{{property}}",
-									"disabled": true
-								},
-								{
-									"key": "excludeSoftDeleted",
-									"value": "{{excludeSoftDeleted}}",
-									"disabled": true
-								},
-								{
-									"key": "excludeHidden",
-									"value": "{{excludeHidden}}",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Creates new query.",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "Query to be created."
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"query",
-								"queries"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Requests query status.",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries/{{QUERY_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"query",
-								"queries",
-								"{{QUERY_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Requests cancellation or query soft delete",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "Requested operation"
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries/{{QUERY_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"query",
-								"queries",
-								"{{QUERY_ID}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for queries"
-		},
-		{
-			"name": "connection_parameters",
-			"item": [
-				{
-					"name": "Requests connection parameters for the interactive interface",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/connection_parameters",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"query",
-								"connection_parameters"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for connection_parameters"
-		}
-	]
+  "info": {
+    "_postman_id": "55aa1a3d-3698-4ae0-9573-0f9674a6b541",
+    "name": "Query Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "queries",
+      "item": [
+        {
+          "name": "Fetches a list of queries for this IMS organization.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "query", "queries"],
+              "query": [
+                {
+                  "key": "orderby",
+                  "value": "{{orderby}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                },
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "property",
+                  "value": "{{property}}",
+                  "disabled": true
+                },
+                {
+                  "key": "excludeSoftDeleted",
+                  "value": "{{excludeSoftDeleted}}",
+                  "disabled": true
+                },
+                {
+                  "key": "excludeHidden",
+                  "value": "{{excludeHidden}}",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Creates new query.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Query to be created."
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "query", "queries"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Requests query status.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries/{{QUERY_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "query", "queries", "{{QUERY_ID}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Requests cancellation or query soft delete",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Requested operation"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/queries/{{QUERY_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "query", "queries", "{{QUERY_ID}}"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for queries"
+    },
+    {
+      "name": "connection_parameters",
+      "item": [
+        {
+          "name": "Requests connection parameters for the interactive interface",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/query/connection_parameters",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "query", "connection_parameters"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for connection_parameters"
+    }
+  ]
 }

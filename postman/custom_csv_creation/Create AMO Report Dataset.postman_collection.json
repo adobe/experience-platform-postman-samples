@@ -1,860 +1,810 @@
 {
-	"info": {
-		"_postman_id": "616fb648-1012-4243-964a-5074e91e454b",
-		"name": "Create AMO Report Dataset",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Create Records Custom Class, Schema, and Dataset",
-			"item": [
-				{
-					"name": "Create Time Series Class Ad Cloud Reporting Custom",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "654aa54b-c441-43a2-80bb-76430732593a",
-								"exec": [
-									"var json = JSON.parse(responseBody);",
-									"//postman.setEnvironmentVariable(\"TEST\", json.version);",
-									"",
-									"//console.log(json);",
-									"",
-									"var RECORDCLASSFULL = json['meta:altId'];",
-									"postman.setEnvironmentVariable(\"RECORDCLASSFULL\", RECORDCLASSFULL);",
-									"tests[\"RECORDCLASSFULL = \" + RECORDCLASSFULL] = true; ",
-									"",
-									"var RECORDCLASSURL = json.$id;",
-									"postman.setEnvironmentVariable(\"RECORDCLASSURL\", RECORDCLASSURL);",
-									"tests[\"RECORDCLASSURL = \" + RECORDCLASSURL] = true; ",
-									"",
-									"var SPLIT_HEADER = RECORDCLASSURL.split('/');",
-									"var RECORDCLASSID = SPLIT_HEADER[5];",
-									"postman.setEnvironmentVariable(\"RECORDCLASSID\", RECORDCLASSID);",
-									"tests[\"RECORDCLASSID = \" + RECORDCLASSID] = true; ",
-									"",
-									"    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{AUTHORIZATION_TOKEN}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"title\": \"Search Clicks Partition Data - NEW XDM\",\n  \"type\": \"object\",\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/data/time-series\"\n  ],\n  \"description\": \"AMO Search Clicks Partition Data CUSTOM NEW XDM\",\n  \"definitions\": {\n    \"adcloudreportagg\":  {\n    \t\"properties\" : {\n\t    \"{{TOP_LEVEL_FIELDNAME}}\": {\n\t    \t  \"type\": \"object\",\n\t          \"properties\": {\n\t            \"adcloudreportagg\":  {\n    \t          \"title\": \"Ad Cloud Search Report Aggregates\",\n        \t      \"type\": \"object\",\n            \t  \"description\": \"Ad Cloud Search Report Aggregates\",\n            \t\t\"properties\": {\n                \t\t\"seId\": {\n                    \"type\": \"integer\",\n                    \"meta:xdmType\": \"int\"\n                },\n                \t\t\"accountId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\t\"campaignId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\t\"adrefId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"creativeId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"termId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"deviceType\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"impressions\": {\n                    \"type\": \"integer\",\n                    \"meta:xdmType\": \"int\"\n                },\n                \t\"clicks\": {\n                    \"type\": \"integer\",\n                    \"meta:xdmType\": \"int\"\n                },\n                \t\"totalCost\": {\n                    \"type\": \"number\",\n                    \"meta:xdmType\": \"number\"\n                }\n            }\n          }\n        }\n\t    }\n      },\n      \"type\": \"object\",\n      \"meta:xdmType\": \"object\"\n    }\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/data/time-series\"\n    },\n    {\n      \"$ref\": \"#/definitions/adcloudreportagg\"\n    }\n  ]\n}"
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/tenant/classes",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"schemaregistry",
-								"tenant",
-								"classes"
-							]
-						},
-						"description": "Requests the Customer Schemas (target schemas) from a tenant"
-					},
-					"response": []
-				},
-				{
-					"name": "Check Classes in SchemaRegistry",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "654aa54b-c441-43a2-80bb-76430732593a",
-								"exec": [
-									"    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{AUTHORIZATION_TOKEN}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/stats",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"schemaregistry",
-								"stats"
-							]
-						},
-						"description": "Requests the Customer Schemas (target schemas) from a tenant"
-					},
-					"response": []
-				},
-				{
-					"name": "Create Record SCHEMA USING Record Class",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-								"exec": [
-									"var json = JSON.parse(responseBody);",
-									"//postman.setEnvironmentVariable(\"TEST\", json.version);",
-									"",
-									"//console.log(json);",
-									"",
-									"var RECORDSCHEMAFULL = json['meta:altId'];",
-									"postman.setEnvironmentVariable(\"RECORDSCHEMAFULL\", RECORDSCHEMAFULL);",
-									"tests[\"RECORDSCHEMAFULL = \" + RECORDSCHEMAFULL] = true; ",
-									"",
-									"var RECORDSCHEMAURL = json.$id;",
-									"postman.setEnvironmentVariable(\"RECORDSCHEMAURL\", RECORDSCHEMAURL);",
-									"tests[\"RECORDSCHEMAURL = \" + RECORDSCHEMAURL] = true; ",
-									"",
-									"var SPLIT_HEADER = RECORDSCHEMAURL.split('/');",
-									"var RECORDSCHEMAID = SPLIT_HEADER[5];",
-									"postman.setEnvironmentVariable(\"RECORDSCHEMAID\", RECORDSCHEMAID);",
-									"tests[\"RECORDSCHEMAID = \" + RECORDSCHEMAID] = true; ",
-									"",
-									"tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{AUTHORIZATION_TOKEN}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"type\": \"object\",\n  \"title\": \"AMO Agg Report Record Schema for XDM 0.9.9.8\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Schema for Ad Cloud reporting aggregate data\",\n  \"definitions\": {\n  \t\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"{{RECORDCLASSURL}}\"\n    }\n  ]\n}"
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/tenant/schemas",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"schemaregistry",
-								"tenant",
-								"schemas"
-							]
-						},
-						"description": "Create Customer Schema (target schema) in tenant"
-					},
-					"response": []
-				},
-				{
-					"name": "Check Schema",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "654aa54b-c441-43a2-80bb-76430732593a",
-								"exec": [
-									"    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{AUTHORIZATION_TOKEN}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.xed-full-notext+json; version=1.0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/tenant/schemas/{{RECORDSCHEMAFULL}}",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"schemaregistry",
-								"tenant",
-								"schemas",
-								"{{RECORDSCHEMAFULL}}"
-							]
-						},
-						"description": "Requests the Customer Schemas (target schemas) from a tenant"
-					},
-					"response": []
-				},
-				{
-					"name": "CREATE Report Dataset",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
-								"exec": [
-									"postman.setEnvironmentVariable(\"LOCATIONDATASETFILEID\", postman.getResponseHeader(\"LOCATION\"));",
-									"var LOCATIONDATASETFILEID = postman.getResponseHeader(\"LOCATION\");",
-									"var SPLIT_HEADER = LOCATIONDATASETFILEID.split('/');",
-									"var NEWDATASETFILEID = SPLIT_HEADER[5]",
-									"tests[\"Raw = \" + NEWDATASETFILEID] = true; ",
-									"postman.setEnvironmentVariable(\"NEWPROFILEDATASETID\", SPLIT_HEADER[5]);",
-									"    tests[\"NEWPROFILEDATASETID = \" + NEWDATASETFILEID] = true;   ",
-									"    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AUTHORIZATION_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							},
-							{
-								"key": "requestDataSource",
-								"value": "true"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{RECORDSCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Dataset for AMO Search Records\",\n   \"description\": \"Test Dataset for AMO Search Records\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n\t}\n}"
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/catalog/dataSets/",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"catalog",
-								"dataSets",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Check Profile Dataset",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
-								"exec": [
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AUTHORIZATION_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							},
-							{
-								"key": "requestDataSource",
-								"value": "true"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{PROFILESCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Profile Schema for Identity Linking\",\n   \"description\": \"Hello World test for Profile Identity Linking\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n}"
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/catalog/dataSets/{{NEWPROFILEDATASETID}}",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"catalog",
-								"dataSets",
-								"{{NEWPROFILEDATASETID}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Load Bulk Ingest Data",
-			"item": [
-				{
-					"name": "Create Batch",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f22719b2-bf74-426a-8809-3b5230b5edf9",
-								"exec": [
-									"var json = JSON.parse(responseBody);",
-									"",
-									"//for(var firstKey in json);",
-									"//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
-									"    postman.setEnvironmentVariable(\"TESTBATCHID\", json.id);",
-									"    tests[\"TESTBATCHID = \" + json.id] = true;",
-									"    postman.setEnvironmentVariable(\"Status\", json.status);",
-									"    tests[\"STATUS = \" + json.status] = true;",
-									"    tests[\"IMS Org = \" + json.imsOrg] = true; ",
-									"",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AUTHORIZATION_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"datasetId\":\"{{NEWPROFILEDATASETID}}\"}"
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/import/batches",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"batches"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Upload Batch",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"//var json = JSON.parse(responseBody);",
-									"",
-									"//for(var firstKey in json);",
-									"//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
-									"//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
-									"//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
-									"//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
-									"//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
-									"//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
-									"//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
-									"//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AUTHORIZATION_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/octet-stream"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							}
-						],
-						"body": {
-							"mode": "file",
-							"file": {}
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/import/batches/{{TESTBATCHID}}/datasets/{{NEWPROFILEDATASETID}}/files/out.parquet",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"batches",
-								"{{TESTBATCHID}}",
-								"datasets",
-								"{{NEWPROFILEDATASETID}}",
-								"files",
-								"out.parquet"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Signal Batch Complete",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "1d7dd2ce-9c47-4d1f-b5f5-81b2c890b13d",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"//var json = JSON.parse(responseBody);",
-									"",
-									"//for(var firstKey in json);",
-									"//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
-									"//    postman.setEnvironmentVariable(\"NEWBATCHID\", json.id);",
-									"//    tests[\"NEWBATCHID = \" + json.id] = true;",
-									"//    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json.status);",
-									"//    tests[\"STATUS = \" + json.status] = true;",
-									"//    tests[\"IMS Org = \" + json.imsOrg] = true; ",
-									"",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AUTHORIZATION_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/import/batches/{{TESTBATCHID}}?action=COMPLETE",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"batches",
-								"{{TESTBATCHID}}"
-							],
-							"query": [
-								{
-									"key": "action",
-									"value": "COMPLETE"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Check Batch Status",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"var json = JSON.parse(responseBody);",
-									"",
-									"for(var firstKey in json);",
-									"    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
-									"    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
-									"    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
-									"    tests[\"STATUS = \" + json[firstKey].status] = true;",
-									"    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
-									"",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AUTHORIZATION_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{ADOBE_IO_HOST}}/data/foundation/catalog/batches/{{TESTBATCHID}}",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_IO_HOST}}"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"catalog",
-								"batches",
-								"{{TESTBATCHID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Streaming - ExpEvent Ingest CRM ID Biased ADVANCED LOOKUP SCHEMA URL Copy",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG_ID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{IMS_CLIENT_ID}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"header\": {\n        \"msgType\": \"xdmEntityCreate\",\n        \"msgVersion\": \"1.0\",\n        \"schemaRef\": {\n            \"id\": \"{{RECORDSCHEMAURL}}\",\n            \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n        },\n        \"imsOrgId\": \"{{IMS_ORG_ID}}\",\n        \"source\": {\n            \"name\": \"GettingStarted\",\n            \"id\": \"999999\"\n        },\n        \"eventType\": \"mobile_interaction\",\n        \"action\": \"update\",\n        \"createdAt\": \"1524467240\",\n        \"datasetId\": \"{{NEWPROFILEDATASETID}}\"\n    },\n    \"body\": {\n        \"xdmMeta\": {\n            \"schemaRef\": {\n                \"id\": \"{{RECORDSCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n            }\n        },\n        \"xdmEntity\": {\n            \"timestamp\": \"2019-02-06T18:23:32Z\",\n            \"_F45332565BEA0B410A49401C@AdobeOrg\": {\n                \"adcloudreportagg\": {\n                    \"seId\": 70350226,\n                    \"accountId\": \"esse magna laborum consectetur\",\n                    \"campaignId\": \"dolore Duis sed\",\n                    \"adrefId\": \"occ\",\n                    \"creativeId\": \"mollit consectetur do Excepteur\",\n                    \"termId\": \"sed\",\n                    \"deviceType\": \"consectetur\",\n                    \"impressions\": 48203077,\n                    \"clicks\": -488567,\n                    \"totalCost\": -75457330.56925496\n                }\n            }\n        }\n    }\n}"
-						},
-						"url": {
-							"raw": "https://dcs-stg.data.adobe.net/collection/f9dd480dda5cb7fc8d9687189b39b0468dcd12c375f8700aacce61ed3d959f1f",
-							"protocol": "https",
-							"host": [
-								"dcs-stg",
-								"data",
-								"adobe",
-								"net"
-							],
-							"path": [
-								"collection",
-								"f9dd480dda5cb7fc8d9687189b39b0468dcd12c375f8700aacce61ed3d959f1f"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get IMS Profile",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a23b558f-bd67-4fa6-8984-57df74154b92",
-								"type": "text/javascript",
-								"exec": [
-									"var json = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"AUTHORIZATION_TOKEN\", json.access_token);"
-								]
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{ADOBE_LOGIN_HOST}}/ims/token/v1?client_id={{IMS_CLIENT_ID}}&client_secret={{IMS_CLIENT_SECRET}}&code={{IMS_CLIENT_CODE}}&grant_type=authorization_code",
-							"protocol": "https",
-							"host": [
-								"{{ADOBE_LOGIN_HOST}}"
-							],
-							"path": [
-								"ims",
-								"token",
-								"v1"
-							],
-							"query": [
-								{
-									"key": "client_id",
-									"value": "{{IMS_CLIENT_ID}}"
-								},
-								{
-									"key": "client_secret",
-									"value": "{{IMS_CLIENT_SECRET}}"
-								},
-								{
-									"key": "code",
-									"value": "{{IMS_CLIENT_CODE}}"
-								},
-								{
-									"key": "grant_type",
-									"value": "authorization_code"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "{{AUTHORIZATION_TOKEN}}",
-				"type": "string"
-			}
-		]
-	}
+  "info": {
+    "_postman_id": "616fb648-1012-4243-964a-5074e91e454b",
+    "name": "Create AMO Report Dataset",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Records Custom Class, Schema, and Dataset",
+      "item": [
+        {
+          "name": "Create Time Series Class Ad Cloud Reporting Custom",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "654aa54b-c441-43a2-80bb-76430732593a",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RECORDCLASSFULL = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RECORDCLASSFULL\", RECORDCLASSFULL);",
+                  "tests[\"RECORDCLASSFULL = \" + RECORDCLASSFULL] = true; ",
+                  "",
+                  "var RECORDCLASSURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RECORDCLASSURL\", RECORDCLASSURL);",
+                  "tests[\"RECORDCLASSURL = \" + RECORDCLASSURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RECORDCLASSURL.split('/');",
+                  "var RECORDCLASSID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RECORDCLASSID\", RECORDCLASSID);",
+                  "tests[\"RECORDCLASSID = \" + RECORDCLASSID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Search Clicks Partition Data - NEW XDM\",\n  \"type\": \"object\",\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/data/time-series\"\n  ],\n  \"description\": \"AMO Search Clicks Partition Data CUSTOM NEW XDM\",\n  \"definitions\": {\n    \"adcloudreportagg\":  {\n    \t\"properties\" : {\n\t    \"{{TOP_LEVEL_FIELDNAME}}\": {\n\t    \t  \"type\": \"object\",\n\t          \"properties\": {\n\t            \"adcloudreportagg\":  {\n    \t          \"title\": \"Ad Cloud Search Report Aggregates\",\n        \t      \"type\": \"object\",\n            \t  \"description\": \"Ad Cloud Search Report Aggregates\",\n            \t\t\"properties\": {\n                \t\t\"seId\": {\n                    \"type\": \"integer\",\n                    \"meta:xdmType\": \"int\"\n                },\n                \t\t\"accountId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\t\"campaignId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\t\"adrefId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"creativeId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"termId\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"deviceType\": {\n                    \"type\": \"string\",\n                    \"meta:xdmType\": \"string\"\n                },\n                \t\"impressions\": {\n                    \"type\": \"integer\",\n                    \"meta:xdmType\": \"int\"\n                },\n                \t\"clicks\": {\n                    \"type\": \"integer\",\n                    \"meta:xdmType\": \"int\"\n                },\n                \t\"totalCost\": {\n                    \"type\": \"number\",\n                    \"meta:xdmType\": \"number\"\n                }\n            }\n          }\n        }\n\t    }\n      },\n      \"type\": \"object\",\n      \"meta:xdmType\": \"object\"\n    }\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/data/time-series\"\n    },\n    {\n      \"$ref\": \"#/definitions/adcloudreportagg\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/tenant/classes",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": [
+                "data",
+                "foundation",
+                "schemaregistry",
+                "tenant",
+                "classes"
+              ]
+            },
+            "description": "Requests the Customer Schemas (target schemas) from a tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Check Classes in SchemaRegistry",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "654aa54b-c441-43a2-80bb-76430732593a",
+                "exec": [
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/stats",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": ["data", "foundation", "schemaregistry", "stats"]
+            },
+            "description": "Requests the Customer Schemas (target schemas) from a tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Record SCHEMA USING Record Class",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RECORDSCHEMAFULL = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RECORDSCHEMAFULL\", RECORDSCHEMAFULL);",
+                  "tests[\"RECORDSCHEMAFULL = \" + RECORDSCHEMAFULL] = true; ",
+                  "",
+                  "var RECORDSCHEMAURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RECORDSCHEMAURL\", RECORDSCHEMAURL);",
+                  "tests[\"RECORDSCHEMAURL = \" + RECORDSCHEMAURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RECORDSCHEMAURL.split('/');",
+                  "var RECORDSCHEMAID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RECORDSCHEMAID\", RECORDSCHEMAID);",
+                  "tests[\"RECORDSCHEMAID = \" + RECORDSCHEMAID] = true; ",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"AMO Agg Report Record Schema for XDM 0.9.9.8\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Schema for Ad Cloud reporting aggregate data\",\n  \"definitions\": {\n  \t\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"{{RECORDCLASSURL}}\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/tenant/schemas",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": [
+                "data",
+                "foundation",
+                "schemaregistry",
+                "tenant",
+                "schemas"
+              ]
+            },
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Check Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "654aa54b-c441-43a2-80bb-76430732593a",
+                "exec": [
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.xed-full-notext+json; version=1.0",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/schemaregistry/tenant/schemas/{{RECORDSCHEMAFULL}}",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": [
+                "data",
+                "foundation",
+                "schemaregistry",
+                "tenant",
+                "schemas",
+                "{{RECORDSCHEMAFULL}}"
+              ]
+            },
+            "description": "Requests the Customer Schemas (target schemas) from a tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "CREATE Report Dataset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"LOCATIONDATASETFILEID\", postman.getResponseHeader(\"LOCATION\"));",
+                  "var LOCATIONDATASETFILEID = postman.getResponseHeader(\"LOCATION\");",
+                  "var SPLIT_HEADER = LOCATIONDATASETFILEID.split('/');",
+                  "var NEWDATASETFILEID = SPLIT_HEADER[5]",
+                  "tests[\"Raw = \" + NEWDATASETFILEID] = true; ",
+                  "postman.setEnvironmentVariable(\"NEWPROFILEDATASETID\", SPLIT_HEADER[5]);",
+                  "    tests[\"NEWPROFILEDATASETID = \" + NEWDATASETFILEID] = true;   ",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "requestDataSource",
+                "value": "true"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{RECORDSCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Dataset for AMO Search Records\",\n   \"description\": \"Test Dataset for AMO Search Records\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n\t}\n}"
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/catalog/dataSets/",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": ["data", "foundation", "catalog", "dataSets", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Profile Dataset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
+                "exec": ["", ""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "requestDataSource",
+                "value": "true"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{PROFILESCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Profile Schema for Identity Linking\",\n   \"description\": \"Hello World test for Profile Identity Linking\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n}"
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/catalog/dataSets/{{NEWPROFILEDATASETID}}",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": [
+                "data",
+                "foundation",
+                "catalog",
+                "dataSets",
+                "{{NEWPROFILEDATASETID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Load Bulk Ingest Data",
+      "item": [
+        {
+          "name": "Create Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f22719b2-bf74-426a-8809-3b5230b5edf9",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "    postman.setEnvironmentVariable(\"TESTBATCHID\", json.id);",
+                  "    tests[\"TESTBATCHID = \" + json.id] = true;",
+                  "    postman.setEnvironmentVariable(\"Status\", json.status);",
+                  "    tests[\"STATUS = \" + json.status] = true;",
+                  "    tests[\"IMS Org = \" + json.imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"datasetId\":\"{{NEWPROFILEDATASETID}}\"}"
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/import/batches",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": ["data", "foundation", "import", "batches"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
+                  "//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
+                  "//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
+                  "//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
+                  "//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
+                  "//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {}
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/import/batches/{{TESTBATCHID}}/datasets/{{NEWPROFILEDATASETID}}/files/out.parquet",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": [
+                "data",
+                "foundation",
+                "import",
+                "batches",
+                "{{TESTBATCHID}}",
+                "datasets",
+                "{{NEWPROFILEDATASETID}}",
+                "files",
+                "out.parquet"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signal Batch Complete",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1d7dd2ce-9c47-4d1f-b5f5-81b2c890b13d",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"NEWBATCHID\", json.id);",
+                  "//    tests[\"NEWBATCHID = \" + json.id] = true;",
+                  "//    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json.status);",
+                  "//    tests[\"STATUS = \" + json.status] = true;",
+                  "//    tests[\"IMS Org = \" + json.imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/import/batches/{{TESTBATCHID}}?action=COMPLETE",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": [
+                "data",
+                "foundation",
+                "import",
+                "batches",
+                "{{TESTBATCHID}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "COMPLETE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Batch Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "for(var firstKey in json);",
+                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
+                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
+                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
+                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
+                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{ADOBE_IO_HOST}}/data/foundation/catalog/batches/{{TESTBATCHID}}",
+              "protocol": "https",
+              "host": ["{{ADOBE_IO_HOST}}"],
+              "path": [
+                "data",
+                "foundation",
+                "catalog",
+                "batches",
+                "{{TESTBATCHID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Streaming - ExpEvent Ingest CRM ID Biased ADVANCED LOOKUP SCHEMA URL Copy",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"header\": {\n        \"msgType\": \"xdmEntityCreate\",\n        \"msgVersion\": \"1.0\",\n        \"schemaRef\": {\n            \"id\": \"{{RECORDSCHEMAURL}}\",\n            \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n        },\n        \"imsOrgId\": \"{{IMS_ORG}}\",\n        \"source\": {\n            \"name\": \"GettingStarted\",\n            \"id\": \"999999\"\n        },\n        \"eventType\": \"mobile_interaction\",\n        \"action\": \"update\",\n        \"createdAt\": \"1524467240\",\n        \"datasetId\": \"{{NEWPROFILEDATASETID}}\"\n    },\n    \"body\": {\n        \"xdmMeta\": {\n            \"schemaRef\": {\n                \"id\": \"{{RECORDSCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n            }\n        },\n        \"xdmEntity\": {\n            \"timestamp\": \"2019-02-06T18:23:32Z\",\n            \"_F45332565BEA0B410A49401C@AdobeOrg\": {\n                \"adcloudreportagg\": {\n                    \"seId\": 70350226,\n                    \"accountId\": \"esse magna laborum consectetur\",\n                    \"campaignId\": \"dolore Duis sed\",\n                    \"adrefId\": \"occ\",\n                    \"creativeId\": \"mollit consectetur do Excepteur\",\n                    \"termId\": \"sed\",\n                    \"deviceType\": \"consectetur\",\n                    \"impressions\": 48203077,\n                    \"clicks\": -488567,\n                    \"totalCost\": -75457330.56925496\n                }\n            }\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "https://dcs-stg.data.adobe.net/collection/f9dd480dda5cb7fc8d9687189b39b0468dcd12c375f8700aacce61ed3d959f1f",
+              "protocol": "https",
+              "host": ["dcs-stg", "data", "adobe", "net"],
+              "path": [
+                "collection",
+                "f9dd480dda5cb7fc8d9687189b39b0468dcd12c375f8700aacce61ed3d959f1f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get IMS Profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a23b558f-bd67-4fa6-8984-57df74154b92",
+                "type": "text/javascript",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", json.ACCESS_TOKEN);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{ADOBE_LOGIN_HOST}}/ims/token/v1?client_id={{API_KEY}}&client_secret={{IMS_CLIENT_SECRET}}&code={{IMS_CLIENT_CODE}}&grant_type=authorization_code",
+              "protocol": "https",
+              "host": ["{{ADOBE_LOGIN_HOST}}"],
+              "path": ["ims", "token", "v1"],
+              "query": [
+                {
+                  "key": "client_id",
+                  "value": "{{API_KEY}}"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{IMS_CLIENT_SECRET}}"
+                },
+                {
+                  "key": "code",
+                  "value": "{{IMS_CLIENT_CODE}}"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{ACCESS_TOKEN}}",
+        "type": "string"
+      }
+    ]
+  }
 }
