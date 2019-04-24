@@ -1,232 +1,212 @@
 {
-	"info": {
-		"_postman_id": "4bb98431-999f-45cb-90bc-7e1de0cf1f98",
-		"name": "Unified Profile Segment Jobs API",
-		"description": "Once your segment has been built, use Unified Profile Segment Jobs to build the resulting audience which then can be exported to a dataset.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "segment",
-			"item": [
-				{
-					"name": "Get a list of Segment Job Request",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"jobs"
-							],
-							"query": [
-								{
-									"key": "snapshot.name",
-									"value": "{{snapshot.name}}",
-									"disabled": true
-								},
-								{
-									"key": "start",
-									"value": "{{start}}",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								},
-								{
-									"key": "status",
-									"value": "{{status}}",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Post a Segment Job Request",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-profile-instance-id",
-								"value": "{{x-profile-instance-id}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "List of segment jobs. Each should be in Json format."
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"jobs"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Return the Segment Job Request by id",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs/{{SEGMENT_JOB_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"jobs",
-								"{{SEGMENT_JOB_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cancel a Segment Job Request by id",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs/{{SEGMENT_JOB_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"jobs",
-								"{{SEGMENT_JOB_ID}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for segment"
-		}
-	]
+  "info": {
+    "_postman_id": "4bb98431-999f-45cb-90bc-7e1de0cf1f98",
+    "name": "Unified Profile Segment Jobs API",
+    "description": "Once your segment has been built, use Unified Profile Segment Jobs to build the resulting audience which then can be exported to a dataset.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "segment",
+      "item": [
+        {
+          "name": "Get a list of Segment Job Request",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "segment", "jobs"],
+              "query": [
+                {
+                  "key": "snapshot.name",
+                  "value": "{{snapshot.name}}",
+                  "disabled": true
+                },
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "{{status}}",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post a Segment Job Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-profile-instance-id",
+                "value": "{{x-profile-instance-id}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "List of segment jobs. Each should be in Json format."
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "segment", "jobs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Return the Segment Job Request by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs/{{SEGMENT_JOB_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "segment",
+                "jobs",
+                "{{SEGMENT_JOB_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel a Segment Job Request by id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs/{{SEGMENT_JOB_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "segment",
+                "jobs",
+                "{{SEGMENT_JOB_ID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for segment"
+    }
+  ]
 }

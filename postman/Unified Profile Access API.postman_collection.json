@@ -1,228 +1,204 @@
 {
-	"info": {
-		"_postman_id": "aabc5a3d-1a38-4a56-96eb-76011208b312",
-		"name": "Unified Profile Access API",
-		"description": "Work with XDM Model objects individually on Adobe Experience Platform using Unified Profile Access API.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups/access\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "entities",
-			"item": [
-				{
-					"name": "Lookup a merged Key-value XDM Model Object or related Time-series XDM Model Objects by XID or ID:NS.",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"access",
-								"entities"
-							],
-							"query": [
-								{
-									"key": "schema.name",
-									"value": "{{schema.name}}",
-									"disabled": true
-								},
-								{
-									"key": "relatedSchema.name",
-									"value": "{{relatedSchema.name}}",
-									"disabled": true
-								},
-								{
-									"key": "entityId",
-									"value": "{{entityId}}",
-									"disabled": true
-								},
-								{
-									"key": "entityIdNS",
-									"value": "{{entityIdNS}}",
-									"disabled": true
-								},
-								{
-									"key": "relatedEntityId",
-									"value": "{{relatedEntityId}}",
-									"disabled": true
-								},
-								{
-									"key": "relatedEntityIdNS",
-									"value": "{{relatedEntityIdNS}}",
-									"disabled": true
-								},
-								{
-									"key": "fields",
-									"value": "{{fields}}",
-									"disabled": true
-								},
-								{
-									"key": "mergePolicyId",
-									"value": "{{mergePolicyId}}",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "{{startTime}}",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "{{endTime}}",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Lookup merged Key-value XDM Model Objects or Experience Events by multiple entityIds.",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "XDM Model objects to be put. Each object should be in Json format."
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"access",
-								"entities"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Key-value XDM Objects and related Time-series XDM Model Objects by Ids.",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"access",
-								"entities"
-							],
-							"query": [
-								{
-									"key": "schema.name",
-									"value": "{{schema.name}}",
-									"disabled": true
-								},
-								{
-									"key": "entityId",
-									"value": "{{entityId}}",
-									"disabled": true
-								},
-								{
-									"key": "entityIdNS",
-									"value": "{{entityIdNS}}",
-									"disabled": true
-								},
-								{
-									"key": "mergePolicyId",
-									"value": "{{mergePolicyId}}",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for entities"
-		}
-	]
+  "info": {
+    "_postman_id": "aabc5a3d-1a38-4a56-96eb-76011208b312",
+    "name": "Unified Profile Access API",
+    "description": "Work with XDM Model objects individually on Adobe Experience Platform using Unified Profile Access API.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups/access\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "entities",
+      "item": [
+        {
+          "name": "Lookup a merged Key-value XDM Model Object or related Time-series XDM Model Objects by XID or ID:NS.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "access", "entities"],
+              "query": [
+                {
+                  "key": "schema.name",
+                  "value": "{{schema.name}}",
+                  "disabled": true
+                },
+                {
+                  "key": "relatedSchema.name",
+                  "value": "{{relatedSchema.name}}",
+                  "disabled": true
+                },
+                {
+                  "key": "entityId",
+                  "value": "{{entityId}}",
+                  "disabled": true
+                },
+                {
+                  "key": "entityIdNS",
+                  "value": "{{entityIdNS}}",
+                  "disabled": true
+                },
+                {
+                  "key": "relatedEntityId",
+                  "value": "{{relatedEntityId}}",
+                  "disabled": true
+                },
+                {
+                  "key": "relatedEntityIdNS",
+                  "value": "{{relatedEntityIdNS}}",
+                  "disabled": true
+                },
+                {
+                  "key": "fields",
+                  "value": "{{fields}}",
+                  "disabled": true
+                },
+                {
+                  "key": "mergePolicyId",
+                  "value": "{{mergePolicyId}}",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "{{startTime}}",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "{{endTime}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Lookup merged Key-value XDM Model Objects or Experience Events by multiple entityIds.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "XDM Model objects to be put. Each object should be in Json format."
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "access", "entities"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Key-value XDM Objects and related Time-series XDM Model Objects by Ids.",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "access", "entities"],
+              "query": [
+                {
+                  "key": "schema.name",
+                  "value": "{{schema.name}}",
+                  "disabled": true
+                },
+                {
+                  "key": "entityId",
+                  "value": "{{entityId}}",
+                  "disabled": true
+                },
+                {
+                  "key": "entityIdNS",
+                  "value": "{{entityIdNS}}",
+                  "disabled": true
+                },
+                {
+                  "key": "mergePolicyId",
+                  "value": "{{mergePolicyId}}",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for entities"
+    }
+  ]
 }
