@@ -1,206 +1,172 @@
 {
-	"info": {
-		"_postman_id": "5e4a8534-7356-47af-a3c0-b89009fae8fc",
-		"name": "Unified Profile Export API",
-		"description": "Use this API to export profile segment audience members to a dataset where they can be used by Adobe Experience Platform solutions.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups/export\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "jobs",
-			"item": [
-				{
-					"name": "Get list of all Profile export jobs",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"export",
-								"jobs"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								},
-								{
-									"key": "offset",
-									"value": "{{offset}}",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Posts a Profile Export Job",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-profile-instance-id",
-								"value": "{{x-profile-instance-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": " fields - Column filters (comma separated dot notation of columns)\n\nmergePolicy - Takes id and version as nested parameters, if not provided, will take the same value as in segmentId or snapshotName\n\nfilter - Array of segments with either segmentId or snapshotName\n\ndestination - DatasetId where the exported data will be stored\n\nschema - Schema name for the data"
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"export",
-								"jobs"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Returns the Profile Export Job",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs/{{EXPORT_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"export",
-								"jobs",
-								"{{EXPORT_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cancel Profile Export Job",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs/{{EXPORT_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"export",
-								"jobs",
-								"{{EXPORT_ID}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for jobs"
-		}
-	]
+  "info": {
+    "_postman_id": "5e4a8534-7356-47af-a3c0-b89009fae8fc",
+    "name": "Unified Profile Export API",
+    "description": "Use this API to export profile segment audience members to a dataset where they can be used by Adobe Experience Platform solutions.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups/export\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "jobs",
+      "item": [
+        {
+          "name": "Get list of all Profile export jobs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "export", "jobs"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "{{offset}}",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Posts a Profile Export Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-profile-instance-id",
+                "value": "{{x-profile-instance-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": " fields - Column filters (comma separated dot notation of columns)\n\nmergePolicy - Takes id and version as nested parameters, if not provided, will take the same value as in segmentId or snapshotName\n\nfilter - Array of segments with either segmentId or snapshotName\n\ndestination - DatasetId where the exported data will be stored\n\nschema - Schema name for the data"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "export", "jobs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Returns the Profile Export Job",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs/{{EXPORT_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "export", "jobs", "{{EXPORT_ID}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Profile Export Job",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs/{{EXPORT_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "export", "jobs", "{{EXPORT_ID}}"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for jobs"
+    }
+  ]
 }

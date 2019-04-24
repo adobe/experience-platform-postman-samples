@@ -1,323 +1,293 @@
 {
-	"info": {
-		"_postman_id": "9ac3b804-0ac5-481e-b716-ca99b8a2340f",
-		"name": "Unified Profile Segment Definition API",
-		"description": "A profile segment definition is the object encapsulation of a PQL predicate which can be run to build a profile segment, or audience.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "segment",
-			"item": [
-				{
-					"name": "Get a list of Profile Segment Definitions",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions?",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"definitions"
-							],
-							"query": [
-								{
-									"key": "start",
-									"value": "{{start}}",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "{{limit}}",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "{{page}}",
-									"disabled": true
-								},
-								{
-									"key": "sort",
-									"value": "{{sort}}",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Post a Profile Segment Definition",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "name - Name of the segment\n\ndescription - Description of the segment\n\nexpression - PQL expression of type PQL, format pql/json or pql/text and value containing the actual query\n\n schema - schema object with name and id\n\n ttlInDays - number"
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"definitions"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Returns the Profile Segment Definition",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions/{{SEGMENT_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"definitions",
-								"{{SEGMENT_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Overwrites a Profile Segment Definition",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "name - Name of the segment\n\ndescription - Description of the segment\n\nexpression - PQL expression of type PQL, format pql/json or pql/text and value containing the actual query\n\n schema - schema object with name and id"
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions/{{SEGMENT_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"definitions",
-								"{{SEGMENT_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete the segment given an id",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions/{{SEGMENT_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"definitions",
-								"{{SEGMENT_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Converts a Profile Segment Definition from pql/text to pql/json or vice versa",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{OrgID}}"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{clientID}}"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}"
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "name - Name of the segment\n\ndescription - Description of the segment\n\nexpression - PQL expression of type PQL, format pql/json or pql/text and value containing the actual query\n\n schema - schema object with name and id\n\n ttlInDays - number"
-						},
-						"url": {
-							"raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/conversion",
-							"protocol": "https",
-							"host": [
-								"{{PLATFORM_GATEWAY}}"
-							],
-							"path": [
-								"data",
-								"core",
-								"ups",
-								"segment",
-								"conversion"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Folder for segment"
-		}
-	]
+  "info": {
+    "_postman_id": "9ac3b804-0ac5-481e-b716-ca99b8a2340f",
+    "name": "Unified Profile Segment Definition API",
+    "description": "A profile segment definition is the object encapsulation of a PQL predicate which can be run to build a profile segment, or audience.\n\nFor more information, see [Unified Profile Overview](https://www.adobe.io/apis/cloudplatform/dataservices/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md).\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * All requests with a payload in the request body (i.e., POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "segment",
+      "item": [
+        {
+          "name": "Get a list of Profile Segment Definitions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions?",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "segment", "definitions"],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "disabled": true
+                },
+                {
+                  "key": "sort",
+                  "value": "{{sort}}",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post a Profile Segment Definition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "name - Name of the segment\n\ndescription - Description of the segment\n\nexpression - PQL expression of type PQL, format pql/json or pql/text and value containing the actual query\n\n schema - schema object with name and id\n\n ttlInDays - number"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "segment", "definitions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Returns the Profile Segment Definition",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions/{{SEGMENT_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "segment",
+                "definitions",
+                "{{SEGMENT_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Overwrites a Profile Segment Definition",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "name - Name of the segment\n\ndescription - Description of the segment\n\nexpression - PQL expression of type PQL, format pql/json or pql/text and value containing the actual query\n\n schema - schema object with name and id"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions/{{SEGMENT_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "segment",
+                "definitions",
+                "{{SEGMENT_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete the segment given an id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions/{{SEGMENT_ID}}",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "segment",
+                "definitions",
+                "{{SEGMENT_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Converts a Profile Segment Definition from pql/text to pql/json or vice versa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "{{x-request-id}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "name - Name of the segment\n\ndescription - Description of the segment\n\nexpression - PQL expression of type PQL, format pql/json or pql/text and value containing the actual query\n\n schema - schema object with name and id\n\n ttlInDays - number"
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/segment/conversion",
+              "protocol": "https",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "segment", "conversion"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Folder for segment"
+    }
+  ]
 }
