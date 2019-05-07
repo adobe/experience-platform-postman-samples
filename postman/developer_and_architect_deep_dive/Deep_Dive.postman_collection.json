@@ -1,0 +1,2814 @@
+{
+  "info": {
+    "_postman_id": "f7508de3-4f98-4d62-8190-c7aad37aeb6d",
+    "name": "Developer and Architect DeepDive",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Lesson 0 - Login and Accessing with Postman",
+      "item": [
+        {
+          "name": "Alternative method",
+          "item": [
+            {
+              "name": "INIT: Load Crypto Library for RS256",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "824e628b-b420-417b-894b-417ab6412896",
+                    "type": "text/javascript",
+                    "exec": [
+                      "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
+                  "protocol": "http",
+                  "host": ["kjur", "github", "io"],
+                  "path": ["jsrsasign", "jsrsasign-latest-all-min.js"]
+                },
+                "description": "Load the RSA-Sign Crypto LIbrary in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
+              },
+              "response": []
+            },
+            {
+              "name": "IMS: JWT Generate + Auth",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "37a8829a-7137-4181-814b-8bc895a9ab2d",
+                    "exec": [
+                      "var data = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.ACCESS_TOKEN);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "f611550b-fa21-4ab9-91cd-3877dd01d7f3",
+                    "exec": [
+                      "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+                      "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+                      "",
+                      "var navigator = {}; //fake a navigator object for the lib",
+                      "var window = {}; //fake a window object for the lib",
+                      "eval(postman.getGlobalVariable(\"jsrsasign-js\")); //import javascript jsrsasign",
+                      "",
+                      "",
+                      "var header = {",
+                      "\t\"alg\": \"RS256\"",
+                      "};",
+                      "",
+                      "var data = {",
+                      "\t\"exp\": Math.round(87000 + Date.now()/1000),",
+                      "\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
+                      "\t\"sub\": postman.getEnvironmentVariable(\"TechAcctID\"),",
+                      "\t\"aud\": postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
+                      "};",
+                      "",
+                      "meta_scopes = postman.getEnvironmentVariable(\"meta_scope\").split(',');",
+                      "meta_scopes.forEach(function(scope){",
+                      "    var meta_scope = postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                      "                     scope;",
+                      "    data[meta_scope] = true;",
+                      "});",
+                      "",
+                      "var secret = postman.getEnvironmentVariable(\"secret\");",
+                      "",
+                      "var sHeader = JSON.stringify(header);",
+                      "var sPayload = JSON.stringify(data);",
+                      "",
+                      "var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+                      "",
+                      "console.log(sPayload);",
+                      "console.log(sJWT);",
+                      "",
+                      "postman.setEnvironmentVariable(\"jwt_token\", sJWT);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "client_id",
+                      "value": "{{API_KEY}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "client_secret",
+                      "value": "{{clientSecret}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "jwt_token",
+                      "value": "{{jwt_token}}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{IMS}}/ims/exchange/jwt/",
+                  "host": ["{{IMS}}"],
+                  "path": ["ims", "exchange", "jwt", ""]
+                },
+                "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for ACCESS_TOKEN"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Adobe I/O Runtime: Generate Auth",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cfdbef5f-8c61-48c6-8c83-f3a5fd43fd7d",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.ACCESS_TOKEN);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "{{API_KEY}}",
+                  "type": "text"
+                },
+                {
+                  "key": "technical_account_id",
+                  "value": "{{TechAcctID}}",
+                  "type": "text"
+                },
+                {
+                  "key": "org_id",
+                  "value": "{{IMS_ORG}}",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{clientSecret}}",
+                  "type": "text"
+                },
+                {
+                  "key": "private_key",
+                  "value": "{{secret}}",
+                  "type": "text"
+                },
+                {
+                  "key": "meta_scopes",
+                  "value": "{{meta_scope}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://adobeioruntime.net/api/v1/web/io-solutions/default/jwt",
+              "protocol": "https",
+              "host": ["adobeioruntime", "net"],
+              "path": ["api", "v1", "web", "io-solutions", "default", "jwt"]
+            },
+            "description": "Generated from a curl request: \ncurl -X POST \\\n  https://adobeioruntime.net/api/v1/web/io-solutions/default/jwt \\\n  -H 'Cache-Control: no-cache' \\\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\n  -d 'client_id=<YOUR_CLIENT_ID>&technical_account_id=<TECHNICAL_ACCOUNT_ID>&org_id=<ORG_ID>&client_secret=<CLIENT_SECRET>&private_key=<CONTENT_OF_PRIVATE_KEY_FILE>&meta_scopes=<COMMA_SEPARATED_META_SCOPES>'"
+          },
+          "response": []
+        },
+        {
+          "name": "IMS: Profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "824e628b-b420-417b-894b-417ab6412896",
+                "type": "text/javascript",
+                "exec": [
+                  "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{IMS}}/ims/profile",
+              "host": ["{{IMS}}"],
+              "path": ["ims", "profile"]
+            },
+            "description": "Load the IMS Profile information for the provided ACCESS_TOKEN"
+          },
+          "response": []
+        }
+      ],
+      "description": "In this lab we generate a JWT and Bearer Token",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "a80a882a-d148-4af2-aa68-4e0ec7d6d75d",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "55742ff0-d7e4-4528-b36d-4caa3316281d",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lesson 1 - Schema: Explore and Define XDM Schema",
+      "item": [
+        {
+          "name": "List Schemas",
+          "item": [
+            {
+              "name": "XDM: Get  All Classes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "0520a262-3cd7-4df6-8e67-464b9f9268da",
+                    "exec": [
+                      "var json = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"SCHEMA_VERSION\", json.results[0].version);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.adobe.xed-id+json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/global/classes/",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "global",
+                    "classes",
+                    ""
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Get Profile Class",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.adobe.xed+json; version=0.9.9.9-rc3",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/global/classes/_xdm.context.profile",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "global",
+                    "classes",
+                    "_xdm.context.profile"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Get All Tenant Schemas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.adobe.xed-id+json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Get All Mixins",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/vnd.adobe.xed-id+json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/global/mixins/",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "global",
+                    "mixins",
+                    ""
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Get Profile Mixin",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.adobe.xed+json; version={{SCHEMA_VERSION}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/global/mixins/_xdm.context.profile-personal-details",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "global",
+                    "mixins",
+                    "_xdm.context.profile-personal-details"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Create Profile Schema",
+          "item": [
+            {
+              "name": "XDM: Get Tenant ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "6107e688-1485-4edf-a124-c295d9731e0d",
+                    "exec": [
+                      "var response = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"TENANT_ID\", response.tenantId);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/stats",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "schemaregistry", "stats"]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Create New Schema",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [
+                      "var schema = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"SCHEMA_ID\", schema[\"meta:altId\"]);",
+                      "postman.setEnvironmentVariable(\"SCHEMA_URL\", schema[\"$id\"]);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"object\",\n  \"title\": \"{{ldap}}_Customers_Schema\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"A simple profile-based schema for customer CRM data\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    }\n  ]\n}\n"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Get Custom Profile Schema",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.adobe.xed+json; version=1.0",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas",
+                    "{{SCHEMA_ID}}"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Add Person Details Mixin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"https://ns.adobe.com/xdm/context/profile-person-details\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"}},\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"https://ns.adobe.com/xdm/context/profile-segmentation\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"https://ns.adobe.com/xdm/context/profile-segmentation\"}},\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"https://ns.adobe.com/xdm/context/profile-personal-details\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"}},\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"https://ns.adobe.com/xdm/context/profile-preferences-details\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"}},\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"https://ns.adobe.com/xdm/context/identitymap\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"}}\n]"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas",
+                    "{{SCHEMA_ID}}"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Create Loyalty Mixin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [
+                      "var mixin = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"MIXIN_ID\", mixin[\"meta:altId\"]);",
+                      "postman.setEnvironmentVariable(\"MIXIN_URL\", mixin[\"$id\"]);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"object\",\n  \"title\": \"{{ldap}}_LoyaltyMixin\",\n  \"meta:intendedToExtend\": [\"https://ns.adobe.com/xdm/context/profile\"],\n  \"description\": \"{{ldap}} Simple Loyalty Mixin.\",\n  \"definitions\": {\n    \"loyalty\": {\n      \"properties\": {\n        \"_{{TENANT_ID}}\": {\n            \"type\":\"object\",\n            \"properties\": {\n               \"loyaltyId\": {\n                  \"title\": \"Loyalty Identifier\",\n                  \"type\": \"string\",\n                  \"description\": \"Loyalty Identifier.\"\n             }\n          }\n        }\n      }\n    }\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"#/definitions/loyalty\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "mixins"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Add Loyalty Mixin to Custom Profile Schema",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "80203cdd-ae7d-44e9-888d-9cec19aeac6c",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"{{MIXIN_URL}}\"},\n  { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"{{MIXIN_URL}}\"}}\n]"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas",
+                    "{{SCHEMA_ID}}"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Get Custom Profile Schema",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "dfd8886d-5354-4824-988d-9267f5d54f50",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/vnd.adobe.xed+json; version=1.0"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas",
+                    "{{SCHEMA_ID}}"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Create Identify Descriptor",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"@type\": \"xdm:descriptorIdentity\",\n  \"xdm:sourceSchema\": \"{{SCHEMA_URL}}\",\n  \"xdm:sourceProperty\": \"/personalEmail/address\",\n  \"xdm:namespace\": \"Email\",\n  \"xdm:property\": \"xdm:code\",\n  \"xdm:isPrimary\": true,\n  \"xdm:sourceVersion\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/descriptors",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "descriptors"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Enable Schema for Unified Profile",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  { \"op\": \"add\", \"path\": \"/meta:immutableTags\", \"value\": [\"union\"]}\n]"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas",
+                    "{{SCHEMA_ID}}"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "396d3bdd-a70c-4724-89aa-e95bbf1ec0d5",
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "fb58b05a-badd-45ee-b08f-62de63d6d254",
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "babae4f4-563a-4c43-a925-5acffcbba7cd",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "53519e15-ef20-4ca0-8d5b-9d695544b67a",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lesson 2 - Data: Ingesting Data via Batch Ingestion",
+      "item": [
+        {
+          "name": "List Datasets",
+          "item": [
+            {
+              "name": "Catalog: Get Datasets",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "9585d813-1ed9-4074-bb0f-8a75f56c6e9b",
+                    "type": "text/javascript",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "var key = Object.keys(datasets)[0];",
+                      "var obj = datasets[Object.keys(datasets)[0]];",
+                      "postman.setEnvironmentVariable(\"DATASET_ID\", key);",
+                      "postman.setEnvironmentVariable(\"VIEW_ID\", obj.viewId);",
+                      "postman.setEnvironmentVariable(\"BATCH_ID\", obj.lastBatchId);",
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "catalog", "dataSets", ""]
+                },
+                "description": "  "
+              },
+              "response": []
+            },
+            {
+              "name": "Catalog: Get Datasets Limit 5",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "9585d813-1ed9-4074-bb0f-8a75f56c6e9b",
+                    "type": "text/javascript",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "var key = Object.keys(datasets)[0];",
+                      "var obj = datasets[Object.keys(datasets)[0]];",
+                      "postman.setEnvironmentVariable(\"DATASET_ID\", key);",
+                      "postman.setEnvironmentVariable(\"VIEW_ID\", obj.viewId);",
+                      "postman.setEnvironmentVariable(\"BATCH_ID\", obj.lastBatchId);",
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets?limit=5",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "catalog", "dataSets"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ]
+                },
+                "description": "  "
+              },
+              "response": []
+            },
+            {
+              "name": "Catalog: Get Batches",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{BATCH_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "catalog",
+                    "batches",
+                    "{{BATCH_ID}}"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "Catalog: Get Datasets Files",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{DATASET_ID}}/views/{{VIEW_ID}}/files",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "catalog",
+                    "dataSets",
+                    "{{DATASET_ID}}",
+                    "views",
+                    "{{VIEW_ID}}",
+                    "files"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Create Dataset",
+          "item": [
+            {
+              "name": "Catalog: Create CRM Dataset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6863da2-4d13-460a-a502-c57c3b6ae13b",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"DATASET_ID\", datasets[0].substring(11, datasets[0].length));"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"{{ldap}}_CRM_Dataset\",\n\t\"schemaRef\": {\n            \"id\": \"{{SCHEMA_URL}}\",\n            \"contentType\": \"application/vnd.adobe.xed+json;version=1.3\"\n        },\n    \"fileDescription\": {\n    \t\"persisted\": true,\n        \"containerFormat\": \"parquet\",\n        \"format\": \"parquet\",\n        \"isMultiLineJson\": true\n    },\n    \"streamingIngestionEnabled\": \"false\",\n    \"tags\" : { \n        \"unifiedProfile\": [\"enabled:true\"],\n\t\t\"unifiedIdentity\": [\"enabled:true\"]\n    }\n}"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets?requestDataSource=true",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "catalog", "dataSets"],
+                  "query": [
+                    {
+                      "key": "requestDataSource",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Catalog: Get CRM Dataset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "9585d813-1ed9-4074-bb0f-8a75f56c6e9b",
+                    "type": "text/javascript",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "var key = Object.keys(datasets)[0];",
+                      "var obj = datasets[Object.keys(datasets)[0]];",
+                      "postman.setEnvironmentVariable(\"DATASET_ID\", key);",
+                      "postman.setEnvironmentVariable(\"VIEW_ID\", obj.viewId);",
+                      "postman.setEnvironmentVariable(\"BATCH_ID\", obj.lastBatchId);",
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{DATASET_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "catalog",
+                    "dataSets",
+                    "{{DATASET_ID}}"
+                  ]
+                },
+                "description": "  "
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Create Batch",
+          "item": [
+            {
+              "name": "Ingest: Create Batch",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "c3eaeda3-015b-499c-875c-6caa8ef25ddb",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e997ab9e-e0ca-47e7-aed9-46ced0a98db0",
+                    "exec": [
+                      "var data = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"BATCH_ID\", data.id);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"datasetId\": \"{{DATASET_ID}}\", \"inputFormat\": {\"format\": \"json\"}}"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/import/batches",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "import", "batches"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ingest: Upload File",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "c3eaeda3-015b-499c-875c-6caa8ef25ddb",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d7b8e2be-15bc-4993-b93f-0311203f5636",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/octet-stream",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "file",
+                  "file": {}
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{BATCH_ID}}/datasets/{{DATASET_ID}}/files/web_profiles_20170330.json",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "import",
+                    "batches",
+                    "{{BATCH_ID}}",
+                    "datasets",
+                    "{{DATASET_ID}}",
+                    "files",
+                    "web_profiles_20170330.json"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ingest: Close Batch",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "c3eaeda3-015b-499c-875c-6caa8ef25ddb",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "991d5157-fcdc-43cf-b55b-24834036f5fe",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{BATCH_ID}}?action=COMPLETE",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "import",
+                    "batches",
+                    "{{BATCH_ID}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "COMPLETE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Batch Status",
+          "item": [
+            {
+              "name": "Batches",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "catalog", "batches", ""]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Batch by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{BATCH_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "catalog",
+                    "batches",
+                    "{{BATCH_ID}}"
+                  ]
+                },
+                "description": "  "
+              },
+              "response": []
+            },
+            {
+              "name": "Files in Batch",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "a22650f1-d855-4801-91e9-a3192433914f",
+                    "exec": [
+                      "var response = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"FILE_ID\", response.data[0].dataSetFileId);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/export/batches/{{BATCH_ID}}/files",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "export",
+                    "batches",
+                    "{{BATCH_ID}}",
+                    "files"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Dataset Status",
+          "item": [
+            {
+              "name": "Catalog: Get Dataset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "9585d813-1ed9-4074-bb0f-8a75f56c6e9b",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "var key = Object.keys(datasets)[0];",
+                      "var obj = datasets[Object.keys(datasets)[0]];",
+                      "postman.setEnvironmentVariable(\"DATASET_ID\", key);",
+                      "postman.setEnvironmentVariable(\"VIEW_ID\", obj.viewId);",
+                      "postman.setEnvironmentVariable(\"BATCH_ID\", obj.lastBatchId);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{DATASET_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "catalog",
+                    "dataSets",
+                    "{{DATASET_ID}}"
+                  ]
+                },
+                "description": "  "
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Data Access",
+          "item": [
+            {
+              "name": "Data Export: Get File Details",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ef52a782-ab3e-49fc-8e51-8c201817452c",
+                    "exec": [
+                      "var response = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"FILE_NAME\", response.data[0].name);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/export/files/{{FILE_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "export",
+                    "files",
+                    "{{FILE_ID}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Data Export: Get File",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/export/files/{{FILE_ID}}?path={{FILE_NAME}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "export",
+                    "files",
+                    "{{FILE_ID}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "{{FILE_NAME}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Data Export: Get Dataset Preview",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/export/datasets/{{DATASET_ID}}/preview",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "export",
+                    "datasets",
+                    "{{DATASET_ID}}",
+                    "preview"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "dd62809d-28c0-4632-a4ac-12e8af0a9c97",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "130649e6-708a-478e-a289-5277a9f55bba",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lesson 3 - Streaming: Stream in Data using Launch",
+      "item": [
+        {
+          "name": "Create Streaming Datasets",
+          "item": [
+            {
+              "name": "XDM: Create Web Behavior Schema",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [
+                      "var schema = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"EE_SCHEMA_ID\", schema[\"meta:altId\"]);",
+                      "postman.setEnvironmentVariable(\"EE_SCHEMA_URL\", schema[\"$id\"]);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"object\",\n  \"title\": \"{{ldap}}_WebBehavior_Schema\",\n  \"auditable\": true,\n   \"meta:extends\": [\n\t\t \"https://ns.adobe.com/xdm/context/experienceevent\"\n\t],\n    \"description\": \"A simple ExperienceEvent schema.\",\n  \"allOf\": [\n    {\n    \t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n\t\t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-web\"\n\t},\n\t{\n\t\t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n\t},\n\t{\n    \t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-environment-details\"\n    },\n    {\n        \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-enduserids\"\n    }\n    ],\n    \"meta:immutableTags\": [\n    \t\"union\"\n\t]\n}\n"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Define Identity Descriptor",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cca20f11-15b0-4f91-b6e9-e920e881df81",
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t  \"@type\": \"xdm:descriptorIdentity\",\n\t  \"xdm:sourceSchema\": \"{{EE_SCHEMA_URL}}\",\n\t  \"xdm:sourceProperty\": \"/endUserIDs/_experience/mcid/id\",\n\t  \"xdm:namespace\": \"ecid\",\n\t  \"xdm:property\": \"xdm:code\",\n\t  \"xdm:isPrimary\": true,\n\t  \"xdm:sourceVersion\": 1\n\t}\n]"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/descriptors",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "descriptors"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "XDM: Get Web Behavior Schema",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/vnd.adobe.xed+json; version=1.0"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{EE_SCHEMA_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "schemaregistry",
+                    "tenant",
+                    "schemas",
+                    "{{EE_SCHEMA_ID}}"
+                  ]
+                },
+                "description": "\t"
+              },
+              "response": []
+            },
+            {
+              "name": "Create Web Behavior Event Dataset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6863da2-4d13-460a-a502-c57c3b6ae13b",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"EE_DATASET_ID\", datasets[0].substring(11, datasets[0].length));"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"{{ldap}}_WebBehavior_Dataset\",\n\t\"schemaRef\": {\n            \"id\": \"{{EE_SCHEMA_URL}}\",\n            \"contentType\": \"application/vnd.adobe.xed+json;version=1\"\n        },\n    \"fileDescription\": {\n    \t\"persisted\": true,\n        \"containerFormat\": \"parquet\",\n        \"format\": \"parquet\"\n    },\n    \"streamingIngestionEnabled\": \"true\",\n    \"tags\" : { \n        \"unifiedProfile\": [\"enabled:true\"],\n\t\t\"unifiedIdentity\": [\"enabled:true\"]\n    }\n}"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets?requestDataSource=true",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "catalog", "dataSets"],
+                  "query": [
+                    {
+                      "key": "requestDataSource",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create User Signups Dataset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6863da2-4d13-460a-a502-c57c3b6ae13b",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"PR_DATASET_ID\", datasets[0].substring(11, datasets[0].length));"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"{{ldap}}_User_Signups_Dataset\",\n\t\"schemaRef\": {\n            \"id\": \"{{SCHEMA_URL}}\",\n            \"contentType\": \"application/vnd.adobe.xed+json;version=1\"\n        },\n    \"fileDescription\": {\n    \t\"persisted\": true,\n        \"containerFormat\": \"parquet\",\n        \"format\": \"parquet\"\n    },\n    \"streamingIngestionEnabled\": \"true\",\n    \"tags\" : { \n        \"unifiedProfile\": [\"enabled:true\"],\n\t\t\"unifiedIdentity\": [\"enabled:true\"]\n    }\n}"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets?requestDataSource=true",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "foundation", "catalog", "dataSets"],
+                  "query": [
+                    {
+                      "key": "requestDataSource",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Catalog: Get Web Behavior Event Dataset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "9585d813-1ed9-4074-bb0f-8a75f56c6e9b",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "var key = Object.keys(datasets)[0];",
+                      "var obj = datasets[Object.keys(datasets)[0]];",
+                      "postman.setEnvironmentVariable(\"EE_DATASET_ID\", key);",
+                      "postman.setEnvironmentVariable(\"EE_VIEW_ID\", obj.viewId);",
+                      "postman.setEnvironmentVariable(\"EE_BATCH_ID\", obj.lastBatchId);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{EE_DATASET_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "catalog",
+                    "dataSets",
+                    "{{EE_DATASET_ID}}"
+                  ]
+                },
+                "description": "  "
+              },
+              "response": []
+            },
+            {
+              "name": "Catalog: Get User Signups Dataset",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "9585d813-1ed9-4074-bb0f-8a75f56c6e9b",
+                    "exec": [
+                      "var datasets = JSON.parse(responseBody);",
+                      "var key = Object.keys(datasets)[0];",
+                      "var obj = datasets[Object.keys(datasets)[0]];",
+                      "postman.setEnvironmentVariable(\"EE_DATASET_ID\", key);",
+                      "postman.setEnvironmentVariable(\"EE_VIEW_ID\", obj.viewId);",
+                      "postman.setEnvironmentVariable(\"EE_BATCH_ID\", obj.lastBatchId);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{PR_DATASET_ID}}",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": [
+                    "data",
+                    "foundation",
+                    "catalog",
+                    "dataSets",
+                    "{{PR_DATASET_ID}}"
+                  ]
+                },
+                "description": "  "
+              },
+              "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "71b4cf3d-52f3-4f65-9cab-1fa18f504f60",
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "1035876f-4be4-4c52-96b2-417d5a9871ed",
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        }
+      ],
+      "description": "Unified Profile Lab",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "551be5ff-4892-4f03-8657-ad4194ef311e",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8cf948a2-f6ae-4832-8360-3168dcbdd653",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lesson 4 - Unified Profile: Query the Unified Profile",
+      "item": [
+        {
+          "name": "Behavioral Data Point Lookup",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "Cache-Control",
+                "value": "\"no-cache\""
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.experienceevent&relatedSchema.name=_xdm.context.profile&entityId=89149270342662559642753730269986316500&entityIdNS=ecid",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "access", "entities"],
+              "query": [
+                {
+                  "key": "schema.name",
+                  "value": "_xdm.context.experienceevent"
+                },
+                {
+                  "key": "relatedSchema.name",
+                  "value": "_xdm.context.profile"
+                },
+                {
+                  "key": "entityId",
+                  "value": "89149270342662559642753730269986316500"
+                },
+                {
+                  "key": "entityIdNS",
+                  "value": "ecid"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unified Profile Lookup",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "Cache-Control",
+                "value": "\"no-cache\""
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.profile&entityId=johndoe@adobe.com&entityIdNS=email",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "access", "entities"],
+              "query": [
+                {
+                  "key": "schema.name",
+                  "value": "_xdm.context.profile"
+                },
+                {
+                  "key": "entityId",
+                  "value": "johndoe@adobe.com"
+                },
+                {
+                  "key": "entityIdNS",
+                  "value": "email"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "4a1e1a07-19e1-4878-a0df-48a00b03c992",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "540467fb-626c-4c19-b098-c6f8105519e6",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lesson 5 - Segmentation: Segment the Unified Profiles",
+      "item": [
+        {
+          "name": "Profile: Create A Segment Definition",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3b8645f1-3de1-40f1-8b52-0216a68f5cb6",
+                "exec": [
+                  "var segment = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"SEGMENT_ID\", segment.id);",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\" : \"{{ldap}} All Females\",\n    \"description\": \"Segment dataset into all females\",\n    \"expression\" : {\"type\":\"PQL\", \"format\":\"pql/json\", \"value\":\"{\\\"nodeType\\\":\\\"fnApply\\\",\\\"fnName\\\":\\\"in\\\",\\\"params\\\":[{\\\"nodeType\\\":\\\"fieldLookup\\\",\\\"fieldName\\\":\\\"gender\\\",\\\"object\\\":{\\\"nodeType\\\":\\\"fieldLookup\\\",\\\"fieldName\\\":\\\"person\\\",\\\"object\\\":{\\\"nodeType\\\":\\\"literal\\\",\\\"literalType\\\":\\\"XDMObject\\\",\\\"value\\\":\\\"profile\\\"}}},{\\\"literalType\\\":\\\"List\\\",\\\"nodeType\\\":\\\"literal\\\",\\\"value\\\":[\\\"female\\\"]}]}\"},\n    \"createdBy\": \"{{ldap}}\",\n    \"schema\" : {\"name\": \"_xdm.context.profile\", \"id\": \"{{ldap}} All Females\"} ,\n    \"ttlInDays\" : 90\n}"
+            },
+            "url": {
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "segment", "definitions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Segment Job",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7934ba7a-f349-4bf9-891a-536ffcf3392c",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"JOB_ID\", data.id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"segmentId\": \"{{SEGMENT_ID}}\"\n    }\n]"
+            },
+            "url": {
+              "raw": "https://platform.adobe.io/data/core/ups/segment/jobs",
+              "protocol": "https",
+              "host": ["platform", "adobe", "io"],
+              "path": ["data", "core", "ups", "segment", "jobs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Segment Job status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4a9e3c0e-42ff-42bd-8672-226134c3133d",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"MERGEPOLICY_ID\", data.segments[0].segment.mergePolicy.id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/segment/jobs/{{JOB_ID}}",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "segment", "jobs", "{{JOB_ID}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Catalog: Create Segment Dataset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6863da2-4d13-460a-a502-c57c3b6ae13b",
+                "exec": [
+                  "var datasets = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"SEGMENT_DATASET_ID\", datasets[0].substring(11, datasets[0].length));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"name\": \"{{ldap}}_ProfileSegmentDataset\",\n\t\"schemaRef\": {\n\t\"id\": \"_xdm.context.profile__union\",\n\t\"contentType\": \"application/vnd.adobe.xed+json;version=1\"\n\t},\n    \"fileDescription\": {\n    \t\"persisted\": true,\n        \"containerFormat\": \"parquet\",\n        \"format\": \"parquet\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets?requestDataSource=true",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "foundation", "catalog", "dataSets"],
+              "query": [
+                {
+                  "key": "requestDataSource",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Export Job",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "caf3d739-6252-4c53-92c3-992ac6484ea4",
+                "exec": [
+                  "var status = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"EXPORT_ID\", status.id);",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"filter\" : {\n        \"segments\" : [\n            {\n                \"segmentId\" : \"{{SEGMENT_ID}}\"\n            }\n        ]\n    },\n    \"destination\" : {\n        \"datasetId\" : \"{{SEGMENT_DATASET_ID}}\"\n    },\n    \"schema\" : {\n        \"name\" : \"_xdm.context.profile\"\n    },\n    \"mergePolicy\": {\n       \"id\": \"{{MERGEPOLICY_ID}}\",\n       \"version\": 1\n   }\n}"
+            },
+            "url": {
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "export", "jobs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Export Job By Id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "",
+                "value": "",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/export/jobs/{{EXPORT_ID}}",
+              "host": ["{{PLATFORM_GATEWAY}}"],
+              "path": ["data", "core", "ups", "export", "jobs", "{{EXPORT_ID}}"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "daa9da3e-5c00-485f-9abd-f3024592f196",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "83d69486-ffda-4cf5-9028-3792ec45f1e8",
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Additional Resources",
+      "item": [
+        {
+          "name": "Chapter 9 - Stream in Data",
+          "item": [
+            {
+              "name": "Lab 0 - Creating Streaming Endpoint",
+              "item": [
+                {
+                  "name": "Streaming Endpoint Registration",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{API_KEY}}"
+                      },
+                      {
+                        "key": "x-gw-ims-org-id",
+                        "value": "{{IMS_ORG}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "{{ACCESS_TOKEN}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"name\" : \"My Streaming Endpoint\",\n    \"description\" : \"Collects streaming data from my website\",\n    \"sourceId\" : \"myAwesomeWebsite_{{participant_number}}\",\n    \"dataType\": \"xdm\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{PLATFORM_GATEWAY}}/data/core/pipeline/inlet/registration/",
+                      "host": ["{{PLATFORM_GATEWAY}}"],
+                      "path": [
+                        "data",
+                        "core",
+                        "pipeline",
+                        "inlet",
+                        "registration",
+                        ""
+                      ]
+                    },
+                    "description": "Creates a data-inlet for clients to send streaming data"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Profile: Create A Segment",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bearer {{ACCESS_TOKEN}}"
+                  },
+                  {
+                    "key": "x-api-key",
+                    "value": "{{API_KEY}}"
+                  },
+                  {
+                    "key": "x-gw-ims-org-id",
+                    "value": "{{IMS_ORG}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\" : \"All Males\",\n    \"expression\" : {\"type\":\"PQL\", \"format\":\"pql/text\", \"value\":\"person.gender = \\\"male\\\"\"},\n    \"createdBy\": \"October TTT\",\n    \"schema\" : { \"name\" : \"_xdm.context.profile\"},\n    \"ttlInDays\" : 90\n}"
+                },
+                "url": {
+                  "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/segment/definitions",
+                  "host": ["{{PLATFORM_GATEWAY}}"],
+                  "path": ["data", "core", "ups", "segment", "definitions"]
+                }
+              },
+              "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "85a2c4b3-eaa0-4f00-a896-33b461175b57",
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "19da2551-8f83-4005-8fb5-6f01321d1ea2",
+                "type": "text/javascript",
+                "exec": [""]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        }
+      ]
+    }
+  ]
+}
