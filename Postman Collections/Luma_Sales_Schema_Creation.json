@@ -1365,6 +1365,82 @@
       "name": "Luma Recommendations Input Schema",
       "item": [
         {
+          "name": "Create Luma Recommendation Custom Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Recommendations_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_altId\", Recommendations_Mixin_altId);",
+                  "tests[\"Recommendations_Mixin_altId = \" + Recommendations_Mixin_altId] = true; ",
+                  "",
+                  "var Recommendations_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_FullURL\", Recommendations_Mixin_FullURL);",
+                  "tests[\"Recommendations_Mixin_FullURL = \" + Recommendations_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Recommendations_Mixin_FullURL.split('/');",
+                  "var Recommendations_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_ID\", Recommendations_Mixin_ID);",
+                  "tests[\"Recommendations_Mixin_ID = \" + Recommendations_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "78816d90-a59f-4dd2-97f4-a00bb557c98d",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8ef4b0a9-855d-45eb-abe7-fcef49e5ffc9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Recommendation Input Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema for Recommendation\",\n  \n    \"definitions\": {\n            \"luma_recommendation\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"interactionType\": {\n                                \"title\": \"interactionType\",\n                                \"type\": \"string\",\n                                \"description\": \"interactionType\"\n                            },\n                            \"itemid\": {\n                                \"title\": \"itemid\",\n                                \"type\": \"string\",\n                                \"description\": \"itemid\"\n                            },\n                            \"timeStamp\": {\n                                \"title\": \"timeStamp\",\n                                \"type\": \"string\",\n                                \"format\": \"date-time\",\n                                \"description\": \"timeStamp\"\n                            },\n                            \"userid\": {\n                                \"title\": \"userid\",\n                                \"type\": \"string\",\n                                \"description\": \"userId\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_recommendation\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
           "name": "Create Luma Recommendation Input Schema",
           "event": [
             {
@@ -1538,7 +1614,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma midValues RUNDESIGNATION\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma midValues\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/aam-experienceevent\"\n    }\n  ]\n}"
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma midValues {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma midValues\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/aam-experienceevent\"\n    }\n  ]\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
