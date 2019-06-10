@@ -2960,10 +2960,10 @@
                   "postman.setEnvironmentVariable(\"LOCATIONDATASETFILEID\", postman.getResponseHeader(\"LOCATION\"));",
                   "var LOCATIONDATASETFILEID = postman.getResponseHeader(\"LOCATION\");",
                   "var SPLIT_HEADER = LOCATIONDATASETFILEID.split('/');",
-                  "var Midvalues_DATASETID = SPLIT_HEADER[5]",
-                  "tests[\"Raw = \" + Midvalues_DATASETID] = true; ",
-                  "postman.setEnvironmentVariable(\"Midvalues_DATASETID\", SPLIT_HEADER[5]);",
-                  "    tests[\"Midvalues_DATASETID = \" + Midvalues_DATASETID] = true;   ",
+                  "var Postvalues_DATASETID = SPLIT_HEADER[5]",
+                  "tests[\"Raw = \" + Postvalues_DATASETID] = true; ",
+                  "postman.setEnvironmentVariable(\"Postvalues_DATASETID\", SPLIT_HEADER[5]);",
+                  "    tests[\"Postvalues_DATASETID = \" + Midvalues_DATASETID] = true;   ",
                   "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    "
                 ],
                 "type": "text/javascript"
@@ -3016,7 +3016,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Postvalues_Schema_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma midValues {{RUNDESIGNATION}}\",\n   \"description\": \"Luma midValues {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Postvalues_Schema_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma postValues {{RUNDESIGNATION}}\",\n   \"description\": \"Luma postValues {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets"
           },
