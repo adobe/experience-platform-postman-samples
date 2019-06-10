@@ -3034,9 +3034,9 @@
                   "",
                   "//for(var firstKey in json);",
                   "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
-                  "    postman.setEnvironmentVariable(\"Midvalues_BATCHID\", json.id);",
-                  "    tests[\"Midvalues_BATCHID = \" + json.id] = true;",
-                  "    postman.setEnvironmentVariable(\"Midvalues_BATCH_STATUS\", json.status);",
+                  "    postman.setEnvironmentVariable(\"Postvalues_BATCHID\", json.id);",
+                  "    tests[\"Postvalues_BATCHID = \" + json.id] = true;",
+                  "    postman.setEnvironmentVariable(\"Postvalues_BATCHID\", json.status);",
                   "    tests[\"STATUS = \" + json.status] = true;",
                   "    tests[\"IMS Org = \" + json.imsOrg] = true; "
                 ],
@@ -3090,7 +3090,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"datasetId\":\"{{Midvalues_DATASETID}}\",\n \"inputFormat\": {\n             \"format\": \"json\"\n           }\n}"
+              "raw": "{\"datasetId\":\"{{Postvalues_DATASETID}}\",\n \"inputFormat\": {\n             \"format\": \"json\"\n           }\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches"
           },
@@ -3155,7 +3155,7 @@
                 "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma_midValues.json"
               }
             },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Midvalues_BATCHID}}/datasets/{{Midvalues_DATASETID}}/files/Luma - Profile Dataset for Web.json"
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Postvalues_BATCHID}}/datasets/{{Postvalues_DATASETID}}/files/Luma - Profile Dataset for Web.json"
           },
           "response": []
         },
