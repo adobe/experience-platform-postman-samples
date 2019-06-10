@@ -2612,7 +2612,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Midvalues_Schema_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"description\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Midvalues_Schema_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma midValues {{RUNDESIGNATION}}\",\n   \"description\": \"Luma midValues {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets"
           },
@@ -2748,10 +2748,10 @@
             "body": {
               "mode": "file",
               "file": {
-                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma - Events Dataset for Mobile App.json"
+                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma_midValues.json"
               }
             },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Web_BATCHID}}/datasets/{{Event_For_Web_DATASETID}}/files/Luma - Profile Dataset for Web.json"
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Midvalues_BATCHID}}/datasets/{{Midvalues_DATASETID}}/files/Luma - Profile Dataset for Web.json"
           },
           "response": []
         },
@@ -2815,7 +2815,7 @@
               }
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Web_BATCHID}}?action=COMPLETE",
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Midvalues_DATASETID}}?action=COMPLETE",
               "protocol": "https",
               "host": [
                 "{{PLATFORM_GATEWAY}}"
@@ -2825,7 +2825,7 @@
                 "foundation",
                 "import",
                 "batches",
-                "{{Event_For_Web_BATCHID}}"
+                "{{Midvalues_DATASETID}}"
               ],
               "query": [
                 {
