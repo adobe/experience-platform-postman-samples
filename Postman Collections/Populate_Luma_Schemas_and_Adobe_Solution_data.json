@@ -1,0 +1,2552 @@
+{
+  "info": {
+    "_postman_id": "7adfb55c-4baf-4e1a-8fe3-e4ab73d01b08",
+    "name": "Populate Luma Schemas and Adobe Solution data",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth setup",
+      "item": [
+        {
+          "name": "INIT: Load Crypto Library for RS256",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "824e628b-b420-417b-894b-417ab6412896",
+                "exec": [
+                  "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);",
+                  "tests[\"Javascript load complete\"] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "0cb2bc28-a0c8-4dbc-87a3-cf51516d82c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
+            "description": "Load the RSA-Sign Crypto LIbrary in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
+          },
+          "response": []
+        },
+        {
+          "name": "IMS: JWT Generate + Auth via User Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1759a9d4-ac9a-4eb2-b5d1-a608a43a2cad",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"access_token\", data.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f067b81f-65d2-4672-ae41-0ff1338d25f6",
+                "exec": [
+                  "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+                  "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+                  "",
+                  "var navigator = {}; //fake a navigator object for the lib",
+                  "var window = {}; //fake a window object for the lib",
+                  "eval(postman.getGlobalVariable(\"jsrsasign-js\")); //import javascript jsrsasign",
+                  "",
+                  "",
+                  "var header = {",
+                  "\t\"alg\": \"RS256\"",
+                  "};",
+                  "",
+                  "var data = {",
+                  "\t\"exp\": Math.round(87000 + Date.now()/1000),",
+                  "\t\"iss\": postman.getEnvironmentVariable(\"OrgID\"),",
+                  "\t\"sub\": postman.getEnvironmentVariable(\"TechAcctID\"),",
+                  "\t\"aud\": postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"clientID\")",
+                  "};",
+                  "",
+                  "meta_scopes = postman.getEnvironmentVariable(\"meta_scope\").split(',');",
+                  "meta_scopes.forEach(function(scope){",
+                  "    var meta_scope = postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                  "                     scope;",
+                  "    data[meta_scope] = true;",
+                  "});",
+                  "",
+                  "var secret = postman.getEnvironmentVariable(\"privateKey\");",
+                  "",
+                  "var sHeader = JSON.stringify(header);",
+                  "var sPayload = JSON.stringify(data);",
+                  "var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+                  "",
+                  "console.log(sPayload);",
+                  "console.log(sJWT);",
+                  "",
+                  "postman.setEnvironmentVariable(\"jwt_token\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "4c3d2bdc-330b-4330-ab3c-8681607d7d48",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "client_id",
+                  "value": "{{clientID}}",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{clientSecret}}",
+                  "type": "text"
+                },
+                {
+                  "key": "jwt_token",
+                  "value": "{{jwt_token}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{IMS}}/ims/exchange/jwt/",
+            "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "607a7f7e-49a1-4fa2-93f1-fdbedabb65a4",
+      "description": "Test the Markdown",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5d587611-840d-4c76-a6a7-7048b56c4a38",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "ded6d34d-ea4c-4791-b433-c5f0a7e047d2",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth Key Request",
+      "item": [
+        {
+          "name": "IMS: JWT Generate + Auth via User Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1759a9d4-ac9a-4eb2-b5d1-a608a43a2cad",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"access_token\", data.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f067b81f-65d2-4672-ae41-0ff1338d25f6",
+                "exec": [
+                  "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+                  "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+                  "",
+                  "var navigator = {}; //fake a navigator object for the lib",
+                  "var window = {}; //fake a window object for the lib",
+                  "eval(postman.getGlobalVariable(\"jsrsasign-js\")); //import javascript jsrsasign",
+                  "",
+                  "",
+                  "var header = {",
+                  "\t\"alg\": \"RS256\"",
+                  "};",
+                  "",
+                  "var data = {",
+                  "\t\"exp\": Math.round(87000 + Date.now()/1000),",
+                  "\t\"iss\": postman.getEnvironmentVariable(\"OrgID\"),",
+                  "\t\"sub\": postman.getEnvironmentVariable(\"TechAcctID\"),",
+                  "\t\"aud\": postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"clientID\")",
+                  "};",
+                  "",
+                  "meta_scopes = postman.getEnvironmentVariable(\"meta_scope\").split(',');",
+                  "meta_scopes.forEach(function(scope){",
+                  "    var meta_scope = postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                  "                     scope;",
+                  "    data[meta_scope] = true;",
+                  "});",
+                  "",
+                  "var secret = postman.getEnvironmentVariable(\"privateKey\");",
+                  "",
+                  "var sHeader = JSON.stringify(header);",
+                  "var sPayload = JSON.stringify(data);",
+                  "var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+                  "",
+                  "console.log(sPayload);",
+                  "console.log(sJWT);",
+                  "",
+                  "postman.setEnvironmentVariable(\"jwt_token\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "a341a269-1425-4ca0-8f81-0026b3f2f2e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "client_id",
+                  "value": "{{clientID}}",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{clientSecret}}",
+                  "type": "text"
+                },
+                {
+                  "key": "jwt_token",
+                  "value": "{{jwt_token}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{IMS}}/ims/exchange/jwt/",
+            "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "005af65f-d8dd-48f8-9037-5b36b8ae3132",
+      "description": "Test the Markdown",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5d587611-840d-4c76-a6a7-7048b56c4a38",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "ded6d34d-ea4c-4791-b433-c5f0a7e047d2",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma Sales Schema",
+      "item": [
+        {
+          "name": "Pull TenantID from IMS Org",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var TENANTID = json['tenantId'];",
+                  "postman.setEnvironmentVariable(\"TENANTID\", TENANTID);",
+                  "tests[\"TENANTID = \" + TENANTID] = true; ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  "var RUNDESIGNATION;",
+                  "postman.setEnvironmentVariable(\"RUNDESIGNATION\", Date.now());",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "19d03c2d-c532-4ce7-a7b5-07b7301baa57",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/stats",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Custom Class for Luma Sales",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Luma_Sales_Class_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Luma_Sales_Class_altId\", Luma_Sales_Class_altId);",
+                  "tests[\"Luma_Sales_Class_altId = \" + Luma_Sales_Class_altId] = true; ",
+                  "",
+                  "var Luma_Sales_Class_FullUrl = json.$id;",
+                  "postman.setEnvironmentVariable(\"Luma_Sales_Class_FullUrl\", Luma_Sales_Class_FullUrl);",
+                  "tests[\"Luma_Sales_Class_FullUrl = \" + Luma_Sales_Class_FullUrl] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Luma_Sales_Class_FullUrl.split('/');",
+                  "var Luma_Sales_Class_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Luma_Sales_Class_ID\", Luma_Sales_Class_ID);",
+                  "tests[\"Luma_Sales_Class_ID = \" + Luma_Sales_Class_ID] = true; ",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "afd422ad-4790-4cb1-8a99-90fb0ddc902c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Salesrecord {{RUNDESIGNATION}}\",\n  \"description\": \"Base class for Luma Sales {{RUNDESIGNATION}}\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/data/record\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"classes\",\n  \"meta:xdmType\": \"object\"\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/classes",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Custom Mixin for Luma Sales",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Luma_Sales_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Luma_Sales_Mixin_altId\", Luma_Sales_Mixin_altId);",
+                  "tests[\"Luma_Sales_Mixin_altId = \" + Luma_Sales_Mixin_altId] = true; ",
+                  "",
+                  "var Luma_Sales_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Luma_Sales_Mixin_FullURL\", Luma_Sales_Mixin_FullURL);",
+                  "tests[\"Luma_Sales_Mixin_FullURL = \" + Luma_Sales_Mixin_FullURL] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c1e85517-348d-47f9-bacf-1bedaf2b1b5d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mixin Custom Luma Sales {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"{{Luma_Sales_Class_FullUrl}}\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_sales\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                      \"salesid\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                          \t\"Account_Created\": {\n                    \t\t\t\"title\": \"Account_Created\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"City\": {\n                    \t\t\t\"title\": \"City\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Country\": {\n                    \t\t\t\"title\": \"Country\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Last_Login\": {\n                    \t\t\t\"title\": \"Last_Login\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n                \t\t\t\"Latitude\": {\n                \t\t\t\t \"title\": \"Latitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n\t\t\t                \"Longitude\": {\n                    \t\t\t\"title\": \"Longitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Name\": {\n                    \t\t\t\"title\": \"Name\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Payment_Type\": {\n                    \t\t\t\"title\": \"Payment_Type\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Price\": {\n\t\t\t                    \"title\": \"Price\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n                \t\t\t\t},\n\t\t\t                \"Product\": {\n\t\t\t                    \"title\": \"Product\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t\t                \"State\": {\n\t\t\t                    \"title\": \"State\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t                \"Transaction_date\": {\n\t\t                    \"title\": \"Transaction_date\",\n\t\t                    \"description\": \"\",\n\t\t                    \"type\": \"string\"\n\t\t                \t}\n                          }\n                      }\n                   }\n                }\n              }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_sales\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Schema for Luma Sales",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var PROFILESCHEMAFULL = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"PROFILESCHEMAFULL\", PROFILESCHEMAFULL);",
+                  "tests[\"PROFILESCHEMAFULL = \" + PROFILESCHEMAFULL] = true; ",
+                  "",
+                  "var PROFILESCHEMAURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"PROFILESCHEMAURL\", PROFILESCHEMAURL);",
+                  "tests[\"PROFILESCHEMAURL = \" + PROFILESCHEMAURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = PROFILESCHEMAURL.split('/');",
+                  "var PROFILESCHEMAID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"PROFILESCHEMAID\", PROFILESCHEMAID);",
+                  "tests[\"PROFILESCHEMAID = \" + PROFILESCHEMAID] = true; ",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "203126ef-f8e1-431c-a82f-352747052cd4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Sales {{RUNDESIGNATION}}\",\n  \"description\": \"\",\n  \"allOf\": [\n    {\n      \"$ref\": \"{{Luma_Sales_Class_FullUrl}}\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"schemas\",\n  \"meta:xdmType\": \"object\",\n  \"meta:class\": \"schema://5cf6a9d23ed501000034cd8e\"\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "770f4ed1-4dce-48ac-9588-cadfe56ab820",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fde758c8d592d7428f5c787f2b1523578",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma -  Events Schema for Mobile App",
+      "item": [
+        {
+          "name": "Create Luma-Event Schema for Mobile App",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
+                  "var Event_Schema_For_Mobile_App_altid = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Event_Schema_For_Mobile_App_altid\", Event_Schema_For_Mobile_App_altid);",
+                  "tests[\"Event_Schema_For_Mobile_App_altid = \" + Event_Schema_For_Mobile_App_altid] = true; ",
+                  "",
+                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
+                  "var Event_Schema_For_Mobile_App_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Event_Schema_For_Mobile_App_FullURL\", Event_Schema_For_Mobile_App_FullURL);",
+                  "tests[\"Event_Schema_For_Mobile_Aop_FullURL = \" + Event_Schema_For_Mobile_App_FullURL] = true; ",
+                  "",
+                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
+                  "var SPLIT_HEADER = Event_Schema_For_Mobile_App_FullURL.split('/');",
+                  "var Event_Schema_For_Mobile_App_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Event_Schema_For_Mobile_App_ID\", Event_Schema_For_Mobile_App_ID);",
+                  "tests[\"Event_Schema_For_Mobile_App_ID = \" + Event_Schema_For_Mobile_App_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "76b2eab0-eb60-4cc4-884d-6de6c3dba9a4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Event Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Event Schema for Mobile App\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "bf225499-913b-417d-a772-64fd736add0e",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - Events Schema for Web",
+      "item": [
+        {
+          "name": "Create Luma-Event Schema for Web",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Event_Schema_For_Web_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Event_Schema_For_Web_altId\", Event_Schema_For_Web_altId);",
+                  "tests[\"Event_Schema_For_Web_altId = \" + Event_Schema_For_Web_altId] = true; ",
+                  "",
+                  "var Event_Schema_For_Web_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Event_Schema_For_Web_FullURL\", Event_Schema_For_Web_FullURL);",
+                  "tests[\"Event_Schema_For_Web_FullURL = \" + Event_Schema_For_Web_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Event_Schema_For_Web_FullURL.split('/');",
+                  "var Event_Schema_For_Web_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Event_Schema_For_Web_ID\", Event_Schema_For_Web_ID);",
+                  "tests[\"Event_Schema_For_Web_ID = \" + Event_Schema_For_Web_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "e8db8ff7-b36f-4d44-80ff-b81ba6d96557",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Event Schema for Web {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Event Schema for Web\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "a47997a4-0b34-499b-8e84-c15232db9065",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F6293d89bcdf7b26121f88d7d3ecad368",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma Loyalty Schema",
+      "item": [
+        {
+          "name": "Create Luma Loyalty Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Loyalty_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Loyalty_Mixin_altId\", Loyalty_Mixin_altId);",
+                  "tests[\"Loyalty_Mixin_altId = \" + Loyalty_Mixin_altId] = true; ",
+                  "",
+                  "var Loyalty_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Loyalty_Mixin_FullURL\", Loyalty_Mixin_FullURL);",
+                  "tests[\"Loyalty_Mixin_FullURL = \" + Loyalty_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Loyalty_Mixin_FullURL.split('/');",
+                  "var Loyalty_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Loyalty_Mixin_ID\", Loyalty_Mixin_ID);",
+                  "tests[\"Loyalty_Mixin_ID = \" + Loyalty_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "09c93ac3-00a7-4f5d-aa5b-3342047563a9",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d572e7a8-d038-4cc9-8ddb-4888addc04de",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Loyalty Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_loyalty\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"email\": {\n                                \"title\": \"email\",\n                                \"type\": \"string\",\n                                \"description\": \"Email Address\"\n                            },\n                            \"level\": {\n                                \"title\": \"level\",\n                                \"type\": \"string\",\n                                \"description\": \"Level\"\n                            },\n                            \"member_since\": {\n                                \"title\": \"member_since\",\n                                \"type\": \"string\",\n                                \"description\": \"Member Since Date\"\n                            },\n                            \"points\": {\n                                \"title\": \"points\",\n                                \"type\": \"string\",\n                                \"description\": \"Points Balance\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_loyalty\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma Loyalty Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Loyalty_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Loyalty_Schema_altId\", Loyalty_Schema_altId);",
+                  "tests[\"Loyalty_Schema_altId = \" + Loyalty_Schema_altId] = true; ",
+                  "",
+                  "var Loyalty_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Loyalty_Schema_FullURL\", Loyalty_Schema_FullURL);",
+                  "tests[\"Loyalty_Schema_FullURL = \" + Loyalty_Schema_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Loyalty_Schema_FullURL.split('/');",
+                  "var Loyalty_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Loyalty_Schema_ID\", Loyalty_Schema_ID);",
+                  "tests[\"Loyalty_Schema_ID = \" + Loyalty_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d00e4464-a0a7-43de-8802-f3923d0b5fba",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "fa8efd7b-c702-4f24-8088-19ab5e2f76a1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Loyalty Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Loyalty Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    },\n    {\n       \"$ref\": \"{{Loyalty_Mixin_FullURL}}\"\n     }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "46347d7d-f0d7-4379-b1f6-568a5b58f95c",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F2d0d6d497dbcc4a41e1ff50e0f905ef2",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - Profile Schema for Mobile App",
+      "item": [
+        {
+          "name": "Create Luma Mixin for Luma Identity",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "//change variable PROFILESCHEMAFULL  to Mixin_Profile_Schema_For_Mobile_App_altId",
+                  "var Mixin_Profile_Mixin_For_Mobile_App_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Mixin_Profile_Mixin_For_Mobile_App_altId\", Mixin_Profile_Mixin_For_Mobile_App_altId);",
+                  "tests[\"Mixin_Profile_Mixin_For_Mobile_App_altId = \" + Mixin_Profile_Mixin_For_Mobile_App_altId] = true; ",
+                  "",
+                  "//change PROFILESCHEMAURL to Mixin_Schema_For_Mobile_App_FullURL",
+                  "var Mixin_For_Mobile_App_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Mixin_For_Mobile_App_FullURL\", Mixin_For_Mobile_App_FullURL);",
+                  "tests[\"Mixin_For_Mobile_App_FullURL = \" + Mixin_For_Mobile_App_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Mixin_For_Mobile_App_FullURL.split('/');",
+                  "var Mixin_Schema_For_Mobile_App_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Mixin_Schema_For_Mobile_App_ID\", Mixin_Schema_For_Mobile_App_ID);",
+                  "tests[\"Mixin_Schema_For_Mobile_App_ID = \" + Mixin_Schema_For_Mobile_App_ID] = true; ",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "83dfab58-d351-4076-8791-54f0a873828d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mixin Custom Identity {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_identity\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                      \"CRMId\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                            \"loyaltyId\": {\n                                \"title\": \"crmid\",\n                                \"type\": \"string\",\n                                \"description\": \"CRM Identifier.\"\n                            }\n                          }\n                    \t},\n                    \t\"LoyaltyId\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                            \"level\": {\n                                \"title\": \"level\",\n                                \"type\": \"string\",\n                                \"description\": \"Level\"\n                            },\n                            \"lumaLoyaltyId\": {\n                                \"title\": \"lumaLoyaltyId\",\n                                \"type\": \"string\",\n                                \"description\": \"Luma Loyalty ID\"\n                            },\n                            \"points\": {\n                                \"title\": \"points\",\n                                \"type\": \"string\",\n                                \"description\": \"Loyalty Points\"\n                            }\n                            \n                          }\n                    \t}\n                  }\n                }\n              }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_identity\"\n            }\n        ]\n      }"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma Profile Schema for Mobile App",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Profile_Schema_For_Mobile_App_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Profile_Schema_For_Mobile_App_altId\", Profile_Schema_For_Mobile_App_altId);",
+                  "tests[\"Profile_Schema_For_Mobile_App_altId = \" + Profile_Schema_For_Mobile_App_altId] = true; ",
+                  "",
+                  "var Profile_Schema_For_Mobile_App_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Profile_Schema_For_Mobile_App_FullURL\", Profile_Schema_For_Mobile_App_FullURL);",
+                  "tests[\"Profile_Schema_For_Mobile_App_FullURL = \" + Profile_Schema_For_Mobile_App_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Profile_Schema_For_Mobile_App_FullURL.split('/');",
+                  "var Profile_Schema_For_Mobile_App_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Profile_Schema_For_Mobile_App_ID\", Profile_Schema_For_Mobile_App_ID);",
+                  "tests[\"Profile_Schema_For_Mobile_App_ID = \" + Profile_Schema_For_Mobile_App_ID] = true; ",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "9c713b87-67b4-4b89-b9e8-c3b7b836ef8b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Profile Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"description\": \"\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n    },\n        {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n    },\n        {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n    },\n    {\n        \"$ref\": \"{{Mixin_For_Mobile_App_FullURL}}\"\n    },\n    {\n    \t\"$ref\":\"{{Loyalty_Mixin_FullURL}}\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"schemas\",\n  \"meta:xdmType\": \"object\"\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "49ee2bbc-6dcf-4a9a-9c4a-0e3f5854b750",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F4bc4449f4ff76fff70a9de5ab6ba5a25",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma Profile Schema for Web",
+      "item": [
+        {
+          "name": "Create Luma Profile Schema for Web",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "//changed variable MIXINCUSTOMDATATYPEFULL to Mixin_Profile_For_Web_altId",
+                  "",
+                  "var Profile_Schema_For_Web_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Profile_Schema_For_Web_altId\",Profile_Schema_For_Web_altId);",
+                  "tests[\"Profile_Schema_For_Web_altId = \" + Profile_Schema_For_Web_altId] = true; ",
+                  "",
+                  "//change MIXINCUSTOMDATATYPEURL Mixin_Profile_For_Web_FullURL",
+                  "var Profile_Schema_For_Web_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Profile_Schema_For_Web_FullURL\", Profile_Schema_For_Web_FullURL);",
+                  "tests[\"Profile_Schema_For_Web_FullURL = \" + Profile_Schema_For_Web_FullURL] = true; ",
+                  "",
+                  "",
+                  "//change variable MIXINCUSTOMDATATYPEID to Mixin_Profile_For_Web_ID",
+                  "var SPLIT_HEADER = Profile_Schema_For_Web_FullURL.split('/');",
+                  "var Profile_Schema_For_Web_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Profile_Schema_For_Web_ID\",Profile_Schema_For_Web_ID);",
+                  "tests[\"Profile_Schema_For_Web_ID = \" + Profile_Schema_For_Web_ID] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true   ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "14be67d7-1c4d-4743-ad93-c8882981bb43",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Profile Schema for Web {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma Sales Profile Schema\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n    },\n    {\n       \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n    },\n    {\n        \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n    },\n    {\n        \"$ref\": \"{{Mixin_For_Mobile_App_FullURL}}\"\n    },\n    {\n    \t\"$ref\":\"{{Loyalty_Mixin_FullURL}}\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "0cbfd6e8-29a6-4a3c-a7ae-3349dff1a997",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F9fbbc7b2992e89510d634cdf822e0b8c",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma Target Experience Events Schema",
+      "item": [
+        {
+          "name": "Create Luma Target Experience Events SCHEMA",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Target_Experience_Events_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Target_Experience_Events_Schema_altId\", Target_Experience_Events_Schema_altId);",
+                  "tests[\"Target_Experience_Events_Schema_altId = \" + Target_Experience_Events_Schema_altId] = true; ",
+                  "",
+                  "var Target_Experience_Events_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Target_Experience_Events_Schema_FullURL\", Target_Experience_Events_Schema_FullURL);",
+                  "tests[\"Target_Experience_Events_Schema_FullURL = \" + Target_Experience_Events_Schema_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Target_Experience_Events_Schema_FullURL.split('/');",
+                  "var Target_Experience_Events_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Target_Experience_Events_Schema_ID\", Target_Experience_Events_Schema_ID);",
+                  "tests[\"Target_Experience_Events_Schema_ID = \" + Target_Experience_Events_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3819832a-bf18-4623-821c-034d29032a8e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Target Experience Events {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Target Experience Events\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/target-experienceevent\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "a7d1d5f5-e21c-495e-a9f9-fcabb2bea3dc",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma Recommendations Input Schema",
+      "item": [
+        {
+          "name": "Create Luma Recommendation Custom Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Recommendations_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_altId\", Recommendations_Mixin_altId);",
+                  "tests[\"Recommendations_Mixin_altId = \" + Recommendations_Mixin_altId] = true; ",
+                  "",
+                  "var Recommendations_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_FullURL\", Recommendations_Mixin_FullURL);",
+                  "tests[\"Recommendations_Mixin_FullURL = \" + Recommendations_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Recommendations_Mixin_FullURL.split('/');",
+                  "var Recommendations_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_ID\", Recommendations_Mixin_ID);",
+                  "tests[\"Recommendations_Mixin_ID = \" + Recommendations_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "78816d90-a59f-4dd2-97f4-a00bb557c98d",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1120c1c0-a10e-4fc0-ad95-756436730425",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Recommendation Input Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema for Recommendation\",\n  \n    \"definitions\": {\n            \"luma_recommendation\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"interactionType\": {\n                                \"title\": \"interactionType\",\n                                \"type\": \"string\",\n                                \"description\": \"interactionType\"\n                            },\n                            \"itemid\": {\n                                \"title\": \"itemid\",\n                                \"type\": \"string\",\n                                \"description\": \"itemid\"\n                            },\n                            \"timeStamp\": {\n                                \"title\": \"timeStamp\",\n                                \"type\": \"string\",\n                                \"format\": \"date-time\",\n                                \"description\": \"timeStamp\"\n                            },\n                            \"userid\": {\n                                \"title\": \"userid\",\n                                \"type\": \"string\",\n                                \"description\": \"userId\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_recommendation\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma Recommendation Input Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Recommendations_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Schema_altId\", Recommendations_Schema_altId);",
+                  "tests[\"Recommendations_Schema_altId = \" + Recommendations_Schema_altId] = true; ",
+                  "",
+                  "var Recommendations_Schema_fullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Recommendations_Schema_fullURL\", Recommendations_Schema_fullURL);",
+                  "tests[\"Recommendations_Schema_fullURL = \" + Recommendations_Schema_fullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Recommendations_Schema_fullURL.split('/');",
+                  "var Recommendations_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Schema_ID\", Recommendations_Schema_ID);",
+                  "tests[\"Recommendations_Schema_ID = \" + Recommendations_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "a667885b-18ad-44f8-a4bc-c4307a85e9d0",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "9506429d-63c3-460e-a950-b43ff3474849",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-marketing\"\n    },\n    {\n    \t\"$ref\": \"{{Recommendations_Mixin_FullURL}}\"\n    }\n    \n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "18b3ed5b-5560-44b0-adb3-0b122d049b01",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma midValues Schema",
+      "item": [
+        {
+          "name": "Create Luma MidValues Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Midvalues_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Midvalues_Schema_altId\", Midvalues_Schema_altId);",
+                  "tests[\"Midvalues_Schema_altId = \" + Midvalues_Schema_altId] = true; ",
+                  "",
+                  "var Midvalues_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Midvalues_Schema_FullURL\", Midvalues_Schema_FullURL);",
+                  "tests[\"Midvalues_Schema_FullURL = \" + Midvalues_Schema_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Midvalues_Schema_FullURL.split('/');",
+                  "var Midvalues_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\" Midvalues_Schema_ID\",  Midvalues_Schema_ID);",
+                  "tests[\" Midvalues_Schema_ID = \" +  Midvalues_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6199ae8c-95a4-4a10-aa8e-b3c9b0406f51",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "9a45c1f7-e2da-4007-9dad-394ba994b754",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma midValues {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma midValues\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/aam-experienceevent\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "3d5d5c7e-65c4-4356-8d63-ce478824785b",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma postValues Schema",
+      "item": [
+        {
+          "name": "Create Luma postValues Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Postvalues_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Postvalues_Schema_altId\", Postvalues_Schema_altId);",
+                  "tests[\"Postvalues_Schema_altId = \" + Postvalues_Schema_altId] = true; ",
+                  "",
+                  "var Postvalues_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Postvalues_Schema_FullURL\", Postvalues_Schema_FullURL);",
+                  "tests[\"Postvalues_Schema_FullURL = \" + Postvalues_Schema_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Postvalues_Schema_FullURL.split('/');",
+                  "var Postvalues_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Postvalues_Schema_ID\", Postvalues_Schema_ID);",
+                  "tests[\"Postvalues_Schema_ID = \" + Postvalues_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "68354174-dd3a-4fa7-84fe-1850c40eac83",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "bb0fb19d-9c14-4a09-9e31-38757dfaae8a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma post-Values {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma post-Values\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/aam-experienceevent\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "8896809f-0f47-47ee-aae8-e764e6b218dc",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bulk Ingest Luma Events for Mobile",
+      "item": [
+        {
+          "name": "Create Luma Events for Mobile Dataset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"LOCATIONDATASETFILEID\", postman.getResponseHeader(\"LOCATION\"));",
+                  "var LOCATIONDATASETFILEID = postman.getResponseHeader(\"LOCATION\");",
+                  "var SPLIT_HEADER = LOCATIONDATASETFILEID.split('/');",
+                  "var Event_For_Mobile_App_DATASETID = SPLIT_HEADER[5]",
+                  "tests[\"Raw = \" + Event_For_Mobile_App_DATASETID] = true; ",
+                  "postman.setEnvironmentVariable(\"Event_For_Mobile_App_DATASETID\", SPLIT_HEADER[5]);",
+                  "    tests[\"Event_For_Mobile_App_DATASETID = \" + Event_For_Mobile_App_DATASETID] = true;   ",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  "    postman.setEnvironmentVariable(\"PROFILE_DATASET_HAS_BATCH\", \"no\");"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6e597b38-c474-4926-9403-27d44e4ccc15",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "76dec365-bd4d-482e-8bc5-b71a5c1efdc6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "requestDataSource",
+                "value": "true"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Event_Schema_For_Mobile_App_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma Events for Mobile {{RUNDESIGNATION}}\",\n   \"description\": \"Luma Events for Mobile {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma Events for Mobile Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f22719b2-bf74-426a-8809-3b5230b5edf9",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "    postman.setEnvironmentVariable(\"Event_For_Mobile_App_BATCHID\", json.id);",
+                  "    tests[\"Event_For_Mobile_App_BATCHID = \" + json.id] = true;",
+                  "    postman.setEnvironmentVariable(\"Event_For_Mobile_App_BATCH_STATUS\", json.status);",
+                  "    tests[\"STATUS = \" + json.status] = true;",
+                  "    tests[\"IMS Org = \" + json.imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "981c9173-5e87-45cf-ad86-3168f9b29c7d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"datasetId\":\"{{Event_For_Mobile_App_DATASETID}}\",\n \"inputFormat\": {\n             \"format\": \"json\"\n           }\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches"
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Luma Events for Mobile data into Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
+                  "//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
+                  "//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
+                  "//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
+                  "//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
+                  "//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "bb4fb82b-9741-498c-a55c-4eef58b18755",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma - Events Dataset for Mobile App.json"
+              }
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Mobile_App_BATCHID}}/datasets/{{Event_For_Mobile_App_DATASETID}}/files/Luma - Profile Dataset for Web.json"
+          },
+          "response": []
+        },
+        {
+          "name": "Signal Luma Events for Mobile COMPLETE",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
+                  "//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
+                  "//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
+                  "//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
+                  "//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
+                  "//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "582db5d1-50f6-4b06-b681-1f8915417217",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {}
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Mobile_App_BATCHID}}?action=COMPLETE",
+              "protocol": "https",
+              "host": [
+                "{{PLATFORM_GATEWAY}}"
+              ],
+              "path": [
+                "data",
+                "foundation",
+                "import",
+                "batches",
+                "{{Event_For_Mobile_App_BATCHID}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "COMPLETE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check MAPPING EXPEVENT Batch Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "for(var firstKey in json);",
+                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
+                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
+                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
+                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
+                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3f66cbdd-03ee-45d8-8396-6e09f3719745",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{Event_For_Mobile_App_BATCHID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Check MAPPING EXPEVENT Dataset Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "for(var firstKey in json);",
+                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
+                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
+                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
+                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
+                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3e60bf07-e228-4317-9a83-bf902b3541e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG_ID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{IMS_CLIENT_ID}}"
+              }
+            ],
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{Event_For_Mobile_App_DATASETID}}"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "d7edba70-2250-4a3c-a61c-3230ebbad428"
+    },
+    {
+      "name": "Bulk Ingest Luma Events for Web",
+      "item": [
+        {
+          "name": "Create Luma Events for Web Dataset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"LOCATIONDATASETFILEID\", postman.getResponseHeader(\"LOCATION\"));",
+                  "var LOCATIONDATASETFILEID = postman.getResponseHeader(\"LOCATION\");",
+                  "var SPLIT_HEADER = LOCATIONDATASETFILEID.split('/');",
+                  "var Event_For_Mobile_App_DATASETID = SPLIT_HEADER[5]",
+                  "tests[\"Raw = \" + Event_For_Mobile_App_DATASETID] = true; ",
+                  "postman.setEnvironmentVariable(\"Event_For_Web_DATASETID\", SPLIT_HEADER[5]);",
+                  "    tests[\"Event_For_Web_DATASETID = \" + Event_For_Mobile_App_DATASETID] = true;   ",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    "
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6e597b38-c474-4926-9403-27d44e4ccc15",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "76ec40bb-1273-4f4a-9b65-42b85644a0db",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "requestDataSource",
+                "value": "true"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Event_Schema_For_Web_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"description\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma Events for Web Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "    postman.setEnvironmentVariable(\"Event_For_Web_BATCHID\", json.id);",
+                  "    tests[\"Event_For_Web_BATCHID = \" + json.id] = true;",
+                  "    postman.setEnvironmentVariable(\"Event_For_Web_BATCH_STATUS\", json.status);",
+                  "    tests[\"STATUS = \" + json.status] = true;",
+                  "    tests[\"IMS Org = \" + json.imsOrg] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6e597b38-c474-4926-9403-27d44e4ccc15",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "34344534-1c89-42ee-b34e-ed137d434218",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "requestDataSource",
+                "value": "true"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"datasetId\":\"{{Event_For_Web_DATASETID}}\",\n \"inputFormat\": {\n             \"format\": \"json\"\n           }\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches"
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Luma Events for Web data into Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
+                  "//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
+                  "//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
+                  "//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
+                  "//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
+                  "//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c9988e45-b0a3-42e9-9abd-450de0a1ac54",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma - Events Dataset for Mobile App.json"
+              }
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Web_BATCHID}}/datasets/{{Event_For_Web_DATASETID}}/files/Luma - Profile Dataset for Web.json"
+          },
+          "response": []
+        },
+        {
+          "name": "Signal Luma Events for Web COMPLETE",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
+                  "//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
+                  "//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
+                  "//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
+                  "//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
+                  "//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "88b67f4f-237d-4b1e-ab72-97a429c21a71",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma - Events Dataset for Web.json"
+              }
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Web_BATCHID}}?action=COMPLETE",
+              "protocol": "https",
+              "host": [
+                "{{PLATFORM_GATEWAY}}"
+              ],
+              "path": [
+                "data",
+                "foundation",
+                "import",
+                "batches",
+                "{{Event_For_Web_BATCHID}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "COMPLETE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check MAPPING EXPEVENT Batch Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "for(var firstKey in json);",
+                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
+                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
+                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
+                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
+                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "97d575e7-d3fd-4fbd-994c-08647ae874dd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{Event_For_Web_BATCHID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Check MAPPING EXPEVENT Dataset Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "for(var firstKey in json);",
+                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
+                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
+                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
+                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
+                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "dc2e58c6-7280-4c7d-9315-db89efa291a2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{Event_For_Web_DATASETID}}"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "7d209a86-0c96-4c59-8ae0-7b6dd96b0314"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "{{access_token}}"
+    }
+  }
+}
