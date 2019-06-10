@@ -2541,6 +2541,410 @@
         }
       ],
       "_postman_id": "7d209a86-0c96-4c59-8ae0-7b6dd96b0314"
+    },
+    {
+      "name": "Bulk Ingest Luma Events for Web Copy",
+      "item": [
+        {
+          "name": "Create Luma Events for Web Dataset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"LOCATIONDATASETFILEID\", postman.getResponseHeader(\"LOCATION\"));",
+                  "var LOCATIONDATASETFILEID = postman.getResponseHeader(\"LOCATION\");",
+                  "var SPLIT_HEADER = LOCATIONDATASETFILEID.split('/');",
+                  "var Event_For_Mobile_App_DATASETID = SPLIT_HEADER[5]",
+                  "tests[\"Raw = \" + Event_For_Mobile_App_DATASETID] = true; ",
+                  "postman.setEnvironmentVariable(\"Event_For_Web_DATASETID\", SPLIT_HEADER[5]);",
+                  "    tests[\"Event_For_Web_DATASETID = \" + Event_For_Mobile_App_DATASETID] = true;   ",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    "
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6e597b38-c474-4926-9403-27d44e4ccc15",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1b715e70-1fc3-4658-9a88-4b8dc7dfaa18",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "requestDataSource",
+                "value": "true"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Event_Schema_For_Web_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"description\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma Events for Web Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91bb99e3-9026-44a4-bfd9-ba61e96d9ba0",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "    postman.setEnvironmentVariable(\"Event_For_Web_BATCHID\", json.id);",
+                  "    tests[\"Event_For_Web_BATCHID = \" + json.id] = true;",
+                  "    postman.setEnvironmentVariable(\"Event_For_Web_BATCH_STATUS\", json.status);",
+                  "    tests[\"STATUS = \" + json.status] = true;",
+                  "    tests[\"IMS Org = \" + json.imsOrg] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6e597b38-c474-4926-9403-27d44e4ccc15",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "196a4266-d4e3-41c3-bddf-86e3e5b235e9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "requestDataSource",
+                "value": "true"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"datasetId\":\"{{Event_For_Web_DATASETID}}\",\n \"inputFormat\": {\n             \"format\": \"json\"\n           }\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches"
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Luma Events for Web data into Batch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
+                  "//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
+                  "//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
+                  "//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
+                  "//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
+                  "//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2b2f6cc0-1ccf-4083-a667-86e7125c5306",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma - Events Dataset for Mobile App.json"
+              }
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Web_BATCHID}}/datasets/{{Event_For_Web_DATASETID}}/files/Luma - Profile Dataset for Web.json"
+          },
+          "response": []
+        },
+        {
+          "name": "Signal Luma Events for Web COMPLETE",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6adf9ed4-5f91-4ce0-aed2-a64edf91f6aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "//var json = JSON.parse(responseBody);",
+                  "",
+                  "//for(var firstKey in json);",
+                  "//    postman.setEnvironmentVariable(\"FIRST_KEY\", firstKey);",
+                  "//    postman.setEnvironmentVariable(\"LASTBATCHID\", json[firstKey].lastBatchId);",
+                  "//    tests[\"Last Batch ID = \" + firstKey] = true;              // debug message",
+                  "//    tests[\"dataSet Name = \" + json[firstKey].name] = true; ",
+                  "//    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "//    tests[\"Batch Status = \" + json[firstKey].status] = true; ",
+                  "//    tests[\"Last Batch Status = \" + json[firstKey].lastBatchStatus] = true; ",
+                  "//    tests[\"Last Batch Success = \" + json[firstKey].lastSuccessfulBatch] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "95560f6d-a98c-4a5f-9d78-328fde09dbbc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma - Events Dataset for Web.json"
+              }
+            },
+            "url": {
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Event_For_Web_BATCHID}}?action=COMPLETE",
+              "protocol": "https",
+              "host": [
+                "{{PLATFORM_GATEWAY}}"
+              ],
+              "path": [
+                "data",
+                "foundation",
+                "import",
+                "batches",
+                "{{Event_For_Web_BATCHID}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "COMPLETE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check MAPPING EXPEVENT Batch Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "for(var firstKey in json);",
+                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
+                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
+                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
+                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
+                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "19f113e3-f677-4f66-a59d-7f37f54dd42d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{Event_For_Web_BATCHID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Check MAPPING EXPEVENT Dataset Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var json = JSON.parse(responseBody);",
+                  "",
+                  "for(var firstKey in json);",
+                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
+                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
+                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
+                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
+                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "113a01c2-83d1-414d-be58-37880555be03",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              }
+            ],
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{Event_For_Web_DATASETID}}"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "34b78645-0b75-4e02-9148-860d74002641"
     }
   ],
   "auth": {
