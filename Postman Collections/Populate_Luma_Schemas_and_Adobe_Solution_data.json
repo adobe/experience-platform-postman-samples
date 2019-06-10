@@ -2556,10 +2556,10 @@
                   "postman.setEnvironmentVariable(\"LOCATIONDATASETFILEID\", postman.getResponseHeader(\"LOCATION\"));",
                   "var LOCATIONDATASETFILEID = postman.getResponseHeader(\"LOCATION\");",
                   "var SPLIT_HEADER = LOCATIONDATASETFILEID.split('/');",
-                  "var Event_For_Mobile_App_DATASETID = SPLIT_HEADER[5]",
-                  "tests[\"Raw = \" + Event_For_Mobile_App_DATASETID] = true; ",
-                  "postman.setEnvironmentVariable(\"Event_For_Web_DATASETID\", SPLIT_HEADER[5]);",
-                  "    tests[\"Event_For_Web_DATASETID = \" + Event_For_Mobile_App_DATASETID] = true;   ",
+                  "var Midvalues_DATASETID = SPLIT_HEADER[5]",
+                  "tests[\"Raw = \" + Midvalues_DATASETID] = true; ",
+                  "postman.setEnvironmentVariable(\"Midvalues_DATASETID\", SPLIT_HEADER[5]);",
+                  "    tests[\"Midvalues_DATASETID = \" + Midvalues_DATASETID] = true;   ",
                   "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    "
                 ],
                 "type": "text/javascript"
@@ -2612,7 +2612,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Event_Schema_For_Web_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"description\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
+              "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{Midvalues_Schema_FullURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"description\": \"Luma Events for Web {{RUNDESIGNATION}}\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\"\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets"
           },
@@ -2686,7 +2686,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"datasetId\":\"{{Event_For_Web_DATASETID}}\",\n \"inputFormat\": {\n             \"format\": \"json\"\n           }\n}"
+              "raw": "{\"datasetId\":\"{{Midvalues_DATASETID}}\",\n \"inputFormat\": {\n             \"format\": \"json\"\n           }\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches"
           },
