@@ -2087,53 +2087,6 @@
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{Event_For_Mobile_App_BATCHID}}"
           },
           "response": []
-        },
-        {
-          "name": "Check MAPPING EXPEVENT Dataset Status",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "var json = JSON.parse(responseBody);",
-                  "",
-                  "for(var firstKey in json);",
-                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
-                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
-                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
-                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
-                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "3e60bf07-e228-4317-9a83-bf902b3541e1",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{IMS_ORG_ID}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{IMS_CLIENT_ID}}"
-              }
-            ],
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{Event_For_Mobile_App_DATASETID}}"
-          },
-          "response": []
         }
       ],
       "_postman_id": "d7edba70-2250-4a3c-a61c-3230ebbad428"
