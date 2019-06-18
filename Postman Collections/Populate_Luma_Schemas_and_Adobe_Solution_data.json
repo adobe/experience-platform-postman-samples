@@ -2999,10 +2999,10 @@
             "body": {
               "mode": "file",
               "file": {
-                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma_midValues.json"
+                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma_postValues.json"
               }
             },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Postvalues_BATCHID}}/datasets/{{Postvalues_DATASETID}}/files/Luma - Profile Dataset for Web.json"
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Postvalues_BATCHID}}/datasets/{{Postvalues_DATASETID}}/files/Luma_postValues.json"
           },
           "response": []
         },
@@ -3059,14 +3059,8 @@
                 "value": "{{clientID}}"
               }
             ],
-            "body": {
-              "mode": "file",
-              "file": {
-                "src": "/Users/silverst/Documents/OneDrive - Adobe Systems Inc/Training/luma_test_data/Luma Sample Data/Luma - Events Dataset for Web.json"
-              }
-            },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Midvalues_BATCHID}}?action=COMPLETE",
+              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{Postvalues_BATCHID}}?action=COMPLETE",
               "protocol": "https",
               "host": [
                 "{{PLATFORM_GATEWAY}}"
@@ -3076,7 +3070,7 @@
                 "foundation",
                 "import",
                 "batches",
-                "{{Midvalues_BATCHID}}"
+                "{{Postvalues_BATCHID}}"
               ],
               "query": [
                 {
