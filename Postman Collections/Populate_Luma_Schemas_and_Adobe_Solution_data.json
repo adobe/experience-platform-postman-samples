@@ -2789,59 +2789,6 @@
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{Event_For_Web_BATCHID}}"
           },
           "response": []
-        },
-        {
-          "name": "Check MAPPING EXPEVENT Dataset Status",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "var json = JSON.parse(responseBody);",
-                  "",
-                  "for(var firstKey in json);",
-                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
-                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
-                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
-                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
-                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "113a01c2-83d1-414d-be58-37880555be03",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access_token}}"
-              }
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              }
-            ],
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{Event_For_Web_DATASETID}}"
-          },
-          "response": []
         }
       ],
       "_postman_id": "34b78645-0b75-4e02-9148-860d74002641"
@@ -3191,59 +3138,6 @@
               }
             ],
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{Event_For_Web_BATCHID}}"
-          },
-          "response": []
-        },
-        {
-          "name": "Check MAPPING EXPEVENT Dataset Status",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1570063e-ea92-4ef3-a6b0-3a7243c5fb47",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "var json = JSON.parse(responseBody);",
-                  "",
-                  "for(var firstKey in json);",
-                  "    postman.setEnvironmentVariable(\"CHECK_BATCH_ID\", json[firstKey]);",
-                  "    tests[\"CHECK_BATCH_ID = \" + firstKey] = true;",
-                  "    postman.setEnvironmentVariable(\"NEWBATCHSTATUS\", json[firstKey].status);",
-                  "    tests[\"STATUS = \" + json[firstKey].status] = true;",
-                  "    tests[\"IMS Org = \" + json[firstKey].imsOrg] = true; ",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "6e148e21-35e1-4020-95e2-1ab525f36457",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access_token}}"
-              }
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              }
-            ],
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{Event_For_Web_DATASETID}}"
           },
           "response": []
         }
