@@ -1987,6 +1987,104 @@
               }
             }
           ],
+          "_postman_id": "d5e19bb3-03e3-4004-afb4-8b0c24e57e54",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED CRM Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED CRM Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n     {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-segmentation\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "246818fe-4cf7-489e-bbe0-3242cfd264bf",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED CRM Schema Copy",
+      "item": [
+        {
+          "name": "Create Luma-RED CRM Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
+                  "var RED_CRM_Schema_altid = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_altid\", RED_CRM_Schema_altid);",
+                  "tests[\"RED_CRM_Schema_altid = \" + RED_CRM_Schema_altid] = true; ",
+                  "",
+                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
+                  "var RED_CRM_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_FullURL\", RED_CRM_Schema_FullURL);",
+                  "tests[\"RED_CRM_Schema_FullURL = \" + RED_CRM_Schema_FullURL] = true; ",
+                  "",
+                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
+                  "var SPLIT_HEADER = RED_CRM_Schema_FullURL.split('/');",
+                  "var RED_CRM_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_ID\", RED_CRM_Schema_ID);",
+                  "tests[\"RED_CRM_Schema_ID = \" + RED_CRM_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "0eb76c55-7910-48eb-a12d-4c8703e8b4ed",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
