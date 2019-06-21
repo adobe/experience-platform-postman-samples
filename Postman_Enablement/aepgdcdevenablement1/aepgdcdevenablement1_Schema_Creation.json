@@ -1,0 +1,31 @@
+{
+  "info": {
+    "_postman_id": "68de3ad9-d2ef-418b-8cd9-d3f899f55d63",
+    "name": "aepgdcdevenablement1 Schema Creation",
+    "description": "# Populating the Schema used for aepgdcdevenablement1 team\n\n## Purpose\nTargeted to populate the org detailed here:\nhttps://wiki.corp.adobe.com/pages/viewpage.action?spaceKey=BPS&title=aepgdcdevenablement1\n\n## Customer\nGDC Enablement team in India.  Key contacts are kandi@adobe.com (Althaf) and abhatak@adobe.com (Abhaya)\n\n## Considerations\nSchema here will be portable (nothing specific to a given IMS Org) and will use Adobe AEP Standard Environment Variable names found here: https://github.com/adobe/experience-platform-postman-samples/blob/cf9387a7b4933076a5a4c4b1ab24f15083ee74a7/postman/Adobe%20Experience%20Platform.postman_environment.json\n\nLonger term, working with Adobe IO on standardizing on these names so it would be generated within Adobe IO.\n\n## Expected Use\nUsers are expected to bring their Adobe IO credentials for creating these schemas within their IMS Org.  The Postman calls are procedural and will populate Environment variables over the course of execution which are used in subsequent calls for Custom Mixin creation, Custom Classes, Schemas, Batches, and Datasets.  Expected that the latest version in Git can be executed via Postman Runner.  \n\n## UPS ENABLEMENT\nNote that these schemas are NOT created enabled for UPS due to the irrevocability of this change.  \n\nUsers interested in turning on UPS need to make the following changes:\n\nSchema require Tags as follows to be added to the Schema Creation Requests:\n```  \"meta:immutableTags\": [\n        \"union\"\n    ],\n    ```\n\nDatasets require Tags as follows to be added to Dataset Creation Requests:\n\n```   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n\t```\n## SUPPORT\nPlease file tickets on the use and modifications to the Schemas and Data in JIRA with: \n* Project = PLATO \n* Component = Lab Manager\n\nPlease contact silverst@adobe.com, cgurung@adobe.com, and zthe@adobe.com if urgent.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "438e619f-b541-4929-8622-475becd37ac3",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "9e881f9e-4150-41d8-84b4-39078b2c7b9b",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
