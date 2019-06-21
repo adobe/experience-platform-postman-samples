@@ -599,104 +599,6 @@
       ]
     },
     {
-      "name": "Luma - RED CRM Schema",
-      "item": [
-        {
-          "name": "Create Luma-RED CRM Schema",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
-                  "var RED_CRM_Schema_altid = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_altid\", RED_CRM_Schema_altid);",
-                  "tests[\"RED_CRM_Schema_altid = \" + RED_CRM_Schema_altid] = true; ",
-                  "",
-                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
-                  "var RED_CRM_Schema_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_FullURL\", RED_CRM_Schema_FullURL);",
-                  "tests[\"RED_CRM_Schema_FullURL = \" + RED_CRM_Schema_FullURL] = true; ",
-                  "",
-                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
-                  "var SPLIT_HEADER = RED_CRM_Schema_FullURL.split('/');",
-                  "var RED_CRM_Schema_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_ID\", RED_CRM_Schema_ID);",
-                  "tests[\"RED_CRM_Schema_ID = \" + RED_CRM_Schema_ID] = true; ",
-                  "",
-                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "594402f6-4212-42d6-9848-f9db32fed540",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED CRM Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED CRM Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n     {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-segmentation\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        }\n  ]\n}"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "123ddebb-0c90-47ac-a83e-a6188b6a5c1a",
-      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "Luma -  Events Schema for Mobile App",
       "item": [
         {
@@ -1365,269 +1267,6 @@
       ]
     },
     {
-      "name": "Luma RED Profile Schema for Web",
-      "item": [
-        {
-          "name": "Create Luma RED Loyalty Mixin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "var RED_Loyalty_Mixin_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"RED_Loyalty_Mixin_altId\", RED_Loyalty_Mixin_altId);",
-                  "tests[\"RED_Loyalty_Mixin_altId = \" + RED_Loyalty_Mixin_altId] = true; ",
-                  "",
-                  "var RED_Loyalty_Mixin_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"RED_Loyalty_Mixin_FullURL\", RED_Loyalty_Mixin_FullURL);",
-                  "tests[\"RED_Loyalty_Mixin_FullURL = \" + RED_Loyalty_Mixin_FullURL] = true; ",
-                  "",
-                  "var SPLIT_HEADER = RED_Loyalty_Mixin_FullURL.split('/');",
-                  "var RED_Loyalty_Mixin_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\"RED_Loyalty_Mixin_ID\", RED_Loyalty_Mixin_ID);",
-                  "tests[\"RED_Loyalty_Mixin_ID = \" + RED_Loyalty_Mixin_ID] = true; ",
-                  "",
-                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "09c93ac3-00a7-4f5d-aa5b-3342047563a9",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "2e06c8fb-a91f-4ed9-a8e8-e19d154b62cf",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Luma RED Loyalty Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_red_loyalty\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"level\": {\n                                \"title\": \"level\",\n                                \"type\": \"string\",\n                                \"description\": \"level\"\n                            },\n                            \"lumaLoyaltyId\": {\n                                \"title\": \"lumaLoyaltyId\",\n                                \"type\": \"string\",\n                                \"description\": \"Luma Loyalty Id\"\n                            },\n                            \"points\": {\n                                \"title\": \"points\",\n                                \"type\": \"string\",\n                                \"description\": \"Loyalty Points\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_red_loyalty\"\n            }\n        ]\n      }\n\n"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        },
-        {
-          "name": "Create Luma RED CRM Mixin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "var RED_CRM_Mixin_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"RED_CRM_Mixin_altId\", RED_CRM_Mixin_altId);",
-                  "tests[\"RED_CRM_Mixin_altId = \" + RED_CRM_Mixin_altId] = true; ",
-                  "",
-                  "var RED_CRM_Mixin_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"RED_CRM_Mixin_FullURL\", RED_CRM_Mixin_FullURL);",
-                  "tests[\"RED_CRM_Mixin_FullURL = \" + RED_CRM_Mixin_FullURL] = true; ",
-                  "",
-                  "var SPLIT_HEADER = RED_CRM_Mixin_FullURL.split('/');",
-                  "var RED_CRM_Mixin_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\"RED_CRM_Mixin_ID\", RED_CRM_Mixin_ID);",
-                  "tests[\"RED_CRM_Mixin_ID = \" + RED_CRM_Mixin_ID] = true; ",
-                  "",
-                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "09c93ac3-00a7-4f5d-aa5b-3342047563a9",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "76175c70-3929-4ec8-b0db-afa3ed9461b8",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Luma Red CRM Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_red_crm\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"crmid\": {\n                                \"title\": \"crmid\",\n                                \"type\": \"string\",\n                                \"description\": \"CRMid\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_red_crm\"\n            }\n        ]\n      }\n\n"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        },
-        {
-          "name": "Create Luma RED Profile Schema for Web",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "//changed variable MIXINCUSTOMDATATYPEFULL to Mixin_Profile_For_Web_altId",
-                  "",
-                  "var RED_Profile_Schema_For_Web_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Web_altId\",RED_Profile_Schema_For_Web_altId);",
-                  "tests[\"RED_Profile_Schema_For_Web_altId = \" + RED_Profile_Schema_For_Web_altId] = true; ",
-                  "",
-                  "//change MIXINCUSTOMDATATYPEURL Mixin_Profile_For_Web_FullURL",
-                  "var RED_Profile_Schema_For_Web_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Web_FullURL\", RED_Profile_Schema_For_Web_FullURL);",
-                  "tests[\"RED_Profile_Schema_For_Web_FullURL = \" + RED_Profile_Schema_For_Web_FullURL] = true; ",
-                  "",
-                  "",
-                  "//change variable MIXINCUSTOMDATATYPEID to Mixin_Profile_For_Web_ID",
-                  "var SPLIT_HEADER = RED_Profile_Schema_For_Web_FullURL.split('/');",
-                  "var RED_Profile_Schema_For_Web_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Web_ID\",RED_Profile_Schema_For_Web_ID);",
-                  "tests[\"RED_Profile_Schema_For_Web_ID = \" + RED_Profile_Schema_For_Web_ID] = true; ",
-                  "",
-                  "",
-                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true   ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "9f2810a6-6569-4069-8a35-ae2dd398b66b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}",
-                "disabled": true
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Profile Schema for Web {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma RED Profile Schema for Web\",\n  \"allOf\": [\n    {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"{{RED_Loyalty_Mixin_FullURL}}\"\n        },\n        {\n            \"$ref\": \"{{RED_CRM_Mixin_FullURL}}\"\n        }\n    \n  ]\n}"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "94e3c86b-a3e7-49bd-b2a7-d9b249fa0467",
-      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F9fbbc7b2992e89510d634cdf822e0b8c",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "Luma RED Target Experience Events Schema",
       "item": [
         {
@@ -2090,6 +1729,1676 @@
       ],
       "_postman_id": "a7efbb7a-8169-407a-9a01-82fc3599800b",
       "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED CRM Schema",
+      "item": [
+        {
+          "name": "Create Luma-RED CRM Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
+                  "var RED_CRM_Schema_altid = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_altid\", RED_CRM_Schema_altid);",
+                  "tests[\"RED_CRM_Schema_altid = \" + RED_CRM_Schema_altid] = true; ",
+                  "",
+                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
+                  "var RED_CRM_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_FullURL\", RED_CRM_Schema_FullURL);",
+                  "tests[\"RED_CRM_Schema_FullURL = \" + RED_CRM_Schema_FullURL] = true; ",
+                  "",
+                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
+                  "var SPLIT_HEADER = RED_CRM_Schema_FullURL.split('/');",
+                  "var RED_CRM_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_ID\", RED_CRM_Schema_ID);",
+                  "tests[\"RED_CRM_Schema_ID = \" + RED_CRM_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "594402f6-4212-42d6-9848-f9db32fed540",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED CRM Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED CRM Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n     {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-segmentation\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "123ddebb-0c90-47ac-a83e-a6188b6a5c1a",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED CRM Schema Copy",
+      "item": [
+        {
+          "name": "Create Luma-RED CRM Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
+                  "var RED_CRM_Schema_altid = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_altid\", RED_CRM_Schema_altid);",
+                  "tests[\"RED_CRM_Schema_altid = \" + RED_CRM_Schema_altid] = true; ",
+                  "",
+                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
+                  "var RED_CRM_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_FullURL\", RED_CRM_Schema_FullURL);",
+                  "tests[\"RED_CRM_Schema_FullURL = \" + RED_CRM_Schema_FullURL] = true; ",
+                  "",
+                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
+                  "var SPLIT_HEADER = RED_CRM_Schema_FullURL.split('/');",
+                  "var RED_CRM_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Schema_ID\", RED_CRM_Schema_ID);",
+                  "tests[\"RED_CRM_Schema_ID = \" + RED_CRM_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "0eb76c55-7910-48eb-a12d-4c8703e8b4ed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED CRM Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED CRM Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n     {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-segmentation\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "a233cf18-d92d-433c-adf1-7918824d9438",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Profile Schema for Web",
+      "item": [
+        {
+          "name": "Create Luma RED Loyalty Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_Loyalty_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Loyalty_Mixin_altId\", RED_Loyalty_Mixin_altId);",
+                  "tests[\"RED_Loyalty_Mixin_altId = \" + RED_Loyalty_Mixin_altId] = true; ",
+                  "",
+                  "var RED_Loyalty_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Loyalty_Mixin_FullURL\", RED_Loyalty_Mixin_FullURL);",
+                  "tests[\"RED_Loyalty_Mixin_FullURL = \" + RED_Loyalty_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_Loyalty_Mixin_FullURL.split('/');",
+                  "var RED_Loyalty_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Loyalty_Mixin_ID\", RED_Loyalty_Mixin_ID);",
+                  "tests[\"RED_Loyalty_Mixin_ID = \" + RED_Loyalty_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "09c93ac3-00a7-4f5d-aa5b-3342047563a9",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2e06c8fb-a91f-4ed9-a8e8-e19d154b62cf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Luma RED Loyalty Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_red_loyalty\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"level\": {\n                                \"title\": \"level\",\n                                \"type\": \"string\",\n                                \"description\": \"level\"\n                            },\n                            \"lumaLoyaltyId\": {\n                                \"title\": \"lumaLoyaltyId\",\n                                \"type\": \"string\",\n                                \"description\": \"Luma Loyalty Id\"\n                            },\n                            \"points\": {\n                                \"title\": \"points\",\n                                \"type\": \"string\",\n                                \"description\": \"Loyalty Points\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_red_loyalty\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma RED CRM Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_CRM_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Mixin_altId\", RED_CRM_Mixin_altId);",
+                  "tests[\"RED_CRM_Mixin_altId = \" + RED_CRM_Mixin_altId] = true; ",
+                  "",
+                  "var RED_CRM_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Mixin_FullURL\", RED_CRM_Mixin_FullURL);",
+                  "tests[\"RED_CRM_Mixin_FullURL = \" + RED_CRM_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_CRM_Mixin_FullURL.split('/');",
+                  "var RED_CRM_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_CRM_Mixin_ID\", RED_CRM_Mixin_ID);",
+                  "tests[\"RED_CRM_Mixin_ID = \" + RED_CRM_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "09c93ac3-00a7-4f5d-aa5b-3342047563a9",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "76175c70-3929-4ec8-b0db-afa3ed9461b8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Luma Red CRM Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_red_crm\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"crmid\": {\n                                \"title\": \"crmid\",\n                                \"type\": \"string\",\n                                \"description\": \"CRMid\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_red_crm\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma RED Profile Schema for Web",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "//changed variable MIXINCUSTOMDATATYPEFULL to Mixin_Profile_For_Web_altId",
+                  "",
+                  "var RED_Profile_Schema_For_Web_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Web_altId\",RED_Profile_Schema_For_Web_altId);",
+                  "tests[\"RED_Profile_Schema_For_Web_altId = \" + RED_Profile_Schema_For_Web_altId] = true; ",
+                  "",
+                  "//change MIXINCUSTOMDATATYPEURL Mixin_Profile_For_Web_FullURL",
+                  "var RED_Profile_Schema_For_Web_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Web_FullURL\", RED_Profile_Schema_For_Web_FullURL);",
+                  "tests[\"RED_Profile_Schema_For_Web_FullURL = \" + RED_Profile_Schema_For_Web_FullURL] = true; ",
+                  "",
+                  "",
+                  "//change variable MIXINCUSTOMDATATYPEID to Mixin_Profile_For_Web_ID",
+                  "var SPLIT_HEADER = RED_Profile_Schema_For_Web_FullURL.split('/');",
+                  "var RED_Profile_Schema_For_Web_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Web_ID\",RED_Profile_Schema_For_Web_ID);",
+                  "tests[\"RED_Profile_Schema_For_Web_ID = \" + RED_Profile_Schema_For_Web_ID] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true   ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "9f2810a6-6569-4069-8a35-ae2dd398b66b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Profile Schema for Web {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma RED Profile Schema for Web\",\n  \"allOf\": [\n    {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"{{RED_Loyalty_Mixin_FullURL}}\"\n        },\n        {\n            \"$ref\": \"{{RED_CRM_Mixin_FullURL}}\"\n        }\n    \n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "94e3c86b-a3e7-49bd-b2a7-d9b249fa0467",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F9fbbc7b2992e89510d634cdf822e0b8c",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED-Analytics Schema",
+      "item": [],
+      "_postman_id": "2c4b11b0-b1ce-4ddc-8474-ef04349913fb",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED CRM Schema",
+      "item": [],
+      "_postman_id": "fa2772be-57ea-458d-9a0c-590dbe4434e6",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Profile Schema for Web",
+      "item": [],
+      "_postman_id": "16fa5d33-a0a8-43e7-9076-6841c98aa02f",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F9fbbc7b2992e89510d634cdf822e0b8c",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Adobe Target Events Schema",
+      "item": [],
+      "_postman_id": "379644d5-9ab2-46d5-b8df-321115da1064",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED-Analytics Schema",
+      "item": [
+        {
+          "name": "Create Luma-RED-Analytics Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
+                  "var RED_Analytics_Schema_altid = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Analytics_Schema_altid\", RED_Analytics_Schema_altid);",
+                  "tests[\"RED_Analytics_Schema_altid = \" + RED_Analytics_Schema_altid] = true; ",
+                  "",
+                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
+                  "var RED_Analytics_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Analytics_Schema_altid_FullURL\", RED_Analytics_Schema_FullURL);",
+                  "tests[\"RED_Analytics_Schema_FullURL = \" + RED_Analytics_Schema_FullURL] = true; ",
+                  "",
+                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
+                  "var SPLIT_HEADER = RED_Analytics_Schema_FullURL.split('/');",
+                  "var RED_Analytics_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Analytics_Schema_ID\", RED_Analytics_Schema_ID);",
+                  "tests[\"RED_Analytics_Schema_ID = \" + RED_Analytics_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "68c5f5fb-52aa-4f16-a449-4dc9e2fa7218",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Analytics Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Analytics Schema\",\n  \n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics-experienceevent\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "97607491-34ba-43ff-a9a4-430067d7fe53",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED IOT Interaction Schema",
+      "item": [
+        {
+          "name": "Create Custom Mixin1 for Luma RED IOT Interaction test",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Luma_RED_IOT_Mixin1_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Luma_RED_IOT_Mixin1_altId\", Luma_RED_IOT_Mixin1_altId);",
+                  "tests[\"Luma_RED_IOT_Mixin1_altId = \" + Luma_RED_IOT_Mixin1_altId] = true; ",
+                  "",
+                  "var Luma_RED_IOT_Mixin1_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Luma_RED_IOT_Mixin1_FullURL\", Luma_RED_IOT_Mixin1_FullURL);",
+                  "tests[\"Luma_RED_IOT_Mixin1_FullURL = \" + Luma_RED_IOT_Mixin1_FullURL] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "91e18ab5-dad9-4b33-b771-a01515e10cfe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mixin Custom Luma Products Web  {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n    \n  \"description\": \"Use Custom Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n        \"luma_products_web\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"productListItems\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"_viejasstagesandbox\": {\n                                \"type\": \"object\",\n                                \"properties\": {\n                                    \"color\": {\n                                        \"title\": \"color\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"description\": {\n                                        \"title\": \"description\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"imageURL\": {\n                                        \"title\": \"imageURL\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"productURL\": {\n                                        \"title\": \"productURL\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"size\": {\n                                        \"title\": \"size\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    }\n                                },\n                                \"meta:xdmType\": \"object\"\n                            }\n                        },\n                        \"meta:xdmType\": \"object\"\n                    },\n                    \"meta:xdmType\": \"array\"\n                }\n            },\n            \"meta:xdmType\": \"object\"\n        }\n    },\n     \"meta:extends\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    ],\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_products_web\"\n            },\n            {\n             \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\t\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Custom Mixin2 for Luma RED IOT Interaction",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Luma_RED_IOT_Mixin2_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Luma_RED_IOT_Mixin2_altId\", Luma_RED_IOT_Mixin2_altId);",
+                  "tests[\"Luma_RED_IOT_Mixin2_altId = \" + Luma_RED_IOT_Mixin2_altId] = true; ",
+                  "",
+                  "var Luma_RED_IOT_Mixin2_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Luma_RED_IOT_Mixin2_FullURL\", Luma_RED_IOT_Mixin2_FullURL);",
+                  "tests[\"Luma_RED_IOT_Mixin2_FullURL = \" + Luma_RED_IOT_Mixin2_FullURL] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "9fb3e54c-dac3-473f-b209-16786f20fc3f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mixin Custom Luma POS Identification {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Custom Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_POS_Identification\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                          \t\"email\": {\n                    \t\t\t\"title\": \"email\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"loyalyID\": {\n                    \t\t\t\"title\": \"loyaltyID\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t}\n                          }\n                      }\n                   }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_POS_Identification\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma-RED IOT Interaction Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
+                  "var RED_IOT_Interaction_Schema_altid = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_IOT_Interaction_Schema_altid\", RED_IOT_Interaction_Schema_altid);",
+                  "tests[\"RED_IOT_Interaction_Schema_altid = \" + RED_IOT_Interaction_Schema_altid] = true; ",
+                  "",
+                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
+                  "var RED_IOT_Interaction_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_IOT_Interaction_Schema_FullURL\", RED_IOT_Interaction_Schema_FullURL);",
+                  "tests[\"RED_IOT_Interaction_Schema_FullURL = \" + RED_IOT_Interaction_Schema_FullURL] = true; ",
+                  "",
+                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
+                  "var SPLIT_HEADER = RED_IOT_Interaction_Schema_FullURL.split('/');",
+                  "var RED_IOT_Interaction_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_IOT_Interaction_Schema_ID\", RED_IOT_Interaction_Schema_ID);",
+                  "tests[\"RED_IOT_Interaction_Schema_ID = \" + RED_IOT_Interaction_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8a04b171-d118-464b-b691-84056acc208f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED IOT Interactions Schema  {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED IOT Interaction Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin1_FullURL}}\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin2_FullURL}}\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "782caf41-0f9e-4cd7-b752-df4d94c45973",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma - RED POS Transaction Schema",
+      "item": [
+        {
+          "name": "Create Luma RED POS Transaction Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "//change EXPEVENTSCHEMAFULL to  Event_Schema_For_Mobile_App_altid",
+                  "var RED_POS_Transaction_Schema_altid = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_POS_Transaction_Schema_altid\", RED_POS_Transaction_Schema_altid);",
+                  "tests[\"RED_POS_Transaction_Schema_altid = \" + RED_POS_Transaction_Schema_altid] = true; ",
+                  "",
+                  "//changed EXPEVENTSCHEMAURL to Event_Schema_For_Mobile_Aop_FullURL",
+                  "var RED_POS_Transaction_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_POS_Transaction_Schema_FullURL\", RED_POS_Transaction_Schema_FullURL);",
+                  "tests[\"RED_POS_Transaction_Schema_FullURL = \" + RED_POS_Transaction_Schema_FullURL] = true; ",
+                  "",
+                  "//change EXPEVENTSCHEMAID to Event_Schema_For_Mobile_App_ID",
+                  "var SPLIT_HEADER =RED_POS_Transaction_Schema_FullURL.split('/');",
+                  "var RED_POS_Transaction_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_POS_Transaction_Schema_ID\", RED_POS_Transaction_Schema_ID);",
+                  "tests[\"RED_POS_Transaction_Schema_ID = \" + RED_POS_Transaction_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "4333b78a-7d50-499d-a357-2bc1ca835ed9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED POS Transaction Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED POS Transaction Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-web\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin2_FullURL}}\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "008bb79e-fe5e-410a-af27-519568f47f2b",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe648f47a639759f2044353a22be39040",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Profile Schema for Mobile App",
+      "item": [
+        {
+          "name": "Create Luma RED Profile Schema for Mobile App",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "//changed variable MIXINCUSTOMDATATYPEFULL to Mixin_Profile_For_Web_altId",
+                  "",
+                  "var RED_Profile_Schema_For_Mobile_App_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Mobile_App_altId\",RED_Profile_Schema_For_Mobile_App_altId);",
+                  "tests[\"RED_Profile_Schema_For_Mobile_App_altId = \" + RED_Profile_Schema_For_Mobile_App_altId] = true; ",
+                  "",
+                  "//change MIXINCUSTOMDATATYPEURL Mixin_Profile_For_Web_FullURL",
+                  "var RED_Profile_Schema_For_Mobile_App_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Mobile_App_FullURL\", RED_Profile_Schema_For_Mobile_App_FullURL);",
+                  "tests[\"RED_Profile_Schema_For_Mobile_App_FullURL = \" + RED_Profile_Schema_For_Mobile_App_FullURL] = true; ",
+                  "",
+                  "",
+                  "//change variable MIXINCUSTOMDATATYPEID to Mixin_Profile_For_Web_ID",
+                  "var SPLIT_HEADER = RED_Profile_Schema_For_Mobile_App_FullURL.split('/');",
+                  "var RED_Profile_Schema_For_Mobile_App_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Profile_Schema_For_Mobile_App_ID\",RED_Profile_Schema_For_Mobile_App_ID);",
+                  "tests[\"RED_Profile_Schema_For_Mobile_App_ID = \" + RED_Profile_Schema_For_Mobile_App_ID] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true   ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "5479b137-742b-453c-b463-5e2e17199afb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Profile Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma RED Profile Schema for Web\",\n  \"allOf\": [\n    {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"{{RED_Loyalty_Mixin_FullURL}}\"\n        },\n        {\n            \"$ref\": \"{{RED_CRM_Mixin_FullURL}}\"\n        }\n    \n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "e17ed931-7bec-4a8f-9a2f-46c560d5ee79",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F9fbbc7b2992e89510d634cdf822e0b8c",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Loyalty Schema",
+      "item": [
+        {
+          "name": "Create Luma RED Profile Schema for Mobile App",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "//changed variable MIXINCUSTOMDATATYPEFULL to Mixin_Profile_For_Web_altId",
+                  "",
+                  "var RED_Loyalty_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Loyalty_Schema_altId\",RED_Loyalty_Schema_altId);",
+                  "tests[\"RED_Loyalty_Schema_altId = \" + RED_Loyalty_Schema_altId] = true; ",
+                  "",
+                  "//change MIXINCUSTOMDATATYPEURL Mixin_Profile_For_Web_FullURL",
+                  "var RED_Loyalty_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Loyalty_Schema_FullURL\", RED_Loyalty_Schema_FullURL);",
+                  "tests[\"RED_Loyalty_Schema_FullURL = \" + RED_Loyalty_Schema_FullURL] = true; ",
+                  "",
+                  "",
+                  "//change variable MIXINCUSTOMDATATYPEID to Mixin_Profile_For_Web_ID",
+                  "var SPLIT_HEADER = RED_Loyalty_Schema_FullURL.split('/');",
+                  "var RED_Loyalty_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Loyalty_Schema_ID\",RED_Loyalty_Schema_ID);",
+                  "tests[\"RED_Loyalty_Schema_ID = \" + RED_Loyalty_Schema_ID] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true   ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b2cf458e-533e-40cf-9417-8b34e0fe2131",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Loyalty Schema {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma RED Loyalty Schema\",\n  \"allOf\": [\n    {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        },\n        {\n            \"$ref\": \"{{RED_Loyalty_Mixin_FullURL}}\"\n        }\n    \n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "d480e02e-dcd0-4258-b136-167e74881319",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2F9fbbc7b2992e89510d634cdf822e0b8c",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5ec4ef74-f55d-4e99-a602-07d0667c10a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "1661d72c-ad72-47dd-af6f-68e75b9a66ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Event Schema for Web",
+      "item": [
+        {
+          "name": "Create Luma RED Identification Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_Identification_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Identification_Mixin_altId\", RED_Identification_Mixin_altId);",
+                  "tests[\"RED_Identification_Mixin_altId = \" + RED_Identification_Mixin_altId] = true; ",
+                  "",
+                  "var RED_Identification_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Identification_Mixin_FullURL\", RED_Identification_Mixin_FullURL);",
+                  "tests[\"RED_Identification_Mixin_FullURL = \" + RED_Identification_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_Identification_Mixin_FullURL.split('/');",
+                  "var RED_Identification_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Identification_Mixin_ID\", RED_Identification_Mixin_ID);",
+                  "tests[\"RED_Identification_Mixin_ID = \" + RED_Identification_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "09c93ac3-00a7-4f5d-aa5b-3342047563a9",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c6170c16-9d89-4445-9068-775ebc247766",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Luma Red Identification Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"RED_Identification\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"identification\": {\n                                \"title\": \"identification\",\n                                \"type\": \"object\",\n                                \"description\": \"RED Identification\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/RED_Identification\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma RED Event Schema for Web",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_Events_Schema_for_Web_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Web_altId\", RED_Events_Schema_for_Web_altId);",
+                  "tests[\"RED_Events_Schema_for_Web_altId = \" + RED_Events_Schema_for_Web_altId] = true; ",
+                  "",
+                  "var RED_Events_Schema_for_Web_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Web_FullURL\", RED_Events_Schema_for_Web_FullURL);",
+                  "tests[\"RED_Events_Schema_for_Web_FullURL = \" + RED_Events_Schema_for_Web_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_Events_Schema_for_Web_FullURL.split('/');",
+                  "var RED_Events_Schema_for_Web_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Web_ID\", RED_Events_Schema_for_Web_ID);",
+                  "tests[\"RED_Events_Schema_for_Web_ID = \" + RED_Events_Schema_for_Web_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "f6b3a1cb-7c6c-4003-9e0e-a60508b4acc1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Event Schema for Web {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Event Schema for Web\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-web\"\n    },\n    {\n      \"$ref\": \"{{RED_Identification_Mixin_FullURL}}\"\t\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin1_FullURL}}\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n    \n  ],\n  \"meta:containerId\": \"tenant\",\n    \"meta:class\": \"https://ns.adobe.com/xdm/context/experienceevent\",\n    \"required\": [\n        \"_id\",\n        \"timestamp\"\n    ]\n    \n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "1dc74cd7-2e94-46d2-86ae-f68e3f380987",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Event Schema for Mobile App",
+      "item": [
+        {
+          "name": "Create Luma RED Event Schema for Mobile App",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_Events_Schema_for_Mobile_App_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Mobile_App_altId\", RED_Events_Schema_for_Mobile_App_altId);",
+                  "tests[\"RED_Events_Schema_for_Mobile_App_altId = \" + RED_Events_Schema_for_Mobile_App_altId] = true; ",
+                  "",
+                  "var RED_Events_Schema_for_Mobile_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Mobile_FullURL\", RED_Events_Schema_for_Mobile_FullURL);",
+                  "tests[\"RED_Events_Schema_for_Mobile_FullURL = \" + RED_Events_Schema_for_Mobile_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_Events_Schema_for_Mobile_FullURL.split('/');",
+                  "var RED_Events_Schema_for_Mobile_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Mobile_ID\", RED_Events_Schema_for_Mobile_ID);",
+                  "tests[\"RED_Events_Schema_for_Mobile_ID = \" + RED_Events_Schema_for_Mobile_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "489b6300-9bec-435e-8075-d614b47478c5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Event Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Event Schema for Mobile App\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-web\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin1_FullURL}}\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n    \n  ],\n  \"meta:containerId\": \"tenant\",\n    \"meta:class\": \"https://ns.adobe.com/xdm/context/experienceevent\",\n    \"required\": [\n        \"_id\",\n        \"timestamp\"\n    ]\n    \n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "2456d7f2-28b3-4bd5-87ab-c902d43931d1",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Campaign Schema",
+      "item": [
+        {
+          "name": "Create Luma RED Campaign Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_Campaign_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Campaign_Mixin_altId\", RED_Campaign_Mixin_altId);",
+                  "tests[\"RED_Campaign_Mixin_altId = \" + RED_Campaign_Mixin_altId] = true; ",
+                  "",
+                  "var RED_Campaign_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Campaign_Mixin_FullURL\", RED_Campaign_Mixin_FullURL);",
+                  "tests[\"RED_Campaign_Mixin_FullURL = \" + RED_Campaign_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_Campaign_Mixin_FullURL.split('/');",
+                  "var RED_Campaign_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Campaign_Mixin_ID\", RED_Campaign_Mixin_ID);",
+                  "tests[\"RED_Campaign_Mixin_ID = \" + RED_Campaign_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "09c93ac3-00a7-4f5d-aa5b-3342047563a9",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3ebef642-ec17-4c88-9032-530d0f2d71f9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Luma Red Campaign Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"RED_Campaign_ExperienceEvent_Template_Mixin\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"cusField1\": {\n                                \"title\": \"cusField1\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 1\"\n                            },\n                            \"cusField2\": {\n                                \"title\": \"cusField2\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 2\"\n                            },\n                            \"cusField3\": {\n                                \"title\": \"cusField3\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 3\"\n                            },\n                            \"cusField4\": {\n                                \"title\": \"cusField4\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 4\"\n                            },\n                            \"cusField5\": {\n                                \"title\": \"cusField5\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 5\"\n                            },\n                            \"cusField6\": {\n                                \"title\": \"cusField6\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 6\"\n                            },\n                            \"cusField7\": {\n                                \"title\": \"cusField7\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 7\"\n                            },\n                            \"cusField8\": {\n                                \"title\": \"cusField8\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 8\"\n                            },\n                            \"cusField9\": {\n                                \"title\": \"cusField9\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 9\"\n                            },\n                            \"cusField10\": {\n                                \"title\": \"cusField10\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 10\"\n                            },\n                            \"cusField11\": {\n                                \"title\": \"cusField11\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 11\"\n                            },\n                            \"cusField12\": {\n                                \"title\": \"cusField12\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 12\"\n                            },\n                            \"cusField13\": {\n                                \"title\": \"cusField13\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 13\"\n                            },\n                            \"cusField14\": {\n                                \"title\": \"cusField14\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 14\"\n                            },\n                            \"cusField15\": {\n                                \"title\": \"cusField15\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 15\"\n                            },\n                            \"cusField16\": {\n                                \"title\": \"cusField16\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 16\"\n                            },\n                            \"cusField17\": {\n                                \"title\": \"cusField17\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 17\"\n                            },\n                            \"cusField18\": {\n                                \"title\": \"cusField18\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 18\"\n                            },\n                            \"cusField19\": {\n                                \"title\": \"cusField19\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 19\"\n                            },\n                            \"cusField20\": {\n                                \"title\": \"cusField2\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 20\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/RED_Campaign_ExperienceEvent_Template_Mixin\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma RED Campaign Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_Events_Schema_for_Mobile_App_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Mobile_App_altId\", RED_Events_Schema_for_Mobile_App_altId);",
+                  "tests[\"RED_Events_Schema_for_Mobile_App_altId = \" + RED_Events_Schema_for_Mobile_App_altId] = true; ",
+                  "",
+                  "var RED_Events_Schema_for_Mobile_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Mobile_FullURL\", RED_Events_Schema_for_Mobile_FullURL);",
+                  "tests[\"RED_Events_Schema_for_Mobile_FullURL = \" + RED_Events_Schema_for_Mobile_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_Events_Schema_for_Mobile_FullURL.split('/');",
+                  "var RED_Events_Schema_for_Mobile_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Events_Schema_for_Mobile_ID\", RED_Events_Schema_for_Mobile_ID);",
+                  "tests[\"RED_Events_Schema_for_Mobile_ID = \" + RED_Events_Schema_for_Mobile_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3cea9a08-055d-476f-963d-38e8b49943e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Campaign Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Campaign Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/campaign-experienceevent\"\n    },\n    {\n    \t\"$ref\": \"{{RED_Campaign_Mixin_FullURL}}\"\n    }\t\n    \n  ],\n  \"meta:containerId\": \"tenant\",\n    \"meta:class\": \"https://ns.adobe.com/xdm/context/experienceevent\",\n    \"required\": [\n        \"_id\",\n        \"timestamp\"\n    ]\n    \n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "61cb6a1e-cf87-4e04-8086-5f2147f121f0",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
       "event": [
         {
           "listen": "prerequest",
