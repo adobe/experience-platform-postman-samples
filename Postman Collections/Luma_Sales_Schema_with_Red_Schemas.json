@@ -1362,111 +1362,6 @@
       ]
     },
     {
-      "name": "Luma postValues Schema",
-      "item": [
-        {
-          "name": "Create Luma postValues Schema",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "var Postvalues_Schema_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"Postvalues_Schema_altId\", Postvalues_Schema_altId);",
-                  "tests[\"Postvalues_Schema_altId = \" + Postvalues_Schema_altId] = true; ",
-                  "",
-                  "var Postvalues_Schema_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"Postvalues_Schema_FullURL\", Postvalues_Schema_FullURL);",
-                  "tests[\"Postvalues_Schema_FullURL = \" + Postvalues_Schema_FullURL] = true; ",
-                  "",
-                  "var SPLIT_HEADER = Postvalues_Schema_FullURL.split('/');",
-                  "var Postvalues_Schema_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\"Postvalues_Schema_ID\", Postvalues_Schema_ID);",
-                  "tests[\"Postvalues_Schema_ID = \" + Postvalues_Schema_ID] = true; ",
-                  "",
-                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "68354174-dd3a-4fa7-84fe-1850c40eac83",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "12dbaf21-cb64-4341-a17c-6ae106d0384b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma post-Values {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma post-Values\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics/experienceevent-all\"\n    }\n  ]\n}"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "a7efbb7a-8169-407a-9a01-82fc3599800b",
-      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "Luma - RED CRM Schema",
       "item": [
         {
@@ -3300,6 +3195,111 @@
         }
       ],
       "_postman_id": "55f0eeae-c70b-4adb-9a87-b0053f1ebbdf",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma postValues Schema",
+      "item": [
+        {
+          "name": "Create Luma postValues Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Postvalues_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Postvalues_Schema_altId\", Postvalues_Schema_altId);",
+                  "tests[\"Postvalues_Schema_altId = \" + Postvalues_Schema_altId] = true; ",
+                  "",
+                  "var Postvalues_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Postvalues_Schema_FullURL\", Postvalues_Schema_FullURL);",
+                  "tests[\"Postvalues_Schema_FullURL = \" + Postvalues_Schema_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Postvalues_Schema_FullURL.split('/');",
+                  "var Postvalues_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Postvalues_Schema_ID\", Postvalues_Schema_ID);",
+                  "tests[\"Postvalues_Schema_ID = \" + Postvalues_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "68354174-dd3a-4fa7-84fe-1850c40eac83",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "12dbaf21-cb64-4341-a17c-6ae106d0384b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma post-Values {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma post-Values\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics/experienceevent-all\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "a7efbb7a-8169-407a-9a01-82fc3599800b",
       "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
       "event": [
         {
