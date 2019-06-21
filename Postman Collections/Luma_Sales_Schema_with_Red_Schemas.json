@@ -2538,6 +2538,101 @@
               }
             }
           ],
+          "_postman_id": "b823c201-53da-41c1-bfa9-0f66a64f64ca",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Target Experience Events {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Target Experience Events\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/target-experienceevent\"\n    }\n    \n  ],\n  \"meta:containerId\": \"tenant\",\n    \"meta:class\": \"https://ns.adobe.com/xdm/context/experienceevent\",\n    \"required\": [\n        \"_id\",\n        \"timestamp\"\n    ]\n    \n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "2585fe20-a472-44aa-89ae-3a2bd6e5206d",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma RED Adobe Target Events Schema Copy",
+      "item": [
+        {
+          "name": "Create Luma RED Adobe Target Events SCHEMA",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var RED_Target_Experience_Events_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"RED_Target_Experience_Events_Schema_altId\", RED_Target_Experience_Events_Schema_altId);",
+                  "tests[\"RED_Target_Experience_Events_Schema_altId = \" + RED_Target_Experience_Events_Schema_altId] = true; ",
+                  "",
+                  "var RED_Target_Experience_Events_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"RED_Target_Experience_Events_Schema_FullURL\", RED_Target_Experience_Events_Schema_FullURL);",
+                  "tests[\"RED_Target_Experience_Events_Schema_FullURL = \" + RED_Target_Experience_Events_Schema_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = RED_Target_Experience_Events_Schema_FullURL.split('/');",
+                  "var RED_Target_Experience_Events_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"RED_Target_Experience_Events_Schema_ID\", RED_Target_Experience_Events_Schema_ID);",
+                  "tests[\"RED_Target_Experience_Events_Schema_ID = \" + RED_Target_Experience_Events_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "5b469ee8-234a-4021-900a-33d893de5710",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -2840,7 +2935,7 @@
               }
             }
           ],
-          "_postman_id": "b823c201-53da-41c1-bfa9-0f66a64f64ca",
+          "_postman_id": "4a19bee2-6047-4f07-90c8-090a997842bf",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -2874,7 +2969,7 @@
           "response": []
         }
       ],
-      "_postman_id": "2585fe20-a472-44aa-89ae-3a2bd6e5206d",
+      "_postman_id": "ae41ffdd-eb40-4de7-9a20-eccb4a4ae60b",
       "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
       "event": [
         {
