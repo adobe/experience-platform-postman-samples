@@ -1362,292 +1362,6 @@
       ]
     },
     {
-      "name": "Luma Recommendations Input Schema",
-      "item": [
-        {
-          "name": "Create Luma Recommendation Custom Mixin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "var Recommendations_Mixin_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_altId\", Recommendations_Mixin_altId);",
-                  "tests[\"Recommendations_Mixin_altId = \" + Recommendations_Mixin_altId] = true; ",
-                  "",
-                  "var Recommendations_Mixin_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_FullURL\", Recommendations_Mixin_FullURL);",
-                  "tests[\"Recommendations_Mixin_FullURL = \" + Recommendations_Mixin_FullURL] = true; ",
-                  "",
-                  "var SPLIT_HEADER = Recommendations_Mixin_FullURL.split('/');",
-                  "var Recommendations_Mixin_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_ID\", Recommendations_Mixin_ID);",
-                  "tests[\"Recommendations_Mixin_ID = \" + Recommendations_Mixin_ID] = true; ",
-                  "",
-                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "78816d90-a59f-4dd2-97f4-a00bb557c98d",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "ae7f2304-c676-4564-8472-04b2692d51e4",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Recommendation Input Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema for Recommendation\",\n  \n    \"definitions\": {\n            \"luma_recommendation\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"interactionType\": {\n                                \"title\": \"interactionType\",\n                                \"type\": \"string\",\n                                \"description\": \"interactionType\"\n                            },\n                            \"itemid\": {\n                                \"title\": \"itemid\",\n                                \"type\": \"string\",\n                                \"description\": \"itemid\"\n                            },\n                            \"timeStamp\": {\n                                \"title\": \"timeStamp\",\n                                \"type\": \"string\",\n                                \"format\": \"date-time\",\n                                \"description\": \"timeStamp\"\n                            },\n                            \"userid\": {\n                                \"title\": \"userid\",\n                                \"type\": \"string\",\n                                \"description\": \"userId\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_recommendation\"\n            }\n        ]\n      }\n\n"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        },
-        {
-          "name": "Create Luma Recommendation Input Schema",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "var Recommendations_Schema_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"Recommendations_Schema_altId\", Recommendations_Schema_altId);",
-                  "tests[\"Recommendations_Schema_altId = \" + Recommendations_Schema_altId] = true; ",
-                  "",
-                  "var Recommendations_Schema_fullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"Recommendations_Schema_fullURL\", Recommendations_Schema_fullURL);",
-                  "tests[\"Recommendations_Schema_fullURL = \" + Recommendations_Schema_fullURL] = true; ",
-                  "",
-                  "var SPLIT_HEADER = Recommendations_Schema_fullURL.split('/');",
-                  "var Recommendations_Schema_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\"Recommendations_Schema_ID\", Recommendations_Schema_ID);",
-                  "tests[\"Recommendations_Schema_ID = \" + Recommendations_Schema_ID] = true; ",
-                  "",
-                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "a667885b-18ad-44f8-a4bc-c4307a85e9d0",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "537cd283-55b7-4fc3-9e3c-e7417cc02c73",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-marketing\"\n    },\n    {\n    \t\"$ref\": \"{{Recommendations_Mixin_FullURL}}\"\n    }\n    \n  ]\n}"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "9a8de42c-d5a8-4599-991d-cf914843a383",
-      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "Luma midValues Schema",
-      "item": [
-        {
-          "name": "Create Luma MidValues Schema",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "var Midvalues_Schema_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"Midvalues_Schema_altId\", Midvalues_Schema_altId);",
-                  "tests[\"Midvalues_Schema_altId = \" + Midvalues_Schema_altId] = true; ",
-                  "",
-                  "var Midvalues_Schema_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"Midvalues_Schema_FullURL\", Midvalues_Schema_FullURL);",
-                  "tests[\"Midvalues_Schema_FullURL = \" + Midvalues_Schema_FullURL] = true; ",
-                  "",
-                  "var SPLIT_HEADER = Midvalues_Schema_FullURL.split('/');",
-                  "var Midvalues_Schema_ID = SPLIT_HEADER[5];",
-                  "postman.setEnvironmentVariable(\" Midvalues_Schema_ID\",  Midvalues_Schema_ID);",
-                  "tests[\" Midvalues_Schema_ID = \" +  Midvalues_Schema_ID] = true; ",
-                  "",
-                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "6199ae8c-95a4-4a10-aa8e-b3c9b0406f51",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "61dfe86a-dc0c-4a8c-af66-8da7d75523c0",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma midValues {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma midValues\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics/experienceevent-all\"\n    }\n  ]\n}"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "55f0eeae-c70b-4adb-9a87-b0053f1ebbdf",
-      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "Luma postValues Schema",
       "item": [
         {
@@ -3301,6 +3015,292 @@
       ],
       "_postman_id": "61cb6a1e-cf87-4e04-8086-5f2147f121f0",
       "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Fe570e28d209130dd113c9f73eb7d101a",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma Recommendations Input Schema",
+      "item": [
+        {
+          "name": "Create Luma Recommendation Custom Mixin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Recommendations_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_altId\", Recommendations_Mixin_altId);",
+                  "tests[\"Recommendations_Mixin_altId = \" + Recommendations_Mixin_altId] = true; ",
+                  "",
+                  "var Recommendations_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_FullURL\", Recommendations_Mixin_FullURL);",
+                  "tests[\"Recommendations_Mixin_FullURL = \" + Recommendations_Mixin_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Recommendations_Mixin_FullURL.split('/');",
+                  "var Recommendations_Mixin_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Mixin_ID\", Recommendations_Mixin_ID);",
+                  "tests[\"Recommendations_Mixin_ID = \" + Recommendations_Mixin_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "78816d90-a59f-4dd2-97f4-a00bb557c98d",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "ae7f2304-c676-4564-8472-04b2692d51e4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Recommendation Input Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema for Recommendation\",\n  \n    \"definitions\": {\n            \"luma_recommendation\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"interactionType\": {\n                                \"title\": \"interactionType\",\n                                \"type\": \"string\",\n                                \"description\": \"interactionType\"\n                            },\n                            \"itemid\": {\n                                \"title\": \"itemid\",\n                                \"type\": \"string\",\n                                \"description\": \"itemid\"\n                            },\n                            \"timeStamp\": {\n                                \"title\": \"timeStamp\",\n                                \"type\": \"string\",\n                                \"format\": \"date-time\",\n                                \"description\": \"timeStamp\"\n                            },\n                            \"userid\": {\n                                \"title\": \"userid\",\n                                \"type\": \"string\",\n                                \"description\": \"userId\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_recommendation\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Luma Recommendation Input Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Recommendations_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Schema_altId\", Recommendations_Schema_altId);",
+                  "tests[\"Recommendations_Schema_altId = \" + Recommendations_Schema_altId] = true; ",
+                  "",
+                  "var Recommendations_Schema_fullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Recommendations_Schema_fullURL\", Recommendations_Schema_fullURL);",
+                  "tests[\"Recommendations_Schema_fullURL = \" + Recommendations_Schema_fullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Recommendations_Schema_fullURL.split('/');",
+                  "var Recommendations_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\"Recommendations_Schema_ID\", Recommendations_Schema_ID);",
+                  "tests[\"Recommendations_Schema_ID = \" + Recommendations_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "a667885b-18ad-44f8-a4bc-c4307a85e9d0",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "537cd283-55b7-4fc3-9e3c-e7417cc02c73",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-marketing\"\n    },\n    {\n    \t\"$ref\": \"{{Recommendations_Mixin_FullURL}}\"\n    }\n    \n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "9a8de42c-d5a8-4599-991d-cf914843a383",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "19a2b734-0abe-459b-afc3-b0217302d1fb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "8b653135-2af1-494f-a18d-50f758edbee7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luma midValues Schema",
+      "item": [
+        {
+          "name": "Create Luma MidValues Schema",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Midvalues_Schema_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Midvalues_Schema_altId\", Midvalues_Schema_altId);",
+                  "tests[\"Midvalues_Schema_altId = \" + Midvalues_Schema_altId] = true; ",
+                  "",
+                  "var Midvalues_Schema_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Midvalues_Schema_FullURL\", Midvalues_Schema_FullURL);",
+                  "tests[\"Midvalues_Schema_FullURL = \" + Midvalues_Schema_FullURL] = true; ",
+                  "",
+                  "var SPLIT_HEADER = Midvalues_Schema_FullURL.split('/');",
+                  "var Midvalues_Schema_ID = SPLIT_HEADER[5];",
+                  "postman.setEnvironmentVariable(\" Midvalues_Schema_ID\",  Midvalues_Schema_ID);",
+                  "tests[\" Midvalues_Schema_ID = \" +  Midvalues_Schema_ID] = true; ",
+                  "",
+                  "    tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6199ae8c-95a4-4a10-aa8e-b3c9b0406f51",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "61dfe86a-dc0c-4a8c-af66-8da7d75523c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma midValues {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma midValues\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics/experienceevent-all\"\n    }\n  ]\n}"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "55f0eeae-c70b-4adb-9a87-b0053f1ebbdf",
+      "description": "https://platform.adobe.com/schema/browse/https%3A%2F%2Fns.adobe.com%2Fadobeconsultingamericas%2Fschemas%2Ff26cd77692a73237d58258dc557752ed",
       "event": [
         {
           "listen": "prerequest",
