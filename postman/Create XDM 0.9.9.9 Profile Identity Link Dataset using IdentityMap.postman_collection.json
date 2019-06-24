@@ -66,8 +66,8 @@
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Profile Schema for Identity Linking - IdentityMap case 5\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Profile Schema for Identity Linking - IdentityMap case 5\",\n  \"definitions\": {\n  },\n  \"meta:immutableTags\": [\n        \"union\"\n    ],\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    }\n  ]\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -147,8 +147,8 @@
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Profile Schema for Identity Linking - IdentityMap case\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Profile Schema for Identity Linking - IdentityMap case\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    }\n  ]\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{PROFILESCHEMAFULL}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{PROFILESCHEMAFULL}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -224,8 +224,8 @@
               "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{PROFILESCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Profile Schema for Identity Linking\",\n   \"description\": \"Hello World test for Profile Identity Linking\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "dataSets"]
             }
@@ -293,8 +293,8 @@
               "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{PROFILESCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Profile Schema for Identity Linking 6\",\n   \"description\": \"Hello World test for Profile Identity Linking 6\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t},\n\t\"streamingIngestionEnabled\": \"true\"\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "dataSets"]
             }
@@ -365,8 +365,8 @@
               "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{PROFILESCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Profile Schema for Identity Linking\",\n   \"description\": \"Hello World test for Profile Identity Linking\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{NEWPROFILEDATASETID}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{NEWPROFILEDATASETID}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -443,8 +443,8 @@
               "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{PROFILESCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Profile Schema for Identity Linking\",\n   \"description\": \"Hello World test for Profile Identity Linking\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/?properties=id,name,schema&tags=unifiedIdentity:enabled:true&sort=desc:created",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/?properties=id,name,schema&tags=unifiedIdentity:enabled:true&sort=desc:created",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "dataSets", ""],
               "query": [
@@ -510,8 +510,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/global/mixins?property=meta:intendedToExtend==https://ns.adobe.com/xdm/context/experienceevent",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/global/mixins?property=meta:intendedToExtend==https://ns.adobe.com/xdm/context/experienceevent",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -589,8 +589,8 @@
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"ExperienceEvent Schema for Identity Linking - IdentityMap case #8\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"ExperienceEvent Schema for Identity Linking - IdentityMap case 8\",\n  \"definitions\": {\n  },\n  \"meta:immutableTags\": [\n        \"union\"\n  ],\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-marketing\"\n    }\n  ]\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -665,8 +665,8 @@
               "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{EXPEVENTSCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Experience Event Schema for Identity Linking 7\",\n   \"description\": \"Hello World test for Profile Identity Linking 7\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "dataSets"]
             }
@@ -734,8 +734,8 @@
               "raw": "{\n   \"schemaRef\": {\n      \"id\": \"{{EXPEVENTSCHEMAURL}}\",\n      \"contentType\": \"application/vnd.adobe.xed+json; version=1\"\n   },\n   \"name\": \"Test Experience Event Schema for Identity Linking 10\",\n   \"description\": \"Hello World test for Profile Identity Linking 10\",\n   \"fileDescription\": {\n      \"persisted\": true,\n      \"containerFormat\": \"parquet\",\n      \"format\": \"parquet\"\n   },\n   \"aspect\": \"production\",\n   \"streamingIngestionEnabled\": \"true\",\n   \"tags\": \n\t{\n           \"unifiedIdentity\": [\"enabled:true\"],\n           \"unifiedProfile\": [\"enabled:true\"]\n\t}\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "dataSets"]
             }
@@ -796,8 +796,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{NEWEXPEVENTDATASETID}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataSets/{{NEWEXPEVENTDATASETID}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -876,8 +876,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{EXPEVENTSCHEMAFULL}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{EXPEVENTSCHEMAFULL}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -947,8 +947,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "idnamespace", "identities", ""]
             }
@@ -1004,8 +1004,8 @@
               "raw": "{\n  \"shared\": false,\n  \"description\": \"\",\n  \"idType\": \"COOKIE\",\n  \"code\": \"CRMID\",\n  \"name\": \"Customer Relationship Id\"\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/idnamespace/identities/",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "idnamespace", "identities", ""]
             }
@@ -1065,8 +1065,8 @@
               "raw": "{\r\n    \"name\" : \"ACPE2ETesting\",\r\n    \"description\" : \"ACPE2ETesting\",\r\n    \"sourceId\" : \"ACPE2ETesting\",\r\n    \"dataType\": \"xdm\"\r\n}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/edge/inlet",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/edge/inlet",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "edge", "inlet"]
             }
@@ -1120,8 +1120,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/edge/inlet/",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/edge/inlet/",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "edge", "inlet", ""]
             }
@@ -1175,8 +1175,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/edge/inlet/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/edge/inlet/{{STREAMINGENDPOINTID}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -1254,8 +1254,8 @@
               "raw": "{\"datasetId\":\"{{NEWPROFILEDATASETID}}\"}"
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/import/batches",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "import", "batches"]
             }
@@ -1320,8 +1320,8 @@
               "file": {}
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{MAPPINGBATCHID}}/datasets/{{NEWPROFILEDATASETID}}/files/out.parquet",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{MAPPINGBATCHID}}/datasets/{{NEWPROFILEDATASETID}}/files/out.parquet",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -1393,8 +1393,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{MAPPINGBATCHID}}?action=COMPLETE",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/import/batches/{{MAPPINGBATCHID}}?action=COMPLETE",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -1467,8 +1467,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{MAPPINGBATCHID}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/{{MAPPINGBATCHID}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -1525,8 +1525,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{MAPPINGBATCHID}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches={{MAPPINGBATCHID}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -1567,7 +1567,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1598,7 +1598,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1629,7 +1629,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1660,7 +1660,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1691,7 +1691,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/40dd51e4fd78f44240bf38db74395ff39e14793ea912551d340d65ea1afb0ad3",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": [
                 "collection",
@@ -1725,7 +1725,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/40dd51e4fd78f44240bf38db74395ff39e14793ea912551d340d65ea1afb0ad3",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": [
                 "collection",
@@ -1759,7 +1759,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1790,7 +1790,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1821,7 +1821,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1852,7 +1852,7 @@
             },
             "url": {
               "raw": "https://dcs-stg.data.adobe.net/collection/{{STREAMINGENDPOINTID}}",
-              "protocol": "https",
+
               "host": ["dcs-stg", "data", "adobe", "net"],
               "path": ["collection", "{{STREAMINGENDPOINTID}}"]
             }
@@ -1913,8 +1913,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataset/{{NEWEXPEVENTDATASETID}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataset/{{NEWEXPEVENTDATASETID}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -1981,8 +1981,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataset/{{NEWPROFILEDATASETID}}",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/dataset/{{NEWPROFILEDATASETID}}",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -2049,8 +2049,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/24664e5982694acb8f43f15b00417f23",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches/24664e5982694acb8f43f15b00417f23",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -2117,8 +2117,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches?batch=24664e5982694acb8f43f15b00417f23",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches?batch=24664e5982694acb8f43f15b00417f23",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "batches"],
               "query": [
@@ -2185,8 +2185,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches?batch=1f8b8edbd21b4d029604c57d6b3861f0&createdClient=acp_core_UnitedProfile_feeds",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches?batch=1f8b8edbd21b4d029604c57d6b3861f0&createdClient=acp_core_UnitedProfile_feeds",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "batches"],
               "query": [
@@ -2257,8 +2257,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches?id=1f8b8edbd21b4d029604c57d6b3861f0&createdClient=acp_core_UnitedProfile_feeds",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/catalog/batches?id=1f8b8edbd21b4d029604c57d6b3861f0&createdClient=acp_core_UnitedProfile_feeds",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "foundation", "catalog", "batches"],
               "query": [
@@ -2329,8 +2329,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/batches/1f8b8edbd21b4d029604c57d6b3861f0/failed",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/export/batches/1f8b8edbd21b4d029604c57d6b3861f0/failed",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -2398,8 +2398,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/foundation/export/batches/3b1aabde362e416b8545d6601acc9e7e/failed?path=part-00000-44da41ea-ccc2-4c38-b94e-a5a088844802-c000.json",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/foundation/export/batches/3b1aabde362e416b8545d6601acc9e7e/failed?path=part-00000-44da41ea-ccc2-4c38-b94e-a5a088844802-c000.json",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": [
                 "data",
@@ -2470,8 +2470,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.profile&entityId=100000000000000000000000201902070207SS&entityIdNS=ECID&limit=10",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.profile&entityId=100000000000000000000000201902070207SS&entityIdNS=ECID&limit=10",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "ups", "access", "entities"],
               "query": [
@@ -2547,8 +2547,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.experienceevent&relatedSchema.name=_xdm.context.profile&relatedEntityId=100000000000000000000000201902070207SS&relatedEntityIdNS=ECID&limit=10",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.experienceevent&relatedSchema.name=_xdm.context.profile&relatedEntityId=100000000000000000000000201902070207SS&relatedEntityIdNS=ECID&limit=10",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "ups", "access", "entities"],
               "query": [
@@ -2623,8 +2623,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.profile&entityId=yabadaba&entityIdNS=CRMID",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.profile&entityId=yabadaba&entityIdNS=CRMID",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "ups", "access", "entities"],
               "query": [
@@ -2696,8 +2696,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.experienceevent&relatedSchema.name=_xdm.context.profile&relatedEntityId=march720193prorecords&relatedEntityIdNS=CRMID",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.experienceevent&relatedSchema.name=_xdm.context.profile&relatedEntityId=march720193prorecords&relatedEntityIdNS=CRMID",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "ups", "access", "entities"],
               "query": [
@@ -2768,8 +2768,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.profile&entityId=march720191emailprorecord@adobe.com&entityIdNS=Email",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.profile&entityId=march720191emailprorecord@adobe.com&entityIdNS=Email",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "ups", "access", "entities"],
               "query": [
@@ -2836,8 +2836,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.experienceevent&relatedSchema.name=_xdm.context.profile&relatedEntityId=sherkhan@yahoo.com&relatedEntityIdNS=Email",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/ups/access/entities?schema.name=_xdm.context.experienceevent&relatedSchema.name=_xdm.context.profile&relatedEntityId=sherkhan@yahoo.com&relatedEntityIdNS=Email",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "ups", "access", "entities"],
               "query": [
@@ -2913,8 +2913,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/identity/cluster/members?id=abcdef&nsid=85919",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/identity/cluster/members?id=abcdef&nsid=85919",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "identity", "cluster", "members"],
               "query": [
@@ -2967,8 +2967,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/identity/cluster/members?id=100000000000000000000000201902070207SS&nsid=4",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/identity/cluster/members?id=100000000000000000000000201902070207SS&nsid=4",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "identity", "cluster", "members"],
               "query": [
@@ -3021,8 +3021,8 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://{{PLATFORM_GATEWAY}}/data/core/identity/cluster/members?id=casper@yahoo.com&nsid=6",
-              "protocol": "https",
+              "raw": "{{PLATFORM_GATEWAY}}/data/core/identity/cluster/members?id=casper@yahoo.com&nsid=6",
+
               "host": ["{{PLATFORM_GATEWAY}}"],
               "path": ["data", "core", "identity", "cluster", "members"],
               "query": [
