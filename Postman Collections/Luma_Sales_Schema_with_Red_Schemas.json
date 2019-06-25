@@ -565,7 +565,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Sales {{RUNDESIGNATION}}\",\n  \"description\": \"\",\n  \"allOf\": [\n    {\n      \"$ref\": \"{{Luma_Sales_Mixin_FullURL}}\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"schemas\",\n  \"meta:xdmType\": \"object\",\n  \"meta:class\": \"schema://{{Luma_Sales_Class_ID}}\"\n}"
+              "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Sales {{RUNDESIGNATION}}\",\n  \"description\": \"\",\n  \"allOf\": [\n    {\n      \"$ref\": \"{{Luma_Sales_Mixin_FullURL}}\"\n    },\n    {\n      \"$ref\": \"{{Luma_Sales_Class_FullUrl}}\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"schemas\",\n  \"meta:xdmType\": \"object\",\n  \"meta:class\": \"schema://{{Luma_Sales_Class_ID}}\"\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
