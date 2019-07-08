@@ -340,7 +340,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/stats",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/stats",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -417,7 +417,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Salesrecord {{RUNDESIGNATION}}\",\n  \"description\": \"Base class for Luma Sales {{RUNDESIGNATION}}\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/data/record\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"classes\",\n  \"meta:xdmType\": \"object\"\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/classes",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/classes",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -490,7 +490,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Mixin Custom Luma Sales {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"{{Luma_Sales_Class_FullUrl}}\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_sales\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                      \"salesid\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                          \t\"Account_Created\": {\n                    \t\t\t\"title\": \"Account_Created\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"City\": {\n                    \t\t\t\"title\": \"City\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Country\": {\n                    \t\t\t\"title\": \"Country\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Last_Login\": {\n                    \t\t\t\"title\": \"Last_Login\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n                \t\t\t\"Latitude\": {\n                \t\t\t\t \"title\": \"Latitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n\t\t\t                \"Longitude\": {\n                    \t\t\t\"title\": \"Longitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Name\": {\n                    \t\t\t\"title\": \"Name\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Payment_Type\": {\n                    \t\t\t\"title\": \"Payment_Type\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Price\": {\n\t\t\t                    \"title\": \"Price\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n                \t\t\t\t},\n\t\t\t                \"Product\": {\n\t\t\t                    \"title\": \"Product\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t\t                \"State\": {\n\t\t\t                    \"title\": \"State\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t                \"Transaction_date\": {\n\t\t                    \"title\": \"Transaction_date\",\n\t\t                    \"description\": \"\",\n\t\t                    \"type\": \"string\"\n\t\t                \t}\n                          }\n                      }\n                   }\n                }\n              }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_sales\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -567,7 +567,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Sales {{RUNDESIGNATION}}\",\n  \"description\": \"\",\n  \"allOf\": [\n    {\n      \"$ref\": \"{{Luma_Sales_Mixin_FullURL}}\"\n    },\n    {\n      \"$ref\": \"{{Luma_Sales_Class_FullUrl}}\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"schemas\",\n  \"meta:xdmType\": \"object\",\n  \"meta:class\": \"schema://{{Luma_Sales_Class_ID}}\"\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -665,7 +665,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Event Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Event Schema for Mobile App\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -760,7 +760,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Event Schema for Web {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Event Schema for Web\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -865,7 +865,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Loyalty Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_loyalty\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"email\": {\n                                \"title\": \"email\",\n                                \"type\": \"string\",\n                                \"description\": \"Email Address\"\n                            },\n                            \"level\": {\n                                \"title\": \"level\",\n                                \"type\": \"string\",\n                                \"description\": \"Level\"\n                            },\n                            \"member_since\": {\n                                \"title\": \"member_since\",\n                                \"type\": \"string\",\n                                \"description\": \"Member Since Date\"\n                            },\n                            \"points\": {\n                                \"title\": \"points\",\n                                \"type\": \"string\",\n                                \"description\": \"Points Balance\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_loyalty\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -941,7 +941,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Loyalty Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Loyalty Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    },\n    {\n       \"$ref\": \"{{Loyalty_Mixin_FullURL}}\"\n     }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1048,7 +1048,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Mixin Custom Identity {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_identity\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                    \t    \"crmid\": {\n                    \t    \t\"title\": \"crmid\",\n                                \"type\": \"string\",\n                                \"description\": \"CRM ID\"\n                    \t    },\n                    \t    \"level\": {\n                                \"title\": \"level\",\n                                \"type\": \"string\",\n                                \"description\": \"Luma Loyalty level\"\n                            },\n                            \"lumaLoyaltyId\": {\n                                \"title\": \"lumaLoyaltyId\",\n                                \"type\": \"string\",\n                                \"description\": \"Luma Loyalty ID\"\n                            },\n                            \"points\": {\n                                \"title\": \"points\",\n                                \"type\": \"string\",\n                                \"description\": \"Loyalty Points\"\n                            }\n                  }\n                }\n              }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_identity\"\n            }\n        ]\n      }"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins"
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins"
           },
           "response": []
         },
@@ -1124,7 +1124,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Profile Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"description\": \"\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n    },\n        {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n    },\n        {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n    },\n    {\n        \"$ref\": \"{{Mixin_For_Mobile_App_FullURL}}\"\n    },\n    {\n    \t\"$ref\":\"{{Loyalty_Mixin_FullURL}}\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"schemas\",\n  \"meta:xdmType\": \"object\"\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1235,7 +1235,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Profile Schema for Web {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma Sales Profile Schema\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n    },\n    {\n       \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n    },\n    {\n        \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n    },\n    {\n        \"$ref\": \"{{Mixin_For_Mobile_App_FullURL}}\"\n    },\n    {\n    \t\"$ref\":\"{{Loyalty_Mixin_FullURL}}\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1330,7 +1330,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Target Experience Events {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Target Experience Events\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/target-experienceevent\"\n    }\n  ]\n}\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1428,7 +1428,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED CRM Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED CRM Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n     {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-segmentation\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1533,7 +1533,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Luma RED Loyalty Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_red_loyalty\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"level\": {\n                                \"title\": \"level\",\n                                \"type\": \"string\",\n                                \"description\": \"level\"\n                            },\n                            \"lumaLoyaltyId\": {\n                                \"title\": \"lumaLoyaltyId\",\n                                \"type\": \"string\",\n                                \"description\": \"Luma Loyalty Id\"\n                            },\n                            \"points\": {\n                                \"title\": \"points\",\n                                \"type\": \"number\",\n                                \"description\": \"Loyalty Points\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_red_loyalty\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1609,7 +1609,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Luma Red CRM Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/profile\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_red_crm\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"crmid\": {\n                                \"title\": \"crmid\",\n                                \"type\": \"string\",\n                                \"description\": \"CRMid\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_red_crm\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1691,7 +1691,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Profile Schema for Web2 {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma RED Profile Schema for Web\",\n  \"allOf\": [\n    {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"{{RED_Loyalty_Mixin_FullURL}}\"\n        },\n        {\n            \"$ref\": \"{{RED_CRM_Mixin_FullURL}}\"\n        }\n    \n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1789,7 +1789,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Analytics Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Analytics Schema\",\n  \n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics-experienceevent\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1891,7 +1891,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Mixin Custom Luma Products Web  {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n    \n  \"description\": \"Use Custom Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n        \"luma_products_web\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"productListItems\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"_{{TENANTID}}\": {\n                                \"type\": \"object\",\n                                \"properties\": {\n                                    \"color\": {\n                                        \"title\": \"color\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"description\": {\n                                        \"title\": \"description\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"imageURL\": {\n                                        \"title\": \"imageURL\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"productURL\": {\n                                        \"title\": \"productURL\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    },\n                                    \"size\": {\n                                        \"title\": \"size\",\n                                        \"description\": \"\",\n                                        \"type\": \"string\",\n                                        \"meta:xdmType\": \"string\"\n                                    }\n                                },\n                                \"meta:xdmType\": \"object\"\n                            }\n                        },\n                        \"meta:xdmType\": \"object\"\n                    },\n                    \"meta:xdmType\": \"array\"\n                }\n            },\n            \"meta:xdmType\": \"object\"\n        }\n    },\n     \"meta:extends\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    ],\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_products_web\"\n            },\n            {\n             \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\t\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -1962,9 +1962,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Mixin Custom Luma POS Identification {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Custom Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_POS_Identification\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                          \t\"email\": {\n                    \t\t\t\"title\": \"email\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"loyalyID\": {\n                    \t\t\t\"title\": \"loyaltyID\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t}\n                          }\n                      }\n                   }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_POS_Identification\"\n            }\n        ]\n      }\n\n"
+              "raw": "{\n  \"title\": \"Mixin Custom Luma POS Identification {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Custom Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_POS_Identification\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                          \t\"email\": {\n                    \t\t\t\"title\": \"email\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"loyaltyID\": {\n                    \t\t\t\"title\": \"loyaltyID\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t}\n                          }\n                      }\n                   }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_POS_Identification\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2033,7 +2033,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED IOT Interactions Schema  {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED IOT Interaction Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin1_FullURL}}\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin2_FullURL}}\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2131,7 +2131,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED POS Transaction Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED POS Transaction Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-web\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin2_FullURL}}\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2242,7 +2242,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Profile Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma RED Profile Schema for Web\",\n  \"allOf\": [\n    {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-preferences-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"\n        },\n        {\n            \"$ref\": \"{{RED_Loyalty_Mixin_FullURL}}\"\n        },\n        {\n            \"$ref\": \"{{RED_CRM_Mixin_FullURL}}\"\n        }\n    \n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2353,7 +2353,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Loyalty Schema {{RUNDESIGNATION}}\",\n  \"auditable\": true,\n  \"meta:extends\": [\n    \"https://ns.adobe.com/xdm/context/profile\"\n  ],\n  \"description\": \"Luma RED Loyalty Schema\",\n  \"allOf\": [\n    {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/identitymap\"\n        },\n        {\n            \"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"\n        },\n        {\n            \"$ref\": \"{{RED_Loyalty_Mixin_FullURL}}\"\n        }\n    \n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2458,7 +2458,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Luma Red Identification Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"RED_Identification\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"identification\": {\n                                \"title\": \"identification\",\n                                \"type\": \"object\",\n                                        \"properties\":{\n                                        \t\n                                        },\n                                \"description\": \"RED Identification\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/RED_Identification\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2524,7 +2524,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Event Schema for Web {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Event Schema for Web\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-web\"\n    },\n    {\n      \"$ref\": \"{{RED_Identification_Mixin_FullURL}}\"\t\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin1_FullURL}}\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n    \n  ],\n  \"meta:containerId\": \"tenant\",\n    \"meta:class\": \"https://ns.adobe.com/xdm/context/experienceevent\",\n    \"required\": [\n        \"_id\",\n        \"timestamp\"\n    ]\n    \n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2619,7 +2619,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Event Schema for Mobile App {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Event Schema for Mobile App\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-web\"\n    },\n    {\n    \t\"$ref\": \"{{Luma_RED_IOT_Mixin1_FullURL}}\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-commerce\"\n    },\n    {\n    \t\"$ref\": \"https://ns.adobe.com/experience/campaign/experienceevent-all\"\n    }\n    \n  ],\n  \"meta:containerId\": \"tenant\",\n    \"meta:class\": \"https://ns.adobe.com/xdm/context/experienceevent\",\n    \"required\": [\n        \"_id\",\n        \"timestamp\"\n    ]\n    \n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2724,7 +2724,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Luma Red Campaign Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"RED_Campaign_ExperienceEvent_Template_Mixin\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"cusField1\": {\n                                \"title\": \"cusField1\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 1\"\n                            },\n                            \"cusField2\": {\n                                \"title\": \"cusField2\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 2\"\n                            },\n                            \"cusField3\": {\n                                \"title\": \"cusField3\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 3\"\n                            },\n                            \"cusField4\": {\n                                \"title\": \"cusField4\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 4\"\n                            },\n                            \"cusField5\": {\n                                \"title\": \"cusField5\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 5\"\n                            },\n                            \"cusField6\": {\n                                \"title\": \"cusField6\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 6\"\n                            },\n                            \"cusField7\": {\n                                \"title\": \"cusField7\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 7\"\n                            },\n                            \"cusField8\": {\n                                \"title\": \"cusField8\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 8\"\n                            },\n                            \"cusField9\": {\n                                \"title\": \"cusField9\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 9\"\n                            },\n                            \"cusField10\": {\n                                \"title\": \"cusField10\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 10\"\n                            },\n                            \"cusField11\": {\n                                \"title\": \"cusField11\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 11\"\n                            },\n                            \"cusField12\": {\n                                \"title\": \"cusField12\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 12\"\n                            },\n                            \"cusField13\": {\n                                \"title\": \"cusField13\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 13\"\n                            },\n                            \"cusField14\": {\n                                \"title\": \"cusField14\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 14\"\n                            },\n                            \"cusField15\": {\n                                \"title\": \"cusField15\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 15\"\n                            },\n                            \"cusField16\": {\n                                \"title\": \"cusField16\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 16\"\n                            },\n                            \"cusField17\": {\n                                \"title\": \"cusField17\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 17\"\n                            },\n                            \"cusField18\": {\n                                \"title\": \"cusField18\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 18\"\n                            },\n                            \"cusField19\": {\n                                \"title\": \"cusField19\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 19\"\n                            },\n                            \"cusField20\": {\n                                \"title\": \"cusField2\",\n                                \"type\": \"string\",\n                                \"description\": \"customer field 20\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/RED_Campaign_ExperienceEvent_Template_Mixin\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2790,7 +2790,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma RED Campaign Schema {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma RED Campaign Schema\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/campaign-experienceevent\"\n    },\n    {\n    \t\"$ref\": \"{{RED_Campaign_Mixin_FullURL}}\"\n    }\t\n    \n  ],\n  \"meta:containerId\": \"tenant\",\n    \"meta:class\": \"https://ns.adobe.com/xdm/context/experienceevent\",\n    \"required\": [\n        \"_id\",\n        \"timestamp\"\n    ]\n    \n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2895,7 +2895,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Recommendation Input Mixin {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"https://ns.adobe.com/xdm/context/experienceevent\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema for Recommendation\",\n  \n    \"definitions\": {\n            \"luma_recommendation\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                          \"properties\": {\n                            \"interactionType\": {\n                                \"title\": \"interactionType\",\n                                \"type\": \"string\",\n                                \"description\": \"interactionType\"\n                            },\n                            \"itemid\": {\n                                \"title\": \"itemid\",\n                                \"type\": \"string\",\n                                \"description\": \"itemid\"\n                            },\n                            \"timeStamp\": {\n                                \"title\": \"timeStamp\",\n                                \"type\": \"string\",\n                                \"format\": \"date-time\",\n                                \"description\": \"timeStamp\"\n                            },\n                            \"userid\": {\n                                \"title\": \"userid\",\n                                \"type\": \"string\",\n                                \"description\": \"userId\"\n                            }\n                          }\n                    }\n                 \n                }\n              \n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_recommendation\"\n            }\n        ]\n      }\n\n"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -2971,7 +2971,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma Recommendations Input {{RUNDESIGNATION}}\",\n  \"definitions\": {\n  },\n  \n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent-marketing\"\n    },\n    {\n    \t\"$ref\": \"{{Recommendations_Mixin_FullURL}}\"\n    }\n    \n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -3076,7 +3076,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma midValues {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma midValues\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics/experienceevent-all\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
@@ -3181,7 +3181,7 @@
               "mode": "raw",
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma post-Values {{RUNDESIGNATION}}\",\n  \"meta:extensible\": false,\n  \"meta:abstract\": false,\n  \"auditable\": true,\n  \"description\": \"Luma post-Values\",\n  \"definitions\": {\n  },\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/experienceevent\"\n    },\n    {\n      \"$ref\": \"https://ns.adobe.com/experience/analytics/experienceevent-all\"\n    }\n  ]\n}"
             },
-            "url": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
