@@ -44,7 +44,7 @@
                 "id": "1759a9d4-ac9a-4eb2-b5d1-a608a43a2cad",
                 "exec": [
                   "var data = JSON.parse(responseBody);",
-                  "postman.setEnvironmentVariable(\"access_token\", data.access_token);"
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
                 ],
                 "type": "text/javascript"
               }
@@ -68,9 +68,9 @@
                   "",
                   "var data = {",
                   "\t\"exp\": Math.round(87000 + Date.now()/1000),",
-                  "\t\"iss\": postman.getEnvironmentVariable(\"OrgID\"),",
+                  "\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
                   "\t\"sub\": postman.getEnvironmentVariable(\"TechAcctID\"),",
-                  "\t\"aud\": postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"clientID\")",
+                  "\t\"aud\": postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
                   "};",
                   "",
                   "meta_scopes = postman.getEnvironmentVariable(\"meta_scope\").split(',');",
@@ -112,7 +112,7 @@
                 },
                 {
                   "key": "client_secret",
-                  "value": "{{IMS_ORG}}",
+                  "value": "{{clientSecret}}",
                   "type": "text"
                 },
                 {
