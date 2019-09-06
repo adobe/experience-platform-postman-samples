@@ -496,6 +496,79 @@
           "response": []
         },
         {
+          "name": "Create Custom Mixin for Luma Sales Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
+                "exec": [
+                  "var json = JSON.parse(responseBody);",
+                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
+                  "",
+                  "//console.log(json);",
+                  "",
+                  "var Luma_Sales_Mixin_altId = json['meta:altId'];",
+                  "postman.setEnvironmentVariable(\"Luma_Sales_Mixin_altId\", Luma_Sales_Mixin_altId);",
+                  "tests[\"Luma_Sales_Mixin_altId = \" + Luma_Sales_Mixin_altId] = true; ",
+                  "",
+                  "var Luma_Sales_Mixin_FullURL = json.$id;",
+                  "postman.setEnvironmentVariable(\"Luma_Sales_Mixin_FullURL\", Luma_Sales_Mixin_FullURL);",
+                  "tests[\"Luma_Sales_Mixin_FullURL = \" + Luma_Sales_Mixin_FullURL] = true; ",
+                  "",
+                  "",
+                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1a16fa8c-cd66-4648-a31f-46d363aa41a6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "disabled": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{clientID}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{OrgID}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mixin Custom Luma Sales {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"{{Luma_Sales_Class_FullUrl}}\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_sales\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                      \"salesid\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                          \t\"Account_Created\": {\n                    \t\t\t\"title\": \"Account_Created\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"City\": {\n                    \t\t\t\"title\": \"City\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Country\": {\n                    \t\t\t\"title\": \"Country\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Last_Login\": {\n                    \t\t\t\"title\": \"Last_Login\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n                \t\t\t\"Latitude\": {\n                \t\t\t\t \"title\": \"Latitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n\t\t\t                \"Longitude\": {\n                    \t\t\t\"title\": \"Longitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Name\": {\n                    \t\t\t\"title\": \"Name\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Payment_Type\": {\n                    \t\t\t\"title\": \"Payment_Type\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Price\": {\n\t\t\t                    \"title\": \"Price\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n                \t\t\t\t},\n\t\t\t                \"Product\": {\n\t\t\t                    \"title\": \"Product\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t\t                \"State\": {\n\t\t\t                    \"title\": \"State\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t                \"Transaction_date\": {\n\t\t                    \"title\": \"Transaction_date\",\n\t\t                    \"description\": \"\",\n\t\t                    \"type\": \"string\"\n\t\t                \t}\n                          }\n                      }\n                   }\n                }\n              }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_sales\"\n            }\n        ]\n      }\n\n"
+            },
+            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+            "description": "Create Customer Schema (target schema) in tenant"
+          },
+          "response": []
+        },
+        {
           "name": "Create Schema for Luma Sales",
           "event": [
             {
@@ -568,79 +641,6 @@
               "raw": "{\n  \"type\": \"object\",\n  \"title\": \"Luma Sales {{RUNDESIGNATION}}\",\n  \"description\": \"\",\n  \"allOf\": [\n    {\n      \"$ref\": \"{{Luma_Sales_Mixin_FullURL}}\"\n    },\n    {\n      \"$ref\": \"{{Luma_Sales_Class_FullUrl}}\"\n    }\n  ],\n  \"meta:containerId\": \"tenant\",\n  \"meta:resourceType\": \"schemas\",\n  \"meta:xdmType\": \"object\",\n  \"meta:class\": \"schema://{{Luma_Sales_Class_ID}}\"\n}"
             },
             "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
-            "description": "Create Customer Schema (target schema) in tenant"
-          },
-          "response": []
-        },
-        {
-          "name": "Create Custom Mixin for Luma Sales Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "47da0211-ab07-460a-bb30-0be8ec0a9a15",
-                "exec": [
-                  "var json = JSON.parse(responseBody);",
-                  "//postman.setEnvironmentVariable(\"TEST\", json.version);",
-                  "",
-                  "//console.log(json);",
-                  "",
-                  "var Luma_Sales_Mixin_altId = json['meta:altId'];",
-                  "postman.setEnvironmentVariable(\"Luma_Sales_Mixin_altId\", Luma_Sales_Mixin_altId);",
-                  "tests[\"Luma_Sales_Mixin_altId = \" + Luma_Sales_Mixin_altId] = true; ",
-                  "",
-                  "var Luma_Sales_Mixin_FullURL = json.$id;",
-                  "postman.setEnvironmentVariable(\"Luma_Sales_Mixin_FullURL\", Luma_Sales_Mixin_FullURL);",
-                  "tests[\"Luma_Sales_Mixin_FullURL = \" + Luma_Sales_Mixin_FullURL] = true; ",
-                  "",
-                  "",
-                  "tests[\"Refer to https://wiki.corp.adobe.com/pages/viewpage.action?pageId=1579435795\"] = true    ",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "d9b2a742-1459-453d-b54a-169cbc9d7fcd",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "1a16fa8c-cd66-4648-a31f-46d363aa41a6",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}",
-                "disabled": true
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{clientID}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{OrgID}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Mixin Custom Luma Sales {{RUNDESIGNATION}}\",\n  \"type\": \"object\",\n  \"meta:extensible\": true,\n  \"meta:abstract\": true,\n  \"meta:intendedToExtend\": [\n        \"{{Luma_Sales_Class_FullUrl}}\"\n    ],\n  \"description\": \"Use Mixin to create Custom Schema\",\n  \n   \"definitions\": {\n            \"luma_sales\": {\n              \"properties\": {\n                \"_{{TENANTID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                      \"salesid\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                          \t\"Account_Created\": {\n                    \t\t\t\"title\": \"Account_Created\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"City\": {\n                    \t\t\t\"title\": \"City\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Country\": {\n                    \t\t\t\"title\": \"Country\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Last_Login\": {\n                    \t\t\t\"title\": \"Last_Login\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n                \t\t\t\"Latitude\": {\n                \t\t\t\t \"title\": \"Latitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n            \t\t\t\t\t },\n\t\t\t                \"Longitude\": {\n                    \t\t\t\"title\": \"Longitude\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Name\": {\n                    \t\t\t\"title\": \"Name\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                    \t\t\t\n                \t\t\t\t},\n                \t\t\t\"Payment_Type\": {\n                    \t\t\t\"title\": \"Payment_Type\",\n                    \t\t\t\"description\": \"\",\n                    \t\t\t\"type\": \"string\"\n                \t\t\t\t},\n                \t\t\t\"Price\": {\n\t\t\t                    \"title\": \"Price\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n                \t\t\t\t},\n\t\t\t                \"Product\": {\n\t\t\t                    \"title\": \"Product\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t\t                \"State\": {\n\t\t\t                    \"title\": \"State\",\n\t\t\t                    \"description\": \"\",\n\t\t\t                    \"type\": \"string\"\n\t\t\t                },\n\t\t                \"Transaction_date\": {\n\t\t                    \"title\": \"Transaction_date\",\n\t\t                    \"description\": \"\",\n\t\t                    \"type\": \"string\"\n\t\t                \t}\n                          }\n                      }\n                   }\n                }\n              }\n            }\n        },\n \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/luma_sales\"\n            }\n        ]\n      }\n\n"
-            },
-            "url": "https://{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
             "description": "Create Customer Schema (target schema) in tenant"
           },
           "response": []
