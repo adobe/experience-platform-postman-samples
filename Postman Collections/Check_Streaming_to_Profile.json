@@ -131,20 +131,9 @@
           "name": "NEW POSTMAN EVARS IMS: JWT Generate + Auth via User Token Copy",
           "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "1759a9d4-ac9a-4eb2-b5d1-a608a43a2cad",
-                "exec": [
-                  "var data = JSON.parse(responseBody);",
-                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
               "listen": "prerequest",
               "script": {
-                "id": "f067b81f-65d2-4672-ae41-0ff1338d25f6",
+                "id": "685cb13c-fa6d-4d1d-afbd-e2e7989018d5",
                 "exec": [
                   "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
                   "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
@@ -181,7 +170,18 @@
                   "console.log(sPayload);",
                   "console.log(sJWT);",
                   "",
-                  "postman.setEnvironmentVariable(\"jwt_token\", sJWT);"
+                  "postman.setEnvironmentVariable(\"JWT_TOKEN\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a5ef3854-65f5-4b85-818f-d96b9585a825",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
                 ],
                 "type": "text/javascript"
               }
@@ -199,18 +199,18 @@
               "formdata": [
                 {
                   "key": "client_id",
-                  "value": "{{API_KEY}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{API_KEY}}"
                 },
                 {
                   "key": "client_secret",
-                  "value": "{{CLIENT_SECRET}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{CLIENT_SECRET}}"
                 },
                 {
                   "key": "jwt_token",
-                  "value": "{{jwt_token}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{JWT_TOKEN}}"
                 }
               ]
             },
