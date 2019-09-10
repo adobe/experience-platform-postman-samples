@@ -39,20 +39,9 @@
           "name": "IMS: JWT Generate + Auth via User Token",
           "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "1759a9d4-ac9a-4eb2-b5d1-a608a43a2cad",
-                "exec": [
-                  "var data = JSON.parse(responseBody);",
-                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
               "listen": "prerequest",
               "script": {
-                "id": "f067b81f-65d2-4672-ae41-0ff1338d25f6",
+                "id": "28829cf2-8b13-4389-8999-08c72d9e67ec",
                 "exec": [
                   "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
                   "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
@@ -73,7 +62,7 @@
                   "\t\"aud\": postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
                   "};",
                   "",
-                  "meta_scopes = postman.getEnvironmentVariable(\"meta_scope\").split(',');",
+                  "meta_scopes = postman.getEnvironmentVariable(\"meta_scope\").toString().split(',');",
                   "meta_scopes.forEach(function(scope){",
                   "    var meta_scope = postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
                   "                     scope;",
@@ -90,6 +79,17 @@
                   "console.log(sJWT);",
                   "",
                   "postman.setEnvironmentVariable(\"jwt_token\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "818f18a4-4b25-4aca-b253-ce0f110edc9a",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
                 ],
                 "type": "text/javascript"
               }
