@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "2c11f1cc-628f-4f23-8793-ab06e54ffafb",
+    "name": "Get Bearer Token - Adobe IO Env Variables",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth setup",
+      "item": [
+        {
+          "name": "INIT: Load Crypto Library for RS256",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "824e628b-b420-417b-894b-417ab6412896",
+                "exec": [
+                  "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);",
+                  "tests[\"Javascript load complete\"] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "f4ee0d46-72da-4827-9dd6-fc296aa39402",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
+            "description": "Load the RSA-Sign Crypto LIbrary in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
+          },
+          "response": []
+        },
+        {
+          "name": "NEW POSTMAN EVARS IMS: JWT Generate + Auth via User Token Copy",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "685cb13c-fa6d-4d1d-afbd-e2e7989018d5",
+                "exec": [
+                  "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+                  "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+                  "",
+                  "var navigator = {}; //fake a navigator object for the lib",
+                  "var window = {}; //fake a window object for the lib",
+                  "eval(postman.getGlobalVariable(\"jsrsasign-js\")); //import javascript jsrsasign",
+                  "",
+                  "",
+                  "var header = {",
+                  "\t\"alg\": \"RS256\"",
+                  "};",
+                  "",
+                  "var data = {",
+                  "\t\"exp\": Math.round(87000 + Date.now()/1000),",
+                  "\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
+                  "\t\"sub\": postman.getEnvironmentVariable(\"TECHNICAL_ACCOUNT_ID\"),",
+                  "\t\"aud\": \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
+                  "};",
+                  "",
+                  "meta_scopes = postman.getEnvironmentVariable(\"META_SCOPE\").toString().split(',');",
+                  "meta_scopes.forEach(function(scope){",
+                  "    var meta_scope = \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                  "                     scope;",
+                  "    data[meta_scope] = true;",
+                  "});",
+                  "",
+                  "var secret = postman.getEnvironmentVariable(\"PRIVATE_KEY\");",
+                  "",
+                  "var sHeader = JSON.stringify(header);",
+                  "var sPayload = JSON.stringify(data);",
+                  "var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+                  "",
+                  "console.log(sPayload);",
+                  "console.log(sJWT);",
+                  "",
+                  "postman.setEnvironmentVariable(\"JWT_TOKEN\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a5ef3854-65f5-4b85-818f-d96b9585a825",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c3dbd462-bcbe-4521-860d-9d3db3b1a11b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "client_id",
+                  "type": "text",
+                  "value": "{{API_KEY}}"
+                },
+                {
+                  "key": "client_secret",
+                  "type": "text",
+                  "value": "{{CLIENT_SECRET}}"
+                },
+                {
+                  "key": "jwt_token",
+                  "type": "text",
+                  "value": "{{JWT_TOKEN}}"
+                }
+              ]
+            },
+            "url": "https://{{IMS}}/ims/exchange/jwt/",
+            "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "a81baf73-98d8-46ab-9db6-e183348a34ef",
+      "description": "Test the Markdown",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5d587611-840d-4c76-a6a7-7048b56c4a38",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "ded6d34d-ea4c-4791-b433-c5f0a7e047d2",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "{{ACCESS_TOKEN}}"
+    }
+  }
+}
