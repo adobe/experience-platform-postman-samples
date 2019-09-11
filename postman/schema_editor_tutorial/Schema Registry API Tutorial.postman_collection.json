@@ -47,9 +47,9 @@
 					"raw": "{\n  \"type\": \"object\",\n  \"title\": \"Loyalty Members\",\n  \"description\": \"Information for all members of the loyalty program\",\n  \"allOf\": [\n    {\n      \"$ref\": \"https://ns.adobe.com/xdm/context/profile\"\n    }\n  ]\n}"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -89,9 +89,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -132,9 +132,9 @@
 					"raw": "[\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"https://ns.adobe.com/xdm/context/profile-person-details\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"https://ns.adobe.com/xdm/context/profile-person-details\"}}\n]"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -175,9 +175,9 @@
 					"raw": "[\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"https://ns.adobe.com/xdm/context/profile-personal-details\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"https://ns.adobe.com/xdm/context/profile-personal-details\"}}\n]"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -232,9 +232,9 @@
 					"raw": "{\n        \"type\": \"object\",\n        \"title\": \"Loyalty Member Details\",\n        \"meta:intendedToExtend\": [\"https://ns.adobe.com/xdm/context/profile\"],\n        \"description\": \"Loyalty Program Mixin.\",\n        \"definitions\": {\n            \"loyalty\": {\n              \"properties\": {\n                \"_{{TENANT_ID}}\": {\n                  \"type\":\"object\",\n                  \"properties\": {\n                  \t\"loyalty\": {\n                  \t\t\"type\": \"object\",\n                  \t\t\"properties\": {\n\t\t                    \"loyaltyId\": {\n\t\t                        \"title\": \"Loyalty Identifier\",\n\t\t                        \"type\": \"string\",\n\t\t                        \"description\": \"Loyalty Identifier.\"\n\t\t                    },\n\t\t                    \"loyaltyLevel\": {\n\t\t                        \"title\": \"Loyalty Level\",\n\t\t                        \"type\": \"string\"\n\t\t                    },\n\t\t                    \"loyaltyPoints\": {\n\t\t                        \"title\": \"Loyalty Points\",\n\t\t                        \"type\": \"integer\",\n\t\t                        \"description\": \"Loyalty points total.\"\n\t\t                    },\n\t\t                    \"memberSince\": {\n\t\t                        \"title\": \"Member Since\",\n\t\t                        \"type\": \"string\",\n\t\t                        \"format\": \"date-time\",\n\t\t                        \"description\": \"Date the member joined the Loyalty Program.\"\n\t\t                    }\n                  \t\t}\n                \t}\n                  }\n                }\n              }\n            }\n        },\n        \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/loyalty\"\n            }\n        ]\n      }"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/mixins",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -274,9 +274,9 @@
 					"raw": "[\n    { \"op\": \"add\", \"path\": \"/meta:extends/-\", \"value\":  \"{{MIXIN_URL}}\"},\n    { \"op\": \"add\", \"path\": \"/allOf/-\", \"value\":  {\"$ref\": \"{{MIXIN_URL}}\"}}\n]"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -317,9 +317,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -373,9 +373,9 @@
 					"raw": "{\n        \"title\": \"Loyalty Details\",\n        \"type\": \"object\",\n        \"description\": \"Loyalty Member Details data type\",\n        \"definitions\": {\n            \"loyalty\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"loyaltyId\": {\n                    \"title\": \"Loyalty Identifier\",\n                    \"type\": \"string\",\n                    \"description\": \"Loyalty Identifier.\"\n                    },\n                    \"loyaltyLevel\": {\n                    \"title\": \"Loyalty Level\",\n                    \"type\": \"string\"\n                    },\n                    \"loyaltyPoints\": {\n                    \"title\": \"Loyalty Points\",\n                    \"type\": \"integer\",\n                    \"description\": \"Loyalty points total.\"\n                    },\n                    \"memberSince\": {\n                    \"title\": \"Member Since\",\n                    \"type\": \"string\",\n                    \"format\": \"date-time\",\n                    \"description\": \"Date the member joined the Loyalty Program.\"\n                    }\n                }\n            }\n        },\n        \"allOf\": [\n            {\n            \"$ref\": \"#/definitions/loyalty\"\n            }\n        ]\n      }"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/datatypes",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/datatypes",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -415,9 +415,9 @@
 					"raw": "  [\n    {\n        \"op\": \"replace\",\n        \"path\": \"/definitions/loyalty/properties/_{{TENANT_ID}}/properties\",\n        \"value\": {\n            \"loyalty\": {\n                \"title\": \"Loyalty\",\n                \"$ref\": \"{{DATATYPE_URL}}\",\n                \"description\": \"Loyalty Info\"\n            }\n        }\n    }\n  ]"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/mixins/{{MIXIN_ID}}",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/mixins/{{MIXIN_ID}}",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -458,9 +458,9 @@
 					"raw": "{\n        \"@type\": \"xdm:descriptorIdentity\",\n        \"xdm:sourceSchema\": \"{{SCHEMA_URL}}\",\n        \"xdm:sourceVersion\": 1,\n        \"xdm:sourceProperty\": \"/_{{TENANT_ID}}/loyalty/loyaltyId\",\n        \"xdm:namespace\": \"Email\",\n        \"xdm:property\": \"xdm:code\",\n        \"xdm:isPrimary\": false\n      }"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/descriptors",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/descriptors",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -500,9 +500,9 @@
 					"raw": "[\n   { \"op\": \"add\", \"path\": \"/meta:immutableTags\", \"value\": [\"union\"]}\n]"
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/schemas/{{SCHEMA_ID}}",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
@@ -543,9 +543,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{PLATFORM_GATEWAY}}/data/foundation/schemaregistry/tenant/unions/https%3A%2F%2Fns.adobe.com%2Fxdm%2Fcontext%2Fprofile__union",
+					"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/unions/https%3A%2F%2Fns.adobe.com%2Fxdm%2Fcontext%2Fprofile__union",
 					"host": [
-						"{{PLATFORM_GATEWAY}}"
+						"https://platform.adobe.io"
 					],
 					"path": [
 						"data",
