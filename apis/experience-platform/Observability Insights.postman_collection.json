@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "b7ad5851-7193-488f-a899-19dede57aca0",
+		"name": "Observability Insights",
+		"description": "<p>The Observability Insights Service is used to collect and expose metrics data from various components of Observability. It listens to events broadcasting on the data pipeline and collects metrics on resources and statistics on data ingestion.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/observability.html\">Observability Insights API Overview</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/infrastructure/observability/insights</li><li>Example of a complete path for making a call to \"/metrics\":<span> https://platform.adobe.io/data/infrastructure/observability/insights/metrics</ul></p>",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Metrics",
+			"item": [
+				{
+					"name": "List metrics data.",
+					"_postman_id": "f2889cdf-7d72-43de-b8be-56b3ddc7cb1f",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, application/problem+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/metrics?metric={{metric}}&id={{id}}&dateRange={{dateRange}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"metrics"
+							],
+							"query": [
+								{
+									"key": "metric",
+									"value": "{{metric}}"
+								},
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "dateRange",
+									"value": "{{dateRange}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "90544464-5fa2-417d-8187-1cdb5ea5c9e1",
+			"description": "Observability metrics are parameters used to gain statistical insights into actions being performed in Adobe Experience Platform. These insights include counts of available Platform resources and statistics on data ingestion."
+		}
+	]
+}

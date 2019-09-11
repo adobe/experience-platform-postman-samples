@@ -1,0 +1,2225 @@
+{
+	"info": {
+		"_postman_id": "c2aa8c9b-80d1-4b12-8549-6f38812f75ed",
+		"name": "Sensei Machine Learning API",
+		"description": "Sensei Machine Learning API provides a mechanism for data scientists to organize and manage ML services from algorithm onboarding through experimentation and to service deployment.\n\nRelated documentation:\n  * [Data Science Workspace overview](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html)\n  * [Data Science Workspace terminology](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html#!api-specification/markdown/narrative/technical_overview/data_science_workspace_overview/dsw_overview.md#terminology)\n\n\nNotes: \n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/ \n  * Base path for this API: /data/sensei\n  * Example of a complete path: https://<span>platform.adobe.io/data/sensei/engines\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Engines",
+			"item": [
+				{
+					"name": "Retrieve a list of all engines.",
+					"_postman_id": "48a70fc4-e518-4342-9f1b-495a22001319",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engineListing.v1.json"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/engines",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"engines"
+							]
+						},
+						"description": "Lists all engines providing mechanisms for pagination, filtering, and sorting."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new Engine.",
+					"_postman_id": "1bda2334-75f6-4b5f-b275-1540246e7eb0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "engine",
+									"value": "{{engine}}",
+									"type": "text"
+								},
+								{
+									"key": "defaultArtifact",
+									"value": "{{defaultArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "preprocessOverrideArtifact",
+									"value": "{{preprocessOverrideArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "featurePipelineOverrideArtifact",
+									"value": "{{featurePipelineOverrideArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "trainOverrideArtifact",
+									"value": "{{trainOverrideArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "batchScoreOverrideArtifact",
+									"value": "{{batchScoreOverrideArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "validateOverrideArtifact",
+									"value": "{{validateOverrideArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "evaluateOverrideArtifact",
+									"value": "{{evaluateOverrideArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "publishOverrideArtifact",
+									"value": "{{publishOverrideArtifact}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/engines",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"engines"
+							]
+						},
+						"description": "Creates a new Engine"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Docker registry information.",
+					"_postman_id": "beb4918d-87f5-49e3-b139-e9cbbb767a22",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=enginesDockerRegistryInfo.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/engines/dockerRegistry",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"engines",
+								"dockerRegistry"
+							]
+						},
+						"description": "Get Docker registry information"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an Engine by ID.",
+					"_postman_id": "89fe01d6-7738-4dbe-9cec-eda9d5c95d12",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"engines",
+								":engineId"
+							],
+							"variable": [
+								{
+									"value": "{{engineId}}",
+									"id": "engineId"
+								}
+							]
+						},
+						"description": "Retrieves a specific Engine"
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Engine by ID.",
+					"_postman_id": "e1e21b6b-7c1c-4da0-b82c-7fdd8cd7f182",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{engine}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"engines",
+								":engineId"
+							],
+							"variable": [
+								{
+									"value": "{{engineId}}",
+									"id": "engineId"
+								}
+							]
+						},
+						"description": "Updates a specific Engine"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an existing Engine by ID.",
+					"_postman_id": "5eb7597a-af42-43ca-bee7-9e97e9ef4d5e",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"engines",
+								":engineId"
+							],
+							"variable": [
+								{
+									"value": "{{engineId}}",
+									"id": "engineId"
+								}
+							]
+						},
+						"description": "Deletes a specific Engine"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "46ca562a-fb99-4a0c-b5f5-929ae51ada32",
+			"description": "Engines act as an umbrella entity holding all machine learning instances. This is tied to a Docker image, Java archive, or EGG file which contains machine  learning logic to train and score a Model."
+		},
+		{
+			"name": "MLInstances",
+			"item": [
+				{
+					"name": "Retrieve a list of MLInstances matching given criteria.",
+					"_postman_id": "70d4503e-61c7-45d2-bd29-b7404d37ff68",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstanceListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlInstances"
+							]
+						},
+						"description": "MLInstances may be searched by name or tags."
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new MLInstance.",
+					"_postman_id": "d73aa432-c3c8-40f9-892d-da62964ee769",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{mlInstance}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlInstances"
+							]
+						},
+						"description": "Creates a new MLInstance of an Engine"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete MLinstances by engineId.",
+					"_postman_id": "bb4cd68b-d0ff-4b7c-86c6-55c344591478",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances?engineId={{engineId}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlInstances"
+							],
+							"query": [
+								{
+									"key": "engineId",
+									"value": "{{engineId}}"
+								}
+							]
+						},
+						"description": "Deletes all MLinstances for provided engineId."
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a MLInstance by ID.",
+					"_postman_id": "7eaa40ff-21b1-4df8-adee-99bac563f39e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlInstances",
+								":mlInstanceId"
+							],
+							"variable": [
+								{
+									"value": "{{mlInstanceId}}",
+									"id": "mlInstanceId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a MLInstance by ID.",
+					"_postman_id": "70f19ea6-263e-47a6-af65-2dbcc209735e",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{mlInstance}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlInstances",
+								":mlInstanceId"
+							],
+							"variable": [
+								{
+									"value": "{{mlInstanceId}}",
+									"id": "mlInstanceId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an existing MLInstance by ID.",
+					"_postman_id": "49f2d791-c6ad-44b9-aecb-d327324842bb",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlInstances",
+								":mlInstanceId"
+							],
+							"variable": [
+								{
+									"value": "{{mlInstanceId}}",
+									"id": "mlInstanceId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "8f41e309-eb45-4847-b1e5-810be9c8265f",
+			"description": "MLInstances represent the combination of a specific Engine with particular set  of configurations. An instance is often use-case specific for a customer or client."
+		},
+		{
+			"name": "Experiments",
+			"item": [
+				{
+					"name": "Retrieve all experiments for a MLInstance.",
+					"_postman_id": "123edc92-f3b6-42dc-b8c2-c107b07f0f9e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create an experiment.",
+					"_postman_id": "db1ddc46-0249-4c8b-b611-5ad006d02723",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{experiment}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete experiments by mlInstanceId.",
+					"_postman_id": "b08e561b-df3d-4bc0-bb36-cd142f2856d6",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments?mlInstanceId={{mlInstanceId}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments"
+							],
+							"query": [
+								{
+									"key": "mlInstanceId",
+									"value": "{{mlInstanceId}}"
+								}
+							]
+						},
+						"description": "Deletes all experiments for provided mlInstance"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an experiment by ID.",
+					"_postman_id": "25967c04-791d-441b-bf65-c81a69c3d75a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments",
+								":experimentId"
+							],
+							"variable": [
+								{
+									"value": "{{experimentId}}",
+									"id": "experimentId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an experiment by ID.",
+					"_postman_id": "60895364-8899-4729-8bec-f60ae0be5615",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{experiment}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments",
+								":experimentId"
+							],
+							"variable": [
+								{
+									"value": "{{experimentId}}",
+									"id": "experimentId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an experiment by ID.",
+					"_postman_id": "32373285-8f2a-4173-bab0-912f9136ae0a",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments",
+								":experimentId"
+							],
+							"variable": [
+								{
+									"value": "{{experimentId}}",
+									"id": "experimentId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of all runs for an experiment by ID.",
+					"_postman_id": "05a1c142-933b-49b5-84b5-7e061f23efae",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments",
+								":experimentId",
+								"runs"
+							],
+							"variable": [
+								{
+									"value": "{{experimentId}}",
+									"id": "experimentId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Run an experiment with parameter values.",
+					"_postman_id": "06fdc91b-87d0-42d5-b25a-697c78c8bbe5",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{Run}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments",
+								":experimentId",
+								"runs"
+							],
+							"variable": [
+								{
+									"value": "{{experimentId}}",
+									"id": "experimentId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve the details of an experiment run by ID.",
+					"_postman_id": "4e24186a-30c5-452e-ab17-9526a7212530",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs/:experimentRunId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments",
+								":experimentId",
+								"runs",
+								":experimentRunId"
+							],
+							"variable": [
+								{
+									"value": "{{experimentId}}",
+									"id": "experimentId"
+								},
+								{
+									"value": "{{experimentRunId}}",
+									"id": "experimentRunId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve the status of an experiment run by ID.",
+					"_postman_id": "de4d007b-54e2-4287-92d9-217129408131",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunStatus.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs/:experimentRunId/status",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"experiments",
+								":experimentId",
+								"runs",
+								":experimentRunId",
+								"status"
+							],
+							"variable": [
+								{
+									"value": "{{experimentId}}",
+									"id": "experimentId"
+								},
+								{
+									"value": "{{experimentRunId}}",
+									"id": "experimentRunId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "fbc5e82e-23a9-4fad-804a-ced397a1b1db",
+			"description": "A data scientist conducts multiple experiments to arrive at a high-performing Model while training. This can include changing datasets, features, learning parameters, and hardware."
+		},
+		{
+			"name": "Models",
+			"item": [
+				{
+					"name": "Retrieve a list of all Models.",
+					"_postman_id": "d2f73115-ae23-4093-8d49-112f573d100c",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models"
+							]
+						},
+						"description": "List all Models providing mechanisms for pagination, filtering, and sorting."
+					},
+					"response": []
+				},
+				{
+					"name": "Register a generated Model.",
+					"_postman_id": "5919e65f-ec63-457f-b821-f6ba65bfe06c",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "modelArtifact",
+									"value": "{{modelArtifact}}",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "{{model}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models"
+							]
+						},
+						"description": "Creates a Model for a particular Engine and MLinstance"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a Model by ID.",
+					"_postman_id": "fae4b857-6f73-4ffe-87ba-2f939257cf28",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models",
+								":modelId"
+							],
+							"variable": [
+								{
+									"value": "{{modelId}}",
+									"id": "modelId"
+								}
+							]
+						},
+						"description": "Retrieves a specific Model"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Model by ID.",
+					"_postman_id": "d8e1f60a-b83b-4278-9b72-1aabbbacb3ce",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{model}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models",
+								":modelId"
+							],
+							"variable": [
+								{
+									"value": "{{modelId}}",
+									"id": "modelId"
+								}
+							]
+						},
+						"description": "Update an existing Model"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Model by ID.",
+					"_postman_id": "dbaf2d75-9be4-4470-98a8-757ad892a172",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models",
+								":modelId"
+							],
+							"variable": [
+								{
+									"value": "{{modelId}}",
+									"id": "modelId"
+								}
+							]
+						},
+						"description": "Deletes a specific Model"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a binary Model artifact by ID.",
+					"_postman_id": "6ed8baf1-0995-47d0-ad10-b457596dbf5b",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/octet-stream"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/artifact",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models",
+								":modelId",
+								"artifact"
+							],
+							"variable": [
+								{
+									"value": "{{modelId}}",
+									"id": "modelId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of transcodings for a model by ID.",
+					"_postman_id": "c1aa2d93-8892-484c-a215-e522cff07339",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscodingListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models",
+								":modelId",
+								"transcodings"
+							],
+							"variable": [
+								{
+									"value": "{{modelId}}",
+									"id": "modelId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new transcoding for a Model by ID.",
+					"_postman_id": "1e18519f-bfce-4744-b64a-7788e6d80eeb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{model}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models",
+								":modelId",
+								"transcodings"
+							],
+							"variable": [
+								{
+									"value": "{{modelId}}",
+									"id": "modelId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a Model transcoding by ID.",
+					"_postman_id": "2897a355-2b45-4f7a-815a-d4991c882837",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings/:modelTranscodingId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"models",
+								":modelId",
+								"transcodings",
+								":modelTranscodingId"
+							],
+							"variable": [
+								{
+									"value": "{{modelId}}",
+									"id": "modelId"
+								},
+								{
+									"value": "{{modelTranscodingId}}",
+									"id": "modelTranscodingId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "d0b7df89-d32a-415f-9fe5-ec3c18f33176",
+			"description": "Allows machine learning Model management and registration (Model artifact that is created by the training process)."
+		},
+		{
+			"name": "Insights",
+			"item": [
+				{
+					"name": "Retrieve a list of insights.",
+					"_postman_id": "7e97b5ad-47f8-470d-bd5a-3e8dbc5cb46a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insightListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/insights",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"insights"
+							]
+						},
+						"description": "Lists all insights for all experiment runs"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new Model insight.",
+					"_postman_id": "6a64638b-1d34-4991-b706-9b17d0d4ecc2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{insight}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/insights",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"insights"
+							]
+						},
+						"description": "Creates a new Model insight"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an insight by ID.",
+					"_postman_id": "7d9a5203-d0f3-4783-8435-1fb5ef5557e3",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/insights/:insightId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"insights",
+								":insightId"
+							],
+							"variable": [
+								{
+									"value": "{{insightId}}",
+									"id": "insightId"
+								}
+							]
+						},
+						"description": "Retrieves a specific insight"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of default metrics for algorithms.",
+					"_postman_id": "0e0aef7e-9933-4783-8dbb-546928a2cf07",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=defaultMetricsListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/insights/metrics?algorithm={{algorithm}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"insights",
+								"metrics"
+							],
+							"query": [
+								{
+									"key": "algorithm",
+									"value": "{{algorithm}}"
+								}
+							]
+						},
+						"description": "Lists all default metrics available for algorithms"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "f57fcbc1-b5fe-4cef-90e7-eb7ba3deeb05",
+			"description": "Insights conatin metrics which are used to empower a  data scientist to evaluate and choose optimal ML Models by displaying  relevant evaluation metrics."
+		},
+		{
+			"name": "MLServices",
+			"item": [
+				{
+					"name": "Retrieve a list of MLServices matching given criteria.",
+					"_postman_id": "9552ef0f-b2dc-430f-9c44-2aa333b6fb54",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlServiceListing.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlServices",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlServices"
+							]
+						},
+						"description": "MLServices may be searched by name or tags."
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new MLService.",
+					"_postman_id": "0b40d00b-13a1-46f8-bb73-dfab8bda4d3b",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{mlService}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlServices",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlServices"
+							]
+						},
+						"description": "Creates a new MLService of an MLInstance"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete MLServices by mlInstanceId.",
+					"_postman_id": "98205399-561a-4aa1-9d6a-4c7801053ee8",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlServices?mlInstanceId={{mlInstanceId}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlServices"
+							],
+							"query": [
+								{
+									"key": "mlInstanceId",
+									"value": "{{mlInstanceId}}"
+								}
+							]
+						},
+						"description": "Deletes all MLServices for provided mlInstanceId"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup MLService by ID.",
+					"_postman_id": "47454ce4-fcf3-46f6-bf37-ca924d5722fb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": ", application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlServices",
+								":serviceId"
+							],
+							"variable": [
+								{
+									"value": "{{serviceId}}",
+									"id": "serviceId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a MLService by ID.",
+					"_postman_id": "95e180cb-2507-4df8-bbd6-77be6beaa3be",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{mlService}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlServices",
+								":serviceId"
+							],
+							"variable": [
+								{
+									"value": "{{serviceId}}",
+									"id": "serviceId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an existing MLService by ID.",
+					"_postman_id": "c1ed648b-415d-480f-87d0-f76336e8f2ed",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"sensei",
+								"mlServices",
+								":serviceId"
+							],
+							"variable": [
+								{
+									"value": "{{serviceId}}",
+									"id": "serviceId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "fed08c0d-955a-44c6-8e07-eca92594428f",
+			"description": "TMLServices represent an MLInstance which has been published as a service."
+		}
+	]
+}

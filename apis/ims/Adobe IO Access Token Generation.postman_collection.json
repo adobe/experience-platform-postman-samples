@@ -1,0 +1,433 @@
+{
+	"info": {
+		"_postman_id": "ca69c264-ddd7-4d6c-af33-fa4bf6118f65",
+		"name": "Adobe I/O Access Token Generation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local Signing (Non-production use-only)",
+			"item": [
+				{
+					"name": "INIT: Load Crypto Library for RS256",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "824e628b-b420-417b-894b-417ab6412896",
+								"exec": [
+									"postman.setGlobalVariable(\"jsrsasign_js\", responseBody);",
+									"tests[\"Javascript JSR Assign Library load complete\"] = true; "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
+							"protocol": "https",
+							"host": [
+								"kjur",
+								"github",
+								"io"
+							],
+							"path": [
+								"jsrsasign",
+								"jsrsasign-latest-all-min.js"
+							]
+						},
+						"description": "Load the RSA-Sign Crypto Library in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
+					},
+					"response": []
+				},
+				{
+					"name": "IMS: JWT Generate + Auth via User Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1759a9d4-ac9a-4eb2-b5d1-a608a43a2cad",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"if (data.access_token) {",
+									"    postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);",
+									"} else {",
+									"    console.log(\"Unable to acquire ACCESS_TOKEN from Adobe IMS to make further calls to Adobe I/O APIs.\")",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f067b81f-65d2-4672-ae41-0ff1338d25f6",
+								"exec": [
+									"// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+									"// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+									"",
+									"var navigator = {}; //fake a navigator object for the lib",
+									"var window = {}; //fake a window object for the lib",
+									"eval(postman.getGlobalVariable(\"jsrsasign_js\")); //import javascript jsrsasign",
+									"",
+									"",
+									"var header = {",
+									"\t\"alg\": \"RS256\"",
+									"};",
+									"",
+									"var data = {",
+									"\t\"exp\": Math.round(87000 + Date.now()/1000),",
+									"\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
+									"\t\"sub\": postman.getEnvironmentVariable(\"TECHNICAL_ACCOUNT_ID\"),",
+									"\t\"aud\": \"https://\" + postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
+									"};",
+									"",
+									"meta_scopes = postman.getEnvironmentVariable(\"META_SCOPE\");",
+									"meta_scopes.forEach(function(scope){",
+									"    var meta_scope = \"https://\" + postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+									"                     scope;",
+									"    data[meta_scope] = true;",
+									"});",
+									"",
+									"var secret = postman.getEnvironmentVariable(\"PRIVATE_KEY\");",
+									"",
+									"if (!secret) {",
+									"    console.log(\"Ensure the Private Key is added to both INITIAL and CURRENT VALUES in the active Postman environment's PRIVATE_KEY variable.\");",
+									"}",
+									"",
+									"console.log(data);",
+									"",
+									"var sHeader = JSON.stringify(header);",
+									"var sPayload = JSON.stringify(data);",
+									"var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+									"",
+									"console.log(sJWT);",
+									"",
+									"postman.setEnvironmentVariable(\"JWT_TOKEN\", sJWT);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "client_id",
+									"value": "{{API_KEY}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{CLIENT_SECRET}}",
+									"type": "text"
+								},
+								{
+									"key": "jwt_token",
+									"value": "{{JWT_TOKEN}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{IMS}}/ims/exchange/jwt/",
+							"protocol": "https",
+							"host": [
+								"{{IMS}}"
+							],
+							"path": [
+								"ims",
+								"exchange",
+								"jwt",
+								""
+							]
+						},
+						"description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+					},
+					"response": []
+				}
+			],
+			"description": "This API call genereated the signed JWT Token locally and the Private Key does not leave this machine, however this set of API calls does load the JSR Assign Crypto library from a non-Adone end-point (https://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js), therefore it not recommended for use with Production credentials.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "732a0d2c-7e74-4bac-9159-2fcb2505a3fe",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b336e835-73f8-4f02-9ddc-ea6f730da453",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Remote Signing (Non-production use-only)",
+			"item": [
+				{
+					"name": "IMS: Generate Access Token (Developer use only)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "33db2857-8ada-47b7-b2fb-e415929e0902",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"if (data.access_token) {",
+									"    postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);",
+									"} else {",
+									"    console.log(\"Unable to acquire ACCESS_TOKEN from adobeioruntime.net to make further calls to Adobe I/O APIs.\")",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{CLIENT_SECRET}}"
+								},
+								{
+									"key": "meta_scopes",
+									"value": "{{META_SCOPE}}"
+								},
+								{
+									"key": "technical_account_id",
+									"value": "{{TECHNICAL_ACCOUNT_ID}}"
+								},
+								{
+									"key": "org_id",
+									"value": "{{IMS_ORG}}"
+								},
+								{
+									"key": "private_key",
+									"value": "{{PRIVATE_KEY}}"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://adobeioruntime.net/api/v1/web/io-solutions/default/jwt",
+							"protocol": "https",
+							"host": [
+								"adobeioruntime",
+								"net"
+							],
+							"path": [
+								"api",
+								"v1",
+								"web",
+								"io-solutions",
+								"default",
+								"jwt"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "adobeioruntime.net",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{CLIENT_SECRET}}"
+										},
+										{
+											"key": "meta_scopes",
+											"value": "{{META_SCOPE}}"
+										},
+										{
+											"key": "technical_account_id",
+											"value": "{{TECHNICAL_ACCOUNT_ID}}"
+										},
+										{
+											"key": "org_id",
+											"value": "{{IMS_ORG}}"
+										},
+										{
+											"key": "private_key",
+											"value": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDKTCAmW827TtnC\nQQpTuiI+yLzgeVWl2sU+klgezbyVi/zJhUeHs0KHV6l7QibAS1JhHcctY02eEhY3\nrvMqnlYwg8NRA1aEuTy4HiJX0BqVzGeCdRIts1BkMK2iCY6stmTfEYBHj7i6Yah7\nk0cnObjCQTdX735EVhl4DunpZdAEjWuZOYG6YTDaWT3RepPM2IMTmNurv5wPdNa/\nJj7fe8FmbEcqP8DaioRNZ/C8n5HRS9NWuTW9Sb/ClHmTaqmiCEXy0NpigrtFwYhe\nu0OR+iyto8Xv1vBw/L2AT6itWTNFlsksBtkQeuBcs4d3EKjZeGW8x/WYyvdW164U\nGO0MvteTAgMBAAECggEBAJQNusnYDm2ze7Ornj9Azqdcir9OjdxgjFMLD+sbb5WT\namKiZINwMpSTF7rZ4zqA5b2l6YvSTZAOdKw0Iktirnm7NUspQjzIxSOLCl9yMsLH\nYkocHD3OKlvpNGqOzBijNJf9WwEEspHVv1URqNWQbSPeTv7QjHy+9szjPVZP6Toq\naQ336NP/lkwl3usxzlO6WsUl1gvT2oypDqpHVuCLmZ3B25wRklMw2M7O2JCf/q9g\nnii8RV1HrjOUT/BDgLKHxIHrYqyDM2ItbxkR6yZ+dlQuSrcxflyy/4vy5vlt/g3U\n/miWuaDSuCcrrD1aSGKaKzN1yQUUaAQYzI8vlNuiFuECgYEA6RXiA6L2paAi0PXp\nOwLlcSHIcYi4l0xJKD52NlDOrdSU7352Ek0tpMiyjP8Bk3KMlhjTXAgx5nDERsDw\nw2mDd4HYseaxyvERceP4jdzUciQJfJbT4tC9t3FPC0S2JRMEZyJlbTnKCDqr8NBL\nogXjXrF8v732yyJNfwSYdiDvdp0CgYEA3i9kGFdKjN9pthoCvxY0qc4dYh83k1+O\ngukulg+4OwmSNLu1R8sx5ZrUDPVbeQaDj0I9enA277KZCM233w7SLnulBUd1Ix0R\nhPhq2ybzvtYCOJSeQTG8FjnF/s18b++PsRB/vdKRinmrbS9/rLo/iP0nvx2lBwiI\n0GBUZjVzF+8CgYAX0IyPIo9gzMPB5d42kU0wCeuY7gcuLjUrT3Z0hj0Xtaih76HQ\nrOIE/ByCG2vlzMZgb5joxk2S5eKn9/6heJ5eD348bv2rZoYJxOkYVX+/Sb9OY3qy\nqfE4VPNmi1aw4wiIIROL3WOvA4+dwyp3G3Lnseq1DIuypYaVe7q4FxVgYQKBgQDB\nF/apoNNNcqxwclKIt0e1e0fWCsNF9Pnpk7XE/Ixj4oGKCsgVSOZoYRKA4ItKtvqG\n+k5rpjJYRqLxH7f4xuyrMRHNcLjAd3bOVQaox0V2SI9NlPukNRD9T+Be/T50GYKL\no4cg9Ws/KVZuYaVX+9VTvI9abO0LG8OrNMyktzb7SQKBgQChovrLD72PaaJni2uJ\n9eGWX7OrvZKiwL5YxigHxTtt/1FvjLhUG6rbJG9Swfg/gOK04HbL26VTTENQ1zKQ\naQbyYKk2W0Ax2aPS5NCggM28m1U4DI6Hv2Vnx5ZbhKgbL7x4TycGHCH6jGRVMt4a\ntZiC/E/Hfg5a0/if9z7vr18RBg==\n-----END PRIVATE KEY-----"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://adobeioruntime.net/api/v1/web/io-solutions/default/jwt",
+									"protocol": "https",
+									"host": [
+										"adobeioruntime",
+										"net"
+									],
+									"path": [
+										"api",
+										"v1",
+										"web",
+										"io-solutions",
+										"default",
+										"jwt"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Authorization, Origin, X-Requested-With, Content-Type, Accept, User-Agent"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, DELETE, POST, PUT, HEAD, PATCH"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 11 Sep 2019 15:31:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "api-gateway/1.9.3.1"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "deny"
+								},
+								{
+									"key": "x-openwhisk-activation-id",
+									"value": "30a2cec01f184ef1a2cec01f183ef130"
+								},
+								{
+									"key": "X-Request-ID",
+									"value": "RX53A8tRZHoTOwc2JtsPDY5xtbzF2N1x"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Length",
+									"value": "245"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"opensslErrorStack\": [\n        \"error:0907B00D:PEM routines:PEM_read_bio_PrivateKey:ASN1 lib\",\n        \"error:0D07803A:asn1 encoding routines:asn1_item_embed_d2i:nested asn1 error\",\n        \"error:0D068066:asn1 encoding routines:asn1_check_tlen:bad object header\"\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "DO NOT USE THIS API END POINT FOR PRODUCTION OR SECURE PRIVATE KEYS.\n\nUsing the adobeioruntime.net API end-point to generate the Adobe I/O access token sends the Private Key to the Adobe server. While the Private Key is NOT stored by the Adobe server, it is recommended that only non-production Private Keys (ie. disposable, non-production keys) are transmitted to Adobe's servers.\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5871a46a-9648-4e49-b539-7160ce741ec0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2698a656-39bb-4b54-a3f7-1e5263320020",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2bf87150-fe36-4e0f-a71d-f973271eecef",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "06d2eac1-b14c-4da2-8279-247bb17505d4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

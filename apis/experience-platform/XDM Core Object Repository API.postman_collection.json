@@ -1,0 +1,664 @@
+{
+	"info": {
+		"_postman_id": "5de66890-e053-447a-8e2c-adcd05709279",
+		"name": "XDM Core Object Repository API",
+		"description": "<p>Experience Data Model (XDM) Core Object Repository is an event-driven repository for XDM instances, fully integrated with Adobe Experience Platform. XDM Core Object Repository is part of Decisioning Service, which provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. Decisioning Service is controlled by a number of interrelated business objects. The XDM Core Object Repository API allows you to access and manage those business objects within the repository. </p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_entities_api_tutorial.md\">Manage Decisioning Service entities using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/xcore</li><li>Example of a complete path for making a call to Home (\"/\"):<span> https://platform.adobe.io/data/core/xcore/</ul></p>",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "Rich core search interface for XDM instances.",
+					"_postman_id": "6e90416b-724c-428a-b2f1-0d5a583ce46b",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.xcore.hal+json; schema='https://ns.adobe.com/experience/xcore/hal/results'"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.xcore.hal+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/queries/core/search?schema={{schema}}&q={{q}}&qop={{qop}}&field={{field}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								":containerId",
+								"queries",
+								"core",
+								"search"
+							],
+							"query": [
+								{
+									"key": "schema",
+									"value": "{{schema}}"
+								},
+								{
+									"key": "q",
+									"value": "{{q}}"
+								},
+								{
+									"key": "qop",
+									"value": "{{qop}}"
+								},
+								{
+									"key": "field",
+									"value": "{{field}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								}
+							]
+						},
+						"description": "Query instances in a container."
+					},
+					"response": []
+				},
+				{
+					"name": "Core query for instances by schema ID or name.",
+					"_postman_id": "ca3ac216-f1b5-4a23-8dbc-88295c94b2d2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.xcore.hal+json; schema='https://ns.adobe.com/experience/xcore/hal/results'"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.xcore.hal+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances?schema={{schema}}&id={{id}}&name={{name}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								":containerId",
+								"instances"
+							],
+							"query": [
+								{
+									"key": "schema",
+									"value": "{{schema}}"
+								},
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								}
+							]
+						},
+						"description": "The Collections API is designed to return a list of instances of a particular schema type defined by:<ul><li>All instances in a container that match a set of schemas.</li><li>Instances matching a name regex (MUST contain `xdm:name` property); or a list of specific instance IDs.</li></ul>"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "ff8c77f0-0835-4c9f-808b-1a281f7a128b",
+			"description": "Core Queries against XDM instances."
+		},
+		{
+			"name": "Instances",
+			"item": [
+				{
+					"name": "Create a new XDM instance",
+					"_postman_id": "8141ed5d-27b3-49e6-950e-bb6fe62a0919",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								":containerId",
+								"instances"
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								}
+							]
+						},
+						"description": "Create a new instance of a given model schema. Use the HAL link with the relationship type `api:create` that can be obtained from the Home (\"/\") endpoint as the complete URL. Alternatively, you can construct the URL from the `containerId` received from the Container API."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific instance on an object.",
+					"_postman_id": "d75c3581-a648-42ac-a897-1128b539a1c9",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\", application/vnd.adobe.platform.xcore.hal+json; schema=\"{namespaceId1} {namespaceId2}\""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.xcore.hal+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "If-None-Match",
+								"value": "{{If-None-Match}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								":containerId",
+								"instances",
+								":instanceId"
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								},
+								{
+									"value": "{{instanceId}}",
+									"id": "instanceId"
+								}
+							]
+						},
+						"description": "Get an instance of an object."
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing XDM instance.",
+					"_postman_id": "c41b26ec-d99e-4d62-85e4-8b1da3af0598",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "If-Match",
+								"value": "{{If-Match}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								":containerId",
+								"instances",
+								":instanceId"
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								},
+								{
+									"value": "{{instanceId}}",
+									"id": "instanceId"
+								}
+							]
+						},
+						"description": "Updates an existing instance using a constructed URL. Use the `Location` header or a HAL link received from a prior API call for this object as the complete URL for this endpoint. If this is not possible, you can construct the URL from the `containerId` and the `instanceId`. `Content-type` negotiation is used to pass in the schema which represents the schema type that is registered with the instance and also is used to validate the instance. For PUT and PATCH operations the schema is optionally given as it was required on the POST request to create the instance."
+					},
+					"response": []
+				},
+				{
+					"name": "Update instance using patch protocol.",
+					"_postman_id": "f85e20e5-bdea-45fb-aec0-bb43cc694a1c",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.xcore.patch.hal+json; schema=\"{namespaceId1} {namespaceId2}\""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "If-Match",
+								"value": "{{If-Match}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								":containerId",
+								"instances",
+								":instanceId"
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								},
+								{
+									"value": "{{instanceId}}",
+									"id": "instanceId"
+								}
+							]
+						},
+						"description": "Update an existing XDM instance using JSON Patch protocol. Updates an existing instance using a patch document. Use the `Location` header or a HAL link received from a prior API call for this object as the complete URL for this API. If this is not possible, you can construct the URL from the `containerId` and the `instanceId`."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an XDM instance.",
+					"_postman_id": "e7080639-ec2f-477c-932b-2c692e0f7aa9",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.xcore.hal+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "If-Match",
+								"value": "{{If-Match}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								":containerId",
+								"instances",
+								":instanceId"
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								},
+								{
+									"value": "{{instanceId}}",
+									"id": "instanceId"
+								}
+							]
+						},
+						"description": "Deletes an existing instance using a constructed URL. Use the `Location` header or a HAL link received from a prior API call for this object as the complete URL for this API. If this is not possible, you can construct the URL from the `containerId` and the `instanceId`."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "fbf63104-4a54-4d27-b4ee-7b99658cce99",
+			"description": "Perform CRUD operations to add, edit, update, delete, and view instances via the primary `instanceId`."
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "View the home directory for an IMS organization.",
+					"_postman_id": "d3c92b70-6ff2-4b1c-876a-dd9e2ff36b64",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*, application/vnd.adobe.platform.xcore.home.hal+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.xcore.hal+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/xcore/?product={{product}}&start={{start}}&limit={{limit}}&property={{property}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"xcore",
+								""
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "{{product}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								}
+							]
+						},
+						"description": "View the home document for an IMS Organization. The home document is a HAL (Hypermedia Access Language) document which can be used as the hypermedia home directory for the IMS Organization specified. It lists relevant HAL links that can be traversed and also lists all of the containers belonging to the Org. The containers are ordered by the `repo:createdDate` property."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "f5b03f09-cdfc-4fb1-9c43-9148ee12af78",
+			"description": "Home document for an IMS Organization. The home document is a HAL (Hypermedia Access Language) document which can be used as the hypermedia home directory for the IMS Organization specified. It lists relevant HAL links that can be traversed and also lists all of the containers belonging to the Org."
+		}
+	]
+}

@@ -1,0 +1,5082 @@
+{
+	"info": {
+		"_postman_id": "94c45a74-ce03-474d-90cd-e82fa6254d3b",
+		"name": "Catalog Service API",
+		"description": "Catalog Service is the system of record for data location, lineage, schema definition,  and usage labeling for Adobe Experience Platform.\n\nRelated documentation:\n  * [Catalog Service overview](https://www.adobe.io/apis/experienceplatform/home/services/allservices.html#!api-specification/markdown/narrative/technical_overview/catalog_architectural_overview/catalog_architectural_overview.md)\n  * [Create a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/catalog\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/catalog/batches\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the <a href='https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md'>authentication tutorial</a>.\n   * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Retrieve a list of accounts.",
+					"_postman_id": "4e40676f-b70c-4e31-9eeb-e0740e6e7362",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts?connector={{connector}}&description={{description}}&version={{version}}&created={{created}}&updated={{updated}}&createdClient={{createdClient}}&createdUser={{createdUser}}&updatedUser={{updatedUser}}&orderBy={{orderBy}}&limit={{limit}}&start={{start}}&property={{property}}&properties={{properties}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "connector",
+									"value": "{{connector}}"
+								},
+								{
+									"key": "description",
+									"value": "{{description}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								},
+								{
+									"key": "created",
+									"value": "{{created}}"
+								},
+								{
+									"key": "updated",
+									"value": "{{updated}}"
+								},
+								{
+									"key": "createdClient",
+									"value": "{{createdClient}}"
+								},
+								{
+									"key": "createdUser",
+									"value": "{{createdUser}}"
+								},
+								{
+									"key": "updatedUser",
+									"value": "{{updatedUser}}"
+								},
+								{
+									"key": "orderBy",
+									"value": "{{orderBy}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new account.",
+					"_postman_id": "3d89f773-0b3c-4296-946d-c95ba7d3a3e4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{account}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an account by ID.",
+					"_postman_id": "e92ffe75-2477-444f-b530-815c4411e83c",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"accounts",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing account by ID.",
+					"_postman_id": "eb94f31e-5d4e-4aa2-bfcb-d78ca864c623",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{account}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"accounts",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new account with a specified ID.",
+					"_postman_id": "f8e28776-9aaa-4b10-9851-5a1a361643fb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{account}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"accounts",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of an account specified by ID.",
+					"_postman_id": "c2582521-8669-4f10-864f-53ff1ce04ec5",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{account}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"accounts",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an account by ID.",
+					"_postman_id": "3e308bd6-6198-4257-828f-fac1c6e0c63b",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"accounts",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "93a4c62f-5b77-436e-988b-33656549dd76",
+			"description": "Accounts represent a collection of authentication credentials used to create data connections of a specific type. Each connection has a set of unique parameters that are persisted by Catalog and secured in an Azure Key Vault using Security Services."
+		},
+		{
+			"name": "Batches",
+			"item": [
+				{
+					"name": "Retrieve a list of batches.",
+					"_postman_id": "363161a2-f622-4792-ab8f-0740e79fc391",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								},
+								{
+									"key": "recordCount",
+									"value": "{{recordCount}}"
+								},
+								{
+									"key": "failedRecordCount",
+									"value": "{{failedRecordCount}}"
+								},
+								{
+									"key": "size",
+									"value": "{{size}}"
+								},
+								{
+									"key": "started",
+									"value": "{{started}}"
+								},
+								{
+									"key": "completed",
+									"value": "{{completed}}"
+								},
+								{
+									"key": "startAfter",
+									"value": "{{startAfter}}"
+								},
+								{
+									"key": "startBefore",
+									"value": "{{startBefore}}"
+								},
+								{
+									"key": "endAfter",
+									"value": "{{endAfter}}"
+								},
+								{
+									"key": "endBefore",
+									"value": "{{endBefore}}"
+								},
+								{
+									"key": "batch",
+									"value": "{{batch}}"
+								},
+								{
+									"key": "externalId",
+									"value": "{{externalId}}"
+								},
+								{
+									"key": "connection",
+									"value": "{{connection}}"
+								},
+								{
+									"key": "connector",
+									"value": "{{connector}}"
+								},
+								{
+									"key": "dataSet",
+									"value": "{{dataSet}}"
+								},
+								{
+									"key": "dataSetFile",
+									"value": "{{dataSetFile}}"
+								},
+								{
+									"key": "dataSetView",
+									"value": "{{dataSetView}}"
+								},
+								{
+									"key": "transform",
+									"value": "{{transform}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new batch.",
+					"_postman_id": "060322de-7ded-4908-a950-b20b5339ecf8",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{batch}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve the unique values stored in a field specified by ID.",
+					"_postman_id": "fd35295b-6348-4995-acc3-c9b5a4a12b1a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/uniques/:field?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches",
+								"uniques",
+								":field"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								},
+								{
+									"key": "recordCount",
+									"value": "{{recordCount}}"
+								},
+								{
+									"key": "failedRecordCount",
+									"value": "{{failedRecordCount}}"
+								},
+								{
+									"key": "size",
+									"value": "{{size}}"
+								},
+								{
+									"key": "started",
+									"value": "{{started}}"
+								},
+								{
+									"key": "completed",
+									"value": "{{completed}}"
+								},
+								{
+									"key": "startAfter",
+									"value": "{{startAfter}}"
+								},
+								{
+									"key": "startBefore",
+									"value": "{{startBefore}}"
+								},
+								{
+									"key": "endAfter",
+									"value": "{{endAfter}}"
+								},
+								{
+									"key": "endBefore",
+									"value": "{{endBefore}}"
+								},
+								{
+									"key": "batch",
+									"value": "{{batch}}"
+								},
+								{
+									"key": "externalId",
+									"value": "{{externalId}}"
+								},
+								{
+									"key": "connection",
+									"value": "{{connection}}"
+								},
+								{
+									"key": "connector",
+									"value": "{{connector}}"
+								},
+								{
+									"key": "dataSet",
+									"value": "{{dataSet}}"
+								},
+								{
+									"key": "dataSetFile",
+									"value": "{{dataSetFile}}"
+								},
+								{
+									"key": "dataSetView",
+									"value": "{{dataSetView}}"
+								},
+								{
+									"key": "transform",
+									"value": "{{transform}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{field}}",
+									"id": "field"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a batch by ID.",
+					"_postman_id": "59cd5c22-c16b-4542-ac8f-eb8aeead2147",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id?aggregate={{aggregate}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches",
+								":id"
+							],
+							"query": [
+								{
+									"key": "aggregate",
+									"value": "{{aggregate}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a batch by ID.",
+					"_postman_id": "1ed06f3b-c953-4beb-b95c-09171d3b5176",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{batch}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new batch with a specified ID.",
+					"_postman_id": "a1f5db02-6ba9-444a-b5c2-5a7ec1ce600a",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{batch}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a batch specified by ID.",
+					"_postman_id": "15eb3eab-6555-457d-a4cd-68108894ce21",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{batch}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a batch by ID.",
+					"_postman_id": "72a31006-58b6-4af7-b4c2-2ba21522a68d",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"batches",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "9e59e206-bebb-4fb8-98e1-60edb488846c",
+			"description": "Batches allow Catalog users to understand which operations and applications have been performed on objects tracked by the system. A batch outlines the final results of an operation (such as records processed, or size on disk) but may also include links to datasets, files, and more that were affected by the process."
+		},
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "Healthcheck report for Catalog Service.",
+					"_postman_id": "69d14ae3-c7cb-4710-b91e-0f4ab3b2e1d6",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/health",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Healthcheck report for Catalog Service with dependencies.",
+					"_postman_id": "2b08092b-35de-447d-9e40-1082445eb0e4",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/health-detailed",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"health-detailed"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "54998ed4-21ca-4259-985c-d212d47ebf27",
+			"description": "Healthcheck for Catalog Service."
+		},
+		{
+			"name": "Large documents",
+			"item": [
+				{
+					"name": "Lookup a large document by ID.",
+					"_postman_id": "b4341891-9d85-4fce-9295-a455456f1a38",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/largedocuments/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"largedocuments",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "329d2ed7-998d-4f2b-8a03-a47df7e130ad",
+			"description": "Large documents are ingested files that exceed 512MB in size. These files are divided into chunks and ingested separately."
+		},
+		{
+			"name": "Connections",
+			"item": [
+				{
+					"name": "Retrieve a list of connections.",
+					"_postman_id": "5eea4b3d-4b9f-4518-aaec-6d36722a82b0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections?connector={{connector}}&parentConnectionId={{parentConnectionId}}&name={{name}}&accountId={{accountId}}&description={{description}}&enabled={{enabled}}&ingestStart={{ingestStart}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections"
+							],
+							"query": [
+								{
+									"key": "connector",
+									"value": "{{connector}}"
+								},
+								{
+									"key": "parentConnectionId",
+									"value": "{{parentConnectionId}}"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "accountId",
+									"value": "{{accountId}}"
+								},
+								{
+									"key": "description",
+									"value": "{{description}}"
+								},
+								{
+									"key": "enabled",
+									"value": "{{enabled}}"
+								},
+								{
+									"key": "ingestStart",
+									"value": "{{ingestStart}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new connection.",
+					"_postman_id": "716506e3-ff98-4752-a176-25bc39ade743",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{connection}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a connection by ID.",
+					"_postman_id": "8c36a0d5-91f0-4a9b-8ec6-faa8a817b8c0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a connection by ID.",
+					"_postman_id": "5af446a3-b43b-46c0-8796-506c2add124b",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{connection}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save a new connection with a specified ID.",
+					"_postman_id": "24ecf13d-94c7-4fd0-8a09-5f72a647e8f8",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{connection}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a connection specified by ID.",
+					"_postman_id": "67ba1d6a-f7c3-494f-8f99-6ddf50098353",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{connection}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a connection by ID.",
+					"_postman_id": "7df55fbe-a4a1-4dff-991a-8a68c2132c0d",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of datasets for a connection by ID.",
+					"_postman_id": "90a9f5c1-3d72-4c3a-9959-bd051c38d056",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id/dataSets",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connections",
+								":id",
+								"dataSets"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "1008dc2f-f22f-402c-b5b7-741a043c9335",
+			"description": "Connections are customer-specific instances of connectors. As an example, when a user selects the Azure Blob connector and supplies the necessary details as defined by that connector, the result is a connection."
+		},
+		{
+			"name": "Connectors",
+			"item": [
+				{
+					"name": "Retrieve a list of connectors.",
+					"_postman_id": "8f33b840-3772-4704-a027-bc1e02681dba",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connectors?type={{type}}&name={{name}}&category={{category}}&description={{description}}&maxConnections={{maxConnections}}&uiCreationAllowed={{uiCreationAllowed}}&connectorOwnedDataSets={{connectorOwnedDataSets}}&internal={{internal}}&ingestStart={{ingestStart}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connectors"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "{{type}}"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "category",
+									"value": "{{category}}"
+								},
+								{
+									"key": "description",
+									"value": "{{description}}"
+								},
+								{
+									"key": "maxConnections",
+									"value": "{{maxConnections}}"
+								},
+								{
+									"key": "uiCreationAllowed",
+									"value": "{{uiCreationAllowed}}"
+								},
+								{
+									"key": "connectorOwnedDataSets",
+									"value": "{{connectorOwnedDataSets}}"
+								},
+								{
+									"key": "internal",
+									"value": "{{internal}}"
+								},
+								{
+									"key": "ingestStart",
+									"value": "{{ingestStart}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a connector by ID.",
+					"_postman_id": "406b05bc-2479-423f-8e38-a99aec7b80ae",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connectors/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connectors",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve the statistics for a connector specified by ID.",
+					"_postman_id": "9486f99c-24b4-44c4-a42b-1b7965ae282a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connectors/:id/stats",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"connectors",
+								":id",
+								"stats"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "a04a1b7a-f2ea-48cc-b3b6-913ed760aba2",
+			"description": "Connectors define how and when data is ingested into Platform. They control how data is to be gathered from technology sources (like S3, RedShift, and SFTP) and partner sources (like DFA, SAP, MSFT, and ExactTarget). Connectors also define how and when data from Adobe solutions is ingested into Platform."
+		},
+		{
+			"name": "Datasets",
+			"item": [
+				{
+					"name": "Retrieve a list of datasets.",
+					"_postman_id": "88abfa66-43a0-4e36-a0b5-5a7c9cf0945c",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets?connectorId={{connectorId}}&connectionId={{connectionId}}&name={{name}}&description={{description}}&type={{type}}&state={{state}}&namespace={{namespace}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets"
+							],
+							"query": [
+								{
+									"key": "connectorId",
+									"value": "{{connectorId}}"
+								},
+								{
+									"key": "connectionId",
+									"value": "{{connectionId}}"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "description",
+									"value": "{{description}}"
+								},
+								{
+									"key": "type",
+									"value": "{{type}}"
+								},
+								{
+									"key": "state",
+									"value": "{{state}}"
+								},
+								{
+									"key": "namespace",
+									"value": "{{namespace}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new dataset.",
+					"_postman_id": "57c01b12-c676-4315-9242-17c93b027276",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSet}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets?requestDataSource={{requestDataSource}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets"
+							],
+							"query": [
+								{
+									"key": "requestDataSource",
+									"value": "{{requestDataSource}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a dataset by ID.",
+					"_postman_id": "9ed66740-9afb-4757-af54-8b631bf6643e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id?properties={{properties}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id"
+							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a dataset by ID.",
+					"_postman_id": "dcb0ec7b-9dc6-4a83-bcf6-8e0768b0daff",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSet}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id?requestDataSource={{requestDataSource}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id"
+							],
+							"query": [
+								{
+									"key": "requestDataSource",
+									"value": "{{requestDataSource}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a dataset specified by ID.",
+					"_postman_id": "827f3882-a4e8-4171-a412-cff1ee6a8f29",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSet}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a dataset by ID.",
+					"_postman_id": "7bc9d86d-0a9d-44ff-976f-630ba9df842e",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve the credentials of a dataset specified by ID.",
+					"_postman_id": "6f5addf4-8b57-43a4-b4fb-f889d7239d1f",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/credentials?batchId={{batchId}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"credentials"
+							],
+							"query": [
+								{
+									"key": "batchId",
+									"value": "{{batchId}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of views for a dataset specified by ID.",
+					"_postman_id": "e2d63cbe-e24e-457c-94ef-460cab69d308",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/views",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"views"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new view for a dataset specified by ID.",
+					"_postman_id": "24ad277e-cc72-4953-add8-1c3fa92bde8c",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetView}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/views",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"views"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a single view for a dataset, both specified by ID.",
+					"_postman_id": "436b6d3e-e0ec-4cae-b000-861f5bc382d2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/views/:viewid",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"views",
+								":viewid"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{viewid}}",
+									"id": "viewid"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List the files of a single view for a dataset. The view and dataset are specified by ID.",
+					"_postman_id": "d2783027-f353-47c2-8232-404bcf6f4625",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/views/:viewId/files",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"views",
+								":viewId",
+								"files"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{viewId}}",
+									"id": "viewId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new file for a single view of a dataset. The view and dataset are both specified by ID.",
+					"_postman_id": "1ee56382-b371-4a38-ba2e-080d17a5dc2b",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetFile}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/views/:viewId/files",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"views",
+								":viewId",
+								"files"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{viewId}}",
+									"id": "viewId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a file for a particular view of a dataset. The file, view, and dataset are specified by ID.",
+					"_postman_id": "da01476d-d981-42c8-a5e2-7c5ddeb0ec63",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/views/:viewId/files/:fileId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"views",
+								":viewId",
+								"files",
+								":fileId"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{viewId}}",
+									"id": "viewId"
+								},
+								{
+									"value": "{{fileId}}",
+									"id": "fileId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a file from a particular view of a dataset.",
+					"_postman_id": "884ea99b-6a7f-4fef-9614-0de7bb69519c",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/views/:viewId/files/:fileId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"views",
+								":viewId",
+								"files",
+								":fileId"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{viewId}}",
+									"id": "viewId"
+								},
+								{
+									"value": "{{fileId}}",
+									"id": "fileId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve summarized stats for a dataset's batches. Default time window is within last seven days.",
+					"_postman_id": "7133751d-f2e4-4535-b878-a69626a5b7bb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/ingestBatchSummary",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"ingestBatchSummary"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve the Data Usage and Enforcement (DULE) labels associated with a dataset specified by ID.",
+					"_postman_id": "a437f24d-1238-4a78-851c-8d82a49d1ea1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasets/:id/dule",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasets",
+								":id",
+								"dule"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "c288774a-587f-4a12-9a55-5cc50839cdc9",
+			"description": "Datasets are the building blocks for data transformation and tracking in Catalog Service. Generally, datasets represent a table or file made available by a connection."
+		},
+		{
+			"name": "Dataset views",
+			"item": [
+				{
+					"name": "Retrieve a list of dataset views.",
+					"_postman_id": "106b75c6-cda5-4675-b9e8-d2f18c9905b8",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetviews?dataSetId={{dataSetId}}&name={{name}}&isDefault={{isDefault}}&status={{status}}&editable={{editable}}&sdsVersion={{sdsVersion}}&basePath={{basePath}}&saveStrategy={{saveStrategy}}&isCached={{isCached}}&aspect={{aspect}}&schema={{schema}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetviews"
+							],
+							"query": [
+								{
+									"key": "dataSetId",
+									"value": "{{dataSetId}}"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "isDefault",
+									"value": "{{isDefault}}"
+								},
+								{
+									"key": "status",
+									"value": "{{status}}"
+								},
+								{
+									"key": "editable",
+									"value": "{{editable}}"
+								},
+								{
+									"key": "sdsVersion",
+									"value": "{{sdsVersion}}"
+								},
+								{
+									"key": "basePath",
+									"value": "{{basePath}}"
+								},
+								{
+									"key": "saveStrategy",
+									"value": "{{saveStrategy}}"
+								},
+								{
+									"key": "isCached",
+									"value": "{{isCached}}"
+								},
+								{
+									"key": "aspect",
+									"value": "{{aspect}}"
+								},
+								{
+									"key": "schema",
+									"value": "{{schema}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new dataset view.",
+					"_postman_id": "ef7b1468-e691-47d0-bb4e-3357d6dd89c3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetView}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetviews",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a dataset view by ID.",
+					"_postman_id": "78a0e374-93f6-4d6f-a727-65622d839908",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetviews/:id?properties={{properties}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetviews",
+								":id"
+							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a dataset view by ID.",
+					"_postman_id": "21ce0d04-d8d4-4d73-9b77-6ce117f1ebbe",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetView}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetviews/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetviews",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a dataset view specified by ID.",
+					"_postman_id": "54c4a044-290b-4073-8477-bd71bbec3b2e",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetView}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetviews/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetviews",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a dataset view by ID.",
+					"_postman_id": "fc556069-6251-4733-bd92-2e6c6bdda598",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetviews/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetviews",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "46644533-dc17-4406-9cef-7751a0a05dbf",
+			"description": "Folder for Dataset views"
+		},
+		{
+			"name": "Dataset files",
+			"item": [
+				{
+					"name": "Retrieve a list of dataset files.",
+					"_postman_id": "dd262a4a-b267-45e5-a1ad-acfd84eed627",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetfiles?folderName={{folderName}}&batchId={{batchId}}&dataSetViewId={{dataSetViewId}}&records={{records}}&size={{size}}&isValid={{isValid}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetfiles"
+							],
+							"query": [
+								{
+									"key": "folderName",
+									"value": "{{folderName}}"
+								},
+								{
+									"key": "batchId",
+									"value": "{{batchId}}"
+								},
+								{
+									"key": "dataSetViewId",
+									"value": "{{dataSetViewId}}"
+								},
+								{
+									"key": "records",
+									"value": "{{records}}"
+								},
+								{
+									"key": "size",
+									"value": "{{size}}"
+								},
+								{
+									"key": "isValid",
+									"value": "{{isValid}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new dataset file.",
+					"_postman_id": "40386b45-831b-46e5-b7ad-aca2a594c560",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetFile}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetfiles",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetfiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a dataset file by search criteria.",
+					"_postman_id": "6b7543d7-f810-4e7e-9052-3a05e384022e",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetfiles?batchId={{batchId}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetfiles"
+							],
+							"query": [
+								{
+									"key": "batchId",
+									"value": "{{batchId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a dataset file by ID.",
+					"_postman_id": "3e362f59-559d-4796-86bb-8590041d5d0e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetfiles/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetfiles",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a dataset file by ID.",
+					"_postman_id": "5098f9a3-b818-40f9-b1fb-682cd2bbe468",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetFile}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetfiles/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetfiles",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a dataset file specified by ID.",
+					"_postman_id": "388f4c98-95a1-469d-a125-1f47a7a58842",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dataSetFile}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetfiles/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetfiles",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a dataset file by ID.",
+					"_postman_id": "3bd720f4-6481-4a2b-b14d-991149cbaa0f",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/datasetfiles/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"datasetfiles",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "bf99ea88-4d0d-46e5-af7b-c6ad8274fe67",
+			"description": "Dataset files represent blocks of data that have been saved on Platform. As records of literal files, these are where you can find the file size and which batch the file came from. This construct will also provide the number of records contained in the file."
+		},
+		{
+			"name": "Batched requests",
+			"item": [
+				{
+					"name": "Retrieve a list of resource links for the Catalog Service.",
+					"_postman_id": "f0ca8f20-f36b-4d44-a0e1-bab9c9c51634",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new batch request.",
+					"_postman_id": "b093726a-aa06-4391-9965-d405fc9f59ec",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{resources}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "67888597-1d5a-48c0-9dc2-8a004d952d51",
+			"description": "Batched requests allow you to supply an array of objects in the request payload, representing what would normally be individual requests. Requests are executed in order and values returned from a previous call are made available in subsequent calls through template language."
+		},
+		{
+			"name": "Transforms",
+			"item": [
+				{
+					"name": "Retrieve a list of transforms.",
+					"_postman_id": "de4fd052-a5b2-45d5-b1c5-892df6b19543",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms?name={{name}}&body={{body}}&order={{order}}&created={{created}}&language={{language}}&codeUrl={{codeUrl}}&vehicleUrl={{vehicleUrl}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "body",
+									"value": "{{body}}"
+								},
+								{
+									"key": "order",
+									"value": "{{order}}"
+								},
+								{
+									"key": "created",
+									"value": "{{created}}"
+								},
+								{
+									"key": "language",
+									"value": "{{language}}"
+								},
+								{
+									"key": "codeUrl",
+									"value": "{{codeUrl}}"
+								},
+								{
+									"key": "vehicleUrl",
+									"value": "{{vehicleUrl}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new transform.",
+					"_postman_id": "a3c16f49-6ff6-4e67-bac9-6f5432843f6e",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{transform}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a transform by ID.",
+					"_postman_id": "b59b03d5-c743-4c26-b468-fddded55874c",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a transform by ID.",
+					"_postman_id": "fcab4002-aae5-4421-9114-2b239efe81ec",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{transform}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a transform specified by ID.",
+					"_postman_id": "90fd40e4-9673-44b6-b53b-424f2cfee6c7",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a transform by ID.",
+					"_postman_id": "2e27c1a4-45d5-40dd-ad94-a7ec53bc282c",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of inputs for a transform specified by ID.",
+					"_postman_id": "9b171f59-eb12-4e75-949c-446e30d6eb0d",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"inputs"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update the input attributes for a transform specified by ID.",
+					"_postman_id": "fb2072ae-4e61-413c-8218-7c6550b1a0bf",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{inputs}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"inputs"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of outputs for a transform specified by ID.",
+					"_postman_id": "15c692e0-85a2-42f2-90b0-75d6ce63d8e6",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"outputs"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update the output attributes for a transform specified by ID.",
+					"_postman_id": "eac649b4-5635-471d-967d-5c138c1b4484",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{outputs}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"outputs"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an input dataset for a transform, both specified by ID.",
+					"_postman_id": "cb87927f-1069-4c71-ae40-1d419ffb5f4d",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs/:dataSetId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"inputs",
+								":dataSetId"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{dataSetId}}",
+									"id": "dataSetId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an input dataset for a transform, both specified by ID.",
+					"_postman_id": "7ec9bdb5-629f-49d8-935e-02df73dd9716",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs/:dataSetId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"inputs",
+								":dataSetId"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{dataSetId}}",
+									"id": "dataSetId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an output dataset for a transform, both specified by ID.",
+					"_postman_id": "144e29fe-2f33-4b74-9056-3f22311920ed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs/:dataSetId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"outputs",
+								":dataSetId"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{dataSetId}}",
+									"id": "dataSetId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an output dataset for a transform, both specified by ID.",
+					"_postman_id": "7f9231fa-df26-46ca-9749-3ffb4a0eabb5",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs/:dataSetId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"transforms",
+								":id",
+								"outputs",
+								":dataSetId"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								},
+								{
+									"value": "{{dataSetId}}",
+									"id": "dataSetId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "863cdd61-983c-4f42-b588-6c588a021222",
+			"description": "Transforms are used to house the instructions that translate data into a new form. As a customer maps their newly uploaded data to an Experience Data Model (XDM) schema, a transform is created to document links to the repository where the code resides, as well as a link to the vehicle (or engine) used to perform that work."
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Retrieve a list of aggregated values for all tags within an IMS Organization, specified by namespace.",
+					"_postman_id": "6cd01117-29f5-4019-8f83-f4c7dc6145c7",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-sandbox-id",
+								"value": "{{x-sandbox-id}}"
+							},
+							{
+								"key": "accept-encoding",
+								"value": "{{accept-encoding}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/tags/:tagNamespace",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"tags",
+								":tagNamespace"
+							],
+							"variable": [
+								{
+									"value": "{{tagNamespace}}",
+									"id": "tagNamespace"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "ce9395c2-37ab-41e1-b5c5-709e33e6c93e",
+			"description": "Tags are used to attach information to an object and then be used later to retrieve the object. The choice of what tags are used and how they are applied depends on your organizational processes."
+		}
+	]
+}
