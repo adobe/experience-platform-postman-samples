@@ -4,7 +4,7 @@ This set of Postman Collections contains commonly used interactions with [Adobe 
 
 These Postman Collections have been set up to share the Postman Variable collections generated via __[Adobe I/O Console's Integrations](https://console.adobe.io/integrations) > Export Details to Postman__, which generates a Postman Environment file complete with your Integrations values.
 
-After Exporting the Postman Environment from Adobe I/O Console, ensure you add your Private Key (``-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----`) to BOTH the Initial and Current values for `PRIVATE_KEY`.
+After Exporting the Postman Environment from Adobe I/O Console, ensure you add your Private Key (`-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----`) to BOTH the Initial and Current values for `PRIVATE_KEY`.
 
 
 ## Obtaining an Access Token to access the Adobe Experience Platform APIs for Non-production Use
