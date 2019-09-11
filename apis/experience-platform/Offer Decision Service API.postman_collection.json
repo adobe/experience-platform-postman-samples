@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "95dbbcf0-6655-4c59-8f0b-6c00da268734",
+		"name": "Offer Decision Service API",
+		"description": "<p>Adobe Experience Platform Decisioning Service provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. The Offer Decision Service API includes an endpoint to filter out offers which are not approved, do not match the offer filter, or don’t have a representation for the placement referenced by the activity. It also allows you to run diagnostics and return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so.</p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_runtime_api_tutorial.md\">Work with Decisioning Service runtime using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/ode</li><li>Example of a complete path for making a call to the POST Decisions endpoint (\"/{containerId}/decisions\"):<span> https://platform.adobe.io/data/core/ode/{containerId}/decisions</ul></p>",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Decisions",
+			"item": [
+				{
+					"name": "Request an offer decision for each set of activity IDs and profiles.",
+					"_postman_id": "6ceb9cf7-3f82-446c-a4e4-926e29a7626e",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, application/problem+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{request}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ode/:containerId/decisions",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ode",
+								":containerId",
+								"decisions"
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								}
+							]
+						},
+						"description": "Determine the best offer(s) for a given set of activities based on eligibility rules that match profile and context data provided."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "b8145192-0942-4636-bfc3-92206916f132",
+			"description": "Determine the best offer(s) for a given set of activities based on eligibility rules that match profile and context data provided."
+		},
+		{
+			"name": "Diagnostics",
+			"item": [
+				{
+					"name": "Get information about errors that occurred while processing user data.",
+					"_postman_id": "b7354167-b0ec-431e-8f56-927ccd52e2dc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xdm+json, application/problem+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ode/:containerId/diagnostics",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ode",
+								":containerId",
+								"diagnostics"
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								}
+							]
+						},
+						"description": "This endpoint returns a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so. An empty list indicates that there were no errors."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "a2b956f7-2a2a-47f3-baa1-6eaf91f890f0",
+			"description": "Return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so."
+		},
+		{
+			"name": "Offers",
+			"item": [
+				{
+					"name": "View offers that belong to a specified `activityId` based on matching filter rules and placements.",
+					"_postman_id": "a4bdd809-840c-45e3-aead-043542620259",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, application/problem+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ode/:containerId/offers?activityId={{activityId}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ode",
+								":containerId",
+								"offers"
+							],
+							"query": [
+								{
+									"key": "activityId",
+									"value": "{{activityId}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{containerId}}",
+									"id": "containerId"
+								}
+							]
+						},
+						"description": "This endpoint returns approved offers that belong to a specific `activityId` based on filter rules and placement match."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "2ee1b3b9-26e1-44b7-b4ad-e37bbf02154c",
+			"description": "Based on filter rules and placement match, return approved offers that belong to a specific `activityId`."
+		}
+	]
+}
