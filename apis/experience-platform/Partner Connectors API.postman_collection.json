@@ -1,0 +1,670 @@
+{
+	"info": {
+		"_postman_id": "d8c72942-580e-4172-9026-f18780fe6145",
+		"name": "Partner Connectors API",
+		"description": "Partner Connectors provide RESTful API to ingest data into Adobe Experience Platform by connecting it to 3rd party storage and CRM systems.\n\nRelated documentation:\n  * [Connectors Service Overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/acp_connectors_overview/acp-connectors-overview.md)\n  * Connector tutorials:\n    * [Amazon-s3](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_s3_connector_tutorial.md)\n    * [Azure-Blob](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_azure_blob_connector_tutorial.md)\n    * [Microsoft Dynamics](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_dynamic_connector_tutorial.md)\n    * [Salesforce](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_salesforce_connector_tutorial.md)\n       \n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/connectors\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/connectors/account\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Create an account and establish a connection for the given set of credentials.",
+					"_postman_id": "b1a2567b-b3f6-495a-b37c-7a1375e5500c",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/account",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test the validity of the account associated with the accountId.",
+					"_postman_id": "fe4f7c3c-ecba-4430-abf4-704ac74d7311",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/account/:accountId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"account",
+								":accountId"
+							],
+							"variable": [
+								{
+									"value": "{{accountId}}",
+									"id": "accountId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update the credentials associated with the accountId.",
+					"_postman_id": "bfbe1c69-31d2-4664-a88d-83e39f0ebe52",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/account/:accountId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"account",
+								":accountId"
+							],
+							"variable": [
+								{
+									"value": "{{accountId}}",
+									"id": "accountId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "8f5172cf-df4c-4bba-ad7b-23382d03c8ae",
+			"description": "Authenticate your storage systems and CRM services to allow your data to be ingested from various sources (such as cloud-based storage, and CRM data) into Experience Platform."
+		},
+		{
+			"name": "Get Objects",
+			"item": [
+				{
+					"name": "Retrieve a list of objects, files, or tables at the source location.",
+					"_postman_id": "47a963b2-ef75-460f-bb2f-3fafc94bcc68",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/objects?object={{object}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"connections",
+								":connectionId",
+								"objects"
+							],
+							"query": [
+								{
+									"key": "object",
+									"value": "{{object}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{connectionId}}",
+									"id": "connectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "528b146b-3d2e-4538-85ef-df731a25d8c0",
+			"description": "Returns a list object files or tables at the source location."
+		},
+		{
+			"name": "Schema and Preview",
+			"item": [
+				{
+					"name": "Retrieve a list of fields from the data.",
+					"_postman_id": "a402b20b-10df-4cc1-99f9-879b94d5bddc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/fields?object={{object}}&fileType={{fileType}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"connections",
+								":connectionId",
+								"fields"
+							],
+							"query": [
+								{
+									"key": "object",
+									"value": "{{object}}"
+								},
+								{
+									"key": "fileType",
+									"value": "{{fileType}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{connectionId}}",
+									"id": "connectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Preview data for the given object.",
+					"_postman_id": "0915c5f9-ec65-4419-895b-e13e1712cec9",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/rows?object={{object}}&fileType={{fileType}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"connections",
+								":connectionId",
+								"rows"
+							],
+							"query": [
+								{
+									"key": "object",
+									"value": "{{object}}"
+								},
+								{
+									"key": "fileType",
+									"value": "{{fileType}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{connectionId}}",
+									"id": "connectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "e1d4d9e7-41b1-4778-9fd1-81a32aea8c0e",
+			"description": "Returns a list of schema fields or a data preview for a given object."
+		},
+		{
+			"name": "Dataset",
+			"item": [
+				{
+					"name": "Create a dataset for a connection to ingest data into Platform.",
+					"_postman_id": "79c68e02-3f4a-4294-b5d9-451eebe830df",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/datasets",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"connections",
+								":connectionId",
+								"datasets"
+							],
+							"variable": [
+								{
+									"value": "{{connectionId}}",
+									"id": "connectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "f6e52e94-eed7-4dc6-8c07-077f119db182",
+			"description": "Creates a dataset for a connection to ingest data into and persist within Platform."
+		},
+		{
+			"name": "Schedule",
+			"item": [
+				{
+					"name": "Schedule ingestion at the given frequency.",
+					"_postman_id": "4f1c5008-291e-42f3-be08-f50f3668b31a",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/schedule",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"connections",
+								":connectionId",
+								"schedule"
+							],
+							"variable": [
+								{
+									"value": "{{connectionId}}",
+									"id": "connectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "4f4da0f4-c0bf-4211-aa22-31714dd764fc",
+			"description": "Schedule ingestion from your authenticated connector into Data Lake at a given start date and frequency. Frequency can be set for every month, day, day of the week, hour, or minute."
+		},
+		{
+			"name": "Custom Schema",
+			"item": [
+				{
+					"name": "Posts custom schema via fields or objectName.",
+					"_postman_id": "4d3aced6-0120-48a1-9a3b-7b887061ab07",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/schemas",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"connections",
+								":connectionId",
+								"schemas"
+							],
+							"variable": [
+								{
+									"value": "{{connectionId}}",
+									"id": "connectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "37a6583f-a158-4fc4-b686-3007e48ab71e",
+			"description": "Create a custom schema by fields or objectName."
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Check the health of the service.",
+					"_postman_id": "5201ab57-c75f-4598-8a76-f608f12abc52",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/health",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check the detailed health of the service.",
+					"_postman_id": "fb061e8b-675f-4551-a766-3968d96a1a60",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/connectors/health-detailed",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"connectors",
+								"health-detailed"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "b58290bd-5d8c-4b29-affb-ab1a3aa23c93",
+			"description": "Health check of the service, with dependencies."
+		}
+	]
+}

@@ -1,0 +1,2059 @@
+{
+	"info": {
+		"_postman_id": "7cf0f2a3-bff5-444c-8d31-b28961faee62",
+		"name": "Schema Registry API",
+		"description": "<p>The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md\">XDM System in Adobe Experience Platform</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_composition/schema_composition.md\">Basics of Schema Composition</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md\">Schema Registry API Developer Guide</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/tutorials/schema_registry_api_tutorial/schema_registry_api_tutorial.md\">Schema Registry API Tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/foundation/schemaregistry</li><li>Example of a complete path for making a call to \"/stats\":<span> https://platform.adobe.io/data/foundation/schemaregistry/stats</ul></p>",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Stats",
+			"item": [
+				{
+					"name": "Return {TENANT_ID} and Schema Registry usage information.",
+					"_postman_id": "0ccf07d5-6968-409b-81f9-0faa02e755b1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/stats",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "7d47f089-078d-4665-921b-ccb93c5efaa0",
+			"description": "Returns {TENANT_ID} along with information regarding IMS Org usage of the Schema Registry such as resource counts, recently created resources, and class usage."
+		},
+		{
+			"name": "Schemas",
+			"item": [
+				{
+					"name": "List all schemas within the specified container.",
+					"_postman_id": "261b2f51-2c43-4ad3-8139-70b8bb079baf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"schemas",
+								""
+							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						},
+						"description": "<p>You are able to view a list of all schemas within a container by performing a single GET request. To help filter results, the Schema Registry supports the use of query parameters when listing resources. The most common query parameters include:</br><ul><li>limit - Limit the number of resources returned. e.g. limit=5 will return only five resources in the list.</li><li>orderby - Sort results by a specific property. e.g. orderby=title will sort results by title ascending (A-Z). Adding a - before title (orderby=-title) will sort items by title descending (Z-A).</li><li>properties - Filter results on any top-level attributes. e.g. property=meta:intendedToExtend==https://ns.adobe.com/xdm/context/profile returns only mixins that are compatible with the Profile class.</li><li>You may also use an ampersand (&) to combine query parameters.</li></ul></p><p>The response format depends on the Accept header sent in the request. The following Accept headers are available for this request:<br/><ul><li><strong>application/vnd.adobe.xed-id+json</strong> | Returns a short summary of each resource, generally the preferred header for listing.</li><li><strong>application/vnd.adobe.xed-full+json</strong> | Returns full JSON for each resource, with original $ref and allOf attributes included.</li></ul></p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new tenant-defined schema.",
+					"_postman_id": "d5e206c5-2875-4847-978f-223dc7890354",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"schemas",
+								""
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a specific schema by its unique ID.",
+					"_postman_id": "6d08f378-0833-4756-aad9-b4c2a0e28b3f",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"schemas",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>The response format depends on the Accept header sent in the request. The following Accept headers are available for this request:<br/><ul><li><strong>application/vnd.adobe.xed+json; version={major version}</strong>  Raw with $ref and allOf, has titles, descriptions</li><li><strong>application/vnd.adobe.xed-full+json; version={major version}</strong> $refs and allOf resolved, has titles and descriptions</li><li><strong>application/vnd.adobe.xed-notext+json; version={major version}</strong> Raw with $ref and allOf, no titles or descriptions</li><li><strong>application/vnd.adobe.xed-full-notext+json; version={major version}</strong>  $refs and allOf resolved, no titles or descriptions</li><li><strong>application/vnd.adobe.xed-full-desc+json; version={major version}</strong> $refs and allOf resolved, descriptors included</li></ul></p><br/><p>A lookup request requires the resource 'major version' be included in the Accept header. When supplying the major version, the registry returns the latest minor version automatically.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a tenant-defined schema.",
+					"_postman_id": "2f946fc2-8b32-442e-b464-5efe9535a07e",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"schemas",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>A PUT request essentially re-writes the schema, therefore the request body must include all fields required to create (POST) a schema. This is especially useful when updating a lot of information in the schema at once.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify or update part of a tenant-defined schema.",
+					"_postman_id": "5219fd52-c1b9-47bb-b826-9cc5701a845e",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"schemas",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update schemas they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a tenant-defined schema from the registry.",
+					"_postman_id": "d09b6461-d478-4e84-ad60-8ec1c19f62c0",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"schemas",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>Remove an existing schema by performing a DELETE request to the $id of the schema being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "598718ad-4c44-4fde-8ec2-343f4f463817",
+			"description": "Schemas provide an abstract definition of a real-world object along with constraints and expectations that can be applied and used to validate data."
+		},
+		{
+			"name": "Mixins",
+			"item": [
+				{
+					"name": "Return a list of all mixins within the specified container.",
+					"_postman_id": "c741bf4e-5c92-4f1d-8048-4cd53e516aa1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"mixins",
+								""
+							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new tenant-defined mixin.",
+					"_postman_id": "531f557e-8a32-478b-9570-677b95fe1060",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"mixins",
+								""
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a specific mixin by its unique ID.",
+					"_postman_id": "9ff4c655-c34e-41b1-a43e-424973193bea",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"mixins",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a tenant-defined mixin.",
+					"_postman_id": "6724a7a2-a193-401b-b182-888e91d5ccbc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"mixins",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>A PUT request is essentially re-writing the mixin, therefore the request body must include all fields required to create (POST) a mixin. This is especially useful when updating a lot of information in the mixin at once.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify or update part of a tenant-defined mixin.",
+					"_postman_id": "7dd5561f-263c-4511-96b0-3224874a3e60",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"mixins",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update mixins they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a tenant-defined mixin from the registry.",
+					"_postman_id": "543e4ce5-8c5e-44bc-b8bf-d32a2f9599c2",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"mixins",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>Remove an existing mixin through a DELETE request to the $id of the mixin being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "1fa668b3-6c8f-48f2-b7e0-a4419cae3227",
+			"description": "A mixin is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
+		},
+		{
+			"name": "Classes",
+			"item": [
+				{
+					"name": "List all classes in the specified container.",
+					"_postman_id": "ea0118e5-3bd8-4fbd-a4e0-2859955ef1aa",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"classes",
+								""
+							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a tenant-defined class.",
+					"_postman_id": "5ac60eb5-ef41-4c68-b131-b891c6015ad1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"classes",
+								""
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a specific class by its unique ID.",
+					"_postman_id": "d8f6bbc7-e866-4e5a-9e2c-6c6b9c0000fe",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"classes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a tenant-defined class.",
+					"_postman_id": "4161e553-9c7a-46c1-8d28-e1636b44dac1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"classes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>A PUT request is essentially re-writing the class, therefore the request body must include all fields required to create (POST) a class. This is especially useful when updating a lot of information in the class at once.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify or update part of a tenant-defined class.",
+					"_postman_id": "4fd8bf3e-e1af-42fa-b3ec-b142dcba4c62",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"classes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update classes they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a tenant-defined class from the registry.",
+					"_postman_id": "1496b64a-89e1-43b6-abee-d8bbd49357bf",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"classes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>Remove a class by performing a DELETE request to the $id of the class being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "2163fa82-142a-4cb6-8f69-5d936d451815",
+			"description": "Classes define behavioral aspects of the data within the schema and describe the smallest number of common properties contained in all schemas that implement the same class."
+		},
+		{
+			"name": "Data Types",
+			"item": [
+				{
+					"name": "List all data types in the specified container.",
+					"_postman_id": "def85e00-683d-44ed-8d84-1868597b2a4d",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"datatypes",
+								""
+							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a tenant-defined data type.",
+					"_postman_id": "6b15fc6d-3504-4a35-82f7-743dc736a179",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"datatypes",
+								""
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Returns the datatype schema associated with the given identifier.",
+					"_postman_id": "35243bd0-1c77-4780-b583-1cd2a5a48434",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"datatypes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a tenant-defined data type.",
+					"_postman_id": "211fb593-cf65-4232-8c95-9b0c9cc81b37",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"datatypes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>A PUT request is essentially re-writing the data type, therefore the request body must include all fields required to create (POST) a data type. This is especially useful when updating a lot of information in the data type at once.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify or update part of a tenant-defined data type.",
+					"_postman_id": "347de0a7-16b2-4606-95ce-2e84d41415f1",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"datatypes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update data types they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a tenant-defined data type from the registry.",
+					"_postman_id": "9594b605-2548-47ce-8291-a00f6d80be2c",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"datatypes",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						},
+						"description": "<p>Removing a data type is done through a DELETE request to the $id of the data type being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "a0700d1b-6686-4cba-909f-4b0b70f6f668",
+			"description": "Data types are used as reference field types in classes or schemas to define complex types. Data types may define multiple sub-fields providing a consistent multi-field structure."
+		},
+		{
+			"name": "Descriptors",
+			"item": [
+				{
+					"name": "List all descriptors within the specified container, by type.",
+					"_postman_id": "ddf0bc60-e5a8-4a18-a09b-63c55f5a812e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"descriptors"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						},
+						"description": "<p>Schemas define a static view of data entities, but do not provide specific details on how data based on these schemas (datasets, etc) may relate to one another. Adobe Experience Platform allows you to describe these relationships and other interpretive metadata about a schema using descriptors.</p><br/><p>Schema descriptors are tenant-level metadata, meaning they are unique to your IMS Organization and all descriptor operations take place in the tenant container.</p><br/><p>Each schema can have one or more schema descriptor entities applied to it. Each schema descriptor entity includes a descriptor '@type' and the 'sourceSchema' to which it applies. Once applied, these descriptors will apply to all datasets created using the schema.</p><br/><p>The Schema Registry supports the use of query parameters when listing descriptors. The most common query parameters include:</br><ul><li>property - Return only results that match the given property. e.g. property=@type==xdm:descriptorIdentity returns only descriptors with a '@type' of 'xdm:descriptorIdentity'.</li><li>limit - Limit the number of resources returned. e.g. limit=5 will return only five resources in the list.</li><li>You may also use an ampersand (&) to combine query parameters.</li></ul></p><p>Accept headers for descriptors include:<br/><ul><li><strong>application/vnd.adobe.xdm-id+json</strong> | Returns an array of descriptor IDs</li><li><strong>application/vnd.adobe.xdm-link+json</strong> | Returns an array of descriptor API paths</li><li><strong>application/vnd.adobe.xdm-full+json</strong> | Returns an array of expanded descriptor objects</li></ul></p><br/><p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new descriptor. Required fields in payload vary based on @type.",
+					"_postman_id": "c2cb1546-a411-4197-b8c3-1e0c5bb3270f",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{descriptorPayload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"descriptors"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						},
+						"description": "<p>Required fields for defining a descriptor vary based on the @type of the descriptor.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup specific descriptor by its @id.",
+					"_postman_id": "2800cf29-132d-4bc2-8332-5166e97583ba",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors/:@id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"descriptors",
+								":@id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{@id}}",
+									"id": "@id"
+								}
+							]
+						},
+						"description": "<p>View the details of a specific descriptor by performing a lookup (GET) request using the @id of the descriptor. Descriptors are not versioned, therefore no Accept header is required in the lookup request.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a descriptor. Required fields in payload vary based on @type.",
+					"_postman_id": "49dc6bad-86e3-446f-9c9c-d7bb62b9d457",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{descriptorPayload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors/:@id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"descriptors",
+								":@id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{@id}}",
+									"id": "@id"
+								}
+							]
+						},
+						"description": "<p>Update a desriptor by issuing a PUT request to the @id of the descriptor being updated.<br/><br/>This action is <em>re-writing</em> the existing descriptor, therefore the payload must include all descriptor fields that were required when the descriptor was defined.</p>"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a descriptor using its @id.",
+					"_postman_id": "e227c970-ee63-4ee9-a8a7-bf8d94d7e9d6",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors/:@id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								":CONTAINER_ID",
+								"descriptors",
+								":@id"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{@id}}",
+									"id": "@id"
+								}
+							]
+						},
+						"description": "<p>Remove a descriptor from the registry by issuing a DELETE request to the @id of the descriptor being removed.</p>"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "54f137eb-eb5a-4caf-9e39-a952538df4bc",
+			"description": "Schema descriptors are tenant-level metadata used to provide interpretive details on how data based on certain schemas may relate or interact with one another."
+		},
+		{
+			"name": "Unions",
+			"item": [
+				{
+					"name": "Retrieve a list of union views.",
+					"_postman_id": "28caa63d-b342-474b-9fa5-b3c0e68cd848",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/tenant/unions?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"tenant",
+								"unions"
+							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a union view by ID.",
+					"_postman_id": "e69a8150-9af8-48c8-9e85-962f7f8002d9",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/tenant/unions/:$id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"tenant",
+								"unions",
+								":$id"
+							],
+							"variable": [
+								{
+									"value": "{{$id}}",
+									"id": "$id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "7c65b668-5ad0-4771-aa3b-2270ec2dc3e4",
+			"description": "Union views aggregate the fields of all schemas that implement the same class (such as ExperienceEvent or Profile) into a single schema. They are used by Real-time Customer Profile to merge data together to form a \"single source of truth\" for an individual."
+		}
+	]
+}

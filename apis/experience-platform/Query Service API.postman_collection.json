@@ -1,0 +1,1303 @@
+{
+	"info": {
+		"_postman_id": "83acfdb4-faa3-4cae-90a1-3cfc3fe5dea4",
+		"name": "Query Service API",
+		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data  Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Introduction to Query Service](https://www.adobe.io/apis/experienceplatform/home/services/query-service/query-service.html#!acpdr/end-user/markdown/query-service/qs-intro.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Connections",
+			"item": [
+				{
+					"name": "Requests connection parameters for the interactive interface.",
+					"_postman_id": "901286ff-ab66-4f22-baae-a41eb9346fe4",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/connection_parameters",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"connection_parameters"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "97eb7c04-10b8-4971-9f22-109a33ad6f3f",
+			"description": "Retrieves connection parameters for the interactive interface."
+		},
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "Retrieve a list of queries for this IMS Organization.",
+					"_postman_id": "3f0b84d4-1099-488f-8210-47d62e87ed46",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/queries?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}&excludeSoftDeleted={{excludeSoftDeleted}}&excludeHidden={{excludeHidden}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"queries"
+							],
+							"query": [
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "excludeSoftDeleted",
+									"value": "{{excludeSoftDeleted}}"
+								},
+								{
+									"key": "excludeHidden",
+									"value": "{{excludeHidden}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new query.",
+					"_postman_id": "f792a2ba-c8c0-449a-88c7-1bc2dd89c9bd",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{query}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/queries",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"queries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request query status by ID.",
+					"_postman_id": "12b131a8-019c-4670-976b-3ee148dff119",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/queries/:queryid",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"queries",
+								":queryid"
+							],
+							"variable": [
+								{
+									"value": "{{queryid}}",
+									"id": "queryid"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request cancellation or query soft delete.",
+					"_postman_id": "4b225204-a7e2-4d72-889e-230a77c732c8",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{operation}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/queries/:queryid",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"queries",
+								":queryid"
+							],
+							"variable": [
+								{
+									"value": "{{queryid}}",
+									"id": "queryid"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "07230012-bba5-47aa-b5c8-83cc0e7a87a5",
+			"description": "Queries let you use standard SQL to query data in Adobe Experience Platform. For example, you can join any number of datasets in Experience Data Lake and capture the results as a new dataset."
+		},
+		{
+			"name": "Schedules",
+			"item": [
+				{
+					"name": "Retrieve a list of schedules for this IMS Organization.",
+					"_postman_id": "07dacce8-6ea2-409a-b9f4-37e592822268",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules"
+							],
+							"query": [
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new scheduled query.",
+					"_postman_id": "c02e2a5d-7f49-4824-9913-0d8d2a1f6922",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{schedule}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request details of a schedule by ID.",
+					"_postman_id": "21dd9633-b6d7-4425-a7e1-f817837de9dc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules",
+								":schedulesId"
+							],
+							"variable": [
+								{
+									"value": "{{schedulesId}}",
+									"id": "schedulesId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch an existing schedule.",
+					"_postman_id": "d97c00ce-75a2-4cd3-8a7e-356032775b46",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules",
+								":schedulesId"
+							],
+							"variable": [
+								{
+									"value": "{{schedulesId}}",
+									"id": "schedulesId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a schedule by ID.",
+					"_postman_id": "c2acf6a5-b4ac-4aa2-9fce-c61712a5fc5b",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules",
+								":schedulesId"
+							],
+							"variable": [
+								{
+									"value": "{{schedulesId}}",
+									"id": "schedulesId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a list of all runs, past and currently running, for a particular query schedule.",
+					"_postman_id": "796a3f67-68c1-4ccf-9ce7-f1b503b89706",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules",
+								":schedulesId",
+								"runs"
+							],
+							"query": [
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{schedulesId}}",
+									"id": "schedulesId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trigger an immediate run of a scheduled query.",
+					"_postman_id": "f799dd01-ce79-4da2-855a-f927598844b6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules",
+								":schedulesId",
+								"runs"
+							],
+							"variable": [
+								{
+									"value": "{{schedulesId}}",
+									"id": "schedulesId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup details of a query schedule run by ID.",
+					"_postman_id": "3e425e21-1f2c-490a-ba9a-5f10cde8f933",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs/:runId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules",
+								":schedulesId",
+								"runs",
+								":runId"
+							],
+							"variable": [
+								{
+									"value": "{{schedulesId}}",
+									"id": "schedulesId"
+								},
+								{
+									"value": "{{runId}}",
+									"id": "runId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trigger an immediate run of a scheduled query by ID.",
+					"_postman_id": "9a869f7c-62c5-413c-8e68-5b9c91632b28",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{operation}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs/:runId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"schedules",
+								":schedulesId",
+								"runs",
+								":runId"
+							],
+							"variable": [
+								{
+									"value": "{{schedulesId}}",
+									"id": "schedulesId"
+								},
+								{
+									"value": "{{runId}}",
+									"id": "runId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "d21ed470-3da9-4202-809f-b1da5022be38",
+			"description": "Schedules let you perform SQL functions from a start date to an end date."
+		},
+		{
+			"name": "Query-Templates",
+			"item": [
+				{
+					"name": "Retrieve a list of query templates for this IMS Organization.",
+					"_postman_id": "00247be9-e913-494a-8556-1f7ae7e6e75c",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"query-templates"
+							],
+							"query": [
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new query template.",
+					"_postman_id": "2241b003-e11e-44d9-b85d-7d7ad4594d1e",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{queryTemplate}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"query-templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a query template by ID.",
+					"_postman_id": "f7aebec6-8b1b-48b3-bfab-b52045662c72",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"query-templates",
+								":queryTemplateId"
+							],
+							"variable": [
+								{
+									"value": "{{queryTemplateId}}",
+									"id": "queryTemplateId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a query template by ID.",
+					"_postman_id": "25a25d75-a3f8-4ad2-81f7-eacb7aa5a655",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{queryTemplate}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"query-templates",
+								":queryTemplateId"
+							],
+							"variable": [
+								{
+									"value": "{{queryTemplateId}}",
+									"id": "queryTemplateId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a query template by ID.",
+					"_postman_id": "0bd8a05c-b933-4cc5-9f46-8366864ef3f6",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{User-Agent}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"query",
+								"query-templates",
+								":queryTemplateId"
+							],
+							"variable": [
+								{
+									"value": "{{queryTemplateId}}",
+									"id": "queryTemplateId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "85ed6e65-dda6-4b83-bde2-c5d49a3cee7a",
+			"description": "Query templates let you create, store and execute any of the query as adhoc or schedule service."
+		}
+	]
+}
