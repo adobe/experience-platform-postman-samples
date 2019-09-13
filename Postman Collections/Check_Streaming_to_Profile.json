@@ -162,12 +162,12 @@
                   "\t\"exp\": Math.round(87000 + Date.now()/1000),",
                   "\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
                   "\t\"sub\": postman.getEnvironmentVariable(\"TECHNICAL_ACCOUNT_ID\"),",
-                  "\t\"aud\": postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
+                  "\t\"aud\": \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
                   "};",
                   "",
                   "meta_scopes = postman.getEnvironmentVariable(\"META_SCOPE\").toString().split(',');",
                   "meta_scopes.forEach(function(scope){",
-                  "    var meta_scope = postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                  "    var meta_scope = \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
                   "                     scope;",
                   "    data[meta_scope] = true;",
                   "});",
@@ -209,12 +209,12 @@
                 },
                 {
                   "key": "jwt_token",
-                  "value": "{{jwt_token}}",
+                  "value": "{{JWT_TOKEN}}",
                   "type": "text"
                 }
               ]
             },
-            "url": "{{IMS}}/ims/exchange/jwt/",
+            "url": "https://{{IMS}}/ims/exchange/jwt/",
             "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
           },
           "response": []
