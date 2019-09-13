@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "19a2a441-9b7a-470d-b7c7-66e30b255734",
+		"name": "Data Access Service API",
+		"description": "\nData Access Service facilitates data access and egress on Adobe Experience Platform.\nThis includes, but not limited to, the following operations:\n  * Access and download dataset files under a batch\n  * Retrieve header information regarding files\n  * Parallel / resumable downloads using HTTP range headers\n  * Pagination support for directory listings\n  * List dataset files under a succeeded/failed batch\n  * Preview CSV and Parquet files\n\n\nRelated documentation:\n  * [Data Access technical overview](https://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md)\n  * [Query dataset data using the Data Access API](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/export\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/export/batches/{batchId}/files\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Data Access",
+			"item": [
+				{
+					"name": "Get dataset files under a batch.",
+					"_postman_id": "aa811cfc-8bd4-4a42-8544-4289bd996a06",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/export/batches/:batchId/files?start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"export",
+								"batches",
+								":batchId",
+								"files"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								}
+							]
+						},
+						"description": "List all dataset files under a batch."
+					},
+					"response": []
+				},
+				{
+					"name": "Get dataset files under a failed batch.",
+					"_postman_id": "eed8ab9c-5709-4df5-9229-48e81dc26ddf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/export/batches/:batchId/failed?start={{start}}&limit={{limit}}&path={{path}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"export",
+								"batches",
+								":batchId",
+								"failed"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "path",
+									"value": "{{path}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								}
+							]
+						},
+						"description": "List all files under failed batch"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "8279680f-46b7-4b66-847f-4a9b7d31cfac",
+			"description": "Configure data access and egress for Experience Platform."
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Access / download a file.",
+					"_postman_id": "6390e4cd-f43e-486a-ae55-a35c2166c6ed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, application/octet-stream"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Range",
+								"value": "{{Range}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/export/files/:dataSetFileId?start={{start}}&limit={{limit}}&path={{path}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"export",
+								"files",
+								":dataSetFileId"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "path",
+									"value": "{{path}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{dataSetFileId}}",
+									"id": "dataSetFileId"
+								}
+							]
+						},
+						"description": "Returns either a complete file, or a directory of chunked data that make up the file. The response contains a data array that may contain a single entry, or a list of files belonging to that directory.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get headers regarding a file.",
+					"_postman_id": "e1510994-d3ed-4fc7-8659-1b43fc615f9c",
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/export/files/:dataSetFileId?path={{path}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"export",
+								"files",
+								":dataSetFileId"
+							],
+							"query": [
+								{
+									"key": "path",
+									"value": "{{path}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{dataSetFileId}}",
+									"id": "dataSetFileId"
+								}
+							]
+						},
+						"description": "Retrieves headers in response with a file's metadata. The response header will indicate information regarding the specified file."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "1458edc7-ce6a-439c-89cf-e84c9c12b436",
+			"description": "Retrieve headers containing metadata for a file specified by ID."
+		},
+		{
+			"name": "Preview",
+			"item": [
+				{
+					"name": "Preview files.",
+					"_postman_id": "e82377c4-49ae-41bc-aa1f-e799c67c4ab7",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/export/datasets/:id/preview",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"export",
+								"datasets",
+								":id",
+								"preview"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Preview the first 100 rows of CSV or Parquet files"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "06ec5ac0-1d96-4d18-be9e-96367c31a8b5",
+			"description": "Retrieve the first 100 rows of CSV or Parquet files."
+		},
+		{
+			"name": "Health Detailed",
+			"item": [
+				{
+					"name": "Perform health check on dependent services.",
+					"_postman_id": "bb07b4bb-d763-4794-8dc9-fa8a2ca6eec0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/export/health-detailed",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"export",
+								"health-detailed"
+							]
+						},
+						"description": "Returns health status for all dependent services"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "1f11d2f3-340b-403a-bf69-70622871145e",
+			"description": "Retrieve health status for all dependent services."
+		}
+	]
+}

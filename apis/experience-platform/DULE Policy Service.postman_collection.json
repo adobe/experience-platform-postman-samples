@@ -1,0 +1,1149 @@
+{
+	"info": {
+		"_postman_id": "59a0df95-0155-42af-a5ab-354b9e328c14",
+		"name": "DULE Policy Service",
+		"description": "<p>The Data Usage Labeling and Enforcement (DULE) framework simplifies and streamlines the process of categorizing data and creating data usage policies. Once data labels have been applied and data usage policies are in place, marketing actions can be evaluated to ensure the correct use of data.</p><p>The Policy Service API is used to manage and evaluate policies on marketing actions in the presence of data usage labels.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html\">DULE User Guide</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html#!end-user/markdown/dule_overview/dule_supported_labels.md\">Supported Data Usage Labels</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/dule_working_with_labels.md\">Working with Data Usage Labels</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/dule_working_with_policies.md\">Working with Data Usage Policies</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/foundation/dulepolicy</li><li>Example of a complete path for making a call to \"/policies/core\":<span> https://platform.adobe.io/data/foundation/dulepolicy/policies/core</ul></p>",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "Basic health check",
+					"_postman_id": "f4d29f97-562b-46b3-95e6-751acdb48fba",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/health",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "9b465bde-2d29-43ec-847e-9d913a8ad516",
+			"description": "Health check for DULE Policy Service"
+		},
+		{
+			"name": "Health Detailed",
+			"item": [
+				{
+					"name": "Detailed health check with status of dependent services",
+					"_postman_id": "28c90416-6d10-4fd7-9cee-848172684455",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/health-detailed",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"health-detailed"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "089ad669-fba9-404c-a267-251bc3bdac57",
+			"description": "Health check with dependencies for DULE Policy Service"
+		},
+		{
+			"name": "Policies",
+			"item": [
+				{
+					"name": "List all core policies.",
+					"_postman_id": "16366504-898e-498d-8b26-f40462dc8d02",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/core?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}&duleLabels={{duleLabels}}&marketingAction={{marketingAction}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"core"
+							],
+							"query": [
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "duleLabels",
+									"value": "{{duleLabels}}"
+								},
+								{
+									"key": "marketingAction",
+									"value": "{{marketingAction}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a specific core policy by its \"id\".",
+					"_postman_id": "cca1ec1c-bb04-41c5-96dc-a33881c85656",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/core/:policyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"core",
+								":policyId"
+							],
+							"variable": [
+								{
+									"value": "{{policyId}}",
+									"id": "policyId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all custom policies.",
+					"_postman_id": "175462a2-829e-4e9d-aa8b-a2228a7cf3ad",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"custom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new custom policy.",
+					"_postman_id": "988079e1-b6d2-4d0f-9ac0-db63fcf1d7ac",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{policy}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"custom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a specific custom policy by its \"id\".",
+					"_postman_id": "756be057-fd9d-4562-89db-fcb97f0f3760",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"custom",
+								":policyId"
+							],
+							"variable": [
+								{
+									"value": "{{policyId}}",
+									"id": "policyId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a custom policy.",
+					"_postman_id": "eb2263cf-912c-4d2c-9f67-b2c17fe37bc9",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{policy}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"custom",
+								":policyId"
+							],
+							"variable": [
+								{
+									"value": "{{policyId}}",
+									"id": "policyId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a portion of a custom policy.",
+					"_postman_id": "fac3e1e5-98eb-4508-97c2-ecc6ef63e2e1",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{policyPatchInstructions}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"custom",
+								":policyId"
+							],
+							"variable": [
+								{
+									"value": "{{policyId}}",
+									"id": "policyId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a custom policy.",
+					"_postman_id": "20e85733-8adf-498c-a867-122db4240047",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"policies",
+								"custom",
+								":policyId"
+							],
+							"variable": [
+								{
+									"value": "{{policyId}}",
+									"id": "policyId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "f96d57ce-24bb-40b0-bac7-014276618a6b",
+			"description": "Data usage policies are rules that describe the kinds of marketing actions that are allowed or not allowed to be performed on data within Adobe Experience Platform."
+		},
+		{
+			"name": "Marketing Actions",
+			"item": [
+				{
+					"name": "List all core marketing actions.",
+					"_postman_id": "318a28ef-8fd2-46bd-84e2-e58d1360171e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"core"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a specific core marketing action by \"name\".",
+					"_postman_id": "e49cf0c8-17aa-449e-a79a-7c6074c121b3",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core/:marketingActionName",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"core",
+								":marketingActionName"
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View policies violated by the presence of DULE labels.",
+					"_postman_id": "9736f3c0-3a4f-4f5c-8aaa-f06c45d8dff6",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core/:marketingActionName/constraints",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"core",
+								":marketingActionName",
+								"constraints"
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						},
+						"description": "Returns a set of constraints that would govern an attempt to perform the given marketing action on a DULE-labeled source of data.  The source data can be specified in one of two different ways -- either by directly specifying the set of DULE labels that would be present on that data, or by specifying the dataSetId of a dataSet from which those labels can be collected.  In the case of a dataSetId, a set of fields may also be specified to indicate that only those fields from that dataSet would be used.  The returned constraints take the form of a set of policies that would be violated by attempting the marketing action."
+					},
+					"response": []
+				},
+				{
+					"name": "View policies violated if marketing action attempted on certain entities.",
+					"_postman_id": "9c06c422-0b93-4100-8140-f6e0a8c7bb5d",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{entityList}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core/:marketingActionName/constraints",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"core",
+								":marketingActionName",
+								"constraints"
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						},
+						"description": "Returns a set of constraints that would govern an attempt to perform the given marketing action on a DULE-labeled source of data. The source data is specified by the \"entityType\" and \"entityId\" of the elements in the request body. In the case of a dataset entity, a set of fields may also be specified in the \"entityMeta\" to indicate that only those fields from that dataset would be used. The returned constraints take the form of a set of policies that would be violated by attempting the marketing action."
+					},
+					"response": []
+				},
+				{
+					"name": "List all custom marketing actions.",
+					"_postman_id": "3c67aaca-e4f3-43fc-a7f9-ac14c3011465",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"custom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a specific custom marketing action by its \"name\"",
+					"_postman_id": "9d4db3a5-7e08-477b-9320-a03b21001e0a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"custom",
+								":marketingActionName"
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create or update a custom marketing action.",
+					"_postman_id": "daddc5c7-7e0f-4dd4-a7df-dcff5fc95c5d",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{marketingAction}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"custom",
+								":marketingActionName"
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a custom marketing action.",
+					"_postman_id": "215de290-4c03-49d8-add7-a3c356b3a03d",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"custom",
+								":marketingActionName"
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View policies violated by the presence of DULE labels.",
+					"_postman_id": "57890115-2524-4fad-b382-4c3f313deec4",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName/constraints?duleLabels={{duleLabels}}&includeDraft=false",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"custom",
+								":marketingActionName",
+								"constraints"
+							],
+							"query": [
+								{
+									"key": "duleLabels",
+									"value": "{{duleLabels}}"
+								},
+								{
+									"key": "includeDraft",
+									"value": "false"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						},
+						"description": "Returns a set of constraints that would govern an attempt to perform the given marketing action on a DULE-labeled source of data.  The source data can be specified in one of two different ways -- either by directly specifying the set of DULE labels that would be present on that data, or by specifying the dataSetId of a dataSet from which those labels can be collected.  In the case of a dataSetId, a set of fields may also be specified to indicate that only those fields from that dataSet would be used.  The returned constraints take the form of a set of policies that would be violated by attempting the marketing action."
+					},
+					"response": []
+				},
+				{
+					"name": "View policies violated if marketing action attempted on certain entities.",
+					"_postman_id": "7294abe4-1092-4e2f-af15-d0ec48143957",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{entityList}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName/constraints?includeDraft=false",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"catalog",
+								"marketingActions",
+								"custom",
+								":marketingActionName",
+								"constraints"
+							],
+							"query": [
+								{
+									"key": "includeDraft",
+									"value": "false"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{marketingActionName}}",
+									"id": "marketingActionName"
+								}
+							]
+						},
+						"description": "Returns a set of constraints that would govern an attempt to perform the given marketing action on a DULE-labeled source of data. The source data is specified by the \"entityType\" and \"entityId\" of the elements in the request body. In the case of a dataset entity, a set of fields may also be specified in the \"entityMeta\" to indicate that only those fields from that dataset would be used. The returned constraints take the form of a set of policies that would be violated by attempting the marketing action."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "0125ab83-f26a-44b1-9666-e8199b6408cd",
+			"description": "Marketing actions, in the context of Data Governance, are actions that an Experience Platform data consumer takes, for which there is a need to check for violations of data usage policies."
+		}
+	]
+}

@@ -1,0 +1,979 @@
+{
+	"info": {
+		"_postman_id": "da943818-569b-436e-8ef5-ab14fc08f62e",
+		"name": "Mapping Service API Resource",
+		"description": "Mapping Service allows data to land in CSV or other simpler formats and map this data to exisiting XDM schema before landing into Platform.\n\nNotes:\n  * PLATFORM Gateway URL: https://platform.adobe.io\n  * Base path for this API: /data/foundation/connectors\n  * Example of a complete path for making calls to \"/xdmBatchConversion\":\n    https://platform.adobe.io/data/foundation/connectors/xdmBatchConversions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mappings",
+			"item": [
+				{
+					"name": "Returns all mapping sets for given IMS Org Id",
+					"_postman_id": "b2b7f1a5-d2c7-4286-94ac-cbab647da171",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///mappingSets?limit=10&name={{name}}&orderBy=lastUpdateDate&property={{property}}&start=0",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "orderBy",
+									"value": "lastUpdateDate"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "start",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Returns all mapping set"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a mapping set",
+					"_postman_id": "1d3c47d6-6d18-4fcd-a996-31ba6e61c2d6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{mappingSet}}"
+						},
+						"url": {
+							"raw": "https:///mappingSets?validate={{validate}}",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets"
+							],
+							"query": [
+								{
+									"key": "validate",
+									"value": "{{validate}}"
+								}
+							]
+						},
+						"description": "Returns mapping set Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Suggest mappings for given source batch and destination data set",
+					"_postman_id": "1d4c3f0d-8bb4-487c-82f8-f797c8464707",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///mappingSets/suggestion?batchId={{batchId}}&datasetId={{datasetId}}&excludeUnmapped=true",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								"suggestion"
+							],
+							"query": [
+								{
+									"key": "batchId",
+									"value": "{{batchId}}"
+								},
+								{
+									"key": "datasetId",
+									"value": "{{datasetId}}"
+								},
+								{
+									"key": "excludeUnmapped",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Returns non-persisted mapping set suggestion for review"
+					},
+					"response": []
+				},
+				{
+					"name": "Returns mapping set for given id",
+					"_postman_id": "5bf106e9-ca1f-49b0-b0e7-fb49ff09da0d",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///mappingSets/:id",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Returns all mapping set"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify mapping set",
+					"_postman_id": "1dbd0f99-5922-4998-88f7-dc150406ddd4",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{dms}}"
+						},
+						"url": {
+							"raw": "https:///mappingSets/:id",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Returns id"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletes  mapping set for given id",
+					"_postman_id": "413bf6db-387f-4ff1-a3b4-972b304d6626",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///mappingSets/:id",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Returns id"
+					},
+					"response": []
+				},
+				{
+					"name": "Returns all mappings for a mapping set",
+					"_postman_id": "500a3234-6356-4cfe-b2ad-df15b34c5d4f",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///mappingSets/:mappingSetId/mappings",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":mappingSetId",
+								"mappings"
+							],
+							"variable": [
+								{
+									"value": "{{mappingSetId}}",
+									"id": "mappingSetId"
+								}
+							]
+						},
+						"description": "Returns id"
+					},
+					"response": []
+				},
+				{
+					"name": "Create mappings for a mapping set",
+					"_postman_id": "787c9782-2c17-437e-9380-cb9e9f66374d",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{mapping}}"
+						},
+						"url": {
+							"raw": "https:///mappingSets/:mappingSetId/mappings",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":mappingSetId",
+								"mappings"
+							],
+							"variable": [
+								{
+									"value": "{{mappingSetId}}",
+									"id": "mappingSetId"
+								}
+							]
+						},
+						"description": "Returns id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a mapping from a mapping set",
+					"_postman_id": "3eecc731-6e5e-495b-9820-2526de43ef6a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///mappingSets/:mappingSetId/mappings/:mappingId",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":mappingSetId",
+								"mappings",
+								":mappingId"
+							],
+							"variable": [
+								{
+									"value": "{{mappingId}}",
+									"id": "mappingId"
+								},
+								{
+									"value": "{{mappingSetId}}",
+									"id": "mappingSetId"
+								}
+							]
+						},
+						"description": "Returns mapping spec"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify a mapping for a mapping set",
+					"_postman_id": "dee71a9b-5520-4dbb-99e8-45590d235b9c",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{mapping}}"
+						},
+						"url": {
+							"raw": "https:///mappingSets/:mappingSetId/mappings/:mappingId",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":mappingSetId",
+								"mappings",
+								":mappingId"
+							],
+							"variable": [
+								{
+									"value": "{{mappingId}}",
+									"id": "mappingId"
+								},
+								{
+									"value": "{{mappingSetId}}",
+									"id": "mappingSetId"
+								}
+							]
+						},
+						"description": "Returns mapping spec"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a mapping for a mapping set",
+					"_postman_id": "714a3347-70b3-4537-917d-e319b924ebd3",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///mappingSets/:mappingSetId/mappings/:mappingId",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"mappingSets",
+								":mappingSetId",
+								"mappings",
+								":mappingId"
+							],
+							"variable": [
+								{
+									"value": "{{mappingId}}",
+									"id": "mappingId"
+								},
+								{
+									"value": "{{mappingSetId}}",
+									"id": "mappingSetId"
+								}
+							]
+						},
+						"description": "Returns id"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "85369481-f378-4795-8436-287c86ddbd20",
+			"description": "Mapping Set Rest Controller"
+		},
+		{
+			"name": "Data Conversion",
+			"item": [
+				{
+					"name": "Returns all XDM Conversions",
+					"_postman_id": "e1e1e2be-0efd-4595-84c8-03fae4b56433",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///xdmBatchConversions?destinationDatasetId={{destinationDatasetId}}&limit=10&orderBy=lastUpdateDate&property={{property}}&sourceBatchId={{sourceBatchId}}&start=0&status={{status}}",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"xdmBatchConversions"
+							],
+							"query": [
+								{
+									"key": "destinationDatasetId",
+									"value": "{{destinationDatasetId}}"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "orderBy",
+									"value": "lastUpdateDate"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "sourceBatchId",
+									"value": "{{sourceBatchId}}"
+								},
+								{
+									"key": "start",
+									"value": "0"
+								},
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						},
+						"description": "Returns all XDM conversions"
+					},
+					"response": []
+				},
+				{
+					"name": "Create XDM Conversion",
+					"_postman_id": "4b3babe5-fb12-4372-ae95-374a5ce36ed6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///xdmBatchConversions?destinationDataSetId={{destinationDataSetId}}&mappingSetId={{mappingSetId}}&sourceBatchId={{sourceBatchId}}",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"xdmBatchConversions"
+							],
+							"query": [
+								{
+									"key": "destinationDataSetId",
+									"value": "{{destinationDataSetId}}"
+								},
+								{
+									"key": "mappingSetId",
+									"value": "{{mappingSetId}}"
+								},
+								{
+									"key": "sourceBatchId",
+									"value": "{{sourceBatchId}}"
+								}
+							]
+						},
+						"description": "Returns XDM Conversion Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Returns XDM Conversion info  for given id",
+					"_postman_id": "e2465e5c-3eb5-4433-bcae-7a059375c9ed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///xdmBatchConversions/:id",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"xdmBatchConversions",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Returns XDM Conversion info"
+					},
+					"response": []
+				},
+				{
+					"name": "Returns conversion activities for given request",
+					"_postman_id": "c18d1b7a-b5b2-441a-8de9-7478c5181933",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///xdmBatchConversions/:id/activities",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"xdmBatchConversions",
+								":id",
+								"activities"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"description": "Returns XDM Conversion Activity"
+					},
+					"response": []
+				},
+				{
+					"name": "Returns conversion activities for given request",
+					"_postman_id": "d333369b-7447-4c57-ab98-5943e29b3d1a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///xdmBatchConversions/:requestId/activities/:activityId",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"xdmBatchConversions",
+								":requestId",
+								"activities",
+								":activityId"
+							],
+							"variable": [
+								{
+									"value": "{{activityId}}",
+									"id": "activityId"
+								},
+								{
+									"value": "{{requestId}}",
+									"id": "requestId"
+								}
+							]
+						},
+						"description": "Returns XDM Conversion Activity"
+					},
+					"response": []
+				},
+				{
+					"name": "completeBatchConversionActivity",
+					"_postman_id": "0911610b-555e-421a-b70b-48c2e2c4dc14",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https:///xdmBatchConversions/:requestId/completion?status={{status}}",
+							"host": [
+								"https:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"xdmBatchConversions",
+								":requestId",
+								"completion"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{requestId}}",
+									"id": "requestId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "c561c6af-ab97-4444-af50-a26cd063b9b4",
+			"description": "Data Conversion Rest Controller"
+		}
+	]
+}

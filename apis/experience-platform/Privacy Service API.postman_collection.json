@@ -1,0 +1,778 @@
+{
+	"info": {
+		"_postman_id": "32bc569f-8766-4dff-8655-a243f7620885",
+		"name": "Privacy Service API",
+		"description": "Adobe Experience Platform Privacy Service provides a common, centralized facilitation of access/delete requests for private data. The service includes a UI for selecting and creating requests, a business layer that processesses incoming and outgoing traffic, a data store for audit and logging information, and temporary storage for data retrieval while requests are pending or waiting to be viewed.\n\nRelated documentation:\n  * [GDPR on Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/gdpr/docs/alldocs.html#!api-specification/markdown/narrative/gdpr/gdpr-on-platform-overview.md)\n  * [Privacy Service API tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/privacy_service_tutorial/privacy_service_api_tutorial.md)\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/privacy/gdpr\n  * Example of a complete path: https://<span>platform.adobe.io/data/privacy/gdpr/ping\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Privacy Service",
+			"item": [
+				{
+					"name": "Retrieve details of all jobs for the current logged-in user.",
+					"_postman_id": "4408910f-3f59-4188-b09a-e3fd208255a2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/?fromDate={{fromDate}}&toDate={{toDate}}&data={{data}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								""
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "{{fromDate}}"
+								},
+								{
+									"key": "toDate",
+									"value": "{{toDate}}"
+								},
+								{
+									"key": "data",
+									"value": "{{data}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create an access or delete job request.",
+					"_postman_id": "7cae200c-7e06-420d-ae1b-362a70960975",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								""
+							]
+						},
+						"description": "An authenticated user can submit requests to access or delete their privacy data."
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve user preferences for the current logged-in user.",
+					"_postman_id": "3ff4ccba-469d-423c-bb78-cbba43494228",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/userPrefs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"userPrefs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup the details of a job by ID.",
+					"_postman_id": "50581677-ddc9-45bf-81bb-88e997ac46b1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/:jobId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								":jobId"
+							],
+							"variable": [
+								{
+									"value": "{{jobId}}",
+									"id": "jobId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a child job for an existing parent job by ID.",
+					"_postman_id": "72844af2-8799-4829-8fd3-cdc932fef335",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/:parentJobId/child",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								":parentJobId",
+								"child"
+							],
+							"variable": [
+								{
+									"value": "{{parentJobId}}",
+									"id": "parentJobId"
+								}
+							]
+						},
+						"description": "An authenticated user can submit requests for creating a child job for an existing parent job."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "570ff527-4d45-49ba-b053-becae7924c3d",
+			"description": "Retrieve and create access/delete requests, including child jobs for existing requests."
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Retrieve the files associated with a job by ID.",
+					"_postman_id": "2e8bbd37-6552-488a-80a0-f06ff2467a12",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/files/:jobId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"files",
+								":jobId"
+							],
+							"variable": [
+								{
+									"value": "{{jobId}}",
+									"id": "jobId"
+								}
+							]
+						},
+						"description": "Returns list of files uploaded for {jobId}"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload files to a job by ID.",
+					"_postman_id": "7430f1aa-595d-4788-879e-ebd45860c777",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "{{file}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/files/:jobId/:solutionName",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"files",
+								":jobId",
+								":solutionName"
+							],
+							"variable": [
+								{
+									"value": "{{jobId}}",
+									"id": "jobId"
+								},
+								{
+									"value": "{{solutionName}}",
+									"id": "solutionName"
+								}
+							]
+						},
+						"description": "Returns file upload status and error object."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "a2cd4b25-fc32-45a8-9b69-478e8540d73c",
+			"description": "View and upload files from various Adobe solutions for specified job requests."
+		},
+		{
+			"name": "Ping",
+			"item": [
+				{
+					"name": "Retrieve the processing status of access or delete requests by status code.",
+					"_postman_id": "d82bc7b6-0df3-4636-824b-ff593c805ee3",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/ping?status={{status}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"ping"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						},
+						"description": "The message is read from the properties"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "8af05dd6-8fac-4559-93d5-a4b87fc8b7be",
+			"description": "Check the processing status of access or delete requests by supplying a status code integer as a query parameter."
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Retrieve the details of all products.",
+					"_postman_id": "51bec824-672e-443f-bfc5-b608cab992b6",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/products",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"products"
+							]
+						},
+						"description": "Returns a complete list of all products with details."
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a product by name.",
+					"_postman_id": "1c9cbd0a-4ed3-4ae8-9fcb-fa4324b4c9e3",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/products/:productName",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"products",
+								":productName"
+							],
+							"variable": [
+								{
+									"value": "{{productName}}",
+									"id": "productName"
+								}
+							]
+						},
+						"description": "Returns details of a product."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "89e76ac4-5e64-491b-9592-56264ef6a9d9",
+			"description": "View details of Adobe products available within your organization's Privacy Service integrations."
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Retrieve the details of all users.",
+					"_postman_id": "b39cdfa9-aa47-4a0a-a556-7a81920ba981",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"users"
+							]
+						},
+						"description": "Returns a complete list of all users with details."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a user as an admin for Privacy Service.",
+					"_postman_id": "40ffaa0e-c5f3-4605-8526-d37473577155",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"users"
+							]
+						},
+						"description": "Returns added user json with status"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a user by ID.",
+					"_postman_id": "c5b2fb0d-3dae-4d97-8a00-39ced111f582",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"value": "{{userId}}",
+									"id": "userId"
+								}
+							]
+						},
+						"description": "Returns details of a user."
+					},
+					"response": []
+				},
+				{
+					"name": "Update the details of a user by ID.",
+					"_postman_id": "b554bb18-9b01-4284-a4d6-a64cd4af0d2d",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"value": "{{userId}}",
+									"id": "userId"
+								}
+							]
+						},
+						"description": "Returns updated user json with status"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a user by ID.",
+					"_postman_id": "2036fc72-4948-499d-9663-574943f3d47b",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"privacy",
+								"gdpr",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"value": "{{userId}}",
+									"id": "userId"
+								}
+							]
+						},
+						"description": "Returns deleted user json with status"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "2e320ef8-07bd-4cd7-a896-1302794f9b17",
+			"description": "View, create, update, or delete users and their permissions within your organization's Privacy Service configuration."
+		}
+	]
+}

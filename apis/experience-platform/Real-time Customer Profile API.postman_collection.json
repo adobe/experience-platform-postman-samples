@@ -1,0 +1,3088 @@
+{
+	"info": {
+		"_postman_id": "8f2f88b7-9330-45f5-8804-a0f77fc1f1bd",
+		"name": "Real-time Customer Profile API",
+		"description": "Real-time Customer Profile enables you to drive coordinated, consistent, and relvant experiences for your customers no matter where or when they interact with your brand. Profile provides a holistic view of each individual customer that combines data from multiple channels, including online, offline, CRM, and third-party data.\n\nThe Real-time Customer Profile API allows you to programatically integrate Profile's various functionalities into your service, providing RESTful endpoints for merge policy configuration, segmentation, edge projections, and more.\n\nRelated overview documentation:\n  * [Real-time Customer Profile overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md)\n  * [Profile Query Language (PQL)](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_pql.md)\n  \nRelated tutorials:\n  * [Configure Real-time Customer Profile using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_up_tutorial.md)\n  * [Access Real-time Customer Profile data using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/consuming_unified_profile_data/consuming_unified_profile_data.md)\n  * [Work with merge policies using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_merge_policies_tutorial.md)\n  * [Create segments using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_segment_tutorial/creating_a_segment_tutorial.md)\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ups/config/mergePolicies\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Merge policies",
+			"item": [
+				{
+					"name": "Retrieve a list of merge policies.",
+					"_postman_id": "d0089247-9171-4721-a75e-fa6cda81cc3d",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies?start={{start}}&limit={{limit}}&orderBy={{orderBy}}&schema.name={{schema.name}}&default={{default}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "orderBy",
+									"value": "{{orderBy}}"
+								},
+								{
+									"key": "schema.name",
+									"value": "{{schema.name}}"
+								},
+								{
+									"key": "default",
+									"value": "{{default}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new merge policy.",
+					"_postman_id": "24934c75-3fda-46ed-acb5-858d67435ed1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a merge policy by ID.",
+					"_postman_id": "8797ea41-2ec0-4944-9673-548473c45050",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies",
+								":mergePolicyId"
+							],
+							"variable": [
+								{
+									"value": "{{mergePolicyId}}",
+									"id": "mergePolicyId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a merge policy by ID.",
+					"_postman_id": "eeca8c5c-dcbc-4c00-8a22-7c20e63febad",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies",
+								":mergePolicyId"
+							],
+							"variable": [
+								{
+									"value": "{{mergePolicyId}}",
+									"id": "mergePolicyId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a merge policy specified by ID.",
+					"_postman_id": "347c6580-edcb-4c50-af98-0539df55a96d",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies",
+								":mergePolicyId"
+							],
+							"variable": [
+								{
+									"value": "{{mergePolicyId}}",
+									"id": "mergePolicyId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a merge policy by ID.",
+					"_postman_id": "4e9b5062-5626-4c67-8e8b-3114fb9bdf71",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"mergePolicies",
+								":mergePolicyId"
+							],
+							"variable": [
+								{
+									"value": "{{mergePolicyId}}",
+									"id": "mergePolicyId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "29301fea-cd7d-4c28-9fb9-1b352776ddea",
+			"description": "A merge policy is a set of configurations controlling aspects of identity stitching and data fragment merging. Merge policies are specific to a single schema, and can only be used to access entities adhering to that schema."
+		},
+		{
+			"name": "Entities",
+			"item": [
+				{
+					"name": "Lookup an entity by ID or namespace.",
+					"_postman_id": "1428f37b-e0dc-4841-aefe-b0c239253b8f",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/access/entities?schema.name={{schema.name}}&relatedSchema.name={{relatedSchema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&relatedEntityId={{relatedEntityId}}&relatedEntityIdNS={{relatedEntityIdNS}}&fields={{fields}}&mergePolicyId={{mergePolicyId}}&startTime={{startTime}}&endTime={{endTime}}&limit={{limit}}&orderby={{orderby}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"access",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "schema.name",
+									"value": "{{schema.name}}"
+								},
+								{
+									"key": "relatedSchema.name",
+									"value": "{{relatedSchema.name}}"
+								},
+								{
+									"key": "entityId",
+									"value": "{{entityId}}"
+								},
+								{
+									"key": "entityIdNS",
+									"value": "{{entityIdNS}}"
+								},
+								{
+									"key": "relatedEntityId",
+									"value": "{{relatedEntityId}}"
+								},
+								{
+									"key": "relatedEntityIdNS",
+									"value": "{{relatedEntityIdNS}}"
+								},
+								{
+									"key": "fields",
+									"value": "{{fields}}"
+								},
+								{
+									"key": "mergePolicyId",
+									"value": "{{mergePolicyId}}"
+								},
+								{
+									"key": "startTime",
+									"value": "{{startTime}}"
+								},
+								{
+									"key": "endTime",
+									"value": "{{endTime}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup multiple entities by IDs or namespaces.",
+					"_postman_id": "c25454e1-3409-473b-8fd1-92919a3bd9e1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/access/entities",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"access",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an entity by ID.",
+					"_postman_id": "eebda1b3-f780-41af-a103-6ef9534b045d",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/access/entities?schema.name={{schema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&mergePolicyId={{mergePolicyId}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"access",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "schema.name",
+									"value": "{{schema.name}}"
+								},
+								{
+									"key": "entityId",
+									"value": "{{entityId}}"
+								},
+								{
+									"key": "entityIdNS",
+									"value": "{{entityIdNS}}"
+								},
+								{
+									"key": "mergePolicyId",
+									"value": "{{mergePolicyId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "2060c861-729b-47e1-b31b-6089148d2eb6",
+			"description": "Entities are Experience Data Model (XDM) objects whose attributes, data contents, and related time-series events have been merged from various sources by Real-time Customer Profile."
+		},
+		{
+			"name": "Export jobs",
+			"item": [
+				{
+					"name": "Retrieve a list of all export jobs.",
+					"_postman_id": "a35363f7-4a29-40de-8916-7091ede21ec2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs?limit={{limit}}&offset={{offset}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"export",
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new export job.",
+					"_postman_id": "c4217868-4d31-420e-879e-3f30ca21a5ba",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"export",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an export job by ID.",
+					"_postman_id": "fdda13b9-1ecb-47d9-bcc9-36d088654ebb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:exportJobId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"export",
+								"jobs",
+								":exportJobId"
+							],
+							"variable": [
+								{
+									"value": "{{exportJobId}}",
+									"id": "exportJobId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel or delete an export job by ID.",
+					"_postman_id": "99d9a45a-2f22-4d42-9b49-f95e0b67d96f",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:exportJobId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"export",
+								"jobs",
+								":exportJobId"
+							],
+							"variable": [
+								{
+									"value": "{{exportJobId}}",
+									"id": "exportJobId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "441659b6-c053-4821-9ab3-767716111130",
+			"description": "Export jobs are asynchronous processes that are used to persist audience segment members to datasets."
+		},
+		{
+			"name": "Segment definitions",
+			"item": [
+				{
+					"name": "Retrieve a list of segment definitions.",
+					"_postman_id": "46448c53-69fa-4b9f-8cd3-47b5421d1ec0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions?start={{start}}&limit={{limit}}&page={{page}}&sort={{sort}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"definitions"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "sort",
+									"value": "{{sort}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new segment definition.",
+					"_postman_id": "1b6cd886-d671-431b-a201-4001b2c0a3fb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"definitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a segment definition by ID.",
+					"_postman_id": "4a53f105-ac0a-4b53-ad36-ff244f33da0e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"definitions",
+								":segmentId"
+							],
+							"variable": [
+								{
+									"value": "{{segmentId}}",
+									"id": "segmentId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Overwrite a segment definition.",
+					"_postman_id": "645ea696-893b-48b6-8d37-34a7e582ae32",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"definitions",
+								":segmentId"
+							],
+							"variable": [
+								{
+									"value": "{{segmentId}}",
+									"id": "segmentId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a segment definition by ID.",
+					"_postman_id": "6fe2c170-47d5-467c-a4d5-6c01473c9589",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"definitions",
+								":segmentId"
+							],
+							"variable": [
+								{
+									"value": "{{segmentId}}",
+									"id": "segmentId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "881aec3b-8fb0-4b55-a252-b9e092ff61de",
+			"description": "A segment definition includes a Profile Query Language (PQL) statement that defines how to subdivide a customer base for an audience segment."
+		},
+		{
+			"name": "PQL conversions",
+			"item": [
+				{
+					"name": "Convert PQL formatting between pql/text and pql/json.",
+					"_postman_id": "0df21c49-4fcd-49c4-987b-150bee8f053d",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/conversion",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"conversion"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "98f561a7-eada-45ff-936a-739af04f0cf8",
+			"description": "Convert PQL formatting between `pql/json` and `pql/text`."
+		},
+		{
+			"name": "Segment jobs",
+			"item": [
+				{
+					"name": "Retrieve a list of all segment job requests.",
+					"_postman_id": "59cca167-ffb7-4778-b077-d513a1941bf0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs?snapshot.name={{snapshot.name}}&start={{start}}&limit={{limit}}&status={{status}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "snapshot.name",
+									"value": "{{snapshot.name}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new segment job request.",
+					"_postman_id": "d59db725-b74a-4c5b-959c-65988a5fdbf6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a segment job request by ID.",
+					"_postman_id": "547978dc-ed02-4455-b558-eb7d17ff9d05",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:segmentJobId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"jobs",
+								":segmentJobId"
+							],
+							"variable": [
+								{
+									"value": "{{segmentJobId}}",
+									"id": "segmentJobId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel or delete a segment job request by ID.",
+					"_postman_id": "471f934b-6df5-458d-a016-a3ffb0df5924",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:segmentJobId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"jobs",
+								":segmentJobId"
+							],
+							"variable": [
+								{
+									"value": "{{segmentJobId}}",
+									"id": "segmentJobId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "b21a07ee-f42e-4e09-ac91-cf1ee47b7bb3",
+			"description": "Segment jobs process previously established segment definitions against your profile store to generate an audience segment."
+		},
+		{
+			"name": "Previews",
+			"item": [
+				{
+					"name": "Create a new preview job.",
+					"_postman_id": "a511f5e8-b50b-4079-9bf8-69b95696a2e5",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/preview",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"preview"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup the results of a preview job by ID.",
+					"_postman_id": "02788799-fb55-4f22-8de0-3bf2f65ff5eb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/preview/:previewId?offset={{offset}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"preview",
+								":previewId"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{previewId}}",
+									"id": "previewId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel or delete a preview job by ID.",
+					"_postman_id": "80ed158d-c76c-4451-a6df-02f7e382fadf",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/preview/:previewId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"preview",
+								":previewId"
+							],
+							"variable": [
+								{
+									"value": "{{previewId}}",
+									"id": "previewId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "def9dbcf-15b5-45d6-9472-b1a5da51461d",
+			"description": "Previews provide paginated lists of qualifying profiles for a segment definition."
+		},
+		{
+			"name": "Estimates",
+			"item": [
+				{
+					"name": "Lookup the results of an estimate job by ID.",
+					"_postman_id": "e33f1ed0-8148-494b-8cf7-522be6b59c20",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/estimate/:previewId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"estimate",
+								":previewId"
+							],
+							"variable": [
+								{
+									"value": "{{previewId}}",
+									"id": "previewId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "6d8456b8-576f-4541-8d66-2db40300683a",
+			"description": "Estimates provide statistical information on a segment definition, such as the projected audience size and confidence interval."
+		},
+		{
+			"name": "Projection configurations",
+			"item": [
+				{
+					"name": "Retrieve a list of edge projection configurations. The latest definitions are returned.",
+					"_postman_id": "656f4a83-b250-4f5e-ac69-7e1b9c7d6518",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionConfigList+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName={{schemaName}}&name={{name}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"projections"
+							],
+							"query": [
+								{
+									"key": "schemaName",
+									"value": "{{schemaName}}"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new edge projection configuration.",
+					"_postman_id": "c83f38ef-545b-4e9b-8239-ad32ada9e5b9",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName={{schemaName}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"projections"
+							],
+							"query": [
+								{
+									"key": "schemaName",
+									"value": "{{schemaName}}"
+								}
+							]
+						},
+						"description": "The API response is immediate, but the actual changes to the projections on the edges take place asynchronously. There is no guarantee that changes to the definition of the projection are reflected instantly on the edges. It is best to assume that there is a noticeable amount of time between the update of the definition of the projection and the update of the actual projection on any edge."
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an edge projection configuration by ID. The latest definition is returned.",
+					"_postman_id": "f9e4bbd2-f606-49a6-9121-693be33a7746",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections/:projectionid",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"projections",
+								":projectionid"
+							],
+							"variable": [
+								{
+									"value": "{{projectionid}}",
+									"id": "projectionid"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create or update an edge projection configuration by ID. Overwrites the entire configuration.",
+					"_postman_id": "eb1321e1-f7c3-4260-a8f5-384d6e76cf67",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections/:projectionid",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"projections",
+								":projectionid"
+							],
+							"variable": [
+								{
+									"value": "{{projectionid}}",
+									"id": "projectionid"
+								}
+							]
+						},
+						"description": "The API response is immediate, but the actual changes to the projections on the edges take place asynchronously. There is no guarantee that changes to the definition of the projection are reflected instantly on the edges. It is best to assume that there is a noticeable amount of time between the update of the definition of the projection and the update of the actual projection on any edge."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an edge projection configuration by ID.",
+					"_postman_id": "08c4213f-ff0f-46f2-afdb-4f6a068309f0",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections/:projectionid",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"projections",
+								":projectionid"
+							],
+							"variable": [
+								{
+									"value": "{{projectionid}}",
+									"id": "projectionid"
+								}
+							]
+						},
+						"description": "API response is immediate, but the actual changes to the projections on the edges take place asynchronously. Eventually, the result is that the profile data for the given customer will be wiped from all edges."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "d8256b3b-da1d-4465-a6e4-dcad87ae1aa4",
+			"description": "Edge projection configurations determine what data should be projected to each edge."
+		},
+		{
+			"name": "Projection destinations",
+			"item": [
+				{
+					"name": "Retrieve a list of edge projection destinations. The latest definitions are returned.",
+					"_postman_id": "1d0b5bb5-5ff8-4e6b-875e-544f639d5cf5",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionDestinationList+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"destinations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new edge projection destination.",
+					"_postman_id": "2cd9f68a-908d-4151-9029-ade6a1b5fb7f",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"destinations"
+							]
+						},
+						"description": "The API response is immediate, but the actual changes to the projections on the edges take place asynchronously. There is no guarantee that changes to the definition of the projection are reflected instantly on the edges. It is best to assume that there is a noticeable amount of time between the update of the definition of the projection and the update of the actual projection on any edge."
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an edge projection destination by ID. The latest definition is returned.",
+					"_postman_id": "c854f587-ef81-4b13-b935-df37182b3ea0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations/:destinationId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"destinations",
+								":destinationId"
+							],
+							"variable": [
+								{
+									"value": "{{destinationId}}",
+									"id": "destinationId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create or update an edge projection destination by ID. Overwrites the entire configuration.",
+					"_postman_id": "0c3f16cc-6fb8-46d8-ac75-e987a6906a62",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations/:destinationId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"destinations",
+								":destinationId"
+							],
+							"variable": [
+								{
+									"value": "{{destinationId}}",
+									"id": "destinationId"
+								}
+							]
+						},
+						"description": "The API response is immediate, but the actual changes to the projections on the edges take place asynchronously. There is no guarantee whatsoever that changes to the definition of the projection are reflected instantly on the edges – in fact, it's best to assume that there is a noticeable amount of time between the update of the definition of the projection and the update of the actual projection on any edge."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an edge projection destination by ID.",
+					"_postman_id": "f32134ea-a0a6-466a-8ef0-9239d7870bab",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-authorization",
+								"value": "{{x-gw-ims-authorization}}"
+							},
+							{
+								"key": "x-user-token",
+								"value": "{{x-user-token}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations/:destinationId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"destinations",
+								":destinationId"
+							],
+							"variable": [
+								{
+									"value": "{{destinationId}}",
+									"id": "destinationId"
+								}
+							]
+						},
+						"description": "API response is immediate, but the actual changes to the projections on the edges take place asynchronously. Eventually, the result is that the profile data for the given customer will be wiped from all edges."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "6fa39f67-a731-490b-933f-38681b2ff340",
+			"description": "Edge projection destinations define where to route a projection that has been created or changed."
+		},
+		{
+			"name": "Event types",
+			"item": [
+				{
+					"name": "Retrieve a list of event types.",
+					"_postman_id": "42fce1a7-73f3-4f0b-9a70-49a79ea72eeb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes?start={{start}}&limit={{limit}}&orderBy={{orderBy}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"eventTypes"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "orderBy",
+									"value": "{{orderBy}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new event type.",
+					"_postman_id": "a47f439c-5055-40a5-8e19-c26ac626484d",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"eventTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup an event type by ID.",
+					"_postman_id": "f91e0134-a4f9-424f-9033-eda4f15a56b8",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"eventTypes",
+								":eventTypeId"
+							],
+							"variable": [
+								{
+									"value": "{{eventTypeId}}",
+									"id": "eventTypeId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Overwrite an event type by ID.",
+					"_postman_id": "04988779-2579-4df5-8f8e-54fe95658e4f",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"eventTypes",
+								":eventTypeId"
+							],
+							"variable": [
+								{
+									"value": "{{eventTypeId}}",
+									"id": "eventTypeId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of an event type by ID.",
+					"_postman_id": "f2031ad8-fc59-4885-944c-ebae5c0e0bdf",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"eventTypes",
+								":eventTypeId"
+							],
+							"variable": [
+								{
+									"value": "{{eventTypeId}}",
+									"id": "eventTypeId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an event type by ID.",
+					"_postman_id": "dd02ade9-4d69-4f5a-b53b-56ce3ac18e37",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"eventTypes",
+								":eventTypeId"
+							],
+							"variable": [
+								{
+									"value": "{{eventTypeId}}",
+									"id": "eventTypeId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "04f0601c-ca68-4220-86b6-ffc3500ed691",
+			"description": "Event types are context descriptors for time series events within Real-time Customer Profile."
+		},
+		{
+			"name": "Macros",
+			"item": [
+				{
+					"name": "Retrieve a list of all macros for your organization.",
+					"_postman_id": "bcd693c3-005f-49d2-b012-4ce1cb6e3f95",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros?start={{start}}&limit={{limit}}&orderBy={{orderBy}}&dataSetId={{dataSetId}}&schemaClassId={{schemaClassId}}&value={{value}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"macros"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "orderBy",
+									"value": "{{orderBy}}"
+								},
+								{
+									"key": "dataSetId",
+									"value": "{{dataSetId}}"
+								},
+								{
+									"key": "schemaClassId",
+									"value": "{{schemaClassId}}"
+								},
+								{
+									"key": "value",
+									"value": "{{value}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new macro.",
+					"_postman_id": "8b9dbff4-9812-473e-846d-bc9d108f3e6b",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"macros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a macro by ID.",
+					"_postman_id": "3eeb5e52-162f-4c60-841a-23bb102586da",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"macros",
+								":macroId"
+							],
+							"variable": [
+								{
+									"value": "{{macroId}}",
+									"id": "macroId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Overwrite a macro by ID.",
+					"_postman_id": "e08e562d-3f45-4c67-ac16-241a740659e9",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"macros",
+								":macroId"
+							],
+							"variable": [
+								{
+									"value": "{{macroId}}",
+									"id": "macroId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a macro by ID.",
+					"_postman_id": "92ab5d15-f38d-4844-b7fb-b9d451620d4f",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"macros",
+								":macroId"
+							],
+							"variable": [
+								{
+									"value": "{{macroId}}",
+									"id": "macroId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a macro by ID.",
+					"_postman_id": "0e9d44d5-dc70-4b01-a854-fede8977bba4",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"config",
+								"macros",
+								":macroId"
+							],
+							"variable": [
+								{
+									"value": "{{macroId}}",
+									"id": "macroId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "29906249-15d3-40ba-bde5-e7c63aae1a4c",
+			"description": "Macros allow you to inject pre-computed fields and values into segment definitions. Values from different fields are added together and tested against the profile store as a single value. With macros, audience segments can be defined in more ways than would otherwise be available from isolated profile data fields."
+		}
+	]
+}

@@ -1,0 +1,993 @@
+{
+	"info": {
+		"_postman_id": "8512cb19-647b-407a-a485-8b02e8230d7a",
+		"name": "Data Ingestion API",
+		"description": "Data Ingestion allows you to bring your data into Adobe Experience Platform through batch ingestion and streaming ingestion. Batch ingestion lets you import data in batch, from any number of datasources. Streaming ingestion lets users send data to Platform in real time from client and server-side devices.\n\nRelated documentation:\n  * [Batch ingestion overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/ingest_architectural_overview/ingest_architectural_overview.md)\n  * [Streaming ingestion overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/streaming_ingest/streaming_ingest_overview.md)\n  * [Create and populate a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n  * [Getting started with streaming ingestion APIs](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/streaming_ingest/getting_started_with_platform_streaming_ingestion.md)\n\nNotes:\n  * Base path for batch ingestion APIs: https://<span>platform.adobe.io/data/foundation/import\n  * Base path for streaming ingestion APIs:\n    * Data inlet management: https://<span>platform.adobe.io/data/core/edge\n    * Data collection: https://<span>dcs.data.adobe.net/\n  * Example of a complete path for batch ingestion: https://<span>platform.adobe.io/data/foundation/import/batches\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Data Inlets",
+			"item": [
+				{
+					"name": "Get or Query inlets.",
+					"_postman_id": "bc203502-d387-4039-a4fb-55d17de624c8",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "{{Cache-Control}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/inlet?dataType={{dataType}}&name={{name}}&sourceId={{sourceId}}&status={{status}}&location={{location}}&authenticationRequired={{authenticationRequired}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"inlet"
+							],
+							"query": [
+								{
+									"key": "dataType",
+									"value": "{{dataType}}"
+								},
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "sourceId",
+									"value": "{{sourceId}}"
+								},
+								{
+									"key": "status",
+									"value": "{{status}}"
+								},
+								{
+									"key": "location",
+									"value": "{{location}}"
+								},
+								{
+									"key": "authenticationRequired",
+									"value": "{{authenticationRequired}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create inlet.",
+					"_postman_id": "55c51c80-55be-4434-9903-e87afeabf2c2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "{{Cache-Control}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/inlet",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"inlet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get inlet by ID.",
+					"_postman_id": "7ba6906a-bd32-4c64-8dbe-4097b660ea0a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "{{Cache-Control}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/inlet/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"inlet",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update inlet by ID.",
+					"_postman_id": "55573ff9-ad8d-42ac-9b30-fee3f1473f30",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "{{Cache-Control}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/inlet/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"inlet",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete inlet by ID.",
+					"_postman_id": "9ebd17f6-4bf3-49c3-9c99-5a078d51d374",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "{{Cache-Control}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/inlet/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"inlet",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "eb797338-bbd3-4082-a4ec-593f92c92c0b",
+			"description": "Data Inlets are used in conjunction with streaming API calls to ingest record and time=series data for Real-time Customer Profile."
+		},
+		{
+			"name": "Streaming Ingestion",
+			"item": [
+				{
+					"name": "Publish messages to Adobe Experience Platform using the inlet ID.",
+					"_postman_id": "614c2707-bbfc-4bf6-abf3-355da0765f89",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "{{Cache-Control}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/collection/:inletId?debug={{debug}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"collection",
+								":inletId"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "{{debug}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{inletId}}",
+									"id": "inletId"
+								}
+							]
+						},
+						"description": "This API is used by any mobile application, web application or a service to stream data into ACP. Data Collection service uses embedded inlet-id to retrieve associated metadata to process data and land it on a designated Pipeline topic for the downstream systems to consume."
+					},
+					"response": []
+				},
+				{
+					"name": "Publish messages to Experience Platform using the inlet ID.",
+					"_postman_id": "5a5b86a4-2063-47ee-9f6c-ca81ae49c854",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/collection/batch/:inletId?debug={{debug}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"collection",
+								"batch",
+								":inletId"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "{{debug}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{inletId}}",
+									"id": "inletId"
+								}
+							]
+						},
+						"description": "This API is used by any mobile application, web application or a service to stream data into ACP. Data Collection service uses embedded inlet-id to retrieve associated metadata to process data and land it on a designated Pipeline topic for the downstream systems to consume"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "73375447-d824-417e-b918-c484402298b2",
+			"description": "Streaming ingestion allows you to send data from client and server-side devices to Experience Platform in real-time. It drives Real-time Customer Profile creating personalized experiences."
+		},
+		{
+			"name": "Batch Ingestion",
+			"item": [
+				{
+					"name": "Register a new batch in Adobe Data Catalog.",
+					"_postman_id": "81d46959-95b5-49ef-9f6a-add5adb94cf2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/batches",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"batches"
+							]
+						},
+						"description": "Creates a new batch in Data Catalog as a first step to bulk data ingestion. The data is uploaded to this batch after which the batch is marked ready for triggering data registration in Catalog"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload file to a dataset in a batch.",
+					"_postman_id": "e8aa52cf-5720-47cb-8e06-4fd96d85b955",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "content-type",
+								"value": "{{content-type}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/batches/:batchId/datasets/:datasetId/files/:filePath",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"batches",
+								":batchId",
+								"datasets",
+								":datasetId",
+								"files",
+								":filePath"
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								},
+								{
+									"value": "{{datasetId}}",
+									"id": "datasetId"
+								},
+								{
+									"value": "{{filePath}}",
+									"id": "filePath"
+								}
+							]
+						},
+						"description": "For a batch initialized by the bulk ingestion api, this endpoint lets you upload files under datasets. Note that this puts the entire request stream as the file bytes under the path denoted by filePath in the URL and is idempotent. Subsequent calls to this endpoint will replace the file existent on the referenced path. Note that due to gateway size and timeout limits, there is a size threshold(currently 512MB) beyond which the clients must use the large file upload mechanism."
+					},
+					"response": []
+				},
+				{
+					"name": "Operate on the identified file.",
+					"_postman_id": "42ec57e7-2e42-43dd-b915-3ac407e5237e",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/batches/:batchId/datasets/:datasetId/files/:filePath?action={{action}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"batches",
+								":batchId",
+								"datasets",
+								":datasetId",
+								"files",
+								":filePath"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "{{action}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								},
+								{
+									"value": "{{datasetId}}",
+									"id": "datasetId"
+								},
+								{
+									"value": "{{filePath}}",
+									"id": "filePath"
+								}
+							]
+						},
+						"description": "Used to signal intialization and completion of the file that's uploaded in parts"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload file part to a resumable file being uploaded to a batch dataset.",
+					"_postman_id": "828d40ea-fe84-468a-815e-64bea49696be",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "content-type",
+								"value": "{{content-type}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							},
+							{
+								"key": "Content-Range",
+								"value": "{{Content-Range}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "{{file}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/batches/:batchId/datasets/:datasetId/files/:filePath",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"batches",
+								":batchId",
+								"datasets",
+								":datasetId",
+								"files",
+								":filePath"
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								},
+								{
+									"value": "{{datasetId}}",
+									"id": "datasetId"
+								},
+								{
+									"value": "{{filePath}}",
+									"id": "filePath"
+								}
+							]
+						},
+						"description": "Files larger than 512MB are uploaded in parts and this PATCH endpoint provides you a way to upload a part of your large file that was initialized via the POST endpoint above"
+					},
+					"response": []
+				},
+				{
+					"name": "Get the status of the chunked file uploaded so far.",
+					"_postman_id": "9dac11f3-ec83-43b4-a297-d990f40ee20d",
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/batches/:batchId/datasets/:datasetId/files/:filePath",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"batches",
+								":batchId",
+								"datasets",
+								":datasetId",
+								"files",
+								":filePath"
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								},
+								{
+									"value": "{{datasetId}}",
+									"id": "datasetId"
+								},
+								{
+									"value": "{{filePath}}",
+									"id": "filePath"
+								}
+							]
+						},
+						"description": "Files larger than 512MB are uploaded in parts and this HEAD endpoint provides you a way get the byte range information received by the server so far."
+					},
+					"response": []
+				},
+				{
+					"name": "Generate a preview for a batch.",
+					"_postman_id": "dc3e1b4a-1e10-4d73-95f1-c2b80a2efa7c",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/batches/:batchId/datasets/:datasetId/preview?format={{format}}&delimiter=,&quote=\"&escape=\\&charset=UTF-8&header=true&nrow=0",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"batches",
+								":batchId",
+								"datasets",
+								":datasetId",
+								"preview"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "{{format}}"
+								},
+								{
+									"key": "delimiter",
+									"value": ","
+								},
+								{
+									"key": "quote",
+									"value": "\""
+								},
+								{
+									"key": "escape",
+									"value": "\\"
+								},
+								{
+									"key": "charset",
+									"value": "UTF-8"
+								},
+								{
+									"key": "header",
+									"value": "true"
+								},
+								{
+									"key": "nrow",
+									"value": "0"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								},
+								{
+									"value": "{{datasetId}}",
+									"id": "datasetId"
+								}
+							]
+						},
+						"description": "Generates data preview for the files uploaded to the batch so far. The preview could be generated for all the batch datasets collectively or per selected datasets"
+					},
+					"response": []
+				},
+				{
+					"name": "Complete batch.",
+					"_postman_id": "fefa24bf-3ca1-4464-b345-09d816081b00",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}"
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/import/batches/:batchId?action={{action}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"import",
+								"batches",
+								":batchId"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "{{action}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{batchId}}",
+									"id": "batchId"
+								}
+							]
+						},
+						"description": "Complete the batch to trigger the downstream data promotion workflow"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "0e8cac7e-74aa-423f-9bc7-3bb283ca6a88",
+			"description": "Batch ingestion is used to ingest data into Experience Platform as batch files. For example, data being ingested can be the profile data from a flat file in a CRM sytem (for example: parquet, or JSON) or data that conforms to a known Experience Data Model (XDM) schema within the Schema Registry."
+		}
+	]
+}
