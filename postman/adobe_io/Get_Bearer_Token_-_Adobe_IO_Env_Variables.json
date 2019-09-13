@@ -36,6 +36,33 @@
           "response": []
         },
         {
+          "name": "INIT: Load Crypto Library for RS256 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "824e628b-b420-417b-894b-417ab6412896",
+                "exec": [
+                  "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);",
+                  "tests[\"Javascript load complete\"] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "48333d63-cd3c-4b46-84e3-4aa3bf1873b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
+            "description": "Load the RSA-Sign Crypto LIbrary in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
+          },
+          "response": []
+        },
+        {
           "name": "NEW POSTMAN EVARS IMS: JWT Generate + Auth via User Token Copy",
           "event": [
             {
