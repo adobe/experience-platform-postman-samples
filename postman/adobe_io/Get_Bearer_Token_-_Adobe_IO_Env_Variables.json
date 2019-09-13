@@ -232,33 +232,6 @@
               "body": "{\n    \"token_type\": \"bearer\",\n    \"access_token\": \"eyJ4NXUiOiJpbXNfbmExLWtleS0xLmNlciIsImFsZyI6IlJTMjU2In0.eyJpZCI6IjE1NjgzOTYxOTcxNzlfYTE0OWFlNmUtZGExYi00YjgwLWE0M2YtOGU0NGY0MzE1ZTg2X3VlMSIsImNsaWVudF9pZCI6ImQxZjg0ZDFlMWMzNjRhNTZiZjQ1ZmI1YThlODY3ZGFkIiwidXNlcl9pZCI6IkExNUIyMTAyNUQ2RTlFODcwQTQ5NUZDN0B0ZWNoYWNjdC5hZG9iZS5jb20iLCJzdGF0ZSI6IntcInNlc3Npb25cIjpcImh0dHBzOi8vaW1zLW5hMS5hZG9iZWxvZ2luLmNvbS9pbXMvc2Vzc2lvbi92MS9aR1F3TmpCbFpXTXROR1V5TmkwMFl6aGlMV0ZqTURJdFlqWmlORGd6TWpVNU9XWTFMUzFCTVRWQ01qRXdNalZFTmtVNVJUZzNNRUUwT1RWR1F6ZEFkR1ZqYUdGalkzUXVZV1J2WW1VdVkyOXRcIn0iLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiYXMiOiJpbXMtbmExIiwiZmciOiJUWU9BQURFRUhMRzVNWFdHQ09FM0FLQUFLQT09PT09PSIsIm1vaSI6Ijc1MTVjZGUiLCJjIjoiSmY2Wnl3ZWtIeHF1Q2NndXpyd0MrZz09IiwiZXhwaXJlc19pbiI6Ijg2NDAwMDAwIiwic2NvcGUiOiJvcGVuaWQsc2Vzc2lvbixBZG9iZUlELHJlYWRfb3JnYW5pemF0aW9ucyxhZGRpdGlvbmFsX2luZm8ucHJvamVjdGVkUHJvZHVjdENvbnRleHQiLCJjcmVhdGVkX2F0IjoiMTU2ODM5NjE5NzE3OSJ9.qwn7m7BnueOwjtTFLaCJnEx68C-yNmYKhQutSccOwZV3KzMfrzstPOkwF1d7xR2hyXtCIdioUw4OhmH9XJ-qpXLC5jOCl5MFGluxBgE0P_U-7Nw6i-4LtbNH0dmH5jlgA0AJkLGTeuIuh05zM9IqpA5CW0VsIQJQyofpIkpBVtMICh88wv9AhJ80JGlW_8gWAmyXf44WkypfUbA1bd6VMdGPHLR7cQ6qnFBIWimo7Ja-lj1I7w8bTvVwrnDhYX7VLA2op-YylGkgCe9TnoAcliSd3yzPU4tqRY_kMCS8U1vBuniJSo2UK7YJtTl8QKhw_HkESJMzKU2P9nHo2OaZnQ\",\n    \"expires_in\": 86399973\n}"
             }
           ]
-        },
-        {
-          "name": "INIT: Load Crypto Library for RS256 Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "824e628b-b420-417b-894b-417ab6412896",
-                "exec": [
-                  "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);",
-                  "tests[\"Javascript load complete\"] = true; "
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "48333d63-cd3c-4b46-84e3-4aa3bf1873b7",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
-            "description": "Load the RSA-Sign Crypto LIbrary in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
-          },
-          "response": []
         }
       ],
       "_postman_id": "a81baf73-98d8-46ab-9db6-e183348a34ef",
