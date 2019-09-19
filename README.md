@@ -2,10 +2,11 @@
 
 A repository that collects Postman samples work with Adobe Experience Platform.
 
-> Please note this repository is undergoing a migration/normalization to align with Adobe I/O Console's "Export Details to Postman" functionality.
-> The Postman Collections in the following folders has been aligned with the Adobe I/O generated Platform API Postman Environment file:
-    * [./apis/experience-platform][./apis/experience-platform]
-    * [./apis/ims][./apis/ims]
+Please note this repository is undergoing a migration/normalization to align with Adobe I/O Console's "Export Details to Postman" functionality.
+The Postman Collections in the following folders has been aligned with the Adobe I/O generated Platform API Postman Environment file:
+
+* [./apis/experience-platform](./apis/experience-platform)
+* [./apis/ims](./apis/ims)
 
 ## Goals
 
