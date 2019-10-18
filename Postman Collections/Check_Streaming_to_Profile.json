@@ -181,13 +181,115 @@
                   "console.log(sPayload);",
                   "console.log(sJWT);",
                   "",
-                  "postman.setEnvironmentVariable(\"jwt_token\", sJWT);"
+                  "postman.setEnvironmentVariable(\"JWT_TOKEN\", sJWT);"
                 ],
                 "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "df7b6fd8-7a26-4a40-8567-84dbaedea37f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "client_id",
+                  "value": "{{API_KEY}}",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{CLIENT_SECRET}}",
+                  "type": "text"
+                },
+                {
+                  "key": "jwt_token",
+                  "value": "{{JWT_TOKEN}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "https://{{IMS}}/ims/exchange/jwt/",
+            "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+          },
+          "response": []
+        },
+        {
+          "name": "IMS: JWT Generate + Auth via User Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1759a9d4-ac9a-4eb2-b5d1-a608a43a2cad",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "if (data.access_token) {",
+                  "    postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);",
+                  "} else {",
+                  "    console.log(\"Unable to acquire ACCESS_TOKEN from Adobe IMS to make further calls to Adobe I/O APIs.\")",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f067b81f-65d2-4672-ae41-0ff1338d25f6",
+                "exec": [
+                  "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+                  "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+                  "",
+                  "var navigator = {}; //fake a navigator object for the lib",
+                  "var window = {}; //fake a window object for the lib",
+                  "eval(postman.getGlobalVariable(\"jsrsasign_js\")); //import javascript jsrsasign",
+                  "",
+                  "",
+                  "var header = {",
+                  "\t\"alg\": \"RS256\"",
+                  "};",
+                  "",
+                  "var data = {",
+                  "\t\"exp\": Math.round(87000 + Date.now()/1000),",
+                  "\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
+                  "\t\"sub\": postman.getEnvironmentVariable(\"TECHNICAL_ACCOUNT_ID\"),",
+                  "\t\"aud\": \"https://\" + postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
+                  "};",
+                  "",
+                  "meta_scopes = postman.getEnvironmentVariable(\"META_SCOPE\");",
+                  "meta_scopes.forEach(function(scope){",
+                  "    var meta_scope = \"https://\" + postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                  "                     scope;",
+                  "    data[meta_scope] = true;",
+                  "});",
+                  "",
+                  "var secret = postman.getEnvironmentVariable(\"PRIVATE_KEY\");",
+                  "",
+                  "if (!secret) {",
+                  "    console.log(\"Ensure the Private Key is added to both INITIAL and CURRENT VALUES in the active Postman environment's PRIVATE_KEY variable.\");",
+                  "}",
+                  "",
+                  "console.log(data);",
+                  "",
+                  "var sHeader = JSON.stringify(header);",
+                  "var sPayload = JSON.stringify(data);",
+                  "var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+                  "",
+                  "console.log(sJWT);",
+                  "",
+                  "postman.setEnvironmentVariable(\"JWT_TOKEN\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d027f611-5627-44fe-8647-fb394da0253d",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
