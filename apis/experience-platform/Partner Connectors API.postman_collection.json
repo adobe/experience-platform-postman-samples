@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d8c72942-580e-4172-9026-f18780fe6145",
+		"_postman_id": "d5d636b2-2b2a-44ff-8f9f-7171aa02acff",
 		"name": "Partner Connectors API",
 		"description": "Partner Connectors provide RESTful API to ingest data into Adobe Experience Platform by connecting it to 3rd party storage and CRM systems.\n\nRelated documentation:\n  * [Connectors Service Overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/acp_connectors_overview/acp-connectors-overview.md)\n  * Connector tutorials:\n    * [Amazon-s3](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_s3_connector_tutorial.md)\n    * [Azure-Blob](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_azure_blob_connector_tutorial.md)\n    * [Microsoft Dynamics](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_dynamic_connector_tutorial.md)\n    * [Salesforce](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_salesforce_connector_tutorial.md)\n       \n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/connectors\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/connectors/account\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Create an account and establish a connection for the given set of credentials.",
-					"_postman_id": "b1a2567b-b3f6-495a-b37c-7a1375e5500c",
+					"_postman_id": "6858f886-8bf5-4557-b600-022946bac2f7",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -25,15 +25,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -41,7 +57,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/account",
+							"raw": "https://platform.adobe.io/account",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -49,9 +65,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"account"
 							]
 						}
@@ -60,7 +73,7 @@
 				},
 				{
 					"name": "Test the validity of the account associated with the accountId.",
-					"_postman_id": "fe4f7c3c-ecba-4430-abf4-704ac74d7311",
+					"_postman_id": "4f2f2d04-c1c9-4a9f-b1e9-ca5ac6511524",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -74,15 +87,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -90,7 +119,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/account/:accountId",
+							"raw": "https://platform.adobe.io/account/:accountId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -98,9 +127,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"account",
 								":accountId"
 							],
@@ -116,7 +142,7 @@
 				},
 				{
 					"name": "Update the credentials associated with the accountId.",
-					"_postman_id": "bfbe1c69-31d2-4664-a88d-83e39f0ebe52",
+					"_postman_id": "6faddafb-3214-4d75-a1ea-40e237098322",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -130,15 +156,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key belonging to the calling client.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -146,7 +188,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/account/:accountId",
+							"raw": "https://platform.adobe.io/account/:accountId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -154,9 +196,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"account",
 								":accountId"
 							],
@@ -171,7 +210,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8f5172cf-df4c-4bba-ad7b-23382d03c8ae",
+			"_postman_id": "c35d8b89-d1e0-4164-9d87-0936eb70e772",
 			"description": "Authenticate your storage systems and CRM services to allow your data to be ingested from various sources (such as cloud-based storage, and CRM data) into Experience Platform."
 		},
 		{
@@ -179,7 +218,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of objects, files, or tables at the source location.",
-					"_postman_id": "47a963b2-ef75-460f-bb2f-3fafc94bcc68",
+					"_postman_id": "1e8473d4-1f2c-44c9-885a-f436a396a9d0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -193,15 +232,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key belonging to the calling client.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -209,7 +264,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/objects?object={{object}}",
+							"raw": "https://platform.adobe.io/connections/:connectionId/objects?object={{object}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -217,9 +272,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"connections",
 								":connectionId",
 								"objects"
@@ -241,7 +293,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "528b146b-3d2e-4538-85ef-df731a25d8c0",
+			"_postman_id": "76f84b20-1980-4a1d-800a-1c99d0b7b426",
 			"description": "Returns a list object files or tables at the source location."
 		},
 		{
@@ -249,7 +301,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of fields from the data.",
-					"_postman_id": "a402b20b-10df-4cc1-99f9-879b94d5bddc",
+					"_postman_id": "42996bbf-3883-43e8-ac7c-ce37bc135c2f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -263,15 +315,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -279,7 +347,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/fields?object={{object}}&fileType={{fileType}}",
+							"raw": "https://platform.adobe.io/connections/:connectionId/fields?object={{object}}&fileType={{fileType}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -287,9 +355,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"connections",
 								":connectionId",
 								"fields"
@@ -316,7 +381,7 @@
 				},
 				{
 					"name": "Preview data for the given object.",
-					"_postman_id": "0915c5f9-ec65-4419-895b-e13e1712cec9",
+					"_postman_id": "0c49664a-7b5d-4cfd-835e-d373d54fa09f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -330,15 +395,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -346,7 +427,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/rows?object={{object}}&fileType={{fileType}}",
+							"raw": "https://platform.adobe.io/connections/:connectionId/rows?object={{object}}&fileType={{fileType}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -354,9 +435,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"connections",
 								":connectionId",
 								"rows"
@@ -382,7 +460,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e1d4d9e7-41b1-4778-9fd1-81a32aea8c0e",
+			"_postman_id": "8aa5a5af-88a8-4b24-a8c1-9568f5dc44df",
 			"description": "Returns a list of schema fields or a data preview for a given object."
 		},
 		{
@@ -390,7 +468,7 @@
 			"item": [
 				{
 					"name": "Create a dataset for a connection to ingest data into Platform.",
-					"_postman_id": "79c68e02-3f4a-4294-b5d9-451eebe830df",
+					"_postman_id": "ea20906e-eff9-4cce-8ea6-fff854b37b91",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -404,15 +482,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -420,7 +514,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/datasets",
+							"raw": "https://platform.adobe.io/connections/:connectionId/datasets",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -428,9 +522,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"connections",
 								":connectionId",
 								"datasets"
@@ -446,7 +537,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f6e52e94-eed7-4dc6-8c07-077f119db182",
+			"_postman_id": "4644d2a2-e38c-4bd3-bd40-fdaee5e7f330",
 			"description": "Creates a dataset for a connection to ingest data into and persist within Platform."
 		},
 		{
@@ -454,7 +545,7 @@
 			"item": [
 				{
 					"name": "Schedule ingestion at the given frequency.",
-					"_postman_id": "4f1c5008-291e-42f3-be08-f50f3668b31a",
+					"_postman_id": "db5e68fa-c7da-479a-869d-2b84743e1035",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -468,15 +559,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -484,7 +591,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/schedule",
+							"raw": "https://platform.adobe.io/connections/:connectionId/schedule",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -492,9 +599,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"connections",
 								":connectionId",
 								"schedule"
@@ -510,7 +614,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4f4da0f4-c0bf-4211-aa22-31714dd764fc",
+			"_postman_id": "be38dc19-c33d-4c55-b840-7fa8a304ed3b",
 			"description": "Schedule ingestion from your authenticated connector into Data Lake at a given start date and frequency. Frequency can be set for every month, day, day of the week, hour, or minute."
 		},
 		{
@@ -518,7 +622,7 @@
 			"item": [
 				{
 					"name": "Posts custom schema via fields or objectName.",
-					"_postman_id": "4d3aced6-0120-48a1-9a3b-7b887061ab07",
+					"_postman_id": "3a9d481f-cd0d-4838-a6cf-60fbaee8289d",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -532,15 +636,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \" (for example, `Bearer {ACCESS_TOKEN}`). For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -548,7 +668,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/connections/:connectionId/schemas",
+							"raw": "https://platform.adobe.io/connections/:connectionId/schemas",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -556,9 +676,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"connections",
 								":connectionId",
 								"schemas"
@@ -574,7 +691,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "37a6583f-a158-4fc4-b686-3007e48ab71e",
+			"_postman_id": "beec7e5b-91c0-45ec-8de5-a2df343db3ff",
 			"description": "Create a custom schema by fields or objectName."
 		},
 		{
@@ -582,7 +699,7 @@
 			"item": [
 				{
 					"name": "Check the health of the service.",
-					"_postman_id": "5201ab57-c75f-4598-8a76-f608f12abc52",
+					"_postman_id": "c27f8db0-cc40-45cb-a041-c1cd0d917d80",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -596,7 +713,17 @@
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -604,7 +731,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/health",
+							"raw": "https://platform.adobe.io/health",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -612,9 +739,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"health"
 							]
 						}
@@ -623,7 +747,7 @@
 				},
 				{
 					"name": "Check the detailed health of the service.",
-					"_postman_id": "fb061e8b-675f-4551-a766-3968d96a1a60",
+					"_postman_id": "cf411996-c3df-4087-9510-6b7ddbc8e6ef",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -637,7 +761,17 @@
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -645,7 +779,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/connectors/health-detailed",
+							"raw": "https://platform.adobe.io/health-detailed",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -653,9 +787,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"foundation",
-								"connectors",
 								"health-detailed"
 							]
 						}
@@ -663,7 +794,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b58290bd-5d8c-4b29-affb-ab1a3aa23c93",
+			"_postman_id": "31da7d2a-c08f-4caf-be41-d4b8515e64af",
 			"description": "Health check of the service, with dependencies."
 		}
 	]

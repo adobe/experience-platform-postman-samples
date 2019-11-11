@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5de66890-e053-447a-8e2c-adcd05709279",
+		"_postman_id": "b38cfe15-029a-4480-92d1-aa0227fb6511",
 		"name": "XDM Core Object Repository API",
 		"description": "<p>Experience Data Model (XDM) Core Object Repository is an event-driven repository for XDM instances, fully integrated with Adobe Experience Platform. XDM Core Object Repository is part of Decisioning Service, which provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. Decisioning Service is controlled by a number of interrelated business objects. The XDM Core Object Repository API allows you to access and manage those business objects within the repository. </p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_entities_api_tutorial.md\">Manage Decisioning Service entities using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/xcore</li><li>Example of a complete path for making a call to Home (\"/\"):<span> https://platform.adobe.io/data/core/xcore/</ul></p>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Rich core search interface for XDM instances.",
-					"_postman_id": "6e90416b-724c-428a-b2f1-0d5a583ce46b",
+					"_postman_id": "4486778b-d149-4962-90cf-478ecd9f26f6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -25,23 +25,45 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization \"Bearer\" token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -49,7 +71,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/queries/core/search?schema={{schema}}&q={{q}}&qop={{qop}}&field={{field}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/:containerId/queries/core/search?schema={{schema}}&q={{q}}&qop={{qop}}&field={{field}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -57,9 +79,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								":containerId",
 								"queries",
 								"core",
@@ -112,7 +131,7 @@
 				},
 				{
 					"name": "Core query for instances by schema ID or name.",
-					"_postman_id": "ca3ac216-f1b5-4a23-8dbc-88295c94b2d2",
+					"_postman_id": "a45c8233-7967-4658-aaad-7cef15dd0c5e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -126,23 +145,45 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization 'Bearer' token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -150,7 +191,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances?schema={{schema}}&id={{id}}&name={{name}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/:containerId/instances?schema={{schema}}&id={{id}}&name={{name}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -158,9 +199,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								":containerId",
 								"instances"
 							],
@@ -206,7 +244,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ff8c77f0-0835-4c9f-808b-1a281f7a128b",
+			"_postman_id": "d3c9f408-ecbb-450d-b879-9730b1ef9e4d",
 			"description": "Core Queries against XDM instances."
 		},
 		{
@@ -214,7 +252,7 @@
 			"item": [
 				{
 					"name": "Create a new XDM instance",
-					"_postman_id": "8141ed5d-27b3-49e6-950e-bb6fe62a0919",
+					"_postman_id": "b1784f9e-333e-43d3-b528-5961023848d6",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -228,23 +266,45 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization 'Bearer' token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -252,7 +312,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances",
+							"raw": "https://platform.adobe.io/:containerId/instances",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -260,9 +320,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								":containerId",
 								"instances"
 							],
@@ -279,7 +336,7 @@
 				},
 				{
 					"name": "Get a specific instance on an object.",
-					"_postman_id": "d75c3581-a648-42ac-a897-1128b539a1c9",
+					"_postman_id": "c6a51696-ca13-4551-ac1f-4ea5cc1604fb",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -293,27 +350,52 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization 'Bearer' token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "If-None-Match",
-								"value": "{{If-None-Match}}"
+								"value": "{{If-None-Match}}",
+								"description": "Used with etag value for a conditional GET request.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -321,7 +403,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -329,9 +411,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -353,7 +432,7 @@
 				},
 				{
 					"name": "Update an existing XDM instance.",
-					"_postman_id": "c41b26ec-d99e-4d62-85e4-8b1da3af0598",
+					"_postman_id": "3ed343a2-c2be-4fa6-b081-6c3661af7f34",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -367,27 +446,52 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization 'Bearer' token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "If-Match",
-								"value": "{{If-Match}}"
+								"value": "{{If-Match}}",
+								"description": "Etag which must match the etag on the object in order for the write operation to succeed, otherwise the request will return HTTP Status 409 (Conflict).",
+								"type": "integer",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -395,7 +499,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -403,9 +507,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -427,7 +528,7 @@
 				},
 				{
 					"name": "Update instance using patch protocol.",
-					"_postman_id": "f85e20e5-bdea-45fb-aec0-bb43cc694a1c",
+					"_postman_id": "f981f25c-aa2d-49ea-8721-fa56b018639b",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -441,27 +542,52 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization 'Bearer' token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "If-Match",
-								"value": "{{If-Match}}"
+								"value": "{{If-Match}}",
+								"description": "Used for optimistic lock on a write request. Contains etag value from previous request which is compared against latest value on the object. If values differ, the write request is rejected and returns HTTP Status 409 (Conflict).",
+								"type": "integer",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -469,7 +595,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -477,9 +603,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -501,7 +624,7 @@
 				},
 				{
 					"name": "Delete an XDM instance.",
-					"_postman_id": "e7080639-ec2f-477c-932b-2c692e0f7aa9",
+					"_postman_id": "2407ea84-74af-4348-92e2-2c9554ffa5f7",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -515,27 +638,52 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization 'Bearer' token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "If-Match",
-								"value": "{{If-Match}}"
+								"value": "{{If-Match}}",
+								"description": "Etag must match the etag on the object for the request to succeed, otherwise an HTTP Status 409 (Conflict) is returned.",
+								"type": "integer",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -543,7 +691,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -551,9 +699,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -574,7 +719,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "fbf63104-4a54-4d27-b4ee-7b99658cce99",
+			"_postman_id": "e22c02b7-9fb9-4095-a9b6-b3754a6dfaec",
 			"description": "Perform CRUD operations to add, edit, update, delete, and view instances via the primary `instanceId`."
 		},
 		{
@@ -582,7 +727,7 @@
 			"item": [
 				{
 					"name": "View the home directory for an IMS organization.",
-					"_postman_id": "d3c92b70-6ff2-4b1c-876a-dd9e2ff36b64",
+					"_postman_id": "da231a11-b7db-4d92-b7a0-9fb91d13068c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -596,23 +741,45 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-user-token",
-								"value": "{{x-user-token}}"
+								"value": "{{x-user-token}}",
+								"description": "Required when the Authorization 'Bearer' token is a service access token, otherwise this parameter is ignored. Identifies the user on whose behalf the service is calling. User must have been provided with at least one of the Product Profiles belonging to the IMS Org whose IMS Org ID the caller provides as the `x-gw-ims-org-id` request header and write access permissions specific to schema type in the container for the IMS Org specified in `x-gw-ims-org-id`.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -620,7 +787,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/xcore/?product={{product}}&start={{start}}&limit={{limit}}&property={{property}}",
+							"raw": "https://platform.adobe.io/?product={{product}}&start={{start}}&limit={{limit}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -628,9 +795,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"xcore",
 								""
 							],
 							"query": [
@@ -657,7 +821,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f5b03f09-cdfc-4fb1-9c43-9148ee12af78",
+			"_postman_id": "f1fd4cf5-8572-414d-b225-39c58f64ebe0",
 			"description": "Home document for an IMS Organization. The home document is a HAL (Hypermedia Access Language) document which can be used as the hypermedia home directory for the IMS Organization specified. It lists relevant HAL links that can be traversed and also lists all of the containers belonging to the Org."
 		}
 	]
