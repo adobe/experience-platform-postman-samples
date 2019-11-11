@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7cf0f2a3-bff5-444c-8d31-b28961faee62",
+		"_postman_id": "485298fd-cf91-47a9-b7fa-d61ebf01d3c3",
 		"name": "Schema Registry API",
 		"description": "<p>The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md\">XDM System in Adobe Experience Platform</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_composition/schema_composition.md\">Basics of Schema Composition</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md\">Schema Registry API Developer Guide</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/tutorials/schema_registry_api_tutorial/schema_registry_api_tutorial.md\">Schema Registry API Tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/foundation/schemaregistry</li><li>Example of a complete path for making a call to \"/stats\":<span> https://platform.adobe.io/data/foundation/schemaregistry/stats</ul></p>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Return {TENANT_ID} and Schema Registry usage information.",
-					"_postman_id": "0ccf07d5-6968-409b-81f9-0faa02e755b1",
+					"_postman_id": "082fd420-9205-4ef0-9456-9ae69a518e62",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -25,15 +25,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -41,7 +57,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/stats",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/stats",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -49,6 +65,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								"stats"
 							]
 						}
@@ -56,7 +75,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7d47f089-078d-4665-921b-ccb93c5efaa0",
+			"_postman_id": "c7b66eca-410e-4bc6-a5e0-a10787ff3201",
 			"description": "Returns {TENANT_ID} along with information regarding IMS Org usage of the Schema Registry such as resource counts, recently created resources, and class usage."
 		},
 		{
@@ -64,7 +83,7 @@
 			"item": [
 				{
 					"name": "List all schemas within the specified container.",
-					"_postman_id": "261b2f51-2c43-4ad3-8139-70b8bb079baf",
+					"_postman_id": "9b040db4-a2e9-4f7f-a41a-481cde9b19f4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -78,19 +97,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-id+json). Do not include \"version\".",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -98,7 +136,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -106,6 +144,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"schemas",
 								""
@@ -141,7 +182,7 @@
 				},
 				{
 					"name": "Create a new tenant-defined schema.",
-					"_postman_id": "d5e206c5-2875-4847-978f-223dc7890354",
+					"_postman_id": "88b91936-bd5f-4a18-85ee-23100711ebe5",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -155,19 +196,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -175,7 +235,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -183,6 +243,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"schemas",
 								""
@@ -199,7 +262,7 @@
 				},
 				{
 					"name": "Lookup a specific schema by its unique ID.",
-					"_postman_id": "6d08f378-0833-4756-aad9-b4c2a0e28b3f",
+					"_postman_id": "124989b2-309b-4b04-9123-ff847f6685fd",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -213,19 +276,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -233,7 +315,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -241,6 +323,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"schemas",
 								":$id"
@@ -262,7 +347,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined schema.",
-					"_postman_id": "2f946fc2-8b32-442e-b464-5efe9535a07e",
+					"_postman_id": "a5be02d6-73d4-4cf5-a8b3-dbf03e775472",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -276,19 +361,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -296,7 +400,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -304,6 +408,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"schemas",
 								":$id"
@@ -325,7 +432,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined schema.",
-					"_postman_id": "5219fd52-c1b9-47bb-b826-9cc5701a845e",
+					"_postman_id": "b39262ea-a664-4bae-871e-9f62e7d31384",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -339,19 +446,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -359,7 +485,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -367,6 +493,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"schemas",
 								":$id"
@@ -388,7 +517,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined schema from the registry.",
-					"_postman_id": "d09b6461-d478-4e84-ad60-8ec1c19f62c0",
+					"_postman_id": "5d2c9988-1015-422c-9a36-31f65c2448e8",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -402,15 +531,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -418,7 +563,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/schemas/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -426,6 +571,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"schemas",
 								":$id"
@@ -446,7 +594,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "598718ad-4c44-4fde-8ec2-343f4f463817",
+			"_postman_id": "4194c547-2982-4d17-9654-23255c43e60b",
 			"description": "Schemas provide an abstract definition of a real-world object along with constraints and expectations that can be applied and used to validate data."
 		},
 		{
@@ -454,7 +602,7 @@
 			"item": [
 				{
 					"name": "Return a list of all mixins within the specified container.",
-					"_postman_id": "c741bf4e-5c92-4f1d-8048-4cd53e516aa1",
+					"_postman_id": "21261b14-6a79-43fc-9c1c-740eff0c9a65",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -468,19 +616,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-id+json). Do not include \"version\".",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -488,7 +655,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -496,6 +663,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"mixins",
 								""
@@ -530,7 +700,7 @@
 				},
 				{
 					"name": "Create a new tenant-defined mixin.",
-					"_postman_id": "531f557e-8a32-478b-9570-677b95fe1060",
+					"_postman_id": "e6055741-b490-4643-81d2-6f9e536c749f",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -544,19 +714,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -564,7 +753,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -572,6 +761,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"mixins",
 								""
@@ -588,7 +780,7 @@
 				},
 				{
 					"name": "Lookup a specific mixin by its unique ID.",
-					"_postman_id": "9ff4c655-c34e-41b1-a43e-424973193bea",
+					"_postman_id": "15ce5825-bec5-4496-b0cf-d42fa628ec38",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -602,19 +794,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -622,7 +833,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -630,6 +841,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"mixins",
 								":$id"
@@ -650,7 +864,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined mixin.",
-					"_postman_id": "6724a7a2-a193-401b-b182-888e91d5ccbc",
+					"_postman_id": "3290a2af-9716-452a-b428-3bb5cc2af78b",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -664,19 +878,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -684,7 +917,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -692,6 +925,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"mixins",
 								":$id"
@@ -713,7 +949,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined mixin.",
-					"_postman_id": "7dd5561f-263c-4511-96b0-3224874a3e60",
+					"_postman_id": "e204b5e8-258d-4e76-941a-96db04e06015",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -727,19 +963,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -747,7 +1002,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -755,6 +1010,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"mixins",
 								":$id"
@@ -776,7 +1034,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined mixin from the registry.",
-					"_postman_id": "543e4ce5-8c5e-44bc-b8bf-d32a2f9599c2",
+					"_postman_id": "68cdb572-7f3c-42a1-9324-5ed9e96f4530",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -790,15 +1048,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -806,7 +1080,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/mixins/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -814,6 +1088,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"mixins",
 								":$id"
@@ -834,7 +1111,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1fa668b3-6c8f-48f2-b7e0-a4419cae3227",
+			"_postman_id": "a9ae9450-f0ba-4edf-a904-e2e409f1248d",
 			"description": "A mixin is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
 		},
 		{
@@ -842,7 +1119,7 @@
 			"item": [
 				{
 					"name": "List all classes in the specified container.",
-					"_postman_id": "ea0118e5-3bd8-4fbd-a4e0-2859955ef1aa",
+					"_postman_id": "f1dba588-f23d-4f93-8ceb-4817b4ba4b82",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -856,19 +1133,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -876,7 +1172,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -884,6 +1180,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"classes",
 								""
@@ -918,7 +1217,7 @@
 				},
 				{
 					"name": "Create a tenant-defined class.",
-					"_postman_id": "5ac60eb5-ef41-4c68-b131-b891c6015ad1",
+					"_postman_id": "4fcbf41e-5f51-4b3a-bb6c-446ad6d6eb32",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -932,19 +1231,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -952,7 +1270,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -960,6 +1278,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"classes",
 								""
@@ -976,7 +1297,7 @@
 				},
 				{
 					"name": "Lookup a specific class by its unique ID.",
-					"_postman_id": "d8f6bbc7-e866-4e5a-9e2c-6c6b9c0000fe",
+					"_postman_id": "45897013-83f5-49b0-a236-ffb7097cd2b0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -990,19 +1311,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1010,7 +1350,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1018,6 +1358,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"classes",
 								":$id"
@@ -1038,7 +1381,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined class.",
-					"_postman_id": "4161e553-9c7a-46c1-8d28-e1636b44dac1",
+					"_postman_id": "6544204c-e8cf-4acc-bd76-54a618729b09",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1052,19 +1395,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1072,7 +1434,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1080,6 +1442,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"classes",
 								":$id"
@@ -1101,7 +1466,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined class.",
-					"_postman_id": "4fd8bf3e-e1af-42fa-b3ec-b142dcba4c62",
+					"_postman_id": "9e87f9cb-a4c0-41dd-a4e2-fe1eb4fcd4b3",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1115,19 +1480,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1135,7 +1519,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1143,6 +1527,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"classes",
 								":$id"
@@ -1164,7 +1551,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined class from the registry.",
-					"_postman_id": "1496b64a-89e1-43b6-abee-d8bbd49357bf",
+					"_postman_id": "9b4950f0-de22-4c17-846b-7d5a920676ce",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1178,15 +1565,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1194,7 +1597,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/classes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1202,6 +1605,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"classes",
 								":$id"
@@ -1222,7 +1628,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2163fa82-142a-4cb6-8f69-5d936d451815",
+			"_postman_id": "14624431-8225-41ad-9ed1-b7ca2ef63133",
 			"description": "Classes define behavioral aspects of the data within the schema and describe the smallest number of common properties contained in all schemas that implement the same class."
 		},
 		{
@@ -1230,7 +1636,7 @@
 			"item": [
 				{
 					"name": "List all data types in the specified container.",
-					"_postman_id": "def85e00-683d-44ed-8d84-1868597b2a4d",
+					"_postman_id": "2ff7e159-8394-4620-9880-ff070c136a5d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1244,19 +1650,38 @@
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1264,7 +1689,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes/?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1272,6 +1697,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"datatypes",
 								""
@@ -1306,7 +1734,7 @@
 				},
 				{
 					"name": "Create a tenant-defined data type.",
-					"_postman_id": "6b15fc6d-3504-4a35-82f7-743dc736a179",
+					"_postman_id": "615f061e-2c16-4833-9db9-867aba790792",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1320,23 +1748,45 @@
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1344,7 +1794,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1352,6 +1802,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"datatypes",
 								""
@@ -1368,7 +1821,7 @@
 				},
 				{
 					"name": "Returns the datatype schema associated with the given identifier.",
-					"_postman_id": "35243bd0-1c77-4780-b583-1cd2a5a48434",
+					"_postman_id": "c0cf8486-1fc7-42e3-9a28-cb1ddbcc96a5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1382,19 +1835,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1402,7 +1874,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1410,6 +1882,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"datatypes",
 								":$id"
@@ -1430,7 +1905,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined data type.",
-					"_postman_id": "211fb593-cf65-4232-8c95-9b0c9cc81b37",
+					"_postman_id": "77b5bbf3-69ca-4700-a78d-e24dcdd5e975",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1444,19 +1919,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1464,7 +1958,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1472,6 +1966,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"datatypes",
 								":$id"
@@ -1493,7 +1990,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined data type.",
-					"_postman_id": "347de0a7-16b2-4606-95ce-2e84d41415f1",
+					"_postman_id": "9e52359f-6562-471e-8be4-b1c727aa19df",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1507,19 +2004,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1527,7 +2043,7 @@
 							"raw": "{{payload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1535,6 +2051,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"datatypes",
 								":$id"
@@ -1556,7 +2075,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined data type from the registry.",
-					"_postman_id": "9594b605-2548-47ce-8291-a00f6d80be2c",
+					"_postman_id": "57543959-48fb-42c5-a374-5a35f8a643ff",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1570,15 +2089,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1586,7 +2121,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/datatypes/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1594,6 +2129,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"datatypes",
 								":$id"
@@ -1614,7 +2152,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a0700d1b-6686-4cba-909f-4b0b70f6f668",
+			"_postman_id": "216d8502-b343-401e-a062-dd13a62a22a3",
 			"description": "Data types are used as reference field types in classes or schemas to define complex types. Data types may define multiple sub-fields providing a consistent multi-field structure."
 		},
 		{
@@ -1622,7 +2160,7 @@
 			"item": [
 				{
 					"name": "List all descriptors within the specified container, by type.",
-					"_postman_id": "ddf0bc60-e5a8-4a18-a09b-63c55f5a812e",
+					"_postman_id": "40e5efc9-7781-483d-9631-34845318cb45",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1636,19 +2174,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "Descriptors require unique Accept headers using 'xdm' instead of 'xed' (eg. application/vnd.adobe.xdm-id+json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1656,7 +2213,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1664,6 +2221,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"descriptors"
 							],
@@ -1680,7 +2240,7 @@
 				},
 				{
 					"name": "Create a new descriptor. Required fields in payload vary based on @type.",
-					"_postman_id": "c2cb1546-a411-4197-b8c3-1e0c5bb3270f",
+					"_postman_id": "9994ebdf-1f0a-4fa5-b3b7-3beb6f5fb42e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1694,19 +2254,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1714,7 +2293,7 @@
 							"raw": "{{descriptorPayload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1722,6 +2301,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"descriptors"
 							],
@@ -1738,7 +2320,7 @@
 				},
 				{
 					"name": "Lookup specific descriptor by its @id.",
-					"_postman_id": "2800cf29-132d-4bc2-8332-5166e97583ba",
+					"_postman_id": "a46e4e59-a140-435e-84b5-bfed187f2ae4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1752,15 +2334,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1768,7 +2366,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors/:@id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors/:@id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1776,6 +2374,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"descriptors",
 								":@id"
@@ -1797,7 +2398,7 @@
 				},
 				{
 					"name": "Update a descriptor. Required fields in payload vary based on @type.",
-					"_postman_id": "49dc6bad-86e3-446f-9c9c-d7bb62b9d457",
+					"_postman_id": "400d9fdd-343a-4660-bf92-782ebc3e9523",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1811,19 +2412,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "{{Content-Type}}"
+								"value": "{{Content-Type}}",
+								"description": "Type of content being sent in the body of the request (eg. application/json)",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1831,7 +2451,7 @@
 							"raw": "{{descriptorPayload}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors/:@id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors/:@id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1839,6 +2459,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"descriptors",
 								":@id"
@@ -1860,7 +2483,7 @@
 				},
 				{
 					"name": "Remove a descriptor using its @id.",
-					"_postman_id": "e227c970-ee63-4ee9-a8a7-bf8d94d7e9d6",
+					"_postman_id": "3dec89fc-f058-45a8-9a9c-583f2e4491f1",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1874,15 +2497,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1890,7 +2529,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:CONTAINER_ID/descriptors/:@id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors/:@id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1898,6 +2537,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								":CONTAINER_ID",
 								"descriptors",
 								":@id"
@@ -1918,7 +2560,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "54f137eb-eb5a-4caf-9e39-a952538df4bc",
+			"_postman_id": "abca4e49-708f-4412-938b-9a430031ce5c",
 			"description": "Schema descriptors are tenant-level metadata used to provide interpretive details on how data based on certain schemas may relate or interact with one another."
 		},
 		{
@@ -1926,7 +2568,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of union views.",
-					"_postman_id": "28caa63d-b342-474b-9fa5-b3c0e68cd848",
+					"_postman_id": "b5ed9452-32b4-45c2-b1d0-e31f6ce72ab6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1940,19 +2582,38 @@
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-id+json). Do not include \"version\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -1960,7 +2621,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/tenant/unions?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/unions?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1968,6 +2629,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								"tenant",
 								"unions"
 							],
@@ -1995,7 +2659,7 @@
 				},
 				{
 					"name": "Lookup a union view by ID.",
-					"_postman_id": "e69a8150-9af8-48c8-9e85-962f7f8002d9",
+					"_postman_id": "ee51df9c-5249-4a90-a149-2fed45ef6f61",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2009,19 +2673,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "Accept",
-								"value": "{{Accept}}"
+								"value": "{{Accept}}",
+								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -2029,7 +2712,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/tenant/unions/:$id",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/unions/:$id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2037,6 +2720,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
 								"tenant",
 								"unions",
 								":$id"
@@ -2052,7 +2738,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7c65b668-5ad0-4771-aa3b-2270ec2dc3e4",
+			"_postman_id": "b419c237-01b8-47b9-9cb7-716499ec968a",
 			"description": "Union views aggregate the fields of all schemas that implement the same class (such as ExperienceEvent or Profile) into a single schema. They are used by Real-time Customer Profile to merge data together to form a \"single source of truth\" for an individual."
 		}
 	]
