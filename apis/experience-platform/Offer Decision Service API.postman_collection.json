@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "95dbbcf0-6655-4c59-8f0b-6c00da268734",
+		"_postman_id": "1ef27a80-ae67-440a-a6b6-2a313db2c036",
 		"name": "Offer Decision Service API",
 		"description": "<p>Adobe Experience Platform Decisioning Service provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. The Offer Decision Service API includes an endpoint to filter out offers which are not approved, do not match the offer filter, or don’t have a representation for the placement referenced by the activity. It also allows you to run diagnostics and return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so.</p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_runtime_api_tutorial.md\">Work with Decisioning Service runtime using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/ode</li><li>Example of a complete path for making a call to the POST Decisions endpoint (\"/{containerId}/decisions\"):<span> https://platform.adobe.io/data/core/ode/{containerId}/decisions</ul></p>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Request an offer decision for each set of activity IDs and profiles.",
-					"_postman_id": "6ceb9cf7-3f82-446c-a4e4-926e29a7626e",
+					"_postman_id": "b18065bd-86b8-4044-a445-0a2d3375f93f",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -25,19 +25,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -45,7 +64,7 @@
 							"raw": "{{request}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ode/:containerId/decisions",
+							"raw": "https://platform.adobe.io/:containerId/decisions",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -53,9 +72,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"ode",
 								":containerId",
 								"decisions"
 							],
@@ -71,7 +87,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b8145192-0942-4636-bfc3-92206916f132",
+			"_postman_id": "074551c4-f51c-486f-86d8-12edf2d61a9b",
 			"description": "Determine the best offer(s) for a given set of activities based on eligibility rules that match profile and context data provided."
 		},
 		{
@@ -79,7 +95,7 @@
 			"item": [
 				{
 					"name": "Get information about errors that occurred while processing user data.",
-					"_postman_id": "b7354167-b0ec-431e-8f56-927ccd52e2dc",
+					"_postman_id": "9ec1bd6b-9893-4a47-ab00-3ee39b1f0b1a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -93,19 +109,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -113,7 +148,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ode/:containerId/diagnostics",
+							"raw": "https://platform.adobe.io/:containerId/diagnostics",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -121,9 +156,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"ode",
 								":containerId",
 								"diagnostics"
 							],
@@ -139,7 +171,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a2b956f7-2a2a-47f3-baa1-6eaf91f890f0",
+			"_postman_id": "f94ce6ee-a457-4cca-ba89-af55209d532b",
 			"description": "Return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so."
 		},
 		{
@@ -147,7 +179,7 @@
 			"item": [
 				{
 					"name": "View offers that belong to a specified `activityId` based on matching filter rules and placements.",
-					"_postman_id": "a4bdd809-840c-45e3-aead-043542620259",
+					"_postman_id": "6a242f4e-c948-41a0-a745-3a4fb272f211",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -161,19 +193,38 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "Access token in the format \"Bearer {ACCESS_TOKEN}\".",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "IMS organization ID. The container specified in the `containerId` parameter must be owned by the IMS Org attempting to access it.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "API key of calling client.",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-request-id",
-								"value": "{{x-request-id}}"
+								"value": "{{x-request-id}}",
+								"description": "A string in UUID format that is globally unique and must not be reused for different API calls. The request ID is used for debugging purposes and tracking of each API call performed. For example, \"d41ee840-0a10-4393-ab55-12fa54cb6172\".",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -181,7 +232,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ode/:containerId/offers?activityId={{activityId}}",
+							"raw": "https://platform.adobe.io/:containerId/offers?activityId={{activityId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -189,9 +240,6 @@
 								"io"
 							],
 							"path": [
-								"data",
-								"core",
-								"ode",
 								":containerId",
 								"offers"
 							],
@@ -213,7 +261,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2ee1b3b9-26e1-44b7-b4ad-e37bbf02154c",
+			"_postman_id": "b3b12c7a-09b8-4188-b5cf-261b621accc5",
 			"description": "Based on filter rules and placement match, return approved offers that belong to a specific `activityId`."
 		}
 	]
