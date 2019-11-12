@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b7ad5851-7193-488f-a899-19dede57aca0",
+		"_postman_id": "0ea98f06-1d03-4086-a871-ac349320b1c8",
 		"name": "Observability Insights",
 		"description": "<p>The Observability Insights Service is used to collect and expose metrics data from various components of Observability. It listens to events broadcasting on the data pipeline and collects metrics on resources and statistics on data ingestion.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/observability.html\">Observability Insights API Overview</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/infrastructure/observability/insights</li><li>Example of a complete path for making a call to \"/metrics\":<span> https://platform.adobe.io/data/infrastructure/observability/insights/metrics</ul></p>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "List metrics data.",
-					"_postman_id": "f2889cdf-7d72-43de-b8be-56b3ddc7cb1f",
+					"_postman_id": "244a49c6-c24e-4634-a328-f6c883585374",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -21,15 +21,31 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}"
+								"value": "{{IMS_ORG}}",
+								"description": "Unique Identifier for your IMS Organization ({IMS_ORG})",
+								"type": "string",
+								"enabled": true
 							},
 							{
 								"key": "x-api-key",
-								"value": "{{API_KEY}}"
+								"value": "{{API_KEY}}",
+								"description": "Your specific API key for your unique Platform configuration ({API_KEY})",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": false
 							}
 						],
 						"body": {
@@ -37,7 +53,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/metrics?metric={{metric}}&id={{id}}&dateRange={{dateRange}}",
+							"raw": "https://platform.adobe.io/data/infrastructure/observability/insights/metrics?metric={{metric}}&id={{id}}&dateRange={{dateRange}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -45,6 +61,10 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"infrastructure",
+								"observability",
+								"insights",
 								"metrics"
 							],
 							"query": [
@@ -66,7 +86,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "90544464-5fa2-417d-8187-1cdb5ea5c9e1",
+			"_postman_id": "b8e90fa9-8851-46d9-b960-2fc9e8850630",
 			"description": "Observability metrics are parameters used to gain statistical insights into actions being performed in Adobe Experience Platform. These insights include counts of available Platform resources and statistics on data ingestion."
 		}
 	]
