@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd72a562-c881-45ff-af77-d733daf23c4a",
+		"_postman_id": "cfd3e4b6-6b97-4100-8fdb-020302e19c4f",
 		"name": "Privacy Service API",
 		"description": "Adobe Experience Platform Privacy Service provides a common, centralized facilitation of access/delete requests for private data. The service includes a UI for selecting and creating requests, a business layer that processesses incoming and outgoing traffic, a data store for audit and logging information, and temporary storage for data retrieval while requests are pending or waiting to be viewed.\n\nRelated documentation:\n  * [GDPR on Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/gdpr/docs/alldocs.html#!api-specification/markdown/narrative/gdpr/gdpr-on-platform-overview.md)\n  * [Privacy Service API tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/privacy_service_tutorial/privacy_service_api_tutorial.md)\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/privacy/gdpr\n  * Example of a complete path: https://<span>platform.adobe.io/data/privacy/gdpr/ping\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,18 @@
 			"item": [
 				{
 					"name": "Retrieve details of all jobs for the current logged-in user.",
-					"_postman_id": "3a587588-01bf-40b8-bd53-faf5299e2946",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7dc1079f-1de4-4e6e-b57a-96a94014b01c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -41,7 +52,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -79,13 +90,24 @@
 				},
 				{
 					"name": "Create an access or delete job request.",
-					"_postman_id": "5f353560-01f9-45d8-9e01-35d8de67ed9b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "d19edce6-a041-4095-9a0d-52e892412983",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -117,7 +139,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -142,7 +164,18 @@
 				},
 				{
 					"name": "Retrieve user preferences for the current logged-in user.",
-					"_postman_id": "6985b1b8-2579-411e-8cd3-265f7f908b5b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8651a9a1-e025-4f5b-b0dd-87f0f28470a9",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -172,7 +205,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -196,7 +229,18 @@
 				},
 				{
 					"name": "Lookup the details of a job by ID.",
-					"_postman_id": "656c20f9-0f94-431d-a012-ad4c7b9d1681",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "2fe67b6d-589a-435e-9f93-e172504deb96",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -226,7 +270,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -256,7 +300,18 @@
 				},
 				{
 					"name": "Create a child job for an existing parent job by ID.",
-					"_postman_id": "9d384073-1945-44a3-9214-bf2678dee042",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "2243784c-1b38-4489-874d-006341813463",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -286,7 +341,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -317,7 +372,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1bfd3abd-e868-45d9-8e35-79251dd2c72f",
+			"_postman_id": "9a820f73-ff00-48d7-ac28-4256096a03ee",
 			"description": "Retrieve and create access/delete requests, including child jobs for existing requests."
 		},
 		{
@@ -325,13 +380,24 @@
 			"item": [
 				{
 					"name": "Retrieve the files associated with a job by ID.",
-					"_postman_id": "aa4dabaf-9800-4f56-b900-9372de718628",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4abb11cb-637d-4d58-a143-cdd2638b2d13",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -359,7 +425,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -391,17 +457,28 @@
 				},
 				{
 					"name": "Upload files to a job by ID.",
-					"_postman_id": "53a6baa0-bfa7-4edd-b3ee-fabc1973017d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "babcaa05-9a41-4d16-82e0-e29b046b01af",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "multipart/form-data"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -429,7 +506,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -472,7 +549,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a6301356-100e-4096-8ab9-4af457fd0274",
+			"_postman_id": "2e056ae6-0177-48d7-b0e9-bf109c7a7691",
 			"description": "View and upload files from various Adobe solutions for specified job requests."
 		},
 		{
@@ -480,7 +557,18 @@
 			"item": [
 				{
 					"name": "Retrieve the processing status of access or delete requests by status code.",
-					"_postman_id": "f5709cd3-08ec-4374-b371-e11d4293a221",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "0cfb4159-e9e8-450d-85cf-8dc8e175f737",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -510,7 +598,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -540,7 +628,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "6521628c-1ee8-48ca-99ee-4327488d39fc",
+			"_postman_id": "20e25f48-3d50-4481-8e72-5713aa3a1a8c",
 			"description": "Check the processing status of access or delete requests by supplying a status code integer as a query parameter."
 		},
 		{
@@ -548,7 +636,18 @@
 			"item": [
 				{
 					"name": "Retrieve the details of all products.",
-					"_postman_id": "4154f241-d85d-4b69-a7e4-3685dae43d69",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "513cfaa2-d394-482f-abd2-2aae70a16155",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -578,7 +677,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -603,7 +702,18 @@
 				},
 				{
 					"name": "Lookup a product by name.",
-					"_postman_id": "1c17488c-a3a5-4897-a90b-35dd8844bc2c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "51bdb90e-a638-4c59-a780-56a95bea6c08",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -633,7 +743,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -664,7 +774,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2d2413cf-ebf6-4550-8015-580b6dc2ecf9",
+			"_postman_id": "41761cd4-c741-47c4-96b0-503906c0edff",
 			"description": "View details of Adobe products available within your organization's Privacy Service integrations."
 		},
 		{
@@ -672,7 +782,18 @@
 			"item": [
 				{
 					"name": "Retrieve the details of all users.",
-					"_postman_id": "12d1a561-c293-498c-a0ca-73b54f80141c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "a16c2f6f-b126-4225-bc5e-ee6f019218f7",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -702,7 +823,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -727,7 +848,18 @@
 				},
 				{
 					"name": "Create a user as an admin for Privacy Service.",
-					"_postman_id": "54beac88-bcf6-4fdd-831d-025173dc2505",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "a5eeb062-641c-43e8-9536-d8ebead4ab67",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -757,7 +889,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -782,7 +914,18 @@
 				},
 				{
 					"name": "Lookup a user by ID.",
-					"_postman_id": "e66f7aac-4a81-4df0-8e16-6ba4a9b0ea6d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "386971c4-03bd-40cf-9363-15088387355b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -812,7 +955,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -844,7 +987,18 @@
 				},
 				{
 					"name": "Update the details of a user by ID.",
-					"_postman_id": "df39694f-9cab-474e-bc89-73898aaf479b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "a68579a3-c79d-4998-9561-92610905cc19",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -874,7 +1028,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -906,7 +1060,18 @@
 				},
 				{
 					"name": "Delete a user by ID.",
-					"_postman_id": "a1067aed-9181-40d8-91ee-472ea0296325",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "a97b9fb1-44a2-492c-8f86-9e30dd57e76a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -936,7 +1101,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -967,7 +1132,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "5ac5c2c3-6389-4160-bd5e-7187dbe77822",
+			"_postman_id": "9e695785-38d2-48dc-b1a7-56e23a6dba8c",
 			"description": "View, create, update, or delete users and their permissions within your organization's Privacy Service configuration."
 		}
 	]

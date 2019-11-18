@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d5d636b2-2b2a-44ff-8f9f-7171aa02acff",
+		"_postman_id": "7c39f80e-0cbb-4834-9ba2-0a05641aea87",
 		"name": "Partner Connectors API",
 		"description": "Partner Connectors provide RESTful API to ingest data into Adobe Experience Platform by connecting it to 3rd party storage and CRM systems.\n\nRelated documentation:\n  * [Connectors Service Overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/acp_connectors_overview/acp-connectors-overview.md)\n  * Connector tutorials:\n    * [Amazon-s3](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_s3_connector_tutorial.md)\n    * [Azure-Blob](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_azure_blob_connector_tutorial.md)\n    * [Microsoft Dynamics](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_dynamic_connector_tutorial.md)\n    * [Salesforce](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_salesforce_connector_tutorial.md)\n       \n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/connectors\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/connectors/account\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,13 +11,24 @@
 			"item": [
 				{
 					"name": "Create an account and establish a connection for the given set of credentials.",
-					"_postman_id": "6858f886-8bf5-4557-b600-022946bac2f7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5a8dadee-b59e-4a28-b9e7-9f1b249cf6d3",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -49,7 +60,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -73,13 +84,24 @@
 				},
 				{
 					"name": "Test the validity of the account associated with the accountId.",
-					"_postman_id": "4f2f2d04-c1c9-4a9f-b1e9-ca5ac6511524",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7eca80c5-213f-4c8d-a8a8-b2eacdc8c60f",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -111,7 +133,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -142,13 +164,24 @@
 				},
 				{
 					"name": "Update the credentials associated with the accountId.",
-					"_postman_id": "6faddafb-3214-4d75-a1ea-40e237098322",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5348f303-ce83-45af-a932-9fb20aa3e352",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -180,7 +213,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -210,7 +243,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c35d8b89-d1e0-4164-9d87-0936eb70e772",
+			"_postman_id": "a6d80eb9-65af-4cb9-8a14-b5c630d0c4c4",
 			"description": "Authenticate your storage systems and CRM services to allow your data to be ingested from various sources (such as cloud-based storage, and CRM data) into Experience Platform."
 		},
 		{
@@ -218,13 +251,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of objects, files, or tables at the source location.",
-					"_postman_id": "1e8473d4-1f2c-44c9-885a-f436a396a9d0",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ae0f582e-0cb5-4084-b8be-602b3e5ab9a6",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -256,7 +300,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -293,7 +337,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "76f84b20-1980-4a1d-800a-1c99d0b7b426",
+			"_postman_id": "2d1ab6e8-9bfd-406f-a572-4ed93a27affb",
 			"description": "Returns a list object files or tables at the source location."
 		},
 		{
@@ -301,13 +345,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of fields from the data.",
-					"_postman_id": "42996bbf-3883-43e8-ac7c-ce37bc135c2f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "cab0146b-b2c0-44d2-b816-34a1327c0502",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -339,7 +394,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -381,13 +436,24 @@
 				},
 				{
 					"name": "Preview data for the given object.",
-					"_postman_id": "0c49664a-7b5d-4cfd-835e-d373d54fa09f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e3f9704f-08aa-4662-baab-28bb7becaffe",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -419,7 +485,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -460,7 +526,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8aa5a5af-88a8-4b24-a8c1-9568f5dc44df",
+			"_postman_id": "10849c60-5eb7-416c-8277-32caec8635b9",
 			"description": "Returns a list of schema fields or a data preview for a given object."
 		},
 		{
@@ -468,13 +534,24 @@
 			"item": [
 				{
 					"name": "Create a dataset for a connection to ingest data into Platform.",
-					"_postman_id": "ea20906e-eff9-4cce-8ea6-fff854b37b91",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "fd59186b-80f7-4bda-b20c-ee5fbd9c2e18",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -506,7 +583,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -537,7 +614,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4644d2a2-e38c-4bd3-bd40-fdaee5e7f330",
+			"_postman_id": "51327218-34d0-48d3-9ed4-24ea399a8622",
 			"description": "Creates a dataset for a connection to ingest data into and persist within Platform."
 		},
 		{
@@ -545,13 +622,24 @@
 			"item": [
 				{
 					"name": "Schedule ingestion at the given frequency.",
-					"_postman_id": "db5e68fa-c7da-479a-869d-2b84743e1035",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "0e9a4361-ba5f-4218-9e97-7961fe2d233c",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -583,7 +671,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -614,7 +702,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "be38dc19-c33d-4c55-b840-7fa8a304ed3b",
+			"_postman_id": "6a33382d-ae2d-45d0-9849-0dd94a058cf5",
 			"description": "Schedule ingestion from your authenticated connector into Data Lake at a given start date and frequency. Frequency can be set for every month, day, day of the week, hour, or minute."
 		},
 		{
@@ -622,13 +710,24 @@
 			"item": [
 				{
 					"name": "Posts custom schema via fields or objectName.",
-					"_postman_id": "3a9d481f-cd0d-4838-a6cf-60fbaee8289d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7dbcaf32-72e4-4fc0-9dfb-f66a9aee75ff",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -660,7 +759,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -691,7 +790,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "beec7e5b-91c0-45ec-8de5-a2df343db3ff",
+			"_postman_id": "49020fe5-2216-4904-8f56-b02daa985ae0",
 			"description": "Create a custom schema by fields or objectName."
 		},
 		{
@@ -699,13 +798,24 @@
 			"item": [
 				{
 					"name": "Check the health of the service.",
-					"_postman_id": "c27f8db0-cc40-45cb-a041-c1cd0d917d80",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "665f9010-9ae4-4294-bc71-40dde0c21afa",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -723,7 +833,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -747,13 +857,24 @@
 				},
 				{
 					"name": "Check the detailed health of the service.",
-					"_postman_id": "cf411996-c3df-4087-9510-6b7ddbc8e6ef",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6767daa1-c609-443e-8791-d9bdfc2d9fb7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -771,7 +892,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -794,7 +915,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "31da7d2a-c08f-4caf-be41-d4b8515e64af",
+			"_postman_id": "bcf47387-4fcc-4760-85b5-a5e42971795a",
 			"description": "Health check of the service, with dependencies."
 		}
 	]

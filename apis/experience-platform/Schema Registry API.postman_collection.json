@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "485298fd-cf91-47a9-b7fa-d61ebf01d3c3",
+		"_postman_id": "e29887fc-b8bc-45e4-b74b-7eda7179d412",
 		"name": "Schema Registry API",
 		"description": "<p>The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md\">XDM System in Adobe Experience Platform</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_composition/schema_composition.md\">Basics of Schema Composition</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md\">Schema Registry API Developer Guide</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/tutorials/schema_registry_api_tutorial/schema_registry_api_tutorial.md\">Schema Registry API Tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/foundation/schemaregistry</li><li>Example of a complete path for making a call to \"/stats\":<span> https://platform.adobe.io/data/foundation/schemaregistry/stats</ul></p>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,13 +11,24 @@
 			"item": [
 				{
 					"name": "Return {TENANT_ID} and Schema Registry usage information.",
-					"_postman_id": "082fd420-9205-4ef0-9456-9ae69a518e62",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e23c6fab-41e4-409c-ae53-ced27ba63b14",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -49,7 +60,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -75,7 +86,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c7b66eca-410e-4bc6-a5e0-a10787ff3201",
+			"_postman_id": "9790af99-3b0f-41a7-a248-e8f08a20a7e2",
 			"description": "Returns {TENANT_ID} along with information regarding IMS Org usage of the Schema Registry such as resource counts, recently created resources, and class usage."
 		},
 		{
@@ -83,13 +94,24 @@
 			"item": [
 				{
 					"name": "List all schemas within the specified container.",
-					"_postman_id": "9b040db4-a2e9-4f7f-a41a-481cde9b19f4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5451d0f8-53d3-4b31-bffb-d291b383a359",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -117,18 +139,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-id+json). Do not include \"version\".",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -182,13 +197,24 @@
 				},
 				{
 					"name": "Create a new tenant-defined schema.",
-					"_postman_id": "88b91936-bd5f-4a18-85ee-23100711ebe5",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "90ea902b-2fc0-409c-a114-3e09ce156b95",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -216,18 +242,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -262,13 +281,24 @@
 				},
 				{
 					"name": "Lookup a specific schema by its unique ID.",
-					"_postman_id": "124989b2-309b-4b04-9123-ff847f6685fd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8140184e-e811-41f2-8a90-21146970dc31",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -296,18 +326,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -347,13 +370,24 @@
 				},
 				{
 					"name": "Replace a tenant-defined schema.",
-					"_postman_id": "a5be02d6-73d4-4cf5-a8b3-dbf03e775472",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b4aca224-8869-46a2-a31a-7e9990e3a3a7",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -381,18 +415,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -432,13 +459,24 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined schema.",
-					"_postman_id": "b39262ea-a664-4bae-871e-9f62e7d31384",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3c208762-d829-4902-a6c0-6a107a90abe4",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -466,18 +504,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -517,13 +548,24 @@
 				},
 				{
 					"name": "Remove a tenant-defined schema from the registry.",
-					"_postman_id": "5d2c9988-1015-422c-9a36-31f65c2448e8",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3a6fbcff-cfd0-4c73-98c6-8b301af00abc",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -555,7 +597,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -594,7 +636,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4194c547-2982-4d17-9654-23255c43e60b",
+			"_postman_id": "e24be898-df38-4b64-9b0e-ad7e13ee1703",
 			"description": "Schemas provide an abstract definition of a real-world object along with constraints and expectations that can be applied and used to validate data."
 		},
 		{
@@ -602,13 +644,24 @@
 			"item": [
 				{
 					"name": "Return a list of all mixins within the specified container.",
-					"_postman_id": "21261b14-6a79-43fc-9c1c-740eff0c9a65",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "19eda3fa-c527-4edb-a8c1-129c6253d6c9",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -636,18 +689,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-id+json). Do not include \"version\".",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -700,13 +746,24 @@
 				},
 				{
 					"name": "Create a new tenant-defined mixin.",
-					"_postman_id": "e6055741-b490-4643-81d2-6f9e536c749f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "cd9f7633-6a93-4fcb-a569-e245c7965c2c",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -734,18 +791,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -780,13 +830,24 @@
 				},
 				{
 					"name": "Lookup a specific mixin by its unique ID.",
-					"_postman_id": "15ce5825-bec5-4496-b0cf-d42fa628ec38",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "dcba3295-d217-4f3d-a0db-a8dbe24f6b0c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -814,18 +875,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -864,13 +918,24 @@
 				},
 				{
 					"name": "Replace a tenant-defined mixin.",
-					"_postman_id": "3290a2af-9716-452a-b428-3bb5cc2af78b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "9d8ec2b0-785b-40a7-9174-cc7846d153ea",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -898,18 +963,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -949,13 +1007,24 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined mixin.",
-					"_postman_id": "e204b5e8-258d-4e76-941a-96db04e06015",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "c737977d-ccf4-45da-b6ff-17996e731b9f",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -983,18 +1052,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1034,13 +1096,24 @@
 				},
 				{
 					"name": "Remove a tenant-defined mixin from the registry.",
-					"_postman_id": "68cdb572-7f3c-42a1-9324-5ed9e96f4530",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "69f463ea-fac0-4893-b45d-e075d7b7dffb",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1072,7 +1145,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1111,7 +1184,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a9ae9450-f0ba-4edf-a904-e2e409f1248d",
+			"_postman_id": "e857db7a-b9f0-4543-aea5-e69c6c4ad5a2",
 			"description": "A mixin is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
 		},
 		{
@@ -1119,13 +1192,24 @@
 			"item": [
 				{
 					"name": "List all classes in the specified container.",
-					"_postman_id": "f1dba588-f23d-4f93-8ceb-4817b4ba4b82",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6f47b3b6-1700-495b-98f3-1566ad75341e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1153,18 +1237,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1217,13 +1294,24 @@
 				},
 				{
 					"name": "Create a tenant-defined class.",
-					"_postman_id": "4fcbf41e-5f51-4b3a-bb6c-446ad6d6eb32",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "2deb88b8-560a-477b-8a7b-db4913dfc260",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1251,18 +1339,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1297,13 +1378,24 @@
 				},
 				{
 					"name": "Lookup a specific class by its unique ID.",
-					"_postman_id": "45897013-83f5-49b0-a236-ffb7097cd2b0",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f717cccf-42b3-4ee2-b83c-89c81c784921",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1331,18 +1423,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1381,13 +1466,24 @@
 				},
 				{
 					"name": "Replace a tenant-defined class.",
-					"_postman_id": "6544204c-e8cf-4acc-bd76-54a618729b09",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ac6d05a1-6d5f-4dd5-b3f3-6b156eeb6e05",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1415,18 +1511,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1466,13 +1555,24 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined class.",
-					"_postman_id": "9e87f9cb-a4c0-41dd-a4e2-fe1eb4fcd4b3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e21a65dd-11ac-443e-994f-bd8d131286b1",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1500,18 +1600,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1551,13 +1644,24 @@
 				},
 				{
 					"name": "Remove a tenant-defined class from the registry.",
-					"_postman_id": "9b4950f0-de22-4c17-846b-7d5a920676ce",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ea22df93-df10-46bc-b861-1924636f04cf",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1589,7 +1693,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1628,7 +1732,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "14624431-8225-41ad-9ed1-b7ca2ef63133",
+			"_postman_id": "833f4e27-cd14-48c9-9057-0153ba5e5d92",
 			"description": "Classes define behavioral aspects of the data within the schema and describe the smallest number of common properties contained in all schemas that implement the same class."
 		},
 		{
@@ -1636,13 +1740,24 @@
 			"item": [
 				{
 					"name": "List all data types in the specified container.",
-					"_postman_id": "2ff7e159-8394-4620-9880-ff070c136a5d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "563527bf-822c-43c0-928d-1da609f59bf7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1663,13 +1778,6 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
 								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
@@ -1681,7 +1789,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1734,13 +1842,24 @@
 				},
 				{
 					"name": "Create a tenant-defined data type.",
-					"_postman_id": "615f061e-2c16-4833-9db9-867aba790792",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "abe089fc-d247-40f1-8f44-3a431b6d1dd3",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1761,23 +1880,9 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
 								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
 								"type": "string",
 								"enabled": true
 							},
@@ -1786,7 +1891,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1821,13 +1926,24 @@
 				},
 				{
 					"name": "Returns the datatype schema associated with the given identifier.",
-					"_postman_id": "c0cf8486-1fc7-42e3-9a28-cb1ddbcc96a5",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3a4fa268-60a6-4d18-85cb-d237a85abeb9",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1855,18 +1971,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1905,13 +2014,24 @@
 				},
 				{
 					"name": "Replace a tenant-defined data type.",
-					"_postman_id": "77b5bbf3-69ca-4700-a78d-e24dcdd5e975",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "fc97bc22-9cb0-42dd-94f3-418d97efaeba",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1939,18 +2059,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1990,13 +2103,24 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined data type.",
-					"_postman_id": "9e52359f-6562-471e-8be4-b1c727aa19df",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f98b37db-d933-4656-ad44-e97927876d76",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2024,18 +2148,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2075,13 +2192,24 @@
 				},
 				{
 					"name": "Remove a tenant-defined data type from the registry.",
-					"_postman_id": "57543959-48fb-42c5-a374-5a35f8a643ff",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "53a27edd-1076-4e51-975a-e38ebd794340",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2113,7 +2241,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2152,7 +2280,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "216d8502-b343-401e-a062-dd13a62a22a3",
+			"_postman_id": "06e88bb1-5029-4203-b97e-508f21bbf03b",
 			"description": "Data types are used as reference field types in classes or schemas to define complex types. Data types may define multiple sub-fields providing a consistent multi-field structure."
 		},
 		{
@@ -2160,13 +2288,24 @@
 			"item": [
 				{
 					"name": "List all descriptors within the specified container, by type.",
-					"_postman_id": "40e5efc9-7781-483d-9631-34845318cb45",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e4b188f7-1eaa-43cc-9100-ccf12bd655ea",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2194,18 +2333,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "Descriptors require unique Accept headers using 'xdm' instead of 'xed' (eg. application/vnd.adobe.xdm-id+json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2240,13 +2372,24 @@
 				},
 				{
 					"name": "Create a new descriptor. Required fields in payload vary based on @type.",
-					"_postman_id": "9994ebdf-1f0a-4fa5-b3b7-3beb6f5fb42e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "452a883d-0bd9-42b0-9e3f-b3b97097fa14",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2274,18 +2417,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2320,13 +2456,24 @@
 				},
 				{
 					"name": "Lookup specific descriptor by its @id.",
-					"_postman_id": "a46e4e59-a140-435e-84b5-bfed187f2ae4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "393cf5c4-f747-4782-83d7-305ae3eac600",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2358,7 +2505,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2398,13 +2545,24 @@
 				},
 				{
 					"name": "Update a descriptor. Required fields in payload vary based on @type.",
-					"_postman_id": "400d9fdd-343a-4660-bf92-782ebc3e9523",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "52f33ff8-395d-4ebe-ae8c-976b861cef0f",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2432,18 +2590,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "Type of content being sent in the body of the request (eg. application/json)",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2483,13 +2634,24 @@
 				},
 				{
 					"name": "Remove a descriptor using its @id.",
-					"_postman_id": "3dec89fc-f058-45a8-9a9c-583f2e4491f1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6871e3c8-9252-4beb-a684-b9f0ee6dad48",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2521,7 +2683,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2560,7 +2722,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "abca4e49-708f-4412-938b-9a430031ce5c",
+			"_postman_id": "d02ce073-640f-404f-85f2-acf39d36d3c4",
 			"description": "Schema descriptors are tenant-level metadata used to provide interpretive details on how data based on certain schemas may relate or interact with one another."
 		},
 		{
@@ -2568,24 +2730,28 @@
 			"item": [
 				{
 					"name": "Retrieve a list of union views.",
-					"_postman_id": "b5ed9452-32b4-45c2-b1d0-e31f6ce72ab6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "9d550b54-dfb3-4132-856c-567366a37efc",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-id+json). Do not include \"version\".",
-								"type": "string",
-								"enabled": true
 							},
 							{
 								"key": "Authorization",
@@ -2613,7 +2779,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2659,13 +2825,24 @@
 				},
 				{
 					"name": "Lookup a union view by ID.",
-					"_postman_id": "ee51df9c-5249-4a90-a149-2fed45ef6f61",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8c26db3a-8f4e-4077-8c9c-94fcb11439bf",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2693,18 +2870,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Accept",
-								"value": "{{Accept}}",
-								"description": "The desired response format (eg. application/vnd.adobe.xed-full+json; version=1). \"Version\" is required.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2738,7 +2908,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b419c237-01b8-47b9-9cb7-716499ec968a",
+			"_postman_id": "22e989cf-c480-4620-92f8-310de1a1ae38",
 			"description": "Union views aggregate the fields of all schemas that implement the same class (such as ExperienceEvent or Profile) into a single schema. They are used by Real-time Customer Profile to merge data together to form a \"single source of truth\" for an individual."
 		}
 	]

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "535fa9d4-f8fe-4691-bc94-5ee6f201a599",
+		"_postman_id": "4b255199-e3cf-4e7f-86f8-f325bad27b3f",
 		"name": "Data Access Service API",
 		"description": "\nData Access Service facilitates data access and egress on Adobe Experience Platform.\nThis includes, but not limited to, the following operations:\n  * Access and download dataset files under a batch\n  * Retrieve header information regarding files\n  * Parallel / resumable downloads using HTTP range headers\n  * Pagination support for directory listings\n  * List dataset files under a succeeded/failed batch\n  * Preview CSV and Parquet files\n\n\nRelated documentation:\n  * [Data Access technical overview](https://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md)\n  * [Query dataset data using the Data Access API](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/export\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/export/batches/{batchId}/files\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,13 +11,24 @@
 			"item": [
 				{
 					"name": "Get dataset files under a batch.",
-					"_postman_id": "13139f05-b8b6-4b66-ad7e-629b04d6dfd7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "711cd41f-1f91-4f63-8823-8598857d8729",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -45,7 +56,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -88,13 +99,24 @@
 				},
 				{
 					"name": "Get dataset files under a failed batch.",
-					"_postman_id": "227063e2-7dd8-4aa9-b185-51004802d011",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7fb4a487-faeb-4e7e-a04f-ffa3c2bd4942",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -122,7 +144,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -168,7 +190,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0d5058e6-648d-40dd-bc34-146e87a55c68",
+			"_postman_id": "c341044e-c007-4cd8-9f62-a846f76d6aa9",
 			"description": "Configure data access and egress for Experience Platform."
 		},
 		{
@@ -176,13 +198,24 @@
 			"item": [
 				{
 					"name": "Access / download a file.",
-					"_postman_id": "4fb08b55-f749-4523-9c0f-0a1c30f70bac",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b9741a07-43a1-4101-b736-573d0a5310d2",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json, application/octet-stream"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -217,7 +250,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -263,7 +296,18 @@
 				},
 				{
 					"name": "Get headers regarding a file.",
-					"_postman_id": "eeaa3eff-1f0f-48b5-8ed2-b20922303dd1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "bc2080f4-76ab-4104-b73e-4cfc6540dd27",
 					"request": {
 						"method": "HEAD",
 						"header": [
@@ -293,7 +337,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -330,7 +374,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e28655f7-448d-46f0-87be-5059bf5169fd",
+			"_postman_id": "39e4292d-5ed1-4813-84d3-aba5b76a49fc",
 			"description": "Retrieve headers containing metadata for a file specified by ID."
 		},
 		{
@@ -338,13 +382,24 @@
 			"item": [
 				{
 					"name": "Preview files.",
-					"_postman_id": "6b1d4ad0-1066-4a4a-84b3-ee84d50174f6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8c16b617-8340-4645-95e3-90ae8316ed38",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -372,7 +427,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -404,7 +459,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ad72bad8-c49c-4f39-9e0f-c6372a691b45",
+			"_postman_id": "0e314fe8-bf37-4b1c-bc56-3610e7b10f03",
 			"description": "Retrieve the first 100 rows of CSV or Parquet files."
 		},
 		{
@@ -412,7 +467,18 @@
 			"item": [
 				{
 					"name": "Perform health check on dependent services.",
-					"_postman_id": "7c3db729-1821-4dd1-810f-5988c356c553",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "d377b21a-4044-4765-8057-7833bda71f94",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -442,7 +508,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -466,7 +532,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e0c7b064-0df6-433a-97a6-671e9719c11f",
+			"_postman_id": "ffedeb0e-dece-4f8c-b0c9-1c6d4696206d",
 			"description": "Retrieve health status for all dependent services."
 		}
 	]

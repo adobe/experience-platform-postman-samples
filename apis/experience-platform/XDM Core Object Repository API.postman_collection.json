@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b38cfe15-029a-4480-92d1-aa0227fb6511",
+		"_postman_id": "f4624b09-7b5e-4983-aa68-9684f3a37ee3",
 		"name": "XDM Core Object Repository API",
 		"description": "<p>Experience Data Model (XDM) Core Object Repository is an event-driven repository for XDM instances, fully integrated with Adobe Experience Platform. XDM Core Object Repository is part of Decisioning Service, which provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. Decisioning Service is controlled by a number of interrelated business objects. The XDM Core Object Repository API allows you to access and manage those business objects within the repository. </p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_entities_api_tutorial.md\">Manage Decisioning Service entities using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/xcore</li><li>Example of a complete path for making a call to Home (\"/\"):<span> https://platform.adobe.io/data/core/xcore/</ul></p>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,17 +11,28 @@
 			"item": [
 				{
 					"name": "Rich core search interface for XDM instances.",
-					"_postman_id": "4486778b-d149-4962-90cf-478ecd9f26f6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8514830e-e95a-4bf2-8608-6737915dbf2b",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.hal+json; schema='https://ns.adobe.com/experience/xcore/hal/results'"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -63,7 +74,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -131,17 +142,28 @@
 				},
 				{
 					"name": "Core query for instances by schema ID or name.",
-					"_postman_id": "a45c8233-7967-4658-aaad-7cef15dd0c5e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6cfadd17-4b01-4be4-bf1a-fd1915f77a31",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.hal+json; schema='https://ns.adobe.com/experience/xcore/hal/results'"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -183,7 +205,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -244,7 +266,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d3c9f408-ecbb-450d-b879-9730b1ef9e4d",
+			"_postman_id": "52feccf4-6d6c-48c3-b764-98156b74fb1e",
 			"description": "Core Queries against XDM instances."
 		},
 		{
@@ -252,17 +274,28 @@
 			"item": [
 				{
 					"name": "Create a new XDM instance",
-					"_postman_id": "b1784f9e-333e-43d3-b528-5961023848d6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "449ac694-04f6-4e3b-8b8f-ef4a01862cef",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -304,7 +337,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -336,17 +369,28 @@
 				},
 				{
 					"name": "Get a specific instance on an object.",
-					"_postman_id": "c6a51696-ca13-4551-ac1f-4ea5cc1604fb",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3600310f-c430-4f47-b790-50a7fdda65c2",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\", application/vnd.adobe.platform.xcore.hal+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -395,7 +439,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -432,17 +476,28 @@
 				},
 				{
 					"name": "Update an existing XDM instance.",
-					"_postman_id": "3ed343a2-c2be-4fa6-b081-6c3661af7f34",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "51f423d2-323e-4729-b23e-6f83ce4bc89a",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -491,7 +546,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -528,17 +583,28 @@
 				},
 				{
 					"name": "Update instance using patch protocol.",
-					"_postman_id": "f981f25c-aa2d-49ea-8721-fa56b018639b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "58beee39-a6e9-4476-aade-68857b84b618",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.patch.hal+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -587,7 +653,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -624,17 +690,28 @@
 				},
 				{
 					"name": "Delete an XDM instance.",
-					"_postman_id": "2407ea84-74af-4348-92e2-2c9554ffa5f7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3e9f0dc3-df63-496c-82e0-7f6e3d42a62c",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -683,7 +760,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -719,7 +796,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e22c02b7-9fb9-4095-a9b6-b3754a6dfaec",
+			"_postman_id": "62413832-b011-4da3-9a14-e7321798c3ea",
 			"description": "Perform CRUD operations to add, edit, update, delete, and view instances via the primary `instanceId`."
 		},
 		{
@@ -727,17 +804,28 @@
 			"item": [
 				{
 					"name": "View the home directory for an IMS organization.",
-					"_postman_id": "da231a11-b7db-4d92-b7a0-9fb91d13068c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "0c9c1abd-e90d-45e4-9267-015af303b9ba",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "*, application/vnd.adobe.platform.xcore.home.hal+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -779,7 +867,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -821,7 +909,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f1fd4cf5-8572-414d-b225-39c58f64ebe0",
+			"_postman_id": "17a1c276-65c4-48ca-943e-35cca3916f71",
 			"description": "Home document for an IMS Organization. The home document is a HAL (Hypermedia Access Language) document which can be used as the hypermedia home directory for the IMS Organization specified. It lists relevant HAL links that can be traversed and also lists all of the containers belonging to the Org."
 		}
 	]

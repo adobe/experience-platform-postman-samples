@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c9ca216b-68d6-4266-af40-69db8c20c84a",
+		"_postman_id": "54a25407-16d5-4396-a114-1c42928b7f2c",
 		"name": "Catalog Service API",
 		"description": "Catalog Service is the system of record for data location, lineage, schema definition,  and usage labeling for Adobe Experience Platform.\n\nRelated documentation:\n  * [Catalog Service overview](https://www.adobe.io/apis/experienceplatform/home/services/allservices.html#!api-specification/markdown/narrative/technical_overview/catalog_architectural_overview/catalog_architectural_overview.md)\n  * [Create a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/catalog\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/catalog/batches\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the <a href='https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md'>authentication tutorial</a>.\n   * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,13 +11,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of accounts.",
-					"_postman_id": "582afc31-d1b5-408c-bb71-3f72b59f687c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "1ef19c30-c101-49c3-aacf-37bb7afcff12",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -59,7 +70,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -137,13 +148,24 @@
 				},
 				{
 					"name": "Create a new account.",
-					"_postman_id": "70d09d6c-e4bb-4607-8d4c-7c637ddc6fbc",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "9a5d8e67-92b7-4f03-88ec-4f1ecf1234f9",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -185,18 +207,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -220,13 +235,24 @@
 				},
 				{
 					"name": "Lookup an account by ID.",
-					"_postman_id": "3c5abfe3-9944-49b1-b9e2-e3ba90192e29",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "04a7f849-fcac-49c6-8c43-3828fc59bee7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -268,7 +294,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -299,13 +325,24 @@
 				},
 				{
 					"name": "Update an existing account by ID.",
-					"_postman_id": "f00ce9f6-56ee-42f0-b2f5-c18355232089",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ebb1dbd9-00bc-4e7e-93e5-7b5c87efa949",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -351,7 +388,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -382,13 +419,24 @@
 				},
 				{
 					"name": "Create a new account with a specified ID.",
-					"_postman_id": "75345eb4-0250-4cd4-aa3f-50ed01158a1c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3fe28055-8d91-4d5b-adc1-8316429d835f",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -434,7 +482,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -465,13 +513,24 @@
 				},
 				{
 					"name": "Update one or more attributes of an account specified by ID.",
-					"_postman_id": "96960f44-7239-4892-844a-8effed2361c7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "31aa6c47-261b-43b9-b96b-69171a2e7295",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -517,7 +576,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -548,13 +607,24 @@
 				},
 				{
 					"name": "Delete an account by ID.",
-					"_postman_id": "4c189383-1556-4f73-823a-74e18813a53a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "d5b86859-5a97-4e81-ab69-3a3578a6a886",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -600,7 +670,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -630,7 +700,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8854abb1-90bd-45dc-9069-3389c28679b0",
+			"_postman_id": "dbe8079a-e4ec-474f-9d9a-80259a00302a",
 			"description": "Accounts represent a collection of authentication credentials used to create data connections of a specific type. Each connection has a set of unique parameters that are persisted by Catalog and secured in an Azure Key Vault using Security Services."
 		},
 		{
@@ -638,13 +708,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of batches.",
-					"_postman_id": "2a8912d8-c264-4f41-888a-ef4d18c31128",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5537b84b-75a5-4bc6-81d5-ba1bc40a8eb3",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -686,7 +767,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -784,13 +865,24 @@
 				},
 				{
 					"name": "Create a new batch.",
-					"_postman_id": "11232bd9-269f-4272-9cad-5b9dcdbf5495",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "73f3c0b8-0a65-4624-ad45-165c426204e0",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -836,7 +928,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -860,13 +952,24 @@
 				},
 				{
 					"name": "Retrieve the unique values stored in a field specified by ID.",
-					"_postman_id": "e1f57d35-4100-4103-ad28-bff28f2b81df",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4ad2348a-eb05-4098-b4c2-c7a6490e5699",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -908,7 +1011,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1014,13 +1117,24 @@
 				},
 				{
 					"name": "Lookup a batch by ID.",
-					"_postman_id": "c31d8f0d-1838-4b2a-bcb4-cfb630648b1c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "237d7432-3492-4ce6-8116-621af93edeeb",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1062,7 +1176,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1099,13 +1213,24 @@
 				},
 				{
 					"name": "Update a batch by ID.",
-					"_postman_id": "0e7126e7-7cc5-4c46-a186-b9af86c20af3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7115a861-4c44-44da-b7dc-e5e86776abde",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1151,7 +1276,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1182,13 +1307,24 @@
 				},
 				{
 					"name": "Create a new batch with a specified ID.",
-					"_postman_id": "cd032962-8471-40a1-a83e-ac4e2839b39c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f7e2a774-1ccc-428c-a8ce-2335b5aa0422",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1234,7 +1370,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1265,13 +1401,24 @@
 				},
 				{
 					"name": "Update one or more attributes of a batch specified by ID.",
-					"_postman_id": "26f83bca-14dc-40db-b768-e96d52575e25",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6210f3e8-27be-4f0a-90aa-f3c4ee40df20",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1317,7 +1464,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1348,13 +1495,24 @@
 				},
 				{
 					"name": "Delete a batch by ID.",
-					"_postman_id": "20d2ad27-c031-49a8-a2da-0b537b552629",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4bffb58a-e748-4dc0-83ff-556354854b24",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1400,7 +1558,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1430,7 +1588,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "06934b27-5a6c-4398-b7e4-aad35998baf3",
+			"_postman_id": "044f6e83-8f18-423c-b0e6-830993793347",
 			"description": "Batches allow Catalog users to understand which operations and applications have been performed on objects tracked by the system. A batch outlines the final results of an operation (such as records processed, or size on disk) but may also include links to datasets, files, and more that were affected by the process."
 		},
 		{
@@ -1438,13 +1596,24 @@
 			"item": [
 				{
 					"name": "Healthcheck report for Catalog Service.",
-					"_postman_id": "2fbb2b56-f5d2-462c-adc4-6d047f75807d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "59d74475-6afe-4cf3-acb3-0a712023307b",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "x-api-key",
@@ -1458,7 +1627,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1482,13 +1651,24 @@
 				},
 				{
 					"name": "Healthcheck report for Catalog Service with dependencies.",
-					"_postman_id": "4dd98c38-3f72-498b-94a6-6c8e887f430b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "d661fd30-33b0-4a5d-b707-8988f677ca99",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "x-api-key",
@@ -1502,7 +1682,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1525,7 +1705,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "40ebd536-fe06-4891-801d-fe6581dd2b28",
+			"_postman_id": "0a10e8f3-de72-4b0a-8711-21d25564e581",
 			"description": "Healthcheck for Catalog Service."
 		},
 		{
@@ -1533,13 +1713,24 @@
 			"item": [
 				{
 					"name": "Lookup a large document by ID.",
-					"_postman_id": "606e2fd8-1381-4108-98b6-abd037a8d373",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "87dc0c7e-4b6f-4172-ad2b-ffe8a8d38533",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1581,7 +1772,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1611,7 +1802,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a35fc906-06ac-44e0-a470-13638c1b5f53",
+			"_postman_id": "04be5855-d521-4f00-989e-7eb5da9e4dee",
 			"description": "Large documents are ingested files that exceed 512MB in size. These files are divided into chunks and ingested separately."
 		},
 		{
@@ -1619,13 +1810,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of connections.",
-					"_postman_id": "1234e5eb-a720-4b9a-a2d9-8a71640c7722",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "2545a2db-34f4-4128-9cb2-2283497f29c5",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1667,7 +1869,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1721,13 +1923,24 @@
 				},
 				{
 					"name": "Create a new connection.",
-					"_postman_id": "b902308f-6976-403c-81ef-19929c2ba4ff",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "33ad5222-e9e7-4bdc-863d-3a9a879d0b5f",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1773,7 +1986,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1797,13 +2010,24 @@
 				},
 				{
 					"name": "Lookup a connection by ID.",
-					"_postman_id": "139bd1f4-cec7-4c8c-87df-0a0a79a88850",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8600e088-a884-475d-a949-52b555e22492",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1845,7 +2069,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1876,13 +2100,24 @@
 				},
 				{
 					"name": "Update a connection by ID.",
-					"_postman_id": "7c7c6493-b6bf-4224-bcd0-e1e1adcd9ec6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "eb38291c-7b94-48d1-b883-a8609d8297ff",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1928,7 +2163,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1959,13 +2194,24 @@
 				},
 				{
 					"name": "Save a new connection with a specified ID.",
-					"_postman_id": "4773bbe7-8d0e-492a-a5df-484bda3d6f10",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4484e8b1-b7a7-4028-9b24-9e316a60a5b9",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2011,7 +2257,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2042,13 +2288,24 @@
 				},
 				{
 					"name": "Update one or more attributes of a connection specified by ID.",
-					"_postman_id": "0149d9de-56c9-471c-b24d-9baf5191324c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7a624854-6706-4b7b-825a-b7dbf15b1bc9",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2094,7 +2351,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2125,13 +2382,24 @@
 				},
 				{
 					"name": "Delete a connection by ID.",
-					"_postman_id": "84b3f505-fcb0-4da0-9f05-2a99c2a1e97f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "a0cc0428-72f6-4946-8dca-b77f96b34f10",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2173,7 +2441,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2204,13 +2472,24 @@
 				},
 				{
 					"name": "Retrieve a list of datasets for a connection by ID.",
-					"_postman_id": "8d33822f-6f8f-45b1-9116-114967b680ed",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "52c68690-a45e-46f2-8643-0e724f36815b",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2252,7 +2531,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2283,7 +2562,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f419c2b2-ba53-4155-8534-9339fb62fa30",
+			"_postman_id": "8a2b5a69-f4d2-477b-993e-29abc2f3897a",
 			"description": "Connections are customer-specific instances of connectors. As an example, when a user selects the Azure Blob connector and supplies the necessary details as defined by that connector, the result is a connection."
 		},
 		{
@@ -2291,13 +2570,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of connectors.",
-					"_postman_id": "93b63522-c1ae-4c22-8765-4ac478d3e207",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f63af5ce-471b-4364-aa6b-1d272faa17a0",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2339,7 +2629,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2401,13 +2691,24 @@
 				},
 				{
 					"name": "Lookup a connector by ID.",
-					"_postman_id": "9badce8d-39ea-4d6a-83d1-e5d91e5a4219",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "149ead1a-8f4c-48df-8efd-18ea02985068",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2449,7 +2750,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2480,13 +2781,24 @@
 				},
 				{
 					"name": "Retrieve the statistics for a connector specified by ID.",
-					"_postman_id": "0acf22c1-4fed-469b-bc6c-4c2098bf2af0",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "11290ddd-d40f-4b56-b058-fa5051146e06",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2528,7 +2840,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2559,7 +2871,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e9798a2e-dacb-4a92-b4b1-fd009f4028e2",
+			"_postman_id": "d0cf0cca-64a4-4c40-99d2-b105b1b186d9",
 			"description": "Connectors define how and when data is ingested into Platform. They control how data is to be gathered from technology sources (like S3, RedShift, and SFTP) and partner sources (like DFA, SAP, MSFT, and ExactTarget). Connectors also define how and when data from Adobe solutions is ingested into Platform."
 		},
 		{
@@ -2567,13 +2879,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of datasets.",
-					"_postman_id": "a37a6715-6837-4efd-b249-7bef97c6a77f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "53bf3aaf-635e-41e8-b908-4c2c55527414",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2615,7 +2938,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2669,13 +2992,24 @@
 				},
 				{
 					"name": "Create a new dataset.",
-					"_postman_id": "1e4c6bcc-cb95-41ff-87af-65c79ef08efd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8be72bb5-d8ad-41b6-a097-733d170f0359",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2721,7 +3055,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2751,13 +3085,24 @@
 				},
 				{
 					"name": "Lookup a dataset by ID.",
-					"_postman_id": "b771676b-d7ef-4612-bf00-c21f89414e0a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b1acdde6-7ebe-4825-8135-c0a15131cef7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2799,7 +3144,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2836,13 +3181,24 @@
 				},
 				{
 					"name": "Update a dataset by ID.",
-					"_postman_id": "a79861c4-3f66-4f91-9a4f-6b3c6c1cbf9e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "40bd9d85-aad1-42ad-bb5f-5f2d53ef68f6",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2888,7 +3244,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2925,13 +3281,24 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset specified by ID.",
-					"_postman_id": "c84e6981-d69f-4825-b1c0-26dca03c50d9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f1372eb8-69fd-4935-a73e-36be8c1b1898",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -2977,7 +3344,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3008,13 +3375,24 @@
 				},
 				{
 					"name": "Delete a dataset by ID.",
-					"_postman_id": "df24c02b-1f09-4751-ab34-d4fd6251d56e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "802810f0-9691-49b4-96ad-71e45de45127",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -3060,7 +3438,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3091,13 +3469,24 @@
 				},
 				{
 					"name": "Retrieve the credentials of a dataset specified by ID.",
-					"_postman_id": "84390c61-2c66-4f23-a064-7acc27859eb6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f6b92ec6-11ff-4e5f-9445-5bf5fc38471c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3146,7 +3535,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3184,13 +3573,24 @@
 				},
 				{
 					"name": "Retrieve a list of views for a dataset specified by ID.",
-					"_postman_id": "74058a8f-7c8b-4828-857e-3271d6ab1141",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6fb11f66-c0f6-439c-bbca-f77d0b31cc79",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3232,7 +3632,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3264,13 +3664,24 @@
 				},
 				{
 					"name": "Create a new view for a dataset specified by ID.",
-					"_postman_id": "145eabaf-f7c8-4c4b-98ff-615fbb09a303",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ece573c6-6674-44b8-bf20-04ad9371f822",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -3316,7 +3727,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3348,13 +3759,24 @@
 				},
 				{
 					"name": "Lookup a single view for a dataset, both specified by ID.",
-					"_postman_id": "f4af49ee-f89e-4cd4-b722-4ab1503b0453",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "1f43dd98-9b66-416b-9b23-9503ffe26dab",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3396,7 +3818,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3433,13 +3855,24 @@
 				},
 				{
 					"name": "List the files of a single view for a dataset. The view and dataset are specified by ID.",
-					"_postman_id": "e1b00ec1-0600-47c1-bdcf-dc8e6f963ca8",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f1e77006-7ff3-4b6c-8976-93ba696e0752",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3481,7 +3914,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3519,13 +3952,24 @@
 				},
 				{
 					"name": "Create a new file for a single view of a dataset. The view and dataset are both specified by ID.",
-					"_postman_id": "32af46e6-0045-4d70-b702-478fe42363ae",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "d7055a75-f635-4840-96d7-e64dd173b477",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -3571,7 +4015,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3609,13 +4053,24 @@
 				},
 				{
 					"name": "Lookup a file for a particular view of a dataset. The file, view, and dataset are specified by ID.",
-					"_postman_id": "99710181-7004-4a4e-b84d-301bcdc0a110",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4dae2e3a-06a2-4c9a-a276-d7470899c4ca",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3657,7 +4112,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3700,13 +4155,24 @@
 				},
 				{
 					"name": "Remove a file from a particular view of a dataset.",
-					"_postman_id": "63d2ec18-5b18-4968-8d5b-0107ef65eec9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8ef9fb8e-b7fe-4c4d-85ea-41c1f00fd9f9",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3748,7 +4214,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3791,13 +4257,24 @@
 				},
 				{
 					"name": "Retrieve summarized stats for a dataset's batches. Default time window is within last seven days.",
-					"_postman_id": "c5e9fdaf-5e90-4624-ac82-6fb1727d7ed0",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "fafaaaa4-e1d7-4acb-8fd9-cbd43b89c98d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3839,7 +4316,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3871,13 +4348,24 @@
 				},
 				{
 					"name": "Retrieve the Data Usage and Enforcement (DULE) labels associated with a dataset specified by ID.",
-					"_postman_id": "6b34377a-ff52-4330-954a-f9ceee561886",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7270b7ff-f8bf-4155-8a18-7276e91d22a4",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3919,7 +4407,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3950,7 +4438,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "836a7fe7-0406-44ef-b639-83139954d703",
+			"_postman_id": "2e2079b2-3402-439a-a4ab-b46f2c16e4c9",
 			"description": "Datasets are the building blocks for data transformation and tracking in Catalog Service. Generally, datasets represent a table or file made available by a connection."
 		},
 		{
@@ -3958,13 +4446,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of dataset views.",
-					"_postman_id": "94b2001e-d4d2-49ae-9fa5-dd0d27553acf",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "df6b7243-790e-4e0d-9f2c-1c0a9e873bee",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -4006,7 +4505,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4076,13 +4575,24 @@
 				},
 				{
 					"name": "Create a new dataset view.",
-					"_postman_id": "5d62e97a-58d1-40d7-866c-69821f6429b4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3357a7a8-aef8-4d06-9052-71d486c2531b",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -4128,7 +4638,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4152,13 +4662,24 @@
 				},
 				{
 					"name": "Lookup a dataset view by ID.",
-					"_postman_id": "9974d4a4-e773-4062-9f81-57ddae358671",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "36335f16-07f5-46f5-be8f-6d7d07bd5170",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -4200,7 +4721,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4237,13 +4758,24 @@
 				},
 				{
 					"name": "Update a dataset view by ID.",
-					"_postman_id": "eda01383-8ac2-4e7a-9437-95e1f2caf71a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "867d6668-f9fc-4e2c-af23-19c8ca7669bb",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -4289,7 +4821,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4320,13 +4852,24 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset view specified by ID.",
-					"_postman_id": "0f198849-3f13-43d5-bb4a-2451dd137191",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7d022e78-aade-4dda-bf0b-51040810e448",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -4372,7 +4915,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4403,13 +4946,24 @@
 				},
 				{
 					"name": "Delete a dataset view by ID.",
-					"_postman_id": "335d872a-e00b-42dd-a27e-c4c8d2eb3f36",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "9ec0153d-c212-4f4d-b99a-8675c4eca1e0",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -4451,7 +5005,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4481,7 +5035,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d4699ba0-e24d-4572-8922-8ff0ebc952c9",
+			"_postman_id": "d7edfe01-40be-4bd3-9a77-ba8d1e9dc0a3",
 			"description": "Folder for Dataset views"
 		},
 		{
@@ -4489,13 +5043,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of dataset files.",
-					"_postman_id": "3f3b0ee3-f4ce-4eba-8851-3346c108a95e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "096b5e5c-bb5b-4c08-88d3-0bb738369e0d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -4537,7 +5102,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4587,13 +5152,24 @@
 				},
 				{
 					"name": "Create a new dataset file.",
-					"_postman_id": "b5d46d2e-6cd5-4fe1-a831-18fed24c9b03",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ae106e25-86c7-4194-9af7-7b792197dded",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -4639,7 +5215,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4663,13 +5239,24 @@
 				},
 				{
 					"name": "Delete a dataset file by search criteria.",
-					"_postman_id": "24c235b9-4462-4504-a852-ce97180b8069",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5fdd749b-9044-4163-b796-d26566933690",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -4711,7 +5298,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4741,13 +5328,24 @@
 				},
 				{
 					"name": "Lookup a dataset file by ID.",
-					"_postman_id": "cb91766d-ffa7-4086-93a6-959c0557e921",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "65d6ae0b-1ac3-4fe1-97f2-5e01289e3ecf",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -4789,7 +5387,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4820,13 +5418,24 @@
 				},
 				{
 					"name": "Update a dataset file by ID.",
-					"_postman_id": "0ee5a0e4-0f07-478d-88a1-dc0093e4044d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "bd80e9d3-a300-4d14-aea8-d0f77291de4b",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -4872,7 +5481,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4903,13 +5512,24 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset file specified by ID.",
-					"_postman_id": "27e009aa-424b-4ba7-b757-4615dcdc85de",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "1b42d40b-a104-41b5-b3c6-6386f9220854",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -4955,7 +5575,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -4986,13 +5606,24 @@
 				},
 				{
 					"name": "Delete a dataset file by ID.",
-					"_postman_id": "c8d8b26a-7c76-4201-ae60-fea841f74f8b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "905c4998-29eb-4ecc-bb00-275f8290190f",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -5034,7 +5665,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5064,7 +5695,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "5e4fab4e-ec92-49fa-bf8b-ece99f11dee7",
+			"_postman_id": "7d08721c-fcd5-4e1b-83a4-e866c5545ddb",
 			"description": "Dataset files represent blocks of data that have been saved on Platform. As records of literal files, these are where you can find the file size and which batch the file came from. This construct will also provide the number of records contained in the file."
 		},
 		{
@@ -5072,13 +5703,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of resource links for the Catalog Service.",
-					"_postman_id": "c1402af9-59a2-47dd-be7c-cce42464c4d7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f4fc4c1d-0d2a-4530-948d-cd13622d71e7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -5120,7 +5762,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5144,13 +5786,24 @@
 				},
 				{
 					"name": "Create a new batch request.",
-					"_postman_id": "7ac10577-35d7-4787-964f-8a354ca32736",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "849bb8c5-c6d3-4640-89ba-fd7c3028f948",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -5196,7 +5849,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5219,7 +5872,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b5c845b6-f7c7-4f37-a0ee-7e9cbceb3f51",
+			"_postman_id": "2a0e6e7c-05b9-490e-94f8-30fecc74abbd",
 			"description": "Batched requests allow you to supply an array of objects in the request payload, representing what would normally be individual requests. Requests are executed in order and values returned from a previous call are made available in subsequent calls through template language."
 		},
 		{
@@ -5227,13 +5880,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of transforms.",
-					"_postman_id": "492e8231-e010-4f10-b8d7-1100b934828c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4b19fd2a-0864-48a4-ac86-e146e4f253f1",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -5275,7 +5939,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5329,13 +5993,24 @@
 				},
 				{
 					"name": "Create a new transform.",
-					"_postman_id": "5ad69d60-02b1-4359-9a0e-0f344c11330c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "77179cba-30bf-4cec-a541-aeaeead80102",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -5381,7 +6056,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5405,13 +6080,24 @@
 				},
 				{
 					"name": "Lookup a transform by ID.",
-					"_postman_id": "bd6490ce-7f85-4c02-b6c0-d686c1b0b744",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "20158b39-256d-4d68-8580-1b388906ef96",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -5453,7 +6139,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5484,13 +6170,24 @@
 				},
 				{
 					"name": "Update a transform by ID.",
-					"_postman_id": "2305e5f2-9d48-42fd-bde9-a4560d475528",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "bdc58606-e205-4015-b980-a0295c3948f0",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -5536,7 +6233,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5567,13 +6264,24 @@
 				},
 				{
 					"name": "Update one or more attributes of a transform specified by ID.",
-					"_postman_id": "c0c552cc-710c-469f-a36d-810b4bc5aa22",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "992b5db8-8aa7-4357-83dd-90eb32a222ae",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -5619,7 +6327,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5650,13 +6358,24 @@
 				},
 				{
 					"name": "Delete a transform by ID.",
-					"_postman_id": "66f54eae-764c-4e32-865e-a07e8fb68e58",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ca9e7827-273e-4e50-b1f4-bb7352b355a5",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -5698,7 +6417,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5729,13 +6448,24 @@
 				},
 				{
 					"name": "Retrieve a list of inputs for a transform specified by ID.",
-					"_postman_id": "c4a3e9d0-d192-409a-91f4-5430337ba4a4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "2a6ceae4-8997-4994-b05e-d105270f03d8",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -5777,7 +6507,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5809,13 +6539,24 @@
 				},
 				{
 					"name": "Update the input attributes for a transform specified by ID.",
-					"_postman_id": "e3dd5c73-ab9c-4f76-ba6a-cfa6c03c31cd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3ba58abf-dd77-4ad9-b7e0-e868293e3664",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -5861,7 +6602,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5893,13 +6634,24 @@
 				},
 				{
 					"name": "Retrieve a list of outputs for a transform specified by ID.",
-					"_postman_id": "56cc5b94-74d5-43f1-9f8e-4fa690e873e1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "15662168-d9a2-40e7-9548-e8a199da25e6",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -5941,7 +6693,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -5973,13 +6725,24 @@
 				},
 				{
 					"name": "Update the output attributes for a transform specified by ID.",
-					"_postman_id": "f1425d14-be79-4c5c-900f-ca4e86d4bcbd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "de4d2a5d-c3d3-4a6a-9a14-ca60ddea7afd",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -6025,7 +6788,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -6057,13 +6820,24 @@
 				},
 				{
 					"name": "Lookup an input dataset for a transform, both specified by ID.",
-					"_postman_id": "728873f0-4be8-480b-8f49-d308286fcff6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "50040106-7bbf-4ab9-8c55-7d38d7cdf071",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -6105,7 +6879,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -6142,13 +6916,24 @@
 				},
 				{
 					"name": "Delete an input dataset for a transform, both specified by ID.",
-					"_postman_id": "94860393-9a45-4c6b-8224-82c496a6d3b2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "66d1cb9a-8a4b-4e9b-9435-158ba362d2fa",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -6190,7 +6975,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -6227,13 +7012,24 @@
 				},
 				{
 					"name": "Lookup an output dataset for a transform, both specified by ID.",
-					"_postman_id": "039aa2ef-91ab-4604-b471-8c229718685e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b850bc82-e819-4bc1-9164-8e26f2823f09",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -6275,7 +7071,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -6312,13 +7108,24 @@
 				},
 				{
 					"name": "Delete an output dataset for a transform, both specified by ID.",
-					"_postman_id": "f9c774fc-4020-4850-932e-0add3a1d4372",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6ae20497-eebc-4d51-bd10-5f86c9b7f8d5",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -6360,7 +7167,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -6396,7 +7203,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0af4e3e6-561c-4158-8d5c-ed14c7e703ea",
+			"_postman_id": "8284c2ca-b49e-4d5d-ad30-fb9418b585aa",
 			"description": "Transforms are used to house the instructions that translate data into a new form. As a customer maps their newly uploaded data to an Experience Data Model (XDM) schema, a transform is created to document links to the repository where the code resides, as well as a link to the vehicle (or engine) used to perform that work."
 		},
 		{
@@ -6404,13 +7211,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of aggregated values for all tags within an IMS Organization, specified by namespace.",
-					"_postman_id": "990daff4-0476-4674-b4ec-d12662883616",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "bca4e0b5-07d5-4425-a90a-c967eeffb0cb",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -6452,7 +7270,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -6482,7 +7300,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0ae91dfe-0dfc-4c24-96a1-4733495b2eed",
+			"_postman_id": "93a8a755-cc6d-443f-9777-aa999e62890f",
 			"description": "Tags are used to attach information to an object and then be used later to retrieve the object. The choice of what tags are used and how they are applied depends on your organizational processes."
 		}
 	]

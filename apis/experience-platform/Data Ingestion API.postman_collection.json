@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cf0bad6c-5d85-43fd-af20-36380a36be50",
+		"_postman_id": "4fb1d794-db04-4a5c-98c4-92ae6beb99c7",
 		"name": "Data Ingestion API",
 		"description": "Data Ingestion allows you to bring your data into Adobe Experience Platform through batch ingestion and streaming ingestion. Batch ingestion lets you import data in batch, from any number of datasources. Streaming ingestion lets users send data to Platform in real time from client and server-side devices.\n\nRelated documentation:\n  * [Batch ingestion overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/ingest_architectural_overview/ingest_architectural_overview.md)\n  * [Streaming ingestion overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/streaming_ingest/streaming_ingest_overview.md)\n  * [Create and populate a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n  * [Getting started with streaming ingestion APIs](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/streaming_ingest/getting_started_with_platform_streaming_ingestion.md)\n\nNotes:\n  * Base path for batch ingestion APIs: https://<span>platform.adobe.io/data/foundation/import\n  * Base path for streaming ingestion APIs:\n    * Data inlet management: https://<span>platform.adobe.io/data/core/edge\n    * Data collection: https://<span>dcs.data.adobe.net/\n  * Example of a complete path for batch ingestion: https://<span>platform.adobe.io/data/foundation/import/batches\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,13 +11,24 @@
 			"item": [
 				{
 					"name": "Get or Query inlets.",
-					"_postman_id": "c2ce2a64-6806-4af7-90bf-5aeb558238c0",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "470af7c1-a96c-43a0-8700-b9d73403143f",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -33,13 +44,6 @@
 							{
 								"key": "Cache-Control",
 								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
 								"description": "",
 								"type": "string",
 								"enabled": true
@@ -63,7 +67,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -113,13 +117,24 @@
 				},
 				{
 					"name": "Create inlet.",
-					"_postman_id": "9c91b5f1-a0a3-41dd-959c-20ca90400755",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e5745c52-bbec-4f27-ace9-9a87a07ff7bf",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -135,13 +150,6 @@
 							{
 								"key": "Cache-Control",
 								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
 								"description": "",
 								"type": "string",
 								"enabled": true
@@ -165,7 +173,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -189,13 +197,24 @@
 				},
 				{
 					"name": "Get inlet by ID.",
-					"_postman_id": "1a2c2440-6632-42e4-b322-7c0a7e60f991",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b240493c-8e3e-4063-ab41-656aa9c8da26",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -211,13 +230,6 @@
 							{
 								"key": "Cache-Control",
 								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
 								"description": "",
 								"type": "string",
 								"enabled": true
@@ -241,7 +253,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -272,13 +284,24 @@
 				},
 				{
 					"name": "Update inlet by ID.",
-					"_postman_id": "b2a4e686-6220-4248-95b7-c34ae53801ea",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5628ce19-3fe3-4040-8fd8-372ba2d3eff5",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -294,13 +317,6 @@
 							{
 								"key": "Cache-Control",
 								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
 								"description": "",
 								"type": "string",
 								"enabled": true
@@ -324,7 +340,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -355,13 +371,24 @@
 				},
 				{
 					"name": "Delete inlet by ID.",
-					"_postman_id": "fd4a42f0-4a8f-406e-a3cf-47959357d273",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5f977856-33d2-4bd6-8197-a734b8ab44c6",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -377,13 +404,6 @@
 							{
 								"key": "Cache-Control",
 								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
 								"description": "",
 								"type": "string",
 								"enabled": true
@@ -407,7 +427,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -437,7 +457,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1a2d3c55-169f-4f2a-b8fc-1f0eb4cdc6d4",
+			"_postman_id": "e0ff6785-ff1a-4c03-aa9e-e2b9e2e7c45a",
 			"description": "Data Inlets are used in conjunction with streaming API calls to ingest record and time=series data for Real-time Customer Profile."
 		},
 		{
@@ -445,13 +465,24 @@
 			"item": [
 				{
 					"name": "Publish messages to Adobe Experience Platform using the inlet ID.",
-					"_postman_id": "359a3c6f-6024-4813-9a94-563221f61c8c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "c50cc9de-2ed1-4370-9fd8-2a81e9997d99",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -472,18 +503,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -521,13 +545,24 @@
 				},
 				{
 					"name": "Publish messages to Experience Platform using the inlet ID.",
-					"_postman_id": "5e3a6fa4-d2c4-439a-8fd8-d8c5a4fdb8f9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "03240476-43a8-4f0f-8a47-bcf3cc685b4b",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -541,18 +576,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -590,7 +618,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "5e704f0e-45b4-437f-8619-340065ed203e",
+			"_postman_id": "643802c2-f728-4b05-89cd-92a39b6fb233",
 			"description": "Streaming ingestion allows you to send data from client and server-side devices to Experience Platform in real-time. It drives Real-time Customer Profile creating personalized experiences."
 		},
 		{
@@ -598,13 +626,24 @@
 			"item": [
 				{
 					"name": "Register a new batch in Adobe Data Catalog.",
-					"_postman_id": "5b7804c5-1fda-4ca5-b4e9-ee9d39a82e24",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4a90c377-4834-4627-a584-c3bf98fc0068",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -636,7 +675,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -661,17 +700,28 @@
 				},
 				{
 					"name": "Upload file to a dataset in a batch.",
-					"_postman_id": "87205bc6-2247-4339-8ce9-91da8d3fcbac",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "c7d67c54-d49b-4711-b744-bd34061dca57",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/octet-stream"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -706,7 +756,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -750,17 +800,28 @@
 				},
 				{
 					"name": "Operate on the identified file.",
-					"_postman_id": "22f4ba8c-1d16-487f-8630-6977ff4800bd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "6ec2f85e-83ff-4b30-8efc-80914c788286",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "multipart/form-data"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -788,7 +849,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -838,17 +899,28 @@
 				},
 				{
 					"name": "Upload file part to a resumable file being uploaded to a batch dataset.",
-					"_postman_id": "d94239fb-d7e4-4aa4-91f3-44ef49cd22a2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b0f2b7da-f7a1-4288-a5ef-32b2d6834693",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "multipart/form-data"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -890,7 +962,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -941,13 +1013,24 @@
 				},
 				{
 					"name": "Get the status of the chunked file uploaded so far.",
-					"_postman_id": "8150c07b-0ca0-45e0-8402-acb3d7a6aecc",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "21177369-956e-48fc-8094-21005fa9e58a",
 					"request": {
 						"method": "HEAD",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -979,7 +1062,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1023,13 +1106,24 @@
 				},
 				{
 					"name": "Generate a preview for a batch.",
-					"_postman_id": "4257e5f8-a756-48bc-9971-022c6a6dfaf9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "37441006-98cb-4139-9e85-2fe6de62e18f",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1061,7 +1155,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1130,13 +1224,24 @@
 				},
 				{
 					"name": "Complete batch.",
-					"_postman_id": "d1bf3cc4-b8e5-47c8-a1f5-cbb4d57e72d9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "cd175b29-6cfd-4e96-851b-57bbd22b87d2",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1168,7 +1273,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1205,7 +1310,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a3573ff7-817e-415a-9fad-a072fe967f41",
+			"_postman_id": "4c0afb5e-0dd1-49c4-8daa-d59cceb8f507",
 			"description": "Batch ingestion is used to ingest data into Experience Platform as batch files. For example, data being ingested can be the profile data from a flat file in a CRM sytem (for example: parquet, or JSON) or data that conforms to a known Experience Data Model (XDM) schema within the Schema Registry."
 		}
 	]
