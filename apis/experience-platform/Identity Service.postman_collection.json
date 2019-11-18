@@ -1,0 +1,1137 @@
+{
+	"info": {
+		"_postman_id": "31643c55-5c8e-4c71-9fc9-f5655813d075",
+		"name": "Identity Service",
+		"description": "Identity Service provides API based access to customer identity graphs which resolves a known or anonymous identity to all  other known and anonymous identities of an individual. Identity Service solves the fundamental challenge posed by the disconnected identities of your customers caused by the fragmented nature of their data as it exists across each of the disparate systems at play in your organization's ecosystem. This seamless unified view of your customers allows  for a vast improvement in the accuracy and reach of your digital marketing campaigns.\n\nSome common terminology used in this API document:\n  Term | Definition\n  --- | ---\n  __Identity__ |  An identity on Experience Platform is the fully qualified identifier (the ID plus the relevant namespace OR the XID) for a given profile.\n  __Identity Namespace__ |  The namespace of an identity relates it to its system of origin. The ID value plus the namespace fully qualify an identity.\n  __Cluster__ | Given an identity, a \"cluster\" represents that identity and all identities linked to it in the identity graph. These related IDs are considered to be part of the same \"cluster\".\n  __Mapping__ | Mapping allows you to provide a fully qualified identity and will return the linked identity from another namespace.\n\nFor more information, see [Identity Service Overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_architectural_overview.md).\n\n__Notes__:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how \n  to obtain these, visit the documentation covering making API calls in the [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Identity",
+			"item": [
+				{
+					"name": "Given an id and namespace returns an identity string",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "c05b9960-3378-4850-b66f-3d55f337f878",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/identity/identity?nsid=411&namespace=adcloud&id=2521328045094711779817",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"identity",
+								"identity"
+							],
+							"query": [
+								{
+									"key": "nsid",
+									"value": "411"
+								},
+								{
+									"key": "namespace",
+									"value": "adcloud"
+								},
+								{
+									"key": "id",
+									"value": "2521328045094711779817"
+								}
+							]
+						},
+						"description": "Given the namespace and id in that namespace, returns XID string."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "c227cfc8-b7cb-40aa-b75e-73432fdd348f",
+			"description": "Identity services provide access to a profile identity in XID form."
+		},
+		{
+			"name": "Cluster",
+			"item": [
+				{
+					"name": "Given an identity, returns all linked identities in that cluster.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "4ef402bf-3000-4ef5-874f-59b0e8ea6798",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/identity/cluster/members?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"identity",
+								"cluster",
+								"members"
+							],
+							"query": [
+								{
+									"key": "xid",
+									"value": "2521328045094711779817"
+								},
+								{
+									"key": "nsid",
+									"value": "411"
+								},
+								{
+									"key": "namespace",
+									"value": "adcloud"
+								},
+								{
+									"key": "id",
+									"value": "2521328045094711779817"
+								},
+								{
+									"key": "graph-type",
+									"value": "Private Graph"
+								}
+							]
+						},
+						"description": "Given an XID return all XIDs, in the same or other namespaces, that are linked to it by the device graph type. The related XIDs are considered to be part of the same cluster. It is required to pass either xid or (namespace/nsid & id) pair to get cluster members."
+					},
+					"response": []
+				},
+				{
+					"name": "Given set of identities, returns all linked identities in cluster corresponding to each identity.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "ccad8a6a-2223-4113-8e94-219cde59d7b9",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/identity/clusters/members",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"identity",
+								"clusters",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Given an XID, return all cluster association statistics for that XID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "31a32ddd-f48b-4393-ae45-eaa8e5a977e0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/identity/cluster/history?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"identity",
+								"cluster",
+								"history"
+							],
+							"query": [
+								{
+									"key": "xid",
+									"value": "2521328045094711779817"
+								},
+								{
+									"key": "nsid",
+									"value": "411"
+								},
+								{
+									"key": "namespace",
+									"value": "adcloud"
+								},
+								{
+									"key": "id",
+									"value": "2521328045094711779817"
+								},
+								{
+									"key": "graph-type",
+									"value": "Private Graph"
+								}
+							]
+						},
+						"description": "Given an XID, return all cluster associations with that XID. It is required to pass either xid or (namespace/nsid & id) pair to get cluster history."
+					},
+					"response": []
+				},
+				{
+					"name": "Given a set of XIDs, return all corresponding cluster association statistics",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3f609ad9-5a6f-4e08-9552-77a257ddaa01",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/identity/clusters/history",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"identity",
+								"clusters",
+								"history"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "5216a25b-e7fb-4a12-b120-8112aa0c0845",
+			"description": "Cluster services provide access to groupings of identities as linked in the identity graph."
+		},
+		{
+			"name": "Mappings",
+			"item": [
+				{
+					"name": "Given an identity and target namespace, returns the linked identity",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "d0642862-b115-405e-8a38-fccf8f29391a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/identity/mapping?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&targetNs=411",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"identity",
+								"mapping"
+							],
+							"query": [
+								{
+									"key": "xid",
+									"value": "2521328045094711779817"
+								},
+								{
+									"key": "nsid",
+									"value": "411"
+								},
+								{
+									"key": "namespace",
+									"value": "adcloud"
+								},
+								{
+									"key": "id",
+									"value": "2521328045094711779817"
+								},
+								{
+									"key": "targetNs",
+									"value": "411"
+								}
+							]
+						},
+						"description": "Given an XID, returns all XID mappings in the requested namespace (targetNs). It is required to pass either xid or (namespace/nsid & id) pair to get mappings in required namespace."
+					},
+					"response": []
+				},
+				{
+					"name": "Given set of identities and target namespace, returns the corresponding linked identities.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "efe7b1fa-ce16-4ee3-a027-17ccee8b4460",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/identity/mappings",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"identity",
+								"mappings"
+							]
+						},
+						"description": "Given an identity, returns all identity mappings in requested namespace (target namespace).\n"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "aa029f97-0fc1-46e5-89d7-f937fb07b7f5",
+			"description": "Mapping allows you to provide a fully qualified identity and will return the linked identity from another namespace."
+		},
+		{
+			"name": "Identity Namespace",
+			"item": [
+				{
+					"name": "Lists all namespaces available to the client `x-gw-ims-org-id`",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "03b4d40c-6aae-44a7-9bde-335323aa6794",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/idnamespace/identities",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"idnamespace",
+								"identities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create namespace under `x-gw-ims-org-id` IMS Org .",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "31985a22-e001-44f9-b316-ce2292318880",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{namespace_to_create}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/idnamespace/identities",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"idnamespace",
+								"identities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7d4ed726-68bf-408e-bf44-a47c9df6e30a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/idnamespace/identities/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"idnamespace",
+								"identities",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update namespace owned by `x-gw-ims-org-id` and having the given `id`.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "0b99ec67-2b94-4391-be78-217180247c92",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{namespace_to_create}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/idnamespace/identities/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"idnamespace",
+								"identities",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lists shared namespaces for the given `{imsorg}` or all owned if `{imsorg}` == `x-gw-ims-org-id`",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "097a313f-eb23-49f7-97a4-56674590af47",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/idnamespace/orgs/:imsorg/identities",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"idnamespace",
+								"orgs",
+								":imsorg",
+								"identities"
+							],
+							"variable": [
+								{
+									"value": "{{imsorg}}",
+									"id": "imsorg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f7d995f9-d58c-40da-b50c-b0892a612313",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/idnamespace/orgs/:imsorg/identities/:id",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"idnamespace",
+								"orgs",
+								":imsorg",
+								"identities",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{imsorg}}",
+									"id": "imsorg"
+								},
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "c69b6a2a-37ad-440f-a38b-70b4494a8481",
+			"description": "Identity Namespace services allow you to work with Namespaces for your organization, such as to list all Namespaces available or to create a custom Namespace."
+		}
+	]
+}
