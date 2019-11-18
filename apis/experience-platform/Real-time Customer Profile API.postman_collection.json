@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c8b7dac3-9f01-48be-9215-0ebe14dc3a71",
+		"_postman_id": "12ed55a7-027f-4393-a252-f02c99edf989",
 		"name": "Real-time Customer Profile API",
 		"description": "Real-time Customer Profile enables you to drive coordinated, consistent, and relvant experiences for your customers no matter where or when they interact with your brand. Profile provides a holistic view of each individual customer that combines data from multiple channels, including online, offline, CRM, and third-party data.\n\nThe Real-time Customer Profile API allows you to programatically integrate Profile's various functionalities into your service, providing RESTful endpoints for merge policy configuration, segmentation, edge projections, and more.\n\nRelated overview documentation:\n  * [Real-time Customer Profile overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md)\n  * [Profile Query Language (PQL)](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_pql.md)\n  \nRelated tutorials:\n  * [Configure Real-time Customer Profile using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_up_tutorial.md)\n  * [Access Real-time Customer Profile data using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/consuming_unified_profile_data/consuming_unified_profile_data.md)\n  * [Work with merge policies using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_merge_policies_tutorial.md)\n  * [Create segments using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_segment_tutorial/creating_a_segment_tutorial.md)\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ups/config/mergePolicies\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,13 +11,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of merge policies.",
-					"_postman_id": "3cbfd803-1b01-43d2-9529-10828144a696",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "460e0a22-ca94-4a3c-9e41-6fbc1601cf7a",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -52,7 +63,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -99,13 +110,24 @@
 				},
 				{
 					"name": "Create a new merge policy.",
-					"_postman_id": "acfa56c8-a0fa-47d2-820a-6712b52cd568",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "7723282a-ab81-4bfd-a61f-575f9c7eedd2",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -129,13 +151,6 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -154,7 +169,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -179,13 +194,24 @@
 				},
 				{
 					"name": "Lookup a merge policy by ID.",
-					"_postman_id": "b45b79a2-e553-41e2-8434-414657d1ef6d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "a851cd0f-f058-4e0a-8c2e-1fb533c9ed25",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -220,7 +246,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -252,13 +278,24 @@
 				},
 				{
 					"name": "Update a merge policy by ID.",
-					"_postman_id": "d8e2a29c-622a-4913-ad4e-19b66a5af250",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "82249e8a-1532-45c8-952f-2be0e0e687ac",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -300,7 +337,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -332,13 +369,24 @@
 				},
 				{
 					"name": "Update one or more attributes of a merge policy specified by ID.",
-					"_postman_id": "2c7c5fb0-5853-4b54-ba05-ca67a77b0e85",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b11fb214-9fcf-4ba5-9256-9972de3b3f5e",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -380,7 +428,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -412,13 +460,24 @@
 				},
 				{
 					"name": "Delete a merge policy by ID.",
-					"_postman_id": "b8f35e9e-a8db-44be-8e0c-5fa3ccbc65db",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b990fd4b-a8de-4384-b637-5a58115744e0",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -453,7 +512,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -484,7 +543,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "27b56566-f662-4304-bb5f-1646f2f96902",
+			"_postman_id": "c16c34d5-a5bb-41ce-a3ce-a623b78aff73",
 			"description": "A merge policy is a set of configurations controlling aspects of identity stitching and data fragment merging. Merge policies are specific to a single schema, and can only be used to access entities adhering to that schema."
 		},
 		{
@@ -492,13 +551,24 @@
 			"item": [
 				{
 					"name": "Lookup an entity by ID or namespace.",
-					"_postman_id": "37343323-7045-4d15-8031-994accb62cdd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3b8c5388-3624-4ef7-984e-7ba46510d613",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -526,7 +596,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -601,13 +671,24 @@
 				},
 				{
 					"name": "Lookup multiple entities by IDs or namespaces.",
-					"_postman_id": "fb390205-3092-406f-ae72-cf95dc675e60",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "188c8c21-e911-479d-b512-9b773f9822b2",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -635,18 +716,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -671,13 +745,24 @@
 				},
 				{
 					"name": "Delete an entity by ID.",
-					"_postman_id": "b12b60ec-c21f-4499-a95a-9f95de66fbf2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "377f331d-5fe0-4643-831a-02de942aaedb",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -705,7 +790,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -747,7 +832,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "cee2408f-cbd6-41a9-973f-6c19e40a20f2",
+			"_postman_id": "0dcfad3d-aa7e-42b1-8a49-9625b89412e0",
 			"description": "Entities are Experience Data Model (XDM) objects whose attributes, data contents, and related time-series events have been merged from various sources by Real-time Customer Profile."
 		},
 		{
@@ -755,13 +840,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all export jobs.",
-					"_postman_id": "d40b365d-4f84-439a-88a4-5b3eaa243140",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "fca300d3-041c-490f-b03d-4b9a1dbd955e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -789,7 +885,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -824,13 +920,24 @@
 				},
 				{
 					"name": "Create a new export job.",
-					"_postman_id": "c35f43e5-688c-4add-b589-af63d42689d8",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "086014dc-7d1d-4099-8d9c-12729deaeb9c",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -858,13 +965,6 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -876,7 +976,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -901,13 +1001,24 @@
 				},
 				{
 					"name": "Lookup an export job by ID.",
-					"_postman_id": "d706df7a-e646-4b9a-baa4-38ca3c11bf64",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "54251bd9-dd49-4ae4-bb6e-a6c0d6a0fb53",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -935,7 +1046,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -967,13 +1078,24 @@
 				},
 				{
 					"name": "Cancel or delete an export job by ID.",
-					"_postman_id": "74521a3b-2972-4386-8995-00bcaf6b75f7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "a7eec030-5aff-4cfa-8fe8-856115fc4244",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1001,7 +1123,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1032,7 +1154,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "74de1853-0633-463a-83c8-c2d1d37b9b92",
+			"_postman_id": "06d53cd2-515a-4638-8eec-c5011021eadb",
 			"description": "Export jobs are asynchronous processes that are used to persist audience segment members to datasets."
 		},
 		{
@@ -1040,13 +1162,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of segment definitions.",
-					"_postman_id": "62019a82-a539-4908-876e-9ecac317eedf",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "318faeb0-a5fd-4744-9d4b-6230b6bae771",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1081,7 +1214,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1124,13 +1257,24 @@
 				},
 				{
 					"name": "Create a new segment definition.",
-					"_postman_id": "4efbeb48-e903-445d-ab68-3c9f56652991",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "9c027063-5363-4cce-ae51-9f3ac6b45012",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1158,13 +1302,6 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Unique ID per request",
@@ -1176,7 +1313,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1201,13 +1338,24 @@
 				},
 				{
 					"name": "Lookup a segment definition by ID.",
-					"_postman_id": "389f53f8-3729-4cd0-b123-972be6bb50e9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "18d4f007-29ab-4c83-a5a4-9ce1974647ba",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1242,7 +1390,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1274,13 +1422,24 @@
 				},
 				{
 					"name": "Overwrite a segment definition.",
-					"_postman_id": "8875346f-ea04-4aef-9a50-eec48926b0c3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "08a85641-b792-4c6e-a5dd-05ab77a36ffa",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1308,13 +1467,6 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Unique ID per request",
@@ -1326,7 +1478,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1358,13 +1510,24 @@
 				},
 				{
 					"name": "Delete a segment definition by ID.",
-					"_postman_id": "ab3feafe-b76f-4a71-9c10-aff56c0de9e7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e0797ca4-2718-4dcf-9973-d71e8af476b0",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1399,7 +1562,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1430,7 +1593,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "6db5984a-6551-43cd-8cf0-1a5f084944d6",
+			"_postman_id": "64652347-8f46-4a31-aad1-f2dc3fbdf181",
 			"description": "A segment definition includes a Profile Query Language (PQL) statement that defines how to subdivide a customer base for an audience segment."
 		},
 		{
@@ -1438,13 +1601,24 @@
 			"item": [
 				{
 					"name": "Convert PQL formatting between pql/text and pql/json.",
-					"_postman_id": "4a3b5345-c8f3-42e1-a6c0-1b35c5166451",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "27317efd-3ba4-4cb2-b0e9-3096c485553c",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1468,13 +1642,6 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Unique ID per request",
@@ -1486,7 +1653,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1510,7 +1677,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b1108572-b304-45dc-a8e7-98867783158b",
+			"_postman_id": "dcfdc35d-d33d-4e6b-aed8-b8cb398cbc5a",
 			"description": "Convert PQL formatting between `pql/json` and `pql/text`."
 		},
 		{
@@ -1518,13 +1685,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all segment job requests.",
-					"_postman_id": "a26bac32-4f4e-4c1a-8aed-6da6d0bd8143",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "00562731-11ff-49b2-97f5-2a374ae08624",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1559,7 +1737,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1602,13 +1780,24 @@
 				},
 				{
 					"name": "Create a new segment job request.",
-					"_postman_id": "41b130c1-8652-431a-a931-270048715f3d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "013ebc4d-7738-4cb0-a07a-86ef91438d22",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1636,13 +1825,6 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -1661,7 +1843,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1686,13 +1868,24 @@
 				},
 				{
 					"name": "Lookup a segment job request by ID.",
-					"_postman_id": "cb8f101c-a3a0-46b2-a30b-ad00146c588c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e4e43dfd-f36f-4c27-b75c-d91a4e64d1e7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1727,7 +1920,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1759,13 +1952,24 @@
 				},
 				{
 					"name": "Cancel or delete a segment job request by ID.",
-					"_postman_id": "8fd5aacb-ab9a-4274-a19b-c3e7b5b5a9a8",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "c5118563-18d2-44d8-b22e-15c3b7e017ff",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1800,7 +2004,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1831,7 +2035,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "478ef539-bd4c-4a8d-9c6f-5c046dfb3bb1",
+			"_postman_id": "b9c1d5c3-28c3-4119-933a-ec7012449e0d",
 			"description": "Segment jobs process previously established segment definitions against your profile store to generate an audience segment."
 		},
 		{
@@ -1839,13 +2043,24 @@
 			"item": [
 				{
 					"name": "Create a new preview job.",
-					"_postman_id": "5bc33d47-6b1e-4959-b64e-281095559d7e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "c81b1183-95a8-4a74-81ee-4108240f50d1",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1873,18 +2088,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1908,13 +2116,24 @@
 				},
 				{
 					"name": "Lookup the results of a preview job by ID.",
-					"_postman_id": "53cdecf2-484a-4198-a500-1306810311b3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "47dcd289-e51c-4751-a5cb-65b1f0d49082",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1942,7 +2161,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1983,13 +2202,24 @@
 				},
 				{
 					"name": "Cancel or delete a preview job by ID.",
-					"_postman_id": "9a1fa035-9b8e-45d7-9522-14c2b1249dff",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "d784d002-ac0c-4369-83d9-a66913eb3e17",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2017,7 +2247,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2047,7 +2277,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8eae251e-e64a-4327-bf61-016375277b6a",
+			"_postman_id": "11b21459-c045-4168-a14d-34619f32a79d",
 			"description": "Previews provide paginated lists of qualifying profiles for a segment definition."
 		},
 		{
@@ -2055,13 +2285,24 @@
 			"item": [
 				{
 					"name": "Lookup the results of an estimate job by ID.",
-					"_postman_id": "28c751b3-1fb5-45f7-be59-6bf1dd6b1034",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "32e15022-6d96-453f-b288-9e360c3fd2ad",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2089,7 +2330,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2119,7 +2360,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "6c1af988-d500-4645-b1b8-11942f63399c",
+			"_postman_id": "f698a19b-8a26-4d48-a955-b6a82d724cc5",
 			"description": "Estimates provide statistical information on a segment definition, such as the projected audience size and confidence interval."
 		},
 		{
@@ -2127,13 +2368,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of edge projection configurations. The latest definitions are returned.",
-					"_postman_id": "195b3031-dc6b-47fd-97cf-2fe942f14e66",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "dcba8ad2-9100-4764-ba9b-74947e111b7a",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionConfigList+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2182,7 +2434,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2217,17 +2469,28 @@
 				},
 				{
 					"name": "Create a new edge projection configuration.",
-					"_postman_id": "7c752fef-8a36-4734-ac07-c7c057e3274b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f9dbd0a5-7812-4809-8ab1-834465100a37",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2276,7 +2539,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2308,13 +2571,24 @@
 				},
 				{
 					"name": "Lookup an edge projection configuration by ID. The latest definition is returned.",
-					"_postman_id": "1337c001-05f7-47e0-9501-4562006ec228",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8477b17f-dba4-41fa-84f3-f0d23efbbd4f",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2363,7 +2637,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2395,17 +2669,28 @@
 				},
 				{
 					"name": "Create or update an edge projection configuration by ID. Overwrites the entire configuration.",
-					"_postman_id": "a46d93b8-6be9-4ec1-8bbd-bc46c269a11b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e76f9231-a97c-48d7-bded-4b6b7d20f7cd",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2454,7 +2739,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2487,7 +2772,18 @@
 				},
 				{
 					"name": "Delete an edge projection configuration by ID.",
-					"_postman_id": "803e4f86-3c6e-4963-b022-88e3bc0d06a0",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "5ad75121-7e48-4ce5-8571-cefb3914915b",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2538,7 +2834,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2570,7 +2866,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a85acd70-dc58-4758-8e76-3877367ab6ab",
+			"_postman_id": "0566a3a9-4520-4057-b15b-446c87e9fe36",
 			"description": "Edge projection configurations determine what data should be projected to each edge."
 		},
 		{
@@ -2578,13 +2874,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of edge projection destinations. The latest definitions are returned.",
-					"_postman_id": "0ff14eec-1e70-45e3-a9ce-b526de97dece",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8d8a36c5-ae1c-46b7-aee8-bea1d3aab132",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionDestinationList+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2633,7 +2940,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2658,17 +2965,28 @@
 				},
 				{
 					"name": "Create a new edge projection destination.",
-					"_postman_id": "43ed2e9a-dc90-4932-a76a-c4fb4895b3e6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "01051700-874e-4fe4-8bb4-9b56df49195f",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2717,7 +3035,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2743,13 +3061,24 @@
 				},
 				{
 					"name": "Lookup an edge projection destination by ID. The latest definition is returned.",
-					"_postman_id": "23722933-c60a-4e96-be99-1b526851bbd1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "92de76b4-4378-4b41-a133-80539417d55e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2798,7 +3127,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2830,17 +3159,28 @@
 				},
 				{
 					"name": "Create or update an edge projection destination by ID. Overwrites the entire configuration.",
-					"_postman_id": "b7273c37-6d21-4121-b275-1f3d3258c4c7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "858547bf-11e9-470b-bf36-fe9cf640ad69",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2889,7 +3229,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2922,7 +3262,18 @@
 				},
 				{
 					"name": "Delete an edge projection destination by ID.",
-					"_postman_id": "5780c235-00f5-4108-8437-ebabfc2f5c0b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "0195b0f3-99a3-4f35-9c7e-b38ced20577a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2973,7 +3324,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3005,7 +3356,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "62f79871-3e58-44aa-94b8-bc56407c4110",
+			"_postman_id": "bbb6ebb7-12f2-4129-a58f-d63060f179b9",
 			"description": "Edge projection destinations define where to route a projection that has been created or changed."
 		},
 		{
@@ -3013,13 +3364,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of event types.",
-					"_postman_id": "241c4ac2-26ea-41a3-a8a6-49b77a760987",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "3b3ceb94-e2fc-4bff-94d4-70dc490ecd41",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3054,7 +3416,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3093,13 +3455,24 @@
 				},
 				{
 					"name": "Create a new event type.",
-					"_postman_id": "a56d3935-12c0-4430-8fea-225101d0e04d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "15902674-044f-484b-bffb-72381c04655b",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3141,7 +3514,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3166,13 +3539,24 @@
 				},
 				{
 					"name": "Lookup an event type by ID.",
-					"_postman_id": "41d97ddd-3437-4780-a2d5-555c8f0cb4c9",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "2dd0b5c8-1563-47f6-ba41-cfcd4d2b203d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3207,7 +3591,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3239,13 +3623,24 @@
 				},
 				{
 					"name": "Overwrite an event type by ID.",
-					"_postman_id": "8d57b80c-a5ec-4a15-a05d-72a01558e7d6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "71412dcb-f057-4f0e-8969-5295f4d87b35",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3287,7 +3682,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3319,13 +3714,24 @@
 				},
 				{
 					"name": "Update one or more attributes of an event type by ID.",
-					"_postman_id": "b4c118c7-f6c1-4c98-a6db-75020228c5a7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "8f0341fd-e662-4277-a7a3-561c17c25082",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3367,7 +3773,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3399,13 +3805,24 @@
 				},
 				{
 					"name": "Delete an event type by ID.",
-					"_postman_id": "cc8c4759-67b6-42e0-9f60-b4e9b6245e22",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f19ad170-f658-4555-ba6f-a1df958ce0f1",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3440,7 +3857,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3471,7 +3888,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "bb300706-b040-4fc0-9d75-d6a8cbddcc01",
+			"_postman_id": "d6088031-08e3-4bfb-a6b8-2b351f48ddc6",
 			"description": "Event types are context descriptors for time series events within Real-time Customer Profile."
 		},
 		{
@@ -3479,13 +3896,24 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all macros for your organization.",
-					"_postman_id": "c75db5d0-f6db-4983-b360-4ef9eb3b32d8",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "81e15aeb-01c7-4ce7-8f7f-310e7c9d94cb",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3520,7 +3948,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3571,13 +3999,24 @@
 				},
 				{
 					"name": "Create a new macro.",
-					"_postman_id": "461bbfa5-95f3-4ea2-9c7b-93eb85442f83",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b65af1ac-5428-4049-af52-efbb86bc2130",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3619,7 +4058,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3644,13 +4083,24 @@
 				},
 				{
 					"name": "Lookup a macro by ID.",
-					"_postman_id": "9c5bd652-9cb7-47b9-ba8e-0c241e08428c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "422e0c99-b87d-48c0-b150-767e4cbf0ed6",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3685,7 +4135,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3717,13 +4167,24 @@
 				},
 				{
 					"name": "Overwrite a macro by ID.",
-					"_postman_id": "d6db9b9b-f351-4615-a90a-cd9a7e56160a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "396e2377-16d5-4041-9e2b-d589388a0944",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3765,7 +4226,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3797,13 +4258,24 @@
 				},
 				{
 					"name": "Update a macro by ID.",
-					"_postman_id": "53049ee3-3c6f-4dcb-b8db-1297b97ed1ca",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "b82e1e2c-f90c-4d20-bf1c-6fd4db5757af",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3845,7 +4317,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3877,13 +4349,24 @@
 				},
 				{
 					"name": "Delete a macro by ID.",
-					"_postman_id": "51f41602-e17d-49aa-b3e6-450f2e5f8caa",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "f19c109d-b4c0-4946-b5ee-11808b5569a5",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -3918,7 +4401,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -3949,7 +4432,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "fc0865b3-6dfa-4f47-bbf8-7842754e5d52",
+			"_postman_id": "7fe96d06-cc60-4ad4-a4bc-0a262d931a60",
 			"description": "Macros allow you to inject pre-computed fields and values into segment definitions. Values from different fields are added together and tested against the profile store as a single value. With macros, audience segments can be defined in more ways than would otherwise be available from isolated profile data fields."
 		}
 	]

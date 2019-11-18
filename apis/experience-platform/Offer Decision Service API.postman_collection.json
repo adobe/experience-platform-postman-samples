@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1ef27a80-ae67-440a-a6b6-2a313db2c036",
+		"_postman_id": "ed6de091-d585-42fa-aee3-63aac09139fa",
 		"name": "Offer Decision Service API",
 		"description": "<p>Adobe Experience Platform Decisioning Service provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. The Offer Decision Service API includes an endpoint to filter out offers which are not approved, do not match the offer filter, or don’t have a representation for the placement referenced by the activity. It also allows you to run diagnostics and return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so.</p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_runtime_api_tutorial.md\">Work with Decisioning Service runtime using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/ode</li><li>Example of a complete path for making a call to the POST Decisions endpoint (\"/{containerId}/decisions\"):<span> https://platform.adobe.io/data/core/ode/{containerId}/decisions</ul></p>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,13 +11,24 @@
 			"item": [
 				{
 					"name": "Request an offer decision for each set of activity IDs and profiles.",
-					"_postman_id": "b18065bd-86b8-4044-a445-0a2d3375f93f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e4de6cc2-f243-459e-ae24-c4817d92d8cc",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json, application/problem+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -56,7 +67,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -87,7 +98,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "074551c4-f51c-486f-86d8-12edf2d61a9b",
+			"_postman_id": "3ab3d3c8-04e5-465c-868a-7232c5e38753",
 			"description": "Determine the best offer(s) for a given set of activities based on eligibility rules that match profile and context data provided."
 		},
 		{
@@ -95,13 +106,24 @@
 			"item": [
 				{
 					"name": "Get information about errors that occurred while processing user data.",
-					"_postman_id": "9ec1bd6b-9893-4a47-ab00-3ee39b1f0b1a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "e43b44f4-eadf-4e1a-9de6-f4f8e35b4831",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xdm+json, application/problem+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -140,7 +162,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -171,7 +193,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f94ce6ee-a457-4cca-ba89-af55209d532b",
+			"_postman_id": "01d3f59b-5844-44e9-a711-9796f1701b43",
 			"description": "Return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so."
 		},
 		{
@@ -179,13 +201,24 @@
 			"item": [
 				{
 					"name": "View offers that belong to a specified `activityId` based on matching filter rules and placements.",
-					"_postman_id": "6a242f4e-c948-41a0-a745-3a4fb272f211",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+								]
+							}
+						}
+					],
+					"_postman_id": "dcc2be8f-909d-42de-947e-79abfa997067",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json, application/problem+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -224,7 +257,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -261,7 +294,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b3b12c7a-09b8-4188-b5cf-261b621accc5",
+			"_postman_id": "1b25375f-35f0-4577-a547-e0239ec50f83",
 			"description": "Based on filter rules and placement match, return approved offers that belong to a specific `activityId`."
 		}
 	]
