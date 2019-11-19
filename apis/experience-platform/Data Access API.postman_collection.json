@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cb9ee93e-aad5-4c63-b591-402247bbdcbb",
+		"_postman_id": "45439ba8-da8f-4454-9c8b-82a14ae00798",
 		"name": "Data Access API",
 		"description": "\nData Access facilitates the access and egress of data within Adobe Experience Platform. This includes, but not limited to, the following operations:\n  * Access and download dataset files under a batch\n  * Retrieve header information regarding files\n  * Parallel / resumable downloads using HTTP range headers\n  * Pagination support for directory listings\n  * List dataset files under a succeeded/failed batch\n  * Preview CSV and Parquet files\n\n\nRelated documentation:\n  * [Data Access technical overview](https://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md)\n  * [Query dataset data using the Data Access API](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Data Access API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Access%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/export\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/export/batches/{batchId}/files\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Get dataset files under a batch.",
-					"_postman_id": "440e98e2-8622-4f17-8b1b-2efce9db2875",
+					"_postman_id": "cacd8349-070f-4902-9d91-4e7e547212a3",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -53,7 +53,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:batchId/files?start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/batches/:batchId/files?start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -61,6 +61,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"batches",
 								":batchId",
 								"files"
@@ -88,7 +91,7 @@
 				},
 				{
 					"name": "Get dataset files under a failed batch.",
-					"_postman_id": "5fd9fd2e-6c1c-4440-9d2f-d6a168b2261c",
+					"_postman_id": "f505d49b-ebdb-4a4b-b509-1ef17e202c53",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -130,7 +133,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:batchId/failed?start={{start}}&limit={{limit}}&path={{path}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/batches/:batchId/failed?start={{start}}&limit={{limit}}&path={{path}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -138,6 +141,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"batches",
 								":batchId",
 								"failed"
@@ -168,7 +174,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ed7ff303-1172-466d-b02e-6f1ac1c28087",
+			"_postman_id": "0e068b33-80be-46b2-9707-c6818a0a22f1",
 			"description": "Configure data access and egress for Experience Platform."
 		},
 		{
@@ -176,7 +182,7 @@
 			"item": [
 				{
 					"name": "Access / download a file.",
-					"_postman_id": "dc31cd50-d11b-4eaf-9eac-d0dc59728db1",
+					"_postman_id": "0fbfd14d-05fa-43c2-bddf-0b1fa4dab867",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -225,7 +231,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:dataSetFileId?start={{start}}&limit={{limit}}&path={{path}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/files/:dataSetFileId?start={{start}}&limit={{limit}}&path={{path}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -233,6 +239,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"files",
 								":dataSetFileId"
 							],
@@ -263,7 +272,7 @@
 				},
 				{
 					"name": "Get headers regarding a file.",
-					"_postman_id": "10d86b07-1b40-4d43-81a3-c0c3e5e188bf",
+					"_postman_id": "d1bcc165-6a1b-4da3-8fa1-d61264cd95b4",
 					"request": {
 						"method": "HEAD",
 						"header": [
@@ -301,7 +310,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:dataSetFileId?path={{path}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/files/:dataSetFileId?path={{path}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -309,6 +318,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"files",
 								":dataSetFileId"
 							],
@@ -330,7 +342,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "cbf6515e-2326-4f03-bddc-f2ddd548bd50",
+			"_postman_id": "428b8f83-c4f6-40d8-af59-45ff5ba89ef9",
 			"description": "Retrieve headers containing metadata for a file specified by ID."
 		},
 		{
@@ -338,7 +350,7 @@
 			"item": [
 				{
 					"name": "Preview files.",
-					"_postman_id": "46bce8b9-5112-4aff-9ca7-166d03e9a798",
+					"_postman_id": "e788ea86-87a1-4bb1-9763-f64178c2ba37",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -380,7 +392,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/preview",
+							"raw": "https://platform.adobe.io/data/foundation/export/datasets/:id/preview",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -388,6 +400,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"datasets",
 								":id",
 								"preview"
@@ -404,7 +419,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8bce96f4-f38c-4816-b548-1f8e52a766d7",
+			"_postman_id": "a9e0e532-7993-41cd-851a-42743853fd7c",
 			"description": "Retrieve the first 100 rows of CSV or Parquet files."
 		}
 	]

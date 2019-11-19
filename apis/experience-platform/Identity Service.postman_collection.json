@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd7b8d49-4a63-4e0e-9ccd-c9c6ec3f81aa",
+		"_postman_id": "7e9965e8-012c-41c4-a0a4-27b3cd3910bd",
 		"name": "Identity Service",
 		"description": "Delivering relevant digital experiences requires having a complete understanding of your customer. This is made more difficult when your customer data is fragmented across disparate systems, causing each individual customer to appear to have multiple \"identities\". Adobe Experience Platform Identity Service provides a RESTful API to help you to gain a better view of your customers and their behavior. By bridging identities across devices and systems, you are better able to deliver impactful, personal digital experiences in real-time.\n\nRelated documentation:\n  * [Identity Service overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_architectural_overview.md)\n  * [Identity Service developer guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_api.md)\n  * [Identity namespace overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_namespace_overview/identity_namespace_overview.md)\n  * [Identity Service troubleshooting guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_faq.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Identity Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Identity%20Service.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform-{REGION}.adobe.io\n    * Information on <code>{REGION}</code> values can be found in the [Identity Service developer guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_api.md).\n  * Base path for this API: /data/core/\n  * Example of a complete path: https://<span>platform-va7.adobe.io/data/core/identity/cluster/members\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Given an id and namespace returns an identity string",
-					"_postman_id": "a355e977-8b0e-4f27-b2d2-af80b01fdf98",
+					"_postman_id": "275839d9-44a0-49f3-8735-5a9699032cbf",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -60,7 +60,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/identity?nsid=411&namespace=adcloud&id=2521328045094711779817",
+							"raw": "https://platform.adobe.io/data/core/identity/identity?nsid=411&namespace=adcloud&id=2521328045094711779817",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -68,6 +68,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"identity"
 							],
@@ -91,7 +93,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b3fbc6e7-c670-4773-8158-3f5cb867a14d",
+			"_postman_id": "816fccdf-f4c0-4e99-ac15-185bad4c3a84",
 			"description": "Identity services provide access to a profile identity in XID form."
 		},
 		{
@@ -99,7 +101,7 @@
 			"item": [
 				{
 					"name": "Given an identity, returns all linked identities in that cluster.",
-					"_postman_id": "86fb2c8f-64d9-4302-aaa0-1e16b7189065",
+					"_postman_id": "a3503154-af2b-4267-a78e-ae9d80586e04",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -148,7 +150,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/cluster/members?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
+							"raw": "https://platform.adobe.io/data/core/identity/cluster/members?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -156,6 +158,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"cluster",
 								"members"
@@ -189,7 +193,7 @@
 				},
 				{
 					"name": "Given set of identities, returns all linked identities in cluster corresponding to each identity.",
-					"_postman_id": "286c5c7b-91c1-4477-bf90-4e55f68000a4",
+					"_postman_id": "b0d129c8-a643-42de-993e-07a956185dce",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -242,7 +246,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/clusters/members",
+							"raw": "https://platform.adobe.io/data/core/identity/clusters/members",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -250,6 +254,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"clusters",
 								"members"
@@ -260,7 +266,7 @@
 				},
 				{
 					"name": "Given an XID, return all cluster association statistics for that XID",
-					"_postman_id": "80035f1d-0042-480b-a246-0dac1e918a02",
+					"_postman_id": "160acb3f-95c5-4708-be23-7722a36eeed3",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -309,7 +315,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/cluster/history?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
+							"raw": "https://platform.adobe.io/data/core/identity/cluster/history?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -317,6 +323,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"cluster",
 								"history"
@@ -350,7 +358,7 @@
 				},
 				{
 					"name": "Given a set of XIDs, return all corresponding cluster association statistics",
-					"_postman_id": "09064940-75b3-458e-8f3c-d9cde43b2ac2",
+					"_postman_id": "10e4aa81-9b5a-4195-9ea0-8f76554777d7",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -403,7 +411,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/clusters/history",
+							"raw": "https://platform.adobe.io/data/core/identity/clusters/history",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -411,6 +419,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"clusters",
 								"history"
@@ -420,7 +430,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "12c05064-cc78-4367-b71d-a3b3cba9450a",
+			"_postman_id": "32054127-67c8-48db-930e-89fe028e5362",
 			"description": "Cluster services provide access to groupings of identities as linked in the identity graph."
 		},
 		{
@@ -428,7 +438,7 @@
 			"item": [
 				{
 					"name": "Given an identity and target namespace, returns the linked identity",
-					"_postman_id": "d385dcd9-f0fa-46b4-ac74-9fccbaaa7ebc",
+					"_postman_id": "b8c7d2c4-88a9-4bba-a566-ed731b4771cc",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -477,7 +487,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/mapping?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&targetNs=411",
+							"raw": "https://platform.adobe.io/data/core/identity/mapping?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&targetNs=411",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -485,6 +495,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"mapping"
 							],
@@ -517,7 +529,7 @@
 				},
 				{
 					"name": "Given set of identities and target namespace, returns the corresponding linked identities.",
-					"_postman_id": "6e580802-c46d-487b-b497-e588c2fa5df9",
+					"_postman_id": "8b82b86b-8418-4c1b-bf2d-a6d5da6509a4",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -566,7 +578,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/mappings",
+							"raw": "https://platform.adobe.io/data/core/identity/mappings",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -574,6 +586,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"mappings"
 							]
@@ -583,7 +597,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d08e4990-f9a4-4799-9e9a-778da0dff761",
+			"_postman_id": "3f35df72-a2a5-45c6-9bd9-5347d97223cf",
 			"description": "Mapping allows you to provide a fully qualified identity and will return the linked identity from another namespace."
 		},
 		{
@@ -591,7 +605,7 @@
 			"item": [
 				{
 					"name": "Lists all namespaces available to the client `x-gw-ims-org-id`",
-					"_postman_id": "5606111f-ff23-44fb-9e3a-264585a4e0d6",
+					"_postman_id": "9e7431f4-f373-4d44-8f17-773784a16bba",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -633,7 +647,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -641,6 +655,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities"
 							]
@@ -650,7 +666,7 @@
 				},
 				{
 					"name": "Create namespace under `x-gw-ims-org-id` IMS Org .",
-					"_postman_id": "243ece74-f1e4-4e31-88b9-a16c53f808ce",
+					"_postman_id": "0d1b25e5-2b46-4fc3-a0c4-8f5ef89df917",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -696,7 +712,7 @@
 							"raw": "{{namespace_to_create}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -704,6 +720,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities"
 							]
@@ -713,7 +731,7 @@
 				},
 				{
 					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"_postman_id": "17849c15-9da5-4320-a517-c061061b3879",
+					"_postman_id": "ccdf7d13-7d65-4f3c-99b0-0aec1e284252",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -755,7 +773,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities/:id",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -763,6 +781,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities",
 								":id"
@@ -779,7 +799,7 @@
 				},
 				{
 					"name": "Update namespace owned by `x-gw-ims-org-id` and having the given `id`.",
-					"_postman_id": "1bbf514a-f241-4edc-b2b3-8b5699ba6f73",
+					"_postman_id": "12de119c-0b49-4641-b013-74dedddd2f38",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -825,7 +845,7 @@
 							"raw": "{{namespace_to_create}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities/:id",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -833,6 +853,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities",
 								":id"
@@ -849,7 +871,7 @@
 				},
 				{
 					"name": "Lists shared namespaces for the given `{imsorg}` or all owned if `{imsorg}` == `x-gw-ims-org-id`",
-					"_postman_id": "43fdb0d7-c8b4-406f-9b70-92617d595824",
+					"_postman_id": "1b36e622-a79d-48ee-9b55-24c3505c4224",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -891,7 +913,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/orgs/:imsorg/identities",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/orgs/:imsorg/identities",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -899,6 +921,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"orgs",
 								":imsorg",
@@ -916,7 +940,7 @@
 				},
 				{
 					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"_postman_id": "9adbfd0c-4391-433d-b459-cdcf87f01aa0",
+					"_postman_id": "1848adbe-4417-4c6e-ad16-c6be1498ffb6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -958,7 +982,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/orgs/:imsorg/identities/:id",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/orgs/:imsorg/identities/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -966,6 +990,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"orgs",
 								":imsorg",
@@ -987,7 +1013,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "cd18cb9a-1d58-4961-a444-7538e77a70c2",
+			"_postman_id": "dd93cc2e-0d1b-4fad-a9ea-f5c10c5126d1",
 			"description": "Identity Namespace services allow you to work with Namespaces for your organization, such as to list all Namespaces available or to create a custom Namespace."
 		}
 	]

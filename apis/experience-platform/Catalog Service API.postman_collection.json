@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "02ebf539-080b-44e4-985d-243338144058",
+		"_postman_id": "2afe395c-f8c6-49df-aa75-6d26b5476faa",
 		"name": "Catalog Service API",
 		"description": "Catalog is the system of record for data location and lineage within Adobe Experience Platform. Catalog is not the actual files or directories containing data, rather it holds the metadata and description of those files and directories.\n\nSimply put, Catalog acts as a metadata store or \"catalog\" where you can find information about your data within Experience Platform.\n\nYou can use Catalog to answer questions such as, where is my data located? at what stage of processing is this data? what systems or processes have acted on my data? what errors occurred during processing? and, if successful, how much data was processed?\n\nRelated documentation:\n  * [Catalog Service overview](https://www.adobe.io/apis/experienceplatform/home/services/allservices.html#!api-specification/markdown/narrative/technical_overview/catalog_architectural_overview/catalog_architectural_overview.md)\n  * [Create a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Catalog Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Catalog%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/catalog\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/catalog/batches\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of accounts.",
-					"_postman_id": "234cccd7-d039-4603-94f8-19961074970e",
+					"_postman_id": "893b137f-6799-4efa-a995-783b04e9fd9d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -60,7 +60,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/accounts?connector={{connector}}&description={{description}}&version={{version}}&created={{created}}&updated={{updated}}&createdClient={{createdClient}}&createdUser={{createdUser}}&updatedUser={{updatedUser}}&orderBy={{orderBy}}&limit={{limit}}&start={{start}}&property={{property}}&properties={{properties}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts?connector={{connector}}&description={{description}}&version={{version}}&created={{created}}&updated={{updated}}&createdClient={{createdClient}}&createdUser={{createdUser}}&updatedUser={{updatedUser}}&orderBy={{orderBy}}&limit={{limit}}&start={{start}}&property={{property}}&properties={{properties}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -68,6 +68,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"accounts"
 							],
 							"query": [
@@ -130,7 +133,7 @@
 				},
 				{
 					"name": "Create a new account.",
-					"_postman_id": "b06ee4d7-4c55-4629-9b79-9a5e5c81dad7",
+					"_postman_id": "4e3203f1-66bd-4ec3-a9f4-bffbb6ce2f0b",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -183,7 +186,7 @@
 							"raw": "{{account}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/accounts",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -191,6 +194,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"accounts"
 							]
 						}
@@ -199,7 +205,7 @@
 				},
 				{
 					"name": "Lookup an account by ID.",
-					"_postman_id": "230260e3-7249-48ce-8281-2b0885c02673",
+					"_postman_id": "fa1bbd31-5ceb-4a1d-be2c-eb8adc0d9c2e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -248,7 +254,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/accounts/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -256,6 +262,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"accounts",
 								":id"
 							],
@@ -271,7 +280,7 @@
 				},
 				{
 					"name": "Update an existing account by ID.",
-					"_postman_id": "fcd9706a-58fb-48d9-a66e-065cd4508a31",
+					"_postman_id": "fcc41c02-3568-4acf-9a0d-0c86d80de016",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -324,7 +333,7 @@
 							"raw": "{{account}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/accounts/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -332,6 +341,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"accounts",
 								":id"
 							],
@@ -347,7 +359,7 @@
 				},
 				{
 					"name": "Create a new account with a specified ID.",
-					"_postman_id": "951fd904-01aa-43bb-8bdd-878b58e55259",
+					"_postman_id": "eddfdc01-0eaf-402e-b088-520ab7a9d4ed",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -400,7 +412,7 @@
 							"raw": "{{account}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/accounts/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -408,6 +420,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"accounts",
 								":id"
 							],
@@ -423,7 +438,7 @@
 				},
 				{
 					"name": "Update one or more attributes of an account specified by ID.",
-					"_postman_id": "60ebeaa5-9d75-4732-ac52-fb883d5fd56c",
+					"_postman_id": "d5dc8f44-3343-4779-8cab-759b991e1a23",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -476,7 +491,7 @@
 							"raw": "{{account}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/accounts/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -484,6 +499,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"accounts",
 								":id"
 							],
@@ -499,7 +517,7 @@
 				},
 				{
 					"name": "Delete an account by ID.",
-					"_postman_id": "3ce8a59f-c1df-4ae5-8662-4d78a51c2771",
+					"_postman_id": "1ba857d2-7b31-4aed-a0ea-3e036e51f1a4",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -552,7 +570,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/accounts/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/accounts/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -560,6 +578,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"accounts",
 								":id"
 							],
@@ -574,7 +595,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f3d76e6d-1583-4232-aca5-c72c599af8d4",
+			"_postman_id": "bb0054aa-313f-43a6-85f5-e90a3b4be90a",
 			"description": "Accounts represent a collection of authentication credentials used to create data connections of a specific type. Each connection has a set of unique parameters that are persisted by Catalog and secured in an Azure Key Vault using Security Services."
 		},
 		{
@@ -582,7 +603,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of batches.",
-					"_postman_id": "7793ce8b-8395-4cc7-a467-9e12c2aebfb2",
+					"_postman_id": "946a7e4a-d047-4de6-b77b-18d48f4791bb",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -631,7 +652,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -639,6 +660,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches"
 							],
 							"query": [
@@ -721,7 +745,7 @@
 				},
 				{
 					"name": "Create a new batch.",
-					"_postman_id": "80525379-d0c6-4b7d-9ef8-d7c491668e1e",
+					"_postman_id": "ad41c61b-db86-4ab1-8008-f5559867e66f",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -774,7 +798,7 @@
 							"raw": "{{batch}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -782,6 +806,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches"
 							]
 						}
@@ -790,7 +817,7 @@
 				},
 				{
 					"name": "Retrieve the unique values stored in a field specified by ID.",
-					"_postman_id": "5a1c6d77-9be4-402e-8a8f-d7b0596fd756",
+					"_postman_id": "c9e451d6-c502-462d-b1da-12116c77cff1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -839,7 +866,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/uniques/:field?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/uniques/:field?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -847,6 +874,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches",
 								"uniques",
 								":field"
@@ -937,7 +967,7 @@
 				},
 				{
 					"name": "Lookup a batch by ID.",
-					"_postman_id": "adce4509-cf68-4ede-a9b2-6f9341b24750",
+					"_postman_id": "535b7cf3-4967-4cfd-b069-37d2e339e66e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -986,7 +1016,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:id?aggregate={{aggregate}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id?aggregate={{aggregate}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -994,6 +1024,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches",
 								":id"
 							],
@@ -1015,7 +1048,7 @@
 				},
 				{
 					"name": "Update a batch by ID.",
-					"_postman_id": "e8ae1633-05fe-4f67-b043-697f0fbd3826",
+					"_postman_id": "c5505022-30ef-4d20-9df4-3f304ab641b8",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1068,7 +1101,7 @@
 							"raw": "{{batch}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1076,6 +1109,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches",
 								":id"
 							],
@@ -1091,7 +1127,7 @@
 				},
 				{
 					"name": "Create a new batch with a specified ID.",
-					"_postman_id": "339af706-b6e2-4ca5-97f6-6bc1befa6f5e",
+					"_postman_id": "d3a9e9b9-bf43-4be1-a6a6-c1896687d300",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1144,7 +1180,7 @@
 							"raw": "{{batch}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1152,6 +1188,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches",
 								":id"
 							],
@@ -1167,7 +1206,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a batch specified by ID.",
-					"_postman_id": "027144e2-d617-455d-aaa5-a9f2a1384fc2",
+					"_postman_id": "804689b4-db1d-49c5-aa1a-84e53aec4cb3",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1220,7 +1259,7 @@
 							"raw": "{{batch}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1228,6 +1267,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches",
 								":id"
 							],
@@ -1243,7 +1285,7 @@
 				},
 				{
 					"name": "Delete a batch by ID.",
-					"_postman_id": "ede77ef9-ef83-46e9-b6a2-d4697c8c204c",
+					"_postman_id": "8ed6875f-08ac-4881-8335-8f755c1173c5",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1296,7 +1338,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1304,6 +1346,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"batches",
 								":id"
 							],
@@ -1318,7 +1363,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b0acf462-cfcf-40d0-b6a8-d87f5ac20a19",
+			"_postman_id": "4e525617-acc2-41a7-bf45-893e684b3521",
 			"description": "Batches allow Catalog users to understand which operations and applications have been performed on objects tracked by the system. A batch outlines the final results of an operation (such as records processed, or size on disk) but may also include links to datasets, files, and more that were affected by the process."
 		},
 		{
@@ -1326,7 +1371,7 @@
 			"item": [
 				{
 					"name": "Lookup a large document by ID.",
-					"_postman_id": "6f53bd84-f6f2-4f0c-892b-034d79d7ccfa",
+					"_postman_id": "1af5f232-cc41-4938-a120-6d4bfb04e7df",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1375,7 +1420,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/largedocuments/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/largedocuments/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1383,6 +1428,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"largedocuments",
 								":id"
 							],
@@ -1397,7 +1445,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "3fcc97ac-5bf0-44e5-86e5-72746639f91a",
+			"_postman_id": "90db0baf-6f10-4352-a5fa-f0fffbf3d633",
 			"description": "Large documents are ingested files that exceed 512MB in size. These files are divided into chunks and ingested separately."
 		},
 		{
@@ -1405,7 +1453,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of connections.",
-					"_postman_id": "2ce05e90-d6e4-4b56-abf3-06410aab0781",
+					"_postman_id": "e6e8cf48-5bd7-4161-a5cf-e5913ed2f2f2",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1454,7 +1502,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections?connector={{connector}}&parentConnectionId={{parentConnectionId}}&name={{name}}&accountId={{accountId}}&description={{description}}&enabled={{enabled}}&ingestStart={{ingestStart}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections?connector={{connector}}&parentConnectionId={{parentConnectionId}}&name={{name}}&accountId={{accountId}}&description={{description}}&enabled={{enabled}}&ingestStart={{ingestStart}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1462,6 +1510,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections"
 							],
 							"query": [
@@ -1500,7 +1551,7 @@
 				},
 				{
 					"name": "Create a new connection.",
-					"_postman_id": "5c31cc3a-1a81-460c-86f5-fb595567f449",
+					"_postman_id": "848d1371-7757-4d2c-a1b9-ab9186e33504",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1553,7 +1604,7 @@
 							"raw": "{{connection}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1561,6 +1612,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections"
 							]
 						}
@@ -1569,7 +1623,7 @@
 				},
 				{
 					"name": "Lookup a connection by ID.",
-					"_postman_id": "024371d4-ce8c-4b5e-ac10-877f1891440a",
+					"_postman_id": "06bf0adf-0047-4f02-85c0-d910e540fc71",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1618,7 +1672,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1626,6 +1680,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections",
 								":id"
 							],
@@ -1641,7 +1698,7 @@
 				},
 				{
 					"name": "Update a connection by ID.",
-					"_postman_id": "47125866-8437-4d59-9885-eaa56f3ab984",
+					"_postman_id": "97ca22d7-913e-448c-a321-67d9a57801c8",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1694,7 +1751,7 @@
 							"raw": "{{connection}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1702,6 +1759,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections",
 								":id"
 							],
@@ -1717,7 +1777,7 @@
 				},
 				{
 					"name": "Save a new connection with a specified ID.",
-					"_postman_id": "2e897358-f691-4d89-9435-e88634e64738",
+					"_postman_id": "9906c5e2-c5fe-4853-91f5-e942200f8d66",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1770,7 +1830,7 @@
 							"raw": "{{connection}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1778,6 +1838,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections",
 								":id"
 							],
@@ -1793,7 +1856,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a connection specified by ID.",
-					"_postman_id": "5ac068d3-570e-4870-91af-57d8e3c97ea3",
+					"_postman_id": "6ff1ac2e-b197-453e-a492-049b3cdb2b0b",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1846,7 +1909,7 @@
 							"raw": "{{connection}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1854,6 +1917,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections",
 								":id"
 							],
@@ -1869,7 +1935,7 @@
 				},
 				{
 					"name": "Delete a connection by ID.",
-					"_postman_id": "efe4ddab-2069-4dfb-adf2-ef78c8aa27f6",
+					"_postman_id": "913192b3-1945-402f-afc1-04e041d7180a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1918,7 +1984,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1926,6 +1992,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections",
 								":id"
 							],
@@ -1941,7 +2010,7 @@
 				},
 				{
 					"name": "Retrieve a list of datasets for a connection by ID.",
-					"_postman_id": "f2073569-69b8-4f06-850b-9d51fb5517d9",
+					"_postman_id": "ba4d74f2-ef2d-4014-aea0-66a7e493929e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1990,7 +2059,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connections/:id/dataSets",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connections/:id/dataSets",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1998,6 +2067,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connections",
 								":id",
 								"dataSets"
@@ -2013,7 +2085,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "abd02f29-1593-4195-94a9-2e49012c6c6d",
+			"_postman_id": "f519d96c-3271-4857-a78d-0dc910c9a032",
 			"description": "Connections are customer-specific instances of connectors. As an example, when a user selects the Azure Blob connector and supplies the necessary details as defined by that connector, the result is a connection."
 		},
 		{
@@ -2021,7 +2093,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of connectors.",
-					"_postman_id": "2b3b9025-8dfc-4da4-bd60-a5c99afe30d4",
+					"_postman_id": "fc607bf1-2391-436a-b12c-4cbe4e314fcc",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2070,7 +2142,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connectors?type={{type}}&name={{name}}&category={{category}}&description={{description}}&maxConnections={{maxConnections}}&uiCreationAllowed={{uiCreationAllowed}}&connectorOwnedDataSets={{connectorOwnedDataSets}}&internal={{internal}}&ingestStart={{ingestStart}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connectors?type={{type}}&name={{name}}&category={{category}}&description={{description}}&maxConnections={{maxConnections}}&uiCreationAllowed={{uiCreationAllowed}}&connectorOwnedDataSets={{connectorOwnedDataSets}}&internal={{internal}}&ingestStart={{ingestStart}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2078,6 +2150,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connectors"
 							],
 							"query": [
@@ -2124,7 +2199,7 @@
 				},
 				{
 					"name": "Lookup a connector by ID.",
-					"_postman_id": "73bc1a82-a34d-402d-a4f2-cee8059c510b",
+					"_postman_id": "c573f666-47fc-4fda-8529-f3c1fc3bf357",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2173,7 +2248,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connectors/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connectors/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2181,6 +2256,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connectors",
 								":id"
 							],
@@ -2196,7 +2274,7 @@
 				},
 				{
 					"name": "Retrieve the statistics for a connector specified by ID.",
-					"_postman_id": "8bb53acd-fa82-4a9b-8eb8-d5b012ae541f",
+					"_postman_id": "8ecd6214-5c89-4715-81c1-0265305a79f7",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2245,7 +2323,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connectors/:id/stats",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/connectors/:id/stats",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2253,6 +2331,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"connectors",
 								":id",
 								"stats"
@@ -2268,7 +2349,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "cff7621b-97e1-47f9-99a1-688e6414b158",
+			"_postman_id": "7b7335b2-d6c5-4c30-b0fd-e5f9718e20d6",
 			"description": "Connectors define how and when data is ingested into Platform. They control how data is to be gathered from technology sources (like S3, RedShift, and SFTP) and partner sources (like DFA, SAP, MSFT, and ExactTarget). Connectors also define how and when data from Adobe solutions is ingested into Platform."
 		},
 		{
@@ -2276,7 +2357,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of datasets.",
-					"_postman_id": "fa8bf123-638e-428c-85d9-0b94faeb2cad",
+					"_postman_id": "c4fead91-5096-49d0-a9b0-c993febeb070",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2325,7 +2406,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets?connectorId={{connectorId}}&connectionId={{connectionId}}&name={{name}}&description={{description}}&type={{type}}&state={{state}}&namespace={{namespace}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets?connectorId={{connectorId}}&connectionId={{connectionId}}&name={{name}}&description={{description}}&type={{type}}&state={{state}}&namespace={{namespace}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2333,6 +2414,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets"
 							],
 							"query": [
@@ -2371,7 +2455,7 @@
 				},
 				{
 					"name": "Create a new dataset.",
-					"_postman_id": "f4a1e29d-5ebb-4c3a-aeda-d59cb3c448aa",
+					"_postman_id": "ad778931-2904-4c2b-97e9-67cf28191335",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2424,7 +2508,7 @@
 							"raw": "{{dataSet}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets?requestDataSource={{requestDataSource}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets?requestDataSource={{requestDataSource}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2432,6 +2516,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets"
 							],
 							"query": [
@@ -2446,7 +2533,7 @@
 				},
 				{
 					"name": "Lookup a dataset by ID.",
-					"_postman_id": "50c8e255-6795-4150-9cee-9d272f663f68",
+					"_postman_id": "b695f09d-fa6e-4518-a45b-31eaf2d7cf24",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2495,7 +2582,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id?properties={{properties}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id?properties={{properties}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2503,6 +2590,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id"
 							],
@@ -2524,7 +2614,7 @@
 				},
 				{
 					"name": "Update a dataset by ID.",
-					"_postman_id": "33f47ede-5a97-489f-8002-ca2108e8949b",
+					"_postman_id": "e5fde2ed-37c3-4927-b508-c90a1642e43d",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2577,7 +2667,7 @@
 							"raw": "{{dataSet}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id?requestDataSource={{requestDataSource}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id?requestDataSource={{requestDataSource}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2585,6 +2675,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id"
 							],
@@ -2606,7 +2699,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset specified by ID.",
-					"_postman_id": "85146d20-54c1-48bb-8711-601a082f7295",
+					"_postman_id": "2bf5a70a-03eb-4cf5-a134-2a40e20b03a7",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2659,7 +2752,7 @@
 							"raw": "{{dataSet}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2667,6 +2760,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id"
 							],
@@ -2682,7 +2778,7 @@
 				},
 				{
 					"name": "Delete a dataset by ID.",
-					"_postman_id": "6e7ff35f-a3b0-44bf-b791-0f59379b08ed",
+					"_postman_id": "eb0f4fb9-8b61-487c-97cf-52b698895ca4",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2735,7 +2831,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2743,6 +2839,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id"
 							],
@@ -2758,7 +2857,7 @@
 				},
 				{
 					"name": "Retrieve the credentials of a dataset specified by ID.",
-					"_postman_id": "d73804f4-53cd-4766-b739-14d5a106844c",
+					"_postman_id": "f181f9f0-69cb-48d5-b079-1844298130d7",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2814,7 +2913,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/credentials?batchId={{batchId}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/credentials?batchId={{batchId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2822,6 +2921,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"credentials"
@@ -2844,7 +2946,7 @@
 				},
 				{
 					"name": "Retrieve a list of views for a dataset specified by ID.",
-					"_postman_id": "53f12e58-2286-4c5c-8068-58b26c43ddcd",
+					"_postman_id": "f8666cad-474e-4624-ae75-8850a68e2eed",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2893,7 +2995,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/views",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/views",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2901,6 +3003,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"views"
@@ -2917,7 +3022,7 @@
 				},
 				{
 					"name": "Create a new view for a dataset specified by ID.",
-					"_postman_id": "f0f26b8b-a096-4a9f-a2ad-1beac58af0bd",
+					"_postman_id": "c2e03d40-a3bb-4d85-93bd-681e475dad9f",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2970,7 +3075,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/views",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/views",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2978,6 +3083,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"views"
@@ -2994,7 +3102,7 @@
 				},
 				{
 					"name": "Lookup a single view for a dataset, both specified by ID.",
-					"_postman_id": "a5c7de3b-9257-4502-91f2-def4c4cf228c",
+					"_postman_id": "7cc65af5-c6c5-4c24-ba9d-c11966880868",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3043,7 +3151,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewid",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/views/:viewid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3051,6 +3159,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"views",
@@ -3072,7 +3183,7 @@
 				},
 				{
 					"name": "List the files of a single view for a dataset. The view and dataset are specified by ID.",
-					"_postman_id": "d4155576-161c-4108-a7e0-fbbd747054e1",
+					"_postman_id": "842838d6-46d3-45a4-bf35-7d24ea5cf1c3",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3121,7 +3232,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/views/:viewId/files",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3129,6 +3240,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"views",
@@ -3151,7 +3265,7 @@
 				},
 				{
 					"name": "Create a new file for a single view of a dataset. The view and dataset are both specified by ID.",
-					"_postman_id": "b9d2cb1f-cd9c-43be-a264-14acc81a86c5",
+					"_postman_id": "018949bf-d432-40c9-8b8a-316db68f8f7f",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3204,7 +3318,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/views/:viewId/files",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3212,6 +3326,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"views",
@@ -3234,7 +3351,7 @@
 				},
 				{
 					"name": "Lookup a file for a particular view of a dataset. The file, view, and dataset are specified by ID.",
-					"_postman_id": "63ffbda1-0b8a-4417-a7ec-101339f2cc8e",
+					"_postman_id": "b0cad2cc-24a5-4beb-8790-c6be53d741ba",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3283,7 +3400,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files/:fileId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/views/:viewId/files/:fileId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3291,6 +3408,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"views",
@@ -3318,7 +3438,7 @@
 				},
 				{
 					"name": "Remove a file from a particular view of a dataset.",
-					"_postman_id": "3ed0650c-3362-4249-8531-d5f823c9637f",
+					"_postman_id": "76ff7991-cc79-45b1-b037-a6c2eb9caf2a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -3367,7 +3487,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files/:fileId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/views/:viewId/files/:fileId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3375,6 +3495,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"views",
@@ -3402,7 +3525,7 @@
 				},
 				{
 					"name": "Retrieve summarized stats for a dataset's batches. Default time window is within last seven days.",
-					"_postman_id": "ad611d08-2c3f-4f17-a3b4-b84949cfae34",
+					"_postman_id": "f151f385-5a2a-41f0-8ac2-aeb7b28818ba",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3451,7 +3574,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/ingestBatchSummary",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/ingestBatchSummary",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3459,6 +3582,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"ingestBatchSummary"
@@ -3475,7 +3601,7 @@
 				},
 				{
 					"name": "Retrieve the Data Usage and Enforcement (DULE) labels associated with a dataset specified by ID.",
-					"_postman_id": "ef547ccc-ddb9-4770-b74e-948d562c30d4",
+					"_postman_id": "7ad5754b-e6fc-4aaf-b7ab-863f2177bf06",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3524,7 +3650,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSets/:id/dule",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets/:id/dule",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3532,6 +3658,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSets",
 								":id",
 								"dule"
@@ -3547,7 +3676,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1de2bc89-bf78-4d41-beb9-c16d3fd5c118",
+			"_postman_id": "1fb7818f-5c51-4307-8b98-c24d677e90b0",
 			"description": "Datasets are the building blocks for data transformation and tracking in Catalog Service. Generally, datasets represent a table or file made available by a connection."
 		},
 		{
@@ -3555,7 +3684,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of dataset views.",
-					"_postman_id": "ccd0d5cd-8a83-4b8c-9a5a-73da1329c492",
+					"_postman_id": "31659052-4bc4-48e1-8bf3-6455f3b068af",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3604,7 +3733,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetViews?dataSetId={{dataSetId}}&name={{name}}&isDefault={{isDefault}}&status={{status}}&editable={{editable}}&sdsVersion={{sdsVersion}}&basePath={{basePath}}&saveStrategy={{saveStrategy}}&isCached={{isCached}}&aspect={{aspect}}&schema={{schema}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetViews?dataSetId={{dataSetId}}&name={{name}}&isDefault={{isDefault}}&status={{status}}&editable={{editable}}&sdsVersion={{sdsVersion}}&basePath={{basePath}}&saveStrategy={{saveStrategy}}&isCached={{isCached}}&aspect={{aspect}}&schema={{schema}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3612,6 +3741,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetViews"
 							],
 							"query": [
@@ -3666,7 +3798,7 @@
 				},
 				{
 					"name": "Create a new dataset view.",
-					"_postman_id": "67c42b88-ef58-479a-9327-7669118423ca",
+					"_postman_id": "a46d16e3-7cc1-412a-b383-3b4b4df04bd4",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3719,7 +3851,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetViews",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetViews",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3727,6 +3859,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetViews"
 							]
 						}
@@ -3735,7 +3870,7 @@
 				},
 				{
 					"name": "Lookup a dataset view by ID.",
-					"_postman_id": "352bbd31-0747-4b0e-b484-a06045fe0ca8",
+					"_postman_id": "bbb5e074-edc4-4d21-bed4-276c3659df4c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3784,7 +3919,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetViews/:id?properties={{properties}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetViews/:id?properties={{properties}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3792,6 +3927,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetViews",
 								":id"
 							],
@@ -3813,7 +3951,7 @@
 				},
 				{
 					"name": "Update a dataset view by ID.",
-					"_postman_id": "d3057470-b01f-4a4e-a369-f637efd6783f",
+					"_postman_id": "fbf083f2-3313-4260-a62a-8452c3c79050",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -3866,7 +4004,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetViews/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetViews/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3874,6 +4012,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetViews",
 								":id"
 							],
@@ -3889,7 +4030,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset view specified by ID.",
-					"_postman_id": "21befa1c-7b27-403f-bb81-c70dfad61f82",
+					"_postman_id": "8be4a809-6bb7-41bb-aeff-4f94552cc56b",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -3942,7 +4083,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetViews/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetViews/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3950,6 +4091,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetViews",
 								":id"
 							],
@@ -3965,7 +4109,7 @@
 				},
 				{
 					"name": "Delete a dataset view by ID.",
-					"_postman_id": "a35a3a4e-7510-4785-b29f-5bce7f3aa4f1",
+					"_postman_id": "06205b8f-78f3-44aa-8198-c30520bc644a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4014,7 +4158,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetViews/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetViews/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4022,6 +4166,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetViews",
 								":id"
 							],
@@ -4036,7 +4183,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9e0a297b-879c-401b-8906-36664a515e20",
+			"_postman_id": "4ec063d7-1e7a-4dcb-856d-3f1bbc35b31c",
 			"description": "Folder for Dataset views"
 		},
 		{
@@ -4044,7 +4191,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of dataset files.",
-					"_postman_id": "701e0851-ee4a-436d-961c-0553d89b461d",
+					"_postman_id": "42deadbb-7a0e-4f58-908d-7d87490c52f0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4093,7 +4240,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetFiles?folderName={{folderName}}&batchId={{batchId}}&dataSetViewId={{dataSetViewId}}&records={{records}}&size={{size}}&isValid={{isValid}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetFiles?folderName={{folderName}}&batchId={{batchId}}&dataSetViewId={{dataSetViewId}}&records={{records}}&size={{size}}&isValid={{isValid}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4101,6 +4248,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetFiles"
 							],
 							"query": [
@@ -4135,7 +4285,7 @@
 				},
 				{
 					"name": "Create a new dataset file.",
-					"_postman_id": "65a00dde-36be-44b5-a52f-e5f03733f57a",
+					"_postman_id": "aa5d3071-6479-4a4f-bcc6-a85a23f1a3ff",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4188,7 +4338,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetFiles",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetFiles",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4196,6 +4346,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetFiles"
 							]
 						}
@@ -4204,7 +4357,7 @@
 				},
 				{
 					"name": "Delete a dataset file by search criteria.",
-					"_postman_id": "009b13c2-6644-4e7c-9bf0-205ba037beed",
+					"_postman_id": "9c6dbd69-375f-4e23-9413-10a51e09fb0a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4253,7 +4406,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetFiles?batchId={{batchId}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetFiles?batchId={{batchId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4261,6 +4414,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetFiles"
 							],
 							"query": [
@@ -4275,7 +4431,7 @@
 				},
 				{
 					"name": "Lookup a dataset file by ID.",
-					"_postman_id": "bfdf8f16-1314-413e-a841-d9d50da3e8f6",
+					"_postman_id": "f8142acb-3ae0-48df-ab68-b534ffe21602",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4324,7 +4480,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetFiles/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4332,6 +4488,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetFiles",
 								":id"
 							],
@@ -4347,7 +4506,7 @@
 				},
 				{
 					"name": "Update a dataset file by ID.",
-					"_postman_id": "09919dd3-c76f-474f-a04a-5b7cb163afbb",
+					"_postman_id": "3b2ef5cb-b4ce-4101-98ba-436818c2abd5",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -4400,7 +4559,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetFiles/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4408,6 +4567,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetFiles",
 								":id"
 							],
@@ -4423,7 +4585,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset file specified by ID.",
-					"_postman_id": "d012f8bc-969f-4e19-9987-f282ff4edf24",
+					"_postman_id": "b8b67b7b-4ef1-49aa-867c-01e2948ce619",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -4476,7 +4638,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetFiles/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4484,6 +4646,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetFiles",
 								":id"
 							],
@@ -4499,7 +4664,7 @@
 				},
 				{
 					"name": "Delete a dataset file by ID.",
-					"_postman_id": "a1e82b71-4dac-4828-b9a5-25127ccdca21",
+					"_postman_id": "37a40138-ff4b-47fd-8a7c-41dab2ac066a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4548,7 +4713,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/dataSetFiles/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4556,6 +4721,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"dataSetFiles",
 								":id"
 							],
@@ -4570,7 +4738,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c28bc829-4a52-4414-a4df-0a6508076305",
+			"_postman_id": "a02cf50e-66c7-4bb3-bbc9-fc00cab89d5e",
 			"description": "Dataset files represent blocks of data that have been saved on Platform. As records of literal files, these are where you can find the file size and which batch the file came from. This construct will also provide the number of records contained in the file."
 		},
 		{
@@ -4578,7 +4746,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of resource links for the Catalog Service.",
-					"_postman_id": "3ef35943-3a4d-4e2e-b888-c6557d7f526b",
+					"_postman_id": "1bcaf11a-d7ff-4502-8ba9-2e3574195ed4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4627,7 +4795,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4635,6 +4803,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								""
 							]
 						}
@@ -4643,7 +4814,7 @@
 				},
 				{
 					"name": "Create a new batch request.",
-					"_postman_id": "bb0d3393-511a-4b43-ac7b-35ef17b5f93e",
+					"_postman_id": "3e46123a-5010-47cf-9109-6ef715ef16af",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4696,7 +4867,7 @@
 							"raw": "{{resources}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4704,6 +4875,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								""
 							]
 						}
@@ -4711,7 +4885,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "13e267ca-7a92-450f-913d-0ee7ce4f8836",
+			"_postman_id": "05446b05-b6c0-4e24-89fb-bf69d5c0c2d5",
 			"description": "Batched requests allow you to supply an array of objects in the request payload, representing what would normally be individual requests. Requests are executed in order and values returned from a previous call are made available in subsequent calls through template language."
 		},
 		{
@@ -4719,7 +4893,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of transforms.",
-					"_postman_id": "ea87659c-5c4e-448c-b06e-862effa30b34",
+					"_postman_id": "a03fe19f-6335-46ab-9d68-92ab5e4c890d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4768,7 +4942,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms?name={{name}}&body={{body}}&order={{order}}&created={{created}}&language={{language}}&codeUrl={{codeUrl}}&vehicleUrl={{vehicleUrl}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms?name={{name}}&body={{body}}&order={{order}}&created={{created}}&language={{language}}&codeUrl={{codeUrl}}&vehicleUrl={{vehicleUrl}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4776,6 +4950,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms"
 							],
 							"query": [
@@ -4814,7 +4991,7 @@
 				},
 				{
 					"name": "Create a new transform.",
-					"_postman_id": "280cb194-197a-45dd-b6aa-38d934828de1",
+					"_postman_id": "ea4bf770-cb42-4a5c-a8f4-4de3cfc7c0a1",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4867,7 +5044,7 @@
 							"raw": "{{transform}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4875,6 +5052,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms"
 							]
 						}
@@ -4883,7 +5063,7 @@
 				},
 				{
 					"name": "Lookup a transform by ID.",
-					"_postman_id": "54e5527e-554a-47ed-9d54-8b9ecb1a0c35",
+					"_postman_id": "9d9c6bc3-3ad9-46b0-a89e-846c459bf03a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4932,7 +5112,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4940,6 +5120,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id"
 							],
@@ -4955,7 +5138,7 @@
 				},
 				{
 					"name": "Update a transform by ID.",
-					"_postman_id": "476067b7-b9e4-4081-99c2-b3ee625f9ddb",
+					"_postman_id": "1fa46c91-8c17-40b2-af6f-abaa1fe11069",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -5008,7 +5191,7 @@
 							"raw": "{{transform}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5016,6 +5199,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id"
 							],
@@ -5031,7 +5217,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a transform specified by ID.",
-					"_postman_id": "60efc01c-0faf-4ba3-9578-3002cf6602c3",
+					"_postman_id": "99d1000a-7682-47b1-ac14-1304267bfd23",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -5084,7 +5270,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5092,6 +5278,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id"
 							],
@@ -5107,7 +5296,7 @@
 				},
 				{
 					"name": "Delete a transform by ID.",
-					"_postman_id": "2e5eb7df-7041-48a0-8307-64da9e69cd6c",
+					"_postman_id": "544b265a-ecb1-4489-b885-c78683593e9c",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -5156,7 +5345,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5164,6 +5353,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id"
 							],
@@ -5179,7 +5371,7 @@
 				},
 				{
 					"name": "Retrieve a list of inputs for a transform specified by ID.",
-					"_postman_id": "dd933737-3aa4-4d40-9199-d430505186ed",
+					"_postman_id": "7b0ab691-c002-460e-87cf-e85dddf2726c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5228,7 +5420,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/inputs",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5236,6 +5428,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"inputs"
@@ -5252,7 +5447,7 @@
 				},
 				{
 					"name": "Update the input attributes for a transform specified by ID.",
-					"_postman_id": "490fc626-30db-4af5-831e-3ea767bd5ea4",
+					"_postman_id": "fd9ef06b-88eb-4328-8d23-919408785687",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -5305,7 +5500,7 @@
 							"raw": "{{inputs}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/inputs",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5313,6 +5508,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"inputs"
@@ -5329,7 +5527,7 @@
 				},
 				{
 					"name": "Retrieve a list of outputs for a transform specified by ID.",
-					"_postman_id": "1dcc01f5-e1a4-4b34-9f54-2d48371805a4",
+					"_postman_id": "4efa890c-f92c-4810-b02c-ea2e0b73ec17",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5378,7 +5576,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/outputs",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5386,6 +5584,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"outputs"
@@ -5402,7 +5603,7 @@
 				},
 				{
 					"name": "Update the output attributes for a transform specified by ID.",
-					"_postman_id": "8285c2ab-21af-4bcf-8841-1f44a24ab6d4",
+					"_postman_id": "f8e03069-f10c-4fca-831e-5c37c5626c7b",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -5455,7 +5656,7 @@
 							"raw": "{{outputs}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/outputs",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5463,6 +5664,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"outputs"
@@ -5479,7 +5683,7 @@
 				},
 				{
 					"name": "Lookup an input dataset for a transform, both specified by ID.",
-					"_postman_id": "8caa6e79-0402-4147-90dc-5de5e6dc4fcb",
+					"_postman_id": "7e43a180-d6cf-4bbe-a76a-c431ea52bf5b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5528,7 +5732,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/inputs/:dataSetId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs/:dataSetId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5536,6 +5740,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"inputs",
@@ -5557,7 +5764,7 @@
 				},
 				{
 					"name": "Delete an input dataset for a transform, both specified by ID.",
-					"_postman_id": "3dfec968-fa0e-4374-ba2b-12b00ab905d7",
+					"_postman_id": "0bc9c947-8ff2-4511-9627-537893079f9f",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -5606,7 +5813,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/inputs/:dataSetId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/inputs/:dataSetId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5614,6 +5821,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"inputs",
@@ -5635,7 +5845,7 @@
 				},
 				{
 					"name": "Lookup an output dataset for a transform, both specified by ID.",
-					"_postman_id": "5fae4c31-678e-493c-b41d-b2912ddb5821",
+					"_postman_id": "72f54598-9212-443d-a660-0005793e0242",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5684,7 +5894,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/outputs/:dataSetId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs/:dataSetId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5692,6 +5902,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"outputs",
@@ -5713,7 +5926,7 @@
 				},
 				{
 					"name": "Delete an output dataset for a transform, both specified by ID.",
-					"_postman_id": "9a32684e-2c4c-40eb-a930-bfe7838b43f7",
+					"_postman_id": "58ddb0bd-4407-4ca4-88cb-0ddaf1f48eca",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -5762,7 +5975,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/transforms/:id/outputs/:dataSetId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/transforms/:id/outputs/:dataSetId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5770,6 +5983,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"transforms",
 								":id",
 								"outputs",
@@ -5790,7 +6006,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "451b42eb-96e9-4b0c-9e0e-6e9fff65781e",
+			"_postman_id": "599ba296-bc0a-4e4c-89de-3856fe41e61b",
 			"description": "Transforms are used to house the instructions that translate data into a new form. As a customer maps their newly uploaded data to an Experience Data Model (XDM) schema, a transform is created to document links to the repository where the code resides, as well as a link to the vehicle (or engine) used to perform that work."
 		},
 		{
@@ -5798,7 +6014,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of aggregated values for all tags within an IMS Organization, specified by namespace.",
-					"_postman_id": "f7ca4265-92e6-4726-8380-6f9f0ae81782",
+					"_postman_id": "0756302f-8f91-41f3-b1b8-2cf1f15f2746",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5847,7 +6063,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/tags/:tagNamespace",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/tags/:tagNamespace",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5855,6 +6071,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"tags",
 								":tagNamespace"
 							],
@@ -5869,7 +6088,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "09c7b149-fd44-4031-a00d-f48271d9f1ff",
+			"_postman_id": "e5d2f1fd-1041-430a-9bd3-670d462fd354",
 			"description": "Tags are used to attach information to an object and then be used later to retrieve the object. The choice of what tags are used and how they are applied depends on your organizational processes."
 		}
 	]

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "daaebf05-394f-4e9f-a408-9aad4132e0f8",
+		"_postman_id": "9ff83f4e-d2f8-4d4d-9081-8fd8d7a2fcf7",
 		"name": "Sensei Machine Learning API",
 		"description": "Sensei Machine Learning API provides a mechanism for data scientists to organize and manage ML services from algorithm onboarding through experimentation and to service deployment.\n\nRelated documentation:\n  * [Data Science Workspace overview](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html)\n  * [Data Science Workspace terminology](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html#!api-specification/markdown/narrative/technical_overview/data_science_workspace_overview/dsw_overview.md#terminology)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Sensei Machine Learning API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Sensei%20Machine%20Learning%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n\nAPI paths: \n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/ \n  * Base path for this API: /data/sensei\n  * Example of a complete path: https://<span>platform.adobe.io/data/sensei/engines\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all engines.",
-					"_postman_id": "b5fbbb42-0c30-444b-a782-ccf4e5ec4790",
+					"_postman_id": "fdae7a79-d72d-45de-a8e7-e1b814706d83",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -39,7 +39,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines",
+							"raw": "https://platform.adobe.io/data/sensei/engines",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -47,6 +47,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines"
 							]
 						},
@@ -56,7 +58,7 @@
 				},
 				{
 					"name": "Create a new Engine.",
-					"_postman_id": "c5a12bcf-09b7-4efd-9c87-4cdfa7699338",
+					"_postman_id": "434e7604-4eec-420b-a300-605f5961fe37",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -143,7 +145,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines",
+							"raw": "https://platform.adobe.io/data/sensei/engines",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -151,6 +153,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines"
 							]
 						},
@@ -160,7 +164,7 @@
 				},
 				{
 					"name": "Get Docker registry information.",
-					"_postman_id": "a364903d-6681-4a7d-8671-810bdc082554",
+					"_postman_id": "9f1108c3-ecae-4a9b-842d-1005177f66ec",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -202,7 +206,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/dockerRegistry",
+							"raw": "https://platform.adobe.io/data/sensei/engines/dockerRegistry",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -210,6 +214,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								"dockerRegistry"
 							]
@@ -220,7 +226,7 @@
 				},
 				{
 					"name": "Lookup an Engine by ID.",
-					"_postman_id": "4616bc8d-d509-4ea3-853d-9feb12ac241e",
+					"_postman_id": "eac569f9-5241-4f86-9f97-fd6750ede37a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -262,7 +268,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/:engineId",
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -270,6 +276,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								":engineId"
 							],
@@ -286,7 +294,7 @@
 				},
 				{
 					"name": "Update an Engine by ID.",
-					"_postman_id": "15836b2b-6bd2-495d-a225-979dad51f8bc",
+					"_postman_id": "d517ea80-074c-466c-9f2e-35149f60ad25",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -332,7 +340,7 @@
 							"raw": "{{engine}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/:engineId",
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -340,6 +348,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								":engineId"
 							],
@@ -356,7 +366,7 @@
 				},
 				{
 					"name": "Delete an existing Engine by ID.",
-					"_postman_id": "c2741e0c-a9ba-4375-a7ab-e7ac62fabaa5",
+					"_postman_id": "2effbc42-6f24-4df0-b53e-df19e9ed2e2a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -398,7 +408,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/:engineId",
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -406,6 +416,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								":engineId"
 							],
@@ -421,7 +433,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "daf73dfb-0257-4a76-b7ae-f0fba83f1166",
+			"_postman_id": "5e654338-ecbe-47c6-9da0-09db83a60a5a",
 			"description": "Engines act as an umbrella entity holding all machine learning instances. This is tied to a Docker image, Java archive, or EGG file which contains machine  learning logic to train and score a Model."
 		},
 		{
@@ -429,7 +441,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of MLInstances matching given criteria.",
-					"_postman_id": "467ecc49-dc02-4f61-a7ca-6b7cb01fb152",
+					"_postman_id": "bebd73bd-f5a4-4346-aed8-43f969507410",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -471,7 +483,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -479,6 +491,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances"
 							]
 						},
@@ -488,7 +502,7 @@
 				},
 				{
 					"name": "Add a new MLInstance.",
-					"_postman_id": "f24b803b-2775-44a1-b0d8-3aa42a388300",
+					"_postman_id": "78b6b2eb-9c18-4606-9ec9-9fd43955a75d",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -534,7 +548,7 @@
 							"raw": "{{mlInstance}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -542,6 +556,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances"
 							]
 						},
@@ -551,7 +567,7 @@
 				},
 				{
 					"name": "Delete MLinstances by engineId.",
-					"_postman_id": "6ea7fd3c-736c-47e9-85ec-56b45d2c58fe",
+					"_postman_id": "bdda87cf-ba47-4d4a-a8b3-bf5b9ace8220",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -593,7 +609,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances?engineId={{engineId}}",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances?engineId={{engineId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -601,6 +617,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances"
 							],
 							"query": [
@@ -616,7 +634,7 @@
 				},
 				{
 					"name": "Lookup a MLInstance by ID.",
-					"_postman_id": "c15228b9-286e-4a55-96c3-b5809b5396d1",
+					"_postman_id": "9f78c31c-1691-4cdc-ab04-020969e8b43a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -658,7 +676,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances/:mlInstanceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -666,6 +684,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances",
 								":mlInstanceId"
 							],
@@ -681,7 +701,7 @@
 				},
 				{
 					"name": "Update a MLInstance by ID.",
-					"_postman_id": "e544cd89-6a72-4b54-84d8-b211476af17b",
+					"_postman_id": "228471e5-4d4a-46e6-b484-5c8ddaafac12",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -727,7 +747,7 @@
 							"raw": "{{mlInstance}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances/:mlInstanceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -735,6 +755,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances",
 								":mlInstanceId"
 							],
@@ -750,7 +772,7 @@
 				},
 				{
 					"name": "Delete an existing MLInstance by ID.",
-					"_postman_id": "5de84fd6-1e59-4600-a826-589369b45233",
+					"_postman_id": "0929d82a-19e0-4a58-8300-26422fdf7744",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -792,7 +814,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances/:mlInstanceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -800,6 +822,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances",
 								":mlInstanceId"
 							],
@@ -814,7 +838,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c13278eb-1e26-4153-b3ac-72737f9c1d83",
+			"_postman_id": "d23d8e6e-3786-4f7c-91d6-0a8e1d1b2690",
 			"description": "MLInstances represent the combination of a specific Engine with particular set  of configurations. An instance is often use-case specific for a customer or client."
 		},
 		{
@@ -822,7 +846,7 @@
 			"item": [
 				{
 					"name": "Retrieve all experiments for a MLInstance.",
-					"_postman_id": "28c41fd4-16b4-4de9-8ec5-5db3c79956a5",
+					"_postman_id": "a6d487ec-1012-4f40-8fbe-f689d4d8c4e1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -864,7 +888,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments",
+							"raw": "https://platform.adobe.io/data/sensei/experiments",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -872,6 +896,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments"
 							]
 						}
@@ -880,7 +906,7 @@
 				},
 				{
 					"name": "Create an experiment.",
-					"_postman_id": "6c1242cd-bf85-4ce1-b72e-f70ab5c97b16",
+					"_postman_id": "10f56b81-726b-4834-998f-772cd6aeccc8",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -926,7 +952,7 @@
 							"raw": "{{experiment}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments",
+							"raw": "https://platform.adobe.io/data/sensei/experiments",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -934,6 +960,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments"
 							]
 						}
@@ -942,7 +970,7 @@
 				},
 				{
 					"name": "Delete experiments by mlInstanceId.",
-					"_postman_id": "538b978f-6d44-470b-9414-3d7997929818",
+					"_postman_id": "10cb0ccb-a79e-428c-bd5a-e7d1bd92d376",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -984,7 +1012,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments?mlInstanceId={{mlInstanceId}}",
+							"raw": "https://platform.adobe.io/data/sensei/experiments?mlInstanceId={{mlInstanceId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -992,6 +1020,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments"
 							],
 							"query": [
@@ -1007,7 +1037,7 @@
 				},
 				{
 					"name": "Lookup an experiment by ID.",
-					"_postman_id": "0acd920f-6d0b-4519-89f3-6cf30c8de34a",
+					"_postman_id": "37430eba-e990-4601-82e2-54a06370e6b1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1049,7 +1079,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1057,6 +1087,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId"
 							],
@@ -1072,7 +1104,7 @@
 				},
 				{
 					"name": "Update an experiment by ID.",
-					"_postman_id": "3a58f169-36d7-4a37-8e77-4b3ac6006eb4",
+					"_postman_id": "41004d21-ff97-46c2-b9b3-f8358d68e47c",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1118,7 +1150,7 @@
 							"raw": "{{experiment}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1126,6 +1158,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId"
 							],
@@ -1141,7 +1175,7 @@
 				},
 				{
 					"name": "Delete an experiment by ID.",
-					"_postman_id": "1a238cfb-7481-47c0-8121-0e1a6ab248fe",
+					"_postman_id": "20617cfc-2be7-4962-9c38-2d34b633e107",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1183,7 +1217,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1191,6 +1225,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId"
 							],
@@ -1206,7 +1242,7 @@
 				},
 				{
 					"name": "Retrieve a list of all runs for an experiment by ID.",
-					"_postman_id": "381e7ec8-0949-4340-8399-e1a6c630a65a",
+					"_postman_id": "6b2efd2c-cabc-47b3-ba9b-40af645b038f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1248,7 +1284,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1256,6 +1292,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs"
@@ -1272,7 +1310,7 @@
 				},
 				{
 					"name": "Run an experiment with parameter values.",
-					"_postman_id": "1a8754e8-7b87-42bc-8786-266c3eb21247",
+					"_postman_id": "8a4db1ea-c805-43fe-a3ff-22bda22891c3",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1318,7 +1356,7 @@
 							"raw": "{{Run}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1326,6 +1364,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs"
@@ -1342,7 +1382,7 @@
 				},
 				{
 					"name": "Retrieve the details of an experiment run by ID.",
-					"_postman_id": "e10a5eb3-5812-4cd2-92e8-026eb43cc0cc",
+					"_postman_id": "85e7cfd6-ea74-42d5-b8f4-b3313e6ed397",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1384,7 +1424,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs/:experimentRunId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs/:experimentRunId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1392,6 +1432,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs",
@@ -1413,7 +1455,7 @@
 				},
 				{
 					"name": "Retrieve the status of an experiment run by ID.",
-					"_postman_id": "a4df76a2-8e66-4a7c-bb4b-e63f983f9a49",
+					"_postman_id": "e1fc1c90-1e83-4965-9bf8-385603f95c99",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1455,7 +1497,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs/:experimentRunId/status",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs/:experimentRunId/status",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1463,6 +1505,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs",
@@ -1484,7 +1528,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "540f67cb-08ab-4dd6-8f0b-b6f075958a1a",
+			"_postman_id": "fcf4c1ef-01c1-483a-919b-9a399f20b28d",
 			"description": "A data scientist conducts multiple experiments to arrive at a high-performing Model while training. This can include changing datasets, features, learning parameters, and hardware."
 		},
 		{
@@ -1492,7 +1536,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all Models.",
-					"_postman_id": "2262170a-77a5-402d-9f5a-dc10884c2e50",
+					"_postman_id": "c3b47ce1-7210-422e-88c8-ee7d701b09f4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1534,7 +1578,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models",
+							"raw": "https://platform.adobe.io/data/sensei/models",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1542,6 +1586,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models"
 							]
 						},
@@ -1551,7 +1597,7 @@
 				},
 				{
 					"name": "Register a generated Model.",
-					"_postman_id": "667eede2-4d71-4942-9f57-7e7b1b24cc13",
+					"_postman_id": "65420ab5-ec3a-4806-9e6e-df6a1c8b7024",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1610,7 +1656,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models",
+							"raw": "https://platform.adobe.io/data/sensei/models",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1618,6 +1664,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models"
 							]
 						},
@@ -1627,7 +1675,7 @@
 				},
 				{
 					"name": "Lookup a Model by ID.",
-					"_postman_id": "57f810b1-1c05-4868-9e3c-8b211ee8f54e",
+					"_postman_id": "e2d08480-7990-475c-b5b3-c5d71f7e3d7d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1669,7 +1717,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1677,6 +1725,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId"
 							],
@@ -1693,7 +1743,7 @@
 				},
 				{
 					"name": "Update a Model by ID.",
-					"_postman_id": "799003ea-d280-4286-bcd4-ae5381cce524",
+					"_postman_id": "0e147ebf-8ff9-41b2-8d33-27a6848cad6c",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1739,7 +1789,7 @@
 							"raw": "{{model}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1747,6 +1797,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId"
 							],
@@ -1763,7 +1815,7 @@
 				},
 				{
 					"name": "Delete a Model by ID.",
-					"_postman_id": "65c19b8b-9b72-4386-aab5-f7019decef94",
+					"_postman_id": "937f716a-4e30-419a-ac40-9d419909a77a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1805,7 +1857,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1813,6 +1865,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId"
 							],
@@ -1829,7 +1883,7 @@
 				},
 				{
 					"name": "Lookup a binary Model artifact by ID.",
-					"_postman_id": "a85bcd67-cd88-4157-8374-bdda822bfd66",
+					"_postman_id": "ff9f2520-9c23-4e54-9df0-32fea647257f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1871,7 +1925,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/artifact",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/artifact",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1879,6 +1933,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"artifact"
@@ -1895,7 +1951,7 @@
 				},
 				{
 					"name": "Retrieve a list of transcodings for a model by ID.",
-					"_postman_id": "c0f43035-4381-4224-ba65-fd3e268b0ac5",
+					"_postman_id": "d2b49251-0d60-49ec-a908-7ebac06caa3c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1937,7 +1993,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/transcodings",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1945,6 +2001,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"transcodings"
@@ -1961,7 +2019,7 @@
 				},
 				{
 					"name": "Create a new transcoding for a Model by ID.",
-					"_postman_id": "745fe1db-d290-4b16-85ef-cededc006ebc",
+					"_postman_id": "94577721-b9e1-46d8-891d-ea16adcdb6c6",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2007,7 +2065,7 @@
 							"raw": "{{model}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/transcodings",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2015,6 +2073,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"transcodings"
@@ -2031,7 +2091,7 @@
 				},
 				{
 					"name": "Lookup a Model transcoding by ID.",
-					"_postman_id": "2a8e1330-b4d1-4e70-b355-936e3c1c9e0a",
+					"_postman_id": "798a66dd-4259-4d13-87f4-c7a6486f8f56",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2073,7 +2133,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/transcodings/:modelTranscodingId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings/:modelTranscodingId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2081,6 +2141,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"transcodings",
@@ -2101,7 +2163,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f9ce2e4d-f676-4012-ba56-a383fd97db93",
+			"_postman_id": "72835fbd-f5ce-4284-8751-a2e83f424cba",
 			"description": "Allows machine learning Model management and registration (Model artifact that is created by the training process)."
 		},
 		{
@@ -2109,7 +2171,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of insights.",
-					"_postman_id": "5588ae0d-3341-4eae-90af-2a74b37e46e1",
+					"_postman_id": "fc77616f-43f6-478a-99b4-af98cf1c4e43",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2151,7 +2213,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights",
+							"raw": "https://platform.adobe.io/data/sensei/insights",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2159,6 +2221,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights"
 							]
 						},
@@ -2168,7 +2232,7 @@
 				},
 				{
 					"name": "Add a new Model insight.",
-					"_postman_id": "0d1c9587-1dc6-419c-82e9-bd94f8b95fad",
+					"_postman_id": "7eb01038-6b61-46a1-8f1a-52edc3072c33",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2214,7 +2278,7 @@
 							"raw": "{{insight}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights",
+							"raw": "https://platform.adobe.io/data/sensei/insights",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2222,6 +2286,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights"
 							]
 						},
@@ -2231,7 +2297,7 @@
 				},
 				{
 					"name": "Lookup an insight by ID.",
-					"_postman_id": "ad5f4089-9249-4126-bbe7-cd12daebacee",
+					"_postman_id": "2223a32c-9622-4a5c-976d-43b451aac83a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2273,7 +2339,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights/:insightId",
+							"raw": "https://platform.adobe.io/data/sensei/insights/:insightId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2281,6 +2347,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights",
 								":insightId"
 							],
@@ -2297,7 +2365,7 @@
 				},
 				{
 					"name": "Retrieve a list of default metrics for algorithms.",
-					"_postman_id": "b3889362-947d-4b0f-aa5e-0ae82373597b",
+					"_postman_id": "cd053a6c-ec1c-4cf8-99ba-f7fbfa121ff1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2339,7 +2407,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights/metrics?algorithm={{algorithm}}",
+							"raw": "https://platform.adobe.io/data/sensei/insights/metrics?algorithm={{algorithm}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2347,6 +2415,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights",
 								"metrics"
 							],
@@ -2362,7 +2432,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f6e3cb04-8a65-4a20-83db-82c33caec83b",
+			"_postman_id": "0898f836-3fa4-4fbf-996c-1615bbfb6211",
 			"description": "Insights contain metrics which are used to empower a  data scientist to evaluate and choose optimal ML Models by displaying  relevant evaluation metrics."
 		},
 		{
@@ -2370,7 +2440,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of MLServices matching given criteria.",
-					"_postman_id": "63a691ac-f15c-4e71-9155-e97f45ad1f17",
+					"_postman_id": "22793493-435e-46c0-9aad-bfb267e0a9ba",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2412,7 +2482,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2420,6 +2490,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices"
 							]
 						},
@@ -2429,7 +2501,7 @@
 				},
 				{
 					"name": "Add a new MLService.",
-					"_postman_id": "85cb93ae-76fe-4fbc-9bee-450391f7f190",
+					"_postman_id": "e9da5575-0b8f-4064-9a1a-6c2b9307955b",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2475,7 +2547,7 @@
 							"raw": "{{mlService}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2483,6 +2555,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices"
 							]
 						},
@@ -2492,7 +2566,7 @@
 				},
 				{
 					"name": "Delete MLServices by mlInstanceId.",
-					"_postman_id": "9ed51662-7897-4c06-9ad4-09795f2490b0",
+					"_postman_id": "471ee729-91b0-4f89-922c-47a42b28d018",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2534,7 +2608,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices?mlInstanceId={{mlInstanceId}}",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices?mlInstanceId={{mlInstanceId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2542,6 +2616,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices"
 							],
 							"query": [
@@ -2557,7 +2633,7 @@
 				},
 				{
 					"name": "Lookup MLService by ID.",
-					"_postman_id": "3d37dc56-ecc8-49fa-b177-27635ef48d60",
+					"_postman_id": "771d845b-2821-4042-bca4-c4f0bcba5796",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2599,7 +2675,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices/:serviceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2607,6 +2683,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices",
 								":serviceId"
 							],
@@ -2622,7 +2700,7 @@
 				},
 				{
 					"name": "Update a MLService by ID.",
-					"_postman_id": "db96705e-a118-4be7-99f5-a247562588dc",
+					"_postman_id": "051bb581-58ff-4f2c-90e0-323e641a3ed2",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2668,7 +2746,7 @@
 							"raw": "{{mlService}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices/:serviceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2676,6 +2754,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices",
 								":serviceId"
 							],
@@ -2691,7 +2771,7 @@
 				},
 				{
 					"name": "Delete an existing MLService by ID.",
-					"_postman_id": "45e8bdbe-ac53-4316-a29c-f7cc003d709d",
+					"_postman_id": "697a00a1-67dc-4837-be92-2a9e8a78505b",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2733,7 +2813,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices/:serviceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2741,6 +2821,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices",
 								":serviceId"
 							],
@@ -2755,7 +2837,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "037e855d-eeaa-4f70-be23-c59ecfc9dd78",
+			"_postman_id": "ebd4c09a-d288-44a1-9313-6e15a6ec2ce0",
 			"description": "TMLServices represent an MLInstance which has been published as a service."
 		}
 	]

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "03344692-cc9f-412d-a375-5751fe8f02bc",
+		"_postman_id": "57c06f17-1d68-40b7-b181-7bdd3c4a9a23",
 		"name": "Schema Registry API",
 		"description": "The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.\n\nRelated documentation:\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md\">XDM System in Adobe Experience Platform</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_composition/schema_composition.md\">Basics of schema composition</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md\">Schema Registry API developer guide</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/tutorials/schema_registry_api_tutorial/schema_registry_api_tutorial.md\">Create a schema using the Schema Registry API</a>\n  \nVisualize API calls with Postman (a free, third-party software):\n  * [Schema Registry API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Schema%20Registry%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/schemaregistry\n  * Example of a complete path for making a call to \"/stats\": https://<span>platform.adobe.io/data/foundation/schemaregistry/stats\n\nRequired headers:\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, see the <a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md\">authentication tutorial</a>.\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All GET requests to the Schema Registry require an `Accept` header to determine what data is returned by the system. See the <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md#accept-header\">section on Accept headers</a> in the Schema Registry developer guide for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Return {TENANT_ID} and Schema Registry usage information.",
-					"_postman_id": "034525d1-877b-4086-ae83-5546aa1c27c9",
+					"_postman_id": "1a09c623-48f1-431f-ac2c-d0ed3b09a74f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -75,7 +75,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "76251f8d-ba1c-4f4c-a54f-e14c7fafe557",
+			"_postman_id": "026f13e2-a00b-4641-8b80-d39081adf602",
 			"description": "Returns {TENANT_ID} along with information regarding IMS Org usage of the Schema Registry such as resource counts, recently created resources, and class usage."
 		},
 		{
@@ -83,7 +83,7 @@
 			"item": [
 				{
 					"name": "List all schemas within the specified container.",
-					"_postman_id": "9d982616-c546-4711-aa0f-137cb6bb5369",
+					"_postman_id": "261d69d3-c586-4299-9c41-b72f668eee3d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -175,7 +175,7 @@
 				},
 				{
 					"name": "Create a new tenant-defined schema.",
-					"_postman_id": "203bf1ff-858a-4094-b328-806c3bb5640b",
+					"_postman_id": "ec11e157-be17-4645-a309-3bd1999aa6d4",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -248,7 +248,7 @@
 				},
 				{
 					"name": "Lookup a specific schema by its unique ID.",
-					"_postman_id": "43393162-236e-4b45-9441-f588816f6496",
+					"_postman_id": "aa14745a-9775-41da-aca2-ac06d1f81a38",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -326,7 +326,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined schema.",
-					"_postman_id": "bc214f4a-425b-4414-8749-6343b78ade87",
+					"_postman_id": "db39db52-8370-4144-abe2-f4e73c77953f",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -404,7 +404,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined schema.",
-					"_postman_id": "9b1eddeb-529a-4b52-b38e-2995bdd594ea",
+					"_postman_id": "07051932-7e06-483c-b5af-3895f047a86d",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -482,7 +482,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined schema from the registry.",
-					"_postman_id": "a53a0f17-583e-4b9a-a212-fd183bf3f0eb",
+					"_postman_id": "3121237d-7a01-4c8e-ae8d-b215dbaf00e5",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -559,7 +559,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "43f759b2-15b9-4c05-a423-f8e7f81aeeb4",
+			"_postman_id": "1c3d84e1-62b0-4ba8-9fb3-62c9fac353db",
 			"description": "Schemas provide an abstract definition of a real-world object along with constraints and expectations that can be applied and used to validate data."
 		},
 		{
@@ -567,7 +567,7 @@
 			"item": [
 				{
 					"name": "Return a list of all mixins within the specified container.",
-					"_postman_id": "fa483e27-db22-48dc-87f9-8ccf031ed9e8",
+					"_postman_id": "7c17cf58-9b18-4a6e-b65d-0d75953f838d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -658,7 +658,7 @@
 				},
 				{
 					"name": "Create a new tenant-defined mixin.",
-					"_postman_id": "1d7461eb-30fb-4e7b-8c80-8507677a35c7",
+					"_postman_id": "99aed1fb-930d-4a4b-8b22-fc7599e6f5d5",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -731,7 +731,7 @@
 				},
 				{
 					"name": "Lookup a specific mixin by its unique ID.",
-					"_postman_id": "092faf7e-40b4-4e74-99a3-39aa5a201ea7",
+					"_postman_id": "69d28747-e8ad-4e12-95de-286d0f43c964",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -808,7 +808,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined mixin.",
-					"_postman_id": "d66778e8-4750-431b-8580-091fcd451b0a",
+					"_postman_id": "422256b1-1660-4251-8184-688c004292a8",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -886,7 +886,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined mixin.",
-					"_postman_id": "8f4cadec-03c3-474c-9351-fcbd793577d8",
+					"_postman_id": "51e1ac03-65e4-47ac-86ac-ae30d5c74f72",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -964,7 +964,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined mixin from the registry.",
-					"_postman_id": "6777480b-96f5-4de5-a0fc-f895c9f1d8df",
+					"_postman_id": "a17b56e7-0557-41dc-9484-616a77900c37",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1041,7 +1041,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d9845cb8-1d44-4e2c-aee3-083f995ac548",
+			"_postman_id": "7ffbf10c-c82f-49b5-bc1b-97256a45361e",
 			"description": "A mixin is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
 		},
 		{
@@ -1049,7 +1049,7 @@
 			"item": [
 				{
 					"name": "List all classes in the specified container.",
-					"_postman_id": "53475bda-679b-44ec-ada4-7ce1af70a11d",
+					"_postman_id": "b94943d2-4837-4fec-9dda-25efb2ef7089",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1140,7 +1140,7 @@
 				},
 				{
 					"name": "Create a tenant-defined class.",
-					"_postman_id": "c0a5ecac-1678-4a11-9b63-d9f7198dcf44",
+					"_postman_id": "f2890d66-660a-4e88-b3b1-0225a5007c53",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1213,7 +1213,7 @@
 				},
 				{
 					"name": "Lookup a specific class by its unique ID.",
-					"_postman_id": "06185220-4851-49aa-b507-8fd221dd9c21",
+					"_postman_id": "2376bbc5-b306-440d-b0eb-bab3b118685a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1290,7 +1290,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined class.",
-					"_postman_id": "1b2a88f5-a510-4d32-ae54-3f4fdd76f542",
+					"_postman_id": "36bd24e7-0ef9-4d68-8764-5d57044e8ce8",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1368,7 +1368,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined class.",
-					"_postman_id": "393003da-6b97-4a93-8e04-8f0eb6f2f9df",
+					"_postman_id": "d88f1c20-9e16-48b7-a588-5658190a37a0",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1446,7 +1446,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined class from the registry.",
-					"_postman_id": "f5caf342-5d8f-481c-96ee-c5c847377913",
+					"_postman_id": "4e43221c-2817-4e2f-8221-41aec7c3fd65",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1523,7 +1523,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a9e8807d-12d4-47cf-a47d-d7655aafa9f0",
+			"_postman_id": "ad39c135-8c0d-440a-abb2-e6d5d0b5751d",
 			"description": "Classes define behavioral aspects of the data within the schema and describe the smallest number of common properties contained in all schemas that implement the same class."
 		},
 		{
@@ -1531,7 +1531,7 @@
 			"item": [
 				{
 					"name": "List all data types in the specified container.",
-					"_postman_id": "530a244f-04a7-477e-90aa-54cc87b98c44",
+					"_postman_id": "89badcf6-2ecf-4cf2-9a99-14e62bf137ae",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1622,7 +1622,7 @@
 				},
 				{
 					"name": "Create a tenant-defined data type.",
-					"_postman_id": "3db51ace-72c8-4194-b669-54fbf8a5b32a",
+					"_postman_id": "0cc6120c-8bea-4e82-b55d-c09796930267",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1695,7 +1695,7 @@
 				},
 				{
 					"name": "Returns the datatype schema associated with the given identifier.",
-					"_postman_id": "8eee4205-d064-4d02-be0d-86ca18e15204",
+					"_postman_id": "e681842f-4565-4571-b2ce-3482aec15097",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1772,7 +1772,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined data type.",
-					"_postman_id": "a470d369-d32f-4d4e-a853-e7a6f7a4f095",
+					"_postman_id": "1ab4bcc9-9482-4a4e-a534-9c9c5ab01bd4",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1850,7 +1850,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined data type.",
-					"_postman_id": "5f1cc767-c04b-4668-b2a0-5fd721cafd83",
+					"_postman_id": "cbd21e52-58b1-4e41-a702-009331f9c473",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1928,7 +1928,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined data type from the registry.",
-					"_postman_id": "001415d6-4dba-4ad5-8b28-95ad9542e1fa",
+					"_postman_id": "52b421f5-a3db-4a65-8b7f-9ea8b4de76c6",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2005,7 +2005,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d00b8d13-b6d7-4c77-adb7-49d0032a4abf",
+			"_postman_id": "ebf713a3-89a2-4508-8372-e40debf6dc8c",
 			"description": "Data types are used as reference field types in classes or schemas to define complex types. Data types may define multiple sub-fields providing a consistent multi-field structure."
 		},
 		{
@@ -2013,7 +2013,7 @@
 			"item": [
 				{
 					"name": "List all descriptors within the specified container, by type.",
-					"_postman_id": "032dd8a4-cf63-4af7-8ca5-63274e8643d5",
+					"_postman_id": "43f67933-0398-4c12-8c7e-3f4bb969e210",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2086,7 +2086,7 @@
 				},
 				{
 					"name": "Create a new descriptor. Required fields in payload vary based on @type.",
-					"_postman_id": "60756114-e1c9-4460-b362-22c0cde541eb",
+					"_postman_id": "1b803eb6-a83e-4351-a128-52c4708ccb3e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2159,7 +2159,7 @@
 				},
 				{
 					"name": "Lookup specific descriptor by its @id.",
-					"_postman_id": "6425bb64-389e-4304-86f7-6bb08151a16a",
+					"_postman_id": "69370d40-d957-4340-a08f-a774fc74d84b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2237,7 +2237,7 @@
 				},
 				{
 					"name": "Update a descriptor. Required fields in payload vary based on @type.",
-					"_postman_id": "9ed93d91-533e-4969-baa9-3935f197dea9",
+					"_postman_id": "8d8fa981-09fc-4ece-b000-28e4fffcaeb5",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2315,7 +2315,7 @@
 				},
 				{
 					"name": "Remove a descriptor using its @id.",
-					"_postman_id": "4358a442-65af-449b-b47a-4928888a3e57",
+					"_postman_id": "ea19af73-1c9b-4124-b049-a17d152161c2",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2392,7 +2392,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0a8e12a3-29da-4207-90aa-262def7c2b2e",
+			"_postman_id": "ad6ab509-2ce4-400d-b812-d2085a0656eb",
 			"description": "Schema descriptors are tenant-level metadata used to provide interpretive details on how data based on certain schemas may relate or interact with one another."
 		},
 		{
@@ -2400,7 +2400,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of union views.",
-					"_postman_id": "d6a3fa59-5d2f-4cbc-ab5e-3aa2becdcc41",
+					"_postman_id": "90e9564a-75b2-46f2-afed-0d12f4bb4097",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2484,7 +2484,7 @@
 				},
 				{
 					"name": "Lookup a union view by ID.",
-					"_postman_id": "8c05b9e1-58c9-450e-87b9-11fb1baadcf6",
+					"_postman_id": "a41fa94e-d3bf-41de-9de5-3b9104af7897",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2556,7 +2556,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1595088e-8354-4ae4-8a4a-86f5cf0bf37a",
+			"_postman_id": "7078ba06-47c7-433b-a5ba-ec18f179691a",
 			"description": "Union views aggregate the fields of all schemas that implement the same class (such as ExperienceEvent or Profile) into a single schema. They are used by Real-time Customer Profile to merge data together to form a \"single source of truth\" for an individual."
 		}
 	]

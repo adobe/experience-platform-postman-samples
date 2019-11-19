@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8d625079-e843-422f-86b8-b8beba209efd",
+		"_postman_id": "442471bc-a56b-4d85-bddb-33ad28722623",
 		"name": "Sandbox API",
 		"description": "Adobe Experience Platform provides virtual sandbox environments which provide isolation and access control for Platform integrations. Sandboxes can be used for application lifecycle management, project management, and building customized development ecosystems.\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/sandbox-management\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/sandbox-management/sandboxes\n\nRequired headers:\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, see the <a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md\">authentication tutorial</a>.\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of active sandboxes for the current user.",
-					"_postman_id": "36552b06-0f54-488b-85b8-f9122c8e8b0f",
+					"_postman_id": "46277f5e-853c-426c-8952-49b7eaecca95",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -78,7 +78,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "bddfbe08-c6ef-440f-8943-8d270866fcda",
+			"_postman_id": "4865200d-3d7b-4cfc-aa22-8e2c01d3d6e5",
 			"description": "Sandbox operations available to all users."
 		},
 		{
@@ -86,7 +86,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of supported sandbox types.",
-					"_postman_id": "c807391a-57db-4191-b47a-e1d3926eb3a8",
+					"_postman_id": "11339fae-d224-42b6-95d8-4f29ad423496",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -147,7 +147,7 @@
 				},
 				{
 					"name": "Retrieve a list of all sandboxes belonging to your IMS Organization.",
-					"_postman_id": "b481eb2d-f568-40be-9e5b-c8941626928a",
+					"_postman_id": "d4d822df-830f-41fa-93f9-268876e54734",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -229,7 +229,7 @@
 				},
 				{
 					"name": "Create a new sandbox.",
-					"_postman_id": "5f69933d-449c-4329-80d3-f9c3301d0108",
+					"_postman_id": "7477b483-87ef-4c3f-8326-5bddce4cc72e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -301,7 +301,7 @@
 				},
 				{
 					"name": "Retrieve a sandbox by name.",
-					"_postman_id": "e19334cc-529c-409c-8531-5cc6eded1259",
+					"_postman_id": "f60e76db-3008-4bb0-ba1d-000e5def3196",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -380,7 +380,7 @@
 				},
 				{
 					"name": "Reset a sandbox by name.",
-					"_postman_id": "96959aac-6791-42cb-8f7d-9e42a2c8ad3d",
+					"_postman_id": "a5daec93-4126-4d1b-ab0e-b28ed2ca2ca0",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -459,7 +459,7 @@
 				},
 				{
 					"name": "Update a sandbox by name.",
-					"_postman_id": "e0a576f3-c56e-449d-ae79-5d5f6cacbcae",
+					"_postman_id": "636276b2-d245-4153-8cc4-3c40b4f42cf8",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -538,7 +538,7 @@
 				},
 				{
 					"name": "Delete a sandbox by name.",
-					"_postman_id": "06b4f664-e270-4270-aa97-921091d53f4d",
+					"_postman_id": "e200906a-fcde-433b-9c4e-c6fdf2b4b5b6",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -616,7 +616,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "266801f6-b2e5-4ebd-bdf5-a9a6b8a59f0d",
+			"_postman_id": "bc59be3d-64cc-4fe1-8aa0-3b762d5304b1",
 			"description": "Sandbox operations available only to admins. Sandbox admin privileges are managed through the <a href='https://adminconsole.adobe.com'>Adobe Admin Console</a>."
 		}
 	]

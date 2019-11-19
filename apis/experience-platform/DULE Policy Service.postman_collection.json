@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "13b28f2b-927a-4d49-8e47-47c954e6ffce",
+		"_postman_id": "94e2276e-5e73-4494-891f-6b326416b9a3",
 		"name": "DULE Policy Service",
 		"description": "The Data Usage Labeling and Enforcement (DULE) framework simplifies and streamlines the process of categorizing data and creating data usage policies. Once data labels have been applied and data usage policies are in place, marketing actions can be evaluated to ensure the correct use of data.\nThe Policy Service API is used to manage and evaluate policies on marketing actions in the presence of data usage labels.\n\nRelated documentation:\n  * [Data Governance overview](https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html)\n  * [Supported data usage labels](https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html#!api-specification/markdown/narrative/technical_overview/data_governance/dule_supported_labels.md)\n  * [Working with Data Usage Labels](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/dule_working_with_labels.md)\n  * [DULE Policy Service developer guide](https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html#!api-specification/markdown/narrative/technical_overview/data_governance/dule_policy_service_developer_guide.md)\n  * [Create and evaluate a DULE policy](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/create_a_dule_policy_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [DULE Policy Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/DULE%20Policy%20Service.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/dulepolicy\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/dulepolicy/policies/core\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "List all core policies.",
-					"_postman_id": "029de56f-bb59-4073-8eff-cb09e65f5502",
+					"_postman_id": "55ca84b0-23a5-4e20-b9de-ba79e473d0e4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -57,7 +57,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/core?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}&duleLabels={{duleLabels}}&marketingAction={{marketingAction}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/core?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}&duleLabels={{duleLabels}}&marketingAction={{marketingAction}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -65,6 +65,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"core"
 							],
@@ -100,7 +103,7 @@
 				},
 				{
 					"name": "View a specific core policy by its \"id\".",
-					"_postman_id": "46076ed5-a67a-47f3-bc27-8aa148d7b2b0",
+					"_postman_id": "392450b1-4b28-447f-9528-910d55ae06f4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -146,7 +149,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/core/:policyId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/core/:policyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -154,6 +157,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"core",
 								":policyId"
@@ -170,7 +176,7 @@
 				},
 				{
 					"name": "List all custom policies.",
-					"_postman_id": "cb12db18-f013-4169-8154-2dc726922715",
+					"_postman_id": "7eba543b-f688-435e-8f20-9ea4233471e0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -209,7 +215,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/custom",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -217,6 +223,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"custom"
 							]
@@ -226,7 +235,7 @@
 				},
 				{
 					"name": "Create a new custom policy.",
-					"_postman_id": "95977f31-723d-4765-8fd5-3bcd04e7b202",
+					"_postman_id": "3e26bb54-22b6-45f3-b9b5-4e010d510af2",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -265,7 +274,7 @@
 							"raw": "{{policy}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/custom",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -273,6 +282,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"custom"
 							]
@@ -282,7 +294,7 @@
 				},
 				{
 					"name": "View a specific custom policy by its \"id\".",
-					"_postman_id": "d724fc1e-ec70-4ce4-b5a1-ab7b18f8fd72",
+					"_postman_id": "88807b1b-fdbb-4071-aabc-094e0a35485d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -328,7 +340,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/custom/:policyId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -336,6 +348,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"custom",
 								":policyId"
@@ -352,7 +367,7 @@
 				},
 				{
 					"name": "Update a custom policy.",
-					"_postman_id": "83f3753d-4038-4a94-bed5-58fff9904447",
+					"_postman_id": "e6019253-9beb-4eb2-b330-9ccd7366f526",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -398,7 +413,7 @@
 							"raw": "{{policy}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/custom/:policyId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -406,6 +421,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"custom",
 								":policyId"
@@ -422,7 +440,7 @@
 				},
 				{
 					"name": "Update a portion of a custom policy.",
-					"_postman_id": "d3242117-ca17-453b-b84e-f7fc07e69dde",
+					"_postman_id": "381bb906-fd1d-41e2-aaee-9fe7173b135c",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -468,7 +486,7 @@
 							"raw": "{{policyPatchInstructions}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/custom/:policyId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -476,6 +494,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"custom",
 								":policyId"
@@ -492,7 +513,7 @@
 				},
 				{
 					"name": "Delete a custom policy.",
-					"_postman_id": "e0cc7797-5fb6-4c27-8808-5d40339b85fa",
+					"_postman_id": "17d54f4a-49b4-4e28-a25a-da484afaca2c",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -538,7 +559,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/policies/custom/:policyId",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/policies/custom/:policyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -546,6 +567,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"policies",
 								"custom",
 								":policyId"
@@ -561,7 +585,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0b710f36-b6d7-45e5-ba24-b066c2a1dff3",
+			"_postman_id": "b26afb94-2721-4d9f-8e85-4014e260effc",
 			"description": "Data usage policies are rules that describe the kinds of marketing actions that are allowed or not allowed to be performed on data within Adobe Experience Platform."
 		},
 		{
@@ -569,7 +593,7 @@
 			"item": [
 				{
 					"name": "List all core marketing actions.",
-					"_postman_id": "e8fa1551-b056-4e22-9b60-c8600480dfc0",
+					"_postman_id": "d8fe5240-a08d-4082-8e4b-404bb20c66cc",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -608,7 +632,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/core",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -616,6 +640,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"core"
 							]
@@ -625,7 +652,7 @@
 				},
 				{
 					"name": "View a specific core marketing action by \"name\".",
-					"_postman_id": "65300b23-cbdc-4a5a-a885-bd793b7ab58c",
+					"_postman_id": "e7eca9bf-d970-4b31-a1de-dfc1a0094fc3",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -671,7 +698,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/core/:marketingActionName",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core/:marketingActionName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -679,6 +706,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"core",
 								":marketingActionName"
@@ -695,7 +725,7 @@
 				},
 				{
 					"name": "View policies violated by the presence of DULE labels.",
-					"_postman_id": "8d31110f-a352-406c-8e84-b275808927d5",
+					"_postman_id": "be815e82-da1d-4705-ac76-0a703fd56250",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -741,7 +771,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/core/:marketingActionName/constraints",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core/:marketingActionName/constraints",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -749,6 +779,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"core",
 								":marketingActionName",
@@ -767,7 +800,7 @@
 				},
 				{
 					"name": "View policies violated if marketing action attempted on certain entities.",
-					"_postman_id": "46089e8c-84f4-4d98-819a-a24eeba06b44",
+					"_postman_id": "9624f9df-a1b4-4f24-a398-9ab839d048a2",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -813,7 +846,7 @@
 							"raw": "{{entityList}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/core/:marketingActionName/constraints",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/core/:marketingActionName/constraints",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -821,6 +854,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"core",
 								":marketingActionName",
@@ -839,7 +875,7 @@
 				},
 				{
 					"name": "List all custom marketing actions.",
-					"_postman_id": "33ac9493-4754-4d2d-96bb-9cf6d96f022a",
+					"_postman_id": "e5c8fb11-e51b-4b55-a788-ab6b4b39b5db",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -878,7 +914,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/custom",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -886,6 +922,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"custom"
 							]
@@ -895,7 +934,7 @@
 				},
 				{
 					"name": "View a specific custom marketing action by its \"name\"",
-					"_postman_id": "d39b9803-bc7b-4da3-b203-7f3eb60cc339",
+					"_postman_id": "4debc3a4-1c7b-4105-8352-a01f3f0a3134",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -941,7 +980,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/custom/:marketingActionName",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -949,6 +988,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"custom",
 								":marketingActionName"
@@ -965,7 +1007,7 @@
 				},
 				{
 					"name": "Create or update a custom marketing action.",
-					"_postman_id": "be4774b2-b3cc-4708-8323-053bc941a57b",
+					"_postman_id": "a9b61997-ed92-42bc-8f41-7e3b6e26c208",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1011,7 +1053,7 @@
 							"raw": "{{marketingAction}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/custom/:marketingActionName",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1019,6 +1061,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"custom",
 								":marketingActionName"
@@ -1035,7 +1080,7 @@
 				},
 				{
 					"name": "Delete a custom marketing action.",
-					"_postman_id": "d69349c8-78e5-4133-ad6d-f3ad587ff211",
+					"_postman_id": "423bc0e9-5ee2-4460-841d-982f916d6d15",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1081,7 +1126,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/custom/:marketingActionName",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1089,6 +1134,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"custom",
 								":marketingActionName"
@@ -1105,7 +1153,7 @@
 				},
 				{
 					"name": "View policies violated by the presence of DULE labels.",
-					"_postman_id": "b143ed09-f1f8-4545-b171-42a41412ade3",
+					"_postman_id": "3fd68869-39d5-4e96-9f6f-f2e06503a63e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1151,7 +1199,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/custom/:marketingActionName/constraints?duleLabels={{duleLabels}}&includeDraft=false",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName/constraints?duleLabels={{duleLabels}}&includeDraft=false",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1159,6 +1207,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"custom",
 								":marketingActionName",
@@ -1187,7 +1238,7 @@
 				},
 				{
 					"name": "View policies violated if marketing action attempted on certain entities.",
-					"_postman_id": "82cd9d5a-e070-4281-8127-d8698fbd60e2",
+					"_postman_id": "2f51b3ba-c9a3-4909-adf1-68b75e86b753",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1233,7 +1284,7 @@
 							"raw": "{{entityList}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/marketingActions/custom/:marketingActionName/constraints?includeDraft=false",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/marketingActions/custom/:marketingActionName/constraints?includeDraft=false",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1241,6 +1292,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"catalog",
 								"marketingActions",
 								"custom",
 								":marketingActionName",
@@ -1264,7 +1318,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "db732808-90c0-4bc1-b96b-02ee9c5dba33",
+			"_postman_id": "c66f9aae-d2d2-4009-96fc-ded2f1c48cb1",
 			"description": "Marketing actions, in the context of Data Governance, are actions that an Experience Platform data consumer takes, for which there is a need to check for violations of data usage policies."
 		}
 	]
