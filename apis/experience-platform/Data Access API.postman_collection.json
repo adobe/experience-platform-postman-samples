@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "45439ba8-da8f-4454-9c8b-82a14ae00798",
+		"_postman_id": "260e816b-4917-4a33-9a13-39adc51e51ec",
 		"name": "Data Access API",
 		"description": "\nData Access facilitates the access and egress of data within Adobe Experience Platform. This includes, but not limited to, the following operations:\n  * Access and download dataset files under a batch\n  * Retrieve header information regarding files\n  * Parallel / resumable downloads using HTTP range headers\n  * Pagination support for directory listings\n  * List dataset files under a succeeded/failed batch\n  * Preview CSV and Parquet files\n\n\nRelated documentation:\n  * [Data Access technical overview](https://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md)\n  * [Query dataset data using the Data Access API](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Data Access API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Access%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/export\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/export/batches/{batchId}/files\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,32 @@
 			"item": [
 				{
 					"name": "Get dataset files under a batch.",
-					"_postman_id": "cacd8349-070f-4902-9d91-4e7e547212a3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "04eabf26-fa2c-40f2-8067-c0a1d2ad5919",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -91,7 +116,32 @@
 				},
 				{
 					"name": "Get dataset files under a failed batch.",
-					"_postman_id": "f505d49b-ebdb-4a4b-b509-1ef17e202c53",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "75957679-a82c-41e0-8c06-e2a93c3d6ef8",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -174,7 +224,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0e068b33-80be-46b2-9707-c6818a0a22f1",
+			"_postman_id": "33bde0ff-46ba-4cc0-8700-e79572cb36d4",
 			"description": "Configure data access and egress for Experience Platform."
 		},
 		{
@@ -182,7 +232,32 @@
 			"item": [
 				{
 					"name": "Access / download a file.",
-					"_postman_id": "0fbfd14d-05fa-43c2-bddf-0b1fa4dab867",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "831b9a91-5e04-4a5a-8743-ee1812a19018",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -272,7 +347,32 @@
 				},
 				{
 					"name": "Get headers regarding a file.",
-					"_postman_id": "d1bcc165-6a1b-4da3-8fa1-d61264cd95b4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "30729ffb-6251-40b8-a743-e33d15dbef1b",
 					"request": {
 						"method": "HEAD",
 						"header": [
@@ -342,7 +442,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "428b8f83-c4f6-40d8-af59-45ff5ba89ef9",
+			"_postman_id": "31807119-a663-41d7-b6eb-1c8b9cee554c",
 			"description": "Retrieve headers containing metadata for a file specified by ID."
 		},
 		{
@@ -350,7 +450,32 @@
 			"item": [
 				{
 					"name": "Preview files.",
-					"_postman_id": "e788ea86-87a1-4bb1-9763-f64178c2ba37",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "0fa3f132-7a5e-4830-b7ab-b235a91e06da",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -419,7 +544,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a9e0e532-7993-41cd-851a-42743853fd7c",
+			"_postman_id": "87b73fed-454f-4691-8b74-de1d245f5bc3",
 			"description": "Retrieve the first 100 rows of CSV or Parquet files."
 		}
 	]

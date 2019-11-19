@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b6177983-54fb-4163-9780-06e5d4f1774e",
+		"_postman_id": "35c9ff80-ac38-477b-bc09-d8cf64739efe",
 		"name": "Privacy Service API",
 		"description": "Adobe Experience Platform Privacy Service provides a common, centralized facilitation of access/delete requests and opt-out-of-sale requests for private data. The service includes a UI for selecting and creating requests, a business layer that processes incoming and outgoing traffic, a data store for audit and logging information, and temporary storage for data retrieval while requests are pending or waiting to be viewed.\n\nRelated documentation:\n  * [Privacy Service overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/privacy_service_overview.md)\n  * [Privacy Service API tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/privacy_service_tutorial/privacy_service_api_tutorial.md)\n  * [GDPR on Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/gdpr-on-platform-overview.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Privacy Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Privacy%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/privacy/jobs\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/privacy/jobs/ping\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -17,12 +17,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "6d416b98-c813-40df-a13d-956c36834433",
+					"_postman_id": "f49e5651-d4c9-4cb6-81e4-ad5350a4a043",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -99,12 +113,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "644ee1fb-b46c-4cba-aae0-892bc1e40594",
+					"_postman_id": "14c71cee-09b4-46a9-b7dd-02389cbc2b99",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -176,12 +204,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "261dc2f1-ae71-4af2-8e66-cc344f22684e",
+					"_postman_id": "35a22941-4b71-4537-9298-ca6ce67aa925",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -244,12 +286,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "8eafc29d-ff9f-4b32-979a-fa35e328d4e4",
+					"_postman_id": "dd6671b2-f835-4d14-a4d1-98a0c085e295",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -318,12 +374,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "668045f8-7318-46e4-a595-a7daa147b3db",
+					"_postman_id": "0b0abc65-dae3-460f-9aed-54e3a4d5b667",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -387,7 +457,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8efdc218-a469-4087-8202-c6992168c594",
+			"_postman_id": "46e2e803-3686-439a-9f43-7bc83b9bcd71",
 			"description": "Retrieve and create access/delete requests, including child jobs for existing requests."
 		},
 		{
@@ -401,12 +471,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "2153c513-4c02-48fa-b8d4-e930233bf28c",
+					"_postman_id": "335dafd0-e62d-4e7e-bf5a-841e582f3081",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -481,12 +565,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "0849125b-627d-4809-85bc-96b35e9c798a",
+					"_postman_id": "5f41254e-471d-4d8b-a456-c9c38ef00c16",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -570,7 +668,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "aa4628a7-c5a5-43ab-a37c-ebf0d026ac44",
+			"_postman_id": "edc2c828-b0f7-4ecb-be19-b3610cdf4678",
 			"description": "View and upload files from various Adobe solutions for specified job requests."
 		},
 		{
@@ -584,12 +682,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "89ab180b-c079-4f93-a7e0-a399e2fb8a06",
+					"_postman_id": "1a446244-455d-4317-923a-b17ce3bf7d21",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -652,7 +764,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "02a55eb8-2339-4c28-a9cd-3daff61d9c88",
+			"_postman_id": "a32519f3-6f92-4987-a21e-f305fe7723ae",
 			"description": "Check the processing status of access or delete requests by supplying a status code integer as a query parameter."
 		},
 		{
@@ -666,12 +778,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "720a3c5c-ef78-4d01-86ae-09f134bd8596",
+					"_postman_id": "2540de01-6614-44dd-a650-331614236dba",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -735,12 +861,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "863a2f52-f34b-40b8-980d-f171a41e8fc7",
+					"_postman_id": "d830c0a2-3906-404f-9d97-733fc6a0935d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -804,7 +944,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2c79ebf5-b4e7-4b26-b880-3428deba6412",
+			"_postman_id": "bd35c60e-65d7-422b-ae18-7aa8fa7bf162",
 			"description": "View details of Adobe products available within your organization's Privacy Service integrations."
 		},
 		{
@@ -818,12 +958,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "dd4612f2-be3f-45fc-9d68-4f7dc09685b5",
+					"_postman_id": "4a49e59e-7d7e-4dd3-858a-20e6c545abbe",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -887,12 +1041,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "42452dc1-7a43-45bd-8b98-ff1345da688c",
+					"_postman_id": "20ede596-c100-41d9-a997-fc9ec9e4ad54",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -956,12 +1124,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "7bce8686-c70f-440f-a39b-0735fa17f986",
+					"_postman_id": "4e85b068-9e40-4b6b-a27a-1619f68198ed",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1032,12 +1214,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "97dbe8c1-266d-47ac-8a05-9eeaa968df2d",
+					"_postman_id": "766cbaf1-ca33-43cb-bcae-814adcb224bb",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1108,12 +1304,26 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
 								]
 							}
 						}
 					],
-					"_postman_id": "fcf3592e-2a31-4bfc-b415-dcfa7e939249",
+					"_postman_id": "4d3150f5-cc80-46b7-aa03-3c7d90071358",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1177,7 +1387,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9588dcbf-37a4-4f06-adea-b38258fe3b4c",
+			"_postman_id": "6d7295aa-1ab5-43ba-bb43-7665b87adc95",
 			"description": "View, create, update, or delete users and their permissions within your organization's Privacy Service configuration."
 		}
 	]
