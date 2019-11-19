@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "92274a1d-b257-4de3-9174-41284a14840f",
+		"_postman_id": "7311eaec-94e3-426b-8ae8-9ddee1433d5d",
 		"name": "XDM Core Object Repository API",
 		"description": "Experience Data Model (XDM) Core Object Repository is an event-driven repository for XDM instances, fully integrated with Adobe Experience Platform. XDM Core Object Repository is part of Decisioning Service, which provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. Decisioning Service is controlled by a number of interrelated business objects. The XDM Core Object Repository API allows you to access and manage those business objects within the repository. \n\nRelated documentation:\n  * [Decisioning Service overview](https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md)\n  * [Managing Decisioning Service entities using APIs tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_entities_api_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [XDM Core Object Repository API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/XDM%20Core%20Object%20Repository%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/xcore\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/xcore\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -22,7 +22,7 @@
 							}
 						}
 					],
-					"_postman_id": "61ab6f41-9678-44ea-9c1b-185204f8662c",
+					"_postman_id": "2451929e-ae28-4eb7-84fa-62a9b746882e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -82,7 +82,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/queries/core/search?schema={{schema}}&q={{q}}&qop={{qop}}&field={{field}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/queries/core/search?schema={{schema}}&q={{q}}&qop={{qop}}&field={{field}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -90,6 +90,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"queries",
 								"core",
@@ -153,7 +156,7 @@
 							}
 						}
 					],
-					"_postman_id": "d45bda07-c81f-44a2-aa7a-051a639bce6d",
+					"_postman_id": "f53c22fc-ed99-4a00-b764-e61d845698df",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -213,7 +216,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances?schema={{schema}}&id={{id}}&name={{name}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances?schema={{schema}}&id={{id}}&name={{name}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -221,6 +224,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances"
 							],
@@ -266,7 +272,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "297bd8be-26e0-403e-a21f-01dd662e60c2",
+			"_postman_id": "f26dc1ff-6b54-4990-b1be-08a97ccb9366",
 			"description": "Core Queries against XDM instances."
 		},
 		{
@@ -285,7 +291,7 @@
 							}
 						}
 					],
-					"_postman_id": "d2e980e8-2bdd-4566-9361-02117a14d4e6",
+					"_postman_id": "6cfcf9a1-67f4-4f3e-9bc7-04684a2ea3d2",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -345,7 +351,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -353,6 +359,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances"
 							],
@@ -380,7 +389,7 @@
 							}
 						}
 					],
-					"_postman_id": "ab617662-e40d-49df-861d-7be5f0fb98f7",
+					"_postman_id": "41a1d9fc-fc15-4ca9-9a27-4ecbe827b567",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -447,7 +456,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -455,6 +464,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -487,7 +499,7 @@
 							}
 						}
 					],
-					"_postman_id": "01ad2f35-cbfd-4351-b3e8-e991241f0a27",
+					"_postman_id": "032a043d-1e4c-440f-927f-80d700a66f8b",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -554,7 +566,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -562,6 +574,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -594,7 +609,7 @@
 							}
 						}
 					],
-					"_postman_id": "adaf348c-9526-47e6-9b80-88d16e27f228",
+					"_postman_id": "61719c2d-27fa-4ec7-93e5-02ac5f96998a",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -661,7 +676,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -669,6 +684,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -701,7 +719,7 @@
 							}
 						}
 					],
-					"_postman_id": "76864f8a-2305-45b0-8c7d-08827e9d0f58",
+					"_postman_id": "6ee445a6-0326-4c9e-b491-ef70ea870b02",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -768,7 +786,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -776,6 +794,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -796,7 +817,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "87bb32af-b69d-46b8-ae8e-052c97840f1a",
+			"_postman_id": "9b88877e-6e65-4f2e-afd9-6f549c9494c2",
 			"description": "Perform CRUD operations to add, edit, update, delete, and view instances via the primary `instanceId`."
 		},
 		{
@@ -815,7 +836,7 @@
 							}
 						}
 					],
-					"_postman_id": "106c0be8-7752-42c4-831e-5d215348995d",
+					"_postman_id": "94c10e2f-5c87-4dec-861d-2ec1cecb6713",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -875,7 +896,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/?product={{product}}&start={{start}}&limit={{limit}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/core/xcore/?product={{product}}&start={{start}}&limit={{limit}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -883,6 +904,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								""
 							],
 							"query": [
@@ -909,7 +933,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "5bfd7e24-9936-4a2e-82eb-a672a810ac04",
+			"_postman_id": "c2851bf4-ca3b-4677-9789-d6e11a9dab3a",
 			"description": "Home document for an IMS Organization. The home document is a HAL (Hypermedia Access Language) document which can be used as the hypermedia home directory for the IMS Organization specified. It lists relevant HAL links that can be traversed and also lists all of the containers belonging to the Org."
 		}
 	]

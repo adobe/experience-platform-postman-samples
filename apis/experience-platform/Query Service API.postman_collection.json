@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "faddaa58-ee4b-4b40-841f-461a2f9b441d",
+		"_postman_id": "311d629e-309f-4d9f-8282-06eb2767220e",
 		"name": "Query Service API",
 		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Query Service overview](https://www.adobe.io/apis/experienceplatform/home/services/query-service/query-service.html#!end-user/markdown/query-service/qs-intro.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Query Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Query%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Requests connection parameters for the interactive interface.",
-					"_postman_id": "2ffa9d5a-0069-4c9a-bcef-6865683a31c1",
+					"_postman_id": "caddaf06-bdec-49d9-885b-f28c04e9e31d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -71,7 +71,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connection_parameters",
+							"raw": "https://platform.adobe.io/data/foundation/query/connection_parameters",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -79,6 +79,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"connection_parameters"
 							]
 						}
@@ -86,7 +89,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0faf35b6-7405-4e4c-8564-eb486fe3330d",
+			"_postman_id": "2f2c5c1b-7350-4578-9a69-73a7797a8e58",
 			"description": "Retrieves connection parameters for the interactive interface."
 		},
 		{
@@ -94,7 +97,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of queries for this IMS Organization.",
-					"_postman_id": "7db6de53-4738-4f31-b40a-b2f5cc9d6618",
+					"_postman_id": "b4c99145-2d7e-4e3e-b570-55aee831fb67",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -154,7 +157,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}&excludeSoftDeleted={{excludeSoftDeleted}}&excludeHidden={{excludeHidden}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}&excludeSoftDeleted={{excludeSoftDeleted}}&excludeHidden={{excludeHidden}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -162,6 +165,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries"
 							],
 							"query": [
@@ -196,7 +202,7 @@
 				},
 				{
 					"name": "Create a new query.",
-					"_postman_id": "80fb62db-28fd-400e-88c7-d999cd96ac47",
+					"_postman_id": "c8412ef8-4bea-4a9e-8449-e21231d64bb4",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -249,7 +255,7 @@
 							"raw": "{{query}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -257,6 +263,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries"
 							]
 						}
@@ -265,7 +274,7 @@
 				},
 				{
 					"name": "Request query status by ID.",
-					"_postman_id": "f307520a-157f-47ed-aa5c-37d26f10c998",
+					"_postman_id": "4b6d6cb5-a1fd-4ad1-b67f-850fe9dc207a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -325,7 +334,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries/:queryid",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries/:queryid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -333,6 +342,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries",
 								":queryid"
 							],
@@ -348,7 +360,7 @@
 				},
 				{
 					"name": "Request cancellation or query soft delete.",
-					"_postman_id": "6b065542-f490-4ec7-8f08-65f3206d6b10",
+					"_postman_id": "8196bbc1-4856-4b27-b1ef-23d18a1d4e16",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -408,7 +420,7 @@
 							"raw": "{{operation}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries/:queryid",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries/:queryid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -416,6 +428,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries",
 								":queryid"
 							],
@@ -430,7 +445,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "757dbcc5-3237-4cdb-a233-a8a0311c02ca",
+			"_postman_id": "f9bc1bcc-5a0b-4791-aa31-0fe873629bd2",
 			"description": "Queries let you use standard SQL to query data in Adobe Experience Platform. For example, you can join any number of datasets in Experience Data Lake and capture the results as a new dataset."
 		},
 		{
@@ -438,7 +453,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of schedules for this IMS Organization.",
-					"_postman_id": "6e350eb5-914d-4607-a4f1-dfea8ca4b5d3",
+					"_postman_id": "80be22b7-c29b-4862-8fe5-40a23d0fbd5a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -498,7 +513,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -506,6 +521,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules"
 							],
 							"query": [
@@ -532,7 +550,7 @@
 				},
 				{
 					"name": "Create a new scheduled query.",
-					"_postman_id": "1f7da74b-a2b8-4213-ac1d-06fa7a428f1b",
+					"_postman_id": "fb1a4315-6b08-4679-8bc7-5bdad060a47d",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -592,7 +610,7 @@
 							"raw": "{{schedule}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -600,6 +618,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules"
 							]
 						}
@@ -608,7 +629,7 @@
 				},
 				{
 					"name": "Request details of a schedule by ID.",
-					"_postman_id": "afa2af53-3737-41e2-961a-f4728436fa66",
+					"_postman_id": "99f09d00-1b3c-4b4f-b130-ec63e3a36cbe",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -668,7 +689,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -676,6 +697,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId"
 							],
@@ -691,7 +715,7 @@
 				},
 				{
 					"name": "Patch an existing schedule.",
-					"_postman_id": "04cb334f-c4c5-4863-8e36-0be651504625",
+					"_postman_id": "15897eb5-713c-4e0a-8f0f-79ad67ccdd12",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -751,7 +775,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -759,6 +783,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId"
 							],
@@ -774,7 +801,7 @@
 				},
 				{
 					"name": "Delete a schedule by ID.",
-					"_postman_id": "f255781f-6a90-4cff-bf3a-850e1fdbfff4",
+					"_postman_id": "649dad47-6743-4d06-a573-2802d9ed8806",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -834,7 +861,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -842,6 +869,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId"
 							],
@@ -857,7 +887,7 @@
 				},
 				{
 					"name": "Retrieve a list of all runs, past and currently running, for a particular query schedule.",
-					"_postman_id": "43ab6f07-c195-4bf0-b082-a39367137f60",
+					"_postman_id": "30cad459-e9c3-4a6f-ad14-7527b68d42ff",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -917,7 +947,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -925,6 +955,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs"
@@ -959,7 +992,7 @@
 				},
 				{
 					"name": "Trigger an immediate run of a scheduled query.",
-					"_postman_id": "99e449bf-0596-4163-b7c6-208b3da1bd43",
+					"_postman_id": "92b21cb8-bf9b-4a98-a264-d03e4cdf7027",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1019,7 +1052,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1027,6 +1060,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs"
@@ -1043,7 +1079,7 @@
 				},
 				{
 					"name": "Lookup details of a query schedule run by ID.",
-					"_postman_id": "91c9f289-68fe-4805-91a8-de605e88aaa5",
+					"_postman_id": "eb58cf60-8bb7-4b5e-bec5-3938f779fac1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1103,7 +1139,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs/:runId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs/:runId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1111,6 +1147,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs",
@@ -1132,7 +1171,7 @@
 				},
 				{
 					"name": "Trigger an immediate run of a scheduled query by ID.",
-					"_postman_id": "741882ac-14b7-4f8b-818b-e6dbcefd1bd8",
+					"_postman_id": "7e5d3220-8f39-4d4c-a52f-4fed0368b78c",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1192,7 +1231,7 @@
 							"raw": "{{operation}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs/:runId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs/:runId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1200,6 +1239,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs",
@@ -1220,7 +1262,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c6028018-5e37-4c4c-ad76-7848e65dd4ce",
+			"_postman_id": "e0adeb8f-ab48-4b81-9eea-3048a38d231d",
 			"description": "Schedules let you perform SQL functions from a start date to an end date."
 		},
 		{
@@ -1228,7 +1270,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of query templates for this IMS Organization.",
-					"_postman_id": "16401599-06b1-499d-91b8-43f98185ee41",
+					"_postman_id": "3c3e857c-f4f0-4c4b-af40-0b2874da4019",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1288,7 +1330,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1296,6 +1338,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates"
 							],
 							"query": [
@@ -1322,7 +1367,7 @@
 				},
 				{
 					"name": "Create a new query template.",
-					"_postman_id": "d4be908d-6ec9-4bbb-bfc9-b13cf2dad57e",
+					"_postman_id": "66a6171d-91bc-48a3-97a6-d71222cc1d70",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1382,7 +1427,7 @@
 							"raw": "{{queryTemplate}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1390,6 +1435,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates"
 							]
 						}
@@ -1398,7 +1446,7 @@
 				},
 				{
 					"name": "Lookup a query template by ID.",
-					"_postman_id": "6db67144-576d-4bd3-81cd-6148b11f2939",
+					"_postman_id": "c70e66f5-fdce-4866-83d7-9d69a536e008",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1458,7 +1506,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates/:queryTemplateId",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1466,6 +1514,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates",
 								":queryTemplateId"
 							],
@@ -1481,7 +1532,7 @@
 				},
 				{
 					"name": "Update a query template by ID.",
-					"_postman_id": "a003bc0d-124d-4586-873e-739ba537ee58",
+					"_postman_id": "558f6454-b1a0-498d-9111-86aa217c53cb",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1541,7 +1592,7 @@
 							"raw": "{{queryTemplate}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates/:queryTemplateId",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1549,6 +1600,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates",
 								":queryTemplateId"
 							],
@@ -1564,7 +1618,7 @@
 				},
 				{
 					"name": "Delete a query template by ID.",
-					"_postman_id": "877f3fb7-0294-4dd1-a5f2-c95aa72eeaa8",
+					"_postman_id": "247ff4c3-85a5-4cff-b0d7-4d82eb599d6c",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1624,7 +1678,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates/:queryTemplateId",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1632,6 +1686,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates",
 								":queryTemplateId"
 							],
@@ -1646,7 +1703,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "5c349a79-1e35-43c5-b05f-dbc614909091",
+			"_postman_id": "0567c4f1-d559-4535-97d6-98c6d2d5a3e0",
 			"description": "Query templates let you create, store and execute any of the query as adhoc or schedule service."
 		}
 	]

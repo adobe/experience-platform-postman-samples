@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd31d53f-0f2d-42f3-a6ad-751999a3371d",
+		"_postman_id": "b6177983-54fb-4163-9780-06e5d4f1774e",
 		"name": "Privacy Service API",
 		"description": "Adobe Experience Platform Privacy Service provides a common, centralized facilitation of access/delete requests and opt-out-of-sale requests for private data. The service includes a UI for selecting and creating requests, a business layer that processes incoming and outgoing traffic, a data store for audit and logging information, and temporary storage for data retrieval while requests are pending or waiting to be viewed.\n\nRelated documentation:\n  * [Privacy Service overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/privacy_service_overview.md)\n  * [Privacy Service API tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/privacy_service_tutorial/privacy_service_api_tutorial.md)\n  * [GDPR on Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/gdpr-on-platform-overview.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Privacy Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Privacy%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/privacy/jobs\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/privacy/jobs/ping\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -22,7 +22,7 @@
 							}
 						}
 					],
-					"_postman_id": "6ad47244-d160-4fc6-9525-751387487235",
+					"_postman_id": "6d416b98-c813-40df-a13d-956c36834433",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -60,7 +60,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/?fromDate={{fromDate}}&toDate={{toDate}}&data={{data}}",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/?fromDate={{fromDate}}&toDate={{toDate}}&data={{data}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -68,6 +68,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								""
 							],
 							"query": [
@@ -101,7 +104,7 @@
 							}
 						}
 					],
-					"_postman_id": "dba38cac-f3ab-461b-b52c-138c9c6cc9da",
+					"_postman_id": "644ee1fb-b46c-4cba-aae0-892bc1e40594",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -147,7 +150,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -155,6 +158,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								""
 							]
 						},
@@ -175,7 +181,7 @@
 							}
 						}
 					],
-					"_postman_id": "648c5774-cdc0-4ee9-a66e-5f89e3e795f4",
+					"_postman_id": "261dc2f1-ae71-4af2-8e66-cc344f22684e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -213,7 +219,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/userPrefs",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/userPrefs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -221,6 +227,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"userPrefs"
 							]
 						}
@@ -240,7 +249,7 @@
 							}
 						}
 					],
-					"_postman_id": "533bea33-9bb4-43af-b8e1-2e3f6925bf73",
+					"_postman_id": "8eafc29d-ff9f-4b32-979a-fa35e328d4e4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -278,7 +287,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:jobId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/:jobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -286,6 +295,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								":jobId"
 							],
 							"variable": [
@@ -311,7 +323,7 @@
 							}
 						}
 					],
-					"_postman_id": "823db6db-7f60-439c-870c-d947acfbd9c4",
+					"_postman_id": "668045f8-7318-46e4-a595-a7daa147b3db",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -349,7 +361,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:parentJobId/child",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/:parentJobId/child",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -357,6 +369,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								":parentJobId",
 								"child"
 							],
@@ -372,7 +387,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "665fc159-6472-4ef8-b4bd-3928e98f0224",
+			"_postman_id": "8efdc218-a469-4087-8202-c6992168c594",
 			"description": "Retrieve and create access/delete requests, including child jobs for existing requests."
 		},
 		{
@@ -391,7 +406,7 @@
 							}
 						}
 					],
-					"_postman_id": "d589c409-4f55-4d38-b7d0-47c56d4515f0",
+					"_postman_id": "2153c513-4c02-48fa-b8d4-e930233bf28c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -433,7 +448,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:jobId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/files/:jobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -441,6 +456,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"files",
 								":jobId"
 							],
@@ -468,7 +486,7 @@
 							}
 						}
 					],
-					"_postman_id": "8467061b-2b72-48fd-be17-9507b13b6d24",
+					"_postman_id": "0849125b-627d-4809-85bc-96b35e9c798a",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -521,7 +539,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:jobId/:solutionName",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/files/:jobId/:solutionName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -529,6 +547,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"files",
 								":jobId",
 								":solutionName"
@@ -549,7 +570,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b514df48-af0d-4f50-9520-e66fbc4e9253",
+			"_postman_id": "aa4628a7-c5a5-43ab-a37c-ebf0d026ac44",
 			"description": "View and upload files from various Adobe solutions for specified job requests."
 		},
 		{
@@ -568,7 +589,7 @@
 							}
 						}
 					],
-					"_postman_id": "1740614b-44b7-44c3-8212-de462c08edeb",
+					"_postman_id": "89ab180b-c079-4f93-a7e0-a399e2fb8a06",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -606,7 +627,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/ping?status={{status}}",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/ping?status={{status}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -614,6 +635,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"ping"
 							],
 							"query": [
@@ -628,7 +652,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ff6fa3c6-b07f-48b8-b8e2-21939f3e0f7d",
+			"_postman_id": "02a55eb8-2339-4c28-a9cd-3daff61d9c88",
 			"description": "Check the processing status of access or delete requests by supplying a status code integer as a query parameter."
 		},
 		{
@@ -647,7 +671,7 @@
 							}
 						}
 					],
-					"_postman_id": "88f9a724-d9ed-4400-a030-8be15bb01d79",
+					"_postman_id": "720a3c5c-ef78-4d01-86ae-09f134bd8596",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -685,7 +709,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/products",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/products",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -693,6 +717,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"products"
 							]
 						},
@@ -713,7 +740,7 @@
 							}
 						}
 					],
-					"_postman_id": "27ab6f0f-6a07-44cb-adb9-088939e7ed5c",
+					"_postman_id": "863a2f52-f34b-40b8-980d-f171a41e8fc7",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -751,7 +778,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/products/:productName",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/products/:productName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -759,6 +786,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"products",
 								":productName"
 							],
@@ -774,7 +804,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ab951a56-c12c-4494-8d36-0e56cd2276b8",
+			"_postman_id": "2c79ebf5-b4e7-4b26-b880-3428deba6412",
 			"description": "View details of Adobe products available within your organization's Privacy Service integrations."
 		},
 		{
@@ -793,7 +823,7 @@
 							}
 						}
 					],
-					"_postman_id": "8f4f6cf5-4db9-4842-908a-195f4e8a13e2",
+					"_postman_id": "dd4612f2-be3f-45fc-9d68-4f7dc09685b5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -831,7 +861,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -839,6 +869,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users"
 							]
 						},
@@ -859,7 +892,7 @@
 							}
 						}
 					],
-					"_postman_id": "4f8c48c9-31f4-42a5-9b50-9c67d5702a6a",
+					"_postman_id": "42452dc1-7a43-45bd-8b98-ff1345da688c",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -897,7 +930,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -905,6 +938,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users"
 							]
 						},
@@ -925,7 +961,7 @@
 							}
 						}
 					],
-					"_postman_id": "0c9dea17-cc2c-4d16-a1e4-a0ff1fb34ba4",
+					"_postman_id": "7bce8686-c70f-440f-a39b-0735fa17f986",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -963,7 +999,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users/:userId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -971,6 +1007,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users",
 								":userId"
 							],
@@ -998,7 +1037,7 @@
 							}
 						}
 					],
-					"_postman_id": "09df4381-cbc0-45e5-a25e-b380c6971e5f",
+					"_postman_id": "97dbe8c1-266d-47ac-8a05-9eeaa968df2d",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1036,7 +1075,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users/:userId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1044,6 +1083,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users",
 								":userId"
 							],
@@ -1071,7 +1113,7 @@
 							}
 						}
 					],
-					"_postman_id": "dd36ec46-d116-428c-85db-d93a10ef5e86",
+					"_postman_id": "fcf3592e-2a31-4bfc-b415-dcfa7e939249",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1109,7 +1151,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users/:userId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1117,6 +1159,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users",
 								":userId"
 							],
@@ -1132,7 +1177,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a75cd5d4-3487-4b5b-928c-651857ae5591",
+			"_postman_id": "9588dcbf-37a4-4f06-adea-b38258fe3b4c",
 			"description": "View, create, update, or delete users and their permissions within your organization's Privacy Service configuration."
 		}
 	]

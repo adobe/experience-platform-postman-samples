@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9112402a-d48a-4612-b0e4-7e957d0df830",
+		"_postman_id": "bd9bfa7d-39d2-47a1-be8a-5a9c073b4c58",
 		"name": "Real-time Customer Profile API",
 		"description": "Real-time Customer Profile enables you to drive coordinated, consistent, and relevant experiences for your customers no matter where or when they interact with your brand. Profile provides a holistic view of each individual customer that combines data from multiple channels, including online, offline, CRM, and third-party data.\n\nThe Real-time Customer Profile API allows you to programmatically integrate Profile's various functionalities into your service, providing RESTful endpoints for merge policy configuration, segmentation, edge projections, and more.\n\nRelated overview documentation:\n  * [Real-time Customer Profile overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md)\n  * [Profile Query Language (PQL)](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_pql.md)\n  \nRelated tutorials:\n  * [Configure Real-time Customer Profile using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_up_tutorial.md)\n  * [Access Real-time Customer Profile data using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/consuming_unified_profile_data/consuming_unified_profile_data.md)\n  * [Work with merge policies using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_merge_policies_tutorial.md)\n  * [Create segments using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_segment_tutorial/creating_a_segment_tutorial.md)\n  * [Evaluate and access segment results](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/segmentation/evaluate_segment.md)\n  * [Configure and access computed attributes](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/computed_attributes/computed-attributes-tutorial.md)\n  * [Delete a dataset or specific batch in a dataset](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/datasets/delete-dataset.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Real-time Customer Profile API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Real-time%20Customer%20Profile%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ups/config/mergePolicies\n  \nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of computed attributes.",
-					"_postman_id": "74f9a6a8-becd-41c1-a858-29cc4d2df018",
+					"_postman_id": "b032b99c-69a6-46b5-ab4d-fb395e899203",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -53,7 +53,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/computedAttributes",
+							"raw": "https://platform.adobe.io/data/core/ups/config/computedAttributes",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -61,6 +61,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"computedAttributes"
 							]
@@ -70,7 +73,7 @@
 				},
 				{
 					"name": "Create a computed attribute.",
-					"_postman_id": "202e997d-1b27-4b41-90f2-facd0525f105",
+					"_postman_id": "5a58f0b7-6690-401d-8225-3d199ee6c603",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -112,7 +115,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/computedAttributes",
+							"raw": "https://platform.adobe.io/data/core/ups/config/computedAttributes",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -120,6 +123,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"computedAttributes"
 							]
@@ -130,7 +136,7 @@
 				},
 				{
 					"name": "Retrieve a specific computed attribute by its ID.",
-					"_postman_id": "1fd41eb0-7b31-4fe1-af38-f6c2cb4c5452",
+					"_postman_id": "6b9474e3-1c29-4f2d-a28f-c8babf121af6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -172,7 +178,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/computedAttributes/:ATTRIBUTE_ID",
+							"raw": "https://platform.adobe.io/data/core/ups/config/computedAttributes/:ATTRIBUTE_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -180,6 +186,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"computedAttributes",
 								":ATTRIBUTE_ID"
@@ -196,7 +205,7 @@
 				},
 				{
 					"name": "Update a computed attribute by its ID.",
-					"_postman_id": "de1e4972-6958-4d0d-9e5f-ab9c83fcf281",
+					"_postman_id": "b9db4357-f42b-4496-afa0-916c53352ab8",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -238,7 +247,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/computedAttributes/:ATTRIBUTE_ID",
+							"raw": "https://platform.adobe.io/data/core/ups/config/computedAttributes/:ATTRIBUTE_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -246,6 +255,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"computedAttributes",
 								":ATTRIBUTE_ID"
@@ -262,7 +274,7 @@
 				},
 				{
 					"name": "Delete a computed attribute by its ID.",
-					"_postman_id": "194c7ced-abee-4473-a7ed-c7276379cd5b",
+					"_postman_id": "d4f4ec11-1f2d-4e4d-a2f2-376413c351b3",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -304,7 +316,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/computedAttributes/:ATTRIBUTE_ID",
+							"raw": "https://platform.adobe.io/data/core/ups/config/computedAttributes/:ATTRIBUTE_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -312,6 +324,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"computedAttributes",
 								":ATTRIBUTE_ID"
@@ -327,7 +342,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f24c2355-379c-42bd-a98e-c9c9298acc0d",
+			"_postman_id": "3731677b-d429-4a31-ac9b-85c3a27d6aca",
 			"description": "Computed attributes enable a field value to be automatically computed based on other values, calculations, and expressions."
 		},
 		{
@@ -335,7 +350,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of merge policies.",
-					"_postman_id": "62f193d3-0205-417b-ad52-3ed6e94d8a1e",
+					"_postman_id": "926ee97c-3b8d-4407-ae32-52f6b8914bb8",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -384,7 +399,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/mergePolicies?start={{start}}&limit={{limit}}&orderBy={{orderBy}}&schema.name={{schema.name}}&default={{default}}",
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies?start={{start}}&limit={{limit}}&orderBy={{orderBy}}&schema.name={{schema.name}}&default={{default}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -392,6 +407,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"mergePolicies"
 							],
@@ -423,7 +441,7 @@
 				},
 				{
 					"name": "Create a new merge policy.",
-					"_postman_id": "a4a4fdbe-40d0-4151-8c2d-316895dc866c",
+					"_postman_id": "3fabfadb-c426-42b4-af76-081c321fd327",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -479,7 +497,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/mergePolicies",
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -487,6 +505,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"mergePolicies"
 							]
@@ -496,7 +517,7 @@
 				},
 				{
 					"name": "Lookup a merge policy by ID.",
-					"_postman_id": "4ab80467-2685-41cd-a46b-d7e0159b3785",
+					"_postman_id": "9101d7e6-3841-4772-b9c0-b62e5c421f33",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -545,7 +566,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/mergePolicies/:mergePolicyId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -553,6 +574,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"mergePolicies",
 								":mergePolicyId"
@@ -569,7 +593,7 @@
 				},
 				{
 					"name": "Update a merge policy by ID.",
-					"_postman_id": "20011212-7970-4ad2-ba78-abba0614569c",
+					"_postman_id": "01942eca-949c-479a-8333-a346c87df0a1",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -625,7 +649,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/mergePolicies/:mergePolicyId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -633,6 +657,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"mergePolicies",
 								":mergePolicyId"
@@ -649,7 +676,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a merge policy specified by ID.",
-					"_postman_id": "30509e06-2623-4fa0-94b3-4210d9f5a245",
+					"_postman_id": "ef25ef44-d8b0-4af0-8eee-5951cf009b4e",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -705,7 +732,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/mergePolicies/:mergePolicyId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -713,6 +740,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"mergePolicies",
 								":mergePolicyId"
@@ -729,7 +759,7 @@
 				},
 				{
 					"name": "Delete a merge policy by ID.",
-					"_postman_id": "b9d9dc72-0db9-4084-a9fb-0920d01a1159",
+					"_postman_id": "6472c13e-d576-4c32-b7cb-2d4db72d6ee5",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -778,7 +808,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/mergePolicies/:mergePolicyId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/mergePolicies/:mergePolicyId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -786,6 +816,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"mergePolicies",
 								":mergePolicyId"
@@ -801,7 +834,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "5a3615d3-dba0-484e-bc67-d41aec422572",
+			"_postman_id": "e4ffc23d-3d0c-477c-b287-3daebff7ef5d",
 			"description": "A merge policy is a set of configurations controlling aspects of identity stitching and data fragment merging. Merge policies are specific to a single schema, and can only be used to access entities adhering to that schema."
 		},
 		{
@@ -809,7 +842,7 @@
 			"item": [
 				{
 					"name": "Lookup an entity by ID or namespace.",
-					"_postman_id": "0ee4b62a-48c9-4d8a-8e36-b61f892c9c21",
+					"_postman_id": "05d01311-2aec-4f12-af0d-448859a6fe31",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -851,7 +884,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/access/entities?schema.name={{schema.name}}&relatedSchema.name={{relatedSchema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&relatedEntityId={{relatedEntityId}}&relatedEntityIdNS={{relatedEntityIdNS}}&fields={{fields}}&mergePolicyId={{mergePolicyId}}&startTime={{startTime}}&endTime={{endTime}}&limit={{limit}}&orderby={{orderby}}",
+							"raw": "https://platform.adobe.io/data/core/ups/access/entities?schema.name={{schema.name}}&relatedSchema.name={{relatedSchema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&relatedEntityId={{relatedEntityId}}&relatedEntityIdNS={{relatedEntityIdNS}}&fields={{fields}}&mergePolicyId={{mergePolicyId}}&startTime={{startTime}}&endTime={{endTime}}&limit={{limit}}&orderby={{orderby}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -859,6 +892,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"access",
 								"entities"
 							],
@@ -918,7 +954,7 @@
 				},
 				{
 					"name": "Lookup multiple entities by IDs or namespaces.",
-					"_postman_id": "71f6c8a2-ef7a-475f-ad96-6c5b98ef1bf6",
+					"_postman_id": "7d4bc624-b213-41da-b4ed-ceefbb1522bb",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -964,7 +1000,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/access/entities",
+							"raw": "https://platform.adobe.io/data/core/ups/access/entities",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -972,6 +1008,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"access",
 								"entities"
 							]
@@ -981,7 +1020,7 @@
 				},
 				{
 					"name": "Delete an entity by ID.",
-					"_postman_id": "04a31b4a-39a7-4f72-995a-a717a5b5cae5",
+					"_postman_id": "80d0075b-5011-4599-8acb-f4219fb776d1",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1023,7 +1062,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/access/entities?schema.name={{schema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&mergePolicyId={{mergePolicyId}}",
+							"raw": "https://platform.adobe.io/data/core/ups/access/entities?schema.name={{schema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&mergePolicyId={{mergePolicyId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1031,6 +1070,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"access",
 								"entities"
 							],
@@ -1057,7 +1099,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4a08fc6e-e6ee-41ea-8c6e-df2b517ea4f5",
+			"_postman_id": "6a97869f-42d7-419c-b60f-e79978bc9f9e",
 			"description": "Entities are Experience Data Model (XDM) objects whose attributes, data contents, and related time-series events have been merged from various sources by Real-time Customer Profile."
 		},
 		{
@@ -1065,7 +1107,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all export jobs.",
-					"_postman_id": "f85cc34b-9ad1-4949-9462-c26b43ed6623",
+					"_postman_id": "326c6d02-2eda-4c0f-92c8-2a095c29d130",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1107,7 +1149,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/export/jobs?limit={{limit}}&offset={{offset}}&status={{status}}",
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs?limit={{limit}}&offset={{offset}}&status={{status}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1115,6 +1157,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"export",
 								"jobs"
 							],
@@ -1138,7 +1183,7 @@
 				},
 				{
 					"name": "Create a new export job.",
-					"_postman_id": "d7f741b3-300a-4b39-9d4f-a34d9f49e966",
+					"_postman_id": "e053aba0-fbb8-4ebc-8962-85726603d070",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1191,7 +1236,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/export/jobs",
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1199,6 +1244,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"export",
 								"jobs"
 							]
@@ -1208,7 +1256,7 @@
 				},
 				{
 					"name": "Lookup an export job by ID.",
-					"_postman_id": "36fdf4df-e1d4-4c24-9a56-17384c216767",
+					"_postman_id": "ec9e3c42-a8c6-43fa-970d-6e753a5fe90a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1250,7 +1298,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/export/jobs/:exportJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:exportJobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1258,6 +1306,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"export",
 								"jobs",
 								":exportJobId"
@@ -1274,7 +1325,7 @@
 				},
 				{
 					"name": "Cancel or delete an export job by ID.",
-					"_postman_id": "b3d27dbe-c6bc-4ea6-941c-0d3badadf0c1",
+					"_postman_id": "b805d5ae-8a98-4402-8192-ba4488ea5a4a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1316,7 +1367,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/export/jobs/:exportJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:exportJobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1324,6 +1375,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"export",
 								"jobs",
 								":exportJobId"
@@ -1339,7 +1393,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e581f62e-0af7-49d1-9b6c-6c65db4e5d07",
+			"_postman_id": "b77a3857-c693-4e67-a44e-2643ffbdc406",
 			"description": "Export jobs are asynchronous processes that are used to persist audience segment members to datasets."
 		},
 		{
@@ -1347,7 +1401,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of segment definitions.",
-					"_postman_id": "8e61d674-fbce-4d63-ad3d-5d0647f9a84d",
+					"_postman_id": "eff7ccb7-f441-40b6-81ad-57ac4d94ba98",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1396,7 +1450,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/definitions?start={{start}}&limit={{limit}}&page={{page}}&sort={{sort}}",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions?start={{start}}&limit={{limit}}&page={{page}}&sort={{sort}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1404,6 +1458,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"definitions"
 							],
@@ -1431,7 +1488,7 @@
 				},
 				{
 					"name": "Create a new segment definition.",
-					"_postman_id": "73838f5c-e5a5-4368-a6b3-5ea767b47a68",
+					"_postman_id": "4865d924-81f4-452b-a219-39b154ddc294",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1484,7 +1541,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/definitions",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1492,6 +1549,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"definitions"
 							]
@@ -1501,7 +1561,7 @@
 				},
 				{
 					"name": "Lookup a segment definition by ID.",
-					"_postman_id": "5f9f99cf-70b1-421a-b55d-b6a0e6ffd95f",
+					"_postman_id": "67627c11-8d6d-4722-9c5a-02ea4a5f908a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1550,7 +1610,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/definitions/:segmentId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1558,6 +1618,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"definitions",
 								":segmentId"
@@ -1574,7 +1637,7 @@
 				},
 				{
 					"name": "Overwrite a segment definition.",
-					"_postman_id": "a9b37e3b-56d3-4ac4-a90c-4f9d75288129",
+					"_postman_id": "5244dbca-cf5c-4863-b92f-b326b474b120",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1627,7 +1690,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/definitions/:segmentId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1635,6 +1698,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"definitions",
 								":segmentId"
@@ -1651,7 +1717,7 @@
 				},
 				{
 					"name": "Delete a segment definition by ID.",
-					"_postman_id": "4e40d41a-0a10-43d8-9258-cda795a186e2",
+					"_postman_id": "411228f1-45e6-48c3-8c4a-b3adb053f6aa",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1700,7 +1766,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/definitions/:segmentId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1708,6 +1774,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"definitions",
 								":segmentId"
@@ -1723,7 +1792,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9433913d-89d2-48c1-bd6e-2e5261c0fd6b",
+			"_postman_id": "300f816e-23ef-49ad-ae30-f6176e65676b",
 			"description": "A segment definition includes a Profile Query Language (PQL) statement that defines how to subdivide a customer base for an audience segment."
 		},
 		{
@@ -1731,7 +1800,7 @@
 			"item": [
 				{
 					"name": "Convert PQL formatting between pql/text and pql/json.",
-					"_postman_id": "7dfb8b8a-2794-4c36-8b79-7b4f7a02db76",
+					"_postman_id": "e25031c9-f279-4bb3-b7ad-9d5656a1dd6c",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1780,7 +1849,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/conversion",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/conversion",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1788,6 +1857,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"conversion"
 							]
@@ -1796,7 +1868,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9dcc8479-e92a-4aee-94d6-e5169f648205",
+			"_postman_id": "540b665e-8d27-440a-9e63-4aa2ee128882",
 			"description": "Convert Profile Query Language (PQL) formatting between `pql/json` and `pql/text`."
 		},
 		{
@@ -1804,7 +1876,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all segment job requests.",
-					"_postman_id": "1f97b330-4f04-46e7-8e12-3c4115d4e58b",
+					"_postman_id": "2f25d186-a30c-48c8-a940-9263410affc6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1853,7 +1925,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/jobs?snapshot.name={{snapshot.name}}&start={{start}}&limit={{limit}}&status={{status}}",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs?snapshot.name={{snapshot.name}}&start={{start}}&limit={{limit}}&status={{status}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1861,6 +1933,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"jobs"
 							],
@@ -1888,7 +1963,7 @@
 				},
 				{
 					"name": "Create a new segment job request.",
-					"_postman_id": "38fdbdee-6bae-411f-9de0-3a8222a18cfb",
+					"_postman_id": "df54e0c9-16cf-4a46-ac93-704418796413",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1948,7 +2023,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/jobs",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1956,6 +2031,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"jobs"
 							]
@@ -1965,7 +2043,7 @@
 				},
 				{
 					"name": "Lookup a segment job request by ID.",
-					"_postman_id": "5451106f-02c9-46d0-b352-d647b5051f56",
+					"_postman_id": "73cd7357-b3a9-4f00-863b-87dc896980eb",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2014,7 +2092,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/jobs/:segmentJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:segmentJobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2022,6 +2100,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"jobs",
 								":segmentJobId"
@@ -2038,7 +2119,7 @@
 				},
 				{
 					"name": "Cancel or delete a segment job request by ID.",
-					"_postman_id": "5650f020-1b92-42a2-9d95-9d470a022e4e",
+					"_postman_id": "393a700d-0a7c-40b7-b1bc-1cf76d624736",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2087,7 +2168,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/segment/jobs/:segmentJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:segmentJobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2095,6 +2176,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"segment",
 								"jobs",
 								":segmentJobId"
@@ -2110,7 +2194,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ea07a489-bf1b-4f2a-96a3-bf4d2050d712",
+			"_postman_id": "c5e62ad8-9d3e-418b-b4f6-e870424e4afc",
 			"description": "Segment jobs process previously established segment definitions against your profile store to generate an audience segment."
 		},
 		{
@@ -2118,7 +2202,7 @@
 			"item": [
 				{
 					"name": "Create a new preview job.",
-					"_postman_id": "1cfa773a-17b1-4cce-8562-0ee1e8157d06",
+					"_postman_id": "689290f8-74d9-4d8f-8cd0-fca94dea7148",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2164,7 +2248,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/preview",
+							"raw": "https://platform.adobe.io/data/core/ups/preview",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2172,6 +2256,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"preview"
 							]
 						}
@@ -2180,7 +2267,7 @@
 				},
 				{
 					"name": "Lookup the results of a preview job by ID.",
-					"_postman_id": "33a48c71-072c-48f6-be66-9807078a4a7f",
+					"_postman_id": "6a77f033-10fb-4da5-9605-44f9dc567e19",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2222,7 +2309,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/preview/:previewId?offset={{offset}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/core/ups/preview/:previewId?offset={{offset}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2230,6 +2317,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"preview",
 								":previewId"
 							],
@@ -2255,7 +2345,7 @@
 				},
 				{
 					"name": "Cancel or delete a preview job by ID.",
-					"_postman_id": "c5bd99cb-861f-42cb-88b0-69036dc7c137",
+					"_postman_id": "3baa9c8c-2ea7-4571-8355-a3a45ec566c0",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2297,7 +2387,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/preview/:previewId",
+							"raw": "https://platform.adobe.io/data/core/ups/preview/:previewId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2305,6 +2395,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"preview",
 								":previewId"
 							],
@@ -2319,7 +2412,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "206f3034-6af5-475e-8f45-2639a07e5551",
+			"_postman_id": "7ebd0d3a-576d-4d7a-ad82-dbd77546e44d",
 			"description": "Previews provide paginated lists of qualifying profiles for a segment definition."
 		},
 		{
@@ -2327,7 +2420,7 @@
 			"item": [
 				{
 					"name": "Lookup the results of an estimate job by ID.",
-					"_postman_id": "9f1b83a0-c4fd-45bb-a218-96793c647c28",
+					"_postman_id": "8f7434f3-67f5-4038-beae-332fc120d376",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2369,7 +2462,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/estimate/:previewId",
+							"raw": "https://platform.adobe.io/data/core/ups/estimate/:previewId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2377,6 +2470,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"estimate",
 								":previewId"
 							],
@@ -2391,7 +2487,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "17f8a889-f97c-45a5-9794-61b5ec2da42b",
+			"_postman_id": "3efb30a2-d3d4-4800-a4d3-d59d83b7eb9d",
 			"description": "Estimates provide statistical information on a segment definition, such as the projected audience size and confidence interval."
 		},
 		{
@@ -2399,7 +2495,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of edge projection configurations. The latest definitions are returned.",
-					"_postman_id": "f1e3a522-3274-43d9-977d-fb76aee8fed7",
+					"_postman_id": "fa96ece4-4bef-4385-9aca-0fed5e35b732",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2462,7 +2558,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/projections?schemaName={{schemaName}}&name={{name}}",
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName={{schemaName}}&name={{name}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2470,6 +2566,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"projections"
 							],
@@ -2489,7 +2588,7 @@
 				},
 				{
 					"name": "Create a new edge projection configuration.",
-					"_postman_id": "219494a2-f25e-4955-ba59-797892d1ffc1",
+					"_postman_id": "5af49f53-e10a-4bd0-8718-5cb7d5662504",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2556,7 +2655,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/projections?schemaName={{schemaName}}",
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName={{schemaName}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2564,6 +2663,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"projections"
 							],
@@ -2580,7 +2682,7 @@
 				},
 				{
 					"name": "Lookup an edge projection configuration by ID. The latest definition is returned.",
-					"_postman_id": "79feaeea-ee3c-4ad7-b6d2-d5610c2151e1",
+					"_postman_id": "1d8e57e6-cfac-4d17-a848-c3ffb2b390d2",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2643,7 +2745,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/projections/:projectionid",
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections/:projectionid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2651,6 +2753,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"projections",
 								":projectionid"
@@ -2667,7 +2772,7 @@
 				},
 				{
 					"name": "Create or update an edge projection configuration by ID. Overwrites the entire configuration.",
-					"_postman_id": "d94df884-61d4-4e94-900a-c2d5cbf89036",
+					"_postman_id": "7268ce66-952e-4ddf-a544-80e19a9ef1df",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2734,7 +2839,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/projections/:projectionid",
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections/:projectionid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2742,6 +2847,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"projections",
 								":projectionid"
@@ -2759,7 +2867,7 @@
 				},
 				{
 					"name": "Delete an edge projection configuration by ID.",
-					"_postman_id": "2b8f6a04-c0d1-4e3a-96b8-c68fd500fbde",
+					"_postman_id": "fb6a40a2-0b33-40a9-82cc-1e76364e2230",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2818,7 +2926,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/projections/:projectionid",
+							"raw": "https://platform.adobe.io/data/core/ups/config/projections/:projectionid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2826,6 +2934,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"projections",
 								":projectionid"
@@ -2842,7 +2953,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9b443d10-9bc3-45b1-9d19-400a87025c87",
+			"_postman_id": "b81ede11-a0d2-4924-8e4c-6020ba9bdfc2",
 			"description": "Edge projection configurations determine what data should be projected to each edge."
 		},
 		{
@@ -2850,7 +2961,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of edge projection destinations. The latest definitions are returned.",
-					"_postman_id": "7cc7fa93-36fc-4c18-bd81-d95c5e060ae6",
+					"_postman_id": "fdb62050-be39-4fe5-bcd5-21ace67cb181",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2899,7 +3010,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/destinations",
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2907,6 +3018,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"destinations"
 							]
@@ -2916,7 +3030,7 @@
 				},
 				{
 					"name": "Create a new edge projection destination.",
-					"_postman_id": "137cf28d-f8b2-43bc-9585-3929343a05c0",
+					"_postman_id": "608a2dc6-2a2f-400b-91be-4582d253ce24",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2983,7 +3097,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/destinations",
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2991,6 +3105,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"destinations"
 							]
@@ -3001,7 +3118,7 @@
 				},
 				{
 					"name": "Lookup an edge projection destination by ID. The latest definition is returned.",
-					"_postman_id": "5742f335-a212-4f81-9102-71b5aebf7663",
+					"_postman_id": "dd59a1fe-aed1-4aad-ae42-7232287f5ea6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3064,7 +3181,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/destinations/:destinationId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations/:destinationId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3072,6 +3189,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"destinations",
 								":destinationId"
@@ -3088,7 +3208,7 @@
 				},
 				{
 					"name": "Create or update an edge projection destination by ID. Overwrites the entire configuration.",
-					"_postman_id": "64100b06-a268-4e4d-a102-96356ed09e30",
+					"_postman_id": "59a1402b-4333-4b05-ba58-d8e95c066d3e",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -3155,7 +3275,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/destinations/:destinationId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations/:destinationId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3163,6 +3283,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"destinations",
 								":destinationId"
@@ -3180,7 +3303,7 @@
 				},
 				{
 					"name": "Delete an edge projection destination by ID.",
-					"_postman_id": "fed5cb55-f45a-4693-a96e-c356501f451f",
+					"_postman_id": "e7fbc069-f362-4ea4-bd19-182cbad42604",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -3239,7 +3362,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/destinations/:destinationId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/destinations/:destinationId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3247,6 +3370,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"destinations",
 								":destinationId"
@@ -3263,7 +3389,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "27d45ca0-cdcf-4647-8d7b-78d822b591c6",
+			"_postman_id": "6df4d47d-7de4-4d0c-8267-4adf2e4d46fe",
 			"description": "Edge projection destinations define where to route a projection that has been created or changed."
 		},
 		{
@@ -3271,7 +3397,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of event types.",
-					"_postman_id": "230379b9-189b-47ec-90a1-a0f5d8c3901e",
+					"_postman_id": "c4121f4a-c8c3-45f5-ba13-fcc17be7c98b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3320,7 +3446,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/eventTypes?start={{start}}&limit={{limit}}&orderBy={{orderBy}}",
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes?start={{start}}&limit={{limit}}&orderBy={{orderBy}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3328,6 +3454,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"eventTypes"
 							],
@@ -3351,7 +3480,7 @@
 				},
 				{
 					"name": "Create a new event type.",
-					"_postman_id": "22839d70-5528-4fb3-8fa4-96e4593ee9fd",
+					"_postman_id": "be86157f-0020-4666-afea-6921267f2635",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3407,7 +3536,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/eventTypes",
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3415,6 +3544,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"eventTypes"
 							]
@@ -3424,7 +3556,7 @@
 				},
 				{
 					"name": "Lookup an event type by ID.",
-					"_postman_id": "c4626bb2-6d7b-4074-acbe-d4947aad3f10",
+					"_postman_id": "91bd9716-9fef-498b-8e68-e0559ce3ea16",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3473,7 +3605,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/eventTypes/:eventTypeId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3481,6 +3613,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"eventTypes",
 								":eventTypeId"
@@ -3497,7 +3632,7 @@
 				},
 				{
 					"name": "Overwrite an event type by ID.",
-					"_postman_id": "e02b54b3-6da0-4749-b653-758a504d7fc7",
+					"_postman_id": "6953bf32-79e6-4f8d-a33c-6100f21ba7ce",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -3553,7 +3688,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/eventTypes/:eventTypeId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3561,6 +3696,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"eventTypes",
 								":eventTypeId"
@@ -3577,7 +3715,7 @@
 				},
 				{
 					"name": "Update one or more attributes of an event type by ID.",
-					"_postman_id": "2243f317-a759-411a-86f0-6eb570c6a2f0",
+					"_postman_id": "03a886b3-980b-4392-a4c3-36a19305d081",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -3633,7 +3771,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/eventTypes/:eventTypeId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3641,6 +3779,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"eventTypes",
 								":eventTypeId"
@@ -3657,7 +3798,7 @@
 				},
 				{
 					"name": "Delete an event type by ID.",
-					"_postman_id": "e54d95f5-268f-4d62-8235-d9deff28d885",
+					"_postman_id": "e73c7281-a834-45aa-b22a-0fa80ec489b2",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -3706,7 +3847,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/eventTypes/:eventTypeId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/eventTypes/:eventTypeId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3714,6 +3855,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"eventTypes",
 								":eventTypeId"
@@ -3729,7 +3873,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7f8464b3-8c94-41b1-81bc-57ecbd7db45a",
+			"_postman_id": "6346a1a0-a617-4662-a030-9bae2e6e4c28",
 			"description": "Event types are context descriptors for time series events within Real-time Customer Profile."
 		},
 		{
@@ -3737,7 +3881,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all macros for your organization.",
-					"_postman_id": "190f685e-b462-4671-bd34-3dc5f33ee1a4",
+					"_postman_id": "b702586f-8173-428a-9db9-949d899b241c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3786,7 +3930,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/macros?start={{start}}&limit={{limit}}&orderBy={{orderBy}}&dataSetId={{dataSetId}}&schemaClassId={{schemaClassId}}&value={{value}}",
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros?start={{start}}&limit={{limit}}&orderBy={{orderBy}}&dataSetId={{dataSetId}}&schemaClassId={{schemaClassId}}&value={{value}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3794,6 +3938,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"macros"
 							],
@@ -3829,7 +3976,7 @@
 				},
 				{
 					"name": "Create a new macro.",
-					"_postman_id": "72d81826-e5a7-4a65-b7f1-33f9bb44ac93",
+					"_postman_id": "784692fb-421b-4fc9-a331-54480e0c6864",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3885,7 +4032,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/macros",
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3893,6 +4040,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"macros"
 							]
@@ -3902,7 +4052,7 @@
 				},
 				{
 					"name": "Lookup a macro by ID.",
-					"_postman_id": "3577c743-64a9-4b07-8bb2-2a4707864b5e",
+					"_postman_id": "5daca663-0eef-494a-90fc-cdff5e2f621e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3951,7 +4101,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/macros/:macroId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3959,6 +4109,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"macros",
 								":macroId"
@@ -3975,7 +4128,7 @@
 				},
 				{
 					"name": "Overwrite a macro by ID.",
-					"_postman_id": "38ca8d49-3fcc-40d2-87e7-abe6b80a7526",
+					"_postman_id": "3c0d39fd-6418-4b37-acf8-d432433080ca",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -4031,7 +4184,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/macros/:macroId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4039,6 +4192,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"macros",
 								":macroId"
@@ -4055,7 +4211,7 @@
 				},
 				{
 					"name": "Update a macro by ID.",
-					"_postman_id": "b698a5b5-7e66-4746-8088-a84f65c31bf9",
+					"_postman_id": "8b86531f-a89e-41ad-892e-263edfc2b507",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -4111,7 +4267,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/macros/:macroId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4119,6 +4275,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"macros",
 								":macroId"
@@ -4135,7 +4294,7 @@
 				},
 				{
 					"name": "Delete a macro by ID.",
-					"_postman_id": "e35d49c8-56c0-4fc4-b688-f1d51c0cb507",
+					"_postman_id": "d3e05484-e98c-43cc-b443-299c1a29ddbe",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4184,7 +4343,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/macros/:macroId",
+							"raw": "https://platform.adobe.io/data/core/ups/config/macros/:macroId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4192,6 +4351,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"macros",
 								":macroId"
@@ -4207,7 +4369,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "175de03a-c9d0-4dc6-8b41-3b484062b32b",
+			"_postman_id": "0781f688-8f67-44b8-9883-901be72d985a",
 			"description": "Macros allow you to inject pre-computed fields and values into segment definitions. Values from different fields are added together and tested against the profile store as a single value. With macros, audience segments can be defined in more ways than would otherwise be available from isolated profile data fields."
 		},
 		{
@@ -4215,7 +4377,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of schedules for your IMS Org",
-					"_postman_id": "effb1a39-316e-401c-a360-c01a1d0973df",
+					"_postman_id": "db55be4c-74da-42db-a255-13a65298306f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4264,7 +4426,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/schedules?start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/core/ups/config/schedules?start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4272,6 +4434,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"schedules"
 							],
@@ -4291,7 +4456,7 @@
 				},
 				{
 					"name": "Create a schedule, including specifying the time when the schedule should be triggered.",
-					"_postman_id": "3bd617d8-2a51-4748-a812-d184b2d26dfa",
+					"_postman_id": "0fd862ad-01ce-4c84-bf40-402526244377",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4344,7 +4509,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/schedules",
+							"raw": "https://platform.adobe.io/data/core/ups/config/schedules",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4352,6 +4517,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"schedules"
 							]
@@ -4361,7 +4529,7 @@
 				},
 				{
 					"name": "Lookup a schedule by its ID.",
-					"_postman_id": "49257092-5abd-46b1-be2c-7f225d73f1cf",
+					"_postman_id": "ef16a200-8bca-4843-acd9-53c730d4b5d1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4410,7 +4578,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/schedules/:SCHEDULE_ID",
+							"raw": "https://platform.adobe.io/data/core/ups/config/schedules/:SCHEDULE_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4418,6 +4586,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"schedules",
 								":SCHEDULE_ID"
@@ -4434,7 +4605,7 @@
 				},
 				{
 					"name": "Update a schedule, including changing the trigger time or enabling/disabling the schedule.",
-					"_postman_id": "42bc0dc9-8668-4f26-8c92-32bbbf4628eb",
+					"_postman_id": "9a5fc6ec-2c77-43c6-9430-c4b73e1a321f",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -4483,7 +4654,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/schedules/:SCHEDULE_ID",
+							"raw": "https://platform.adobe.io/data/core/ups/config/schedules/:SCHEDULE_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4491,6 +4662,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"schedules",
 								":SCHEDULE_ID"
@@ -4507,7 +4681,7 @@
 				},
 				{
 					"name": "Delete a schedule by its ID.",
-					"_postman_id": "a2d68aea-03e3-419a-8e02-7ecd021a10de",
+					"_postman_id": "3db2d4e5-a76c-4eb9-bbbb-ef6d48e8568a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4556,7 +4730,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/config/schedules/:SCHEDULE_ID",
+							"raw": "https://platform.adobe.io/data/core/ups/config/schedules/:SCHEDULE_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4564,6 +4738,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"config",
 								"schedules",
 								":SCHEDULE_ID"
@@ -4579,7 +4756,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0448b875-761a-4b13-9ad9-ae98d43fc8a9",
+			"_postman_id": "f330a6cc-d8bb-4d72-8606-c1278754e5a1",
 			"description": "Create a recurring schedule to automatically run export jobs. A schedule can run at most once daily."
 		},
 		{
@@ -4587,7 +4764,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all delete requests (Profile System Jobs) created by your organization.",
-					"_postman_id": "af71a457-1bfc-49ca-afff-366a3e3c825a",
+					"_postman_id": "e239f10c-ea60-4bb8-a4c8-6768682ca6f5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4629,7 +4806,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/system/jobs?start={{start}}&limit={{limit}}&page={{page}}&sort={{sort}}",
+							"raw": "https://platform.adobe.io/data/core/ups/system/jobs?start={{start}}&limit={{limit}}&page={{page}}&sort={{sort}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4637,6 +4814,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"system",
 								"jobs"
 							],
@@ -4664,7 +4844,7 @@
 				},
 				{
 					"name": "Create a delete request (Profile System Job)",
-					"_postman_id": "c7e7e280-bc9b-47a0-a1f5-d02ef8f12eb7",
+					"_postman_id": "155671ba-25e8-4477-b804-2539cf001542",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4706,7 +4886,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/system/jobs",
+							"raw": "https://platform.adobe.io/data/core/ups/system/jobs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4714,6 +4894,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"system",
 								"jobs"
 							]
@@ -4724,7 +4907,7 @@
 				},
 				{
 					"name": "View a specific delete request (Profile System Job) by its ID.",
-					"_postman_id": "42cddfc0-c030-4a64-92da-dfd2c97f94f3",
+					"_postman_id": "70ff5604-6270-4d64-8e8b-ac7609c1334b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4766,7 +4949,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/system/jobs/:ID",
+							"raw": "https://platform.adobe.io/data/core/ups/system/jobs/:ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4774,6 +4957,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"system",
 								"jobs",
 								":ID"
@@ -4790,7 +4976,7 @@
 				},
 				{
 					"name": "Remove a specific delete request (Profile System Job) by its ID.",
-					"_postman_id": "61f6013a-828e-47ff-af2f-d795049b70b5",
+					"_postman_id": "0e4dae21-57a2-47e4-a27b-fdab79015dc3",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4832,7 +5018,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/system/jobs/:ID",
+							"raw": "https://platform.adobe.io/data/core/ups/system/jobs/:ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4840,6 +5026,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ups",
 								"system",
 								"jobs",
 								":ID"
@@ -4855,7 +5044,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d75e4b18-64bb-414d-a697-719688e93389",
+			"_postman_id": "15c6e14e-9cfa-443c-a69b-bbddb664463c",
 			"description": "Profile System Jobs allow you to delete profile fragments for a given dataset or batch."
 		}
 	]
