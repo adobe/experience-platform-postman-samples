@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "54a25407-16d5-4396-a114-1c42928b7f2c",
+		"_postman_id": "02ebf539-080b-44e4-985d-243338144058",
 		"name": "Catalog Service API",
-		"description": "Catalog Service is the system of record for data location, lineage, schema definition,  and usage labeling for Adobe Experience Platform.\n\nRelated documentation:\n  * [Catalog Service overview](https://www.adobe.io/apis/experienceplatform/home/services/allservices.html#!api-specification/markdown/narrative/technical_overview/catalog_architectural_overview/catalog_architectural_overview.md)\n  * [Create a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/catalog\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/catalog/batches\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the <a href='https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md'>authentication tutorial</a>.\n   * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "Catalog is the system of record for data location and lineage within Adobe Experience Platform. Catalog is not the actual files or directories containing data, rather it holds the metadata and description of those files and directories.\n\nSimply put, Catalog acts as a metadata store or \"catalog\" where you can find information about your data within Experience Platform.\n\nYou can use Catalog to answer questions such as, where is my data located? at what stage of processing is this data? what systems or processes have acted on my data? what errors occurred during processing? and, if successful, how much data was processed?\n\nRelated documentation:\n  * [Catalog Service overview](https://www.adobe.io/apis/experienceplatform/home/services/allservices.html#!api-specification/markdown/narrative/technical_overview/catalog_architectural_overview/catalog_architectural_overview.md)\n  * [Create a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Catalog Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Catalog%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/catalog\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/catalog/batches\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,18 +11,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of accounts.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "1ef19c30-c101-49c3-aacf-37bb7afcff12",
+					"_postman_id": "234cccd7-d039-4603-94f8-19961074970e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -52,9 +41,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -62,13 +51,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -148,18 +130,7 @@
 				},
 				{
 					"name": "Create a new account.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "9a5d8e67-92b7-4f03-88ec-4f1ecf1234f9",
+					"_postman_id": "b06ee4d7-4c55-4629-9b79-9a5e5c81dad7",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -193,9 +164,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -203,13 +174,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -235,18 +199,7 @@
 				},
 				{
 					"name": "Lookup an account by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "04a7f849-fcac-49c6-8c43-3828fc59bee7",
+					"_postman_id": "230260e3-7249-48ce-8281-2b0885c02673",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -276,9 +229,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -286,13 +239,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -325,18 +271,7 @@
 				},
 				{
 					"name": "Update an existing account by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ebb1dbd9-00bc-4e7e-93e5-7b5c87efa949",
+					"_postman_id": "fcd9706a-58fb-48d9-a66e-065cd4508a31",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -370,9 +305,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -380,13 +315,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -419,18 +347,7 @@
 				},
 				{
 					"name": "Create a new account with a specified ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3fe28055-8d91-4d5b-adc1-8316429d835f",
+					"_postman_id": "951fd904-01aa-43bb-8bdd-878b58e55259",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -464,9 +381,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -474,13 +391,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -513,18 +423,7 @@
 				},
 				{
 					"name": "Update one or more attributes of an account specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "31aa6c47-261b-43b9-b96b-69171a2e7295",
+					"_postman_id": "60ebeaa5-9d75-4732-ac52-fb883d5fd56c",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -558,9 +457,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -568,13 +467,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -607,18 +499,7 @@
 				},
 				{
 					"name": "Delete an account by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "d5b86859-5a97-4e81-ab69-3a3578a6a886",
+					"_postman_id": "3ce8a59f-c1df-4ae5-8662-4d78a51c2771",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -652,9 +533,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -662,13 +543,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -700,7 +574,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "dbe8079a-e4ec-474f-9d9a-80259a00302a",
+			"_postman_id": "f3d76e6d-1583-4232-aca5-c72c599af8d4",
 			"description": "Accounts represent a collection of authentication credentials used to create data connections of a specific type. Each connection has a set of unique parameters that are persisted by Catalog and secured in an Azure Key Vault using Security Services."
 		},
 		{
@@ -708,18 +582,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of batches.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "5537b84b-75a5-4bc6-81d5-ba1bc40a8eb3",
+					"_postman_id": "7793ce8b-8395-4cc7-a467-9e12c2aebfb2",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -749,9 +612,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -759,13 +622,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -865,18 +721,7 @@
 				},
 				{
 					"name": "Create a new batch.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "73f3c0b8-0a65-4624-ad45-165c426204e0",
+					"_postman_id": "80525379-d0c6-4b7d-9ef8-d7c491668e1e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -910,9 +755,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -920,13 +765,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -952,18 +790,7 @@
 				},
 				{
 					"name": "Retrieve the unique values stored in a field specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4ad2348a-eb05-4098-b4c2-c7a6490e5699",
+					"_postman_id": "5a1c6d77-9be4-402e-8a8f-d7b0596fd756",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -993,9 +820,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1003,13 +830,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1117,18 +937,7 @@
 				},
 				{
 					"name": "Lookup a batch by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "237d7432-3492-4ce6-8116-621af93edeeb",
+					"_postman_id": "adce4509-cf68-4ede-a9b2-6f9341b24750",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1158,9 +967,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1168,13 +977,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1213,18 +1015,7 @@
 				},
 				{
 					"name": "Update a batch by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7115a861-4c44-44da-b7dc-e5e86776abde",
+					"_postman_id": "e8ae1633-05fe-4f67-b043-697f0fbd3826",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1258,9 +1049,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1268,13 +1059,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1307,18 +1091,7 @@
 				},
 				{
 					"name": "Create a new batch with a specified ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f7e2a774-1ccc-428c-a8ce-2335b5aa0422",
+					"_postman_id": "339af706-b6e2-4ca5-97f6-6bc1befa6f5e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1352,9 +1125,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1362,13 +1135,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1401,18 +1167,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a batch specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "6210f3e8-27be-4f0a-90aa-f3c4ee40df20",
+					"_postman_id": "027144e2-d617-455d-aaa5-a9f2a1384fc2",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1446,9 +1201,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1456,13 +1211,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1495,18 +1243,7 @@
 				},
 				{
 					"name": "Delete a batch by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4bffb58a-e748-4dc0-83ff-556354854b24",
+					"_postman_id": "ede77ef9-ef83-46e9-b6a2-d4697c8c204c",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1540,9 +1277,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1550,13 +1287,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1588,143 +1318,15 @@
 					"response": []
 				}
 			],
-			"_postman_id": "044f6e83-8f18-423c-b0e6-830993793347",
+			"_postman_id": "b0acf462-cfcf-40d0-b6a8-d87f5ac20a19",
 			"description": "Batches allow Catalog users to understand which operations and applications have been performed on objects tracked by the system. A batch outlines the final results of an operation (such as records processed, or size on disk) but may also include links to datasets, files, and more that were affected by the process."
-		},
-		{
-			"name": "Health",
-			"item": [
-				{
-					"name": "Healthcheck report for Catalog Service.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "59d74475-6afe-4cf3-acb3-0a712023307b",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "API key for request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/health",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"health"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Healthcheck report for Catalog Service with dependencies.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "d661fd30-33b0-4a5d-b707-8988f677ca99",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "API key for request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/health-detailed",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"health-detailed"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"_postman_id": "0a10e8f3-de72-4b0a-8711-21d25564e581",
-			"description": "Healthcheck for Catalog Service."
 		},
 		{
 			"name": "Large documents",
 			"item": [
 				{
 					"name": "Lookup a large document by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "87dc0c7e-4b6f-4172-ad2b-ffe8a8d38533",
+					"_postman_id": "6f53bd84-f6f2-4f0c-892b-034d79d7ccfa",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1754,9 +1356,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1764,13 +1366,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1802,7 +1397,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "04be5855-d521-4f00-989e-7eb5da9e4dee",
+			"_postman_id": "3fcc97ac-5bf0-44e5-86e5-72746639f91a",
 			"description": "Large documents are ingested files that exceed 512MB in size. These files are divided into chunks and ingested separately."
 		},
 		{
@@ -1810,18 +1405,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of connections.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "2545a2db-34f4-4128-9cb2-2283497f29c5",
+					"_postman_id": "2ce05e90-d6e4-4b56-abf3-06410aab0781",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1851,9 +1435,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1861,13 +1445,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1923,18 +1500,7 @@
 				},
 				{
 					"name": "Create a new connection.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "33ad5222-e9e7-4bdc-863d-3a9a879d0b5f",
+					"_postman_id": "5c31cc3a-1a81-460c-86f5-fb595567f449",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1968,9 +1534,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -1978,13 +1544,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2010,18 +1569,7 @@
 				},
 				{
 					"name": "Lookup a connection by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8600e088-a884-475d-a949-52b555e22492",
+					"_postman_id": "024371d4-ce8c-4b5e-ac10-877f1891440a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2051,9 +1599,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2061,13 +1609,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2100,18 +1641,7 @@
 				},
 				{
 					"name": "Update a connection by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "eb38291c-7b94-48d1-b883-a8609d8297ff",
+					"_postman_id": "47125866-8437-4d59-9885-eaa56f3ab984",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2145,9 +1675,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2155,13 +1685,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2194,18 +1717,7 @@
 				},
 				{
 					"name": "Save a new connection with a specified ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4484e8b1-b7a7-4028-9b24-9e316a60a5b9",
+					"_postman_id": "2e897358-f691-4d89-9435-e88634e64738",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2239,9 +1751,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2249,13 +1761,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2288,18 +1793,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a connection specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7a624854-6706-4b7b-825a-b7dbf15b1bc9",
+					"_postman_id": "5ac068d3-570e-4870-91af-57d8e3c97ea3",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2333,9 +1827,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2343,13 +1837,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2382,18 +1869,7 @@
 				},
 				{
 					"name": "Delete a connection by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "a0cc0428-72f6-4946-8dca-b77f96b34f10",
+					"_postman_id": "efe4ddab-2069-4dfb-adf2-ef78c8aa27f6",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2423,9 +1899,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2433,13 +1909,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2472,18 +1941,7 @@
 				},
 				{
 					"name": "Retrieve a list of datasets for a connection by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "52c68690-a45e-46f2-8643-0e724f36815b",
+					"_postman_id": "f2073569-69b8-4f06-850b-9d51fb5517d9",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2513,9 +1971,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2523,13 +1981,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2562,7 +2013,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8a2b5a69-f4d2-477b-993e-29abc2f3897a",
+			"_postman_id": "abd02f29-1593-4195-94a9-2e49012c6c6d",
 			"description": "Connections are customer-specific instances of connectors. As an example, when a user selects the Azure Blob connector and supplies the necessary details as defined by that connector, the result is a connection."
 		},
 		{
@@ -2570,18 +2021,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of connectors.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f63af5ce-471b-4364-aa6b-1d272faa17a0",
+					"_postman_id": "2b3b9025-8dfc-4da4-bd60-a5c99afe30d4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2611,9 +2051,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2621,13 +2061,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2691,18 +2124,7 @@
 				},
 				{
 					"name": "Lookup a connector by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "149ead1a-8f4c-48df-8efd-18ea02985068",
+					"_postman_id": "73bc1a82-a34d-402d-a4f2-cee8059c510b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2732,9 +2154,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2742,13 +2164,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2781,18 +2196,7 @@
 				},
 				{
 					"name": "Retrieve the statistics for a connector specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "11290ddd-d40f-4b56-b058-fa5051146e06",
+					"_postman_id": "8bb53acd-fa82-4a9b-8eb8-d5b012ae541f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2822,9 +2226,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2832,13 +2236,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2871,7 +2268,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d0cf0cca-64a4-4c40-99d2-b105b1b186d9",
+			"_postman_id": "cff7621b-97e1-47f9-99a1-688e6414b158",
 			"description": "Connectors define how and when data is ingested into Platform. They control how data is to be gathered from technology sources (like S3, RedShift, and SFTP) and partner sources (like DFA, SAP, MSFT, and ExactTarget). Connectors also define how and when data from Adobe solutions is ingested into Platform."
 		},
 		{
@@ -2879,18 +2276,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of datasets.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "53bf3aaf-635e-41e8-b908-4c2c55527414",
+					"_postman_id": "fa8bf123-638e-428c-85d9-0b94faeb2cad",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2920,9 +2306,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2932,13 +2318,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -2946,7 +2325,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets?connectorId={{connectorId}}&connectionId={{connectionId}}&name={{name}}&description={{description}}&type={{type}}&state={{state}}&namespace={{namespace}}",
+							"raw": "https://platform.adobe.io/dataSets?connectorId={{connectorId}}&connectionId={{connectionId}}&name={{name}}&description={{description}}&type={{type}}&state={{state}}&namespace={{namespace}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2954,7 +2333,7 @@
 								"io"
 							],
 							"path": [
-								"datasets"
+								"dataSets"
 							],
 							"query": [
 								{
@@ -2992,18 +2371,7 @@
 				},
 				{
 					"name": "Create a new dataset.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8be72bb5-d8ad-41b6-a097-733d170f0359",
+					"_postman_id": "f4a1e29d-5ebb-4c3a-aeda-d59cb3c448aa",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3037,9 +2405,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3049,13 +2417,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3063,7 +2424,7 @@
 							"raw": "{{dataSet}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets?requestDataSource={{requestDataSource}}",
+							"raw": "https://platform.adobe.io/dataSets?requestDataSource={{requestDataSource}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3071,7 +2432,7 @@
 								"io"
 							],
 							"path": [
-								"datasets"
+								"dataSets"
 							],
 							"query": [
 								{
@@ -3085,18 +2446,7 @@
 				},
 				{
 					"name": "Lookup a dataset by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b1acdde6-7ebe-4825-8135-c0a15131cef7",
+					"_postman_id": "50c8e255-6795-4150-9cee-9d272f663f68",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3126,9 +2476,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3138,13 +2488,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3152,7 +2495,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id?properties={{properties}}",
+							"raw": "https://platform.adobe.io/dataSets/:id?properties={{properties}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3160,7 +2503,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id"
 							],
 							"query": [
@@ -3181,18 +2524,7 @@
 				},
 				{
 					"name": "Update a dataset by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "40bd9d85-aad1-42ad-bb5f-5f2d53ef68f6",
+					"_postman_id": "33f47ede-5a97-489f-8002-ca2108e8949b",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -3226,9 +2558,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3238,13 +2570,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3252,7 +2577,7 @@
 							"raw": "{{dataSet}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id?requestDataSource={{requestDataSource}}",
+							"raw": "https://platform.adobe.io/dataSets/:id?requestDataSource={{requestDataSource}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3260,7 +2585,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id"
 							],
 							"query": [
@@ -3281,18 +2606,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f1372eb8-69fd-4935-a73e-36be8c1b1898",
+					"_postman_id": "85146d20-54c1-48bb-8711-601a082f7295",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -3326,9 +2640,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3338,13 +2652,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3352,7 +2659,7 @@
 							"raw": "{{dataSet}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id",
+							"raw": "https://platform.adobe.io/dataSets/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3360,7 +2667,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id"
 							],
 							"variable": [
@@ -3375,18 +2682,7 @@
 				},
 				{
 					"name": "Delete a dataset by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "802810f0-9691-49b4-96ad-71e45de45127",
+					"_postman_id": "6e7ff35f-a3b0-44bf-b791-0f59379b08ed",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -3420,9 +2716,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3432,13 +2728,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3446,7 +2735,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id",
+							"raw": "https://platform.adobe.io/dataSets/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3454,7 +2743,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id"
 							],
 							"variable": [
@@ -3469,18 +2758,7 @@
 				},
 				{
 					"name": "Retrieve the credentials of a dataset specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f6b92ec6-11ff-4e5f-9445-5bf5fc38471c",
+					"_postman_id": "d73804f4-53cd-4766-b739-14d5a106844c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3510,9 +2788,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3529,13 +2807,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3543,7 +2814,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/credentials?batchId={{batchId}}",
+							"raw": "https://platform.adobe.io/dataSets/:id/credentials?batchId={{batchId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3551,7 +2822,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"credentials"
 							],
@@ -3573,18 +2844,7 @@
 				},
 				{
 					"name": "Retrieve a list of views for a dataset specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "6fb11f66-c0f6-439c-bbca-f77d0b31cc79",
+					"_postman_id": "53f12e58-2286-4c5c-8068-58b26c43ddcd",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3614,9 +2874,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3626,13 +2886,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3640,7 +2893,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/views",
+							"raw": "https://platform.adobe.io/dataSets/:id/views",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3648,7 +2901,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"views"
 							],
@@ -3664,18 +2917,7 @@
 				},
 				{
 					"name": "Create a new view for a dataset specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ece573c6-6674-44b8-bf20-04ad9371f822",
+					"_postman_id": "f0f26b8b-a096-4a9f-a2ad-1beac58af0bd",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3709,9 +2951,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3721,13 +2963,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3735,7 +2970,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/views",
+							"raw": "https://platform.adobe.io/dataSets/:id/views",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3743,7 +2978,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"views"
 							],
@@ -3759,18 +2994,7 @@
 				},
 				{
 					"name": "Lookup a single view for a dataset, both specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "1f43dd98-9b66-416b-9b23-9503ffe26dab",
+					"_postman_id": "a5c7de3b-9257-4502-91f2-def4c4cf228c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3800,9 +3024,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3812,13 +3036,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3826,7 +3043,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/views/:viewid",
+							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3834,7 +3051,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"views",
 								":viewid"
@@ -3855,18 +3072,7 @@
 				},
 				{
 					"name": "List the files of a single view for a dataset. The view and dataset are specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f1e77006-7ff3-4b6c-8976-93ba696e0752",
+					"_postman_id": "d4155576-161c-4108-a7e0-fbbd747054e1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3896,9 +3102,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3908,13 +3114,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -3922,7 +3121,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/views/:viewId/files",
+							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3930,7 +3129,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"views",
 								":viewId",
@@ -3952,18 +3151,7 @@
 				},
 				{
 					"name": "Create a new file for a single view of a dataset. The view and dataset are both specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "d7055a75-f635-4840-96d7-e64dd173b477",
+					"_postman_id": "b9d2cb1f-cd9c-43be-a264-14acc81a86c5",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3997,9 +3185,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4009,13 +3197,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4023,7 +3204,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/views/:viewId/files",
+							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4031,7 +3212,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"views",
 								":viewId",
@@ -4053,18 +3234,7 @@
 				},
 				{
 					"name": "Lookup a file for a particular view of a dataset. The file, view, and dataset are specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4dae2e3a-06a2-4c9a-a276-d7470899c4ca",
+					"_postman_id": "63ffbda1-0b8a-4417-a7ec-101339f2cc8e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4094,9 +3264,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4106,13 +3276,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4120,7 +3283,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/views/:viewId/files/:fileId",
+							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files/:fileId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4128,7 +3291,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"views",
 								":viewId",
@@ -4155,18 +3318,7 @@
 				},
 				{
 					"name": "Remove a file from a particular view of a dataset.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8ef9fb8e-b7fe-4c4d-85ea-41c1f00fd9f9",
+					"_postman_id": "3ed0650c-3362-4249-8531-d5f823c9637f",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4196,9 +3348,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4208,13 +3360,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4222,7 +3367,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/views/:viewId/files/:fileId",
+							"raw": "https://platform.adobe.io/dataSets/:id/views/:viewId/files/:fileId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4230,7 +3375,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"views",
 								":viewId",
@@ -4257,18 +3402,7 @@
 				},
 				{
 					"name": "Retrieve summarized stats for a dataset's batches. Default time window is within last seven days.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "fafaaaa4-e1d7-4acb-8fd9-cbd43b89c98d",
+					"_postman_id": "ad611d08-2c3f-4f17-a3b4-b84949cfae34",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4298,9 +3432,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4310,13 +3444,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4324,7 +3451,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/ingestBatchSummary",
+							"raw": "https://platform.adobe.io/dataSets/:id/ingestBatchSummary",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4332,7 +3459,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"ingestBatchSummary"
 							],
@@ -4348,18 +3475,7 @@
 				},
 				{
 					"name": "Retrieve the Data Usage and Enforcement (DULE) labels associated with a dataset specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7270b7ff-f8bf-4155-8a18-7276e91d22a4",
+					"_postman_id": "ef547ccc-ddb9-4770-b74e-948d562c30d4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4389,9 +3505,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4401,13 +3517,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4415,7 +3524,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/dule",
+							"raw": "https://platform.adobe.io/dataSets/:id/dule",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4423,7 +3532,7 @@
 								"io"
 							],
 							"path": [
-								"datasets",
+								"dataSets",
 								":id",
 								"dule"
 							],
@@ -4438,7 +3547,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2e2079b2-3402-439a-a4ab-b46f2c16e4c9",
+			"_postman_id": "1de2bc89-bf78-4d41-beb9-c16d3fd5c118",
 			"description": "Datasets are the building blocks for data transformation and tracking in Catalog Service. Generally, datasets represent a table or file made available by a connection."
 		},
 		{
@@ -4446,18 +3555,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of dataset views.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "df6b7243-790e-4e0d-9f2c-1c0a9e873bee",
+					"_postman_id": "ccd0d5cd-8a83-4b8c-9a5a-73da1329c492",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4487,9 +3585,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4499,13 +3597,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4513,7 +3604,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetviews?dataSetId={{dataSetId}}&name={{name}}&isDefault={{isDefault}}&status={{status}}&editable={{editable}}&sdsVersion={{sdsVersion}}&basePath={{basePath}}&saveStrategy={{saveStrategy}}&isCached={{isCached}}&aspect={{aspect}}&schema={{schema}}",
+							"raw": "https://platform.adobe.io/dataSetViews?dataSetId={{dataSetId}}&name={{name}}&isDefault={{isDefault}}&status={{status}}&editable={{editable}}&sdsVersion={{sdsVersion}}&basePath={{basePath}}&saveStrategy={{saveStrategy}}&isCached={{isCached}}&aspect={{aspect}}&schema={{schema}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4521,7 +3612,7 @@
 								"io"
 							],
 							"path": [
-								"datasetviews"
+								"dataSetViews"
 							],
 							"query": [
 								{
@@ -4575,18 +3666,7 @@
 				},
 				{
 					"name": "Create a new dataset view.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3357a7a8-aef8-4d06-9052-71d486c2531b",
+					"_postman_id": "67c42b88-ef58-479a-9327-7669118423ca",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4620,9 +3700,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4632,13 +3712,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4646,7 +3719,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetviews",
+							"raw": "https://platform.adobe.io/dataSetViews",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4654,7 +3727,7 @@
 								"io"
 							],
 							"path": [
-								"datasetviews"
+								"dataSetViews"
 							]
 						}
 					},
@@ -4662,18 +3735,7 @@
 				},
 				{
 					"name": "Lookup a dataset view by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "36335f16-07f5-46f5-be8f-6d7d07bd5170",
+					"_postman_id": "352bbd31-0747-4b0e-b484-a06045fe0ca8",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4703,9 +3765,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4715,13 +3777,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4729,7 +3784,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetviews/:id?properties={{properties}}",
+							"raw": "https://platform.adobe.io/dataSetViews/:id?properties={{properties}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4737,7 +3792,7 @@
 								"io"
 							],
 							"path": [
-								"datasetviews",
+								"dataSetViews",
 								":id"
 							],
 							"query": [
@@ -4758,18 +3813,7 @@
 				},
 				{
 					"name": "Update a dataset view by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "867d6668-f9fc-4e2c-af23-19c8ca7669bb",
+					"_postman_id": "d3057470-b01f-4a4e-a369-f637efd6783f",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -4803,9 +3847,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4815,13 +3859,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4829,7 +3866,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetviews/:id",
+							"raw": "https://platform.adobe.io/dataSetViews/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4837,7 +3874,7 @@
 								"io"
 							],
 							"path": [
-								"datasetviews",
+								"dataSetViews",
 								":id"
 							],
 							"variable": [
@@ -4852,18 +3889,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset view specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7d022e78-aade-4dda-bf0b-51040810e448",
+					"_postman_id": "21befa1c-7b27-403f-bb81-c70dfad61f82",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -4897,9 +3923,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4909,13 +3935,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -4923,7 +3942,7 @@
 							"raw": "{{dataSetView}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetviews/:id",
+							"raw": "https://platform.adobe.io/dataSetViews/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -4931,7 +3950,7 @@
 								"io"
 							],
 							"path": [
-								"datasetviews",
+								"dataSetViews",
 								":id"
 							],
 							"variable": [
@@ -4946,18 +3965,7 @@
 				},
 				{
 					"name": "Delete a dataset view by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "9ec0153d-c212-4f4d-b99a-8675c4eca1e0",
+					"_postman_id": "a35a3a4e-7510-4785-b29f-5bce7f3aa4f1",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4987,9 +3995,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -4999,13 +4007,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5013,7 +4014,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetviews/:id",
+							"raw": "https://platform.adobe.io/dataSetViews/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5021,7 +4022,7 @@
 								"io"
 							],
 							"path": [
-								"datasetviews",
+								"dataSetViews",
 								":id"
 							],
 							"variable": [
@@ -5035,7 +4036,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d7edfe01-40be-4bd3-9a77-ba8d1e9dc0a3",
+			"_postman_id": "9e0a297b-879c-401b-8906-36664a515e20",
 			"description": "Folder for Dataset views"
 		},
 		{
@@ -5043,18 +4044,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of dataset files.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "096b5e5c-bb5b-4c08-88d3-0bb738369e0d",
+					"_postman_id": "701e0851-ee4a-436d-961c-0553d89b461d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5084,9 +4074,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5096,13 +4086,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5110,7 +4093,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetfiles?folderName={{folderName}}&batchId={{batchId}}&dataSetViewId={{dataSetViewId}}&records={{records}}&size={{size}}&isValid={{isValid}}",
+							"raw": "https://platform.adobe.io/dataSetFiles?folderName={{folderName}}&batchId={{batchId}}&dataSetViewId={{dataSetViewId}}&records={{records}}&size={{size}}&isValid={{isValid}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5118,7 +4101,7 @@
 								"io"
 							],
 							"path": [
-								"datasetfiles"
+								"dataSetFiles"
 							],
 							"query": [
 								{
@@ -5152,18 +4135,7 @@
 				},
 				{
 					"name": "Create a new dataset file.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ae106e25-86c7-4194-9af7-7b792197dded",
+					"_postman_id": "65a00dde-36be-44b5-a52f-e5f03733f57a",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -5197,9 +4169,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5209,13 +4181,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5223,7 +4188,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetfiles",
+							"raw": "https://platform.adobe.io/dataSetFiles",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5231,7 +4196,7 @@
 								"io"
 							],
 							"path": [
-								"datasetfiles"
+								"dataSetFiles"
 							]
 						}
 					},
@@ -5239,18 +4204,7 @@
 				},
 				{
 					"name": "Delete a dataset file by search criteria.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "5fdd749b-9044-4163-b796-d26566933690",
+					"_postman_id": "009b13c2-6644-4e7c-9bf0-205ba037beed",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -5280,9 +4234,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5292,13 +4246,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5306,7 +4253,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetfiles?batchId={{batchId}}",
+							"raw": "https://platform.adobe.io/dataSetFiles?batchId={{batchId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5314,7 +4261,7 @@
 								"io"
 							],
 							"path": [
-								"datasetfiles"
+								"dataSetFiles"
 							],
 							"query": [
 								{
@@ -5328,18 +4275,7 @@
 				},
 				{
 					"name": "Lookup a dataset file by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "65d6ae0b-1ac3-4fe1-97f2-5e01289e3ecf",
+					"_postman_id": "bfdf8f16-1314-413e-a841-d9d50da3e8f6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5369,9 +4305,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5381,13 +4317,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5395,7 +4324,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetfiles/:id",
+							"raw": "https://platform.adobe.io/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5403,7 +4332,7 @@
 								"io"
 							],
 							"path": [
-								"datasetfiles",
+								"dataSetFiles",
 								":id"
 							],
 							"variable": [
@@ -5418,18 +4347,7 @@
 				},
 				{
 					"name": "Update a dataset file by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "bd80e9d3-a300-4d14-aea8-d0f77291de4b",
+					"_postman_id": "09919dd3-c76f-474f-a04a-5b7cb163afbb",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -5463,9 +4381,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5475,13 +4393,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5489,7 +4400,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetfiles/:id",
+							"raw": "https://platform.adobe.io/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5497,7 +4408,7 @@
 								"io"
 							],
 							"path": [
-								"datasetfiles",
+								"dataSetFiles",
 								":id"
 							],
 							"variable": [
@@ -5512,18 +4423,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a dataset file specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "1b42d40b-a104-41b5-b3c6-6386f9220854",
+					"_postman_id": "d012f8bc-969f-4e19-9987-f282ff4edf24",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -5557,9 +4457,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5569,13 +4469,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5583,7 +4476,7 @@
 							"raw": "{{dataSetFile}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetfiles/:id",
+							"raw": "https://platform.adobe.io/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5591,7 +4484,7 @@
 								"io"
 							],
 							"path": [
-								"datasetfiles",
+								"dataSetFiles",
 								":id"
 							],
 							"variable": [
@@ -5606,18 +4499,7 @@
 				},
 				{
 					"name": "Delete a dataset file by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "905c4998-29eb-4ecc-bb00-275f8290190f",
+					"_postman_id": "a1e82b71-4dac-4828-b9a5-25127ccdca21",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -5647,9 +4529,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5659,13 +4541,6 @@
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
 							}
 						],
 						"body": {
@@ -5673,7 +4548,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasetfiles/:id",
+							"raw": "https://platform.adobe.io/dataSetFiles/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -5681,7 +4556,7 @@
 								"io"
 							],
 							"path": [
-								"datasetfiles",
+								"dataSetFiles",
 								":id"
 							],
 							"variable": [
@@ -5695,7 +4570,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7d08721c-fcd5-4e1b-83a4-e866c5545ddb",
+			"_postman_id": "c28bc829-4a52-4414-a4df-0a6508076305",
 			"description": "Dataset files represent blocks of data that have been saved on Platform. As records of literal files, these are where you can find the file size and which batch the file came from. This construct will also provide the number of records contained in the file."
 		},
 		{
@@ -5703,18 +4578,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of resource links for the Catalog Service.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f4fc4c1d-0d2a-4530-948d-cd13622d71e7",
+					"_postman_id": "3ef35943-3a4d-4e2e-b888-c6557d7f526b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5751,16 +4615,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -5786,18 +4643,7 @@
 				},
 				{
 					"name": "Create a new batch request.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "849bb8c5-c6d3-4640-89ba-fd7c3028f948",
+					"_postman_id": "bb0d3393-511a-4b43-ac7b-35ef17b5f93e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -5838,16 +4684,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -5872,7 +4711,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2a0e6e7c-05b9-490e-94f8-30fecc74abbd",
+			"_postman_id": "13e267ca-7a92-450f-913d-0ee7ce4f8836",
 			"description": "Batched requests allow you to supply an array of objects in the request payload, representing what would normally be individual requests. Requests are executed in order and values returned from a previous call are made available in subsequent calls through template language."
 		},
 		{
@@ -5880,18 +4719,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of transforms.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4b19fd2a-0864-48a4-ac86-e146e4f253f1",
+					"_postman_id": "ea87659c-5c4e-448c-b06e-862effa30b34",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -5921,9 +4749,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -5931,13 +4759,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -5993,18 +4814,7 @@
 				},
 				{
 					"name": "Create a new transform.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "77179cba-30bf-4cec-a541-aeaeead80102",
+					"_postman_id": "280cb194-197a-45dd-b6aa-38d934828de1",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -6038,9 +4848,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6048,13 +4858,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6080,18 +4883,7 @@
 				},
 				{
 					"name": "Lookup a transform by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "20158b39-256d-4d68-8580-1b388906ef96",
+					"_postman_id": "54e5527e-554a-47ed-9d54-8b9ecb1a0c35",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -6121,9 +4913,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6131,13 +4923,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6170,18 +4955,7 @@
 				},
 				{
 					"name": "Update a transform by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "bdc58606-e205-4015-b980-a0295c3948f0",
+					"_postman_id": "476067b7-b9e4-4081-99c2-b3ee625f9ddb",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -6215,9 +4989,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6225,13 +4999,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6264,18 +5031,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a transform specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "992b5db8-8aa7-4357-83dd-90eb32a222ae",
+					"_postman_id": "60efc01c-0faf-4ba3-9578-3002cf6602c3",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -6309,9 +5065,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6319,13 +5075,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6358,18 +5107,7 @@
 				},
 				{
 					"name": "Delete a transform by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ca9e7827-273e-4e50-b1f4-bb7352b355a5",
+					"_postman_id": "2e5eb7df-7041-48a0-8307-64da9e69cd6c",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -6399,9 +5137,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6409,13 +5147,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6448,18 +5179,7 @@
 				},
 				{
 					"name": "Retrieve a list of inputs for a transform specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "2a6ceae4-8997-4994-b05e-d105270f03d8",
+					"_postman_id": "dd933737-3aa4-4d40-9199-d430505186ed",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -6489,9 +5209,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6499,13 +5219,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6539,18 +5252,7 @@
 				},
 				{
 					"name": "Update the input attributes for a transform specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3ba58abf-dd77-4ad9-b7e0-e868293e3664",
+					"_postman_id": "490fc626-30db-4af5-831e-3ea767bd5ea4",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -6584,9 +5286,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6594,13 +5296,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6634,18 +5329,7 @@
 				},
 				{
 					"name": "Retrieve a list of outputs for a transform specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "15662168-d9a2-40e7-9548-e8a199da25e6",
+					"_postman_id": "1dcc01f5-e1a4-4b34-9f54-2d48371805a4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -6675,9 +5359,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6685,13 +5369,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6725,18 +5402,7 @@
 				},
 				{
 					"name": "Update the output attributes for a transform specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "de4d2a5d-c3d3-4a6a-9a14-ca60ddea7afd",
+					"_postman_id": "8285c2ab-21af-4bcf-8841-1f44a24ab6d4",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -6770,9 +5436,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6780,13 +5446,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6820,18 +5479,7 @@
 				},
 				{
 					"name": "Lookup an input dataset for a transform, both specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "50040106-7bbf-4ab9-8c55-7d38d7cdf071",
+					"_postman_id": "8caa6e79-0402-4147-90dc-5de5e6dc4fcb",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -6861,9 +5509,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6871,13 +5519,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -6916,18 +5557,7 @@
 				},
 				{
 					"name": "Delete an input dataset for a transform, both specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "66d1cb9a-8a4b-4e9b-9435-158ba362d2fa",
+					"_postman_id": "3dfec968-fa0e-4374-ba2b-12b00ab905d7",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -6957,9 +5587,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -6967,13 +5597,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -7012,18 +5635,7 @@
 				},
 				{
 					"name": "Lookup an output dataset for a transform, both specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b850bc82-e819-4bc1-9164-8e26f2823f09",
+					"_postman_id": "5fae4c31-678e-493c-b41d-b2912ddb5821",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -7053,9 +5665,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -7063,13 +5675,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -7108,18 +5713,7 @@
 				},
 				{
 					"name": "Delete an output dataset for a transform, both specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "6ae20497-eebc-4d51-bd10-5f86c9b7f8d5",
+					"_postman_id": "9a32684e-2c4c-40eb-a930-bfe7838b43f7",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -7149,9 +5743,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -7159,13 +5753,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -7203,7 +5790,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8284c2ca-b49e-4d5d-ad30-fb9418b585aa",
+			"_postman_id": "451b42eb-96e9-4b0c-9e0e-6e9fff65781e",
 			"description": "Transforms are used to house the instructions that translate data into a new form. As a customer maps their newly uploaded data to an Experience Data Model (XDM) schema, a transform is created to document links to the repository where the code resides, as well as a link to the vehicle (or engine) used to perform that work."
 		},
 		{
@@ -7211,18 +5798,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of aggregated values for all tags within an IMS Organization, specified by namespace.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "bca4e0b5-07d5-4425-a90a-c967eeffb0cb",
+					"_postman_id": "f7ca4265-92e6-4726-8380-6f9f0ae81782",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -7252,9 +5828,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-id",
-								"value": "{{x-sandbox-id}}",
-								"description": "The URN string ID of the Sandbox virtual environment to be accessed.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -7262,13 +5838,6 @@
 								"key": "accept-encoding",
 								"value": "{{accept-encoding}}",
 								"description": "Used to signal the intent to consume compressed response bodies. Supported encodings: gzip.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -7300,7 +5869,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "93a8a755-cc6d-443f-9777-aa999e62890f",
+			"_postman_id": "09c7b149-fd44-4031-a00d-f48271d9f1ff",
 			"description": "Tags are used to attach information to an object and then be used later to retrieve the object. The choice of what tags are used and how they are applied depends on your organizational processes."
 		}
 	]

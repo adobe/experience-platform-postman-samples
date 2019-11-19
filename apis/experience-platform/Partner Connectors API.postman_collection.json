@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "7c39f80e-0cbb-4834-9ba2-0a05641aea87",
+		"_postman_id": "942710e1-96b5-49fa-81dc-9a53419ba9cf",
 		"name": "Partner Connectors API",
-		"description": "Partner Connectors provide RESTful API to ingest data into Adobe Experience Platform by connecting it to 3rd party storage and CRM systems.\n\nRelated documentation:\n  * [Connectors Service Overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/acp_connectors_overview/acp-connectors-overview.md)\n  * Connector tutorials:\n    * [Amazon-s3](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_s3_connector_tutorial.md)\n    * [Azure-Blob](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_azure_blob_connector_tutorial.md)\n    * [Microsoft Dynamics](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_dynamic_connector_tutorial.md)\n    * [Salesforce](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_connector_tutorial/ACP_salesforce_connector_tutorial.md)\n       \n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/connectors\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/connectors/account\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "Partner Connectors provides a RESTful API for ingesting data into Adobe Experience Platform by allowing you to connect to 3rd party storage and CRM systems.\n\nRelated documentation:\n  * [Data connectors overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/acp_connectors_overview/acp-connectors-overview.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Partner Connectors API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Partner%20Connectors%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/connectors\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/connectors/account\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,18 +11,7 @@
 			"item": [
 				{
 					"name": "Create an account and establish a connection for the given set of credentials.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "5a8dadee-b59e-4a28-b9e7-9f1b249cf6d3",
+					"_postman_id": "b0d75058-6ee9-4302-a858-0a57fe57cb9c",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -49,16 +38,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -84,18 +73,7 @@
 				},
 				{
 					"name": "Test the validity of the account associated with the accountId.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7eca80c5-213f-4c8d-a8a8-b2eacdc8c60f",
+					"_postman_id": "a5cc086c-b141-4483-885f-80feb353cdda",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -122,16 +100,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -164,18 +142,7 @@
 				},
 				{
 					"name": "Update the credentials associated with the accountId.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "5348f303-ce83-45af-a932-9fb20aa3e352",
+					"_postman_id": "8a229d5d-446d-4c68-8478-83b7e7a6f87b",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -202,16 +169,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key belonging to the calling client.",
 								"type": "string",
 								"enabled": true
 							}
@@ -243,7 +210,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a6d80eb9-65af-4cb9-8a14-b5c630d0c4c4",
+			"_postman_id": "241a820e-3a13-45e5-9778-006ed08ce4a0",
 			"description": "Authenticate your storage systems and CRM services to allow your data to be ingested from various sources (such as cloud-based storage, and CRM data) into Experience Platform."
 		},
 		{
@@ -251,18 +218,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of objects, files, or tables at the source location.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ae0f582e-0cb5-4084-b8be-602b3e5ab9a6",
+					"_postman_id": "a5244362-268f-4ead-b231-1d2b083351ee",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -289,16 +245,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key belonging to the calling client.",
 								"type": "string",
 								"enabled": true
 							}
@@ -337,7 +293,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2d1ab6e8-9bfd-406f-a572-4ed93a27affb",
+			"_postman_id": "7c64e265-4867-4047-9cf4-a79da049f6ef",
 			"description": "Returns a list object files or tables at the source location."
 		},
 		{
@@ -345,18 +301,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of fields from the data.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "cab0146b-b2c0-44d2-b816-34a1327c0502",
+					"_postman_id": "78553edf-d31e-4951-80b2-625a7d6b91d1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -383,16 +328,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -436,18 +381,7 @@
 				},
 				{
 					"name": "Preview data for the given object.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e3f9704f-08aa-4662-baab-28bb7becaffe",
+					"_postman_id": "c35d261b-fd55-4a82-874c-380a2e2dfd93",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -474,16 +408,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -526,7 +460,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "10849c60-5eb7-416c-8277-32caec8635b9",
+			"_postman_id": "d9c2113f-4753-467f-bcd2-3935ce2a0ba3",
 			"description": "Returns a list of schema fields or a data preview for a given object."
 		},
 		{
@@ -534,18 +468,7 @@
 			"item": [
 				{
 					"name": "Create a dataset for a connection to ingest data into Platform.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "fd59186b-80f7-4bda-b20c-ee5fbd9c2e18",
+					"_postman_id": "c8b6ba7c-7367-4b69-8b31-aa6d46d18f36",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -572,16 +495,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -614,7 +537,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "51327218-34d0-48d3-9ed4-24ea399a8622",
+			"_postman_id": "4be2a8cd-bf3f-44dd-bbde-65e703a845ad",
 			"description": "Creates a dataset for a connection to ingest data into and persist within Platform."
 		},
 		{
@@ -622,18 +545,7 @@
 			"item": [
 				{
 					"name": "Schedule ingestion at the given frequency.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "0e9a4361-ba5f-4218-9e97-7961fe2d233c",
+					"_postman_id": "fdf401b8-a19b-40dc-9b39-8b6b0b33ef06",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -660,16 +572,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -702,7 +614,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "6a33382d-ae2d-45d0-9849-0dd94a058cf5",
+			"_postman_id": "61469806-c62f-4e62-abf9-ac90ffa71a80",
 			"description": "Schedule ingestion from your authenticated connector into Data Lake at a given start date and frequency. Frequency can be set for every month, day, day of the week, hour, or minute."
 		},
 		{
@@ -710,18 +622,7 @@
 			"item": [
 				{
 					"name": "Posts custom schema via fields or objectName.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7dbcaf32-72e4-4fc0-9dfb-f66a9aee75ff",
+					"_postman_id": "15bb7f9d-5873-40be-b67c-54d87d03b0e1",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -748,16 +649,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -790,133 +691,8 @@
 					"response": []
 				}
 			],
-			"_postman_id": "49020fe5-2216-4904-8f56-b02daa985ae0",
+			"_postman_id": "1baa6b38-c9a1-4052-bf4b-b573d1ba702a",
 			"description": "Create a custom schema by fields or objectName."
-		},
-		{
-			"name": "Health Check",
-			"item": [
-				{
-					"name": "Check the health of the service.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "665f9010-9ae4-4294-bc71-40dde0c21afa",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/health",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"health"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Check the detailed health of the service.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "6767daa1-c609-443e-8791-d9bdfc2d9fb7",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the documentation covering making API calls in the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/health-detailed",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"health-detailed"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"_postman_id": "bcf47387-4fcc-4760-85b5-a5e42971795a",
-			"description": "Health check of the service, with dependencies."
 		}
 	]
 }

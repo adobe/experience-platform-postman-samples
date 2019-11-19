@@ -1,160 +1,17 @@
 {
 	"info": {
-		"_postman_id": "51f44c15-2805-43e4-ae4d-5bb84054786d",
+		"_postman_id": "13b28f2b-927a-4d49-8e47-47c954e6ffce",
 		"name": "DULE Policy Service",
-		"description": "<p>The Data Usage Labeling and Enforcement (DULE) framework simplifies and streamlines the process of categorizing data and creating data usage policies. Once data labels have been applied and data usage policies are in place, marketing actions can be evaluated to ensure the correct use of data.</p><p>The Policy Service API is used to manage and evaluate policies on marketing actions in the presence of data usage labels.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html\">DULE User Guide</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html#!end-user/markdown/dule_overview/dule_supported_labels.md\">Supported Data Usage Labels</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/dule_working_with_labels.md\">Working with Data Usage Labels</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/dule_working_with_policies.md\">Working with Data Usage Policies</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/foundation/dulepolicy</li><li>Example of a complete path for making a call to \"/policies/core\":<span> https://platform.adobe.io/data/foundation/dulepolicy/policies/core</ul></p>",
+		"description": "The Data Usage Labeling and Enforcement (DULE) framework simplifies and streamlines the process of categorizing data and creating data usage policies. Once data labels have been applied and data usage policies are in place, marketing actions can be evaluated to ensure the correct use of data.\nThe Policy Service API is used to manage and evaluate policies on marketing actions in the presence of data usage labels.\n\nRelated documentation:\n  * [Data Governance overview](https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html)\n  * [Supported data usage labels](https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html#!api-specification/markdown/narrative/technical_overview/data_governance/dule_supported_labels.md)\n  * [Working with Data Usage Labels](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/dule_working_with_labels.md)\n  * [DULE Policy Service developer guide](https://www.adobe.io/apis/experienceplatform/home/dule/duleservices.html#!api-specification/markdown/narrative/technical_overview/data_governance/dule_policy_service_developer_guide.md)\n  * [Create and evaluate a DULE policy](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/dule/create_a_dule_policy_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [DULE Policy Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/DULE%20Policy%20Service.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/dulepolicy\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/dulepolicy/policies/core\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Health",
-			"item": [
-				{
-					"name": "Basic health check",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7b8610c5-9e4d-47eb-9f8e-4a706b852480",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/health",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"health"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"_postman_id": "a49352f2-5520-48fe-8507-d809a9ba42ff",
-			"description": "Health check for DULE Policy Service"
-		},
-		{
-			"name": "Health Detailed",
-			"item": [
-				{
-					"name": "Detailed health check with status of dependent services",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "c688f3e5-37c6-49c6-8d72-b737fc73f40d",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/health-detailed",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"health-detailed"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"_postman_id": "74058db8-fb2b-46df-8568-f7ec5c404dbf",
-			"description": "Health check with dependencies for DULE Policy Service"
-		},
 		{
 			"name": "Policies",
 			"item": [
 				{
 					"name": "List all core policies.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "549e1bfe-c873-4697-9234-9850a457b295",
+					"_postman_id": "029de56f-bb59-4073-8eff-cb09e65f5502",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -169,28 +26,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -243,18 +100,7 @@
 				},
 				{
 					"name": "View a specific core policy by its \"id\".",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "638efe2a-70fd-455f-81ca-63e8a745ea3e",
+					"_postman_id": "46076ed5-a67a-47f3-bc27-8aa148d7b2b0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -269,28 +115,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -324,18 +170,7 @@
 				},
 				{
 					"name": "List all custom policies.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f119615a-6c30-4668-96bd-7e5297c9abc1",
+					"_postman_id": "cb12db18-f013-4169-8154-2dc726922715",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -350,21 +185,21 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -391,18 +226,7 @@
 				},
 				{
 					"name": "Create a new custom policy.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "452af177-717d-4a30-87a7-2513e8ca0fbf",
+					"_postman_id": "95977f31-723d-4765-8fd5-3bcd04e7b202",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -417,21 +241,21 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -458,18 +282,7 @@
 				},
 				{
 					"name": "View a specific custom policy by its \"id\".",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "76414e94-1e9d-4404-9712-be2ad1b759e2",
+					"_postman_id": "d724fc1e-ec70-4ce4-b5a1-ab7b18f8fd72",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -484,28 +297,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -539,18 +352,7 @@
 				},
 				{
 					"name": "Update a custom policy.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f25979ba-ddfe-4cb5-8ff4-c413c7889c57",
+					"_postman_id": "83f3753d-4038-4a94-bed5-58fff9904447",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -565,28 +367,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -620,18 +422,7 @@
 				},
 				{
 					"name": "Update a portion of a custom policy.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "489d8bfa-70e6-4e03-8cf6-11d31adb7e74",
+					"_postman_id": "d3242117-ca17-453b-b84e-f7fc07e69dde",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -646,28 +437,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -701,18 +492,7 @@
 				},
 				{
 					"name": "Delete a custom policy.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "10dff38f-5b2d-45f2-9bfa-f64f02f9404e",
+					"_postman_id": "e0cc7797-5fb6-4c27-8808-5d40339b85fa",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -727,28 +507,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -781,7 +561,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4896d640-1a8f-4056-8717-411b99a3124e",
+			"_postman_id": "0b710f36-b6d7-45e5-ba24-b066c2a1dff3",
 			"description": "Data usage policies are rules that describe the kinds of marketing actions that are allowed or not allowed to be performed on data within Adobe Experience Platform."
 		},
 		{
@@ -789,18 +569,7 @@
 			"item": [
 				{
 					"name": "List all core marketing actions.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "16ac1c36-9dd3-4624-944a-39d253b0ea17",
+					"_postman_id": "e8fa1551-b056-4e22-9b60-c8600480dfc0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -815,21 +584,21 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -856,18 +625,7 @@
 				},
 				{
 					"name": "View a specific core marketing action by \"name\".",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7ff3a3f6-789b-4cab-8de5-11337993a52e",
+					"_postman_id": "65300b23-cbdc-4a5a-a885-bd793b7ab58c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -882,28 +640,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -937,18 +695,7 @@
 				},
 				{
 					"name": "View policies violated by the presence of DULE labels.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "6690ac7d-8bc7-4f04-9be3-fa6d9831456a",
+					"_postman_id": "8d31110f-a352-406c-8e84-b275808927d5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -963,28 +710,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -1020,18 +767,7 @@
 				},
 				{
 					"name": "View policies violated if marketing action attempted on certain entities.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4ba95391-00a7-4bbf-812a-52f50ffefff1",
+					"_postman_id": "46089e8c-84f4-4d98-819a-a24eeba06b44",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1046,28 +782,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -1103,18 +839,7 @@
 				},
 				{
 					"name": "List all custom marketing actions.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e613bb65-e923-420c-9d0e-8519b1e09666",
+					"_postman_id": "33ac9493-4754-4d2d-96bb-9cf6d96f022a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1129,21 +854,21 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1170,18 +895,7 @@
 				},
 				{
 					"name": "View a specific custom marketing action by its \"name\"",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f60cd2ff-3e03-4c29-86d7-eae925dc0623",
+					"_postman_id": "d39b9803-bc7b-4da3-b203-7f3eb60cc339",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1196,28 +910,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -1251,18 +965,7 @@
 				},
 				{
 					"name": "Create or update a custom marketing action.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "90e994f6-7a1c-40d0-8f4a-0d8022aa7cf4",
+					"_postman_id": "be4774b2-b3cc-4708-8323-053bc941a57b",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1277,28 +980,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -1332,18 +1035,7 @@
 				},
 				{
 					"name": "Delete a custom marketing action.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f0372517-489a-419c-bdca-c847262a8d08",
+					"_postman_id": "d69349c8-78e5-4133-ad6d-f3ad587ff211",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1358,28 +1050,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -1413,18 +1105,7 @@
 				},
 				{
 					"name": "View policies violated by the presence of DULE labels.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f830ea18-f501-4cac-b18b-5186085d5ac5",
+					"_postman_id": "b143ed09-f1f8-4545-b171-42a41412ade3",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1439,28 +1120,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -1506,18 +1187,7 @@
 				},
 				{
 					"name": "View policies violated if marketing action attempted on certain entities.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "9e282d4a-df97-4591-ae3b-13ecf54e49ba",
+					"_postman_id": "82cd9d5a-e070-4281-8127-d8698fbd60e2",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1532,28 +1202,28 @@
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key belonging to the calling client.",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS organization of the client making the request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\".",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							}
@@ -1594,7 +1264,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4e8a2666-6c75-4e1f-b9e3-44056b7c5ec1",
+			"_postman_id": "db732808-90c0-4bc1-b96b-02ee9c5dba33",
 			"description": "Marketing actions, in the context of Data Governance, are actions that an Experience Platform data consumer takes, for which there is a need to check for violations of data usage policies."
 		}
 	]

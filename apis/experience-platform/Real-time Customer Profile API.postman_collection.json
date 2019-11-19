@@ -1,28 +1,17 @@
 {
 	"info": {
-		"_postman_id": "12ed55a7-027f-4393-a252-f02c99edf989",
+		"_postman_id": "9112402a-d48a-4612-b0e4-7e957d0df830",
 		"name": "Real-time Customer Profile API",
-		"description": "Real-time Customer Profile enables you to drive coordinated, consistent, and relvant experiences for your customers no matter where or when they interact with your brand. Profile provides a holistic view of each individual customer that combines data from multiple channels, including online, offline, CRM, and third-party data.\n\nThe Real-time Customer Profile API allows you to programatically integrate Profile's various functionalities into your service, providing RESTful endpoints for merge policy configuration, segmentation, edge projections, and more.\n\nRelated overview documentation:\n  * [Real-time Customer Profile overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md)\n  * [Profile Query Language (PQL)](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_pql.md)\n  \nRelated tutorials:\n  * [Configure Real-time Customer Profile using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_up_tutorial.md)\n  * [Access Real-time Customer Profile data using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/consuming_unified_profile_data/consuming_unified_profile_data.md)\n  * [Work with merge policies using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_merge_policies_tutorial.md)\n  * [Create segments using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_segment_tutorial/creating_a_segment_tutorial.md)\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ups/config/mergePolicies\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"description": "Real-time Customer Profile enables you to drive coordinated, consistent, and relevant experiences for your customers no matter where or when they interact with your brand. Profile provides a holistic view of each individual customer that combines data from multiple channels, including online, offline, CRM, and third-party data.\n\nThe Real-time Customer Profile API allows you to programmatically integrate Profile's various functionalities into your service, providing RESTful endpoints for merge policy configuration, segmentation, edge projections, and more.\n\nRelated overview documentation:\n  * [Real-time Customer Profile overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_architectural_overview.md)\n  * [Profile Query Language (PQL)](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/unified_profile_architectural_overview/unified_profile_pql.md)\n  \nRelated tutorials:\n  * [Configure Real-time Customer Profile using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_up_tutorial.md)\n  * [Access Real-time Customer Profile data using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/consuming_unified_profile_data/consuming_unified_profile_data.md)\n  * [Work with merge policies using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/configuring_up_tutorial/configuring_merge_policies_tutorial.md)\n  * [Create segments using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_segment_tutorial/creating_a_segment_tutorial.md)\n  * [Evaluate and access segment results](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/segmentation/evaluate_segment.md)\n  * [Configure and access computed attributes](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/computed_attributes/computed-attributes-tutorial.md)\n  * [Delete a dataset or specific batch in a dataset](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/datasets/delete-dataset.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Real-time Customer Profile API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Real-time%20Customer%20Profile%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ups\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ups/config/mergePolicies\n  \nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Merge policies",
+			"name": "Computed Attributes",
 			"item": [
 				{
-					"name": "Retrieve a list of merge policies.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "460e0a22-ca94-4a3c-9e41-6fbc1601cf7a",
+					"name": "Retrieve a list of computed attributes.",
+					"_postman_id": "74f9a6a8-becd-41c1-a858-29cc4d2df018",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -52,16 +41,340 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request Id",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/computedAttributes",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"computedAttributes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a computed attribute.",
+					"_postman_id": "202e997d-1b27-4b41-90f2-facd0525f105",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/computedAttributes",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"computedAttributes"
+							]
+						},
+						"description": "In order to configure a computed attribute, you first need to identify the field that will hold the computed attribute value. This field can be created using a mixin to add a new field to an existing schema, or by selecting a field that you have already defined within a schema.\n\n**Note:** Computed attributes cannot be added to fields within Adobe-defined mixins, the field must be within the tenant namespace ({TENANT_ID}), meaning it must be a field that you define and add to a schema.\n\nIn order to successfully define a computed attribute field, the schema must be enabled for Profile and appear as part of the union schema for the class upon which the schema is based. For more information, see the [tutorial for configuring and accessing computed attributes](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/computed_attributes/computed-attributes-tutorial.md)."
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a specific computed attribute by its ID.",
+					"_postman_id": "1fd41eb0-7b31-4fe1-af38-f6c2cb4c5452",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/computedAttributes/:ATTRIBUTE_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"computedAttributes",
+								":ATTRIBUTE_ID"
+							],
+							"variable": [
+								{
+									"value": "{{ATTRIBUTE_ID}}",
+									"id": "ATTRIBUTE_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a computed attribute by its ID.",
+					"_postman_id": "de1e4972-6958-4d0d-9e5f-ab9c83fcf281",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/computedAttributes/:ATTRIBUTE_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"computedAttributes",
+								":ATTRIBUTE_ID"
+							],
+							"variable": [
+								{
+									"value": "{{ATTRIBUTE_ID}}",
+									"id": "ATTRIBUTE_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a computed attribute by its ID.",
+					"_postman_id": "194c7ced-abee-4473-a7ed-c7276379cd5b",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/computedAttributes/:ATTRIBUTE_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"computedAttributes",
+								":ATTRIBUTE_ID"
+							],
+							"variable": [
+								{
+									"value": "{{ATTRIBUTE_ID}}",
+									"id": "ATTRIBUTE_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "f24c2355-379c-42bd-a98e-c9c9298acc0d",
+			"description": "Computed attributes enable a field value to be automatically computed based on other values, calculations, and expressions."
+		},
+		{
+			"name": "Merge policies",
+			"item": [
+				{
+					"name": "Retrieve a list of merge policies.",
+					"_postman_id": "62f193d3-0205-417b-ad52-3ed6e94d8a1e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request Id",
 								"type": "string",
 								"enabled": true
 							}
@@ -110,18 +423,7 @@
 				},
 				{
 					"name": "Create a new merge policy.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7723282a-ab81-4bfd-a61f-575f9c7eedd2",
+					"_postman_id": "a4a4fdbe-40d0-4151-8c2d-316895dc866c",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -151,6 +453,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -161,13 +470,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Request Id",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -194,18 +496,7 @@
 				},
 				{
 					"name": "Lookup a merge policy by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "a851cd0f-f058-4e0a-8c2e-1fb533c9ed25",
+					"_postman_id": "4ab80467-2685-41cd-a46b-d7e0159b3785",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -235,16 +526,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request Id",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request Id",
 								"type": "string",
 								"enabled": true
 							}
@@ -278,18 +569,7 @@
 				},
 				{
 					"name": "Update a merge policy by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "82249e8a-1532-45c8-952f-2be0e0e687ac",
+					"_postman_id": "20011212-7970-4ad2-ba78-abba0614569c",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -319,6 +599,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -329,13 +616,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Request Id",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -369,18 +649,7 @@
 				},
 				{
 					"name": "Update one or more attributes of a merge policy specified by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b11fb214-9fcf-4ba5-9256-9972de3b3f5e",
+					"_postman_id": "30509e06-2623-4fa0-94b3-4210d9f5a245",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -410,6 +679,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -420,13 +696,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Request Id",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -460,18 +729,7 @@
 				},
 				{
 					"name": "Delete a merge policy by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b990fd4b-a8de-4384-b637-5a58115744e0",
+					"_postman_id": "b9d9dc72-0db9-4084-a9fb-0920d01a1159",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -501,16 +759,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request Id",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request Id",
 								"type": "string",
 								"enabled": true
 							}
@@ -543,7 +801,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c16c34d5-a5bb-41ce-a3ce-a623b78aff73",
+			"_postman_id": "5a3615d3-dba0-484e-bc67-d41aec422572",
 			"description": "A merge policy is a set of configurations controlling aspects of identity stitching and data fragment merging. Merge policies are specific to a single schema, and can only be used to access entities adhering to that schema."
 		},
 		{
@@ -551,18 +809,7 @@
 			"item": [
 				{
 					"name": "Lookup an entity by ID or namespace.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3b8c5388-3624-4ef7-984e-7ba46510d613",
+					"_postman_id": "0ee4b62a-48c9-4d8a-8e36-b61f892c9c21",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -594,7 +841,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -671,18 +918,7 @@
 				},
 				{
 					"name": "Lookup multiple entities by IDs or namespaces.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "188c8c21-e911-479d-b512-9b773f9822b2",
+					"_postman_id": "71f6c8a2-ef7a-475f-ad96-6c5b98ef1bf6",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -718,7 +954,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -745,18 +981,7 @@
 				},
 				{
 					"name": "Delete an entity by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "377f331d-5fe0-4643-831a-02de942aaedb",
+					"_postman_id": "04a31b4a-39a7-4f72-995a-a717a5b5cae5",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -788,7 +1013,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -832,7 +1057,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0dcfad3d-aa7e-42b1-8a49-9625b89412e0",
+			"_postman_id": "4a08fc6e-e6ee-41ea-8c6e-df2b517ea4f5",
 			"description": "Entities are Experience Data Model (XDM) objects whose attributes, data contents, and related time-series events have been merged from various sources by Real-time Customer Profile."
 		},
 		{
@@ -840,18 +1065,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all export jobs.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "fca300d3-041c-490f-b03d-4b9a1dbd955e",
+					"_postman_id": "f85cc34b-9ad1-4949-9462-c26b43ed6623",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -883,7 +1097,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -893,7 +1107,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/export/jobs?limit={{limit}}&offset={{offset}}",
+							"raw": "https://platform.adobe.io/export/jobs?limit={{limit}}&offset={{offset}}&status={{status}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -912,6 +1126,10 @@
 								{
 									"key": "offset",
 									"value": "{{offset}}"
+								},
+								{
+									"key": "status",
+									"value": "{{status}}"
 								}
 							]
 						}
@@ -920,18 +1138,7 @@
 				},
 				{
 					"name": "Create a new export job.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "086014dc-7d1d-4099-8d9c-12729deaeb9c",
+					"_postman_id": "d7f741b3-300a-4b39-9d4f-a34d9f49e966",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -965,16 +1172,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-profile-instance-id",
-								"value": "{{x-profile-instance-id}}",
-								"description": "Profile Instance ID",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-profile-instance-id",
+								"value": "{{x-profile-instance-id}}",
+								"description": "Profile Instance ID",
 								"type": "string",
 								"enabled": true
 							}
@@ -1001,18 +1208,7 @@
 				},
 				{
 					"name": "Lookup an export job by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "54251bd9-dd49-4ae4-bb6e-a6c0d6a0fb53",
+					"_postman_id": "36fdf4df-e1d4-4c24-9a56-17384c216767",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1044,7 +1240,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1078,18 +1274,7 @@
 				},
 				{
 					"name": "Cancel or delete an export job by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "a7eec030-5aff-4cfa-8fe8-856115fc4244",
+					"_postman_id": "b3d27dbe-c6bc-4ea6-941c-0d3badadf0c1",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1121,7 +1306,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1154,7 +1339,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "06d53cd2-515a-4638-8eec-c5011021eadb",
+			"_postman_id": "e581f62e-0af7-49d1-9b6c-6c65db4e5d07",
 			"description": "Export jobs are asynchronous processes that are used to persist audience segment members to datasets."
 		},
 		{
@@ -1162,18 +1347,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of segment definitions.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "318faeb0-a5fd-4744-9d4b-6230b6bae771",
+					"_postman_id": "8e61d674-fbce-4d63-ad3d-5d0647f9a84d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1203,16 +1377,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Unique ID per request",
 								"type": "string",
 								"enabled": true
 							}
@@ -1257,18 +1431,7 @@
 				},
 				{
 					"name": "Create a new segment definition.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "9c027063-5363-4cce-ae51-9f3ac6b45012",
+					"_postman_id": "73838f5c-e5a5-4368-a6b3-5ea767b47a68",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1302,16 +1465,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Unique ID per request",
 								"type": "string",
 								"enabled": true
 							}
@@ -1338,18 +1501,7 @@
 				},
 				{
 					"name": "Lookup a segment definition by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "18d4f007-29ab-4c83-a5a4-9ce1974647ba",
+					"_postman_id": "5f9f99cf-70b1-421a-b55d-b6a0e6ffd95f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1379,16 +1531,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Unique ID per request",
 								"type": "string",
 								"enabled": true
 							}
@@ -1422,18 +1574,7 @@
 				},
 				{
 					"name": "Overwrite a segment definition.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "08a85641-b792-4c6e-a5dd-05ab77a36ffa",
+					"_postman_id": "a9b37e3b-56d3-4ac4-a90c-4f9d75288129",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1467,16 +1608,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Unique ID per request",
 								"type": "string",
 								"enabled": true
 							}
@@ -1510,18 +1651,7 @@
 				},
 				{
 					"name": "Delete a segment definition by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e0797ca4-2718-4dcf-9973-d71e8af476b0",
+					"_postman_id": "4e40d41a-0a10-43d8-9258-cda795a186e2",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1551,16 +1681,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Unique ID per request",
 								"type": "string",
 								"enabled": true
 							}
@@ -1593,7 +1723,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "64652347-8f46-4a31-aad1-f2dc3fbdf181",
+			"_postman_id": "9433913d-89d2-48c1-bd6e-2e5261c0fd6b",
 			"description": "A segment definition includes a Profile Query Language (PQL) statement that defines how to subdivide a customer base for an audience segment."
 		},
 		{
@@ -1601,18 +1731,7 @@
 			"item": [
 				{
 					"name": "Convert PQL formatting between pql/text and pql/json.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "27317efd-3ba4-4cb2-b0e9-3096c485553c",
+					"_postman_id": "7dfb8b8a-2794-4c36-8b79-7b4f7a02db76",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1642,16 +1761,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Unique ID per request",
 								"type": "string",
 								"enabled": true
 							}
@@ -1677,26 +1796,15 @@
 					"response": []
 				}
 			],
-			"_postman_id": "dcfdc35d-d33d-4e6b-aed8-b8cb398cbc5a",
-			"description": "Convert PQL formatting between `pql/json` and `pql/text`."
+			"_postman_id": "9dcc8479-e92a-4aee-94d6-e5169f648205",
+			"description": "Convert Profile Query Language (PQL) formatting between `pql/json` and `pql/text`."
 		},
 		{
 			"name": "Segment jobs",
 			"item": [
 				{
 					"name": "Retrieve a list of all segment job requests.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "00562731-11ff-49b2-97f5-2a374ae08624",
+					"_postman_id": "1f97b330-4f04-46e7-8e12-3c4115d4e58b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1726,16 +1834,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request ID",
 								"type": "string",
 								"enabled": true
 							}
@@ -1780,18 +1888,7 @@
 				},
 				{
 					"name": "Create a new segment job request.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "013ebc4d-7738-4cb0-a07a-86ef91438d22",
+					"_postman_id": "38fdbdee-6bae-411f-9de0-3a8222a18cfb",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1825,6 +1922,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -1835,13 +1939,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Request ID",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1868,18 +1965,7 @@
 				},
 				{
 					"name": "Lookup a segment job request by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e4e43dfd-f36f-4c27-b75c-d91a4e64d1e7",
+					"_postman_id": "5451106f-02c9-46d0-b352-d647b5051f56",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1909,16 +1995,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request ID",
 								"type": "string",
 								"enabled": true
 							}
@@ -1952,18 +2038,7 @@
 				},
 				{
 					"name": "Cancel or delete a segment job request by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "c5118563-18d2-44d8-b22e-15c3b7e017ff",
+					"_postman_id": "5650f020-1b92-42a2-9d95-9d470a022e4e",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1993,16 +2068,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request ID",
 								"type": "string",
 								"enabled": true
 							}
@@ -2035,7 +2110,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b9c1d5c3-28c3-4119-933a-ec7012449e0d",
+			"_postman_id": "ea07a489-bf1b-4f2a-96a3-bf4d2050d712",
 			"description": "Segment jobs process previously established segment definitions against your profile store to generate an audience segment."
 		},
 		{
@@ -2043,18 +2118,7 @@
 			"item": [
 				{
 					"name": "Create a new preview job.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "c81b1183-95a8-4a74-81ee-4108240f50d1",
+					"_postman_id": "1cfa773a-17b1-4cce-8562-0ee1e8157d06",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2090,7 +2154,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2116,18 +2180,7 @@
 				},
 				{
 					"name": "Lookup the results of a preview job by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "47dcd289-e51c-4751-a5cb-65b1f0d49082",
+					"_postman_id": "33a48c71-072c-48f6-be66-9807078a4a7f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2159,7 +2212,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2202,18 +2255,7 @@
 				},
 				{
 					"name": "Cancel or delete a preview job by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "d784d002-ac0c-4369-83d9-a66913eb3e17",
+					"_postman_id": "c5bd99cb-861f-42cb-88b0-69036dc7c137",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2245,7 +2287,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2277,7 +2319,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "11b21459-c045-4168-a14d-34619f32a79d",
+			"_postman_id": "206f3034-6af5-475e-8f45-2639a07e5551",
 			"description": "Previews provide paginated lists of qualifying profiles for a segment definition."
 		},
 		{
@@ -2285,18 +2327,7 @@
 			"item": [
 				{
 					"name": "Lookup the results of an estimate job by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "32e15022-6d96-453f-b288-9e360c3fd2ad",
+					"_postman_id": "9f1b83a0-c4fd-45bb-a218-96793c647c28",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2328,7 +2359,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2360,7 +2391,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f698a19b-8a26-4d48-a955-b6a82d724cc5",
+			"_postman_id": "17f8a889-f97c-45a5-9794-61b5ec2da42b",
 			"description": "Estimates provide statistical information on a segment definition, such as the projected audience size and confidence interval."
 		},
 		{
@@ -2368,18 +2399,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of edge projection configurations. The latest definitions are returned.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "dcba8ad2-9100-4764-ba9b-74947e111b7a",
+					"_postman_id": "f1e3a522-3274-43d9-977d-fb76aee8fed7",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2398,6 +2418,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2426,13 +2453,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2469,18 +2489,7 @@
 				},
 				{
 					"name": "Create a new edge projection configuration.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f9dbd0a5-7812-4809-8ab1-834465100a37",
+					"_postman_id": "219494a2-f25e-4955-ba59-797892d1ffc1",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2503,6 +2512,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2531,13 +2547,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2571,18 +2580,7 @@
 				},
 				{
 					"name": "Lookup an edge projection configuration by ID. The latest definition is returned.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8477b17f-dba4-41fa-84f3-f0d23efbbd4f",
+					"_postman_id": "79feaeea-ee3c-4ad7-b6d2-d5610c2151e1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2601,6 +2599,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2629,13 +2634,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2669,18 +2667,7 @@
 				},
 				{
 					"name": "Create or update an edge projection configuration by ID. Overwrites the entire configuration.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e76f9231-a97c-48d7-bded-4b6b7d20f7cd",
+					"_postman_id": "d94df884-61d4-4e94-900a-c2d5cbf89036",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2703,6 +2690,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2731,13 +2725,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2772,18 +2759,7 @@
 				},
 				{
 					"name": "Delete an edge projection configuration by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "5ad75121-7e48-4ce5-8571-cefb3914915b",
+					"_postman_id": "2b8f6a04-c0d1-4e3a-96b8-c68fd500fbde",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2798,6 +2774,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2826,13 +2809,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -2866,7 +2842,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0566a3a9-4520-4057-b15b-446c87e9fe36",
+			"_postman_id": "9b443d10-9bc3-45b1-9d19-400a87025c87",
 			"description": "Edge projection configurations determine what data should be projected to each edge."
 		},
 		{
@@ -2874,18 +2850,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of edge projection destinations. The latest definitions are returned.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8d8a36c5-ae1c-46b7-aee8-bea1d3aab132",
+					"_postman_id": "7cc7fa93-36fc-4c18-bd81-d95c5e060ae6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2908,6 +2873,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
 								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
@@ -2915,30 +2887,9 @@
 								"enabled": true
 							},
 							{
-								"key": "x-gw-ims-authorization",
-								"value": "{{x-gw-ims-authorization}}",
-								"description": "Gateway IMS service token.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-user-token",
-								"value": "{{x-user-token}}",
-								"description": "User access token.",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2965,18 +2916,7 @@
 				},
 				{
 					"name": "Create a new edge projection destination.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "01051700-874e-4fe4-8bb4-9b56df49195f",
+					"_postman_id": "137cf28d-f8b2-43bc-9585-3929343a05c0",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2999,6 +2939,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3027,13 +2974,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -3061,18 +3001,7 @@
 				},
 				{
 					"name": "Lookup an edge projection destination by ID. The latest definition is returned.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "92de76b4-4378-4b41-a133-80539417d55e",
+					"_postman_id": "5742f335-a212-4f81-9102-71b5aebf7663",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3091,6 +3020,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3119,13 +3055,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -3159,18 +3088,7 @@
 				},
 				{
 					"name": "Create or update an edge projection destination by ID. Overwrites the entire configuration.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "858547bf-11e9-470b-bf36-fe9cf640ad69",
+					"_postman_id": "64100b06-a268-4e4d-a102-96356ed09e30",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -3193,6 +3111,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3221,13 +3146,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -3262,18 +3180,7 @@
 				},
 				{
 					"name": "Delete an edge projection destination by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "0195b0f3-99a3-4f35-9c7e-b38ced20577a",
+					"_postman_id": "fed5cb55-f45a-4693-a96e-c356501f451f",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -3288,6 +3195,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
@@ -3316,13 +3230,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Optional header that may be used for debugging purposes when investigating issues with a client flow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -3356,7 +3263,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "bbb6ebb7-12f2-4129-a58f-d63060f179b9",
+			"_postman_id": "27d45ca0-cdcf-4647-8d7b-78d822b591c6",
 			"description": "Edge projection destinations define where to route a projection that has been created or changed."
 		},
 		{
@@ -3364,18 +3271,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of event types.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3b3ceb94-e2fc-4bff-94d4-70dc490ecd41",
+					"_postman_id": "230379b9-189b-47ec-90a1-a0f5d8c3901e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3405,16 +3301,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3455,18 +3351,7 @@
 				},
 				{
 					"name": "Create a new event type.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "15902674-044f-484b-bffb-72381c04655b",
+					"_postman_id": "22839d70-5528-4fb3-8fa4-96e4593ee9fd",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3496,6 +3381,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile instance ID.",
@@ -3505,14 +3397,7 @@
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Request ID.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3539,18 +3424,7 @@
 				},
 				{
 					"name": "Lookup an event type by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "2dd0b5c8-1563-47f6-ba41-cfcd4d2b203d",
+					"_postman_id": "c4626bb2-6d7b-4074-acbe-d4947aad3f10",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3580,16 +3454,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3623,18 +3497,7 @@
 				},
 				{
 					"name": "Overwrite an event type by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "71412dcb-f057-4f0e-8969-5295f4d87b35",
+					"_postman_id": "e02b54b3-6da0-4749-b653-758a504d7fc7",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -3664,6 +3527,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile instance ID.",
@@ -3673,14 +3543,7 @@
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Request ID.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3714,18 +3577,7 @@
 				},
 				{
 					"name": "Update one or more attributes of an event type by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8f0341fd-e662-4277-a7a3-561c17c25082",
+					"_postman_id": "2243f317-a759-411a-86f0-6eb570c6a2f0",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -3755,6 +3607,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile instance ID.",
@@ -3764,14 +3623,7 @@
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Request ID.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3805,18 +3657,7 @@
 				},
 				{
 					"name": "Delete an event type by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f19ad170-f658-4555-ba6f-a1df958ce0f1",
+					"_postman_id": "e54d95f5-268f-4d62-8235-d9deff28d885",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -3846,16 +3687,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3888,7 +3729,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d6088031-08e3-4bfb-a6b8-2b351f48ddc6",
+			"_postman_id": "7f8464b3-8c94-41b1-81bc-57ecbd7db45a",
 			"description": "Event types are context descriptors for time series events within Real-time Customer Profile."
 		},
 		{
@@ -3896,18 +3737,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all macros for your organization.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "81e15aeb-01c7-4ce7-8f7f-310e7c9d94cb",
+					"_postman_id": "190f685e-b462-4671-bd34-3dc5f33ee1a4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3937,16 +3767,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request ID",
 								"type": "string",
 								"enabled": true
 							}
@@ -3999,18 +3829,7 @@
 				},
 				{
 					"name": "Create a new macro.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b65af1ac-5428-4049-af52-efbb86bc2130",
+					"_postman_id": "72d81826-e5a7-4a65-b7f1-33f9bb44ac93",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4040,6 +3859,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -4050,13 +3876,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Request ID",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -4083,18 +3902,7 @@
 				},
 				{
 					"name": "Lookup a macro by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "422e0c99-b87d-48c0-b150-767e4cbf0ed6",
+					"_postman_id": "3577c743-64a9-4b07-8bb2-2a4707864b5e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4124,16 +3932,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request Id",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request Id",
 								"type": "string",
 								"enabled": true
 							}
@@ -4167,18 +3975,7 @@
 				},
 				{
 					"name": "Overwrite a macro by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "396e2377-16d5-4041-9e2b-d589388a0944",
+					"_postman_id": "38ca8d49-3fcc-40d2-87e7-abe6b80a7526",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -4208,6 +4005,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID",
@@ -4218,13 +4022,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Request ID",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -4258,18 +4055,7 @@
 				},
 				{
 					"name": "Update a macro by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b82e1e2c-f90c-4d20-bf1c-6fd4db5757af",
+					"_postman_id": "b698a5b5-7e66-4746-8088-a84f65c31bf9",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -4299,6 +4085,13 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
 								"description": "Profile Instance ID.",
@@ -4309,13 +4102,6 @@
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
 								"description": "Request ID.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -4349,18 +4135,7 @@
 				},
 				{
 					"name": "Delete a macro by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f19c109d-b4c0-4946-b5ee-11808b5569a5",
+					"_postman_id": "e35d49c8-56c0-4fc4-b688-f1d51c0cb507",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -4390,16 +4165,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Request ID.",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Request ID.",
 								"type": "string",
 								"enabled": true
 							}
@@ -4432,8 +4207,656 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7fe96d06-cc60-4ad4-a4bc-0a262d931a60",
+			"_postman_id": "175de03a-c9d0-4dc6-8b41-3b484062b32b",
 			"description": "Macros allow you to inject pre-computed fields and values into segment definitions. Values from different fields are added together and tested against the profile store as a single value. With macros, audience segments can be defined in more ways than would otherwise be available from isolated profile data fields."
+		},
+		{
+			"name": "Schedules",
+			"item": [
+				{
+					"name": "Retrieve a list of schedules for your IMS Org",
+					"_postman_id": "effb1a39-316e-401c-a360-c01a1d0973df",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/schedules?start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"schedules"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a schedule, including specifying the time when the schedule should be triggered.",
+					"_postman_id": "3bd617d8-2a51-4748-a812-d184b2d26dfa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/schedules",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup a schedule by its ID.",
+					"_postman_id": "49257092-5abd-46b1-be2c-7f225d73f1cf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/schedules/:SCHEDULE_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"schedules",
+								":SCHEDULE_ID"
+							],
+							"variable": [
+								{
+									"value": "{{SCHEDULE_ID}}",
+									"id": "SCHEDULE_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a schedule, including changing the trigger time or enabling/disabling the schedule.",
+					"_postman_id": "42bc0dc9-8668-4f26-8c92-32bbbf4628eb",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/schedules/:SCHEDULE_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"schedules",
+								":SCHEDULE_ID"
+							],
+							"variable": [
+								{
+									"value": "{{SCHEDULE_ID}}",
+									"id": "SCHEDULE_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a schedule by its ID.",
+					"_postman_id": "a2d68aea-03e3-419a-8e02-7ecd021a10de",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-request-id",
+								"value": "{{x-request-id}}",
+								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/config/schedules/:SCHEDULE_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"config",
+								"schedules",
+								":SCHEDULE_ID"
+							],
+							"variable": [
+								{
+									"value": "{{SCHEDULE_ID}}",
+									"id": "SCHEDULE_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "0448b875-761a-4b13-9ad9-ae98d43fc8a9",
+			"description": "Create a recurring schedule to automatically run export jobs. A schedule can run at most once daily."
+		},
+		{
+			"name": "Profile System Jobs",
+			"item": [
+				{
+					"name": "Retrieve a list of all delete requests (Profile System Jobs) created by your organization.",
+					"_postman_id": "af71a457-1bfc-49ca-afff-366a3e3c825a",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/system/jobs?start={{start}}&limit={{limit}}&page={{page}}&sort={{sort}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"system",
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "sort",
+									"value": "{{sort}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a delete request (Profile System Job)",
+					"_postman_id": "c7e7e280-bc9b-47a0-a1f5-d02ef8f12eb7",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/system/jobs",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"system",
+								"jobs"
+							]
+						},
+						"description": "Initiating a new delete request is done through a POST request to the `/systems/jobs` endpoint, where the ID of the dataset or batch to be deleted is provided in the body of the request.\n\n  In order to delete a dataset, the dataset ID must be included in the body of the POST request. This action will delete ALL data for a given dataset. Experience Platform allows you to delete datasets based on both record and time series schemas.\n  \n  In order to delete a batch, the batch ID must be included in the body of the POST request. Please be advised that you cannot delete batches for datasets based on record schemas. Only batches for datasets based on time series schemas may be deleted. \n\n  **Note:** The reason you cannot delete batches for datasets based on record schemas is because record type dataset batches overwrite previous records and therefore cannot be \"undone\" or deleted. The way to remove the impact of erroneous batches for datasets based on record schemas is to reingest the batch with the correct data and it will overwrite the incorrect records. \n  \n  For more information on record and time series behavior, please review the section on XDM data behaviors in the [XDM System overview](https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md)."
+					},
+					"response": []
+				},
+				{
+					"name": "View a specific delete request (Profile System Job) by its ID.",
+					"_postman_id": "42cddfc0-c030-4a64-92da-dfd2c97f94f3",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/system/jobs/:ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"system",
+								"jobs",
+								":ID"
+							],
+							"variable": [
+								{
+									"value": "{{ID}}",
+									"id": "ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a specific delete request (Profile System Job) by its ID.",
+					"_postman_id": "61f6013a-828e-47ff-af2f-d795049b70b5",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/system/jobs/:ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"system",
+								"jobs",
+								":ID"
+							],
+							"variable": [
+								{
+									"value": "{{ID}}",
+									"id": "ID"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "d75e4b18-64bb-414d-a697-719688e93389",
+			"description": "Profile System Jobs allow you to delete profile fragments for a given dataset or batch."
 		}
 	]
 }

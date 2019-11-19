@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "a2359e9b-10fa-4882-ad45-89ba10ae191c",
+		"_postman_id": "faddaa58-ee4b-4b40-841f-461a2f9b441d",
 		"name": "Query Service API",
-		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data  Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Introduction to Query Service](https://www.adobe.io/apis/experienceplatform/home/services/query-service/query-service.html#!acpdr/end-user/markdown/query-service/qs-intro.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'",
+		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Query Service overview](https://www.adobe.io/apis/experienceplatform/home/services/query-service/query-service.html#!end-user/markdown/query-service/qs-intro.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Query Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Query%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,18 +11,7 @@
 			"item": [
 				{
 					"name": "Requests connection parameters for the interactive interface.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ea02cf1e-602e-496d-9690-4e6b57fe056b",
+					"_postman_id": "2ffa9d5a-0069-4c9a-bcef-6865683a31c1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -56,9 +45,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -66,13 +62,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -97,7 +86,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "76d56b6f-ae67-46fc-b42f-c4767a4a2201",
+			"_postman_id": "0faf35b6-7405-4e4c-8564-eb486fe3330d",
 			"description": "Retrieves connection parameters for the interactive interface."
 		},
 		{
@@ -105,18 +94,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of queries for this IMS Organization.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "c257e0e3-68d7-4280-9dd9-07b397630b15",
+					"_postman_id": "7db6de53-4738-4f31-b40a-b2f5cc9d6618",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -150,9 +128,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -160,13 +145,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -218,18 +196,7 @@
 				},
 				{
 					"name": "Create a new query.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "c89c4713-98f6-4333-ab14-75fb83048e40",
+					"_postman_id": "80fb62db-28fd-400e-88c7-d999cd96ac47",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -256,9 +223,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -266,13 +240,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -298,18 +265,7 @@
 				},
 				{
 					"name": "Request query status by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "a4f2d5d8-9394-4e41-a1a1-9932684c39b6",
+					"_postman_id": "f307520a-157f-47ed-aa5c-37d26f10c998",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -343,9 +299,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -353,13 +316,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -392,18 +348,7 @@
 				},
 				{
 					"name": "Request cancellation or query soft delete.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "781cdaf1-a345-4c10-8594-4e0ca0a067ed",
+					"_postman_id": "6b065542-f490-4ec7-8f08-65f3206d6b10",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -437,9 +382,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -447,13 +399,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -485,7 +430,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "28560ee6-1cbd-4c58-ba8e-ac37e6fb94d2",
+			"_postman_id": "757dbcc5-3237-4cdb-a233-a8a0311c02ca",
 			"description": "Queries let you use standard SQL to query data in Adobe Experience Platform. For example, you can join any number of datasets in Experience Data Lake and capture the results as a new dataset."
 		},
 		{
@@ -493,18 +438,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of schedules for this IMS Organization.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "04f406d2-3c16-49d6-8bba-0ca3d2a1f479",
+					"_postman_id": "6e350eb5-914d-4607-a4f1-dfea8ca4b5d3",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -538,9 +472,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -548,13 +489,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -598,18 +532,7 @@
 				},
 				{
 					"name": "Create a new scheduled query.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "393f7baa-bad0-49c9-a60b-8ec87e5fb007",
+					"_postman_id": "1f7da74b-a2b8-4213-ac1d-06fa7a428f1b",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -643,9 +566,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -653,13 +583,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -685,18 +608,7 @@
 				},
 				{
 					"name": "Request details of a schedule by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "efcde436-e004-4cf1-9758-d32617288c82",
+					"_postman_id": "afa2af53-3737-41e2-961a-f4728436fa66",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -730,9 +642,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -740,13 +659,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -779,18 +691,7 @@
 				},
 				{
 					"name": "Patch an existing schedule.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "92d82e70-d75c-48de-9c39-cab700a65d60",
+					"_postman_id": "04cb334f-c4c5-4863-8e36-0be651504625",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -824,9 +725,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -834,13 +742,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -873,18 +774,7 @@
 				},
 				{
 					"name": "Delete a schedule by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "a8944758-0f47-43ec-bb6b-b440c2ee6a22",
+					"_postman_id": "f255781f-6a90-4cff-bf3a-850e1fdbfff4",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -918,9 +808,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -928,13 +825,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -967,18 +857,7 @@
 				},
 				{
 					"name": "Retrieve a list of all runs, past and currently running, for a particular query schedule.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b6128bc7-0c7b-4905-834a-165a8bb2a2e8",
+					"_postman_id": "43ab6f07-c195-4bf0-b082-a39367137f60",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1012,9 +891,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1022,13 +908,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1080,18 +959,7 @@
 				},
 				{
 					"name": "Trigger an immediate run of a scheduled query.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "a4fd9c09-e010-4694-b608-9facd3376e64",
+					"_postman_id": "99e449bf-0596-4163-b7c6-208b3da1bd43",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1125,9 +993,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1135,13 +1010,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1175,18 +1043,7 @@
 				},
 				{
 					"name": "Lookup details of a query schedule run by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4152e8a3-0555-476c-b25e-371787c8e922",
+					"_postman_id": "91c9f289-68fe-4805-91a8-de605e88aaa5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1220,9 +1077,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1230,13 +1094,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1275,18 +1132,7 @@
 				},
 				{
 					"name": "Trigger an immediate run of a scheduled query by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f1b1d214-1100-4fba-bbe9-96374886656d",
+					"_postman_id": "741882ac-14b7-4f8b-818b-e6dbcefd1bd8",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1320,9 +1166,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1330,13 +1183,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1374,7 +1220,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "fcab42e1-9c25-42e2-968f-b57976ccfb3c",
+			"_postman_id": "c6028018-5e37-4c4c-ad76-7848e65dd4ce",
 			"description": "Schedules let you perform SQL functions from a start date to an end date."
 		},
 		{
@@ -1382,18 +1228,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of query templates for this IMS Organization.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3e4bd61e-53f5-4c4b-8e3a-d1710404e29e",
+					"_postman_id": "16401599-06b1-499d-91b8-43f98185ee41",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1427,9 +1262,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1437,13 +1279,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1487,18 +1322,7 @@
 				},
 				{
 					"name": "Create a new query template.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "a6aebdcf-3376-4c29-ab86-6e2338436443",
+					"_postman_id": "d4be908d-6ec9-4bbb-bfc9-b13cf2dad57e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1532,9 +1356,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1542,13 +1373,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1574,18 +1398,7 @@
 				},
 				{
 					"name": "Lookup a query template by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "72e66ebb-156c-4449-9258-ae225e2ec897",
+					"_postman_id": "6db67144-576d-4bd3-81cd-6148b11f2939",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1619,9 +1432,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1629,13 +1449,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1668,18 +1481,7 @@
 				},
 				{
 					"name": "Update a query template by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4062a49e-881d-4e9a-84a9-9a31f566cef5",
+					"_postman_id": "a003bc0d-124d-4586-873e-739ba537ee58",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1713,9 +1515,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1723,13 +1532,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1762,18 +1564,7 @@
 				},
 				{
 					"name": "Delete a query template by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "c5d2d7ae-551e-4cb9-b215-15a6529f4cb4",
+					"_postman_id": "877f3fb7-0294-4dd1-a5f2-c95aa72eeaa8",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1807,9 +1598,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1817,13 +1615,6 @@
 								"key": "User-Agent",
 								"value": "{{User-Agent}}",
 								"description": "type of the client making HTTP API request",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
 								"enabled": true
 							}
@@ -1855,7 +1646,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "cf412163-3aeb-4e70-a542-4c3a41aca532",
+			"_postman_id": "5c349a79-1e35-43c5-b05f-dbc614909091",
 			"description": "Query templates let you create, store and execute any of the query as adhoc or schedule service."
 		}
 	]

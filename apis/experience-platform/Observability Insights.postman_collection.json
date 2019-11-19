@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "3c1b5a08-3544-4efb-9aab-2cd01011033f",
+		"_postman_id": "c66a07f7-c936-40ed-a091-9e920c130171",
 		"name": "Observability Insights",
-		"description": "<p>The Observability Insights Service is used to collect and expose metrics data from various components of Observability. It listens to events broadcasting on the data pipeline and collects metrics on resources and statistics on data ingestion.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/observability.html\">Observability Insights API Overview</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/infrastructure/observability/insights</li><li>Example of a complete path for making a call to \"/metrics\":<span> https://platform.adobe.io/data/infrastructure/observability/insights/metrics</ul></p>",
+		"description": "The Observability Insights Service is used to collect and expose metrics data from various components of Observability. It listens to events broadcasting on the data pipeline and collects metrics on resources and statistics on data ingestion.\n\nRelated documentation:\n  * [Observability Insights developer guide](https://www.adobe.io/apis/experienceplatform/home/services/observability.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Observability Insights Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Observability%20Insights.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/infrastructure/observability/insights\n  * Example of a complete path: https://<span>platform.adobe.io/data/infrastructure/observability/insights/metrics\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,18 +11,7 @@
 			"item": [
 				{
 					"name": "List metrics data.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b664ad76-8f7f-4235-a3e6-22fcb30e7f3b",
+					"_postman_id": "614a78f6-1ef4-4700-9fe4-99c75e8c4654",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -54,7 +43,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -97,7 +86,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "38e215cd-220f-4e59-a0d6-266c4092449d",
+			"_postman_id": "e575f4a1-c3d3-4d41-9b4e-a58f6a2f22bc",
 			"description": "Observability metrics are parameters used to gain statistical insights into actions being performed in Adobe Experience Platform. These insights include counts of available Platform resources and statistics on data ingestion."
 		}
 	]
