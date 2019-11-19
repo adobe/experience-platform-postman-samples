@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "182c1cfa-cfb8-474e-b220-1817d5dd212d",
+		"_postman_id": "cd7b8d49-4a63-4e0e-9ccd-c9c6ec3f81aa",
 		"name": "Identity Service",
-		"description": "Identity Service provides API based access to customer identity graphs which resolves a known or anonymous identity to all  other known and anonymous identities of an individual. Identity Service solves the fundamental challenge posed by the disconnected identities of your customers caused by the fragmented nature of their data as it exists across each of the disparate systems at play in your organization's ecosystem. This seamless unified view of your customers allows  for a vast improvement in the accuracy and reach of your digital marketing campaigns.\n\nSome common terminology used in this API document:\n  Term | Definition\n  --- | ---\n  __Identity__ |  An identity on Experience Platform is the fully qualified identifier (the ID plus the relevant namespace OR the XID) for a given profile.\n  __Identity Namespace__ |  The namespace of an identity relates it to its system of origin. The ID value plus the namespace fully qualify an identity.\n  __Cluster__ | Given an identity, a \"cluster\" represents that identity and all identities linked to it in the identity graph. These related IDs are considered to be part of the same \"cluster\".\n  __Mapping__ | Mapping allows you to provide a fully qualified identity and will return the linked identity from another namespace.\n\nFor more information, see [Identity Service Overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_architectural_overview.md).\n\n__Notes__:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how \n  to obtain these, visit the documentation covering making API calls in the [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html)",
+		"description": "Delivering relevant digital experiences requires having a complete understanding of your customer. This is made more difficult when your customer data is fragmented across disparate systems, causing each individual customer to appear to have multiple \"identities\". Adobe Experience Platform Identity Service provides a RESTful API to help you to gain a better view of your customers and their behavior. By bridging identities across devices and systems, you are better able to deliver impactful, personal digital experiences in real-time.\n\nRelated documentation:\n  * [Identity Service overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_architectural_overview.md)\n  * [Identity Service developer guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_api.md)\n  * [Identity namespace overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_namespace_overview/identity_namespace_overview.md)\n  * [Identity Service troubleshooting guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_faq.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Identity Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Identity%20Service.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform-{REGION}.adobe.io\n    * Information on <code>{REGION}</code> values can be found in the [Identity Service developer guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_api.md).\n  * Base path for this API: /data/core/\n  * Example of a complete path: https://<span>platform-va7.adobe.io/data/core/identity/cluster/members\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,18 +11,7 @@
 			"item": [
 				{
 					"name": "Given an id and namespace returns an identity string",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "de9afe0b-6559-410a-9e8e-776082808e5e",
+					"_postman_id": "a355e977-8b0e-4f27-b2d2-af80b01fdf98",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -52,16 +41,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-uis-cst-ctx",
-								"value": "stub",
-								"description": "Customer context to be used for stub response",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
 							}
@@ -102,7 +91,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ab140fc7-3558-4850-a67a-692f0e262584",
+			"_postman_id": "b3fbc6e7-c670-4773-8158-3f5cb867a14d",
 			"description": "Identity services provide access to a profile identity in XID form."
 		},
 		{
@@ -110,18 +99,7 @@
 			"item": [
 				{
 					"name": "Given an identity, returns all linked identities in that cluster.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "64c387e1-e053-4240-b42b-1925b481bdfa",
+					"_postman_id": "86fb2c8f-64d9-4302-aaa0-1e16b7189065",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -151,16 +129,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-uis-cst-ctx",
-								"value": "stub",
-								"description": "Customer context to be used for stub response",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
 							}
@@ -211,18 +189,7 @@
 				},
 				{
 					"name": "Given set of identities, returns all linked identities in cluster corresponding to each identity.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f40d76ca-dac9-4cdd-a032-1c3f37687efa",
+					"_postman_id": "286c5c7b-91c1-4477-bf90-4e55f68000a4",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -256,16 +223,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-uis-cst-ctx",
-								"value": "stub",
-								"description": "Customer context to be used for stub response",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
 							}
@@ -293,18 +260,7 @@
 				},
 				{
 					"name": "Given an XID, return all cluster association statistics for that XID",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "1049a439-05f7-4a42-988a-0b04534923db",
+					"_postman_id": "80035f1d-0042-480b-a246-0dac1e918a02",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -334,16 +290,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-uis-cst-ctx",
-								"value": "stub",
-								"description": "Customer context to be used for stub response",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
 							}
@@ -394,18 +350,7 @@
 				},
 				{
 					"name": "Given a set of XIDs, return all corresponding cluster association statistics",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3f24c9bc-396c-485b-91ab-58b0aada7ea9",
+					"_postman_id": "09064940-75b3-458e-8f3c-d9cde43b2ac2",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -439,16 +384,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-uis-cst-ctx",
-								"value": "stub",
-								"description": "Customer context to be used for stub response",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
 							}
@@ -475,7 +420,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ae5d297b-0828-4afd-8d97-b019b0c2cc32",
+			"_postman_id": "12c05064-cc78-4367-b71d-a3b3cba9450a",
 			"description": "Cluster services provide access to groupings of identities as linked in the identity graph."
 		},
 		{
@@ -483,18 +428,7 @@
 			"item": [
 				{
 					"name": "Given an identity and target namespace, returns the linked identity",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e28ef80d-8341-4271-8e03-bec16a2644d7",
+					"_postman_id": "d385dcd9-f0fa-46b4-ac74-9fccbaaa7ebc",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -524,16 +458,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-uis-cst-ctx",
-								"value": "stub",
-								"description": "Customer context to be used for stub response",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
 							}
@@ -583,18 +517,7 @@
 				},
 				{
 					"name": "Given set of identities and target namespace, returns the corresponding linked identities.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "87c3888b-1d49-4a79-bf34-1a70ddc746e7",
+					"_postman_id": "6e580802-c46d-487b-b497-e588c2fa5df9",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -624,16 +547,16 @@
 								"enabled": true
 							},
 							{
-								"key": "x-uis-cst-ctx",
-								"value": "stub",
-								"description": "Customer context to be used for stub response",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "x-uis-cst-ctx",
+								"value": "stub",
+								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
 							}
@@ -660,7 +583,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c4608d35-3078-4875-ba10-75312c0aee90",
+			"_postman_id": "d08e4990-f9a4-4799-9e9a-778da0dff761",
 			"description": "Mapping allows you to provide a fully qualified identity and will return the linked identity from another namespace."
 		},
 		{
@@ -668,18 +591,7 @@
 			"item": [
 				{
 					"name": "Lists all namespaces available to the client `x-gw-ims-org-id`",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "12de9722-9b87-4786-ad0e-80a5c9f6293a",
+					"_postman_id": "5606111f-ff23-44fb-9e3a-264585a4e0d6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -711,7 +623,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -738,18 +650,7 @@
 				},
 				{
 					"name": "Create namespace under `x-gw-ims-org-id` IMS Org .",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "4d00777c-803f-40a0-9954-f272a06a45f3",
+					"_postman_id": "243ece74-f1e4-4e31-88b9-a16c53f808ce",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -785,7 +686,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -812,18 +713,7 @@
 				},
 				{
 					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "347ce449-b1a7-449e-94eb-621868205a37",
+					"_postman_id": "17849c15-9da5-4320-a517-c061061b3879",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -855,7 +745,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -889,18 +779,7 @@
 				},
 				{
 					"name": "Update namespace owned by `x-gw-ims-org-id` and having the given `id`.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b54f1b9a-ab60-4b23-a408-79b16dd4e056",
+					"_postman_id": "1bbf514a-f241-4edc-b2b3-8b5699ba6f73",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -936,7 +815,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -970,18 +849,7 @@
 				},
 				{
 					"name": "Lists shared namespaces for the given `{imsorg}` or all owned if `{imsorg}` == `x-gw-ims-org-id`",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b6065dce-987f-4dfd-b512-a9637566f082",
+					"_postman_id": "43fdb0d7-c8b4-406f-9b70-92617d595824",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1013,7 +881,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1048,18 +916,7 @@
 				},
 				{
 					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "7b8070d9-0a81-4eaa-91f8-d89bd3f67b90",
+					"_postman_id": "9adbfd0c-4391-433d-b459-cdcf87f01aa0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1091,7 +948,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1130,7 +987,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e5bf8087-c4e8-4e92-ac23-6dea5c9fd6a4",
+			"_postman_id": "cd18cb9a-1d58-4961-a444-7538e77a70c2",
 			"description": "Identity Namespace services allow you to work with Namespaces for your organization, such as to list all Namespaces available or to create a custom Namespace."
 		}
 	]

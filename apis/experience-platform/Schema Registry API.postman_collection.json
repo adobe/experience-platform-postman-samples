@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "e29887fc-b8bc-45e4-b74b-7eda7179d412",
+		"_postman_id": "03344692-cc9f-412d-a375-5751fe8f02bc",
 		"name": "Schema Registry API",
-		"description": "<p>The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.</p><p><strong>Related Documentation:</strong><br/><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md\">XDM System in Adobe Experience Platform</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_composition/schema_composition.md\">Basics of Schema Composition</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md\">Schema Registry API Developer Guide</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/tutorials/schema_registry_api_tutorial/schema_registry_api_tutorial.md\">Schema Registry API Tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>PLATFORM Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/foundation/schemaregistry</li><li>Example of a complete path for making a call to \"/stats\":<span> https://platform.adobe.io/data/foundation/schemaregistry/stats</ul></p>",
+		"description": "The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.\n\nRelated documentation:\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md\">XDM System in Adobe Experience Platform</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_composition/schema_composition.md\">Basics of schema composition</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md\">Schema Registry API developer guide</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/tutorials/schema_registry_api_tutorial/schema_registry_api_tutorial.md\">Create a schema using the Schema Registry API</a>\n  \nVisualize API calls with Postman (a free, third-party software):\n  * [Schema Registry API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Schema%20Registry%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/schemaregistry\n  * Example of a complete path for making a call to \"/stats\": https://<span>platform.adobe.io/data/foundation/schemaregistry/stats\n\nRequired headers:\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, see the <a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md\">authentication tutorial</a>.\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All GET requests to the Schema Registry require an `Accept` header to determine what data is returned by the system. See the <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md#accept-header\">section on Accept headers</a> in the Schema Registry developer guide for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,18 +11,7 @@
 			"item": [
 				{
 					"name": "Return {TENANT_ID} and Schema Registry usage information.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e23c6fab-41e4-409c-ae53-ced27ba63b14",
+					"_postman_id": "034525d1-877b-4086-ae83-5546aa1c27c9",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -58,7 +47,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -86,7 +75,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9790af99-3b0f-41a7-a248-e8f08a20a7e2",
+			"_postman_id": "76251f8d-ba1c-4f4c-a54f-e14c7fafe557",
 			"description": "Returns {TENANT_ID} along with information regarding IMS Org usage of the Schema Registry such as resource counts, recently created resources, and class usage."
 		},
 		{
@@ -94,18 +83,7 @@
 			"item": [
 				{
 					"name": "List all schemas within the specified container.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "5451d0f8-53d3-4b31-bffb-d291b383a359",
+					"_postman_id": "9d982616-c546-4711-aa0f-137cb6bb5369",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -141,7 +119,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -197,18 +175,7 @@
 				},
 				{
 					"name": "Create a new tenant-defined schema.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "90ea902b-2fc0-409c-a114-3e09ce156b95",
+					"_postman_id": "203bf1ff-858a-4094-b328-806c3bb5640b",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -244,7 +211,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -281,18 +248,7 @@
 				},
 				{
 					"name": "Lookup a specific schema by its unique ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8140184e-e811-41f2-8a90-21146970dc31",
+					"_postman_id": "43393162-236e-4b45-9441-f588816f6496",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -328,7 +284,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -370,18 +326,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined schema.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "b4aca224-8869-46a2-a31a-7e9990e3a3a7",
+					"_postman_id": "bc214f4a-425b-4414-8749-6343b78ade87",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -417,7 +362,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -459,18 +404,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined schema.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3c208762-d829-4902-a6c0-6a107a90abe4",
+					"_postman_id": "9b1eddeb-529a-4b52-b38e-2995bdd594ea",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -506,7 +440,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -548,18 +482,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined schema from the registry.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3a6fbcff-cfd0-4c73-98c6-8b301af00abc",
+					"_postman_id": "a53a0f17-583e-4b9a-a212-fd183bf3f0eb",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -595,7 +518,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -636,7 +559,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e24be898-df38-4b64-9b0e-ad7e13ee1703",
+			"_postman_id": "43f759b2-15b9-4c05-a423-f8e7f81aeeb4",
 			"description": "Schemas provide an abstract definition of a real-world object along with constraints and expectations that can be applied and used to validate data."
 		},
 		{
@@ -644,18 +567,7 @@
 			"item": [
 				{
 					"name": "Return a list of all mixins within the specified container.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "19eda3fa-c527-4edb-a8c1-129c6253d6c9",
+					"_postman_id": "fa483e27-db22-48dc-87f9-8ccf031ed9e8",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -691,7 +603,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -746,18 +658,7 @@
 				},
 				{
 					"name": "Create a new tenant-defined mixin.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "cd9f7633-6a93-4fcb-a569-e245c7965c2c",
+					"_postman_id": "1d7461eb-30fb-4e7b-8c80-8507677a35c7",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -793,7 +694,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -830,18 +731,7 @@
 				},
 				{
 					"name": "Lookup a specific mixin by its unique ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "dcba3295-d217-4f3d-a0db-a8dbe24f6b0c",
+					"_postman_id": "092faf7e-40b4-4e74-99a3-39aa5a201ea7",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -877,7 +767,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -918,18 +808,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined mixin.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "9d8ec2b0-785b-40a7-9174-cc7846d153ea",
+					"_postman_id": "d66778e8-4750-431b-8580-091fcd451b0a",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -965,7 +844,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1007,18 +886,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined mixin.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "c737977d-ccf4-45da-b6ff-17996e731b9f",
+					"_postman_id": "8f4cadec-03c3-474c-9351-fcbd793577d8",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1054,7 +922,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1096,18 +964,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined mixin from the registry.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "69f463ea-fac0-4893-b45d-e075d7b7dffb",
+					"_postman_id": "6777480b-96f5-4de5-a0fc-f895c9f1d8df",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1143,7 +1000,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1184,7 +1041,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e857db7a-b9f0-4543-aea5-e69c6c4ad5a2",
+			"_postman_id": "d9845cb8-1d44-4e2c-aee3-083f995ac548",
 			"description": "A mixin is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
 		},
 		{
@@ -1192,18 +1049,7 @@
 			"item": [
 				{
 					"name": "List all classes in the specified container.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "6f47b3b6-1700-495b-98f3-1566ad75341e",
+					"_postman_id": "53475bda-679b-44ec-ada4-7ce1af70a11d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1239,7 +1085,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1294,18 +1140,7 @@
 				},
 				{
 					"name": "Create a tenant-defined class.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "2deb88b8-560a-477b-8a7b-db4913dfc260",
+					"_postman_id": "c0a5ecac-1678-4a11-9b63-d9f7198dcf44",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1341,7 +1176,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1378,18 +1213,7 @@
 				},
 				{
 					"name": "Lookup a specific class by its unique ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f717cccf-42b3-4ee2-b83c-89c81c784921",
+					"_postman_id": "06185220-4851-49aa-b507-8fd221dd9c21",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1425,7 +1249,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1466,18 +1290,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined class.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ac6d05a1-6d5f-4dd5-b3f3-6b156eeb6e05",
+					"_postman_id": "1b2a88f5-a510-4d32-ae54-3f4fdd76f542",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1513,7 +1326,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1555,18 +1368,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined class.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e21a65dd-11ac-443e-994f-bd8d131286b1",
+					"_postman_id": "393003da-6b97-4a93-8e04-8f0eb6f2f9df",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1602,7 +1404,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1644,18 +1446,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined class from the registry.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "ea22df93-df10-46bc-b861-1924636f04cf",
+					"_postman_id": "f5caf342-5d8f-481c-96ee-c5c847377913",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1691,7 +1482,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1732,7 +1523,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "833f4e27-cd14-48c9-9057-0153ba5e5d92",
+			"_postman_id": "a9e8807d-12d4-47cf-a47d-d7655aafa9f0",
 			"description": "Classes define behavioral aspects of the data within the schema and describe the smallest number of common properties contained in all schemas that implement the same class."
 		},
 		{
@@ -1740,18 +1531,7 @@
 			"item": [
 				{
 					"name": "List all data types in the specified container.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "563527bf-822c-43c0-928d-1da609f59bf7",
+					"_postman_id": "530a244f-04a7-477e-90aa-54cc87b98c44",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1778,16 +1558,16 @@
 								"enabled": true
 							},
 							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
 								"type": "string",
 								"enabled": true
 							}
@@ -1842,18 +1622,7 @@
 				},
 				{
 					"name": "Create a tenant-defined data type.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "abe089fc-d247-40f1-8f44-3a431b6d1dd3",
+					"_postman_id": "3db51ace-72c8-4194-b669-54fbf8a5b32a",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1880,16 +1649,16 @@
 								"enabled": true
 							},
 							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
 							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token provided after authorization in the format \"Bearer {ACCESS_TOKEN}\"",
 								"type": "string",
 								"enabled": true
 							}
@@ -1926,18 +1695,7 @@
 				},
 				{
 					"name": "Returns the datatype schema associated with the given identifier.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "3a4fa268-60a6-4d18-85cb-d237a85abeb9",
+					"_postman_id": "8eee4205-d064-4d02-be0d-86ca18e15204",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1973,7 +1731,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2014,18 +1772,7 @@
 				},
 				{
 					"name": "Replace a tenant-defined data type.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "fc97bc22-9cb0-42dd-94f3-418d97efaeba",
+					"_postman_id": "a470d369-d32f-4d4e-a853-e7a6f7a4f095",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2061,7 +1808,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2103,18 +1850,7 @@
 				},
 				{
 					"name": "Modify or update part of a tenant-defined data type.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "f98b37db-d933-4656-ad44-e97927876d76",
+					"_postman_id": "5f1cc767-c04b-4668-b2a0-5fd721cafd83",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2150,7 +1886,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2192,18 +1928,7 @@
 				},
 				{
 					"name": "Remove a tenant-defined data type from the registry.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "53a27edd-1076-4e51-975a-e38ebd794340",
+					"_postman_id": "001415d6-4dba-4ad5-8b28-95ad9542e1fa",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2239,7 +1964,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2280,7 +2005,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "06e88bb1-5029-4203-b97e-508f21bbf03b",
+			"_postman_id": "d00b8d13-b6d7-4c77-adb7-49d0032a4abf",
 			"description": "Data types are used as reference field types in classes or schemas to define complex types. Data types may define multiple sub-fields providing a consistent multi-field structure."
 		},
 		{
@@ -2288,18 +2013,7 @@
 			"item": [
 				{
 					"name": "List all descriptors within the specified container, by type.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "e4b188f7-1eaa-43cc-9100-ccf12bd655ea",
+					"_postman_id": "032dd8a4-cf63-4af7-8ca5-63274e8643d5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2335,7 +2049,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2372,18 +2086,7 @@
 				},
 				{
 					"name": "Create a new descriptor. Required fields in payload vary based on @type.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "452a883d-0bd9-42b0-9e3f-b3b97097fa14",
+					"_postman_id": "60756114-e1c9-4460-b362-22c0cde541eb",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2419,7 +2122,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2456,18 +2159,7 @@
 				},
 				{
 					"name": "Lookup specific descriptor by its @id.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "393cf5c4-f747-4782-83d7-305ae3eac600",
+					"_postman_id": "6425bb64-389e-4304-86f7-6bb08151a16a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2503,7 +2195,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2545,18 +2237,7 @@
 				},
 				{
 					"name": "Update a descriptor. Required fields in payload vary based on @type.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "52f33ff8-395d-4ebe-ae8c-976b861cef0f",
+					"_postman_id": "9ed93d91-533e-4969-baa9-3935f197dea9",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2592,7 +2273,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2634,18 +2315,7 @@
 				},
 				{
 					"name": "Remove a descriptor using its @id.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "6871e3c8-9252-4beb-a684-b9f0ee6dad48",
+					"_postman_id": "4358a442-65af-449b-b47a-4928888a3e57",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2681,7 +2351,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2722,7 +2392,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d02ce073-640f-404f-85f2-acf39d36d3c4",
+			"_postman_id": "0a8e12a3-29da-4207-90aa-262def7c2b2e",
 			"description": "Schema descriptors are tenant-level metadata used to provide interpretive details on how data based on certain schemas may relate or interact with one another."
 		},
 		{
@@ -2730,18 +2400,7 @@
 			"item": [
 				{
 					"name": "Retrieve a list of union views.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "9d550b54-dfb3-4132-856c-567366a37efc",
+					"_postman_id": "d6a3fa59-5d2f-4cbc-ab5e-3aa2becdcc41",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2777,7 +2436,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2825,18 +2484,7 @@
 				},
 				{
 					"name": "Lookup a union view by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"if (!pm.environment.has(\"SANDBOX-NAME\")) { pm.request.headers.remove(\"x-sandbox-name\"); }"
-								]
-							}
-						}
-					],
-					"_postman_id": "8c26db3a-8f4e-4077-8c9c-94fcb11439bf",
+					"_postman_id": "8c05b9e1-58c9-450e-87b9-11fb1baadcf6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2872,7 +2520,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2908,7 +2556,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "22e989cf-c480-4620-92f8-310de1a1ae38",
+			"_postman_id": "1595088e-8354-4ae4-8a4a-86f5cf0bf37a",
 			"description": "Union views aggregate the fields of all schemas that implement the same class (such as ExperienceEvent or Profile) into a single schema. They are used by Real-time Customer Profile to merge data together to form a \"single source of truth\" for an individual."
 		}
 	]
