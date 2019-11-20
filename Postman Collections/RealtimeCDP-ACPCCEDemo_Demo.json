@@ -1,0 +1,1060 @@
+{
+  "info": {
+    "_postman_id": "4c597a4e-67a5-4a3c-9e30-cff3d1036aa2",
+    "name": "RealtimeCDP-ACPCCEDemo Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "INIT: Load Crypto Library for RS256",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "824e628b-b420-417b-894b-417ab6412896",
+                "exec": [
+                  "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);",
+                  "tests[\"Javascript load complete\"] = true; "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "42a9abcf-7167-4bea-b21d-e6ff6a992fc2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
+            "description": "Load the RSA-Sign Crypto LIbrary in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
+          },
+          "response": []
+        },
+        {
+          "name": "NEW POSTMAN EVARS IMS: JWT Generate + Auth via User Token",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "685cb13c-fa6d-4d1d-afbd-e2e7989018d5",
+                "exec": [
+                  "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+                  "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+                  "",
+                  "var navigator = {}; //fake a navigator object for the lib",
+                  "var window = {}; //fake a window object for the lib",
+                  "eval(postman.getGlobalVariable(\"jsrsasign-js\")); //import javascript jsrsasign",
+                  "",
+                  "",
+                  "var header = {",
+                  "\t\"alg\": \"RS256\"",
+                  "};",
+                  "",
+                  "var data = {",
+                  "\t\"exp\": Math.round(87000 + Date.now()/1000),",
+                  "\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
+                  "\t\"sub\": postman.getEnvironmentVariable(\"TECHNICAL_ACCOUNT_ID\"),",
+                  "\t\"aud\": \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
+                  "};",
+                  "",
+                  "meta_scopes = postman.getEnvironmentVariable(\"META_SCOPE\").toString().split(',');",
+                  "meta_scopes.forEach(function(scope){",
+                  "    var meta_scope = \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                  "                     scope;",
+                  "    data[meta_scope] = true;",
+                  "});",
+                  "",
+                  "var secret = postman.getEnvironmentVariable(\"PRIVATE_KEY\");",
+                  "",
+                  "var sHeader = JSON.stringify(header);",
+                  "var sPayload = JSON.stringify(data);",
+                  "var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+                  "",
+                  "console.log(sPayload);",
+                  "console.log(sJWT);",
+                  "",
+                  "postman.setEnvironmentVariable(\"JWT_TOKEN\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a5ef3854-65f5-4b85-818f-d96b9585a825",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "fdc23e57-07c2-418d-895a-c08080b1260d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "client_id",
+                  "value": "{{API_KEY}}",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{CLIENT_SECRET}}",
+                  "type": "text"
+                },
+                {
+                  "key": "jwt_token",
+                  "value": "{{JWT_TOKEN}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "https://{{IMS}}/ims/exchange/jwt/",
+            "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+          },
+          "response": [
+            {
+              "id": "ad8365eb-0ccd-40bf-93d5-3c33aaa63e60",
+              "name": "NEW POSTMAN EVARS IMS: JWT Generate + Auth via User Token Copy",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "client_id",
+                      "value": "{{API_KEY}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "client_secret",
+                      "value": "{{CLIENT_SECRET}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "jwt_token",
+                      "value": "{{JWT_TOKEN}}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "https://{{IMS}}/ims/exchange/jwt/"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                },
+                {
+                  "key": "P3P",
+                  "value": "CP=\"IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA\""
+                },
+                {
+                  "key": "Server",
+                  "value": "ASIT"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "ftrset=815; path=/; secure; HttpOnly"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "relay=6b6e9837-cde5-4a4f-8fa7-02638f65a1d4; path=/"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains; preload"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DEBUG-ID",
+                  "value": "6b6e9837-cde5-4a4f-8fa7-02638f65a1d4"
+                },
+                {
+                  "key": "X-FEATURE-SET",
+                  "value": "815"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-Via",
+                  "value": "vx-uw2,vx-ue1"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "987"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"token_type\": \"bearer\",\n    \"access_token\": \"eyJ4NXUiOiJpbXNfbmExLWtleS0xLmNlciIsImFsZyI6IlJTMjU2In0.eyJpZCI6IjE1NjgzOTYxOTcxNzlfYTE0OWFlNmUtZGExYi00YjgwLWE0M2YtOGU0NGY0MzE1ZTg2X3VlMSIsImNsaWVudF9pZCI6ImQxZjg0ZDFlMWMzNjRhNTZiZjQ1ZmI1YThlODY3ZGFkIiwidXNlcl9pZCI6IkExNUIyMTAyNUQ2RTlFODcwQTQ5NUZDN0B0ZWNoYWNjdC5hZG9iZS5jb20iLCJzdGF0ZSI6IntcInNlc3Npb25cIjpcImh0dHBzOi8vaW1zLW5hMS5hZG9iZWxvZ2luLmNvbS9pbXMvc2Vzc2lvbi92MS9aR1F3TmpCbFpXTXROR1V5TmkwMFl6aGlMV0ZqTURJdFlqWmlORGd6TWpVNU9XWTFMUzFCTVRWQ01qRXdNalZFTmtVNVJUZzNNRUUwT1RWR1F6ZEFkR1ZqYUdGalkzUXVZV1J2WW1VdVkyOXRcIn0iLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiYXMiOiJpbXMtbmExIiwiZmciOiJUWU9BQURFRUhMRzVNWFdHQ09FM0FLQUFLQT09PT09PSIsIm1vaSI6Ijc1MTVjZGUiLCJjIjoiSmY2Wnl3ZWtIeHF1Q2NndXpyd0MrZz09IiwiZXhwaXJlc19pbiI6Ijg2NDAwMDAwIiwic2NvcGUiOiJvcGVuaWQsc2Vzc2lvbixBZG9iZUlELHJlYWRfb3JnYW5pemF0aW9ucyxhZGRpdGlvbmFsX2luZm8ucHJvamVjdGVkUHJvZHVjdENvbnRleHQiLCJjcmVhdGVkX2F0IjoiMTU2ODM5NjE5NzE3OSJ9.qwn7m7BnueOwjtTFLaCJnEx68C-yNmYKhQutSccOwZV3KzMfrzstPOkwF1d7xR2hyXtCIdioUw4OhmH9XJ-qpXLC5jOCl5MFGluxBgE0P_U-7Nw6i-4LtbNH0dmH5jlgA0AJkLGTeuIuh05zM9IqpA5CW0VsIQJQyofpIkpBVtMICh88wv9AhJ80JGlW_8gWAmyXf44WkypfUbA1bd6VMdGPHLR7cQ6qnFBIWimo7Ja-lj1I7w8bTvVwrnDhYX7VLA2op-YylGkgCe9TnoAcliSd3yzPU4tqRY_kMCS8U1vBuniJSo2UK7YJtTl8QKhw_HkESJMzKU2P9nHo2OaZnQ\",\n    \"expires_in\": 86399973\n}"
+            }
+          ]
+        }
+      ],
+      "_postman_id": "d4d00050-339e-460c-93c1-c2cf59a033fd"
+    },
+    {
+      "name": "Step 1: Setup Inlet and Dataset",
+      "item": [
+        {
+          "name": "Create Streaming XDM Inlet -  - Sink for Customer Kafka Connect",
+          "_postman_id": "ab2dc40f-c213-4c9e-832b-985a769caa0a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n       \"name\" : \"customer_kafka_streaming_inlet\",\n       \"description\" : \"Customer Kafka Streaming XDM Data Inlet\",\n       \"sourceId\" : \"customer_kafka_xdm\",\n       \"dataType\": \"xdm\"\n}"
+            },
+            "url": "https://platform.adobe.io/data/core/edge/inlet",
+            "description": "Generated from a curl request: \nCURL -X POST \\\"https://platform.adobe.io/data/core/edge/inlet\\\" \\\n  -H \\\"Cache-Control: no-cache\\\" \\\n  -H \\\"Content-Type: application/json\\\" \\\n  -H \\\"Authorization: Bearer {{ACCESS_TOKEN}}\\\" \\\n  -H \\\"x-api-key: {{API_KEY}}\\\" \\\n  -H \\\"x-gw-ims-org-id: {{IMS_ORG}}\\\" \\\n  -d '{\n       \\\"name\\\" : \\\"customer_kafka_streaming_inlet\\\",\n       \\\"description\\\" : \\\"Customer Kafka Streaming Inlet\\\",\n       \\\"sourceId\\\" : \\\"customer_kafka\\\",\n       \\\"dataType\\\": \\\"xdm\\\"\n   }'"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Streaming RAW Inlet - Sink for Customer Kafka Connect",
+          "_postman_id": "7adc0364-81e5-4ee3-8350-4aa5b9242876",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n       \"name\" : \"customer_kafka_streaming_raw_inlet\",\n       \"description\" : \"Customer Kafka Streaming RAW Data Inlet\",\n       \"sourceId\" : \"customer_kafka_raw\",\n       \"dataType\": \"raw\"\n}"
+            },
+            "url": "https://platform.adobe.io/data/core/edge/inlet",
+            "description": "Generated from a curl request: \nCURL -X POST \\\"https://platform.adobe.io/data/core/edge/inlet\\\" \\\n  -H \\\"Cache-Control: no-cache\\\" \\\n  -H \\\"Content-Type: application/json\\\" \\\n  -H \\\"Authorization: Bearer {{ACCESS_TOKEN}}\\\" \\\n  -H \\\"x-api-key: {{API_KEY}}\\\" \\\n  -H \\\"x-gw-ims-org-id: {{IMS_ORG}}\\\" \\\n  -d '{\n       \\\"name\\\" : \\\"customer_kafka_streaming_inlet\\\",\n       \\\"description\\\" : \\\"Customer Kafka Streaming Inlet\\\",\n       \\\"sourceId\\\" : \\\"customer_kafka\\\",\n       \\\"dataType\\\": \\\"xdm\\\"\n   }'"
+          },
+          "response": []
+        },
+        {
+          "name": "Schema Registry Stats",
+          "_postman_id": "aed4a62a-5fdf-4b4e-aeba-f1c9997d35be",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-sandbox-name",
+                "value": "{SANDBOX_NAME}",
+                "disabled": true
+              }
+            ],
+            "url": "https://platform.adobe.io/data/foundation/schemaregistry/stats",
+            "description": "Generated from a curl request: \ncurl -X GET \\\n  https://platform.adobe.io/data/foundation/schemaregistry/stats \\\n  -H 'Authorization: Bearer {ACCESS_TOKEN}' \\\n  -H 'x-api-key: {API_KEY}' \\\n  -H 'x-gw-ims-org-id: {IMS_ORG}' \\\n  -H 'x-sandbox-name: {SANDBOX_NAME}'"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Streaming Dataset - Customer Kafka",
+          "_postman_id": "1cf32000-8866-4534-ac49-74c506c563cb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"customer_kafka_streaming_dataset5\",\n    \"description\": \"Customer Kafka Streaming Dataset 5\",\n    \"schemaRef\": {\n        \"id\": \"https://ns.adobe.com/aepgdcdevenablement1/schemas/b11b81b654de22093f129bfcd40ae100\",\n        \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.0\"\n    },\n    \"fileDescription\": {\n        \"persisted\": true,\n        \"containerFormat\": \"parquet\",\n        \"format\": \"parquet\"\n    },\n    \"streamingIngestionEnabled\": \"true\",\n    \"tags\": {\n        \"unifiedIdentity\": [\"enabled:true\"],\n        \"unifiedProfile\": [\"enabled:true\"]\n    }\n\t}"
+            },
+            "url": "https://platform.adobe.io/data/foundation/catalog/dataSets",
+            "description": "Generated from a curl request: \nCURL -X POST https://platform.adobe.io/data/foundation/catalog/dataSets \\\n  -H 'Accept: application/json' \\\n  -H 'Authorization: Bearer {{ACCESS_TOKEN}}' \\\n  -H 'Cache-Control: no-cache' \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {{API_KEY}}' \\\n  -H 'x-gw-ims-org-id: {{IMS_ORG}}' \\\n  -d '{\n    \\\"name\\\": \\\"customer_kafka_streaming_dataset\\\",\n    \\\"description\\\": \\\"Customer Kafka Streaming Dataset\\\",\n    \\\"schemaRef\\\": {\n        \\\"id\\\": \\\"https://ns.adobe.com/aepgdcdevenablement1/schemas/ac551e816a51655064546070b7a40327\\\",\n        \\\"contentType\\\": \\\"application/vnd.adobe.xed-full+json;version={SCHEMA_VERSION}\\\"\n    },\n    \\\"fileDescription\\\": {\n        \\\"persisted\\\": true,\n        \\\"containerFormat\\\": \\\"parquet\\\",\n        \\\"format\\\": \\\"parquet\\\"\n    },\n    \\\"streamingIngestionEnabled\\\": \\\"true\\\",\n    \\\"tags\\\": {\n        \\\"unifiedIdentity\\\": [\\\"enabled:true\\\"],\n        \\\"unifiedProfile\\\": [\\\"enabled:true\\\"]\n    }\n\t}'"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "9f566c4b-521e-43f1-b2a9-fcfa902c1860"
+    },
+    {
+      "name": "Step 2: Confirm Profile",
+      "item": [
+        {
+          "name": "Testing: Streaming XDM data ingestion to dataset through inlet",
+          "_postman_id": "bc743b13-d0f6-4082-8f2c-f62e352af4f2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"header\": {\n        \"schemaRef\": {\n            \"id\": \"https://ns.adobe.com/aepgdcdevenablement1/schemas/b11b81b654de22093f129bfcd40ae100\",\n            \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.0\"\n        },\n        \"imsOrgId\": \"{{IMS_ORG}}\",\n        \"source\": {\n            \"name\": \"customer_kafka\"\n        },\n        \"datasetId\": \"5dc7d95ff8d5d318a7e9a982\"\n    },\n    \"body\": {\n        \"xdmMeta\": {\n            \"schemaRef\": {\n                \"id\": \"https://ns.adobe.com/aepgdcdevenablement1/schemas/b11b81b654de22093f129bfcd40ae100\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.0\"\n            }\n        },\n        \"xdmEntity\":{\n        \t\"identityMap\": {\n            \"email\": [{\n\t              \"id\": \"jigeorge@adobe.com\"\n\t            }]\n\t        },\n            \"_id\": \"pamvdzj-db9c-1192-d896-69d991e3vj29\",\n            \"_repo\": {\"createDate\":\"2019-11-10T16:28:01Z\"},\n            \"_aepgdcdevenablement1\": {\n\t\t\t\t\"category\": \"high\",\n\t\t\t\t\"score\":1.0\n            },\n            \"person\": {\n\t\t\t\t\"name\": {\n\t\t\t\t\t\"firstName\": \"Jirilmon\",\n\t\t\t\t\t\"middleName\": \"K\",\n\t\t\t\t\t\"lastName\": \"George\",\n\t\t\t\t\t\"fullName\": \"Jirilmon George\"\n            \t}\n            },\n            \"personalEmail\": {\n\t\t\t\t\"address\": \"jigeorge@adobe.com\",\n\t\t\t\t\"label\":\"my email\"\n            }\n        }\n    }\n}"
+            },
+            "url": "{{STREAMING_INLET}}",
+            "description": "Generated from a curl request: \ncurl -X POST \\\"https://dcs.adobedc.net/collection/9e67b81893c5f8df701d31f191c96f8f09862e0900a2bf0545935c5f605ecd89\\\" \\\n  -H \\\"Cache-Control: no-cache\\\" \\\n  -H \\\"Content-Type: application/json\\\" \\\n  -d '{\n    \\\"header\\\": {\n        \\\"schemaRef\\\": {\n            \\\"id\\\": \\\"https://ns.adobe.com/aepgdcdevenablement1/schemas/ac551e816a51655064546070b7a40327\\\",\n            \\\"contentType\\\": \\\"application/vnd.adobe.xed-full+json;version=1.0\\\"\n        },\n        \\\"imsOrgId\\\": \\\"{{IMS_ORG}}\\\",\n        \\\"source\\\": {\n            \\\"name\\\": \\\"customer_kafka\\\"\n        },\n        \\\"datasetId\\\": \\\"5dc5379fc318ad18a9dd16ef\\\"\n    },\n    \\\"body\\\": {\n        \\\"xdmMeta\\\": {\n            \\\"schemaRef\\\": {\n                \\\"id\\\": \\\"https://ns.adobe.com/aepgdcdevenablement1/schemas/ac551e816a51655064546070b7a40327\\\",\n                \\\"contentType\\\": \\\"application/vnd.adobe.xed-full+json;version=1.0\\\"\n            }\n        },\n        \\\"xdmEntity\\\":{\n\t\t\t\\\"identityMap\\\": {\n\t\t\t\t\\\"email\\\": [{\n\t\t\t\t  \\\"id\\\": \\\"jigeorge@adobe.com\\\"\n\t\t\t\t}]\n\t\t\t},\n            \\\"_id\\\": \\\"9rf9adzj-db9c-9992-d896-69d999e68j29\\\",\n            \\\"_repo\\\": {\n\t\t\t\t\\\"createDate\\\":\\\"2019-11-07T15:28:01Z\\\"\n\t\t\t},\n            \\\"_aepgdcdevenablement1\\\": {\n\t\t\t\t\\\"address\\\": {\n\t\t\t\t\t\\\"stateProvince\\\":\\\"Karnataka\\\"\n\t\t\t\t},\n\t\t\t\t\\\"email\\\": {\n\t\t\t\t\t\\\"address\\\":\\\"jigeorge@adobe.com\\\",\n\t\t\t\t\t\\\"type\\\":\\\"work\\\"\n\t\t\t\t},\n\t\t\t\t\\\"person\\\": {\n\t\t\t\t\t\\\"name\\\": {\n\t\t\t\t\t\t\\\"firstName\\\":\\\"Jirilmon\\\",\n\t\t\t\t\t\t\\\"middleName\\\":\\\"\\\",\n\t\t\t\t\t\t\\\"lastName\\\":\\\"George\\\",\n\t\t\t\t\t\t\\\"fullName\\\":\\\"Jirilmon George\\\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\\\"crmid\\\":\\\"150900090999\\\",\n\t\t\t\t\\\"income\\\":\\\"9999\\\",\n\t\t\t\t\\\"loyaltyPoints\\\":\\\"2549\\\",\n\t\t\t\t\\\"loyaltyid\\\":\\\"8992930\\\",\n\t\t\t\t\\\"memberLevel\\\":\\\"gold\\\",\n\t\t\t\t\\\"memberSince\\\":\\\"2010-11-07T15:28:01Z\\\",\n\t\t\t\t\\\"occupation\\\":\\\"Software\\\",\n\t\t\t\t\\\"previousLevel\\\":\\\"bronze\\\"\n            }\t\n        }\n    }\n}'"
+          },
+          "response": []
+        },
+        {
+          "name": "Testing: Streaming RAW data ingestion to dataset through inlet",
+          "_postman_id": "e433234d-e64c-45e6-a2ce-ef2e496ff43d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"imsOrgId\": \"{{IMS_ORG}}\",\n\t\"email\": \"jigeorge@adobe.com\",\n\t\"category\": \"low\",\n\t\"score\":4.0\n}"
+            },
+            "url": "{{STREAMING_INLET}}",
+            "description": "Generated from a curl request: \ncurl -X POST \\\"https://dcs.adobedc.net/collection/9e67b81893c5f8df701d31f191c96f8f09862e0900a2bf0545935c5f605ecd89\\\" \\\n  -H \\\"Cache-Control: no-cache\\\" \\\n  -H \\\"Content-Type: application/json\\\" \\\n  -d '{\n    \\\"header\\\": {\n        \\\"schemaRef\\\": {\n            \\\"id\\\": \\\"https://ns.adobe.com/aepgdcdevenablement1/schemas/ac551e816a51655064546070b7a40327\\\",\n            \\\"contentType\\\": \\\"application/vnd.adobe.xed-full+json;version=1.0\\\"\n        },\n        \\\"imsOrgId\\\": \\\"{{IMS_ORG}}\\\",\n        \\\"source\\\": {\n            \\\"name\\\": \\\"customer_kafka\\\"\n        },\n        \\\"datasetId\\\": \\\"5dc5379fc318ad18a9dd16ef\\\"\n    },\n    \\\"body\\\": {\n        \\\"xdmMeta\\\": {\n            \\\"schemaRef\\\": {\n                \\\"id\\\": \\\"https://ns.adobe.com/aepgdcdevenablement1/schemas/ac551e816a51655064546070b7a40327\\\",\n                \\\"contentType\\\": \\\"application/vnd.adobe.xed-full+json;version=1.0\\\"\n            }\n        },\n        \\\"xdmEntity\\\":{\n\t\t\t\\\"identityMap\\\": {\n\t\t\t\t\\\"email\\\": [{\n\t\t\t\t  \\\"id\\\": \\\"jigeorge@adobe.com\\\"\n\t\t\t\t}]\n\t\t\t},\n            \\\"_id\\\": \\\"9rf9adzj-db9c-9992-d896-69d999e68j29\\\",\n            \\\"_repo\\\": {\n\t\t\t\t\\\"createDate\\\":\\\"2019-11-07T15:28:01Z\\\"\n\t\t\t},\n            \\\"_aepgdcdevenablement1\\\": {\n\t\t\t\t\\\"address\\\": {\n\t\t\t\t\t\\\"stateProvince\\\":\\\"Karnataka\\\"\n\t\t\t\t},\n\t\t\t\t\\\"email\\\": {\n\t\t\t\t\t\\\"address\\\":\\\"jigeorge@adobe.com\\\",\n\t\t\t\t\t\\\"type\\\":\\\"work\\\"\n\t\t\t\t},\n\t\t\t\t\\\"person\\\": {\n\t\t\t\t\t\\\"name\\\": {\n\t\t\t\t\t\t\\\"firstName\\\":\\\"Jirilmon\\\",\n\t\t\t\t\t\t\\\"middleName\\\":\\\"\\\",\n\t\t\t\t\t\t\\\"lastName\\\":\\\"George\\\",\n\t\t\t\t\t\t\\\"fullName\\\":\\\"Jirilmon George\\\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\\\"crmid\\\":\\\"150900090999\\\",\n\t\t\t\t\\\"income\\\":\\\"9999\\\",\n\t\t\t\t\\\"loyaltyPoints\\\":\\\"2549\\\",\n\t\t\t\t\\\"loyaltyid\\\":\\\"8992930\\\",\n\t\t\t\t\\\"memberLevel\\\":\\\"gold\\\",\n\t\t\t\t\\\"memberSince\\\":\\\"2010-11-07T15:28:01Z\\\",\n\t\t\t\t\\\"occupation\\\":\\\"Software\\\",\n\t\t\t\t\\\"previousLevel\\\":\\\"bronze\\\"\n            }\t\n        }\n    }\n}'"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "0ea13ab7-1c93-4c2b-9858-ae04981111f4"
+    },
+    {
+      "name": "Step 3: Setup Projection, Destination",
+      "item": [
+        {
+          "name": "Edge - List Projection Destinations",
+          "_postman_id": "c0070879-f192-4725-86da-5a45275b368f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionDestinationList+json; version=1"
+              }
+            ],
+            "url": "https://platform.adobe.io/data/core/ups/config/destinations"
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - Create Projection Destination",
+          "_postman_id": "b73c1308-c784-413d-a267-782e19308821",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionDestination+json; version=1"
+              },
+              {
+                "key": "topic",
+                "value": "ups-edgeprofile-dev-va711-eciobanu",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"type\": \"PIPELINE\",\r\n  \"topic\": \"aep_poc_smarts_in\"\r\n}"
+            },
+            "url": "https://platform.adobe.io/data/core/ups/config/destinations"
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - Get a Projection Destination",
+          "_postman_id": "e567e52e-88b6-499a-91d6-4acb5d6eb871",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionDestinationList+json; version=1"
+              }
+            ],
+            "url": "https://platform.adobe.io/data/core/ups/config/destinations/{{DESTINATION_ID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - DELETE a Destination",
+          "_postman_id": "defe3399-e150-4e6c-9573-d5993818dbd3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionDestinationList+json; version=1"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": "https://platform.adobe.io/data/core/ups/config/destinations/{{DESTINATION_ID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - List Projections",
+          "_postman_id": "6b2c9123-1077-42e6-a204-903ae42e3324",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              }
+            ],
+            "url": {
+              "raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName=_xdm.context.profile",
+              "protocol": "https",
+              "host": [
+                "platform",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "config",
+                "projections"
+              ],
+              "query": [
+                {
+                  "key": "schemaName",
+                  "value": "_xdm.context.profile"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - Create Projection",
+          "_postman_id": "fc15619c-c98a-4ca3-8174-90915c3d7bd5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+              },
+              {
+                "key": "topic",
+                "value": "ups-edgeprofile-dev-va711-eciobanu",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"selector\": \"person,_aepgdcdevenablement1,segmentMembership\", \r\n  \"name\": \"Edge_Projection7_aepgdcdevenablement1\",\r\n  \"destinationId\": \"3ab433be-4517-4720-b607-eaa3b5d96cab\"\r\n}"
+            },
+            "url": {
+              "raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName=_xdm.context.profile",
+              "protocol": "https",
+              "host": [
+                "platform",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "config",
+                "projections"
+              ],
+              "query": [
+                {
+                  "key": "schemaName",
+                  "value": "_xdm.context.profile"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - Get a Projection",
+          "_postman_id": "d374dccf-7586-43e7-9f76-70d560a74de5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+              }
+            ],
+            "url": "https://platform.adobe.io/data/core/ups/config/destinations/3ab433be-4517-4720-b607-eaa3b5d96cab"
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - UPDATE a Projection",
+          "_postman_id": "f177d04d-0d2b-4ec7-aae1-bdc707bf5fbd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"selector\": \"person,_aepgdcdevenablement1,segmentMembership\", \r\n  \"destinationId\": \"3ab433be-4517-4720-b607-eaa3b5d96cab\"\r\n}"
+            },
+            "url": "https://platform.adobe.io/data/core/ups/config/projections/{{PROJECTION_ID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Edge - DELETE a Projection",
+          "_postman_id": "2454c874-5b62-434b-9fdd-31f186a4fd54",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": "https://platform.adobe.io/data/core/ups/config/projections/{{PROJECTION_ID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DULE - Check mergePolicies",
+          "_postman_id": "9e47360d-8521-4fba-840e-4799de766e2e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "listMarketingActionsURL",
+                "value": "https://platform.adobe.io/data/foundation/dulepolicy/marketingActions/core"
+              },
+              {
+                "key": "marketingActionRefs",
+                "value": "https://platform.adobe.io:443/data/foundation/dulepolicy/marketingActions/core/exportToThirdParty"
+              },
+              {
+                "key": "mergePolicyId",
+                "value": "{{MERGE_POLICY_ID}}"
+              }
+            ],
+            "url": "https://platform.adobe.io/data/core/ups/config/mergePolicies/{{MERGE_POLICY_ID}}",
+            "description": "DULE - List Marketing Actions"
+          },
+          "response": []
+        },
+        {
+          "name": "Update MergePolicy one or more attributes of a merge policy specified by ID.",
+          "_postman_id": "058ac19d-1b35-4a3b-bb1d-0da255e7edb5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-profile-instance-id",
+                "value": "123"
+              },
+              {
+                "key": "x-request-id",
+                "value": "123"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"b91c87cf-8bf8-4b23-a77c-07c28eef374d\",\n    \"name\": \"Profile DS\",\n    \"imsOrgId\": \"{{IMS_ORG}}\",\n    \"sandbox\": {\n        \"sandboxId\": \"49ee7da0-e3d0-11e9-ace4-cb8a25ba725b\",\n        \"sandboxName\": \"prod\",\n        \"type\": \"production\",\n        \"default\": true\n    },\n    \"schema\": {\n        \"name\": \"_xdm.context.profile\"\n    },\n    \"version\": 1,\n    \"identityGraph\": {\n        \"type\": \"auto\"\n    },\n    \"attributeMerge\": {\n        \"type\": \"dataSetPrecedence\",\n        \"order\": [\n            \"5d3ff27d29251c14b33140b2\",\n            \"5d3ff23a931f54144ea128dd\",\n            \"5d3ff25ad77f80144ef988ce\",\n            \"5dc7d95ff8d5d318a7e9a982\",\n            \"5d9c5d6fb634a41656aef6eb\",\n            \"5d4a6ffe72f113145005d291\",\n            \"5d64fea56b7aae16367c5b4b\",\n            \"5d5257e1b080ac1637647f72\",\n            \"5d36e4dde81555144f81bc2e\",\n            \"5d36e4847b841e144fe1e532\",\n            \"5d36e49e954d921450e517cb\"\n        ]\n    },\n    \"default\": true,\n    \"updateEpoch\": 1573234104\n}"
+            },
+            "url": "https://platform.adobe.io/data/core/ups/config/mergePolicies/{{MERGE_POLICY_ID}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DULE - LIST mergePolicies",
+          "_postman_id": "e884b464-9635-4e65-8a34-7df40824f131",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "listMarketingActionsURL",
+                "value": "https://platform.adobe.io/data/foundation/dulepolicy/marketingActions/core"
+              },
+              {
+                "key": "marketingActionRefs",
+                "value": "https://platform.adobe.io:443/data/foundation/dulepolicy/marketingActions/core/exportToThirdParty"
+              },
+              {
+                "key": "mergePolicyId",
+                "value": "{{MERGE_POLICY_ID}}"
+              }
+            ],
+            "url": "https://platform.adobe.io/data/core/ups/config/mergePolicies",
+            "description": "DULE - List Marketing Actions"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "5cd8cc72-eeaa-40a1-ac9f-71297270c01f"
+    },
+    {
+      "name": "I/O Event End point",
+      "_postman_id": "9145c429-cd2e-471e-98ab-e39218539f08",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+            "disabled": true
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{ACCESS_TOKEN}}"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{API_KEY}}"
+          },
+          {
+            "key": "x-gw-ims-org-id",
+            "value": "{{IMS_ORG}}"
+          },
+          {
+            "key": "x-request-id",
+            "value": "1"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+          }
+        ],
+        "url": "https://events-va6.adobe.io/events/organizations/236281/integrations/65563/5f4ca97c-cc4c-4257-aec1-c84ac8f2b746"
+      },
+      "response": []
+    },
+    {
+      "name": "Webhook Test",
+      "_postman_id": "b7ecd975-1d1c-4dda-9318-ac0277b5cf62",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Webhook Test",
+      "_postman_id": "1f96af80-daa4-4e74-b9b2-7522f3350169",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"message\": \"sample2\"\n}"
+        },
+        "url": "https://io-webhook.herokuapp.com/webhook/aepgdc1webhook"
+      },
+      "response": []
+    }
+  ]
+}
