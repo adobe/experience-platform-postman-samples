@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "1ef27a80-ae67-440a-a6b6-2a313db2c036",
+		"_postman_id": "03ae4ed6-ad15-48c1-89f3-3076009de369",
 		"name": "Offer Decision Service API",
-		"description": "<p>Adobe Experience Platform Decisioning Service provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. The Offer Decision Service API includes an endpoint to filter out offers which are not approved, do not match the offer filter, or don’t have a representation for the placement referenced by the activity. It also allows you to run diagnostics and return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so.</p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_runtime_api_tutorial.md\">Work with Decisioning Service runtime using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/ode</li><li>Example of a complete path for making a call to the POST Decisions endpoint (\"/{containerId}/decisions\"):<span> https://platform.adobe.io/data/core/ode/{containerId}/decisions</ul></p>",
+		"description": "Adobe Experience Platform Decisioning Service provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. The Offer Decision Service API includes an endpoint to filter out offers which are not approved, do not match the offer filter, or don’t have a representation for the placement referenced by the activity. It also allows you to run diagnostics and return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so.\n\nRelated documentation:\n  * [Decisioning Service overview](https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md)\n  * [Work with Decisioning Service runtime using APIs tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_runtime_api_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Offer Decision Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Offer%20Decision%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ode\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ode/{containerId}/decisions\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,13 +11,38 @@
 			"item": [
 				{
 					"name": "Request an offer decision for each set of activity IDs and profiles.",
-					"_postman_id": "b18065bd-86b8-4044-a445-0a2d3375f93f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "733e7390-7bc1-47ce-8509-4705a7ba0715",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json, application/problem+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -56,7 +81,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -64,7 +89,7 @@
 							"raw": "{{request}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/decisions",
+							"raw": "https://platform.adobe.io/data/core/ode/:containerId/decisions",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -72,6 +97,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ode",
 								":containerId",
 								"decisions"
 							],
@@ -87,7 +115,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "074551c4-f51c-486f-86d8-12edf2d61a9b",
+			"_postman_id": "79fe0900-59fb-48bf-815a-de9d1bea2c29",
 			"description": "Determine the best offer(s) for a given set of activities based on eligibility rules that match profile and context data provided."
 		},
 		{
@@ -95,13 +123,38 @@
 			"item": [
 				{
 					"name": "Get information about errors that occurred while processing user data.",
-					"_postman_id": "9ec1bd6b-9893-4a47-ab00-3ee39b1f0b1a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "8a54ded9-537c-4290-b4b7-886de222dc32",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xdm+json, application/problem+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -140,7 +193,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -148,7 +201,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/diagnostics",
+							"raw": "https://platform.adobe.io/data/core/ode/:containerId/diagnostics",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -156,6 +209,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ode",
 								":containerId",
 								"diagnostics"
 							],
@@ -171,7 +227,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f94ce6ee-a457-4cca-ba89-af55209d532b",
+			"_postman_id": "eb34c780-ac23-44c4-bc2f-f52aa0a04540",
 			"description": "Return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so."
 		},
 		{
@@ -179,13 +235,38 @@
 			"item": [
 				{
 					"name": "View offers that belong to a specified `activityId` based on matching filter rules and placements.",
-					"_postman_id": "6a242f4e-c948-41a0-a745-3a4fb272f211",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ae2ee65e-cb27-424c-bd97-ff37823a136c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json, application/problem+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -224,7 +305,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -232,7 +313,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/offers?activityId={{activityId}}",
+							"raw": "https://platform.adobe.io/data/core/ode/:containerId/offers?activityId={{activityId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -240,6 +321,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"ode",
 								":containerId",
 								"offers"
 							],
@@ -261,7 +345,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b3b12c7a-09b8-4188-b5cf-261b621accc5",
+			"_postman_id": "633cef33-f01c-44b7-9c9b-12a17bbea8cd",
 			"description": "Based on filter rules and placement match, return approved offers that belong to a specific `activityId`."
 		}
 	]

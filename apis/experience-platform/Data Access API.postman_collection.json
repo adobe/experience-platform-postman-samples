@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "535fa9d4-f8fe-4691-bc94-5ee6f201a599",
-		"name": "Data Access Service API",
-		"description": "\nData Access Service facilitates data access and egress on Adobe Experience Platform.\nThis includes, but not limited to, the following operations:\n  * Access and download dataset files under a batch\n  * Retrieve header information regarding files\n  * Parallel / resumable downloads using HTTP range headers\n  * Pagination support for directory listings\n  * List dataset files under a succeeded/failed batch\n  * Preview CSV and Parquet files\n\n\nRelated documentation:\n  * [Data Access technical overview](https://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md)\n  * [Query dataset data using the Data Access API](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/export\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/export/batches/{batchId}/files\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"_postman_id": "9815e8d7-bc57-46dc-8f28-94251de997e2",
+		"name": "Data Access API",
+		"description": "\nData Access facilitates the access and egress of data within Adobe Experience Platform. This includes, but not limited to, the following operations:\n  * Access and download dataset files under a batch\n  * Retrieve header information regarding files\n  * Parallel / resumable downloads using HTTP range headers\n  * Pagination support for directory listings\n  * List dataset files under a succeeded/failed batch\n  * Preview CSV and Parquet files\n\n\nRelated documentation:\n  * [Data Access technical overview](https://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md)\n  * [Query dataset data using the Data Access API](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Data Access API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Access%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/export\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/export/batches/{batchId}/files\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,13 +11,38 @@
 			"item": [
 				{
 					"name": "Get dataset files under a batch.",
-					"_postman_id": "13139f05-b8b6-4b66-ad7e-629b04d6dfd7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "dd8c8d7f-7cef-460a-ab1b-38a057c0f569",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -43,9 +68,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -53,7 +78,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:batchId/files?start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/batches/:batchId/files?start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -61,6 +86,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"batches",
 								":batchId",
 								"files"
@@ -88,13 +116,38 @@
 				},
 				{
 					"name": "Get dataset files under a failed batch.",
-					"_postman_id": "227063e2-7dd8-4aa9-b185-51004802d011",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "36209821-a793-4bfd-8f42-2535b65e0f67",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -120,9 +173,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -130,7 +183,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/batches/:batchId/failed?start={{start}}&limit={{limit}}&path={{path}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/batches/:batchId/failed?start={{start}}&limit={{limit}}&path={{path}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -138,6 +191,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"batches",
 								":batchId",
 								"failed"
@@ -168,7 +224,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0d5058e6-648d-40dd-bc34-146e87a55c68",
+			"_postman_id": "9b55b085-ece5-45c2-9e4b-b7e24a758f57",
 			"description": "Configure data access and egress for Experience Platform."
 		},
 		{
@@ -176,13 +232,38 @@
 			"item": [
 				{
 					"name": "Access / download a file.",
-					"_postman_id": "4fb08b55-f749-4523-9c0f-0a1c30f70bac",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "f1ada5b8-783f-4bce-aef5-0a3508ca8a53",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json, application/octet-stream"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -206,18 +287,18 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "Range",
 								"value": "{{Range}}",
 								"description": "Range of bytes requested. E.g, Range: bytes=0-100000",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -225,7 +306,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:dataSetFileId?start={{start}}&limit={{limit}}&path={{path}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/files/:dataSetFileId?start={{start}}&limit={{limit}}&path={{path}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -233,6 +314,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"files",
 								":dataSetFileId"
 							],
@@ -263,7 +347,32 @@
 				},
 				{
 					"name": "Get headers regarding a file.",
-					"_postman_id": "eeaa3eff-1f0f-48b5-8ed2-b20922303dd1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "bd57273b-50d8-4ea2-8dd6-05411406a536",
 					"request": {
 						"method": "HEAD",
 						"header": [
@@ -291,9 +400,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -301,7 +410,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:dataSetFileId?path={{path}}",
+							"raw": "https://platform.adobe.io/data/foundation/export/files/:dataSetFileId?path={{path}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -309,6 +418,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"files",
 								":dataSetFileId"
 							],
@@ -330,7 +442,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e28655f7-448d-46f0-87be-5059bf5169fd",
+			"_postman_id": "4395a3ca-95b4-4851-98a7-233422fbe101",
 			"description": "Retrieve headers containing metadata for a file specified by ID."
 		},
 		{
@@ -338,13 +450,38 @@
 			"item": [
 				{
 					"name": "Preview files.",
-					"_postman_id": "6b1d4ad0-1066-4a4a-84b3-ee84d50174f6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "e66b7dc4-c4b3-430f-9e8c-ab7292517587",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -370,9 +507,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -380,7 +517,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/datasets/:id/preview",
+							"raw": "https://platform.adobe.io/data/foundation/export/datasets/:id/preview",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -388,6 +525,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"export",
 								"datasets",
 								":id",
 								"preview"
@@ -404,70 +544,8 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ad72bad8-c49c-4f39-9e0f-c6372a691b45",
+			"_postman_id": "403b38d7-cc12-4b0c-8f98-2c7d79d212b3",
 			"description": "Retrieve the first 100 rows of CSV or Parquet files."
-		},
-		{
-			"name": "Health Detailed",
-			"item": [
-				{
-					"name": "Perform health check on dependent services.",
-					"_postman_id": "7c3db729-1821-4dd1-810f-5988c356c553",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, see the [Authentication Tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, see the [Authentication Tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, see the [Authentication Tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/health-detailed",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"health-detailed"
-							]
-						},
-						"description": "Returns health status for all dependent services"
-					},
-					"response": []
-				}
-			],
-			"_postman_id": "e0c7b064-0df6-433a-97a6-671e9719c11f",
-			"description": "Retrieve health status for all dependent services."
 		}
 	]
 }

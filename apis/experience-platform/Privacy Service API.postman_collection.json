@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "cd72a562-c881-45ff-af77-d733daf23c4a",
+		"_postman_id": "6337f31c-4208-462c-a1f8-0853c3acde98",
 		"name": "Privacy Service API",
-		"description": "Adobe Experience Platform Privacy Service provides a common, centralized facilitation of access/delete requests for private data. The service includes a UI for selecting and creating requests, a business layer that processesses incoming and outgoing traffic, a data store for audit and logging information, and temporary storage for data retrieval while requests are pending or waiting to be viewed.\n\nRelated documentation:\n  * [GDPR on Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/gdpr/docs/alldocs.html#!api-specification/markdown/narrative/gdpr/gdpr-on-platform-overview.md)\n  * [Privacy Service API tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/privacy_service_tutorial/privacy_service_api_tutorial.md)\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/privacy/gdpr\n  * Example of a complete path: https://<span>platform.adobe.io/data/privacy/gdpr/ping\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"description": "Adobe Experience Platform Privacy Service provides a common, centralized facilitation of access/delete requests and opt-out-of-sale requests for private data. The service includes a UI for selecting and creating requests, a business layer that processes incoming and outgoing traffic, a data store for audit and logging information, and temporary storage for data retrieval while requests are pending or waiting to be viewed.\n\nRelated documentation:\n  * [Privacy Service overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/privacy_service_overview.md)\n  * [Privacy Service API tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/privacy_service_tutorial/privacy_service_api_tutorial.md)\n  * [GDPR on Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/gdpr-on-platform-overview.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Privacy Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Privacy%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/privacy/jobs\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/privacy/jobs/ping\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,7 +11,32 @@
 			"item": [
 				{
 					"name": "Retrieve details of all jobs for the current logged-in user.",
-					"_postman_id": "3a587588-01bf-40b8-bd53-faf5299e2946",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "3b33b520-32f5-423c-8c6e-ba5279c847cf",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -41,7 +66,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -49,7 +74,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/?fromDate={{fromDate}}&toDate={{toDate}}&data={{data}}",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/?fromDate={{fromDate}}&toDate={{toDate}}&data={{data}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -57,6 +82,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								""
 							],
 							"query": [
@@ -79,13 +107,38 @@
 				},
 				{
 					"name": "Create an access or delete job request.",
-					"_postman_id": "5f353560-01f9-45d8-9e01-35d8de67ed9b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "16a76f1f-6976-4430-8ade-03dbb2756884",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -117,7 +170,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -125,7 +178,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -133,6 +186,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								""
 							]
 						},
@@ -142,7 +198,32 @@
 				},
 				{
 					"name": "Retrieve user preferences for the current logged-in user.",
-					"_postman_id": "6985b1b8-2579-411e-8cd3-265f7f908b5b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "bbebaa8c-1f0b-491f-8db8-de346d3e1c83",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -172,7 +253,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -180,7 +261,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/userPrefs",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/userPrefs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -188,6 +269,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"userPrefs"
 							]
 						}
@@ -196,7 +280,32 @@
 				},
 				{
 					"name": "Lookup the details of a job by ID.",
-					"_postman_id": "656c20f9-0f94-431d-a012-ad4c7b9d1681",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "54482d51-3fe6-42f0-8f6a-dfec7cb67538",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -226,7 +335,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -234,7 +343,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:jobId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/:jobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -242,6 +351,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								":jobId"
 							],
 							"variable": [
@@ -256,7 +368,32 @@
 				},
 				{
 					"name": "Create a child job for an existing parent job by ID.",
-					"_postman_id": "9d384073-1945-44a3-9214-bf2678dee042",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "688bf985-e92b-4b31-a489-3a040c06f3dc",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -286,7 +423,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -294,7 +431,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:parentJobId/child",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/:parentJobId/child",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -302,6 +439,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								":parentJobId",
 								"child"
 							],
@@ -317,7 +457,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1bfd3abd-e868-45d9-8e35-79251dd2c72f",
+			"_postman_id": "1acb4711-6f32-4983-8f5f-b99bfaa0b422",
 			"description": "Retrieve and create access/delete requests, including child jobs for existing requests."
 		},
 		{
@@ -325,13 +465,38 @@
 			"item": [
 				{
 					"name": "Retrieve the files associated with a job by ID.",
-					"_postman_id": "aa4dabaf-9800-4f56-b900-9372de718628",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "78e9c908-6cbf-4ef4-b96c-ef1e6c00e93a",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -359,7 +524,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -367,7 +532,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:jobId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/files/:jobId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -375,6 +540,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"files",
 								":jobId"
 							],
@@ -391,17 +559,42 @@
 				},
 				{
 					"name": "Upload files to a job by ID.",
-					"_postman_id": "53a6baa0-bfa7-4edd-b3ee-fabc1973017d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ed079f45-eb4b-49f6-b30e-ccad85d880b1",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "multipart/form-data"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -429,7 +622,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -444,7 +637,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/files/:jobId/:solutionName",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/files/:jobId/:solutionName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -452,6 +645,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"files",
 								":jobId",
 								":solutionName"
@@ -472,7 +668,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a6301356-100e-4096-8ab9-4af457fd0274",
+			"_postman_id": "38eacf63-2271-4a71-8212-be1d1a5677f9",
 			"description": "View and upload files from various Adobe solutions for specified job requests."
 		},
 		{
@@ -480,7 +676,32 @@
 			"item": [
 				{
 					"name": "Retrieve the processing status of access or delete requests by status code.",
-					"_postman_id": "f5709cd3-08ec-4374-b371-e11d4293a221",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "cfa6edb0-e6c9-4a90-b445-ab515ba7416a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -510,7 +731,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -518,7 +739,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/ping?status={{status}}",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/ping?status={{status}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -526,6 +747,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"ping"
 							],
 							"query": [
@@ -540,7 +764,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "6521628c-1ee8-48ca-99ee-4327488d39fc",
+			"_postman_id": "8ac0324d-9dfc-4363-ad64-6a9afdecf2eb",
 			"description": "Check the processing status of access or delete requests by supplying a status code integer as a query parameter."
 		},
 		{
@@ -548,7 +772,32 @@
 			"item": [
 				{
 					"name": "Retrieve the details of all products.",
-					"_postman_id": "4154f241-d85d-4b69-a7e4-3685dae43d69",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "9266d93f-329e-40e4-b7de-8f933425081f",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -578,7 +827,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -586,7 +835,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/products",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/products",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -594,6 +843,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"products"
 							]
 						},
@@ -603,7 +855,32 @@
 				},
 				{
 					"name": "Lookup a product by name.",
-					"_postman_id": "1c17488c-a3a5-4897-a90b-35dd8844bc2c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "92175a30-1467-4ad4-8930-10eba20a49ef",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -633,7 +910,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -641,7 +918,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/products/:productName",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/products/:productName",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -649,6 +926,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"products",
 								":productName"
 							],
@@ -664,7 +944,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2d2413cf-ebf6-4550-8015-580b6dc2ecf9",
+			"_postman_id": "ce6f6108-f38c-464c-99aa-9ac9dca08add",
 			"description": "View details of Adobe products available within your organization's Privacy Service integrations."
 		},
 		{
@@ -672,7 +952,32 @@
 			"item": [
 				{
 					"name": "Retrieve the details of all users.",
-					"_postman_id": "12d1a561-c293-498c-a0ca-73b54f80141c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "b49cd7ce-8de1-4c80-8229-1de8ac574db8",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -702,7 +1007,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -710,7 +1015,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -718,6 +1023,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users"
 							]
 						},
@@ -727,7 +1035,32 @@
 				},
 				{
 					"name": "Create a user as an admin for Privacy Service.",
-					"_postman_id": "54beac88-bcf6-4fdd-831d-025173dc2505",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "492d982f-7958-4675-84ab-bb026c80529a",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -757,7 +1090,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -765,7 +1098,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -773,6 +1106,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users"
 							]
 						},
@@ -782,7 +1118,32 @@
 				},
 				{
 					"name": "Lookup a user by ID.",
-					"_postman_id": "e66f7aac-4a81-4df0-8e16-6ba4a9b0ea6d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "844efead-b6b9-422d-820d-e314392c0647",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -812,7 +1173,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -820,7 +1181,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users/:userId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -828,6 +1189,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users",
 								":userId"
 							],
@@ -844,7 +1208,32 @@
 				},
 				{
 					"name": "Update the details of a user by ID.",
-					"_postman_id": "df39694f-9cab-474e-bc89-73898aaf479b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "2d437922-ead4-41b7-b349-df4900eaaddf",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -874,7 +1263,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -882,7 +1271,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users/:userId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -890,6 +1279,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users",
 								":userId"
 							],
@@ -906,7 +1298,32 @@
 				},
 				{
 					"name": "Delete a user by ID.",
-					"_postman_id": "a1067aed-9181-40d8-91ee-472ea0296325",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "b3f8aa85-2055-4fcf-90bd-7439dbd55f28",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -936,7 +1353,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -944,7 +1361,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/users/:userId",
+							"raw": "https://platform.adobe.io/data/privacy/gdpr/users/:userId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -952,6 +1369,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"privacy",
+								"gdpr",
 								"users",
 								":userId"
 							],
@@ -967,7 +1387,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "5ac5c2c3-6389-4160-bd5e-7187dbe77822",
+			"_postman_id": "25bb86c7-a666-4380-8ce5-8c396dd4c161",
 			"description": "View, create, update, or delete users and their permissions within your organization's Privacy Service configuration."
 		}
 	]
