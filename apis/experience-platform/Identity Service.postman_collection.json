@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "b8364570-3261-4168-a6c6-000ac9d9fcef",
+		"_postman_id": "698dc4cb-1368-49b8-a4e7-1b5e78168b01",
 		"name": "Identity Service",
-		"description": "Identity Service provides API based access to customer identity graphs which resolves a known or anonymous identity to all  other known and anonymous identities of an individual. Identity Service solves the fundamental challenge posed by the disconnected identities of your customers caused by the fragmented nature of their data as it exists across each of the disparate systems at play in your organization's ecosystem. This seamless unified view of your customers allows  for a vast improvement in the accuracy and reach of your digital marketing campaigns.\n\nSome common terminology used in this API document:\n  Term | Definition\n  --- | ---\n  __Identity__ |  An identity on Experience Platform is the fully qualified identifier (the ID plus the relevant namespace OR the XID) for a given profile.\n  __Identity Namespace__ |  The namespace of an identity relates it to its system of origin. The ID value plus the namespace fully qualify an identity.\n  __Cluster__ | Given an identity, a \"cluster\" represents that identity and all identities linked to it in the identity graph. These related IDs are considered to be part of the same \"cluster\".\n  __Mapping__ | Mapping allows you to provide a fully qualified identity and will return the linked identity from another namespace.\n\nFor more information, see [Identity Service Overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_architectural_overview.md).\n\n__Notes__:\n  * PLATFORM Gateway URL: https://platform.adobe.io/\n  * Base path for this API: /data/core\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how \n  to obtain these, visit the documentation covering making API calls in the [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html)",
+		"description": "Delivering relevant digital experiences requires having a complete understanding of your customer. This is made more difficult when your customer data is fragmented across disparate systems, causing each individual customer to appear to have multiple \"identities\". Adobe Experience Platform Identity Service provides a RESTful API to help you to gain a better view of your customers and their behavior. By bridging identities across devices and systems, you are better able to deliver impactful, personal digital experiences in real-time.\n\nRelated documentation:\n  * [Identity Service overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_architectural_overview.md)\n  * [Identity Service developer guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_api.md)\n  * [Identity namespace overview](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_namespace_overview/identity_namespace_overview.md)\n  * [Identity Service troubleshooting guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_faq.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Identity Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Identity%20Service.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform-{REGION}.adobe.io\n    * Information on <code>{REGION}</code> values can be found in the [Identity Service developer guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_api.md).\n  * Base path for this API: /data/core/\n  * Example of a complete path: https://<span>platform-va7.adobe.io/data/core/identity/cluster/members\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,13 +11,38 @@
 			"item": [
 				{
 					"name": "Given an id and namespace returns an identity string",
-					"_postman_id": "d4d2505e-99e8-445c-89c0-01124a733f51",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "e12a38be-c0e7-4a08-bca8-77c4db3ced58",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -41,25 +66,18 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-uis-cst-ctx",
 								"value": "stub",
 								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.identity+json;version=1.2",
-								"description": "The version of the resource's representation.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -67,7 +85,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/identity?nsid=411&namespace=adcloud&id=2521328045094711779817",
+							"raw": "https://platform.adobe.io/data/core/identity/identity?nsid=411&namespace=adcloud&id=2521328045094711779817",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -75,6 +93,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"identity"
 							],
@@ -98,7 +118,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7f9e4f4d-1cf3-460f-a977-ceb1bcb6ca37",
+			"_postman_id": "c8160060-4cf6-4d01-9801-cd1e33f70338",
 			"description": "Identity services provide access to a profile identity in XID form."
 		},
 		{
@@ -106,13 +126,38 @@
 			"item": [
 				{
 					"name": "Given an identity, returns all linked identities in that cluster.",
-					"_postman_id": "52ae1742-58a6-4b89-9204-00b9cd91affd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "1bca98e2-d0a7-4c6f-9db5-93dc1bc3ae03",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -136,25 +181,18 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-uis-cst-ctx",
 								"value": "stub",
 								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.identity+json;version=1.2",
-								"description": "The version of the resource's representation.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -162,7 +200,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/cluster/members?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
+							"raw": "https://platform.adobe.io/data/core/identity/cluster/members?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -170,6 +208,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"cluster",
 								"members"
@@ -203,13 +243,38 @@
 				},
 				{
 					"name": "Given set of identities, returns all linked identities in cluster corresponding to each identity.",
-					"_postman_id": "be996abb-5e5e-430f-ba71-3c537f7bd14d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ffaaf05e-e75a-47ef-929c-86ef81fd0c18",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -237,25 +302,18 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-uis-cst-ctx",
 								"value": "stub",
 								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.identity+json;version=1.2",
-								"description": "The version of the resource's representation.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -263,7 +321,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/clusters/members",
+							"raw": "https://platform.adobe.io/data/core/identity/clusters/members",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -271,6 +329,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"clusters",
 								"members"
@@ -281,13 +341,38 @@
 				},
 				{
 					"name": "Given an XID, return all cluster association statistics for that XID",
-					"_postman_id": "9f37ba48-194c-406b-94c7-11d731c6b693",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "8385326a-dd20-453b-a645-44f8424fbb8c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -311,25 +396,18 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-uis-cst-ctx",
 								"value": "stub",
 								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.identity+json;version=1.2",
-								"description": "The version of the resource's representation.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -337,7 +415,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/cluster/history?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
+							"raw": "https://platform.adobe.io/data/core/identity/cluster/history?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&graph-type=Private Graph",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -345,6 +423,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"cluster",
 								"history"
@@ -378,13 +458,38 @@
 				},
 				{
 					"name": "Given a set of XIDs, return all corresponding cluster association statistics",
-					"_postman_id": "482a6304-fae7-4077-84ba-3b71609a26b0",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "63a72710-9a58-42d9-9857-ddc3554f5d5b",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -412,25 +517,18 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-uis-cst-ctx",
 								"value": "stub",
 								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.identity+json;version=1.2",
-								"description": "The version of the resource's representation.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -438,7 +536,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/clusters/history",
+							"raw": "https://platform.adobe.io/data/core/identity/clusters/history",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -446,6 +544,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"clusters",
 								"history"
@@ -455,7 +555,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9dff66b2-4f75-4668-a10f-2d034159a0ac",
+			"_postman_id": "eed501a9-e068-4106-b2a3-85801ce75364",
 			"description": "Cluster services provide access to groupings of identities as linked in the identity graph."
 		},
 		{
@@ -463,13 +563,38 @@
 			"item": [
 				{
 					"name": "Given an identity and target namespace, returns the linked identity",
-					"_postman_id": "613ccd53-1a59-41f9-afc6-219abbeb05f6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "111cdeab-3413-4744-a7bd-416081401396",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -493,25 +618,18 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-uis-cst-ctx",
 								"value": "stub",
 								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.identity+json;version=1.2",
-								"description": "The version of the resource's representation.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -519,7 +637,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/mapping?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&targetNs=411",
+							"raw": "https://platform.adobe.io/data/core/identity/mapping?xid=2521328045094711779817&nsid=411&namespace=adcloud&id=2521328045094711779817&targetNs=411",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -527,6 +645,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"mapping"
 							],
@@ -559,13 +679,38 @@
 				},
 				{
 					"name": "Given set of identities and target namespace, returns the corresponding linked identities.",
-					"_postman_id": "c342eabd-aa4b-4203-a978-5bb0cf0ff6ad",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "33b30fa9-a0cb-4002-bea4-919c34d1a9a6",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -585,6 +730,13 @@
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
 								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -594,20 +746,6 @@
 								"description": "Customer context to be used for stub response",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.identity+json;version=1.2",
-								"description": "The version of the resource's representation.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -615,7 +753,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/identity/mappings",
+							"raw": "https://platform.adobe.io/data/core/identity/mappings",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -623,6 +761,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"identity",
 								"mappings"
 							]
@@ -632,7 +772,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "91cfca04-d400-4156-bc0e-64335978b786",
+			"_postman_id": "3c2a4456-6ea7-4bea-a6a8-b976f285d7c4",
 			"description": "Mapping allows you to provide a fully qualified identity and will return the linked identity from another namespace."
 		},
 		{
@@ -640,13 +780,38 @@
 			"item": [
 				{
 					"name": "Lists all namespaces available to the client `x-gw-ims-org-id`",
-					"_postman_id": "a017375c-077b-499c-8f59-f38942497e69",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ab0e5611-e77f-456d-a694-b229af975f49",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -672,9 +837,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -682,7 +847,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -690,6 +855,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities"
 							]
@@ -699,13 +866,38 @@
 				},
 				{
 					"name": "Create namespace under `x-gw-ims-org-id` IMS Org .",
-					"_postman_id": "560be66f-35d4-4e78-8a30-7d506b3792da",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "1bda3dd5-d448-484d-8eeb-f7e65cab37f3",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -735,9 +927,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -745,7 +937,7 @@
 							"raw": "{{namespace_to_create}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -753,6 +945,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities"
 							]
@@ -762,13 +956,38 @@
 				},
 				{
 					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"_postman_id": "6ee7c97a-3494-47fd-9b1b-c13c090d2ea6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "14800d09-c3d6-43f3-93bd-1aaa243a8bad",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -794,9 +1013,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -804,7 +1023,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities/:id",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -812,6 +1031,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities",
 								":id"
@@ -828,13 +1049,38 @@
 				},
 				{
 					"name": "Update namespace owned by `x-gw-ims-org-id` and having the given `id`.",
-					"_postman_id": "77effd67-f9a0-4968-a8f4-1fba28159248",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "1e585609-7fa6-4476-9309-417697d93788",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -864,9 +1110,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -874,7 +1120,7 @@
 							"raw": "{{namespace_to_create}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/identities/:id",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/identities/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -882,6 +1128,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"identities",
 								":id"
@@ -898,13 +1146,38 @@
 				},
 				{
 					"name": "Lists shared namespaces for the given `{imsorg}` or all owned if `{imsorg}` == `x-gw-ims-org-id`",
-					"_postman_id": "5322f71b-2d72-4538-aac5-0e9c6b9a7af7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "9a4863f3-a5c0-4a69-9766-b9b1eca71d45",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -930,9 +1203,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -940,7 +1213,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/orgs/:imsorg/identities",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/orgs/:imsorg/identities",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -948,6 +1221,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"orgs",
 								":imsorg",
@@ -965,13 +1240,38 @@
 				},
 				{
 					"name": "List details of a single namespace identified by `{id}` if it is accessible to `x-gw-ims-org-id`",
-					"_postman_id": "84ebf68a-1027-4f0e-8ce5-3b9e20053b13",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "d0f676a0-5780-4872-b51a-e29f5a16dbfb",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -997,9 +1297,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1007,7 +1307,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/idnamespace/orgs/:imsorg/identities/:id",
+							"raw": "https://platform.adobe.io/data/core/idnamespace/orgs/:imsorg/identities/:id",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1015,6 +1315,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
 								"idnamespace",
 								"orgs",
 								":imsorg",
@@ -1036,7 +1338,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "fc5fdd80-356a-4131-b9bc-70dca1b988ff",
+			"_postman_id": "f390c14d-e13a-4443-af76-32e3e735d2b0",
 			"description": "Identity Namespace services allow you to work with Namespaces for your organization, such as to list all Namespaces available or to create a custom Namespace."
 		}
 	]

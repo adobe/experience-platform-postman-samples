@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "c9d152ab-f09d-40eb-b54e-3ef66bbf8d06",
+		"_postman_id": "c2cfde4f-ee0f-4373-9640-d6e62460133a",
 		"name": "Query Service API",
-		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data  Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Introduction to Query Service](https://www.adobe.io/apis/experienceplatform/home/services/query-service/query-service.html#!acpdr/end-user/markdown/query-service/qs-intro.md)\n\n\nNotes:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, visit the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header 'Content-Type: application/json'",
+		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Query Service overview](https://www.adobe.io/apis/experienceplatform/home/services/query-service/query-service.html#!end-user/markdown/query-service/qs-intro.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Query Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Query%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,13 +11,38 @@
 			"item": [
 				{
 					"name": "Requests connection parameters for the interactive interface.",
-					"_postman_id": "9d087422-dfd7-4181-bf54-754e9f4a667f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "325416e4-44e5-4d55-9a01-8b22d1b16a78",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -45,9 +70,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -57,13 +89,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -71,7 +96,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/connection_parameters",
+							"raw": "https://platform.adobe.io/data/foundation/query/connection_parameters",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -79,6 +104,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"connection_parameters"
 							]
 						}
@@ -86,7 +114,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "483c6d5b-f6a7-4e63-994d-6fd7398cb2eb",
+			"_postman_id": "e2294f4d-bf83-4d32-bcda-2402c49d856a",
 			"description": "Retrieves connection parameters for the interactive interface."
 		},
 		{
@@ -94,13 +122,38 @@
 			"item": [
 				{
 					"name": "Retrieve a list of queries for this IMS Organization.",
-					"_postman_id": "a7408c05-b6c1-4e37-8d5d-bb94898532a6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ba663c5b-5e68-4fc4-b514-52697e446e16",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -128,9 +181,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -140,13 +200,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -154,7 +207,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}&excludeSoftDeleted={{excludeSoftDeleted}}&excludeHidden={{excludeHidden}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}&excludeSoftDeleted={{excludeSoftDeleted}}&excludeHidden={{excludeHidden}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -162,6 +215,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries"
 							],
 							"query": [
@@ -196,13 +252,38 @@
 				},
 				{
 					"name": "Create a new query.",
-					"_postman_id": "bfcba50b-196b-449e-93af-ef28665b637e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "31a1d0e9-6659-4dfb-8e14-52c8e93ad248",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -223,9 +304,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -235,20 +323,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -256,7 +330,7 @@
 							"raw": "{{query}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -264,6 +338,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries"
 							]
 						}
@@ -272,13 +349,38 @@
 				},
 				{
 					"name": "Request query status by ID.",
-					"_postman_id": "fae1ebb2-8957-4d27-980a-22047d841fae",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "1bde054e-08c4-4cab-a07c-8729b704d131",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -306,9 +408,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -318,13 +427,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -332,7 +434,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries/:queryid",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries/:queryid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -340,6 +442,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries",
 								":queryid"
 							],
@@ -355,13 +460,38 @@
 				},
 				{
 					"name": "Request cancellation or query soft delete.",
-					"_postman_id": "5e1b194a-85a8-451f-9034-d78d6059c239",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "b7e3445c-ed50-4d1c-a5bf-58bbe7062971",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -389,9 +519,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -401,20 +538,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/json",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -422,7 +545,7 @@
 							"raw": "{{operation}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/queries/:queryid",
+							"raw": "https://platform.adobe.io/data/foundation/query/queries/:queryid",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -430,6 +553,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"queries",
 								":queryid"
 							],
@@ -444,7 +570,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8dbaf0e1-3422-45ee-9369-0f9b4378e6b3",
+			"_postman_id": "2d74a8b6-e05b-425f-aeab-3b702855fa24",
 			"description": "Queries let you use standard SQL to query data in Adobe Experience Platform. For example, you can join any number of datasets in Experience Data Lake and capture the results as a new dataset."
 		},
 		{
@@ -452,13 +578,38 @@
 			"item": [
 				{
 					"name": "Retrieve a list of schedules for this IMS Organization.",
-					"_postman_id": "19110ac4-7193-4a45-8e2b-b1fcd1027d88",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "96ef1de9-aa1a-40cd-b49e-4e51ec495e90",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -486,9 +637,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -498,13 +656,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -512,7 +663,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -520,6 +671,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules"
 							],
 							"query": [
@@ -546,13 +700,38 @@
 				},
 				{
 					"name": "Create a new scheduled query.",
-					"_postman_id": "4ecacf92-d4d0-4aa5-a449-42fe0335bb18",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "e804d63c-d174-420e-908c-8be29ce306e8",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -580,9 +759,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -592,13 +778,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -606,7 +785,7 @@
 							"raw": "{{schedule}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -614,6 +793,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules"
 							]
 						}
@@ -622,13 +804,38 @@
 				},
 				{
 					"name": "Request details of a schedule by ID.",
-					"_postman_id": "6f6a615a-cbee-4cd6-b2bf-d69a6d0313e4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "d42c2766-9a89-46bc-a069-8bd92953ccbd",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -656,9 +863,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -668,13 +882,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -682,7 +889,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -690,6 +897,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId"
 							],
@@ -705,13 +915,38 @@
 				},
 				{
 					"name": "Patch an existing schedule.",
-					"_postman_id": "bd7cb1f5-ad2f-424b-957e-e001ce7680b7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "632afe00-95fb-4b0e-8aef-a64afe9d0f27",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -739,9 +974,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -751,13 +993,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -765,7 +1000,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -773,6 +1008,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId"
 							],
@@ -788,13 +1026,38 @@
 				},
 				{
 					"name": "Delete a schedule by ID.",
-					"_postman_id": "68272797-36b1-4dfd-9c42-0b573163933a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "a84abb5d-50fc-4175-b1e6-80db13bebc6b",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -822,9 +1085,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -834,13 +1104,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -848,7 +1111,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -856,6 +1119,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId"
 							],
@@ -871,13 +1137,38 @@
 				},
 				{
 					"name": "Retrieve a list of all runs, past and currently running, for a particular query schedule.",
-					"_postman_id": "8422a6fe-ef20-4ed1-84f9-bbf25784b97e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "3ae698a5-f75c-44b4-8d12-0bf1e220364c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -905,9 +1196,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -917,13 +1215,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -931,7 +1222,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -939,6 +1230,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs"
@@ -973,13 +1267,38 @@
 				},
 				{
 					"name": "Trigger an immediate run of a scheduled query.",
-					"_postman_id": "c3431c98-fd56-41cd-9e90-74f8f0cd593a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "4e900452-81f7-4fea-aad7-8b6acd1bc195",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1007,9 +1326,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1019,13 +1345,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1033,7 +1352,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1041,6 +1360,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs"
@@ -1057,13 +1379,38 @@
 				},
 				{
 					"name": "Lookup details of a query schedule run by ID.",
-					"_postman_id": "796612ea-bc4f-42b9-9abe-27f71bf8553d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "aad93fc9-e4f9-4385-b4f5-9a457c96df9a",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1091,9 +1438,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1103,13 +1457,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1117,7 +1464,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs/:runId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs/:runId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1125,6 +1472,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs",
@@ -1146,13 +1496,38 @@
 				},
 				{
 					"name": "Trigger an immediate run of a scheduled query by ID.",
-					"_postman_id": "6d81ba4c-b466-4855-bf64-115c1f4f0efa",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "24ab6ee0-5ceb-4d74-bb61-125b16b91b41",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1180,9 +1555,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1192,13 +1574,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1206,7 +1581,7 @@
 							"raw": "{{operation}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/schedules/:schedulesId/runs/:runId",
+							"raw": "https://platform.adobe.io/data/foundation/query/schedules/:schedulesId/runs/:runId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1214,6 +1589,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"schedules",
 								":schedulesId",
 								"runs",
@@ -1234,7 +1612,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "aca21dcd-dc9f-4478-9906-cd9b88717491",
+			"_postman_id": "394b8ee1-e6c7-425c-b334-63fa7fa4ae30",
 			"description": "Schedules let you perform SQL functions from a start date to an end date."
 		},
 		{
@@ -1242,13 +1620,38 @@
 			"item": [
 				{
 					"name": "Retrieve a list of query templates for this IMS Organization.",
-					"_postman_id": "4bbef3b3-a054-4219-8076-47051e84324d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "11a514bd-7ff3-4b3a-b9b6-7e8b80ddf955",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1276,9 +1679,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1288,13 +1698,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1302,7 +1705,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates?orderby={{orderby}}&limit={{limit}}&start={{start}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1310,6 +1713,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates"
 							],
 							"query": [
@@ -1336,13 +1742,38 @@
 				},
 				{
 					"name": "Create a new query template.",
-					"_postman_id": "b2dbb98a-a382-47d6-8bd4-0792a70923db",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "1456f748-5d3e-4cbb-9dbf-c7df464b0ff8",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1370,9 +1801,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1382,13 +1820,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1396,7 +1827,7 @@
 							"raw": "{{queryTemplate}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1404,6 +1835,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates"
 							]
 						}
@@ -1412,13 +1846,38 @@
 				},
 				{
 					"name": "Lookup a query template by ID.",
-					"_postman_id": "4646e054-19b2-4e6f-9217-b30bac6a7924",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "df7a3047-b550-4b10-8cac-76fa3357a59b",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1446,9 +1905,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1458,13 +1924,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1472,7 +1931,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates/:queryTemplateId",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1480,6 +1939,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates",
 								":queryTemplateId"
 							],
@@ -1495,13 +1957,38 @@
 				},
 				{
 					"name": "Update a query template by ID.",
-					"_postman_id": "0f412373-7779-445a-9bb7-0acc0f58a56d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "3cdc6353-d1d4-42e2-ab09-1c4211590990",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1529,9 +2016,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1541,13 +2035,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1555,7 +2042,7 @@
 							"raw": "{{queryTemplate}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates/:queryTemplateId",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1563,6 +2050,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates",
 								":queryTemplateId"
 							],
@@ -1578,13 +2068,38 @@
 				},
 				{
 					"name": "Delete a query template by ID.",
-					"_postman_id": "13e74143-5b93-448e-bb95-b3280d424a8a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "7ab95a5b-3a88-48ef-a6b2-ec5918b9d81d",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
@@ -1612,9 +2127,16 @@
 								"enabled": true
 							},
 							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"type": "string",
+								"enabled": true
+							},
+							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "A unique id generated by Adobe.io",
+								"description": "A unique ID generated by Adobe.io",
 								"type": "string",
 								"enabled": true
 							},
@@ -1624,13 +2146,6 @@
 								"description": "type of the client making HTTP API request",
 								"type": "string",
 								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
-								"type": "string",
-								"enabled": false
 							}
 						],
 						"body": {
@@ -1638,7 +2153,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/query-templates/:queryTemplateId",
+							"raw": "https://platform.adobe.io/data/foundation/query/query-templates/:queryTemplateId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1646,6 +2161,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"foundation",
+								"query",
 								"query-templates",
 								":queryTemplateId"
 							],
@@ -1660,7 +2178,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a361d494-e657-487e-8d0b-42c2aaefc774",
+			"_postman_id": "0bed7aed-d7eb-4137-836c-fbd2ad7b3d87",
 			"description": "Query templates let you create, store and execute any of the query as adhoc or schedule service."
 		}
 	]

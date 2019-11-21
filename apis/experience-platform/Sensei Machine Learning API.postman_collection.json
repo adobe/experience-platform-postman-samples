@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "898eb476-de9a-4022-a939-b735f82a5d67",
+		"_postman_id": "75b7c641-1eba-43df-9b4f-74bc52011523",
 		"name": "Sensei Machine Learning API",
-		"description": "Sensei Machine Learning API provides a mechanism for data scientists to organize and manage ML services from algorithm onboarding through experimentation and to service deployment.\n\nRelated documentation:\n  * [Data Science Workspace overview](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html)\n  * [Data Science Workspace terminology](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html#!api-specification/markdown/narrative/technical_overview/data_science_workspace_overview/dsw_overview.md#terminology)\n\n\nNotes: \n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/ \n  * Base path for this API: /data/sensei\n  * Example of a complete path: https://<span>platform.adobe.io/data/sensei/engines\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, please see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).",
+		"description": "Sensei Machine Learning API provides a mechanism for data scientists to organize and manage ML services from algorithm onboarding through experimentation and to service deployment.\n\nRelated documentation:\n  * [Data Science Workspace overview](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html)\n  * [Data Science Workspace terminology](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html#!api-specification/markdown/narrative/technical_overview/data_science_workspace_overview/dsw_overview.md#terminology)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Sensei Machine Learning API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Sensei%20Machine%20Learning%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n\nAPI paths: \n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/ \n  * Base path for this API: /data/sensei\n  * Example of a complete path: https://<span>platform.adobe.io/data/sensei/engines\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,13 +11,38 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all engines.",
-					"_postman_id": "afbe3a78-8ad9-4ad5-ba69-54a7551dc09f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "f918303e-6f53-4e63-9f60-2b082ddcd828",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=engineListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "x-gw-ims-org-id",
@@ -29,9 +54,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -39,7 +64,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines",
+							"raw": "https://platform.adobe.io/data/sensei/engines",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -47,6 +72,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines"
 							]
 						},
@@ -56,17 +83,42 @@
 				},
 				{
 					"name": "Create a new Engine.",
-					"_postman_id": "23e70eb7-dfc7-41de-995c-28529f7813cd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "03209769-1a95-4e8c-9310-3c306258fe59",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "multipart/form-data"
+								"value": "application/json"
 							},
 							{
 								"key": "x-gw-ims-org-id",
@@ -78,9 +130,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -143,7 +195,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines",
+							"raw": "https://platform.adobe.io/data/sensei/engines",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -151,6 +203,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines"
 							]
 						},
@@ -160,13 +214,38 @@
 				},
 				{
 					"name": "Get Docker registry information.",
-					"_postman_id": "54caacd9-f743-4180-acac-bd20e6dbf12a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "8ffb24c7-49e3-44ec-8a95-957a159d8b23",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=enginesDockerRegistryInfo.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -192,9 +271,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -202,7 +281,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/dockerRegistry",
+							"raw": "https://platform.adobe.io/data/sensei/engines/dockerRegistry",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -210,6 +289,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								"dockerRegistry"
 							]
@@ -220,13 +301,38 @@
 				},
 				{
 					"name": "Lookup an Engine by ID.",
-					"_postman_id": "a890ecf3-4fbc-4ec7-a7f4-89745d3cf6d3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "85dfaa84-fd27-47d0-810f-6d35d8210b08",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -252,9 +358,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -262,7 +368,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/:engineId",
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -270,6 +376,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								":engineId"
 							],
@@ -286,17 +394,42 @@
 				},
 				{
 					"name": "Update an Engine by ID.",
-					"_postman_id": "cd4db982-e67b-4315-90f3-272a7d9f7053",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "220fa4fd-b81a-4803-9e31-4fd2af583f43",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -320,18 +453,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -339,7 +465,7 @@
 							"raw": "{{engine}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/:engineId",
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -347,6 +473,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								":engineId"
 							],
@@ -363,13 +491,38 @@
 				},
 				{
 					"name": "Delete an existing Engine by ID.",
-					"_postman_id": "71692526-1dd6-40fb-af9b-92b20799efcb",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "108b7ffd-9777-4337-a1dc-3b30478851bd",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -395,9 +548,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -405,7 +558,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/engines/:engineId",
+							"raw": "https://platform.adobe.io/data/sensei/engines/:engineId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -413,6 +566,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"engines",
 								":engineId"
 							],
@@ -428,7 +583,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "35cfa68d-c230-419d-a7db-ef3b8a4d406c",
+			"_postman_id": "c70cda2d-5a2b-41bb-aa80-86c94a82d3f5",
 			"description": "Engines act as an umbrella entity holding all machine learning instances. This is tied to a Docker image, Java archive, or EGG file which contains machine  learning logic to train and score a Model."
 		},
 		{
@@ -436,13 +591,38 @@
 			"item": [
 				{
 					"name": "Retrieve a list of MLInstances matching given criteria.",
-					"_postman_id": "7d14e023-295d-40d1-9587-f1527c7ef0a1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "c1c06afd-9e73-452c-be14-457300077f25",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstanceListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -468,9 +648,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -478,7 +658,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -486,6 +666,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances"
 							]
 						},
@@ -495,17 +677,42 @@
 				},
 				{
 					"name": "Add a new MLInstance.",
-					"_postman_id": "01517581-8139-49c8-896e-5cc969ecc10d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "5282e0fc-320f-48dc-b436-8276181da06c",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -529,18 +736,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -548,7 +748,7 @@
 							"raw": "{{mlInstance}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -556,6 +756,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances"
 							]
 						},
@@ -565,13 +767,38 @@
 				},
 				{
 					"name": "Delete MLinstances by engineId.",
-					"_postman_id": "b7e34663-7021-478a-9e46-9a907a579a2a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "a78595e0-acec-4c59-ba67-f763c9c89d26",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -597,9 +824,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -607,7 +834,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances?engineId={{engineId}}",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances?engineId={{engineId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -615,6 +842,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances"
 							],
 							"query": [
@@ -630,13 +859,38 @@
 				},
 				{
 					"name": "Lookup a MLInstance by ID.",
-					"_postman_id": "dec97aad-d026-4d70-83b6-735933bdffae",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "2fd37985-832f-43de-af4f-7fc1bf7ad04d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -662,9 +916,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -672,7 +926,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances/:mlInstanceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -680,6 +934,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances",
 								":mlInstanceId"
 							],
@@ -695,17 +951,42 @@
 				},
 				{
 					"name": "Update a MLInstance by ID.",
-					"_postman_id": "b865a783-562d-4e2a-aa14-f1808f2aa28f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "59291d53-ead8-408e-a981-d34ca00e442d",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -729,18 +1010,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -748,7 +1022,7 @@
 							"raw": "{{mlInstance}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances/:mlInstanceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -756,6 +1030,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances",
 								":mlInstanceId"
 							],
@@ -771,13 +1047,38 @@
 				},
 				{
 					"name": "Delete an existing MLInstance by ID.",
-					"_postman_id": "1f48dad9-31f5-48e1-bdd7-a7e20ce13ef4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "34a47aa6-e011-47a7-ab38-92ff766bad5a",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -803,9 +1104,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -813,7 +1114,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlInstances/:mlInstanceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlInstances/:mlInstanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -821,6 +1122,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlInstances",
 								":mlInstanceId"
 							],
@@ -835,7 +1138,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "b0529f01-4c5f-4469-ac60-5bfd30e1b9ee",
+			"_postman_id": "7a3e7a0b-7843-4788-94bb-3002533c329c",
 			"description": "MLInstances represent the combination of a specific Engine with particular set  of configurations. An instance is often use-case specific for a customer or client."
 		},
 		{
@@ -843,13 +1146,38 @@
 			"item": [
 				{
 					"name": "Retrieve all experiments for a MLInstance.",
-					"_postman_id": "0bf88d94-ca33-4203-b0e1-719fc899735a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "cc3771bb-2064-475f-8ba7-8026a6d967ed",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -875,9 +1203,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -885,7 +1213,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments",
+							"raw": "https://platform.adobe.io/data/sensei/experiments",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -893,6 +1221,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments"
 							]
 						}
@@ -901,17 +1231,42 @@
 				},
 				{
 					"name": "Create an experiment.",
-					"_postman_id": "651323a8-1479-4279-83da-00e9755f38c5",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ef186b67-c0ad-4dbf-a983-4d816b9a93c8",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -935,18 +1290,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -954,7 +1302,7 @@
 							"raw": "{{experiment}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments",
+							"raw": "https://platform.adobe.io/data/sensei/experiments",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -962,6 +1310,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments"
 							]
 						}
@@ -970,13 +1320,38 @@
 				},
 				{
 					"name": "Delete experiments by mlInstanceId.",
-					"_postman_id": "050628dd-884f-4027-8115-8f69a5ec9c88",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "13e89eec-7c03-4ede-ae04-39d311bbc52a",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1002,9 +1377,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1012,7 +1387,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments?mlInstanceId={{mlInstanceId}}",
+							"raw": "https://platform.adobe.io/data/sensei/experiments?mlInstanceId={{mlInstanceId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1020,6 +1395,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments"
 							],
 							"query": [
@@ -1035,13 +1412,38 @@
 				},
 				{
 					"name": "Lookup an experiment by ID.",
-					"_postman_id": "4d504b5b-fd20-4d4c-b2cb-44ca5727a96c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "b7c85925-91e1-47b3-8fe9-ee78cb1e056e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1067,9 +1469,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1077,7 +1479,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1085,6 +1487,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId"
 							],
@@ -1100,17 +1504,42 @@
 				},
 				{
 					"name": "Update an experiment by ID.",
-					"_postman_id": "9397196f-0d31-432b-8a41-2816bd066a78",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "f70feb74-ced8-4e5b-b49e-cb8ff056c63a",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -1134,18 +1563,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1153,7 +1575,7 @@
 							"raw": "{{experiment}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1161,6 +1583,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId"
 							],
@@ -1176,13 +1600,38 @@
 				},
 				{
 					"name": "Delete an experiment by ID.",
-					"_postman_id": "03d7f27e-80ff-4b5e-9ec2-a1218ad06108",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "7b9f1e3a-a83e-42f8-bb5d-4e719c5924b6",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1208,9 +1657,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1218,7 +1667,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1226,6 +1675,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId"
 							],
@@ -1241,13 +1692,38 @@
 				},
 				{
 					"name": "Retrieve a list of all runs for an experiment by ID.",
-					"_postman_id": "48598705-b6ea-4576-b92d-bf3ea3e6b8bd",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "23c14f8e-0af3-46a1-ae1a-057c6b6c45c8",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1273,9 +1749,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1283,7 +1759,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1291,6 +1767,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs"
@@ -1307,17 +1785,42 @@
 				},
 				{
 					"name": "Run an experiment with parameter values.",
-					"_postman_id": "23c74cee-adb9-4b4b-adec-ba2a0818db59",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "f10592d2-c0e1-4004-8813-4043506f5e1f",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -1341,18 +1844,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1360,7 +1856,7 @@
 							"raw": "{{Run}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1368,6 +1864,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs"
@@ -1384,13 +1882,38 @@
 				},
 				{
 					"name": "Retrieve the details of an experiment run by ID.",
-					"_postman_id": "03d34a28-1a8c-4da5-bac5-df7a813af69d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "63c34d1c-5911-4ee4-a373-83faffdb5ea9",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1416,9 +1939,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1426,7 +1949,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs/:experimentRunId",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs/:experimentRunId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1434,6 +1957,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs",
@@ -1455,13 +1980,38 @@
 				},
 				{
 					"name": "Retrieve the status of an experiment run by ID.",
-					"_postman_id": "0f305e55-40c7-4ca6-88b6-5a4aa68bf686",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "db4c1cf7-cdf6-4a11-ad53-bdd9bda8954e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunStatus.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1487,9 +2037,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1497,7 +2047,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/experiments/:experimentId/runs/:experimentRunId/status",
+							"raw": "https://platform.adobe.io/data/sensei/experiments/:experimentId/runs/:experimentRunId/status",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1505,6 +2055,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"experiments",
 								":experimentId",
 								"runs",
@@ -1526,7 +2078,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0def5aa7-de72-4572-8b39-501c0588d485",
+			"_postman_id": "c9b00dc0-2955-4ec1-a5e1-7af21d5353b8",
 			"description": "A data scientist conducts multiple experiments to arrive at a high-performing Model while training. This can include changing datasets, features, learning parameters, and hardware."
 		},
 		{
@@ -1534,13 +2086,38 @@
 			"item": [
 				{
 					"name": "Retrieve a list of all Models.",
-					"_postman_id": "45fc46ea-9869-4030-aa7c-743634d4cc6b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ba8cfc43-a4d1-4243-b5e9-b6d56f73cf1e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=modelListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1566,9 +2143,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1576,7 +2153,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models",
+							"raw": "https://platform.adobe.io/data/sensei/models",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1584,6 +2161,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models"
 							]
 						},
@@ -1593,17 +2172,42 @@
 				},
 				{
 					"name": "Register a generated Model.",
-					"_postman_id": "6947a2fb-d49f-426e-8a09-7d33fbb337bc",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "6ae3d5e6-4499-453b-9407-7edfa5edd377",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "multipart/form-data"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -1629,9 +2233,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1652,7 +2256,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models",
+							"raw": "https://platform.adobe.io/data/sensei/models",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1660,6 +2264,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models"
 							]
 						},
@@ -1669,13 +2275,38 @@
 				},
 				{
 					"name": "Lookup a Model by ID.",
-					"_postman_id": "ecdb0d06-c97e-45c2-b87e-65fb14086e2d",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "466668b1-3bad-4dbb-ab5d-027981918a7e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1701,9 +2332,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1711,7 +2342,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1719,6 +2350,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId"
 							],
@@ -1735,17 +2368,42 @@
 				},
 				{
 					"name": "Update a Model by ID.",
-					"_postman_id": "297cc0c0-d7bf-4df2-a32a-6cac33c31078",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "c6caed47-ccef-4567-b169-dc59d325a532",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -1769,18 +2427,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1788,7 +2439,7 @@
 							"raw": "{{model}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1796,6 +2447,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId"
 							],
@@ -1812,13 +2465,38 @@
 				},
 				{
 					"name": "Delete a Model by ID.",
-					"_postman_id": "d22b804f-0467-4f1c-aae3-ced0efb0c1f4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "510774df-f0de-466d-aa41-9def0587c268",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1844,9 +2522,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1854,7 +2532,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1862,6 +2540,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId"
 							],
@@ -1878,13 +2558,38 @@
 				},
 				{
 					"name": "Lookup a binary Model artifact by ID.",
-					"_postman_id": "c71f04a6-ff0f-499e-8f05-32e11cee18e1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "f2ab3e56-073f-4e6e-85fc-372d5458a44b",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/octet-stream"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1910,9 +2615,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1920,7 +2625,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/artifact",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/artifact",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1928,6 +2633,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"artifact"
@@ -1944,13 +2651,38 @@
 				},
 				{
 					"name": "Retrieve a list of transcodings for a model by ID.",
-					"_postman_id": "d8985cd6-1317-47e3-8889-2ab12eccaab3",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "706724e6-5dc9-435c-84e6-c5e880d63357",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscodingListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -1976,9 +2708,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -1986,7 +2718,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/transcodings",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1994,6 +2726,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"transcodings"
@@ -2010,17 +2744,42 @@
 				},
 				{
 					"name": "Create a new transcoding for a Model by ID.",
-					"_postman_id": "b5e7966f-7069-460a-91da-47a1e2cc8870",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "f2ebf668-3192-48c1-b87f-3e701c37e7c0",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2044,18 +2803,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2063,7 +2815,7 @@
 							"raw": "{{model}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/transcodings",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2071,6 +2823,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"transcodings"
@@ -2087,13 +2841,38 @@
 				},
 				{
 					"name": "Lookup a Model transcoding by ID.",
-					"_postman_id": "e5f511d1-c69a-4e15-b580-5da067a1675a",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "2847c57b-676f-4cf4-b43e-4ffa5ad1ebeb",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2119,9 +2898,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2129,7 +2908,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/models/:modelId/transcodings/:modelTranscodingId",
+							"raw": "https://platform.adobe.io/data/sensei/models/:modelId/transcodings/:modelTranscodingId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2137,6 +2916,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"models",
 								":modelId",
 								"transcodings",
@@ -2157,7 +2938,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7d37bdcf-67f0-4385-9229-98a8097fe675",
+			"_postman_id": "1f8bf8d4-b552-4e33-b4a0-b608c4a564c4",
 			"description": "Allows machine learning Model management and registration (Model artifact that is created by the training process)."
 		},
 		{
@@ -2165,13 +2946,38 @@
 			"item": [
 				{
 					"name": "Retrieve a list of insights.",
-					"_postman_id": "d3ce6475-e9ae-4fc7-b59a-2802233777a5",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "63879267-3fa6-4ea7-81ab-08bbcb73b5b5",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=insightListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2197,9 +3003,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2207,7 +3013,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights",
+							"raw": "https://platform.adobe.io/data/sensei/insights",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2215,6 +3021,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights"
 							]
 						},
@@ -2224,17 +3032,42 @@
 				},
 				{
 					"name": "Add a new Model insight.",
-					"_postman_id": "7a9e6ddc-18ca-4dc4-b414-8d9e9bd3af05",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "e55bdda0-87b5-4864-b44e-ea64f34e36b0",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2258,18 +3091,11 @@
 								"enabled": true
 							},
 							{
-								"key": "Content-Type",
-								"value": "{{Content-Type}}",
-								"description": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json",
-								"type": "string",
-								"enabled": true
-							},
-							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2277,7 +3103,7 @@
 							"raw": "{{insight}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights",
+							"raw": "https://platform.adobe.io/data/sensei/insights",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2285,6 +3111,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights"
 							]
 						},
@@ -2294,13 +3122,38 @@
 				},
 				{
 					"name": "Lookup an insight by ID.",
-					"_postman_id": "00eae4e4-9659-4a48-aac8-4c5f2555bfd4",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "49952ccd-0c80-40e9-a248-49d25d2b242c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2326,9 +3179,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2336,7 +3189,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights/:insightId",
+							"raw": "https://platform.adobe.io/data/sensei/insights/:insightId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2344,6 +3197,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights",
 								":insightId"
 							],
@@ -2360,13 +3215,38 @@
 				},
 				{
 					"name": "Retrieve a list of default metrics for algorithms.",
-					"_postman_id": "b7f586fa-3946-4dc0-b148-c8477b678ce2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "cf182826-6fb3-47e4-9ce0-af7d5647b222",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=defaultMetricsListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2392,9 +3272,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2402,7 +3282,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/insights/metrics?algorithm={{algorithm}}",
+							"raw": "https://platform.adobe.io/data/sensei/insights/metrics?algorithm={{algorithm}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2410,6 +3290,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"insights",
 								"metrics"
 							],
@@ -2425,21 +3307,46 @@
 					"response": []
 				}
 			],
-			"_postman_id": "56cf975d-e5be-4980-af32-7d3fa4210ca8",
-			"description": "Insights conatin metrics which are used to empower a  data scientist to evaluate and choose optimal ML Models by displaying  relevant evaluation metrics."
+			"_postman_id": "82447d5d-3795-4c10-b65a-78fa186fff9e",
+			"description": "Insights contain metrics which are used to empower a  data scientist to evaluate and choose optimal ML Models by displaying  relevant evaluation metrics."
 		},
 		{
 			"name": "MLServices",
 			"item": [
 				{
 					"name": "Retrieve a list of MLServices matching given criteria.",
-					"_postman_id": "52fbd8ef-76b7-4785-89f8-95f1197259ef",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "16f17e10-7436-4fa7-97ee-b2e0cf06d57b",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlServiceListing.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2465,9 +3372,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2475,7 +3382,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2483,6 +3390,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices"
 							]
 						},
@@ -2492,17 +3401,42 @@
 				},
 				{
 					"name": "Add a new MLService.",
-					"_postman_id": "7b4b37b0-9c9e-4a3a-893a-7fb582379071",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "cf78b3e3-dadd-4f7b-96f4-6f85454e4333",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2528,9 +3462,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2538,7 +3472,7 @@
 							"raw": "{{mlService}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2546,6 +3480,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices"
 							]
 						},
@@ -2555,13 +3491,38 @@
 				},
 				{
 					"name": "Delete MLServices by mlInstanceId.",
-					"_postman_id": "baa08990-0fc6-446d-9b67-662c3b8dd1c1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "3b6efcbe-9ea2-4bdf-a1a9-96c4fa228316",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2587,9 +3548,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2597,7 +3558,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices?mlInstanceId={{mlInstanceId}}",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices?mlInstanceId={{mlInstanceId}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2605,6 +3566,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices"
 							],
 							"query": [
@@ -2620,13 +3583,38 @@
 				},
 				{
 					"name": "Lookup MLService by ID.",
-					"_postman_id": "926b615b-154b-46e9-b96f-c04b2a21ad55",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "66b66149-99f2-4dbc-8d10-7b3eadc95534",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": ", application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2652,9 +3640,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2662,7 +3650,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices/:serviceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2670,6 +3658,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices",
 								":serviceId"
 							],
@@ -2685,17 +3675,42 @@
 				},
 				{
 					"name": "Update a MLService by ID.",
-					"_postman_id": "416c866a-f76a-4744-a91b-abd6f589f307",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "447c6aa4-a3bb-40df-8a1a-cb9c0f0a9d37",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2721,9 +3736,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2731,7 +3746,7 @@
 							"raw": "{{mlService}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices/:serviceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2739,6 +3754,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices",
 								":serviceId"
 							],
@@ -2754,13 +3771,38 @@
 				},
 				{
 					"name": "Delete an existing MLService by ID.",
-					"_postman_id": "ab26448d-f55b-4b08-a915-784b087f4376",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "4d80954d-7531-4af7-8c93-8558ade71a5b",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Authorization",
@@ -2786,9 +3828,9 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -2796,7 +3838,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/mlServices/:serviceId",
+							"raw": "https://platform.adobe.io/data/sensei/mlServices/:serviceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2804,6 +3846,8 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"sensei",
 								"mlServices",
 								":serviceId"
 							],
@@ -2818,7 +3862,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4a76bc78-5895-4518-baf5-41d8d614a54e",
+			"_postman_id": "2cd15ce2-8917-4190-8298-c893190c9b31",
 			"description": "TMLServices represent an MLInstance which has been published as a service."
 		}
 	]

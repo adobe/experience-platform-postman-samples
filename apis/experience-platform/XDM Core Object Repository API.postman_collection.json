@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "b38cfe15-029a-4480-92d1-aa0227fb6511",
+		"_postman_id": "726c6935-da42-4f37-9de7-2f5a73a42192",
 		"name": "XDM Core Object Repository API",
-		"description": "<p>Experience Data Model (XDM) Core Object Repository is an event-driven repository for XDM instances, fully integrated with Adobe Experience Platform. XDM Core Object Repository is part of Decisioning Service, which provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. Decisioning Service is controlled by a number of interrelated business objects. The XDM Core Object Repository API allows you to access and manage those business objects within the repository. </p><p><strong>Related Documentation:</strong><ul><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md\">Decisioning Service Overview</a></li><li><a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_entities_api_tutorial.md\">Manage Decisioning Service entities using APIs tutorial</a></li></ul></p><p><strong>Notes:</strong><br/><ul><li>Platform Gateway URL:<span> https://platform.adobe.io</li><li>Base path for this API:<span> /data/core/xcore</li><li>Example of a complete path for making a call to Home (\"/\"):<span> https://platform.adobe.io/data/core/xcore/</ul></p>",
+		"description": "Experience Data Model (XDM) Core Object Repository is an event-driven repository for XDM instances, fully integrated with Adobe Experience Platform. XDM Core Object Repository is part of Decisioning Service, which provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. Decisioning Service is controlled by a number of interrelated business objects. The XDM Core Object Repository API allows you to access and manage those business objects within the repository. \n\nRelated documentation:\n  * [Decisioning Service overview](https://www.adobe.io/apis/experienceplatform/home/services/decisioning-service.html#!api-specification/markdown/narrative/technical_overview/decisioning-overview/decisioning-service-overview.md)\n  * [Managing Decisioning Service entities using APIs tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/decisioning_tutorial/decisioning_entities_api_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [XDM Core Object Repository API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/XDM%20Core%20Object%20Repository%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/xcore\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/xcore\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,17 +11,42 @@
 			"item": [
 				{
 					"name": "Rich core search interface for XDM instances.",
-					"_postman_id": "4486778b-d149-4962-90cf-478ecd9f26f6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "bdd51615-bea9-447b-8ed6-4d11afc57e49",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.hal+json; schema='https://ns.adobe.com/experience/xcore/hal/results'"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -63,7 +88,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -71,7 +96,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/queries/core/search?schema={{schema}}&q={{q}}&qop={{qop}}&field={{field}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/queries/core/search?schema={{schema}}&q={{q}}&qop={{qop}}&field={{field}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -79,6 +104,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"queries",
 								"core",
@@ -131,17 +159,42 @@
 				},
 				{
 					"name": "Core query for instances by schema ID or name.",
-					"_postman_id": "a45c8233-7967-4658-aaad-7cef15dd0c5e",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "aa641679-7449-4a64-b64d-f27e289d2845",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.hal+json; schema='https://ns.adobe.com/experience/xcore/hal/results'"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -183,7 +236,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -191,7 +244,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances?schema={{schema}}&id={{id}}&name={{name}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances?schema={{schema}}&id={{id}}&name={{name}}&property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -199,6 +252,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances"
 							],
@@ -244,7 +300,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "d3c9f408-ecbb-450d-b879-9730b1ef9e4d",
+			"_postman_id": "6f46d154-09ce-4364-8a3e-2f138c9d24d6",
 			"description": "Core Queries against XDM instances."
 		},
 		{
@@ -252,17 +308,42 @@
 			"item": [
 				{
 					"name": "Create a new XDM instance",
-					"_postman_id": "b1784f9e-333e-43d3-b528-5961023848d6",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "d229365e-2d55-4586-acbb-1e33aaf8ed82",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -304,7 +385,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -312,7 +393,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -320,6 +401,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances"
 							],
@@ -336,17 +420,42 @@
 				},
 				{
 					"name": "Get a specific instance on an object.",
-					"_postman_id": "c6a51696-ca13-4551-ac1f-4ea5cc1604fb",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "a6e7ca1d-68ae-4558-b443-df635d607322",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\", application/vnd.adobe.platform.xcore.hal+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -395,7 +504,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -403,7 +512,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -411,6 +520,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -432,17 +544,42 @@
 				},
 				{
 					"name": "Update an existing XDM instance.",
-					"_postman_id": "3ed343a2-c2be-4fa6-b081-6c3661af7f34",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "35e01640-14de-4fd6-b501-791a5d7c35e7",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/schema-instance+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -491,7 +628,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -499,7 +636,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -507,6 +644,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -528,17 +668,42 @@
 				},
 				{
 					"name": "Update instance using patch protocol.",
-					"_postman_id": "f981f25c-aa2d-49ea-8721-fa56b018639b",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "3d07a051-686a-4aac-ae4e-ac1d55c5f431",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.patch.hal+json; schema=\"{namespaceId1} {namespaceId2}\""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -587,7 +752,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -595,7 +760,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -603,6 +768,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -624,17 +792,42 @@
 				},
 				{
 					"name": "Delete an XDM instance.",
-					"_postman_id": "2407ea84-74af-4348-92e2-2c9554ffa5f7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "a914d0fd-039f-4bcf-8af8-fc57dfdf9dda",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.platform.xcore.xdm.receipt+json; version=1"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -683,7 +876,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -691,7 +884,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/:containerId/instances/:instanceId",
+							"raw": "https://platform.adobe.io/data/core/xcore/:containerId/instances/:instanceId",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -699,6 +892,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								":containerId",
 								"instances",
 								":instanceId"
@@ -719,7 +915,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e22c02b7-9fb9-4095-a9b6-b3754a6dfaec",
+			"_postman_id": "a8fe9691-207f-4a4b-8153-dc8fddd3fbb8",
 			"description": "Perform CRUD operations to add, edit, update, delete, and view instances via the primary `instanceId`."
 		},
 		{
@@ -727,17 +923,42 @@
 			"item": [
 				{
 					"name": "View the home directory for an IMS organization.",
-					"_postman_id": "da231a11-b7db-4d92-b7a0-9fb91d13068c",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "2fa97e1f-ea34-48fe-bd37-8b07178267ec",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "*, application/vnd.adobe.platform.xcore.home.hal+json"
+								"value": "application/vnd.adobe.xed+json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.adobe.platform.xcore.hal+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -779,7 +1000,7 @@
 								"value": "{{SANDBOX_NAME}}",
 								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
 								"type": "string",
-								"enabled": false
+								"enabled": true
 							}
 						],
 						"body": {
@@ -787,7 +1008,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/?product={{product}}&start={{start}}&limit={{limit}}&property={{property}}",
+							"raw": "https://platform.adobe.io/data/core/xcore/?product={{product}}&start={{start}}&limit={{limit}}&property={{property}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -795,6 +1016,9 @@
 								"io"
 							],
 							"path": [
+								"data",
+								"core",
+								"xcore",
 								""
 							],
 							"query": [
@@ -821,7 +1045,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f1fd4cf5-8572-414d-b225-39c58f64ebe0",
+			"_postman_id": "c1f0980c-05ee-4277-8843-8908df6edb55",
 			"description": "Home document for an IMS Organization. The home document is a HAL (Hypermedia Access Language) document which can be used as the hypermedia home directory for the IMS Organization specified. It lists relevant HAL links that can be traversed and also lists all of the containers belonging to the Org."
 		}
 	]
