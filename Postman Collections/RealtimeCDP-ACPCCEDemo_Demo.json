@@ -279,6 +279,45 @@
           "response": []
         },
         {
+          "name": "Create Streaming XDM Inlet -  - Sink for Customer Kafka Connect Copy",
+          "_postman_id": "8ba21f9d-9bdf-4e5c-a1ca-31b3f8e4e3ed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n       \"name\" : \"customer_kafka_streaming_inlet\",\n       \"description\" : \"Customer Kafka Streaming XDM Data Inlet\",\n       \"sourceId\" : \"customer_kafka_xdm\",\n       \"dataType\": \"xdm\"\n}"
+            },
+            "url": "https://platform.adobe.io/data/core/edge/inlet",
+            "description": "Generated from a curl request: \nCURL -X POST \\\"https://platform.adobe.io/data/core/edge/inlet\\\" \\\n  -H \\\"Cache-Control: no-cache\\\" \\\n  -H \\\"Content-Type: application/json\\\" \\\n  -H \\\"Authorization: Bearer {{ACCESS_TOKEN}}\\\" \\\n  -H \\\"x-api-key: {{API_KEY}}\\\" \\\n  -H \\\"x-gw-ims-org-id: {{IMS_ORG}}\\\" \\\n  -d '{\n       \\\"name\\\" : \\\"customer_kafka_streaming_inlet\\\",\n       \\\"description\\\" : \\\"Customer Kafka Streaming Inlet\\\",\n       \\\"sourceId\\\" : \\\"customer_kafka\\\",\n       \\\"dataType\\\": \\\"xdm\\\"\n   }'"
+          },
+          "response": []
+        },
+        {
           "name": "Create Streaming RAW Inlet - Sink for Customer Kafka Connect",
           "_postman_id": "7adc0364-81e5-4ee3-8350-4aa5b9242876",
           "protocolProfileBehavior": {
@@ -389,45 +428,6 @@
             },
             "url": "https://platform.adobe.io/data/foundation/catalog/dataSets",
             "description": "Generated from a curl request: \nCURL -X POST https://platform.adobe.io/data/foundation/catalog/dataSets \\\n  -H 'Accept: application/json' \\\n  -H 'Authorization: Bearer {{ACCESS_TOKEN}}' \\\n  -H 'Cache-Control: no-cache' \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {{API_KEY}}' \\\n  -H 'x-gw-ims-org-id: {{IMS_ORG}}' \\\n  -d '{\n    \\\"name\\\": \\\"customer_kafka_streaming_dataset\\\",\n    \\\"description\\\": \\\"Customer Kafka Streaming Dataset\\\",\n    \\\"schemaRef\\\": {\n        \\\"id\\\": \\\"https://ns.adobe.com/aepgdcdevenablement1/schemas/ac551e816a51655064546070b7a40327\\\",\n        \\\"contentType\\\": \\\"application/vnd.adobe.xed-full+json;version={SCHEMA_VERSION}\\\"\n    },\n    \\\"fileDescription\\\": {\n        \\\"persisted\\\": true,\n        \\\"containerFormat\\\": \\\"parquet\\\",\n        \\\"format\\\": \\\"parquet\\\"\n    },\n    \\\"streamingIngestionEnabled\\\": \\\"true\\\",\n    \\\"tags\\\": {\n        \\\"unifiedIdentity\\\": [\\\"enabled:true\\\"],\n        \\\"unifiedProfile\\\": [\\\"enabled:true\\\"]\n    }\n\t}'"
-          },
-          "response": []
-        },
-        {
-          "name": "Create Streaming XDM Inlet -  - Sink for Customer Kafka Connect Copy",
-          "_postman_id": "8ba21f9d-9bdf-4e5c-a1ca-31b3f8e4e3ed",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Cache-Control",
-                "value": "no-cache"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{ACCESS_TOKEN}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{API_KEY}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{IMS_ORG}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n       \"name\" : \"customer_kafka_streaming_inlet\",\n       \"description\" : \"Customer Kafka Streaming XDM Data Inlet\",\n       \"sourceId\" : \"customer_kafka_xdm\",\n       \"dataType\": \"xdm\"\n}"
-            },
-            "url": "https://platform.adobe.io/data/core/edge/inlet",
-            "description": "Generated from a curl request: \nCURL -X POST \\\"https://platform.adobe.io/data/core/edge/inlet\\\" \\\n  -H \\\"Cache-Control: no-cache\\\" \\\n  -H \\\"Content-Type: application/json\\\" \\\n  -H \\\"Authorization: Bearer {{ACCESS_TOKEN}}\\\" \\\n  -H \\\"x-api-key: {{API_KEY}}\\\" \\\n  -H \\\"x-gw-ims-org-id: {{IMS_ORG}}\\\" \\\n  -d '{\n       \\\"name\\\" : \\\"customer_kafka_streaming_inlet\\\",\n       \\\"description\\\" : \\\"Customer Kafka Streaming Inlet\\\",\n       \\\"sourceId\\\" : \\\"customer_kafka\\\",\n       \\\"dataType\\\": \\\"xdm\\\"\n   }'"
           },
           "response": []
         }
