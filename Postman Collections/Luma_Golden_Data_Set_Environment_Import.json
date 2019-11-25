@@ -1,0 +1,217 @@
+{
+  "info": {
+    "_postman_id": "f414b246-18de-4cfb-abb1-f13cda01742b",
+    "name": "Luma Golden Data Set Environment Import",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Alternative method Copy",
+      "item": [
+        {
+          "name": "INIT: Load Crypto Library for RS256",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "824e628b-b420-417b-894b-417ab6412896",
+                "type": "text/javascript",
+                "exec": [
+                  "postman.setGlobalVariable(\"jsrsasign-js\", responseBody);"
+                ]
+              }
+            }
+          ],
+          "_postman_id": "0b517aad-923c-431e-bca4-2cc9ca78819b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js",
+            "description": "Load the RSA-Sign Crypto LIbrary in a global environment variable\n\nSource: http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\n\nGithub: https://github.com/kjur/jsrsasign"
+          },
+          "response": []
+        },
+        {
+          "name": "IMS: JWT Generate + Auth New Format",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "37a8829a-7137-4181-814b-8bc895a9ab2d",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"ACCESS_TOKEN\", data.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f611550b-fa21-4ab9-91cd-3877dd01d7f3",
+                "exec": [
+                  "// Tips from: https://github.com/kjur/jsrsasign/issues/199",
+                  "// https://github.com/kjur/jsrsasign/wiki/Tutorial-for-JWT-generation",
+                  "",
+                  "var navigator = {}; //fake a navigator object for the lib",
+                  "var window = {}; //fake a window object for the lib",
+                  "eval(postman.getGlobalVariable(\"jsrsasign-js\")); //import javascript jsrsasign",
+                  "",
+                  "",
+                  "var header = {",
+                  "\t\"alg\": \"RS256\"",
+                  "};",
+                  "",
+                  "var data = {",
+                  "\t\"exp\": Math.round(87000 + Date.now()/1000),",
+                  "\t\"iss\": postman.getEnvironmentVariable(\"IMS_ORG\"),",
+                  "\t\"sub\": postman.getEnvironmentVariable(\"TECHNICAL_ACCOUNT_ID\"),",
+                  "\t\"aud\": \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/c/\"+postman.getEnvironmentVariable(\"API_KEY\")",
+                  "};",
+                  "",
+                  "meta_scopes = postman.getEnvironmentVariable(\"META_SCOPE\").toString().split(',');",
+                  "meta_scopes.forEach(function(scope){",
+                  "    var meta_scope = \"https://\"+postman.getEnvironmentVariable(\"IMS\")+\"/s/\"+",
+                  "                     scope;",
+                  "    data[meta_scope] = true;",
+                  "});",
+                  "",
+                  "var secret = postman.getEnvironmentVariable(\"PRIVATE_KEY\");",
+                  "",
+                  "var sHeader = JSON.stringify(header);",
+                  "var sPayload = JSON.stringify(data);",
+                  "",
+                  "var sJWT = KJUR.jws.JWS.sign(\"RS256\", sHeader, sPayload, secret);",
+                  "",
+                  "console.log(sPayload);",
+                  "console.log(sJWT);",
+                  "",
+                  "postman.setEnvironmentVariable(\"JWT_TOKEN\", sJWT);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "ad45526d-0d19-4f8b-9065-d13c27cc26b1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "client_id",
+                  "value": "{{API_KEY}}",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{CLIENT_SECRET}}",
+                  "type": "text"
+                },
+                {
+                  "key": "jwt_token",
+                  "value": "{{JWT_TOKEN}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "https://{{IMS}}/ims/exchange/jwt/",
+            "description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "8daf3092-837a-480d-b762-50d2b2cb154a"
+    },
+    {
+      "name": "Import Schemas & Datasets",
+      "item": [
+        {
+          "name": "Import Luma Golden Dataset",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6863da2-4d13-460a-a502-c57c3b6ae13b",
+                "exec": [
+                  "var datasets = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"DATASET_ID\", datasets[0].substring(11, datasets[0].length));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2791b3a2-0503-4410-ae38-bd5b65a46628",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "description": "PROD or STAGE or INT",
+                "key": "environment",
+                "value": "PROD"
+              },
+              {
+                "key": "import-dir",
+                "value": "Global/Luma_Golden_Dataset/201910220201"
+              },
+              {
+                "description": "True, False, or <Empty> If empty, it inherits from the Export job",
+                "key": "profile-enabled",
+                "type": "text",
+                "value": "TRUE"
+              },
+              {
+                "description": "Allows selection of which Datasets to import.  If <empty> it imports all Datasets",
+                "key": "import-list",
+                "type": "text",
+                "value": "5cc798546637ee14b41b019a,5cb0daa068d42114b259c1d8,5cb0da9f7ecf5514ba325eb4,5cae717ef7af8714b4fb7a53,5cad3769f9c7d514b1c9c2dc"
+              },
+              {
+                "description": "Sandbox to which data is being imported.  Default value is \"prod\"",
+                "key": "sandboxName",
+                "type": "text",
+                "value": "prod"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "value": null,
+                  "disabled": true
+                }
+              ]
+            },
+            "url": "http://sj1010122096064:5000/import/environment"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "9ac2646e-862b-4758-9408-fd5f9266335f"
+    }
+  ]
+}
