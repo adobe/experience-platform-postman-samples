@@ -428,6 +428,76 @@
         "url": "http://alm.corp.adobe.com/import/environment"
       },
       "response": []
+    },
+    {
+      "name": "DemoCommons Only Environment Import Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "d6863da2-4d13-460a-a502-c57c3b6ae13b",
+            "exec": [
+              "var datasets = JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"DATASET_ID\", datasets[0].substring(11, datasets[0].length));"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "27fcd262-9b50-4959-9624-2e47f27ec466",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{ACCESS_TOKEN}}"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{API_KEY}}"
+          },
+          {
+            "key": "x-gw-ims-org-id",
+            "value": "{{IMS_ORG}}"
+          },
+          {
+            "description": "PROD or STAGE or INT",
+            "key": "environment",
+            "value": "STAGE"
+          },
+          {
+            "key": "import-dir",
+            "value": "Global/Democommons/201910041505"
+          },
+          {
+            "key": "import-list",
+            "value": "",
+            "description": "Specify this if Datasets are specified on Export",
+            "type": "text"
+          },
+          {
+            "key": "profile-enabled",
+            "value": "None",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "value": null,
+              "disabled": true
+            }
+          ]
+        },
+        "url": "http://alm.corp.adobe.com/import/environment"
+      },
+      "response": []
     }
   ]
 }
