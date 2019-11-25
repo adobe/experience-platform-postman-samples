@@ -813,6 +813,66 @@
           "response": []
         },
         {
+          "name": "Edge - Create Projection Copy",
+          "_postman_id": "357a6aa5-5ee6-4a33-98fb-7e7eab0b58f4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
+              },
+              {
+                "key": "topic",
+                "value": "ups-edgeprofile-dev-va711-eciobanu",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"selector\": \"person,_aepgdcdevenablement1,segmentMembership\", \r\n  \"name\": \"Edge_Projection7_aepgdcdevenablement1\",\r\n  \"destinationId\": \"3ab433be-4517-4720-b607-eaa3b5d96cab\"\r\n}"
+            },
+            "url": {
+              "raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName=_xdm.context.profile",
+              "protocol": "https",
+              "host": [
+                "platform",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "config",
+                "projections"
+              ],
+              "query": [
+                {
+                  "key": "schemaName",
+                  "value": "_xdm.context.profile"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Edge - Get a Projection",
           "_postman_id": "d374dccf-7586-43e7-9f76-70d560a74de5",
           "protocolProfileBehavior": {
@@ -847,7 +907,7 @@
                 "value": "application/vnd.adobe.platform.projectionConfig+json; version=1"
               }
             ],
-            "url": "https://platform.adobe.io/data/core/ups/config/destinations/3ab433be-4517-4720-b607-eaa3b5d96cab"
+            "url": "https://platform.adobe.io/data/core/ups/config/destinations/"
           },
           "response": []
         },
