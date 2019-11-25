@@ -389,13 +389,13 @@
           "response": []
         },
         {
-          "name": "Create Streaming Dataset - Customer Kafka",
+          "name": "Check Streaming Dataset",
           "_postman_id": "1cf32000-8866-4534-ac49-74c506c563cb",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
           "request": {
-            "method": "POST",
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
@@ -422,10 +422,6 @@
                 "value": "{{IMS_ORG}}"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"name\": \"customer_kafka_streaming_dataset5\",\n    \"description\": \"Customer Kafka Streaming Dataset 5\",\n    \"schemaRef\": {\n        \"id\": \"https://ns.adobe.com/aepgdcdevenablement1/schemas/b11b81b654de22093f129bfcd40ae100\",\n        \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.0\"\n    },\n    \"fileDescription\": {\n        \"persisted\": true,\n        \"containerFormat\": \"parquet\",\n        \"format\": \"parquet\"\n    },\n    \"streamingIngestionEnabled\": \"true\",\n    \"tags\": {\n        \"unifiedIdentity\": [\"enabled:true\"],\n        \"unifiedProfile\": [\"enabled:true\"]\n    }\n\t}"
-            },
             "url": "https://platform.adobe.io/data/foundation/catalog/dataSets",
             "description": "Generated from a curl request: \nCURL -X POST https://platform.adobe.io/data/foundation/catalog/dataSets \\\n  -H 'Accept: application/json' \\\n  -H 'Authorization: Bearer {{ACCESS_TOKEN}}' \\\n  -H 'Cache-Control: no-cache' \\\n  -H 'Content-Type: application/json' \\\n  -H 'x-api-key: {{API_KEY}}' \\\n  -H 'x-gw-ims-org-id: {{IMS_ORG}}' \\\n  -d '{\n    \\\"name\\\": \\\"customer_kafka_streaming_dataset\\\",\n    \\\"description\\\": \\\"Customer Kafka Streaming Dataset\\\",\n    \\\"schemaRef\\\": {\n        \\\"id\\\": \\\"https://ns.adobe.com/aepgdcdevenablement1/schemas/ac551e816a51655064546070b7a40327\\\",\n        \\\"contentType\\\": \\\"application/vnd.adobe.xed-full+json;version={SCHEMA_VERSION}\\\"\n    },\n    \\\"fileDescription\\\": {\n        \\\"persisted\\\": true,\n        \\\"containerFormat\\\": \\\"parquet\\\",\n        \\\"format\\\": \\\"parquet\\\"\n    },\n    \\\"streamingIngestionEnabled\\\": \\\"true\\\",\n    \\\"tags\\\": {\n        \\\"unifiedIdentity\\\": [\\\"enabled:true\\\"],\n        \\\"unifiedProfile\\\": [\\\"enabled:true\\\"]\n    }\n\t}'"
           },
