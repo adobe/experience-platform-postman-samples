@@ -794,7 +794,7 @@
             "disableBodyPruning": true
           },
           "request": {
-            "method": "GET",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept",
@@ -818,6 +818,10 @@
                 "value": "1"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"selector\": \"person,personalEmail,segmentMembership\"\r\n}"
+            },
             "url": "https://platform.adobe.io/data/core/ups/config/projections/4a1d6535-82af-4bd7-8715-dfa792ddda42"
           },
           "response": []
