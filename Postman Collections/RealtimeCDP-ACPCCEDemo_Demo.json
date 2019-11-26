@@ -753,6 +753,62 @@
           "response": []
         },
         {
+          "name": "Edge - List Projections Copy",
+          "_postman_id": "ffb7d921-d3c2-4d4f-bb8c-298e18269b15",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "x-request-id",
+                "value": "1"
+              }
+            ],
+            "url": {
+              "raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName=_xdm.context.profile",
+              "protocol": "https",
+              "host": [
+                "platform",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "data",
+                "core",
+                "ups",
+                "config",
+                "projections"
+              ],
+              "query": [
+                {
+                  "key": "schemaName",
+                  "value": "_xdm.context.profile"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Edge - Create Projection",
           "_postman_id": "fc15619c-c98a-4ca3-8174-90915c3d7bd5",
           "protocolProfileBehavior": {
@@ -1075,62 +1131,6 @@
             ],
             "url": "https://platform.adobe.io/data/core/ups/config/mergePolicies",
             "description": "DULE - List Marketing Actions"
-          },
-          "response": []
-        },
-        {
-          "name": "Edge - List Projections Copy",
-          "_postman_id": "ffb7d921-d3c2-4d4f-bb8c-298e18269b15",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/vnd.adobe.platform.xcore.home.hal+json",
-                "disabled": true
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{ACCESS_TOKEN}}"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{API_KEY}}"
-              },
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{IMS_ORG}}"
-              },
-              {
-                "key": "x-request-id",
-                "value": "1"
-              }
-            ],
-            "url": {
-              "raw": "https://platform.adobe.io/data/core/ups/config/projections?schemaName=_xdm.context.profile",
-              "protocol": "https",
-              "host": [
-                "platform",
-                "adobe",
-                "io"
-              ],
-              "path": [
-                "data",
-                "core",
-                "ups",
-                "config",
-                "projections"
-              ],
-              "query": [
-                {
-                  "key": "schemaName",
-                  "value": "_xdm.context.profile"
-                }
-              ]
-            }
           },
           "response": []
         }
