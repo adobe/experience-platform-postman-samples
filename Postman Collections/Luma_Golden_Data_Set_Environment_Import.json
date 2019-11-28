@@ -209,6 +209,83 @@
             "url": "http://sj1010122096064:5000/import/environment"
           },
           "response": []
+        },
+        {
+          "name": "Import Luma Golden Dataset Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6863da2-4d13-460a-a502-c57c3b6ae13b",
+                "exec": [
+                  "var datasets = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"DATASET_ID\", datasets[0].substring(11, datasets[0].length));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "a4037b4d-e6b5-4fc2-bcf3-0d0ac2355f13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{ACCESS_TOKEN}}"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "description": "PROD or STAGE or INT",
+                "key": "environment",
+                "value": "PROD"
+              },
+              {
+                "key": "import-dir",
+                "value": "Global/Luma_Golden_Dataset/201910302356"
+              },
+              {
+                "description": "True, False, or None (None inherits from the Export configs)",
+                "key": "profile-enabled",
+                "type": "text",
+                "value": "None"
+              },
+              {
+                "description": "Allows selection of which Datasets to import.  If <empty> it imports all Datasets",
+                "key": "import-list",
+                "type": "text",
+                "value": ""
+              },
+              {
+                "description": "Sandbox to which data is being imported.  Default value is \"prod\"",
+                "key": "sandboxName",
+                "type": "text",
+                "value": "prod"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "value": null,
+                  "disabled": true
+                }
+              ]
+            },
+            "url": "http://sj1010122096064:5000/import/environment"
+          },
+          "response": []
         }
       ],
       "_postman_id": "9ac2646e-862b-4758-9408-fd5f9266335f"
