@@ -619,6 +619,57 @@
           "response": []
         },
         {
+          "name": "Streaming - Profile Ingest - 3 records in IdentityMap Copy",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "527493e1-a410-4a34-8fbd-fa3117d4a6f4",
+                "exec": [
+                  "var PROFILERUNSTART;",
+                  "var PROFILEBATCHCOMPLETE;",
+                  "postman.setEnvironmentVariable(\"PROFILERUNSTART\", Date.now());",
+                  "postman.setEnvironmentVariable(\"PROFILEBATCHCOMPLETE\", \"no\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b1b776f7-34fb-476c-8703-59acf8736b34",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-gw-ims-org-id",
+                "value": "{{IMS_ORG}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "x-sandbox-name",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"header\": {\n        \"msgType\": \"xdmEntityCreate\",\n        \"msgVersion\": \"1.0\",\n        \"msgId\": \"123456\",\n        \"schemaRef\": {\n                \"id\": \"{{PROFILESCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n        },\n        \"imsOrgId\": \"{{IMS_ORG}}\",\n        \"source\": {\n            \"name\": \"GettingStarted\",\n            \"id\": \"999999\"\n        },\n        \"eventType\": \"mobile_interaction\",\n        \"action\": \"update\",\n        \"createdAt\": \"1524467240\",\n        \"datasetId\": \"{{NEWPROFILEDATASETID}}\"\n    },\n    \"body\": {\n        \"xdmMeta\": {\n        \"schemaRef\": {\n                \"id\": \"{{PROFILESCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n        }\n        },\n        \"xdmEntity\": {\n            \"identityMap\": \n            \t{\n    \t\t\t\"ECID\": [\n        \t\t\t{\n            \t\t\"id\": \"100000000000000000000000{{RUNDESIGNATION}}1\"\n        \t\t\t}\n    \t\t\t],\n\t\t\t\t\"EMAIL\": [\n        \t\t\t{\n            \t\t\"id\": \"prorecords{{RUNDESIGNATION}}@adobe.com\"\n        \t\t\t}\n    \t\t\t],\n    \t\t\t\"CRMID\": [\n        \t\t\t{\n            \t\t\"id\": \"{{RUNDESIGNATION}}prorecords\"\n        \t\t\t}\n    \t\t\t]\n\t\t\t\t}\n        }\n    }\n}"
+            },
+            "url": "{{STREAMINGENDPOINTID}}"
+          },
+          "response": []
+        },
+        {
           "name": "Streaming - ExpEvent Ingest CRM ID 3 Profile Link",
           "event": [
             {
@@ -736,57 +787,6 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"header\": {\n    \"msgType\": \"xdmEntityCreate\",\n    \"msgVersion\": \"1.0\",\n    \"schemaRef\": {\n                \"id\": \"{{EXPEVENTSCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n            },\n    \"imsOrgId\": \"{{IMS_ORG}}\",\n    \"source\": {\n      \"name\": \"GettingStarted\",\n      \"id\": \"999999\"\n    },\n    \"eventType\": \"mobile_interaction\",\n    \"action\": \"update\",\n    \"createdAt\": \"1524467240\",\n    \"datasetId\": \"{{NEWEXPEVENTDATASETID}}\"\n  },\n  \"body\": {\n    \"xdmMeta\": {\n    \"schemaRef\": {\n                \"id\": \"{{EXPEVENTSCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n            }\n    },\n    \"xdmEntity\": {\n       \"identityMap\": \n            \t{\n    \t\t\t\"ECID\": [\n        \t\t\t{\n            \t\t\"id\": \"100000000000000000000000{{RUNDESIGNATION}}1\"\n        \t\t\t}\n    \t\t\t]\n\t\t\t\t},\n      \"_id\": \"231\",\n      \"timestamp\": \"2019-02-06T18:23:32Z\",\n      \"marketing\" : {\n    \t\"trackingCode\" : \"purple\"\n\t\t}\n    }\n  }\n}\n"
-            },
-            "url": "{{STREAMINGENDPOINTID}}"
-          },
-          "response": []
-        },
-        {
-          "name": "Streaming - Profile Ingest - 3 records in IdentityMap Copy",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "527493e1-a410-4a34-8fbd-fa3117d4a6f4",
-                "exec": [
-                  "var PROFILERUNSTART;",
-                  "var PROFILEBATCHCOMPLETE;",
-                  "postman.setEnvironmentVariable(\"PROFILERUNSTART\", Date.now());",
-                  "postman.setEnvironmentVariable(\"PROFILEBATCHCOMPLETE\", \"no\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "b1b776f7-34fb-476c-8703-59acf8736b34",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "x-gw-ims-org-id",
-                "value": "{{IMS_ORG}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "x-api-key",
-                "value": "{{API_KEY}}"
-              },
-              {
-                "key": "x-sandbox-name",
-                "value": "",
-                "type": "text",
-                "disabled": true
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"header\": {\n        \"msgType\": \"xdmEntityCreate\",\n        \"msgVersion\": \"1.0\",\n        \"msgId\": \"123456\",\n        \"schemaRef\": {\n                \"id\": \"{{PROFILESCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n        },\n        \"imsOrgId\": \"{{IMS_ORG}}\",\n        \"source\": {\n            \"name\": \"GettingStarted\",\n            \"id\": \"999999\"\n        },\n        \"eventType\": \"mobile_interaction\",\n        \"action\": \"update\",\n        \"createdAt\": \"1524467240\",\n        \"datasetId\": \"{{NEWPROFILEDATASETID}}\"\n    },\n    \"body\": {\n        \"xdmMeta\": {\n        \"schemaRef\": {\n                \"id\": \"{{PROFILESCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n        }\n        },\n        \"xdmEntity\": {\n            \"identityMap\": \n            \t{\n    \t\t\t\"ECID\": [\n        \t\t\t{\n            \t\t\"id\": \"100000000000000000000000{{RUNDESIGNATION}}1\"\n        \t\t\t}\n    \t\t\t],\n\t\t\t\t\"EMAIL\": [\n        \t\t\t{\n            \t\t\"id\": \"prorecords{{RUNDESIGNATION}}@adobe.com\"\n        \t\t\t}\n    \t\t\t],\n    \t\t\t\"CRMID\": [\n        \t\t\t{\n            \t\t\"id\": \"{{RUNDESIGNATION}}prorecords\"\n        \t\t\t}\n    \t\t\t]\n\t\t\t\t}\n        }\n    }\n}"
             },
             "url": "{{STREAMINGENDPOINTID}}"
           },
