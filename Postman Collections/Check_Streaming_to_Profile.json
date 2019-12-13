@@ -656,16 +656,15 @@
               },
               {
                 "key": "x-sandbox-name",
-                "value": "",
                 "type": "text",
-                "disabled": true
+                "value": "golden-data-test"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"header\": {\n        \"msgType\": \"xdmEntityCreate\",\n        \"msgVersion\": \"1.0\",\n        \"msgId\": \"123456\",\n        \"schemaRef\": {\n                \"id\": \"{{PROFILESCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n        },\n        \"imsOrgId\": \"{{IMS_ORG}}\",\n        \"source\": {\n            \"name\": \"GettingStarted\",\n            \"id\": \"999999\"\n        },\n        \"eventType\": \"mobile_interaction\",\n        \"action\": \"update\",\n        \"createdAt\": \"1524467240\",\n        \"datasetId\": \"{{NEWPROFILEDATASETID}}\"\n    },\n    \"body\": {\n        \"xdmMeta\": {\n        \"schemaRef\": {\n                \"id\": \"{{PROFILESCHEMAURL}}\",\n                \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n        }\n        },\n        \"xdmEntity\": {\n            \"identityMap\": \n            \t{\n    \t\t\t\"ECID\": [\n        \t\t\t{\n            \t\t\"id\": \"100000000000000000000000{{RUNDESIGNATION}}1\"\n        \t\t\t}\n    \t\t\t],\n\t\t\t\t\"EMAIL\": [\n        \t\t\t{\n            \t\t\"id\": \"prorecords{{RUNDESIGNATION}}@adobe.com\"\n        \t\t\t}\n    \t\t\t],\n    \t\t\t\"CRMID\": [\n        \t\t\t{\n            \t\t\"id\": \"{{RUNDESIGNATION}}prorecords\"\n        \t\t\t}\n    \t\t\t]\n\t\t\t\t}\n        }\n    }\n}"
+              "raw": "{\n  \"header\": {\n    \"msgType\": \"xdmEntityCreate\",\n    \"msgVersion\": \"1.0\",\n    \"msgId\": \"123456\",\n    \"schemaRef\": {\n      \"id\": \"https://ns.adobe.com/acpccedemo/schemas/c257e599858d8503e922f8e12099664f\",\n      \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n    },\n    \"imsOrgId\": \"{{IMS_ORG}}\",\n    \"source\": {\n      \"name\": \"GettingStarted\",\n      \"id\": \"999999\"\n    },\n    \"eventType\": \"mobile_interaction\",\n    \"action\": \"update\",\n    \"createdAt\": \"1524467240\",\n    \"datasetId\": \"5de952059edecf18a837c44f\"\n  },\n  \"body\": {\n    \"xdmMeta\": {\n      \"schemaRef\": {\n        \"id\": \"https://ns.adobe.com/acpccedemo/schemas/c257e599858d8503e922f8e12099664f\",\n        \"contentType\": \"application/vnd.adobe.xed-full+json;version=1.3\"\n      }\n    },\n    \"xdmEntity\": {\n      \"personalEmail\": {\n        \"address\": \"brunomars@adobe.com\"\n      },\n      \"optInOut\": {\n        \"_channels\": {\n          \"email\": \"in\"\n        }\n      },\n      \"_acpccedemo\": {\n        \"crmID\": \"YnJ1bm9tYXJzQGFkb2JlLmNvbQ==\"\n      },\n      \"person\": {\n        \"name\": {\n          \"lastName\": \"Mars\",\n          \"firstName\": \"Bruno\"\n        }\n      },\n      \"identityMap\": {\n        \"crmid\": [\n          {\n            \"id\": \"YnJ1bm9tYXJzQGFkb2JlLmNvbQ==\",\n            \"authenticatedState\": \"authenticated\",\n            \"primary\": false\n          }\n        ],\n        \"ECID\": [\n          {\n            \"id\": \"78311988187408304103774933770464817827\",\n            \"authenticatedState\": \"authenticated\",\n            \"primary\": false\n          }\n        ],\n        \"Email\": [\n          {\n            \"id\": \"brunomars@adobe.com\",\n            \"authenticatedState\": \"authenticated\",\n            \"primary\": true\n          }\n        ]\n      }\n    }\n  }\n}"
             },
-            "url": "{{STREAMINGENDPOINTID}}"
+            "url": "https://dcs.adobedc.net/collection/57503ba2e953c60a2a694865f2fc0293dd8e970e34be9e6f7e8cb19ba416478b"
           },
           "response": []
         },
