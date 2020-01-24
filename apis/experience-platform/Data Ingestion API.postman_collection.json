@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2a6578e7-da95-4c9b-ab3e-eea7b55721d6",
+		"_postman_id": "3ca8f203-f540-47c6-8d57-b55a57ae9b27",
 		"name": "Data Ingestion API",
 		"description": "Data Ingestion allows you to bring your data into Adobe Experience Platform through batch ingestion and streaming ingestion. Batch ingestion lets you import data in batch, from any number of datasources. Streaming ingestion lets users send data to Platform in real time from client and server-side devices.\n\nRelated documentation:\n  * [Batch ingestion overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/ingest_architectural_overview/ingest_architectural_overview.md)\n  * [Batch ingestion developer guide](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/ingest_architectural_overview/batch_data_ingestion_developer_guide.md)\n  * [Streaming ingestion overview](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/streaming_ingest/streaming_ingest_overview.md)\n  * [Getting started with streaming ingestion APIs](https://www.adobe.io/apis/experienceplatform/home/data-ingestion/data-ingestion-services.html#!api-specification/markdown/narrative/technical_overview/streaming_ingest/getting_started_with_platform_streaming_ingestion.md)\n  * [Create and populate a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Data Ingestion Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Ingestion%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n\nAPI paths:\n  * Base path for batch ingestion APIs: https://<span>platform.adobe.io/data/foundation/import\n  * Base path for streaming ingestion APIs:\n    * Data inlet management: https://<span>platform.adobe.io/data/core/edge\n    * Data collection: https://<span>dcs.adobedc.net/\n  * Example of a complete path for batch ingestion: https://<span>platform.adobe.io/data/foundation/import/batches\n \nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -36,7 +36,7 @@
 							}
 						}
 					],
-					"_postman_id": "088a2582-c8e9-4f8b-bc59-413b0edff5ce",
+					"_postman_id": "160e87b9-9ed3-444e-8bef-8895f072796a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -159,7 +159,7 @@
 							}
 						}
 					],
-					"_postman_id": "5aeebb04-c1de-4327-8abe-0d084096022a",
+					"_postman_id": "94f7dc21-c5fc-4311-bbbc-a7960496dc8e",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -256,7 +256,7 @@
 							}
 						}
 					],
-					"_postman_id": "85a81e72-d2ae-4c88-b20c-13656925360d",
+					"_postman_id": "0212957f-609d-4db7-b97f-ade0004725cc",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -360,7 +360,7 @@
 							}
 						}
 					],
-					"_postman_id": "e8e0e92a-46cb-43b1-97fc-ca19d2219aec",
+					"_postman_id": "4b48a842-91b5-4d32-b556-046d703113c6",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -464,7 +464,7 @@
 							}
 						}
 					],
-					"_postman_id": "0e144a28-ad2c-48bb-b92d-b8a8b7f54b69",
+					"_postman_id": "f3a2ab2b-2911-4a33-b10c-f942b50daa8a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -542,7 +542,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9f8645b9-2f41-4306-9019-a00111d41553",
+			"_postman_id": "2268f62f-f1f7-450c-8a8d-7364b137b770",
 			"description": "Data Inlets are used in conjunction with streaming API calls to ingest record and time=series data for Real-time Customer Profile."
 		},
 		{
@@ -575,7 +575,7 @@
 							}
 						}
 					],
-					"_postman_id": "a9ee482a-14de-4357-a851-4d4ac02fd1bc",
+					"_postman_id": "a5574ef1-cc95-47b7-9ffc-f52ea7816217",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -672,7 +672,7 @@
 							}
 						}
 					],
-					"_postman_id": "4add0944-4d1e-497e-bb54-5c0ef9753e12",
+					"_postman_id": "68f39a1a-48d4-44d2-9ac8-d62b0b4a7ffe",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -737,7 +737,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "fc180d82-e683-421e-9f05-d5c1e92383e9",
+			"_postman_id": "bc30a6dd-beee-45d6-9178-594735d2b2fc",
 			"description": "Streaming ingestion allows you to send data from client and server-side devices to Experience Platform in real-time. It drives Real-time Customer Profile creating personalized experiences."
 		},
 		{
@@ -770,7 +770,7 @@
 							}
 						}
 					],
-					"_postman_id": "c4c4e6ea-ee98-4fa9-85fb-fd218cce579d",
+					"_postman_id": "82341ff0-97a4-4b5e-9423-c8bfcd596672",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -861,7 +861,7 @@
 							}
 						}
 					],
-					"_postman_id": "a4f0d08a-8790-4778-bb7f-f36c4491aa09",
+					"_postman_id": "a6735e02-fc16-43fa-ac9c-c41c1b81eb04",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -971,7 +971,7 @@
 							}
 						}
 					],
-					"_postman_id": "165f313f-ff0e-4ef1-bb3d-534c95a9ec06",
+					"_postman_id": "9e67a029-3ec0-487b-acd9-36c2e91a6ae1",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1087,7 +1087,7 @@
 							}
 						}
 					],
-					"_postman_id": "395b990c-a4ba-4cd8-85fd-94a00e13eae2",
+					"_postman_id": "f7eb4b89-4ad1-490a-931d-acdb1723f43b",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1211,7 +1211,7 @@
 							}
 						}
 					],
-					"_postman_id": "ff0db8b1-634a-41ec-b9f0-275b41efb2e6",
+					"_postman_id": "c5fc49ba-e318-406e-9c93-adc54156c81e",
 					"request": {
 						"method": "HEAD",
 						"header": [
@@ -1321,7 +1321,7 @@
 							}
 						}
 					],
-					"_postman_id": "8ec3375c-5413-4cb3-bf10-fac4e2aa8c6e",
+					"_postman_id": "f281d398-8a2e-4cab-83c6-b57a55a887f4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1456,7 +1456,7 @@
 							}
 						}
 					],
-					"_postman_id": "7bcf32e3-8205-4827-821e-3afbcaf9dcd7",
+					"_postman_id": "d160bdbd-5630-4c90-bb37-8e43e8333755",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1534,7 +1534,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "6eafd985-d4ac-4570-9cfe-b89158164b92",
+			"_postman_id": "e628e176-775e-416f-bc56-cabbf1a6a976",
 			"description": "Batch ingestion is used to ingest data into Experience Platform as batch files. For example, data being ingested can be the profile data from a flat file in a CRM sytem (for example: parquet, or JSON) or data that conforms to a known Experience Data Model (XDM) schema within the Schema Registry."
 		}
 	]
