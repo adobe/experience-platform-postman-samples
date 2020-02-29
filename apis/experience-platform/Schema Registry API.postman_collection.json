@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e406ad76-f373-47be-922f-45fed8dcf9a9",
+		"_postman_id": "9546e015-1917-4e95-881b-ec2e31129d12",
 		"name": "Schema Registry API",
 		"description": "The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.\n\nRelated documentation:\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/xdm_system/xdm_system_in_experience_platform.md\">XDM System in Adobe Experience Platform</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_composition/schema_composition.md\">Basics of schema composition</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md\">Schema Registry API developer guide</a>\n  * <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/tutorials/schema_registry_api_tutorial/schema_registry_api_tutorial.md\">Create a schema using the Schema Registry API</a>\n  \nVisualize API calls with Postman (a free, third-party software):\n  * [Schema Registry API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Schema%20Registry%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/schemaregistry\n  * Example of a complete path for making a call to \"/stats\": https://<span>platform.adobe.io/data/foundation/schemaregistry/stats\n\nRequired headers:\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, see the <a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md\">authentication tutorial</a>.\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All GET requests to the Schema Registry require an `Accept` header to determine what data is returned by the system. See the <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md#accept-header\">section on Accept headers</a> in the Schema Registry developer guide for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -36,13 +36,13 @@
 							}
 						}
 					],
-					"_postman_id": "ac0e0030-eb72-48ae-9e88-9fadc2d135e3",
+					"_postman_id": "c23e5cf7-c37a-4348-8d6e-562acb85ab5d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -100,7 +100,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "475c906a-97b6-496d-a5bd-3a3746105926",
+			"_postman_id": "ad74b57d-99f7-44de-ad44-e9e313eff72b",
 			"description": "Returns {TENANT_ID} along with information regarding IMS Org usage of the Schema Registry such as resource counts, recently created resources, and class usage."
 		},
 		{
@@ -133,13 +133,13 @@
 							}
 						}
 					],
-					"_postman_id": "f0e4bdeb-2bd3-47eb-b5df-42b29fb89e4e",
+					"_postman_id": "cd9d8a7e-9b86-4bfe-a0c7-beff9c88b2ab",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -250,13 +250,13 @@
 							}
 						}
 					],
-					"_postman_id": "b723088b-4ef3-4330-af34-924e92972716",
+					"_postman_id": "5c544357-f7e7-4d48-81f0-cabb08b04b7e",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -348,13 +348,13 @@
 							}
 						}
 					],
-					"_postman_id": "f301f874-d9b4-4b4c-a08b-2df263504f8b",
+					"_postman_id": "4bfce9b1-0062-4f65-bd1c-d997236ceba9",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -451,13 +451,13 @@
 							}
 						}
 					],
-					"_postman_id": "9dbe546d-5511-4197-a77e-3aef4e6dd674",
+					"_postman_id": "5172cb5b-2462-4dcb-bf02-f28d5c1ae7bc",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -554,13 +554,13 @@
 							}
 						}
 					],
-					"_postman_id": "6e149833-4441-4210-a161-c40f4f3fe18d",
+					"_postman_id": "7a472c31-3f5f-45f1-9759-2a2eab51cf71",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -657,13 +657,13 @@
 							}
 						}
 					],
-					"_postman_id": "39d995cd-3654-4b6e-8b6e-c76b4561a60c",
+					"_postman_id": "54b0ddec-e495-4031-b681-a548d72c7a28",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -734,7 +734,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "628081af-55b2-44bd-bc4f-cd95034b6037",
+			"_postman_id": "18847ccc-0f19-4439-aad2-e972d7d7b500",
 			"description": "Schemas provide an abstract definition of a real-world object along with constraints and expectations that can be applied and used to validate data."
 		},
 		{
@@ -767,13 +767,13 @@
 							}
 						}
 					],
-					"_postman_id": "2f843a58-11f8-4b5e-a82b-10a257ce8453",
+					"_postman_id": "03a054da-4e9d-418f-b842-f5ab66f89e4c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -883,13 +883,13 @@
 							}
 						}
 					],
-					"_postman_id": "e9603e01-d745-4e86-bfdf-bcb0efa53f01",
+					"_postman_id": "f89f21f1-d40f-4f48-b80a-c25b0428d972",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -981,13 +981,13 @@
 							}
 						}
 					],
-					"_postman_id": "81085d56-548a-4a13-9d39-2be276d30fb5",
+					"_postman_id": "52d3e34e-d95c-4348-9131-102095eb15d9",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1083,13 +1083,13 @@
 							}
 						}
 					],
-					"_postman_id": "79f46447-a0b6-4f2e-a55c-8b9fe720c9e6",
+					"_postman_id": "8a190a43-2b7b-4a42-ada0-1bf6ffec3bf3",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1186,13 +1186,13 @@
 							}
 						}
 					],
-					"_postman_id": "44551fb8-7bff-4a5d-b21a-7cbfb5973a56",
+					"_postman_id": "0619c5a4-3edb-4f64-a83a-39f9ad23c66c",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1289,13 +1289,13 @@
 							}
 						}
 					],
-					"_postman_id": "8c0a19f1-f448-49c7-bcb5-f06fa4de5382",
+					"_postman_id": "e6256b41-4271-4fd6-8600-cfd7dc5b1810",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1366,7 +1366,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e7cdee37-b4df-460e-8eb7-f38a4a6fd30a",
+			"_postman_id": "438e9789-822e-494e-b196-91e0c2c81e38",
 			"description": "A mixin is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
 		},
 		{
@@ -1399,13 +1399,13 @@
 							}
 						}
 					],
-					"_postman_id": "6381757a-0fbb-4c34-9bf1-1e599f3df0eb",
+					"_postman_id": "ebe84d67-b1c2-440e-8a66-4764d6d84b2c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1515,13 +1515,13 @@
 							}
 						}
 					],
-					"_postman_id": "076d4ec7-b092-4bfc-ba04-40ef62ecda62",
+					"_postman_id": "cdaf7495-5385-4ed1-ab17-01d8710026ab",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1613,13 +1613,13 @@
 							}
 						}
 					],
-					"_postman_id": "dfce06b8-e1a7-4ec6-aa9b-8d8a3474d624",
+					"_postman_id": "21f95bfc-701b-4b76-9fef-56eda40734e9",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1715,13 +1715,13 @@
 							}
 						}
 					],
-					"_postman_id": "27ec55f3-6aa1-4ccc-b68f-c4204e508fa5",
+					"_postman_id": "262ffced-28a3-4ecf-aabc-e6fdd77f7a2c",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1818,13 +1818,13 @@
 							}
 						}
 					],
-					"_postman_id": "32903625-4960-4ed5-a2ee-3d9de631f6d3",
+					"_postman_id": "0b7aee95-c341-4873-8cea-7b8706dbe932",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1921,13 +1921,13 @@
 							}
 						}
 					],
-					"_postman_id": "7f11b60d-f57a-4d8f-ac7f-c7b40af104c0",
+					"_postman_id": "586e3697-fd9b-44b2-8a6a-c5dc82dca113",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1998,7 +1998,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "569b00ed-c3fb-418a-afa6-b29fef7bc812",
+			"_postman_id": "bdf28ced-8173-444a-a3ae-55b7ce37597c",
 			"description": "Classes define behavioral aspects of the data within the schema and describe the smallest number of common properties contained in all schemas that implement the same class."
 		},
 		{
@@ -2031,13 +2031,13 @@
 							}
 						}
 					],
-					"_postman_id": "534fd6dc-8e0b-4b82-aac4-226710baea69",
+					"_postman_id": "c2a5d644-0c7c-4257-aba8-dcd0cbbcb1ac",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2147,13 +2147,13 @@
 							}
 						}
 					],
-					"_postman_id": "509afcf9-8064-431f-9bbd-8b6b021f16d0",
+					"_postman_id": "34a178e2-493f-46d9-bdb1-0acbe8bed5c4",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2245,13 +2245,13 @@
 							}
 						}
 					],
-					"_postman_id": "bf2cec78-ad78-4698-827a-9681e0c34f4e",
+					"_postman_id": "9232fa8c-22a2-4491-8493-3c86c320cba2",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2347,13 +2347,13 @@
 							}
 						}
 					],
-					"_postman_id": "c592e120-0895-4849-ac15-49dafa4daaa3",
+					"_postman_id": "2da3c414-d3df-43a4-9202-4b5899a4a54d",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2450,13 +2450,13 @@
 							}
 						}
 					],
-					"_postman_id": "e3841e8b-55a4-44b8-b502-a884a3c5a838",
+					"_postman_id": "77387aac-3490-4b15-837c-bcec5e84d134",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2553,13 +2553,13 @@
 							}
 						}
 					],
-					"_postman_id": "ccd7ae85-1ffb-46bd-83b6-6b40f3eb7ceb",
+					"_postman_id": "721da440-1798-47d4-9c61-9ab6702099d1",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2630,7 +2630,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "a2aea703-a1b2-44ae-9501-da4734a23fcb",
+			"_postman_id": "f8ca6ae8-702e-446c-8e50-8ce5faf8a05d",
 			"description": "Data types are used as reference field types in classes or schemas to define complex types. Data types may define multiple sub-fields providing a consistent multi-field structure."
 		},
 		{
@@ -2663,13 +2663,13 @@
 							}
 						}
 					],
-					"_postman_id": "02c64648-bfab-405b-9f94-721703072896",
+					"_postman_id": "66bbf2ac-7c96-44ae-b6aa-20ae782cfce6",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2761,13 +2761,13 @@
 							}
 						}
 					],
-					"_postman_id": "090d87f4-ae0e-4736-83f3-3e8910cd5086",
+					"_postman_id": "9e208aa1-4ab1-4b4c-8f8b-0480e8541098",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2859,13 +2859,13 @@
 							}
 						}
 					],
-					"_postman_id": "613566d1-21d2-40d6-81e5-c351f23c858e",
+					"_postman_id": "3293085f-2379-446d-a1ef-fd2766f22af6",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2962,13 +2962,13 @@
 							}
 						}
 					],
-					"_postman_id": "5d754677-fb92-432b-843a-4e0648b83045",
+					"_postman_id": "f2d9beca-d541-427c-8b30-8f5b02d318d1",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3065,13 +3065,13 @@
 							}
 						}
 					],
-					"_postman_id": "1f58516d-f522-4183-8d0f-96f9cb639d01",
+					"_postman_id": "845bc0c8-e46c-4600-a2a9-5f1df87aba09",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3142,7 +3142,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "22a3d57b-299f-468b-bb34-d9e2e8182a70",
+			"_postman_id": "56106885-b049-4db1-b5f4-180cf539a485",
 			"description": "Schema descriptors are tenant-level metadata used to provide interpretive details on how data based on certain schemas may relate or interact with one another."
 		},
 		{
@@ -3175,13 +3175,13 @@
 							}
 						}
 					],
-					"_postman_id": "4b799e17-d48e-4071-a8ac-fa0444b67232",
+					"_postman_id": "559f06a8-f4a1-4f76-b270-2deb087289b7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3284,13 +3284,13 @@
 							}
 						}
 					],
-					"_postman_id": "2fdb72ac-c65b-43f1-82c6-f5124b2734bd",
+					"_postman_id": "50f83d53-9176-4e77-8971-1cbb30f6a4fb",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3356,7 +3356,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "bddf977f-0e81-4546-acf4-d6a89930d5b3",
+			"_postman_id": "7f9923cf-00ce-494a-b2fa-a290036867ca",
 			"description": "Union views aggregate the fields of all schemas that implement the same class (such as ExperienceEvent or Profile) into a single schema. They are used by Real-time Customer Profile to merge data together to form a \"single source of truth\" for an individual."
 		}
 	]

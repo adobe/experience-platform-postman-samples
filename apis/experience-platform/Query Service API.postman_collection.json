@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "c2cfde4f-ee0f-4373-9640-d6e62460133a",
+		"_postman_id": "9a3d00fc-8548-45c3-92fa-6cc2e14814a9",
 		"name": "Query Service API",
-		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Query Service overview](https://www.adobe.io/apis/experienceplatform/home/services/query-service/query-service.html#!end-user/markdown/query-service/qs-intro.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Query Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Query%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "Experience Query Service gives you the ability to use standard SQL to query data on Adobe Experience Platform to support many different use cases. It is a serverless tool which allows you to join any datasets in Experience Data Lake and capture the query results as a new dataset for use in reporting, Data Science Workspace, or for ingestion into Real-time Customer Profile.\n\nRelated Documentation:\n  * [Query Service overview](https://www.adobe.io/apis/experienceplatform/home/query-service/overview.html#!api-specification/markdown/narrative/technical_overview/markdown/query-service/overview/overview.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Query Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Query%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/query\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/query/queries\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -36,13 +36,13 @@
 							}
 						}
 					],
-					"_postman_id": "325416e4-44e5-4d55-9a01-8b22d1b16a78",
+					"_postman_id": "3b749991-b502-42ab-ab17-e389ab2a5669",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -114,7 +114,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "e2294f4d-bf83-4d32-bcda-2402c49d856a",
+			"_postman_id": "494a33ca-c56c-4282-aabe-1c99f62f7d45",
 			"description": "Retrieves connection parameters for the interactive interface."
 		},
 		{
@@ -147,13 +147,13 @@
 							}
 						}
 					],
-					"_postman_id": "ba663c5b-5e68-4fc4-b514-52697e446e16",
+					"_postman_id": "b5a115ef-3775-402a-8621-205b7f968ebe",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -277,13 +277,13 @@
 							}
 						}
 					],
-					"_postman_id": "31a1d0e9-6659-4dfb-8e14-52c8e93ad248",
+					"_postman_id": "a9c44920-5fd5-45cf-95fe-76537ef50da3",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -374,13 +374,13 @@
 							}
 						}
 					],
-					"_postman_id": "1bde054e-08c4-4cab-a07c-8729b704d131",
+					"_postman_id": "50ba8d8f-0420-4f16-94c5-dc0af3ad0026",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -485,13 +485,13 @@
 							}
 						}
 					],
-					"_postman_id": "b7e3445c-ed50-4d1c-a5bf-58bbe7062971",
+					"_postman_id": "95077643-b69b-4019-843d-34031c78c584",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -570,7 +570,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2d74a8b6-e05b-425f-aeab-3b702855fa24",
+			"_postman_id": "8c74d34b-c385-442d-ae9d-17dd89e8b1a5",
 			"description": "Queries let you use standard SQL to query data in Adobe Experience Platform. For example, you can join any number of datasets in Experience Data Lake and capture the results as a new dataset."
 		},
 		{
@@ -603,13 +603,13 @@
 							}
 						}
 					],
-					"_postman_id": "96ef1de9-aa1a-40cd-b49e-4e51ec495e90",
+					"_postman_id": "0cb15326-fc2f-4ca7-8ce3-de8d5b299614",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -725,13 +725,13 @@
 							}
 						}
 					],
-					"_postman_id": "e804d63c-d174-420e-908c-8be29ce306e8",
+					"_postman_id": "062ad93f-a92d-4d42-ad74-2378d65c30fc",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -829,13 +829,13 @@
 							}
 						}
 					],
-					"_postman_id": "d42c2766-9a89-46bc-a069-8bd92953ccbd",
+					"_postman_id": "2c7e9f87-9ab5-4668-974c-2dab41b78d41",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -940,13 +940,13 @@
 							}
 						}
 					],
-					"_postman_id": "632afe00-95fb-4b0e-8aef-a64afe9d0f27",
+					"_postman_id": "95a72d2a-6b02-4f77-81e1-92bc1905fe3e",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1051,13 +1051,13 @@
 							}
 						}
 					],
-					"_postman_id": "a84abb5d-50fc-4175-b1e6-80db13bebc6b",
+					"_postman_id": "6d7d79a5-e1e7-4da9-9045-0f3200272d0b",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1162,13 +1162,13 @@
 							}
 						}
 					],
-					"_postman_id": "3ae698a5-f75c-44b4-8d12-0bf1e220364c",
+					"_postman_id": "8b095035-9282-4a09-82a6-bba5322b5b96",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1292,13 +1292,13 @@
 							}
 						}
 					],
-					"_postman_id": "4e900452-81f7-4fea-aad7-8b6acd1bc195",
+					"_postman_id": "5e8363a3-b8b2-4e61-a0ad-c5ae12da781a",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1404,13 +1404,13 @@
 							}
 						}
 					],
-					"_postman_id": "aad93fc9-e4f9-4385-b4f5-9a457c96df9a",
+					"_postman_id": "8949f16c-f0ab-41df-8c05-2f4cc61c5012",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1521,13 +1521,13 @@
 							}
 						}
 					],
-					"_postman_id": "24ab6ee0-5ceb-4d74-bb61-125b16b91b41",
+					"_postman_id": "7fa784e3-5258-449e-8659-befa4a264ec3",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1612,7 +1612,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "394b8ee1-e6c7-425c-b334-63fa7fa4ae30",
+			"_postman_id": "63647d1c-5917-42c2-90b9-9217a8c9fbba",
 			"description": "Schedules let you perform SQL functions from a start date to an end date."
 		},
 		{
@@ -1645,13 +1645,13 @@
 							}
 						}
 					],
-					"_postman_id": "11a514bd-7ff3-4b3a-b9b6-7e8b80ddf955",
+					"_postman_id": "91d32745-6b4b-4bfb-8ccd-3dae8ed20981",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1767,13 +1767,13 @@
 							}
 						}
 					],
-					"_postman_id": "1456f748-5d3e-4cbb-9dbf-c7df464b0ff8",
+					"_postman_id": "ffb03cbd-6bb6-4b03-8413-bfd0e06d03d8",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1871,13 +1871,13 @@
 							}
 						}
 					],
-					"_postman_id": "df7a3047-b550-4b10-8cac-76fa3357a59b",
+					"_postman_id": "08a53e4d-fc63-4945-9e33-d93d13c310b7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1982,13 +1982,13 @@
 							}
 						}
 					],
-					"_postman_id": "3cdc6353-d1d4-42e2-ab09-1c4211590990",
+					"_postman_id": "68e6a85d-97e9-4704-9204-c92e311814a8",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2093,13 +2093,13 @@
 							}
 						}
 					],
-					"_postman_id": "7ab95a5b-3a88-48ef-a6b2-ec5918b9d81d",
+					"_postman_id": "e283159a-eae9-4bd7-ab17-739df8a4ab31",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2178,7 +2178,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "0bed7aed-d7eb-4137-836c-fbd2ad7b3d87",
+			"_postman_id": "b1326ebf-fc0f-4312-9278-7ec130018a67",
 			"description": "Query templates let you create, store and execute any of the query as adhoc or schedule service."
 		}
 	]

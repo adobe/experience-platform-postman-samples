@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "75b7c641-1eba-43df-9b4f-74bc52011523",
+		"_postman_id": "8e746d53-bc5e-465d-810b-97565e656312",
 		"name": "Sensei Machine Learning API",
 		"description": "Sensei Machine Learning API provides a mechanism for data scientists to organize and manage ML services from algorithm onboarding through experimentation and to service deployment.\n\nRelated documentation:\n  * [Data Science Workspace overview](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html)\n  * [Data Science Workspace terminology](https://www.adobe.io/apis/experienceplatform/home/data-science-workspace/dsw-overview.html#!api-specification/markdown/narrative/technical_overview/data_science_workspace_overview/dsw_overview.md#terminology)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Sensei Machine Learning API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Sensei%20Machine%20Learning%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n\nAPI paths: \n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/ \n  * Base path for this API: /data/sensei\n  * Example of a complete path: https://<span>platform.adobe.io/data/sensei/engines\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -36,13 +36,13 @@
 							}
 						}
 					],
-					"_postman_id": "f918303e-6f53-4e63-9f60-2b082ddcd828",
+					"_postman_id": "61c47d74-0385-4c64-84ee-d65f6a1b5c29",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engineListing.v1.json"
 							},
 							{
 								"key": "x-gw-ims-org-id",
@@ -108,17 +108,17 @@
 							}
 						}
 					],
-					"_postman_id": "03209769-1a95-4e8c-9310-3c306258fe59",
+					"_postman_id": "98b7a942-0306-4b58-bdc2-8ec054397fe7",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "multipart/form-data"
 							},
 							{
 								"key": "x-gw-ims-org-id",
@@ -239,13 +239,13 @@
 							}
 						}
 					],
-					"_postman_id": "8ffb24c7-49e3-44ec-8a95-957a159d8b23",
+					"_postman_id": "2198f8b1-a771-46e1-8c81-54b0a9919cfc",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=enginesDockerRegistryInfo.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -326,13 +326,13 @@
 							}
 						}
 					],
-					"_postman_id": "85dfaa84-fd27-47d0-810f-6d35d8210b08",
+					"_postman_id": "5f0fcb90-d52f-4be5-a642-c95955c580a7",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -419,17 +419,17 @@
 							}
 						}
 					],
-					"_postman_id": "220fa4fd-b81a-4803-9e31-4fd2af583f43",
+					"_postman_id": "ffc5351a-f0ee-477c-b414-f540b409bafa",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=engine.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -516,13 +516,13 @@
 							}
 						}
 					],
-					"_postman_id": "108b7ffd-9777-4337-a1dc-3b30478851bd",
+					"_postman_id": "92cca64c-e707-4583-8a40-e98b2ba69718",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -583,7 +583,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c70cda2d-5a2b-41bb-aa80-86c94a82d3f5",
+			"_postman_id": "25301da6-ad78-49fd-89fc-b532429c3893",
 			"description": "Engines act as an umbrella entity holding all machine learning instances. This is tied to a Docker image, Java archive, or EGG file which contains machine  learning logic to train and score a Model."
 		},
 		{
@@ -616,13 +616,13 @@
 							}
 						}
 					],
-					"_postman_id": "c1c06afd-9e73-452c-be14-457300077f25",
+					"_postman_id": "17850564-984c-4d39-84f1-9096506e35ee",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstanceListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -702,17 +702,17 @@
 							}
 						}
 					],
-					"_postman_id": "5282e0fc-320f-48dc-b436-8276181da06c",
+					"_postman_id": "816a3cec-0ac6-40de-9e86-c5f58a83f5a7",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -792,13 +792,13 @@
 							}
 						}
 					],
-					"_postman_id": "a78595e0-acec-4c59-ba67-f763c9c89d26",
+					"_postman_id": "57d38a69-b1e4-489d-99d2-e11fdd9c5421",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -884,13 +884,13 @@
 							}
 						}
 					],
-					"_postman_id": "2fd37985-832f-43de-af4f-7fc1bf7ad04d",
+					"_postman_id": "22f40e82-53f0-4b98-a091-139f73e6c2ea",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -976,17 +976,17 @@
 							}
 						}
 					],
-					"_postman_id": "59291d53-ead8-408e-a981-d34ca00e442d",
+					"_postman_id": "16d5555a-0e27-42ef-a01a-034e646350fc",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlInstance.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1072,13 +1072,13 @@
 							}
 						}
 					],
-					"_postman_id": "34a47aa6-e011-47a7-ab38-92ff766bad5a",
+					"_postman_id": "97682e99-3dca-4d7b-a8da-a55bcabbccf8",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1138,7 +1138,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "7a3e7a0b-7843-4788-94bb-3002533c329c",
+			"_postman_id": "9f31e5c0-37ec-4f4f-b0e7-46a7bc9c4b20",
 			"description": "MLInstances represent the combination of a specific Engine with particular set  of configurations. An instance is often use-case specific for a customer or client."
 		},
 		{
@@ -1171,13 +1171,13 @@
 							}
 						}
 					],
-					"_postman_id": "cc3771bb-2064-475f-8ba7-8026a6d967ed",
+					"_postman_id": "9dec89d4-e443-4afe-bd67-7db2a4e5809c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1256,17 +1256,17 @@
 							}
 						}
 					],
-					"_postman_id": "ef186b67-c0ad-4dbf-a983-4d816b9a93c8",
+					"_postman_id": "94355518-5e4e-4339-8cfb-a00abddd9ed9",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1345,13 +1345,13 @@
 							}
 						}
 					],
-					"_postman_id": "13e89eec-7c03-4ede-ae04-39d311bbc52a",
+					"_postman_id": "046e5f9b-9d6a-4bbe-b82c-aeacf0207f19",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1437,13 +1437,13 @@
 							}
 						}
 					],
-					"_postman_id": "b7c85925-91e1-47b3-8fe9-ee78cb1e056e",
+					"_postman_id": "85c6f5df-6cc3-4377-b27c-4fffe46b2120",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1529,17 +1529,17 @@
 							}
 						}
 					],
-					"_postman_id": "f70feb74-ced8-4e5b-b49e-cb8ff056c63a",
+					"_postman_id": "45f04261-f767-44f0-920e-7a1d3d334c5b",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experiment.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1625,13 +1625,13 @@
 							}
 						}
 					],
-					"_postman_id": "7b9f1e3a-a83e-42f8-bb5d-4e719c5924b6",
+					"_postman_id": "ce8547dc-9904-458c-b963-b7446fde510f",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1717,13 +1717,13 @@
 							}
 						}
 					],
-					"_postman_id": "23c14f8e-0af3-46a1-ae1a-057c6b6c45c8",
+					"_postman_id": "5ee7d489-6f42-45a8-9679-f614c8ef954d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1810,17 +1810,17 @@
 							}
 						}
 					],
-					"_postman_id": "f10592d2-c0e1-4004-8813-4043506f5e1f",
+					"_postman_id": "6bc9f605-544b-44e5-89d6-f726bd7b940c",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -1907,13 +1907,13 @@
 							}
 						}
 					],
-					"_postman_id": "63c34d1c-5911-4ee4-a373-83faffdb5ea9",
+					"_postman_id": "1904ea8e-a663-4f73-abec-a2ac128fa0e0",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRun.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2005,13 +2005,13 @@
 							}
 						}
 					],
-					"_postman_id": "db4c1cf7-cdf6-4a11-ad53-bdd9bda8954e",
+					"_postman_id": "1966f940-5df1-47c5-a1aa-0f6d57433bbd",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=experimentRunStatus.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2078,7 +2078,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c9b00dc0-2955-4ec1-a5e1-7af21d5353b8",
+			"_postman_id": "169ac866-913f-4ffa-9bcf-28bc40eda73b",
 			"description": "A data scientist conducts multiple experiments to arrive at a high-performing Model while training. This can include changing datasets, features, learning parameters, and hardware."
 		},
 		{
@@ -2111,13 +2111,13 @@
 							}
 						}
 					],
-					"_postman_id": "ba8cfc43-a4d1-4243-b5e9-b6d56f73cf1e",
+					"_postman_id": "68b5c00c-af8f-43a5-bcbb-3f0672394c89",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2197,17 +2197,17 @@
 							}
 						}
 					],
-					"_postman_id": "6ae3d5e6-4499-453b-9407-7edfa5edd377",
+					"_postman_id": "f1264110-571c-4f7a-8d99-4fefe524e797",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "multipart/form-data"
 							},
 							{
 								"key": "Authorization",
@@ -2300,13 +2300,13 @@
 							}
 						}
 					],
-					"_postman_id": "466668b1-3bad-4dbb-ab5d-027981918a7e",
+					"_postman_id": "1fef4818-d477-4a8b-8950-abd6b189834a",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2393,17 +2393,17 @@
 							}
 						}
 					],
-					"_postman_id": "c6caed47-ccef-4567-b169-dc59d325a532",
+					"_postman_id": "acd228c1-fdef-439c-a52a-b5c728ae1f1d",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=model.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2490,13 +2490,13 @@
 							}
 						}
 					],
-					"_postman_id": "510774df-f0de-466d-aa41-9def0587c268",
+					"_postman_id": "9f621554-c9a8-4cab-a018-b8d9acac8f37",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2583,13 +2583,13 @@
 							}
 						}
 					],
-					"_postman_id": "f2ab3e56-073f-4e6e-85fc-372d5458a44b",
+					"_postman_id": "149a2f7e-ce9f-45d2-bb59-8c634591a780",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/octet-stream"
 							},
 							{
 								"key": "Authorization",
@@ -2676,13 +2676,13 @@
 							}
 						}
 					],
-					"_postman_id": "706724e6-5dc9-435c-84e6-c5e880d63357",
+					"_postman_id": "009e272b-c063-4400-bd71-a846c49b16d8",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscodingListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2769,17 +2769,17 @@
 							}
 						}
 					],
-					"_postman_id": "f2ebf668-3192-48c1-b87f-3e701c37e7c0",
+					"_postman_id": "41c90454-1df0-48a4-aae2-a2fc8a4af528",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2866,13 +2866,13 @@
 							}
 						}
 					],
-					"_postman_id": "2847c57b-676f-4cf4-b43e-4ffa5ad1ebeb",
+					"_postman_id": "bc29cdcc-7cc9-4c7e-94ba-2896a05f867a",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=modelTranscoding.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -2938,7 +2938,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1f8bf8d4-b552-4e33-b4a0-b608c4a564c4",
+			"_postman_id": "1e4f28a8-182c-47a2-91c1-a7f9bb7a4990",
 			"description": "Allows machine learning Model management and registration (Model artifact that is created by the training process)."
 		},
 		{
@@ -2971,13 +2971,13 @@
 							}
 						}
 					],
-					"_postman_id": "63879267-3fa6-4ea7-81ab-08bbcb73b5b5",
+					"_postman_id": "69cf74d7-dac0-4005-a775-3137e65ab1f4",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insightListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3057,17 +3057,17 @@
 							}
 						}
 					],
-					"_postman_id": "e55bdda0-87b5-4864-b44e-ea64f34e36b0",
+					"_postman_id": "2b020da1-e61b-4d29-b870-3ff8d1869198",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3147,13 +3147,13 @@
 							}
 						}
 					],
-					"_postman_id": "49952ccd-0c80-40e9-a248-49d25d2b242c",
+					"_postman_id": "c09158f8-594f-456e-aa65-2977ee90811e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=insight.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3240,13 +3240,13 @@
 							}
 						}
 					],
-					"_postman_id": "cf182826-6fb3-47e4-9ce0-af7d5647b222",
+					"_postman_id": "1e8384de-e2ea-4bdb-92db-506efdf9d29e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=defaultMetricsListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3307,7 +3307,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "82447d5d-3795-4c10-b65a-78fa186fff9e",
+			"_postman_id": "94fbc161-16c4-4887-a732-b204965d3fd5",
 			"description": "Insights contain metrics which are used to empower a  data scientist to evaluate and choose optimal ML Models by displaying  relevant evaluation metrics."
 		},
 		{
@@ -3340,13 +3340,13 @@
 							}
 						}
 					],
-					"_postman_id": "16f17e10-7436-4fa7-97ee-b2e0cf06d57b",
+					"_postman_id": "81a72ade-6f7f-49c0-adb9-8a2317c43372",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlServiceListing.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3426,17 +3426,17 @@
 							}
 						}
 					],
-					"_postman_id": "cf78b3e3-dadd-4f7b-96f4-6f85454e4333",
+					"_postman_id": "3dfc3e16-75bf-42bf-bdd2-df396cff0e40",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3516,13 +3516,13 @@
 							}
 						}
 					],
-					"_postman_id": "3b6efcbe-9ea2-4bdf-a1a9-96c4fa228316",
+					"_postman_id": "55f59e19-aac7-4de6-99d3-6ccadf53b0fa",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3608,13 +3608,13 @@
 							}
 						}
 					],
-					"_postman_id": "66b66149-99f2-4dbc-8d10-7b3eadc95534",
+					"_postman_id": "0df86947-da2a-459e-876a-b68aa78c3f25",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": ", application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3700,17 +3700,17 @@
 							}
 						}
 					],
-					"_postman_id": "447c6aa4-a3bb-40df-8a1a-cb9c0f0a9d37",
+					"_postman_id": "6f0d2d40-673a-453c-b133-bd49933d79b0",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=mlService.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3796,13 +3796,13 @@
 							}
 						}
 					],
-					"_postman_id": "4d80954d-7531-4af7-8c93-8558ade71a5b",
+					"_postman_id": "0f56660b-c8fe-43f2-add6-79311c7a14c6",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/vnd.adobe.platform.sensei+json;profile=api-response.v1.json"
 							},
 							{
 								"key": "Authorization",
@@ -3862,7 +3862,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "2cd15ce2-8917-4190-8298-c893190c9b31",
+			"_postman_id": "c7de4795-e817-4a0b-8ee1-e4a9af969020",
 			"description": "TMLServices represent an MLInstance which has been published as a service."
 		}
 	]

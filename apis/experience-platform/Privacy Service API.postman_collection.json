@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "6337f31c-4208-462c-a1f8-0853c3acde98",
+		"_postman_id": "7ded6965-86cd-4568-86ea-993853bd7902",
 		"name": "Privacy Service API",
 		"description": "Adobe Experience Platform Privacy Service provides a common, centralized facilitation of access/delete requests and opt-out-of-sale requests for private data. The service includes a UI for selecting and creating requests, a business layer that processes incoming and outgoing traffic, a data store for audit and logging information, and temporary storage for data retrieval while requests are pending or waiting to be viewed.\n\nRelated documentation:\n  * [Privacy Service overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/privacy_service_overview.md)\n  * [Privacy Service API tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/privacy_service_tutorial/privacy_service_api_tutorial.md)\n  * [GDPR on Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/services/privacy-service.html#!api-specification/markdown/narrative/technical_overview/privacy_service_overview/gdpr-on-platform-overview.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Privacy Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Privacy%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/privacy/jobs\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/privacy/jobs/ping\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Privacy Service",
+			"name": "Privacy Jobs",
 			"item": [
 				{
 					"name": "Retrieve details of all jobs for the current logged-in user.",
@@ -36,7 +36,7 @@
 							}
 						}
 					],
-					"_postman_id": "3b33b520-32f5-423c-8c6e-ba5279c847cf",
+					"_postman_id": "d6e280b1-eebb-4a70-8973-0bdbcc9a5fe4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -132,13 +132,13 @@
 							}
 						}
 					],
-					"_postman_id": "16a76f1f-6976-4430-8ade-03dbb2756884",
+					"_postman_id": "3ffbb889-01ea-4540-b3ff-2423edb40d97",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -223,7 +223,7 @@
 							}
 						}
 					],
-					"_postman_id": "bbebaa8c-1f0b-491f-8db8-de346d3e1c83",
+					"_postman_id": "2a811670-bd63-496d-97fb-356c2381155c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -305,7 +305,7 @@
 							}
 						}
 					],
-					"_postman_id": "54482d51-3fe6-42f0-8f6a-dfec7cb67538",
+					"_postman_id": "8eed021a-f134-4031-bb21-0697be9f3260",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -393,7 +393,7 @@
 							}
 						}
 					],
-					"_postman_id": "688bf985-e92b-4b31-a489-3a040c06f3dc",
+					"_postman_id": "cc6b2a88-60b5-4676-9e2a-41b01c29517c",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -457,7 +457,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1acb4711-6f32-4983-8f5f-b99bfaa0b422",
+			"_postman_id": "ebfe90c7-9f0e-4a4d-bb16-f2e70e58fcb4",
 			"description": "Retrieve and create access/delete requests, including child jobs for existing requests."
 		},
 		{
@@ -490,13 +490,13 @@
 							}
 						}
 					],
-					"_postman_id": "78e9c908-6cbf-4ef4-b96c-ef1e6c00e93a",
+					"_postman_id": "af1f84cb-aec8-4674-a27d-4af044983764",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -584,17 +584,17 @@
 							}
 						}
 					],
-					"_postman_id": "ed079f45-eb4b-49f6-b30e-ccad85d880b1",
+					"_postman_id": "425756c4-13b4-4667-b7a3-9b2b80e36e60",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "multipart/form-data"
 							},
 							{
 								"key": "Authorization",
@@ -668,7 +668,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "38eacf63-2271-4a71-8212-be1d1a5677f9",
+			"_postman_id": "c66d204f-fc47-4c9c-95c1-91b6018bacf5",
 			"description": "View and upload files from various Adobe solutions for specified job requests."
 		},
 		{
@@ -701,7 +701,7 @@
 							}
 						}
 					],
-					"_postman_id": "cfa6edb0-e6c9-4a90-b445-ab515ba7416a",
+					"_postman_id": "96b4675e-0457-4f45-9bfc-7d7f896ba6fc",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -764,7 +764,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8ac0324d-9dfc-4363-ad64-6a9afdecf2eb",
+			"_postman_id": "3f66152c-51b9-42d8-a6c7-6764140c4c94",
 			"description": "Check the processing status of access or delete requests by supplying a status code integer as a query parameter."
 		},
 		{
@@ -797,7 +797,7 @@
 							}
 						}
 					],
-					"_postman_id": "9266d93f-329e-40e4-b7de-8f933425081f",
+					"_postman_id": "e57cd35a-06ca-4c9a-ab9e-d4a3fdb240f4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -880,7 +880,7 @@
 							}
 						}
 					],
-					"_postman_id": "92175a30-1467-4ad4-8930-10eba20a49ef",
+					"_postman_id": "9cfce2f6-3d03-458a-8168-7fecb777aa0a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -944,7 +944,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ce6f6108-f38c-464c-99aa-9ac9dca08add",
+			"_postman_id": "c70f07f0-7182-434d-9a19-c0f3ce0d40c0",
 			"description": "View details of Adobe products available within your organization's Privacy Service integrations."
 		},
 		{
@@ -977,7 +977,7 @@
 							}
 						}
 					],
-					"_postman_id": "b49cd7ce-8de1-4c80-8229-1de8ac574db8",
+					"_postman_id": "c60e1c4f-0047-4000-8249-2cf48652c82b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1060,7 +1060,7 @@
 							}
 						}
 					],
-					"_postman_id": "492d982f-7958-4675-84ab-bb026c80529a",
+					"_postman_id": "7e18a914-479e-4bd5-9a50-259d154d3a0b",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1143,7 +1143,7 @@
 							}
 						}
 					],
-					"_postman_id": "844efead-b6b9-422d-820d-e314392c0647",
+					"_postman_id": "b82a5cf8-6c2b-4ab3-8749-d038e5b924f4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1233,7 +1233,7 @@
 							}
 						}
 					],
-					"_postman_id": "2d437922-ead4-41b7-b349-df4900eaaddf",
+					"_postman_id": "017ab92d-20fa-4781-b1fe-8255bfbb89c9",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1323,7 +1323,7 @@
 							}
 						}
 					],
-					"_postman_id": "b3f8aa85-2055-4fcf-90bd-7439dbd55f28",
+					"_postman_id": "6fef7d20-628c-4834-a83d-5aae458caf0a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1387,7 +1387,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "25bb86c7-a666-4380-8ce5-8c396dd4c161",
+			"_postman_id": "925d569e-4e6a-41d9-86b8-3f89e1f275ba",
 			"description": "View, create, update, or delete users and their permissions within your organization's Privacy Service configuration."
 		}
 	]
