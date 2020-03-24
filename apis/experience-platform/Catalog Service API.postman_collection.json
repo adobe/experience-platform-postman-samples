@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c9f4aa6f-c8f5-4733-b66f-950c9e05eb33",
+		"_postman_id": "22fa8ce1-a2b7-5878-9e4a-0ae65e8868dd",
 		"name": "Catalog Service API",
 		"description": "Catalog is the system of record for data location and lineage within Adobe Experience Platform. Catalog is not the actual files or directories containing data, rather it holds the metadata and description of those files and directories.\n\nSimply put, Catalog acts as a metadata store or \"catalog\" where you can find information about your data within Experience Platform.\n\nYou can use Catalog to answer questions such as, where is my data located? at what stage of processing is this data? what systems or processes have acted on my data? what errors occurred during processing? and, if successful, how much data was processed?\n\nRelated documentation:\n  * [Catalog Service overview](https://www.adobe.io/apis/experienceplatform/home/services/allservices.html#!api-specification/markdown/narrative/technical_overview/catalog_architectural_overview/catalog_architectural_overview.md)\n  * [Create a dataset using APIs](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/creating_a_dataset_tutorial/creating_a_dataset_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Catalog Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Catalog%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/catalog\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/catalog/batches\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -36,13 +36,13 @@
 							}
 						}
 					],
-					"_postman_id": "c5c602ed-b8df-46ca-92a3-42c394f7adc0",
+					"_postman_id": "9b85c9e0-89bb-54a5-8b6a-f914ee3995a6",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -183,13 +183,13 @@
 							}
 						}
 					],
-					"_postman_id": "619846ea-28e7-49a1-8fd4-972e184d81f4",
+					"_postman_id": "d127c8bd-1b53-5c61-a9a2-2fda85b540e2",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -280,13 +280,13 @@
 							}
 						}
 					],
-					"_postman_id": "b4557a8e-2c11-4fb9-adc9-2cf485718eac",
+					"_postman_id": "d73dcf59-c6ff-566b-bd71-9bb53b77fe56",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -380,13 +380,13 @@
 							}
 						}
 					],
-					"_postman_id": "e5c83cd8-763f-4e63-888a-8547524f4a96",
+					"_postman_id": "562b33fc-37db-51a1-bda3-74e454d2f533",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -484,13 +484,13 @@
 							}
 						}
 					],
-					"_postman_id": "c7723ea2-668e-4102-86a7-a57de4d42fc8",
+					"_postman_id": "b840411c-7ac2-5b30-944a-b0c961af5d45",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -588,13 +588,13 @@
 							}
 						}
 					],
-					"_postman_id": "ed5965af-26dd-4d81-b57a-506b453511e7",
+					"_postman_id": "7a57f303-b7ac-5a3e-a4a4-f282c107d09d",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -692,13 +692,13 @@
 							}
 						}
 					],
-					"_postman_id": "fc6a05c5-6cb5-4494-b211-c29923ce22be",
+					"_postman_id": "0d12984f-a7cd-5e68-a5cd-1b71c0af9670",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -770,7 +770,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "81469030-f6c4-422e-aa13-fe48f3443659",
+			"_postman_id": "902e3a8c-97cd-5ad9-98d2-c29e42ef6e74",
 			"description": "Accounts represent a collection of authentication credentials used to create data connections of a specific type. Each connection has a set of unique parameters that are persisted by Catalog and secured in an Azure Key Vault using Security Services."
 		},
 		{
@@ -803,13 +803,13 @@
 							}
 						}
 					],
-					"_postman_id": "0a4ffd99-8e12-476d-bd1f-1345fb7044da",
+					"_postman_id": "4204c742-5d04-5c1a-bfae-ebbba8ea9c9c",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -970,13 +970,13 @@
 							}
 						}
 					],
-					"_postman_id": "37c6ac57-feb2-43ef-aa96-771200a9282c",
+					"_postman_id": "e292cea7-2daa-593e-b89d-7cfdcf52bf1a",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1067,13 +1067,13 @@
 							}
 						}
 					],
-					"_postman_id": "bae9cbcd-f921-4a83-b497-32a753d84df6",
+					"_postman_id": "11db7faa-8a7e-5a57-a9b9-a3ad2273593d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -1242,13 +1242,13 @@
 							}
 						}
 					],
-					"_postman_id": "5052fd2c-2f45-4139-ad0b-80e9a8355131",
+					"_postman_id": "77b551a7-c3bc-5a90-b53f-a76f6d16d867",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -1348,13 +1348,13 @@
 							}
 						}
 					],
-					"_postman_id": "44e7f666-a893-432c-a356-f3d283202f74",
+					"_postman_id": "457f70fd-d0a2-547d-862a-52c4fb2e2476",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1452,13 +1452,13 @@
 							}
 						}
 					],
-					"_postman_id": "b9f830fd-eca2-4a6e-8fec-0ff48171a344",
+					"_postman_id": "bdaad6b0-bb54-5223-8bfd-08721e27a1be",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1556,13 +1556,13 @@
 							}
 						}
 					],
-					"_postman_id": "f925f9b7-b9f7-43e5-9e61-b5d42784e368",
+					"_postman_id": "e2c2fa8a-02f9-5cb7-a92d-a3279b4b9196",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1660,13 +1660,13 @@
 							}
 						}
 					],
-					"_postman_id": "e476a4e0-eeb5-4f8a-8769-a67c35b74142",
+					"_postman_id": "5ecb4430-4899-5dd2-bf3d-b1affbec0e8f",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -1738,7 +1738,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c7bceb18-944c-4d8f-8848-5c3e6c81a37e",
+			"_postman_id": "0fbdfdca-0140-5ceb-bd71-5dc6783a9437",
 			"description": "Batches allow Catalog users to understand which operations and applications have been performed on objects tracked by the system. A batch outlines the final results of an operation (such as records processed, or size on disk) but may also include links to datasets, files, and more that were affected by the process."
 		},
 		{
@@ -1771,13 +1771,13 @@
 							}
 						}
 					],
-					"_postman_id": "a23b2643-fe89-496a-8335-bb842df9c712",
+					"_postman_id": "b60fe4cc-ee66-5c1c-b2f9-207f22a971c3",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -1845,7 +1845,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "65b6b49b-372d-4866-940f-701692113083",
+			"_postman_id": "7eb048d1-8978-5f57-9b31-09a084e8088e",
 			"description": "Large documents are ingested files that exceed 512MB in size. These files are divided into chunks and ingested separately."
 		},
 		{
@@ -1878,13 +1878,13 @@
 							}
 						}
 					],
-					"_postman_id": "1d624a5f-02e9-4337-a1ef-da3fdbf9e3a1",
+					"_postman_id": "2a9e16cc-8e89-5dd6-a366-6d75cb085aea",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2001,13 +2001,13 @@
 							}
 						}
 					],
-					"_postman_id": "787113f6-977a-40b0-84a6-df20819b7095",
+					"_postman_id": "6107690d-e0d1-5761-a04d-41996a51838e",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2098,13 +2098,13 @@
 							}
 						}
 					],
-					"_postman_id": "0bc53b9e-8aae-45fe-98e9-1e393aa2b037",
+					"_postman_id": "5513d7bd-b7f7-5def-b980-487bbb73cee8",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2198,13 +2198,13 @@
 							}
 						}
 					],
-					"_postman_id": "2fcc8719-8196-4bd0-97ee-aea39d829541",
+					"_postman_id": "9dfaa69e-354e-5624-b4b0-3c30c571ddab",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2302,13 +2302,13 @@
 							}
 						}
 					],
-					"_postman_id": "08d4ad0a-ea40-41cf-b516-79c347e1401e",
+					"_postman_id": "a0d496f0-efa7-5c71-8c0b-0807a0c093e6",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2406,13 +2406,13 @@
 							}
 						}
 					],
-					"_postman_id": "47bc1f5e-5f61-4205-8518-187c3971affe",
+					"_postman_id": "c8f78445-c30d-5210-818f-ad2b711705b8",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -2510,13 +2510,13 @@
 							}
 						}
 					],
-					"_postman_id": "26c0f08d-4678-4a2a-8870-8320693654bd",
+					"_postman_id": "acf2d29d-033a-5831-b838-51c4e1d305b6",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2610,13 +2610,13 @@
 							}
 						}
 					],
-					"_postman_id": "81d45e8a-09bb-4777-9eda-79c5757dfe5d",
+					"_postman_id": "c39a40cd-c13a-598a-8cd3-538b91ffa47f",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2685,7 +2685,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f17a1132-2f8b-4f5a-bcdb-58d13170b8b8",
+			"_postman_id": "b1c104bc-0952-5cac-a67a-0a0787de4018",
 			"description": "Connections are customer-specific instances of connectors. As an example, when a user selects the Azure Blob connector and supplies the necessary details as defined by that connector, the result is a connection."
 		},
 		{
@@ -2718,13 +2718,13 @@
 							}
 						}
 					],
-					"_postman_id": "61961c11-6bc8-455c-aa83-a5a36e735c52",
+					"_postman_id": "37b146c9-81d0-56bc-8d67-814451c9e17d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2849,13 +2849,13 @@
 							}
 						}
 					],
-					"_postman_id": "373eb4b5-ee7f-44cd-a1f0-45855ba30f4a",
+					"_postman_id": "72ddb59a-ed29-5bfa-a721-101f55ff6edf",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -2949,13 +2949,13 @@
 							}
 						}
 					],
-					"_postman_id": "65723e4a-bc44-4654-b173-01e7486f5f5a",
+					"_postman_id": "babe4a66-a24d-5bc2-ae55-d3cdd62926b2",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -3024,7 +3024,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "10921ccc-d92c-469b-b586-9779d69bb947",
+			"_postman_id": "f862766e-4194-5384-bb33-daf535448680",
 			"description": "Connectors define how and when data is ingested into Platform. They control how data is to be gathered from technology sources (like S3, RedShift, and SFTP) and partner sources (like DFA, SAP, MSFT, and ExactTarget). Connectors also define how and when data from Adobe solutions is ingested into Platform."
 		},
 		{
@@ -3057,13 +3057,13 @@
 							}
 						}
 					],
-					"_postman_id": "0dc0714e-f033-4cd3-90eb-751d10a1c68d",
+					"_postman_id": "709e7e6a-0eab-5f18-ab33-bb6fd44c9f73",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -3180,13 +3180,13 @@
 							}
 						}
 					],
-					"_postman_id": "aa49ff7a-665f-4c81-b176-89203b278c9f",
+					"_postman_id": "672e74ea-be1e-5425-864c-d344a9b4be05",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3283,13 +3283,13 @@
 							}
 						}
 					],
-					"_postman_id": "f85c5010-835b-48ca-9df1-c1f900e0f593",
+					"_postman_id": "1c978246-49e3-5113-af78-fb920a29b041",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -3389,13 +3389,13 @@
 							}
 						}
 					],
-					"_postman_id": "c46af9b4-ac16-442f-80f2-d994a267a194",
+					"_postman_id": "1864fcfe-51c3-5c57-9018-c1e0542e5691",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3499,13 +3499,13 @@
 							}
 						}
 					],
-					"_postman_id": "92912053-90d4-4999-8ad3-1b689a6ef356",
+					"_postman_id": "99b88002-9352-5d1b-98bc-3f4896c6d886",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3603,13 +3603,13 @@
 							}
 						}
 					],
-					"_postman_id": "e0a65653-15a1-4c92-8101-4afc04525c25",
+					"_postman_id": "c0c1a269-05ce-55ce-823a-93fe51fc604c",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -3707,13 +3707,13 @@
 							}
 						}
 					],
-					"_postman_id": "0541f3a5-0467-4ef9-9f2d-a7f80d5f5613",
+					"_postman_id": "69b48767-ae2a-5817-9deb-48b646226773",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -3821,13 +3821,13 @@
 							}
 						}
 					],
-					"_postman_id": "a3276069-6a87-4c43-825b-a3fdf03fa378",
+					"_postman_id": "f82990fe-4caf-5a0b-92b4-4aa2f0dd198f",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -3922,13 +3922,13 @@
 							}
 						}
 					],
-					"_postman_id": "4d56f369-0636-4a28-8518-8752e95b701c",
+					"_postman_id": "a7e5204c-3321-545e-9998-803ec236d05d",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -4027,13 +4027,13 @@
 							}
 						}
 					],
-					"_postman_id": "761d19b5-2da4-4371-a487-8149b9146331",
+					"_postman_id": "0dff1a00-4367-5b53-ad8e-3b28f69c1a9b",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -4133,13 +4133,13 @@
 							}
 						}
 					],
-					"_postman_id": "e15adab7-1fd0-40bb-8087-475bdef93ec4",
+					"_postman_id": "1421e6f5-3d83-5328-9f70-e966f32f40a5",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -4240,13 +4240,13 @@
 							}
 						}
 					],
-					"_postman_id": "096de2ee-9319-4430-b771-246e4c2fd6cc",
+					"_postman_id": "1cdaae85-dddd-5b43-b45e-febfe456d72b",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -4351,13 +4351,13 @@
 							}
 						}
 					],
-					"_postman_id": "52122e67-ab97-44f5-87c6-9886287f19a9",
+					"_postman_id": "b0c45f3f-ec99-51ad-9379-a6c128c376b5",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -4463,13 +4463,13 @@
 							}
 						}
 					],
-					"_postman_id": "53c6a5fa-0e7a-4904-b3f7-819356ce1579",
+					"_postman_id": "ef0b1a84-ee2a-58cc-a335-662b3045022a",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -4575,13 +4575,13 @@
 							}
 						}
 					],
-					"_postman_id": "a61b8289-5884-4463-81f7-a078be5709b5",
+					"_postman_id": "fab4fa75-34e6-50d0-85b0-9901a18c9ec2",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -4676,13 +4676,13 @@
 							}
 						}
 					],
-					"_postman_id": "31b35027-f707-4520-95e6-894c3df469f0",
+					"_postman_id": "e33cd921-351e-5a87-ac22-38adadaebfd2",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -4751,7 +4751,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "35b36649-c76f-4833-8e02-773d9605e91f",
+			"_postman_id": "17400542-ee74-547c-aab8-18d6bc9dd2b8",
 			"description": "Datasets are the building blocks for data transformation and tracking in Catalog Service. Generally, datasets represent a table or file made available by a connection."
 		},
 		{
@@ -4784,13 +4784,13 @@
 							}
 						}
 					],
-					"_postman_id": "b359984f-92cd-4575-b5f8-723be8d42bd6",
+					"_postman_id": "6ec9161b-f47c-5676-86f7-acd395525e78",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -4923,13 +4923,13 @@
 							}
 						}
 					],
-					"_postman_id": "65d13007-3e79-4a72-8bb8-e80d4208fdc1",
+					"_postman_id": "12e1537f-9f58-5d6d-9970-c557ba118eef",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -5020,13 +5020,13 @@
 							}
 						}
 					],
-					"_postman_id": "5573d661-a59c-41f8-b310-a3a58729f02c",
+					"_postman_id": "001a0776-fb84-519f-87c6-fa1cad8ce453",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -5126,13 +5126,13 @@
 							}
 						}
 					],
-					"_postman_id": "e845f742-0fbd-4993-b919-4c585c46772e",
+					"_postman_id": "06d3f72d-56a3-5e12-92ba-4f7fd09d3a79",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -5230,13 +5230,13 @@
 							}
 						}
 					],
-					"_postman_id": "c2f8a7d2-1cb8-4ddc-a189-31013eaf82b0",
+					"_postman_id": "65fb571b-82e2-529d-abb8-85d0bfbe385a",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -5334,13 +5334,13 @@
 							}
 						}
 					],
-					"_postman_id": "b9a2b7f3-2d2b-40dc-bd8d-486671f58288",
+					"_postman_id": "c2647b19-4b59-5af1-8379-594fd57ad6ef",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -5408,7 +5408,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "26840f0b-4397-4319-8911-e03c02980bca",
+			"_postman_id": "de371196-bada-51d6-a74d-9af3dcbff5c3",
 			"description": "Folder for Dataset views"
 		},
 		{
@@ -5441,13 +5441,13 @@
 							}
 						}
 					],
-					"_postman_id": "1d0f2765-b97d-4580-9260-42777cdb86f1",
+					"_postman_id": "3f44573c-6ce7-5f2b-8f45-89a58668d826",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -5560,13 +5560,13 @@
 							}
 						}
 					],
-					"_postman_id": "6d5940cb-bfa5-4c05-ac2d-e74953bf2d0f",
+					"_postman_id": "7bd6915d-4b8f-5d3e-a754-fe93371e4e2c",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -5657,13 +5657,13 @@
 							}
 						}
 					],
-					"_postman_id": "e7054042-c220-43fd-8759-ad39deb9e35b",
+					"_postman_id": "edcbe2e7-979b-5355-ac93-31aea2d63758",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -5756,13 +5756,13 @@
 							}
 						}
 					],
-					"_postman_id": "e8b188a2-75fb-450b-bced-ccc949c342ce",
+					"_postman_id": "a11dec5d-09bd-5d38-bed9-6d0da60a2b97",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -5856,13 +5856,13 @@
 							}
 						}
 					],
-					"_postman_id": "2fc40512-692b-460a-9c3a-629885edded6",
+					"_postman_id": "a576ac3c-a413-5100-ac8d-24cc64b79e67",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -5960,13 +5960,13 @@
 							}
 						}
 					],
-					"_postman_id": "b3642f46-9a5f-43f4-aade-b4e5837addb0",
+					"_postman_id": "663b0652-5d81-54c1-a49c-8f6a95683873",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -6064,13 +6064,13 @@
 							}
 						}
 					],
-					"_postman_id": "dc821e43-1cac-47d6-ba92-1caa050115b4",
+					"_postman_id": "953976d7-f59a-59f3-b530-7a0adb046b24",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -6138,7 +6138,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "8b4900f8-e07f-4ebb-9568-a5a1a8f5e689",
+			"_postman_id": "173ae765-7c8a-569f-b999-8d2ae4f3cbb5",
 			"description": "Dataset files represent blocks of data that have been saved on Platform. As records of literal files, these are where you can find the file size and which batch the file came from. This construct will also provide the number of records contained in the file."
 		},
 		{
@@ -6171,13 +6171,13 @@
 							}
 						}
 					],
-					"_postman_id": "994a72fd-6180-48f6-ad3e-a7c9814bc491",
+					"_postman_id": "e77c9d20-02b4-5edf-bc7a-c1f3514b2a8d",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -6264,13 +6264,13 @@
 							}
 						}
 					],
-					"_postman_id": "415c573b-7ab2-4bc7-9c84-5bc7abe7ded3",
+					"_postman_id": "534b074e-37b2-515f-8c3f-0eae25c269a2",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -6335,7 +6335,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "eca063c1-8e03-4f0f-a0cf-70e1fbb3b238",
+			"_postman_id": "95a4f0e8-92b9-59f9-ac20-053718e4f5dd",
 			"description": "Batched requests allow you to supply an array of objects in the request payload, representing what would normally be individual requests. Requests are executed in order and values returned from a previous call are made available in subsequent calls through template language."
 		},
 		{
@@ -6368,13 +6368,13 @@
 							}
 						}
 					],
-					"_postman_id": "28bb0fe3-571b-45d7-be97-bf8d4bed99c6",
+					"_postman_id": "e99d1211-ac6b-5897-a668-88a3754672ae",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -6491,13 +6491,13 @@
 							}
 						}
 					],
-					"_postman_id": "0ef3f571-0b55-49a0-b299-dd76d277088d",
+					"_postman_id": "deee6820-51d4-57de-adaa-dec74d689894",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -6588,13 +6588,13 @@
 							}
 						}
 					],
-					"_postman_id": "9e944f0e-8d4c-47a2-8b7b-48eae029cb23",
+					"_postman_id": "2c7711c3-2626-5cfd-a566-4d85d06872b0",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -6688,13 +6688,13 @@
 							}
 						}
 					],
-					"_postman_id": "db6b426f-d763-44f0-a15d-19b8d740c4c7",
+					"_postman_id": "d868ec81-e7a8-5423-84a1-cb93ea3681e5",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -6792,13 +6792,13 @@
 							}
 						}
 					],
-					"_postman_id": "cbdfa033-c9be-474a-8fd4-339761cac722",
+					"_postman_id": "e22aae0c-129a-5aac-9b78-944323f203a1",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -6896,13 +6896,13 @@
 							}
 						}
 					],
-					"_postman_id": "90f63343-fcd2-41c7-8325-39505ba69633",
+					"_postman_id": "51e00805-37ab-5436-a37e-5047ed465ff1",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -6996,13 +6996,13 @@
 							}
 						}
 					],
-					"_postman_id": "ca54aceb-f2a5-435a-8d6f-8df9e8c11a25",
+					"_postman_id": "8fb615a7-e089-54c5-ba4b-6add96195581",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -7097,13 +7097,13 @@
 							}
 						}
 					],
-					"_postman_id": "1204e429-401e-4ae0-b6b7-321b187c8c50",
+					"_postman_id": "e9854f21-0159-54bb-8877-de80ec1b7bf2",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -7202,13 +7202,13 @@
 							}
 						}
 					],
-					"_postman_id": "b3e54b8f-fd6a-4807-8f86-4a47e2fc445f",
+					"_postman_id": "80fbe4a7-9d06-5cff-b443-1ab58db9a29e",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -7303,13 +7303,13 @@
 							}
 						}
 					],
-					"_postman_id": "0eea44c6-ee0f-45fa-b4dc-a1b6d24e5eca",
+					"_postman_id": "9c845566-8566-5582-85d0-0eed22598a0d",
 					"request": {
 						"method": "PATCH",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -7408,13 +7408,13 @@
 							}
 						}
 					],
-					"_postman_id": "5d33ff7d-4c06-4459-a830-632e6e80177f",
+					"_postman_id": "98b4f0eb-f829-5a43-b7b3-88fdd059fd44",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -7514,13 +7514,13 @@
 							}
 						}
 					],
-					"_postman_id": "024fe906-ddb3-4d70-89a0-343db12b687c",
+					"_postman_id": "208fee31-fc41-5de7-86e7-93ad249642c5",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -7620,13 +7620,13 @@
 							}
 						}
 					],
-					"_postman_id": "ab126131-4ce8-46ae-9f66-048e24962d4c",
+					"_postman_id": "380fe469-cc19-52a1-ad34-bf24a76ccc87",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -7726,13 +7726,13 @@
 							}
 						}
 					],
-					"_postman_id": "d0a4f32d-ca72-44f0-9029-5422fde4e827",
+					"_postman_id": "6820e508-8557-5b67-ac99-efb937c24563",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -7806,7 +7806,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "c2ccd1ce-949e-4364-92fd-b147b63a3418",
+			"_postman_id": "07ed208c-dd6f-5c7f-b071-0eba8240f5b6",
 			"description": "Transforms are used to house the instructions that translate data into a new form. As a customer maps their newly uploaded data to an Experience Data Model (XDM) schema, a transform is created to document links to the repository where the code resides, as well as a link to the vehicle (or engine) used to perform that work."
 		},
 		{
@@ -7839,13 +7839,13 @@
 							}
 						}
 					],
-					"_postman_id": "c1dc8de1-c3bd-4c41-9c20-cafe33c4ea6e",
+					"_postman_id": "02482406-3c0e-5ed0-9ccd-7dae8c77c080",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -7913,7 +7913,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "73f13b02-84a1-408a-a03f-50edda6f4c5c",
+			"_postman_id": "f0d7af3c-491b-5e1c-bff9-faed846a2056",
 			"description": "Tags are used to attach information to an object and then be used later to retrieve the object. The choice of what tags are used and how they are applied depends on your organizational processes."
 		}
 	]

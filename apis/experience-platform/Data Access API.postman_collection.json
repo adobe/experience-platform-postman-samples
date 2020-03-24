@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9815e8d7-bc57-46dc-8f28-94251de997e2",
+		"_postman_id": "31edca32-e0fc-549b-9c2d-521ffef67f7c",
 		"name": "Data Access API",
 		"description": "\nData Access facilitates the access and egress of data within Adobe Experience Platform. This includes, but not limited to, the following operations:\n  * Access and download dataset files under a batch\n  * Retrieve header information regarding files\n  * Parallel / resumable downloads using HTTP range headers\n  * Pagination support for directory listings\n  * List dataset files under a succeeded/failed batch\n  * Preview CSV and Parquet files\n\n\nRelated documentation:\n  * [Data Access technical overview](https://www.adobe.io/apis/cloudplatform/dataservices/services/allservices.html#!api-specification/markdown/narrative/technical_overview/data_access_architectural_overview/data_access_architectural_overview.md)\n  * [Query dataset data using the Data Access API](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/data_access_tutorial/data_access_tutorial.md)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Data Access API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Access%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/foundation/export\n  * Example of a complete path: https://<span>platform.adobe.io/data/foundation/export/batches/{batchId}/files\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -36,13 +36,13 @@
 							}
 						}
 					],
-					"_postman_id": "dd8c8d7f-7cef-460a-ab1b-38a057c0f569",
+					"_postman_id": "3fad1dce-1d65-5b3b-966b-0d04a3f43bd8",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -141,13 +141,13 @@
 							}
 						}
 					],
-					"_postman_id": "36209821-a793-4bfd-8f42-2535b65e0f67",
+					"_postman_id": "dc6718c1-25df-5da2-8845-b3b6feaedf30",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -224,7 +224,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9b55b085-ece5-45c2-9e4b-b7e24a758f57",
+			"_postman_id": "872c2c66-0d9f-54a4-b4e9-b68a1f3d1a80",
 			"description": "Configure data access and egress for Experience Platform."
 		},
 		{
@@ -257,13 +257,13 @@
 							}
 						}
 					],
-					"_postman_id": "f1ada5b8-783f-4bce-aef5-0a3508ca8a53",
+					"_postman_id": "10693311-0850-5fd2-8357-4cd9fa807990",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json, application/octet-stream"
 							},
 							{
 								"key": "Authorization",
@@ -372,7 +372,7 @@
 							}
 						}
 					],
-					"_postman_id": "bd57273b-50d8-4ea2-8dd6-05411406a536",
+					"_postman_id": "956b1e44-49bf-5c7a-856d-2c5ab9dadba2",
 					"request": {
 						"method": "HEAD",
 						"header": [
@@ -442,7 +442,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "4395a3ca-95b4-4851-98a7-233422fbe101",
+			"_postman_id": "c2e18d6e-eb19-54a0-a7fe-99b1d31ead91",
 			"description": "Retrieve headers containing metadata for a file specified by ID."
 		},
 		{
@@ -475,13 +475,13 @@
 							}
 						}
 					],
-					"_postman_id": "e66b7dc4-c4b3-430f-9e8c-ab7292517587",
+					"_postman_id": "8e28133f-2dca-5e15-8c40-328c0a9060f4",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -544,7 +544,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "403b38d7-cc12-4b0c-8f98-2c7d79d212b3",
+			"_postman_id": "10f52a20-9fb8-562e-a789-c89b8eb0a107",
 			"description": "Retrieve the first 100 rows of CSV or Parquet files."
 		}
 	]

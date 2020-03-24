@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f6417c0c-7a64-496b-8cc5-ae70f0f050c3",
+		"_postman_id": "2ea6510b-6336-53a2-a938-47d7b70f6464",
 		"name": "Access Control API",
 		"description": "Access Control in Adobe Experience Platform allows IMS Organization administration to assign roles and permissions for various Platform capabilities. The Access Control API provides a public endpoint to retrieve effective policies for a user on given resources within a specified sandbox. All other access control capabilities are provided through the [Adobe Admin Console](https://adminconsole.adobe.com).\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/access-control\n  * Example of a complete path for making a call to \"/acl/effective-policies\": https://<span>platform.adobe.io/data/foundation/access-control/acl/effective-policies\n\nRequired headers:\n  * All service calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these, see the <a href=\"https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md\">authentication tutorial</a>.\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -36,13 +36,13 @@
 							}
 						}
 					],
-					"_postman_id": "4ee33fa2-4a48-42d0-aa18-20582cddf4df",
+					"_postman_id": "74ee6b5f-7987-5287-9980-363044688225",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -123,13 +123,13 @@
 							}
 						}
 					],
-					"_postman_id": "aedba177-4ac0-4e31-b325-dc52d0d294b3",
+					"_postman_id": "28998416-4d62-5dd5-8e3c-7baabfdf5997",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/vnd.adobe.xed+json"
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
@@ -184,7 +184,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "39a5b38e-f7e6-4722-9ed7-bbf2d50ea5d3",
+			"_postman_id": "9be1e448-46b3-5541-8ef5-9572e4231d49",
 			"description": "Folder for Access Control Policies"
 		}
 	]
