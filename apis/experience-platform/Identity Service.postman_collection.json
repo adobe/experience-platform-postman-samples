@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "1897c4f2-e25d-5850-9887-c65bd2d8394c",
 		"name": "Identity Service",
-		"description": "Delivering relevant digital experiences requires having a complete understanding of your customer. This is made more difficult when your customer data is fragmented across disparate systems, causing each individual customer to appear to have multiple \"identities\". Adobe Experience Platform Identity Service provides a RESTful API to help you to gain a better view of your customers and their behavior. By bridging identities across devices and systems, you are better able to deliver impactful, personal digital experiences in real-time.\n\nRelated documentation:\n  * [Identity Service documentation](https://docs.adobe.com/content/help/en/experience-platform/identity/home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Identity Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Identity%20Service.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform-{REGION}.adobe.io\n    * Information on <code>{REGION}</code> values can be found in the [Identity Service developer guide](https://www.adobe.io/apis/experienceplatform/home/profile-identity-segmentation/profile-identity-segmentation-services.html#!api-specification/markdown/narrative/technical_overview/identity_services_architectural_overview/identity_services_api.md).\n  * Base path for this API: /data/core/\n  * Example of a complete path: https://<span>platform-va7.adobe.io/data/core/identity/cluster/members\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "Delivering relevant digital experiences requires having a complete understanding of your customer. This is made more difficult when your customer data is fragmented across disparate systems, causing each individual customer to appear to have multiple \"identities\". Adobe Experience Platform Identity Service provides a RESTful API to help you to gain a better view of your customers and their behavior. By bridging identities across devices and systems, you are better able to deliver impactful, personal digital experiences in real-time.\n\nRelated documentation:\n  * [Identity Service documentation](https://docs.adobe.com/content/help/en/experience-platform/identity/home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Identity Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Identity%20Service.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform-{REGION}.adobe.io\n    * Information on <code>{REGION}</code> values can be found in the [Identity Service developer guide](https://docs.adobe.com/content/help/en/experience-platform/identity/api/getting-started.html).\n  * Base path for this API: /data/core/\n  * Example of a complete path: https://<span>platform-va7.adobe.io/data/core/identity/cluster/members\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -47,21 +47,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -162,21 +162,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -283,21 +283,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -377,21 +377,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -498,21 +498,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -599,21 +599,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -715,21 +715,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -816,21 +816,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -906,21 +906,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -992,21 +992,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1089,21 +1089,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1182,21 +1182,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1276,21 +1276,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how  to obtain this value, visit the documentation covering making API calls in the  [Adobe Experience Platform Overview](https://www.adobe.io/apis/experienceplatform/home/overview.html).",
+								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
