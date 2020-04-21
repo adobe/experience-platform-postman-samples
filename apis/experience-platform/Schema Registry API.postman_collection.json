@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "bb777741-9a36-5b13-a644-ce2fbe94421c",
 		"name": "Schema Registry API",
-		"description": "The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.\n\nRelated documentation:\n  * [XDM documentation](https://docs.adobe.com/content/help/en/experience-platform/xdm/home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Schema Registry API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Schema%20Registry%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/schemaregistry\n  * Example of a complete path for making a call to \"/stats\": https://<span>platform.adobe.io/data/foundation/schemaregistry/stats\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * All GET requests to the Schema Registry require an `Accept` header to determine what data is returned by the system. See the <a href=\"https://www.adobe.io/apis/experienceplatform/home/xdm/xdmservices.html#!api-specification/markdown/narrative/technical_overview/schema_registry/schema_registry_developer_guide.md#accept-header\">section on Accept headers</a> in the Schema Registry developer guide for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.\n\nRelated documentation:\n  * [XDM documentation](https://docs.adobe.com/content/help/en/experience-platform/xdm/home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Schema Registry API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Schema%20Registry%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/schemaregistry\n  * Example of a complete path for making a call to \"/stats\": https://<span>platform.adobe.io/data/foundation/schemaregistry/stats\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * All GET requests to the Schema Registry require an `Accept` header to determine what data is returned by the system. See the [section on Accept headers](https://docs.adobe.com/content/help/en/experience-platform/xdm/api/getting-started.html#accept) in the Schema Registry developer guide for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -72,7 +72,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -169,7 +169,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -286,7 +286,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -384,7 +384,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -487,7 +487,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -590,7 +590,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -626,7 +626,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update schemas they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update schemas they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
 					},
 					"response": []
 				},
@@ -693,7 +693,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -803,7 +803,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -919,7 +919,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1017,7 +1017,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1119,7 +1119,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1222,7 +1222,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1258,7 +1258,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update mixins they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update mixins they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
 					},
 					"response": []
 				},
@@ -1325,7 +1325,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1435,7 +1435,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1551,7 +1551,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1649,7 +1649,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1751,7 +1751,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1854,7 +1854,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1890,7 +1890,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update classes they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update classes they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
 					},
 					"response": []
 				},
@@ -1957,7 +1957,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2060,7 +2060,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2176,7 +2176,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							},
@@ -2281,7 +2281,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2383,7 +2383,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2486,7 +2486,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2522,7 +2522,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update data types they have defined.</p><br/><p>For more informatiom on JSON Patch, including all available operations, read the official JSON Patch documentation (<a href=\"http://jsonpatch.com/\">http://jsonpatch.com/</a>).</p>"
+						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update data types they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
 					},
 					"response": []
 				},
@@ -2589,7 +2589,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2699,7 +2699,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2797,7 +2797,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2895,7 +2895,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2998,7 +2998,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3034,7 +3034,7 @@
 								}
 							]
 						},
-						"description": "<p>Update a desriptor by issuing a PUT request to the @id of the descriptor being updated.<br/><br/>This action is <em>re-writing</em> the existing descriptor, therefore the payload must include all descriptor fields that were required when the descriptor was defined.</p>"
+						"description": "<p>Update a descriptor by issuing a PUT request to the @id of the descriptor being updated.<br/><br/>This action is <em>re-writing</em> the existing descriptor, therefore the payload must include all descriptor fields that were required when the descriptor was defined.</p>"
 					},
 					"response": []
 				},
@@ -3101,7 +3101,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3211,7 +3211,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3320,7 +3320,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://www.adobe.io/apis/experienceplatform/home/permissions-and-sandboxes/permissions-and-sandboxes.html#!api-specification/markdown/narrative/technical_overview/sandboxes/sandboxes-overview.md) for more information.",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
 							}
