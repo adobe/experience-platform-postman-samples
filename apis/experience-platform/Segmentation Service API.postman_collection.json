@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "5b409d0e-b84e-5fc3-a2de-29c71122fdb7",
 		"name": "Segmentation Service API",
-		"description": "Adobe Experience Platform Segmentation Service allows you to build segments and generate audiences from your Real-time Customer Profile data. These segments are centrally configured and maintained on Platform, and are readily accessible by other Adobe applications.\n\nThe Segmentation Service API allows you to programmatically integrate the service's various functionalities into your experience application, providing RESTful endpoints for managing segment definitions, exports, schedules, and more.\n\nRelated documentation:\n  - [Segmentation Service documentation](https://docs.adobe.com/content/help/en/experience-platform/segmentation/home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  - [Real-time Customer Profile API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Real-time%20Customer%20Profile%20API.postman_collection.json)\n  - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  - [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  - PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  - Base path for this API: /data/core/ups\n  - Example of a complete path: https://<span>platform.adobe.io/data/core/ups/segment/definitions\n  \nRequired headers:\n  - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  - All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "- Service description:\n    - Adobe Experience Platform Segmentation Service allows you to build segments and generate audiences from your Real-time Customer Profile data. These segments are centrally configured and maintained on Platform, and are readily accessible by other Adobe applications. The Segmentation Service API allows you to programmatically integrate the service's various functionalities into your experience application, providing RESTful endpoints for managing segment definitions, exports, schedules, and more.\n\n- Related documentation:\n    - [Segmentation Service documentation](https://docs.adobe.com/content/help/en/experience-platform/segmentation/home.html)\n\n- Visualize API calls with Postman (a free, third-party software):\n    - [Real-time Customer Profile API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Real-time%20Customer%20Profile%20API.postman_collection.json)\n    - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n    - [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n- API paths:\n    - PLATFORM Gateway URL: https://<span>platform.adobe.io/\n    - Base path for this API: /data/core/ups\n    - Example of a complete path: https://<span>platform.adobe.io/data/core/ups/segment/definitions\n  \n- Required headers:\n    - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n    - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n    - All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -47,28 +47,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -152,35 +152,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
-								"description": "Profile Instance ID",
+								"description": "The ID of the profile instance.",
 								"type": "string",
 								"enabled": true
 							}
@@ -209,7 +209,7 @@
 					"response": []
 				},
 				{
-					"name": "Look up an export job by ID.",
+					"name": "Retrieve an export job by ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -235,7 +235,7 @@
 							}
 						}
 					],
-					"_postman_id": "62982542-2414-5071-8186-dbe806b6b94b",
+					"_postman_id": "ce709923-89ea-5c4e-a7bf-d2f2407d5af6",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -246,28 +246,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -277,7 +277,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:exportJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:EXPORT_JOB_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -290,12 +290,12 @@
 								"ups",
 								"export",
 								"jobs",
-								":exportJobId"
+								":EXPORT_JOB_ID"
 							],
 							"variable": [
 								{
-									"value": "{{exportJobId}}",
-									"id": "exportJobId"
+									"value": "{{EXPORT_JOB_ID}}",
+									"id": "EXPORT_JOB_ID"
 								}
 							]
 						}
@@ -329,7 +329,7 @@
 							}
 						}
 					],
-					"_postman_id": "d745bb90-7e12-5734-a737-9ec88bdd2404",
+					"_postman_id": "be40e619-0797-5e30-8ce1-54b6e0059bf2",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -340,28 +340,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -371,7 +371,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:exportJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/export/jobs/:EXPORT_JOB_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -384,12 +384,12 @@
 								"ups",
 								"export",
 								"jobs",
-								":exportJobId"
+								":EXPORT_JOB_ID"
 							],
 							"variable": [
 								{
-									"value": "{{exportJobId}}",
-									"id": "exportJobId"
+									"value": "{{EXPORT_JOB_ID}}",
+									"id": "EXPORT_JOB_ID"
 								}
 							]
 						}
@@ -441,35 +441,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"description": "- There needs to be one unique ID per request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -557,35 +557,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"description": "- A unique ID must be used per request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -614,7 +614,7 @@
 					"response": []
 				},
 				{
-					"name": "Look up a segment definition by ID.",
+					"name": "Retrieve a segment definition by ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -640,7 +640,7 @@
 							}
 						}
 					],
-					"_postman_id": "facff2a4-bb19-55e1-9d7d-cda05a4e2645",
+					"_postman_id": "27cefcff-48c3-5c48-a297-3be4a87076c4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -651,35 +651,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"description": "- A unique ID must be used per request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -689,7 +689,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:SEGMENT_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -702,12 +702,12 @@
 								"ups",
 								"segment",
 								"definitions",
-								":segmentId"
+								":SEGMENT_ID"
 							],
 							"variable": [
 								{
-									"value": "{{segmentId}}",
-									"id": "segmentId"
+									"value": "{{SEGMENT_ID}}",
+									"id": "SEGMENT_ID"
 								}
 							]
 						}
@@ -741,7 +741,7 @@
 							}
 						}
 					],
-					"_postman_id": "4d23813d-1510-50aa-ab3f-916b1423f827",
+					"_postman_id": "56fb9868-9ec1-5954-8ff1-233783f1898c",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -756,35 +756,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"description": "- A unique ID must be used per request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -794,7 +794,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:SEGMENT_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -807,12 +807,12 @@
 								"ups",
 								"segment",
 								"definitions",
-								":segmentId"
+								":SEGMENT_ID"
 							],
 							"variable": [
 								{
-									"value": "{{segmentId}}",
-									"id": "segmentId"
+									"value": "{{SEGMENT_ID}}",
+									"id": "SEGMENT_ID"
 								}
 							]
 						}
@@ -846,7 +846,7 @@
 							}
 						}
 					],
-					"_postman_id": "0b38da30-4a60-5cad-bc9d-9895828c6bb6",
+					"_postman_id": "61119eaf-0b18-5210-9e98-14cd4f5a4dbb",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -857,35 +857,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"description": "- A unique ID must be used per request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -895,7 +895,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:segmentId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/:SEGMENT_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -908,27 +908,20 @@
 								"ups",
 								"segment",
 								"definitions",
-								":segmentId"
+								":SEGMENT_ID"
 							],
 							"variable": [
 								{
-									"value": "{{segmentId}}",
-									"id": "segmentId"
+									"value": "{{SEGMENT_ID}}",
+									"id": "SEGMENT_ID"
 								}
 							]
 						}
 					},
 					"response": []
-				}
-			],
-			"_postman_id": "cc943b12-cfc2-506b-9425-1432db3be19a",
-			"description": "A segment definition includes a Profile Query Language (PQL) statement that defines which profiles will be part of an audience segment."
-		},
-		{
-			"name": "PQL conversions",
-			"item": [
+				},
 				{
-					"name": "Convert PQL formatting between pql/text and pql/json.",
+					"name": "Retrieve multiple segment definitions using multiple segment definition IDs",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -954,7 +947,7 @@
 							}
 						}
 					],
-					"_postman_id": "0ab1f5ca-edd7-5175-a6e8-f07d6564a19a",
+					"_postman_id": "d6ecc37c-e146-5538-bafa-4ada14a5af33",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -965,35 +958,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-request-id",
-								"value": "{{x-request-id}}",
-								"description": "Unique ID per request",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1003,7 +989,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/segment/conversion",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/definitions/bulk-get",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1015,15 +1001,16 @@
 								"core",
 								"ups",
 								"segment",
-								"conversion"
+								"definitions",
+								"bulk-get"
 							]
 						}
 					},
 					"response": []
 				}
 			],
-			"_postman_id": "d6b118cf-dcb6-55a0-8624-8a804bade168",
-			"description": "Convert Profile Query Language (PQL) formatting between `pql/json` and `pql/text`."
+			"_postman_id": "cc943b12-cfc2-506b-9425-1432db3be19a",
+			"description": "Segment definitions include a Profile Query Language (PQL) statement that defines which profiles will be part of an audience segment."
 		},
 		{
 			"name": "Segment jobs",
@@ -1066,35 +1053,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Request ID",
+								"description": "- A unique ID must be used per request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1190,42 +1177,42 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-profile-instance-id",
 								"value": "{{x-profile-instance-id}}",
-								"description": "Profile Instance ID",
+								"description": "- The ID of the Profile Instance.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Request ID",
+								"description": "- Request ID",
 								"type": "string",
 								"enabled": true
 							}
@@ -1254,7 +1241,7 @@
 					"response": []
 				},
 				{
-					"name": "Look up a segment job request by ID.",
+					"name": "Retrieve a segment job request by ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1280,7 +1267,7 @@
 							}
 						}
 					],
-					"_postman_id": "582dddcc-6957-5bd4-9917-a67b21bc4249",
+					"_postman_id": "5b04f371-6dd4-5223-a6c9-f6fdc4882fd5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1291,35 +1278,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"description": "- An optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1329,7 +1316,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:segmentJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:SEGMENT_JOB_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1342,12 +1329,12 @@
 								"ups",
 								"segment",
 								"jobs",
-								":segmentJobId"
+								":SEGMENT_JOB_ID"
 							],
 							"variable": [
 								{
-									"value": "{{segmentJobId}}",
-									"id": "segmentJobId"
+									"value": "{{SEGMENT_JOB_ID}}",
+									"id": "SEGMENT_JOB_ID"
 								}
 							]
 						}
@@ -1381,7 +1368,7 @@
 							}
 						}
 					],
-					"_postman_id": "095c3178-d606-5a03-9b33-9cefcbfe28d7",
+					"_postman_id": "0c6d5b47-4ca1-548e-b568-ff7d59c8a97a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1392,35 +1379,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"description": "- An optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1430,7 +1417,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:segmentJobId",
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/:SEGMENT_JOB_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1443,13 +1430,101 @@
 								"ups",
 								"segment",
 								"jobs",
-								":segmentJobId"
+								":SEGMENT_JOB_ID"
 							],
 							"variable": [
 								{
-									"value": "{{segmentJobId}}",
-									"id": "segmentJobId"
+									"value": "{{SEGMENT_JOB_ID}}",
+									"id": "SEGMENT_JOB_ID"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve multiple segment jobs using multiple job IDs",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "7ece10d7-d3ab-5147-81f3-af319a7a7745",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{body}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/core/ups/segment/jobs/bulk-get",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"core",
+								"ups",
+								"segment",
+								"jobs",
+								"bulk-get"
 							]
 						}
 					},
@@ -1504,28 +1579,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1553,7 +1628,7 @@
 					"response": []
 				},
 				{
-					"name": "Look up the results of a preview job by ID.",
+					"name": "Retrieve the results of a preview job by ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1579,7 +1654,7 @@
 							}
 						}
 					],
-					"_postman_id": "857182ea-6f92-5e2c-9b18-d1b1a4ec271a",
+					"_postman_id": "8b715d7c-d7ab-5a17-8c8b-1549b43a092e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1590,28 +1665,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1621,7 +1696,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/preview/:previewId?offset={{offset}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/core/ups/preview/:PREVIEW_ID?offset={{offset}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1633,7 +1708,7 @@
 								"core",
 								"ups",
 								"preview",
-								":previewId"
+								":PREVIEW_ID"
 							],
 							"query": [
 								{
@@ -1647,8 +1722,8 @@
 							],
 							"variable": [
 								{
-									"value": "{{previewId}}",
-									"id": "previewId"
+									"value": "{{PREVIEW_ID}}",
+									"id": "PREVIEW_ID"
 								}
 							]
 						}
@@ -1682,7 +1757,7 @@
 							}
 						}
 					],
-					"_postman_id": "fabdfd78-0995-5ca4-b3a9-41b7a5250555",
+					"_postman_id": "23b28244-7d19-56e4-8958-92b8fab8134f",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1693,28 +1768,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1724,7 +1799,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/preview/:previewId",
+							"raw": "https://platform.adobe.io/data/core/ups/preview/:PREVIEW_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1736,12 +1811,12 @@
 								"core",
 								"ups",
 								"preview",
-								":previewId"
+								":PREVIEW_ID"
 							],
 							"variable": [
 								{
-									"value": "{{previewId}}",
-									"id": "previewId"
+									"value": "{{PREVIEW_ID}}",
+									"id": "PREVIEW_ID"
 								}
 							]
 						}
@@ -1756,7 +1831,7 @@
 			"name": "Estimates",
 			"item": [
 				{
-					"name": "Look up the results of an estimate job by ID.",
+					"name": "Retrieve the results of an estimate job by ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1782,7 +1857,7 @@
 							}
 						}
 					],
-					"_postman_id": "45297009-77dc-5f73-8d52-d19231ae43bd",
+					"_postman_id": "fa26be3b-eb2b-5d82-a577-e6aceaa76885",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1793,28 +1868,28 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1824,7 +1899,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/estimate/:previewId",
+							"raw": "https://platform.adobe.io/data/core/ups/estimate/:ESTIMATE_ID",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1836,12 +1911,12 @@
 								"core",
 								"ups",
 								"estimate",
-								":previewId"
+								":ESTIMATE_ID"
 							],
 							"variable": [
 								{
-									"value": "{{previewId}}",
-									"id": "previewId"
+									"value": "{{ESTIMATE_ID}}",
+									"id": "ESTIMATE_ID"
 								}
 							]
 						}
@@ -1856,7 +1931,7 @@
 			"name": "Schedules",
 			"item": [
 				{
-					"name": "Retrieve a list of schedules for your IMS Org",
+					"name": "Retrieve a list of schedules for your IMS Organization",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1893,35 +1968,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"description": "- An optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2001,35 +2076,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"description": "- An optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2054,12 +2129,12 @@
 								"schedules"
 							]
 						},
-						"description": "The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
+						"description": "- The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
 					},
 					"response": []
 				},
 				{
-					"name": "Look up a schedule by its ID.",
+					"name": "Retrieve a schedule by its ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2096,35 +2171,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"description": "- An optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2156,7 +2231,7 @@
 								}
 							]
 						},
-						"description": "The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
+						"description": "- The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
 					},
 					"response": []
 				},
@@ -2198,35 +2273,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"description": "- An optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2258,7 +2333,7 @@
 								}
 							]
 						},
-						"description": "The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
+						"description": "- The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
 					},
 					"response": []
 				},
@@ -2300,35 +2375,35 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-api-key",
 								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-gw-ims-org-id",
 								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "- The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
+								"description": "- All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							},
 							{
 								"key": "x-request-id",
 								"value": "{{x-request-id}}",
-								"description": "Optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
+								"description": "- An optional header that may be used for debugging purposes when investigating issues with a workflow. The same ID can be used to identify a single request to the service from a flow. A new ID should be created for each request.",
 								"type": "string",
 								"enabled": true
 							}
