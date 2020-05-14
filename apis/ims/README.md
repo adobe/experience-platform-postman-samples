@@ -17,8 +17,4 @@ Both of these methods are for convenience, and provide a quick way for Developer
 
 Local signing leverages a 3rd party JSR Assign Crypto library to be loaded and locally sign the JWT Token using the provided Private Key. Using this method the Private Key even leaves the local machine, however 3rd party JavaScript is loaded into the Postman context.
 
-### Remote Signing (Non-production Use Only)
-
-Remote signing sends all parameters required to obtain and access token to an Adobe owned web service (adobeioruntime.net) which generates the Access Token. Using this method the Private Key leaves the local machine and is sent to the Adobe server. While Adobe does no save or persist the Private Key, Adobe recommends never sharing Production Private Keys with _anyone_, including Adobe (much like you should never share your password with anyone!).
-
 
