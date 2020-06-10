@@ -9,12 +9,12 @@ After Exporting the Postman Environment from Adobe I/O Console, ensure you add y
 
 ## Obtaining an Access Token to access the Adobe Experience Platform APIs for Non-production Use
 
-The Postman Collection __[Adobe IO Access Token Generation.postman_collection.json](Adobe IO Access Token Generation.postman_collection.json)__ contains two options for generating an Access Token.
+The Postman Collection __[Adobe IO Access Token Generation.postman_collection.json](Adobe IO Access Token Generation.postman_collection.json)__ contains a single option for generating an Access Token.
 
-Both of these methods are for convenience, and provide a quick way for Developers to obtain an Access Token for non-production use. The reasons these are for non-production user are described in each section.
+This methods is for convenience, and provide a quick way for Developers to obtain an Access Token for non-production use. The reasons these are for non-production use are described below:
 
 ### Local Signing (Non-production Use Only)
 
-Local signing leverages a 3rd party JSR Assign Crypto library to be loaded and locally sign the JWT Token using the provided Private Key. Using this method the Private Key even leaves the local machine, however 3rd party JavaScript is loaded into the Postman context.
+Local signing leverages a 3rd party JSR Assign Crypto library to be loaded and locally sign the JWT Token using the provided Private Key. Using this method the Private Key never leaves the local machine, however 3rd party JavaScript is loaded into the Postman context.
 
 
