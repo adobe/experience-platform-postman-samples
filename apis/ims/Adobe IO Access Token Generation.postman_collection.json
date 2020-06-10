@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ba5801fd-f95e-4583-9be1-69053a5bbb2b",
+		"_postman_id": "94e68739-a0f5-484f-ade5-e4e07c2718ba",
 		"name": "Adobe I/O Access Token Generation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "877371c8-56e3-4c80-ab08-ed027aaef0d7",
+								"id": "693f0966-a211-479f-9ddb-ba5bc0433cf8",
 								"exec": [
 									"var data = JSON.parse(responseBody);",
 									"",
@@ -30,7 +30,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7aef52e9-3bff-4d7a-850c-28fb5991988e",
+								"id": "5c6a1b0a-5343-4f7c-8fd4-ce58616953bd",
 								"exec": [
 									"",
 									"const ENV_JS_RSA_SIGN_LIBRARY = \"ADOBE_IO_ACCESS_TOKEN__JS_RSA_SIGN_LIBRARY\";",
@@ -140,7 +140,7 @@
 								""
 							]
 						},
-						"description": "Generate a JWT token using the Crypto RS256\nSend to IMS for access_token"
+						"description": "Local signing leverages a 3rd party JSR Assign Crypto library to be loaded and locally sign the JWT Token using the provided Private Key. Using this method the Private Key even leaves the local machine, however 3rd party JavaScript is loaded into the Postman context.\n\n"
 					},
 					"response": []
 				}
@@ -150,7 +150,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "4835e8db-822f-4484-942f-c2d36c28c2a3",
+						"id": "aeb07d05-f46d-47c7-bf70-36df4672b1e4",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -160,7 +160,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7e1c3607-b715-42b8-b503-233cb01a1955",
+						"id": "8b264cdc-f799-4f88-86ab-12d79f572ecd",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -175,7 +175,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "399fa391-8d58-4de0-a4a4-d8cc453a0cf7",
+				"id": "68879484-0f78-481d-a0f1-db7ad6c05a25",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -185,7 +185,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "4a35f471-3fd0-4818-aab1-8d7e597e364d",
+				"id": "97e28fe9-2992-41b8-b85a-538e7e3b1d74",
 				"type": "text/javascript",
 				"exec": [
 					""
