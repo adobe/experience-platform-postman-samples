@@ -2709,7 +2709,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors?properties={{properties}}&orderby={{orderby}}&limit={{limit}}&start={{start}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2723,6 +2723,24 @@
 								":CONTAINER_ID",
 								"descriptors"
 							],
+							"query": [
+								{
+									"key": "properties",
+									"value": "{{properties}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								}
+							],
 							"variable": [
 								{
 									"value": "{{CONTAINER_ID}}",
@@ -2730,7 +2748,7 @@
 								}
 							]
 						},
-						"description": "<p>Schemas define a static view of data entities, but do not provide specific details on how data based on these schemas (datasets, etc) may relate to one another. Adobe Experience Platform allows you to describe these relationships and other interpretive metadata about a schema using descriptors.</p><br/><p>Schema descriptors are tenant-level metadata, meaning they are unique to your IMS Organization and all descriptor operations take place in the tenant container.</p><br/><p>Each schema can have one or more schema descriptor entities applied to it. Each schema descriptor entity includes a descriptor '@type' and the 'sourceSchema' to which it applies. Once applied, these descriptors will apply to all datasets created using the schema.</p><br/><p>The Schema Registry supports the use of query parameters when listing descriptors. The most common query parameters include:</br><ul><li>property - Return only results that match the given property. e.g. property=@type==xdm:descriptorIdentity returns only descriptors with a '@type' of 'xdm:descriptorIdentity'.</li><li>limit - Limit the number of resources returned. e.g. limit=5 will return only five resources in the list.</li><li>You may also use an ampersand (&) to combine query parameters.</li></ul></p><p>Accept headers for descriptors include:<br/><ul><li><strong>application/vnd.adobe.xdm-id+json</strong> | Returns an array of descriptor IDs</li><li><strong>application/vnd.adobe.xdm-link+json</strong> | Returns an array of descriptor API paths</li><li><strong>application/vnd.adobe.xdm-full+json</strong> | Returns an array of expanded descriptor objects</li></ul></p><br/><p>"
+						"description": "<p>Schemas define a static view of data entities, but do not provide specific details on how data based on these schemas (datasets, etc) may relate to one another. Adobe Experience Platform allows you to describe these relationships and other interpretive metadata about a schema using descriptors.</p><br/><p>Schema descriptors are tenant-level metadata, meaning they are unique to your IMS Organization and all descriptor operations take place in the tenant container.</p><br/><p>Each schema can have one or more schema descriptor entities applied to it. Each schema descriptor entity includes a descriptor '@type' and the 'sourceSchema' to which it applies. Once applied, these descriptors will apply to all datasets created using the schema.</p><br/><p>The Schema Registry supports the use of query parameters when listing descriptors. The most common query parameters include:</br><ul><li>property - Return only results that match the given property. e.g. property=@type==xdm:descriptorIdentity returns only descriptors with a '@type' of 'xdm:descriptorIdentity'.</li><li>limit - Limit the number of resources returned. e.g. limit=5 will return only five resources in the list.</li><li>You may also use an ampersand (&) to combine query parameters.</li></ul></p><p>Accept headers for descriptors include:<br/><table><thead><tr><th>Accept</th><th>Description</th></tr></thead><tbody><tr><td><strong>application/vnd.adobe.xdm-id+json</strong></td><td>Returns a list of descriptor IDs, grouped by their @type</td></tr><tr><td><strong>application/vnd.adobe.xdm-link+json</strong></td><td>Returns a list of descriptor API paths, grouped by their @type</td></tr><tr><td><strong>application/vnd.adobe.xdm+json</strong></td><td>Returns a list of descriptor objects, grouped by their @type</td></tr><tr><td><strong>application/vnd.adobe.xdm-v2{-id/-link}+json</strong></td><td>Including the -v2 option in any of the above Accept headers permits paging functionality, returning a results array with a _page attribute that can be used to request the next page if needed.</td></tr></tbody></table></p><br/><p>"
 					},
 					"response": []
 				},
