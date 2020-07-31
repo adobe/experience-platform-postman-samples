@@ -2,554 +2,15 @@
 	"info": {
 		"_postman_id": "75308ab5-5b3f-5c96-87a1-bea00b6d95a1",
 		"name": "Data Ingestion API",
-		"description": "Data Ingestion allows you to bring your data into Adobe Experience Platform through batch ingestion and streaming ingestion. Batch ingestion lets you import data in batch, from any number of datasources. Streaming ingestion lets users send data to Platform in real time from client and server-side devices.\n\nRelated documentation:\n  * [Data ingestion documentation](https://docs.adobe.com/content/help/en/experience-platform/ingestion/home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Data Ingestion Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Ingestion%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * Base path for batch ingestion APIs: https://<span>platform.adobe.io/data/foundation/import\n  * Base path for streaming ingestion APIs:\n    * Data inlet management: https://<span>platform.adobe.io/data/core/edge\n    * Data collection: https://<span>dcs.adobedc.net/\n  * Example of a complete path for batch ingestion: https://<span>platform.adobe.io/data/foundation/import/batches\n \nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * Requests with a payload in the request body (such as POST, PUT, and PATCH calls) may require the header `Content-Type`. Accepted values specific to each call are provided in the call parameters.  ",
+		"description": "- Service description:\n  - Data Ingestion allows you to bring your data into Adobe Experience Platform through batch ingestion and streaming ingestion. Batch ingestion lets you import data in batch, from any number of data sources. Streaming ingestion lets users send data to Platform in real time from client and server-side devices.\n\n- Related documentation:\n  - [Data ingestion documentation](https://docs.adobe.com/content/help/en/experience-platform/ingestion/home.html)\n\n- Visualize API calls with Postman (a free, third-party software):\n  - [Data Ingestion Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Ingestion%20API.postman_collection.json)\n  - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  - [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n- API paths:\n  - Base path for batch ingestion APIs: https://<span>platform.adobe.io/data/foundation/import\n  - Base path for streaming ingestion APIs:\n    - Data inlet management: https://<span>platform.adobe.io/data/core/edge\n    - Data collection: https://<span>dcs.adobedc.net/\n  - Example of a complete path for batch ingestion: https://<span>platform.adobe.io/data/foundation/import/batches\n \n- Required headers:\n  - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  - Requests with a payload in the request body (such as POST, PUT, and PATCH calls) may require the header `Content-Type`. Accepted values specific to each call are provided in the call parameters.  ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Data Inlets",
-			"item": [
-				{
-					"name": "Get or Query inlets.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"/** Begin Adobe-provided Pre-Request Scripts **/",
-									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
-									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
-									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
-									"    }",
-									"});",
-									"",
-									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
-									"pm.request.url.query.remove(q => { ",
-									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
-									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
-									"    } ",
-									"});",
-									"/** End Adobe-provided Pre-Request Scripts **/"
-								]
-							}
-						}
-					],
-					"_postman_id": "802cf804-ae25-5f38-b4b5-d091e73bef6a",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Cache-Control",
-								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/inlet?dataType={{dataType}}&name={{name}}&sourceId={{sourceId}}&status={{status}}&location={{location}}&authenticationRequired={{authenticationRequired}}",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"inlet"
-							],
-							"query": [
-								{
-									"key": "dataType",
-									"value": "{{dataType}}"
-								},
-								{
-									"key": "name",
-									"value": "{{name}}"
-								},
-								{
-									"key": "sourceId",
-									"value": "{{sourceId}}"
-								},
-								{
-									"key": "status",
-									"value": "{{status}}"
-								},
-								{
-									"key": "location",
-									"value": "{{location}}"
-								},
-								{
-									"key": "authenticationRequired",
-									"value": "{{authenticationRequired}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create inlet.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"/** Begin Adobe-provided Pre-Request Scripts **/",
-									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
-									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
-									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
-									"    }",
-									"});",
-									"",
-									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
-									"pm.request.url.query.remove(q => { ",
-									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
-									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
-									"    } ",
-									"});",
-									"/** End Adobe-provided Pre-Request Scripts **/"
-								]
-							}
-						}
-					],
-					"_postman_id": "da354586-7e94-5812-8838-a99fc4e6aa5a",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Cache-Control",
-								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{{body}}"
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/inlet",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"inlet"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get inlet by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"/** Begin Adobe-provided Pre-Request Scripts **/",
-									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
-									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
-									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
-									"    }",
-									"});",
-									"",
-									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
-									"pm.request.url.query.remove(q => { ",
-									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
-									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
-									"    } ",
-									"});",
-									"/** End Adobe-provided Pre-Request Scripts **/"
-								]
-							}
-						}
-					],
-					"_postman_id": "fca77ff1-d0ca-5374-bc8a-18cb42f39d39",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Cache-Control",
-								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/inlet/:id",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"inlet",
-								":id"
-							],
-							"variable": [
-								{
-									"value": "{{id}}",
-									"id": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update inlet by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"/** Begin Adobe-provided Pre-Request Scripts **/",
-									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
-									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
-									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
-									"    }",
-									"});",
-									"",
-									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
-									"pm.request.url.query.remove(q => { ",
-									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
-									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
-									"    } ",
-									"});",
-									"/** End Adobe-provided Pre-Request Scripts **/"
-								]
-							}
-						}
-					],
-					"_postman_id": "f3230f50-275c-56cb-9754-61dc84913a11",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Cache-Control",
-								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{{body}}"
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/inlet/:id",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"inlet",
-								":id"
-							],
-							"variable": [
-								{
-									"value": "{{id}}",
-									"id": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete inlet by ID.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"/** Begin Adobe-provided Pre-Request Scripts **/",
-									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
-									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
-									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
-									"    }",
-									"});",
-									"",
-									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
-									"pm.request.url.query.remove(q => { ",
-									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
-									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
-									"    } ",
-									"});",
-									"/** End Adobe-provided Pre-Request Scripts **/"
-								]
-							}
-						}
-					],
-					"_postman_id": "c6b04234-c239-5766-a07d-99dfe3210fe6",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{API_KEY}}",
-								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-gw-ims-org-id",
-								"value": "{{IMS_ORG}}",
-								"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "x-sandbox-name",
-								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
-								"type": "string",
-								"enabled": true
-							},
-							{
-								"key": "Cache-Control",
-								"value": "{{Cache-Control}}",
-								"description": "",
-								"type": "string",
-								"enabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/inlet/:id",
-							"protocol": "https",
-							"host": [
-								"platform",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"data",
-								"foundation",
-								"import",
-								"inlet",
-								":id"
-							],
-							"variable": [
-								{
-									"value": "{{id}}",
-									"id": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"_postman_id": "6c5d69b3-8503-5940-aee2-fc2af659733d",
-			"description": "Data Inlets are used in conjunction with streaming API calls to ingest record and time=series data for Real-time Customer Profile."
-		},
-		{
 			"name": "Streaming Ingestion",
 			"item": [
 				{
-					"name": "Publish messages to Adobe Experience Platform using the inlet ID.",
+					"name": "Publish messages to Adobe Experience Platform using the streaming connection ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -575,7 +36,7 @@
 							}
 						}
 					],
-					"_postman_id": "2579b279-c0e1-55c1-9877-a2e50700c2fd",
+					"_postman_id": "4ed430f9-2b13-51c1-8c45-fe47655502a5",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -590,7 +51,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -614,7 +75,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/collection/:inletId?debug={{debug}}",
+							"raw": "https://platform.adobe.io/data/foundation/import/collection/:CONNECTION_ID?synchronousValidation={{synchronousValidation}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -626,27 +87,26 @@
 								"foundation",
 								"import",
 								"collection",
-								":inletId"
+								":CONNECTION_ID"
 							],
 							"query": [
 								{
-									"key": "debug",
-									"value": "{{debug}}"
+									"key": "synchronousValidation",
+									"value": "{{synchronousValidation}}"
 								}
 							],
 							"variable": [
 								{
-									"value": "{{inletId}}",
-									"id": "inletId"
+									"value": "{{CONNECTION_ID}}",
+									"id": "CONNECTION_ID"
 								}
 							]
-						},
-						"description": "This API is used by any mobile application, web application or a service to stream data into ACP. Data Collection service uses embedded inlet-id to retrieve associated metadata to process data and land it on a designated Pipeline topic for the downstream systems to consume."
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Publish messages to Experience Platform using the inlet ID.",
+					"name": "Publish multiple messages to Experience Platform using the streaming connection ID.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -672,7 +132,7 @@
 							}
 						}
 					],
-					"_postman_id": "23d06ea0-54f4-56cd-9d18-7953de7728ad",
+					"_postman_id": "064d4c24-0bf6-5aa8-86ae-2d52498cd3d5",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -687,7 +147,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -704,7 +164,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/collection/batch/:inletId?debug={{debug}}",
+							"raw": "https://platform.adobe.io/data/foundation/import/collection/batch/:CONNECTION_ID?synchronousValidation={{synchronousValidation}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -717,22 +177,21 @@
 								"import",
 								"collection",
 								"batch",
-								":inletId"
+								":CONNECTION_ID"
 							],
 							"query": [
 								{
-									"key": "debug",
-									"value": "{{debug}}"
+									"key": "synchronousValidation",
+									"value": "{{synchronousValidation}}"
 								}
 							],
 							"variable": [
 								{
-									"value": "{{inletId}}",
-									"id": "inletId"
+									"value": "{{CONNECTION_ID}}",
+									"id": "CONNECTION_ID"
 								}
 							]
-						},
-						"description": "This API is used by any mobile application, web application or a service to stream data into ACP. Data Collection service uses embedded inlet-id to retrieve associated metadata to process data and land it on a designated Pipeline topic for the downstream systems to consume"
+						}
 					},
 					"response": []
 				}
@@ -744,7 +203,7 @@
 			"name": "Batch Ingestion",
 			"item": [
 				{
-					"name": "Register a new batch in Catalog Service.",
+					"name": "Create a new batch in Catalog Service.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -785,7 +244,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -829,13 +288,12 @@
 								"import",
 								"batches"
 							]
-						},
-						"description": "Creates a new batch in Catalog Service as a first step to bulk data ingestion. The data is uploaded to this batch after which the batch is marked ready for triggering data registration in Catalog"
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Upload file to a dataset in a batch.",
+					"name": "Upload a file to a dataset in a batch.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -876,7 +334,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -940,12 +398,12 @@
 								}
 							]
 						},
-						"description": "For a batch initialized by the bulk ingestion api, this endpoint lets you upload files under datasets. Note that this puts the entire request stream as the file bytes under the path denoted by filePath in the URL and is idempotent. Subsequent calls to this endpoint will replace the file existent on the referenced path. Note that due to gateway size and timeout limits, there is a size threshold(currently 512MB) beyond which the clients must use the large file upload mechanism."
+						"description": "This endpoint lets you upload files under datasets for a batch initialized by the bulk ingestion API. This puts the entire request stream as the file bytes under the path denoted by the `filePath` in the URL and is idempotent. Subsequent calls to this endpoint will replace the file existent on the referenced path.\n**Note:** Due to gateway size and timeout limits, there is a size threshold(currently 512MB). If the file is larger than that, you **must** use the large file upload mechanism."
 					},
 					"response": []
 				},
 				{
-					"name": "Operate on the identified file.",
+					"name": "Finish uploading a file to a dataset in a batch.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -986,7 +444,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1055,8 +513,7 @@
 									"id": "filePath"
 								}
 							]
-						},
-						"description": "Used to signal initialization and completion of the file that's uploaded in parts"
+						}
 					},
 					"response": []
 				},
@@ -1102,7 +559,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1130,7 +587,7 @@
 							{
 								"key": "Content-Range",
 								"value": "{{Content-Range}}",
-								"description": "The range of bytes of the file being uploaded with this request",
+								"description": "The range of bytes of the file being uploaded with this request.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1141,7 +598,7 @@
 								{
 									"key": "file",
 									"value": "{{file}}",
-									"description": "The content bytes for the file or file part being uploaded",
+									"description": "The content bytes for the file or file part being uploaded.",
 									"type": "text"
 								}
 							]
@@ -1180,7 +637,7 @@
 								}
 							]
 						},
-						"description": "Files larger than 512MB are uploaded in parts and this PATCH endpoint provides you a way to upload a part of your large file that was initialized via the POST endpoint above"
+						"description": "Files larger than 512MB are uploaded in parts. The PATCH endpoint provides you a way to upload a part of your large file that was initialized via the POST endpoint."
 					},
 					"response": []
 				},
@@ -1226,7 +683,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1290,7 +747,7 @@
 								}
 							]
 						},
-						"description": "Files larger than 512MB are uploaded in parts and this HEAD endpoint provides you a way get the byte range information received by the server so far."
+						"description": "Files larger than 512MB are uploaded in parts. The HEAD endpoint provides a way to get the byte range information received by the server so far."
 					},
 					"response": []
 				},
@@ -1336,7 +793,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1425,12 +882,12 @@
 								}
 							]
 						},
-						"description": "Generates data preview for the files uploaded to the batch so far. The preview could be generated for all the batch datasets collectively or per selected datasets"
+						"description": "Generates a data preview for the files uploaded to the batch so far. The preview can be generated for all the batch datasets collectively or for the selected datasets."
 					},
 					"response": []
 				},
 				{
-					"name": "Complete batch.",
+					"name": "Trigger a batch's promotion downstream, noting its completion.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1471,7 +928,7 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{ACCESS_TOKEN}}",
-								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
 								"type": "string",
 								"enabled": true
 							},
@@ -1528,14 +985,13 @@
 									"id": "batchId"
 								}
 							]
-						},
-						"description": "Complete the batch to trigger the downstream data promotion workflow"
+						}
 					},
 					"response": []
 				}
 			],
 			"_postman_id": "8d6002f6-2c2b-534b-ad0b-a513afd4b725",
-			"description": "Batch ingestion is used to ingest data into Experience Platform as batch files. For example, data being ingested can be the profile data from a flat file in a CRM sytem (for example: parquet, or JSON) or data that conforms to a known Experience Data Model (XDM) schema within the Schema Registry."
+			"description": "Batch ingestion is used to ingest data into Experience Platform as batch files. For example, data being ingested can be the profile data from a flat file in a CRM system (for example: Parquet or JSON) or data that conforms to a known Experience Data Model (XDM) schema within the Schema Registry."
 		}
 	]
 }
