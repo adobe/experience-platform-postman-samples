@@ -469,7 +469,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -531,7 +531,7 @@
 							}
 						}
 					],
-					"_postman_id": "d497a79e-e3ba-5b62-a07e-2d192d0544f4",
+					"_postman_id": "7a62fd49-6f9e-5c0d-a8e8-44416902a61a",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -567,7 +567,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -577,7 +577,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/flowservice/connections/:CONNECTION_ID/delete",
+							"raw": "https://platform.adobe.io/data/foundation/flowservice/connections/:CONNECTION_ID/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -590,7 +590,7 @@
 								"flowservice",
 								"connections",
 								":CONNECTION_ID",
-								"delete"
+								""
 							],
 							"variable": [
 								{
@@ -672,7 +672,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -872,7 +872,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1233,7 +1233,7 @@
 							}
 						}
 					],
-					"_postman_id": "ed6cefb6-00ec-59d2-b94c-e5f3ac9ce2ad",
+					"_postman_id": "31472ee4-6a53-51d2-9ab1-d28850807442",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1269,7 +1269,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1279,7 +1279,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/flowservice/flows/:FLOW_ID/delete",
+							"raw": "https://platform.adobe.io/data/foundation/flowservice/flows/:FLOW_ID/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1292,7 +1292,7 @@
 								"flowservice",
 								"flows",
 								":FLOW_ID",
-								"delete"
+								""
 							],
 							"variable": [
 								{
@@ -1574,7 +1574,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1880,7 +1880,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -1970,7 +1970,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2031,7 +2031,7 @@
 							}
 						}
 					],
-					"_postman_id": "50832f8b-ab2f-557f-a8eb-8c464f46ac08",
+					"_postman_id": "4423ccfa-f843-5e9b-845d-245947b7e382",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2067,7 +2067,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2077,7 +2077,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/flowservice/sourceConnections/:SOURCE_CONNECTION_ID/delete",
+							"raw": "https://platform.adobe.io/data/foundation/flowservice/sourceConnections/:SOURCE_CONNECTION_ID/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2090,7 +2090,7 @@
 								"flowservice",
 								"sourceConnections",
 								":SOURCE_CONNECTION_ID",
-								"delete"
+								""
 							],
 							"variable": [
 								{
@@ -2172,7 +2172,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2323,7 +2323,7 @@
 							}
 						}
 					],
-					"_postman_id": "d63889c6-a0dd-5cfe-b766-e3b285712a62",
+					"_postman_id": "8bd6263a-41bc-590e-a950-b7b5eb0d7010",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2359,7 +2359,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+								"description": "All resources in Experience Platform are isolated to specific virtual sandboxes. Requests to Platform APIs require a header that specifies the name of the sandbox in which the operation will take place.",
 								"type": "string",
 								"enabled": true
 							}
@@ -2369,7 +2369,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/flowservice/targetConnections/:TARGET_CONNECTION_ID/delete",
+							"raw": "https://platform.adobe.io/data/foundation/flowservice/targetConnections/:TARGET_CONNECTION_ID/",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2382,7 +2382,7 @@
 								"flowservice",
 								"targetConnections",
 								":TARGET_CONNECTION_ID",
-								"delete"
+								""
 							],
 							"variable": [
 								{

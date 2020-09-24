@@ -169,7 +169,7 @@
 							{
 								"key": "If-Match",
 								"value": "{{If-Match}}",
-								"description": "The version of the dataset entity to compare against. If included in a PUT request, the call will only update the dataset entity if the version is still the same, preventing data collision. This value can be found in the \"e-tag\" header that is returned in the response for looking up a dataset in the [Catalog API](https://www.adobe.io/apis/experienceplatform/home/api-reference.html#!acpdr/swagger-specs/catalog.yaml).",
+								"description": "The version of the dataset entity to compare against. As a requirement for all PUT and DELETE requests for dataset labels, the call will only update the dataset entity if the \"If-Match\" string matches that of the \"etag\" header that is returned in all responses from the Dataset Service API.",
 								"type": "string",
 								"enabled": true
 							}
@@ -360,6 +360,13 @@
 								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
 								"type": "string",
 								"enabled": true
+							},
+							{
+								"key": "If-Match",
+								"value": "{{If-Match}}",
+								"description": "The version of the dataset entity to compare against. As a requirement for all PUT and DELETE requests for dataset labels, the call will only update the dataset entity if the \"If-Match\" string matches that of the \"etag\" header that is returned in all responses from the Dataset Service API.",
+								"type": "string",
+								"enabled": true
 							}
 						],
 						"body": {
@@ -395,7 +402,7 @@
 				}
 			],
 			"_postman_id": "511d604a-7cc4-59af-87c5-bf8f79521447",
-			"description": "A dataset is a storage and management construct for a collection of data, typically a table, that contains a schema (columns) and fields (rows). Data usage labels can be applied to entire datatsets or individual fields within those datasets in order to enforce usage restrictions."
+			"description": "A dataset is a storage and management construct for a collection of data, typically a table, that contains a schema (columns) and fields (rows). Data usage labels can be applied to entire datasets or individual fields within those datasets in order to enforce usage restrictions."
 		}
 	]
 }
