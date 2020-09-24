@@ -293,7 +293,7 @@
 					"response": []
 				},
 				{
-					"name": "Upload a file to a dataset in a batch.",
+					"name": "Upload a small file to a dataset in a batch.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -398,12 +398,12 @@
 								}
 							]
 						},
-						"description": "This endpoint lets you upload files under datasets for a batch initialized by the bulk ingestion API. This puts the entire request stream as the file bytes under the path denoted by the `filePath` in the URL and is idempotent. Subsequent calls to this endpoint will replace the file existent on the referenced path.\n**Note:** Due to gateway size and timeout limits, there is a size threshold(currently 512MB). If the file is larger than that, you **must** use the large file upload mechanism."
+						"description": "This endpoint lets you upload files under datasets for a batch initialized by the bulk ingestion API. This puts the entire request stream as the file bytes under the path denoted by the `filePath` and is idempotent. Subsequent calls to this endpoint will replace the file that exists on the referenced path.\n**Note:** Due to gateway size and timeout limits, there is a size threshold(currently 256MB). If the file is larger than that, you **must** use the large file upload mechanism."
 					},
 					"response": []
 				},
 				{
-					"name": "Finish uploading a file to a dataset in a batch.",
+					"name": "Either initialize or finish uploading a large file to a dataset in a batch.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -513,12 +513,13 @@
 									"id": "filePath"
 								}
 							]
-						}
+						},
+						"description": "This endpoint should only be used when uploading a large file to the batch. Large file upload should be used for files larger than 256MB."
 					},
 					"response": []
 				},
 				{
-					"name": "Upload file part to a resumable file being uploaded to a batch dataset.",
+					"name": "Upload part of a large file to a batch.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -637,12 +638,12 @@
 								}
 							]
 						},
-						"description": "Files larger than 512MB are uploaded in parts. The PATCH endpoint provides you a way to upload a part of your large file that was initialized via the POST endpoint."
+						"description": "Files larger than 256MB are uploaded in parts. The PATCH endpoint provides you a way to upload a part of your large file that was initialized via the POST endpoint."
 					},
 					"response": []
 				},
 				{
-					"name": "Get the status of the chunked file uploaded so far.",
+					"name": "Get the current status of the large file.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -747,7 +748,7 @@
 								}
 							]
 						},
-						"description": "Files larger than 512MB are uploaded in parts. The HEAD endpoint provides a way to get the byte range information received by the server so far."
+						"description": "Files larger than 256MB are uploaded in parts. The HEAD endpoint provides a way to get the byte range information received by the server so far."
 					},
 					"response": []
 				},
@@ -887,7 +888,7 @@
 					"response": []
 				},
 				{
-					"name": "Trigger a batch's promotion downstream, noting its completion.",
+					"name": "Finish uploading a small file to a dataset in a batch.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -985,7 +986,8 @@
 									"id": "batchId"
 								}
 							]
-						}
+						},
+						"description": "Small file upload is used for files 256MB or smaller."
 					},
 					"response": []
 				}
