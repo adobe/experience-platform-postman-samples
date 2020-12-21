@@ -1276,7 +1276,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/core/ups/access/entities?schema.name={{schema.name}}&relatedSchema.name={{relatedSchema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&relatedEntityId={{relatedEntityId}}&relatedEntityIdNS={{relatedEntityIdNS}}&fields={{fields}}&mergePolicyId={{mergePolicyId}}&startTime={{startTime}}&endTime={{endTime}}&limit={{limit}}&orderby={{orderby}}&withCA={{withCA}}",
+							"raw": "https://platform.adobe.io/data/core/ups/access/entities?schema.name={{schema.name}}&relatedSchema.name={{relatedSchema.name}}&entityId={{entityId}}&entityIdNS={{entityIdNS}}&relatedEntityId={{relatedEntityId}}&relatedEntityIdNS={{relatedEntityIdNS}}&fields={{fields}}&mergePolicyId={{mergePolicyId}}&startTime={{startTime}}&endTime={{endTime}}&limit={{limit}}&orderby={{orderby}}&property={{property}}&withCA={{withCA}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1338,6 +1338,10 @@
 								{
 									"key": "orderby",
 									"value": "{{orderby}}"
+								},
+								{
+									"key": "property",
+									"value": "{{property}}"
 								},
 								{
 									"key": "withCA",

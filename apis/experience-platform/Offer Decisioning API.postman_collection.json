@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "85b3a546-2fce-5a16-a9d8-ed09ee984843",
-		"name": "Offer Decision Service API",
-		"description": "Adobe Experience Platform Decisioning Service provides the ability to programmatically and intelligently select the ‘Next Best Experience’ from a set of available options for a given individual, deliver them to any channel or application, and perform reporting and analysis on those experiences. The Offer Decision Service API includes an endpoint to filter out offers which are not approved, do not match the offer filter, or don’t have a representation for the placement referenced by the activity. It also allows you to run diagnostics and return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so.\n\nRelated documentation:\n  * [Decisioning Service documentation](https://docs.adobe.com/content/help/en/experience-platform/decisioning/home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Offer Decision Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Offer%20Decision%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ode\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ode/{containerId}/decisions\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"_postman_id": "14bf9ce2-4ff9-548c-b791-d8c241a1fa38",
+		"name": "Offer Decisioning API",
+		"description": "Offer Decisioning is an Application Service integrated with Adobe Experience Platform. It allows you to leverage Adobe Experience Platform to deliver the best offer and experience to your customers across all touch points at the right time.\n\nRelated documentation:\n  * [Offer Decisioning documentation](https://docs.adobe.com/content/help/en/offer-decisioning/using/offer-decisioning-home.html)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Offer Decision Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Offer%20Decision%20Service%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io/\n  * Base path for this API: /data/core/ode\n  * Example of a complete path: https://<span>platform.adobe.io/data/core/ode/{containerId}/decisions\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -36,7 +36,7 @@
 							}
 						}
 					],
-					"_postman_id": "8459e1b3-b56b-5754-9baa-beb5826bbe26",
+					"_postman_id": "0ebca533-f27b-56f6-8043-8728541ec5f3",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -115,7 +115,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "48b640ea-db75-538b-b5fd-3ad4b90a20cc",
+			"_postman_id": "5ae9beff-7521-55a0-9f82-04bfecca4d77",
 			"description": "Determine the best offer(s) for a given set of activities based on eligibility rules that match profile and context data provided."
 		},
 		{
@@ -148,7 +148,7 @@
 							}
 						}
 					],
-					"_postman_id": "6b2025c1-5c11-5589-8d7b-5e777b231867",
+					"_postman_id": "58b370dd-a10d-5a37-aec7-7fe471dc0ea8",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -227,7 +227,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "583f026e-3771-5cf0-a20e-465262df5dee",
+			"_postman_id": "f29d7105-8e37-55b8-a3c8-672e42fe38dc",
 			"description": "Return a timestamp indicating when the offer catalog and/or activities were last updated, and a list of errors that occurred when doing so."
 		},
 		{
@@ -260,7 +260,7 @@
 							}
 						}
 					],
-					"_postman_id": "63876e45-1d0c-579d-9a9d-27fde4a649a0",
+					"_postman_id": "44de3f15-2d26-5d3b-8fc7-ff043100ef8d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -345,7 +345,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "50da4868-bcc3-591a-b1c9-eaa3b5dd8d62",
+			"_postman_id": "f0834d5c-c967-56cb-8c22-e4890ed0f720",
 			"description": "Based on filter rules and placement match, return approved offers that belong to a specific `activityId`."
 		}
 	]
