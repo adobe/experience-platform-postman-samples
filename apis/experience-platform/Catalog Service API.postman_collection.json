@@ -85,7 +85,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/catalog/batches?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -158,18 +158,6 @@
 								{
 									"key": "dataSet",
 									"value": "{{dataSet}}"
-								},
-								{
-									"key": "dataSetFile",
-									"value": "{{dataSetFile}}"
-								},
-								{
-									"key": "dataSetView",
-									"value": "{{dataSetView}}"
-								},
-								{
-									"key": "transform",
-									"value": "{{transform}}"
 								}
 							]
 						}
@@ -349,7 +337,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/uniques/:FIELD?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&dataSetFile={{dataSetFile}}&dataSetView={{dataSetView}}&transform={{transform}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/batches/uniques/:FIELD?status={{status}}&recordCount={{recordCount}}&failedRecordCount={{failedRecordCount}}&size={{size}}&started={{started}}&completed={{completed}}&startAfter={{startAfter}}&startBefore={{startBefore}}&endAfter={{endAfter}}&endBefore={{endBefore}}&batch={{batch}}&externalId={{externalId}}&connection={{connection}}&connector={{connector}}&dataSet={{dataSet}}&transform={{transform}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -424,14 +412,6 @@
 								{
 									"key": "dataSet",
 									"value": "{{dataSet}}"
-								},
-								{
-									"key": "dataSetFile",
-									"value": "{{dataSetFile}}"
-								},
-								{
-									"key": "dataSetView",
-									"value": "{{dataSetView}}"
 								},
 								{
 									"key": "transform",
@@ -1073,7 +1053,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets?connectorId={{connectorId}}&connectionId={{connectionId}}&name={{name}}&description={{description}}&enableErrorDiagnostics={{enableErrorDiagnostics}}&state={{state}}&namespace={{namespace}}",
+							"raw": "https://platform.adobe.io/data/foundation/catalog/dataSets?connectorId={{connectorId}}&connectionId={{connectionId}}&name={{name}}&description={{description}}&enableErrorDiagnostics={{enableErrorDiagnostics}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1106,14 +1086,6 @@
 								{
 									"key": "enableErrorDiagnostics",
 									"value": "{{enableErrorDiagnostics}}"
-								},
-								{
-									"key": "state",
-									"value": "{{state}}"
-								},
-								{
-									"key": "namespace",
-									"value": "{{namespace}}"
 								}
 							]
 						}
