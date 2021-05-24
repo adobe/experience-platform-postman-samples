@@ -7,7 +7,7 @@ This is a series of postman scripts that are built to be run using the [Postman 
 To import a Postman Collection
 
 1. Download the `.postman_collection.json` file(s) from this Github repository
-1. In Postman, select __Import__ int he to left
+1. In Postman, select __Import__ in the left panel at the top
 1. Select __Import File__
 1. Select the downloaded  `.postman_collection.json` file(s)
 
