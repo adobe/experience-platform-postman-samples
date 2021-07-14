@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "bb777741-9a36-5b13-a644-ce2fbe94421c",
 		"name": "Schema Registry API",
-		"description": "The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.\n\nRelated documentation:\n  * [XDM documentation](http://www.adobe.com/go/xdm-home-en)\n\nVisualize API calls with Postman (a free, third-party software):\n  * [Schema Registry API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Schema%20Registry%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\nAPI paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/schemaregistry\n  * Example of a complete path for making a call to \"/stats\": https://<span>platform.adobe.io/data/foundation/schemaregistry/stats\n\nRequired headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.\n  * All GET requests to the Schema Registry require an `Accept` header to determine what data is returned by the system. See the [section on Accept headers](https://experienceleague.adobe.com/docs/experience-platform/xdm/api/getting-started.html?lang=en#accept) in the Schema Registry developer guide for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "* Service description:\n  * The Schema Registry API is used to access the Schema Library within Adobe Experience Platform. The registry provides a user interface and RESTful API from which all available library resources are accessible.\n\n\n* Related documentation:\n  * [XDM documentation](http://www.adobe.com/go/xdm-home-en)\n\n* Visualize API calls with Postman (a free, third-party software):\n  * [Schema Registry API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Schema%20Registry%20API.postman_collection.json)\n  * [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  * [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n* API paths:\n  * PLATFORM Gateway URL: https://<span>platform.adobe.io\n  * Base path for this API: /data/foundation/schemaregistry\n  * Example of a complete path for making a call to \"/stats\": https://<span>platform.adobe.io/data/foundation/schemaregistry/stats\n\n* Required headers:\n  * All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).\n  * All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.\n  * All GET requests to the Schema Registry require an `Accept` header to determine what data is returned by the system. See the [section on `Accept` headers](https://experienceleague.adobe.com/docs/experience-platform/xdm/api/getting-started.html?lang=en#accept) in the Schema Registry developer guide for more information.\n  * All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -104,6 +104,624 @@
 			"description": "Returns {TENANT_ID} along with information regarding IMS Org usage of the Schema Registry such as resource counts, recently created resources, and class usage."
 		},
 		{
+			"name": "Field groups",
+			"item": [
+				{
+					"name": "Retrieve a list of field groups within the specified container.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "e635cb92-a4c3-58ce-85db-1eca8369021e",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed-id+json",
+								"description": "The desired response format (application/vnd.adobe.xed-full+json).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/fieldgroups?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
+								":CONTAINER_ID",
+								"fieldgroups"
+							],
+							"query": [
+								{
+									"key": "property",
+									"value": "{{property}}"
+								},
+								{
+									"key": "orderby",
+									"value": "{{orderby}}"
+								},
+								{
+									"key": "start",
+									"value": "{{start}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a field group within the specified container by ID.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "a5fcaddc-86b7-5621-8f9b-602172ceadba",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.xed-id+json",
+								"description": "The desired response format (application/vnd.adobe.xed-full+json).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/fieldgroups/:FIELD_GROUP_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
+								":CONTAINER_ID",
+								"fieldgroups",
+								":FIELD_GROUP_ID"
+							],
+							"variable": [
+								{
+									"value": "{{CONTAINER_ID}}",
+									"id": "CONTAINER_ID"
+								},
+								{
+									"value": "{{FIELD_GROUP_ID}}",
+									"id": "FIELD_GROUP_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new custom field group.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "ca04fbec-498a-5785-a401-f2cb96dfaf40",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/fieldgroups",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
+								"tenant",
+								"fieldgroups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a custom field group by ID.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "5134a8ff-30cb-5409-81b7-0d859e2fd8a3",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/fieldgroups/:FIELD_GROUP_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
+								"tenant",
+								"fieldgroups",
+								":FIELD_GROUP_ID"
+							],
+							"variable": [
+								{
+									"value": "{{FIELD_GROUP_ID}}",
+									"id": "FIELD_GROUP_ID"
+								}
+							]
+						},
+						"description": "A PUT request is essentially re-writing the field group, therefore the request body must include all fields required to create (POST) a field group. This is especially useful when updating a lot of information in the field group at once."
+					},
+					"response": []
+				},
+				{
+					"name": "Update one or more attributes of a custom field group by ID.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "859413fc-6938-5fc6-ad3e-a1ced5de0767",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{payload}}"
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/fieldgroups/:FIELD_GROUP_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
+								"tenant",
+								"fieldgroups",
+								":FIELD_GROUP_ID"
+							],
+							"variable": [
+								{
+									"value": "{{FIELD_GROUP_ID}}",
+									"id": "FIELD_GROUP_ID"
+								}
+							]
+						},
+						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow you to modify or update resources you have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a custom field group by ID.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Begin Adobe-provided Pre-Request Scripts **/",
+									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
+									"pm.request.headers.each(header => {",
+									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
+									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
+									"    }",
+									"});",
+									"",
+									"// Do not send HTTP URL Query Parameters with empty variables, as Postman will send the literal variable name",
+									"pm.request.url.query.remove(q => { ",
+									"    if (q.value.startsWith(\"{{\") && q.value.endsWith(\"}}\")) {",
+									"        return !pm.variables.get(q.value.substring(2, q.value.length - 2));",
+									"    } ",
+									"});",
+									"/** End Adobe-provided Pre-Request Scripts **/"
+								]
+							}
+						}
+					],
+					"_postman_id": "70bdb200-68c4-50fe-9f24-fef41196fd04",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \". For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-gw-ims-org-id",
+								"value": "{{IMS_ORG}}",
+								"description": "The IMS Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).",
+								"type": "string",
+								"enabled": true
+							},
+							{
+								"key": "x-sandbox-name",
+								"value": "{{SANDBOX_NAME}}",
+								"description": "The name of the sandbox in which the operation will take place. See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.",
+								"type": "string",
+								"enabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/fieldgroups/:FIELD_GROUP_ID",
+							"protocol": "https",
+							"host": [
+								"platform",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"data",
+								"foundation",
+								"schemaregistry",
+								"tenant",
+								"fieldgroups",
+								":FIELD_GROUP_ID"
+							],
+							"variable": [
+								{
+									"value": "{{FIELD_GROUP_ID}}",
+									"id": "FIELD_GROUP_ID"
+								}
+							]
+						},
+						"description": "Remove an existing field group through a DELETE request to the `$id` of the field group being removed.\n\nA successful deletion returns an empty response body and HTTP status 204 (No Content)."
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "eb59efb7-1cfb-5ec5-b706-a9168572294a",
+			"description": "A field group is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
+		},
+		{
 			"name": "Schemas",
 			"item": [
 				{
@@ -182,7 +800,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/schemas?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -198,8 +816,8 @@
 							],
 							"query": [
 								{
-									"key": "properties",
-									"value": "{{properties}}"
+									"key": "property",
+									"value": "{{property}}"
 								},
 								{
 									"key": "orderby",
@@ -221,7 +839,7 @@
 								}
 							]
 						},
-						"description": "<p>You are able to view a list of all schemas within a container by performing a single GET request. To help filter results, the Schema Registry supports the use of query parameters when listing resources. The most common query parameters include:</br><ul><li>limit - Limit the number of resources returned. e.g. limit=5 will return only five resources in the list.</li><li>orderby - Sort results by a specific property. e.g. orderby=title will sort results by title ascending (A-Z). Adding a - before title (orderby=-title) will sort items by title descending (Z-A).</li><li>properties - Filter results on any top-level attributes. e.g. property=meta:intendedToExtend==https://ns.adobe.com/xdm/context/profile returns only mixins that are compatible with the Profile class.</li><li>You may also use an ampersand (&) to combine query parameters.</li></ul></p><p>The response format depends on the Accept header sent in the request. The following Accept headers are available for this request:<br/><ul><li><strong>application/vnd.adobe.xed-id+json</strong> | Returns a short summary of each resource, generally the preferred header for listing.</li><li><strong>application/vnd.adobe.xed+json</strong> | Returns full JSON for each resource, with original $ref and allOf attributes included.</li></ul></p>"
+						"description": "You are able to view a list of all schemas within a container by performing a single GET request. To help filter results, the Schema Registry supports the use of query parameters when listing resources.\n\nThe response format depends on the `Accept` header sent in the request. The following `Accept` headers are available for this request:<ul><li>`application/vnd.adobe.xed-id+json`: Returns a short summary of each resource, generally the preferred header for listing.</li><li>`application/vnd.adobe.xed+json`: Returns full JSON for each resource, with the original `$ref` and `allOf` attributes included.</li></ul>"
 					},
 					"response": []
 				},
@@ -327,7 +945,7 @@
 								}
 							]
 						},
-						"description": "<p>The response format depends on the Accept header sent in the request. The following Accept headers are available for this request:<br/><ul><li><strong>application/vnd.adobe.xed+json; version={major version}</strong>  Raw with $ref and allOf, has titles, descriptions</li><li><strong>application/vnd.adobe.xed-full+json; version={major version}</strong> $refs and allOf resolved, has titles and descriptions</li><li><strong>application/vnd.adobe.xed-notext+json; version={major version}</strong> Raw with $ref and allOf, no titles or descriptions</li><li><strong>application/vnd.adobe.xed-full-notext+json; version={major version}</strong>  $refs and allOf resolved, no titles or descriptions</li><li><strong>application/vnd.adobe.xed-full-desc+json; version={major version}</strong> $refs and allOf resolved, descriptors included</li></ul></p><br/><p>A lookup request requires the resource 'major version' be included in the Accept header. When supplying the major version, the registry returns the latest minor version automatically.</p>"
+						"description": "The response format depends on the `Accept` header sent in the request. The following `Accept` headers are available for this request:<ul><li>`application/vnd.adobe.xed+json; version=1`:  Raw with `$ref` and `allOf` included. Has titles and descriptions.</li><li>`application/vnd.adobe.xed-full+json; version=1`: `$ref` and `allOf` included. Has titles and descriptions.</li><li>`application/vnd.adobe.xed-notext+json; version=1`: Raw with `$ref` and `allOf` included, but with no titles or descriptions</li><li>`application/vnd.adobe.xed-full-notext+json; version=1`:  `$ref` and `allOf` are resolved, with no titles or descriptions.</li><li>`application/vnd.adobe.xed-full-desc+json; version=1`: `$ref` and `allOf` are resolved, with descriptions included.</li></ul>\n\nA lookup request requires the resource's major version be included in the `Accept` header. When supplying the major version, the registry returns the latest minor version automatically."
 					},
 					"response": []
 				},
@@ -517,7 +1135,7 @@
 								}
 							]
 						},
-						"description": "<p>A PUT request essentially re-writes the schema, therefore the request body must include all fields required to create (POST) a schema. This is especially useful when updating a lot of information in the schema at once.</p>"
+						"description": "A PUT request essentially re-writes the schema, therefore the request body must include all fields required to create (POST) a schema. This is especially useful when updating a lot of information in the schema at once."
 					},
 					"response": []
 				},
@@ -616,7 +1234,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update schemas they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
+						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update schemas they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
@@ -715,7 +1333,7 @@
 								}
 							]
 						},
-						"description": "<p>Remove an existing schema by performing a DELETE request to the $id of the schema being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+						"description": "Remove an existing schema by performing a DELETE request to the `$id` of the schema being removed.\n\nA successful deletion returns an empty response body and HTTP status 204 (No Content)."
 					},
 					"response": []
 				}
@@ -926,7 +1544,7 @@
 			"description": "Behaviors define the nature of data that a schema describes. Each XDM class must reference a specific behavior, which all schemas that employ that class will inherit. Schemas that inherit the \"record\" behavior provide information about the attributes of a subject, while those that inherit the \"time-series\" behavior provide a snapshot of the system at the time an action was taken by a record subject."
 		},
 		{
-			"name": "Mixins",
+			"name": "Mixins (deprecated)",
 			"item": [
 				{
 					"name": "Retrieve a list of mixins within the specified container.",
@@ -955,7 +1573,7 @@
 							}
 						}
 					],
-					"_postman_id": "03a3a7c0-f9a9-56f8-b11e-22b5bea03fde",
+					"_postman_id": "970cd30f-7dcd-5af8-a5ac-ee936d4dcec8",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1004,7 +1622,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/mixins?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1020,8 +1638,8 @@
 							],
 							"query": [
 								{
-									"key": "properties",
-									"value": "{{properties}}"
+									"key": "property",
+									"value": "{{property}}"
 								},
 								{
 									"key": "orderby",
@@ -1073,7 +1691,7 @@
 							}
 						}
 					],
-					"_postman_id": "704621a9-00a4-5bf9-808f-2c00cebc7f74",
+					"_postman_id": "99d24098-0970-54fb-b25e-3868cf74304e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1178,7 +1796,7 @@
 							}
 						}
 					],
-					"_postman_id": "31d153b3-b400-511c-bc41-b2299a89897a",
+					"_postman_id": "43809f4b-058f-5fdc-b8e2-156dfc533e80",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1269,7 +1887,7 @@
 							}
 						}
 					],
-					"_postman_id": "b5f39c65-f525-58b7-a8e8-3495cee820c5",
+					"_postman_id": "826e177f-07f4-558f-8700-468aebb2f7a5",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1337,7 +1955,7 @@
 								}
 							]
 						},
-						"description": "<p>A PUT request is essentially re-writing the mixin, therefore the request body must include all fields required to create (POST) a mixin. This is especially useful when updating a lot of information in the mixin at once.</p>"
+						"description": "A PUT request is essentially re-writing the mixin, therefore the request body must include all fields required to create (POST) a mixin. This is especially useful when updating a lot of information in the mixin at once."
 					},
 					"response": []
 				},
@@ -1368,7 +1986,7 @@
 							}
 						}
 					],
-					"_postman_id": "7a5ea6f3-5d2a-5d08-8c26-1f47483d709f",
+					"_postman_id": "7d064369-e696-5ae8-8ad6-b47f87438904",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -1436,7 +2054,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update mixins they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
+						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update mixins they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
@@ -1467,7 +2085,7 @@
 							}
 						}
 					],
-					"_postman_id": "f7902acd-7115-5732-aa4a-578698416669",
+					"_postman_id": "cf20bc91-ac52-54c2-ba1d-7e3b491ff51c",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1535,13 +2153,13 @@
 								}
 							]
 						},
-						"description": "<p>Remove an existing mixin through a DELETE request to the $id of the mixin being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+						"description": "Remove an existing mixin through a DELETE request to the `$id` of the mixin being removed.\n\nA successful deletion returns an empty response body and HTTP status 204 (No Content)."
 					},
 					"response": []
 				}
 			],
-			"_postman_id": "9c7191d2-429f-553b-bc45-30ef1b049fc3",
-			"description": "A mixin is a reusable component that defines one or more fields to implement certain functions within a schema based on a compatible class."
+			"_postman_id": "bde8ae30-15c3-5794-9ea0-0324b120d848",
+			"description": "\"Mixin\" is the former term for a field group. The /mixins endpoints are deprecated and only maintained as legacy endpoints. For new implementations, please use the /fieldgroups endpoint instead."
 		},
 		{
 			"name": "Classes",
@@ -1622,7 +2240,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/classes?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -1638,8 +2256,8 @@
 							],
 							"query": [
 								{
-									"key": "properties",
-									"value": "{{properties}}"
+									"key": "property",
+									"value": "{{property}}"
 								},
 								{
 									"key": "orderby",
@@ -1955,7 +2573,7 @@
 								}
 							]
 						},
-						"description": "<p>A PUT request is essentially re-writing the class, therefore the request body must include all fields required to create (POST) a class. This is especially useful when updating a lot of information in the class at once.</p>"
+						"description": "A PUT request is essentially re-writing the class, therefore the request body must include all fields required to create (POST) a class. This is especially useful when updating a lot of information in the class at once."
 					},
 					"response": []
 				},
@@ -2054,7 +2672,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update classes they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
+						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update classes they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
@@ -2153,7 +2771,7 @@
 								}
 							]
 						},
-						"description": "<p>Remove a class by performing a DELETE request to the $id of the class being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+						"description": "Remove a class by performing a DELETE request to the `$id` of the class being removed.\n\nA successful deletion returns an empty response body and HTTP status 204 (No Content)."
 					},
 					"response": []
 				}
@@ -2240,7 +2858,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/datatypes?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2256,8 +2874,8 @@
 							],
 							"query": [
 								{
-									"key": "properties",
-									"value": "{{properties}}"
+									"key": "property",
+									"value": "{{property}}"
 								},
 								{
 									"key": "orderby",
@@ -2580,7 +3198,7 @@
 								}
 							]
 						},
-						"description": "<p>A PUT request is essentially re-writing the data type, therefore the request body must include all fields required to create (POST) a data type. This is especially useful when updating a lot of information in the data type at once.</p>"
+						"description": "A PUT request is essentially re-writing the data type, therefore the request body must include all fields required to create (POST) a data type. This is especially useful when updating a lot of information in the data type at once."
 					},
 					"response": []
 				},
@@ -2679,7 +3297,7 @@
 								}
 							]
 						},
-						"description": "<p>The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update data types they have defined.</p><br/><p>For more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com).</p>"
+						"description": "\nThe Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update data types they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
@@ -2778,7 +3396,7 @@
 								}
 							]
 						},
-						"description": "<p>Removing a data type is done through a DELETE request to the $id of the data type being removed.</p><br/><p>A successful deletion returns an empty response body and HTTP Status Code 204 (No-content).</p>"
+						"description": "Removing a data type is done through a DELETE request to the `$id` of the data type being removed.\n\nA successful deletion returns an empty response body and HTTP status 204 (No Content)."
 					},
 					"response": []
 				}
@@ -2865,7 +3483,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors?properties={{properties}}&orderby={{orderby}}&limit={{limit}}&start={{start}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/:CONTAINER_ID/descriptors?property={{property}}&orderby={{orderby}}&limit={{limit}}&start={{start}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -2881,8 +3499,8 @@
 							],
 							"query": [
 								{
-									"key": "properties",
-									"value": "{{properties}}"
+									"key": "property",
+									"value": "{{property}}"
 								},
 								{
 									"key": "orderby",
@@ -2904,7 +3522,7 @@
 								}
 							]
 						},
-						"description": "<p>Schemas define a static view of data entities, but do not provide specific details on how data based on these schemas (datasets, etc) may relate to one another. Adobe Experience Platform allows you to describe these relationships and other interpretive metadata about a schema using descriptors.</p><br/><p>Schema descriptors are tenant-level metadata, meaning they are unique to your IMS Organization and all descriptor operations take place in the tenant container.</p><br/><p>Each schema can have one or more schema descriptor entities applied to it. Each schema descriptor entity includes a descriptor '@type' and the 'sourceSchema' to which it applies. Once applied, these descriptors will apply to all datasets created using the schema.</p><br/><p>The Schema Registry supports the use of query parameters when listing descriptors. The most common query parameters include:</br><ul><li>property - Return only results that match the given property. e.g. property=@type==xdm:descriptorIdentity returns only descriptors with a '@type' of 'xdm:descriptorIdentity'.</li><li>limit - Limit the number of resources returned. e.g. limit=5 will return only five resources in the list.</li><li>You may also use an ampersand (&) to combine query parameters.</li></ul></p><p>Accept headers for descriptors include:<br/><table><thead><tr><th>Accept</th><th>Description</th></tr></thead><tbody><tr><td><strong>application/vnd.adobe.xdm-id+json</strong></td><td>Returns a list of descriptor IDs, grouped by their @type</td></tr><tr><td><strong>application/vnd.adobe.xdm-link+json</strong></td><td>Returns a list of descriptor API paths, grouped by their @type</td></tr><tr><td><strong>application/vnd.adobe.xdm+json</strong></td><td>Returns a list of descriptor objects, grouped by their @type</td></tr><tr><td><strong>application/vnd.adobe.xdm-v2{-id/-link}+json</strong></td><td>Including the -v2 option in any of the above Accept headers permits paging functionality, returning a results array with a _page attribute that can be used to request the next page if needed.</td></tr></tbody></table></p><br/><p>"
+						"description": "Schemas define a static view of data entities, but do not provide specific details on how data based on these schemas (datasets) may relate to one another. Adobe Experience Platform allows you to describe these relationships and other interpretive metadata about a schema through the use of descriptors.\n\nDescriptors are tenant-level metadata for schemas, meaning they are unique to your IMS Organization and all descriptor operations take place in the `tenant` container.\n\nEach schema can have one or more schema descriptor entities applied to it. Each schema descriptor entity includes a descriptor '@type' and the 'sourceSchema' to which it applies. Once applied, these descriptors will apply to all datasets created using the schema.\n\nIn order to help filter returned data, the Schema Registry supports the use of query parameters when listing descriptors.\n\n`Accept` headers for descriptors include:\n\n<table><thead><tr><th>`Accept`</th><th>Description</th></tr></thead><tbody><tr><td>`application/vnd.adobe.xdm-id+json`</td><td>Returns a list of descriptor IDs, grouped by their `@type`.</td></tr><tr><td>`application/vnd.adobe.xdm-link+json`</td><td>Returns a list of descriptor API paths, grouped by their `@type`.</td></tr><tr><td>`application/vnd.adobe.xdm+json`</td><td>Returns a list of descriptor objects, grouped by their `@type`.</td></tr><tr><td>`application/vnd.adobe.xdm-v2{-id/-link}+json`</td><td>Including the `-v2` option in any of the above `Accept` headers permits paging functionality, returning a results array with a `_page` attribute that can be used to request the next page if needed.</td></tr></tbody></table>"
 					},
 					"response": []
 				},
@@ -3007,7 +3625,7 @@
 								}
 							]
 						},
-						"description": "<p>View the details of a specific descriptor by performing a lookup (GET) request using the @id of the descriptor. Descriptors are not versioned, therefore no Accept header is required in the lookup request.</p>"
+						"description": "View the details of a specific descriptor by performing a lookup (GET) request using the `@id` of the descriptor. Descriptors are not versioned, therefore no `Accept` header is required in the lookup request."
 					},
 					"response": []
 				},
@@ -3099,7 +3717,7 @@
 								"descriptors"
 							]
 						},
-						"description": "<p>Required fields for defining a descriptor vary based on the @type of the descriptor.</p>"
+						"description": "Required fields for defining a descriptor vary based on the `@type` of the descriptor."
 					},
 					"response": []
 				},
@@ -3198,7 +3816,7 @@
 								}
 							]
 						},
-						"description": "<p>Update a descriptor by issuing a PUT request to the @id of the descriptor being updated.<br/><br/>This action is <em>re-writing</em> the existing descriptor, therefore the payload must include all descriptor fields that were required when the descriptor was defined.</p>"
+						"description": "\nUpdate a descriptor by issuing a PUT request to the `@id` of the descriptor being updated.\n\nThis action is **re-writing** the existing descriptor, therefore the payload must include all descriptor fields that were required when the descriptor was defined."
 					},
 					"response": []
 				},
@@ -3297,7 +3915,7 @@
 								}
 							]
 						},
-						"description": "<p>Remove a descriptor from the registry by issuing a DELETE request to the @id of the descriptor being removed.</p>"
+						"description": "Remove a descriptor from the registry by issuing a DELETE request to the `@id` of the descriptor being removed."
 					},
 					"response": []
 				}
@@ -3384,7 +4002,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/unions?properties={{properties}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
+							"raw": "https://platform.adobe.io/data/foundation/schemaregistry/tenant/unions?property={{property}}&orderby={{orderby}}&start={{start}}&limit={{limit}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -3400,8 +4018,8 @@
 							],
 							"query": [
 								{
-									"key": "properties",
-									"value": "{{properties}}"
+									"key": "property",
+									"value": "{{property}}"
 								},
 								{
 									"key": "orderby",
@@ -3692,7 +4310,7 @@
 							{
 								"key": "x-sandbox-name",
 								"value": "{{SANDBOX_NAME}}",
-								"description": "The name of the sandbox that you want to import the resource into. See the [sandboxes overview documentation](https://docs.adobe.com/content/help/en/experience-platform/sandbox/home.html) for more information.",
+								"description": "The name of the sandbox that you want to import the resource into. See the [sandboxes overview documentation](https://adobe.com/go/sandbox-overview-en) for more information.",
 								"type": "string",
 								"enabled": true
 							}
@@ -3722,7 +4340,7 @@
 				}
 			],
 			"_postman_id": "b581a3c8-be59-5554-8b7e-5343e5271510",
-			"description": "The Schema Registry API allows you to transfer and share XDM resources between sandboxes and IMS Organizations. For any schema, mixin, or data type, you can generate an export payload containing the structure of the resource and any dependent resources. This payload can then be used to import the resource into a destination sandbox and IMS Org."
+			"description": "The Schema Registry API allows you to transfer and share XDM resources between sandboxes and IMS Organizations. For any schema, field group, or data type, you can generate an export payload containing the structure of the resource and any dependent resources. This payload can then be used to import the resource into a destination sandbox and IMS Org."
 		},
 		{
 			"name": "Sample data",
@@ -3935,7 +4553,7 @@
 				}
 			],
 			"_postman_id": "64917cff-b0fb-5b6c-a02e-80466ecfb3f6",
-			"description": "The Schema Registry maintains a log of all the changes that have occurred to a resource (class, mixin, data type, or schema) between different updates."
+			"description": "The Schema Registry maintains a log of all the changes that have occurred to a resource (class, field group, data type, or schema) between different updates."
 		}
 	]
 }
