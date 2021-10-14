@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "75308ab5-5b3f-5c96-87a1-bea00b6d95a1",
 		"name": "Data Ingestion API",
-		"description": "- Service description:\n  - Data Ingestion allows you to bring your data into Adobe Experience Platform through batch ingestion and streaming ingestion. Batch ingestion lets you import data in batch, from any number of data sources. Streaming ingestion lets users send data to Platform in real time from client and server-side devices.\n\n- Related documentation:\n  - [Data ingestion documentation](http://www.adobe.com/go/data-ingestion-overview-en)\n\n- Visualize API calls with Postman (a free, third-party software):\n  - [Data Ingestion Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Ingestion%20API.postman_collection.json)\n  - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  - [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n- API paths:\n  - Base path for batch ingestion APIs: https://<span>platform.adobe.io/data/foundation/import\n  - Base path for streaming ingestion APIs:\n    - Data inlet management: https://<span>platform.adobe.io/data/core/edge\n    - Data collection: https://<span>dcs.adobedc.net/\n  - Example of a complete path for batch ingestion: https://<span>platform.adobe.io/data/foundation/import/batches\n \n- Required headers:\n  - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).\n  - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.\n  - Requests with a payload in the request body (such as POST, PUT, and PATCH calls) may require the header `Content-Type`. Accepted values specific to each call are provided in the call parameters.  ",
+		"description": "Data Ingestion allows you to bring your data into Adobe Experience Platform through batch ingestion and streaming ingestion. Batch ingestion lets you import data in batch, from any number of data sources. Streaming ingestion lets users send data to Platform in real time from client and server-side devices.\n- Related documentation:\n  - [Data ingestion documentation](http://www.adobe.com/go/data-ingestion-overview-en)\n\n- Visualize API calls with Postman (a free, third-party software):\n  - [Data Ingestion Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Data%20Ingestion%20API.postman_collection.json)\n  - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n  - [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n- API paths:\n  - Base path for batch ingestion APIs: https://<span>platform.adobe.io/data/foundation/import\n  - Base path for streaming ingestion APIs:\n    - Data inlet management: https://<span>platform.adobe.io/data/core/edge\n    - Data collection: https://<span>dcs.adobedc.net/\n  - Example of a complete path for batch ingestion: https://<span>platform.adobe.io/data/foundation/import/batches\n \n- Required headers:\n  - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).\n  - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.\n  - Requests with a payload in the request body (such as POST, PUT, and PATCH calls) may require the header `Content-Type`. Accepted values specific to each call are provided in the call parameters.  ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -75,7 +75,7 @@
 							"raw": "{{body}}"
 						},
 						"url": {
-							"raw": "https://platform.adobe.io/data/foundation/import/collection/:CONNECTION_ID?synchronousValidation={{synchronousValidation}}",
+							"raw": "https://platform.adobe.io/data/foundation/import/collection/:CONNECTION_ID?syncValidation={{syncValidation}}&synchronousValidation={{synchronousValidation}}",
 							"protocol": "https",
 							"host": [
 								"platform",
@@ -90,6 +90,10 @@
 								":CONNECTION_ID"
 							],
 							"query": [
+								{
+									"key": "syncValidation",
+									"value": "{{syncValidation}}"
+								},
 								{
 									"key": "synchronousValidation",
 									"value": "{{synchronousValidation}}"
