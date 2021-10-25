@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "5b409d0e-b84e-5fc3-a2de-29c71122fdb7",
 		"name": "Segmentation Service API",
-		"description": "Adobe Experience Platform Segmentation Service allows you to build segments and generate audiences from your Real-time Customer Profile data. These segments are centrally configured and maintained on Platform, and are readily accessible by other Adobe applications. The Segmentation Service API allows you to programmatically integrate the service's various functionalities into your experience application, providing RESTful endpoints for managing segment definitions, exports, schedules, and more.\n- Related documentation:\n    - [Segmentation Service documentation](https://www.adobe.com/go/segmentation-overview-en)\n\n- Visualize API calls with Postman (a free, third-party software):\n    - [Real-time Customer Profile API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Real-time%20Customer%20Profile%20API.postman_collection.json)\n    - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n    - [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n- API paths:\n    - PLATFORM Gateway URL: https://<span>platform.adobe.io/\n    - Base path for this API: /data/core/ups\n    - Example of a complete path: https://<span>platform.adobe.io/data/core/ups/segment/definitions\n  \n- Required headers:\n    - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.com/go/platform-api-authentication-en).\n    - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.\n    - All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "Adobe Experience Platform Segmentation Service allows you to build segments and generate audiences from your Real-time Customer Profile data. These segments are centrally configured and maintained on Platform, and are readily accessible by other Adobe applications. The Segmentation Service API allows you to programmatically integrate the service's various functionalities into your experience application, providing RESTful endpoints for managing segment definitions, exports, schedules, and more.\n- Related documentation:\n    - [Segmentation Service documentation](https://www.adobe.com/go/segmentation-overview-en)\n\n- Visualize API calls with Postman (a free, third-party software):\n    - [Segmentation Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Segmentation%20Service%20API.postman_collection.json)\n    - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n    - [Steps for importing environments and collections in Postman](https://learning.getpostman.com/docs/postman/collection_runs/using_environments_in_collection_runs/)\n\n- API paths:\n    - PLATFORM Gateway URL: https://<span>platform.adobe.io/\n    - Base path for this API: /data/core/ups\n    - Example of a complete path: https://<span>platform.adobe.io/data/core/ups/segment/definitions\n  \n- Required headers:\n    - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](https://www.adobe.com/go/platform-api-authentication-en).\n    - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.\n    - All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -10,7 +10,7 @@
 			"name": "Export jobs",
 			"item": [
 				{
-					"name": "Retrieve a list of all export jobs.",
+					"name": "Retrieve a list of all export jobs",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -111,7 +111,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new export job.",
+					"name": "Create a new export job",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -209,7 +209,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve an export job by ID.",
+					"name": "Retrieve an export job",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -303,7 +303,7 @@
 					"response": []
 				},
 				{
-					"name": "Cancel or delete an export job by ID.",
+					"name": "Cancel or delete an export job",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -404,7 +404,7 @@
 			"name": "Segment definitions",
 			"item": [
 				{
-					"name": "Retrieve a list of segment definitions.",
+					"name": "List segment definitions",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -516,7 +516,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new segment definition.",
+					"name": "Create a new segment definition",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -614,7 +614,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a segment definition by ID.",
+					"name": "Retrieve a segment definition",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -820,7 +820,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete a segment definition by ID.",
+					"name": "Delete a segment definition",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1009,7 +1009,7 @@
 					"response": []
 				},
 				{
-					"name": "Converts a segment definition from pql/text to pql/json and vice versa.",
+					"name": "Convert a segment definition",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1098,7 +1098,8 @@
 								"segment",
 								"conversion"
 							]
-						}
+						},
+						"description": "This endpoint converts a segment definition from pql/text to pql/json or from pql/json to pql/text."
 					},
 					"response": []
 				}
@@ -1110,7 +1111,7 @@
 			"name": "Segment jobs",
 			"item": [
 				{
-					"name": "Retrieve a list of all segment job requests.",
+					"name": "List all segment job requests",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1230,7 +1231,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new segment job request.",
+					"name": "Create a segment job request",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1335,7 +1336,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a segment job request by ID.",
+					"name": "Retrieve a segment job request",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1436,7 +1437,7 @@
 					"response": []
 				},
 				{
-					"name": "Cancel or delete a segment job request by ID.",
+					"name": "Cancel or delete a segment job request",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1632,7 +1633,7 @@
 			"name": "Previews",
 			"item": [
 				{
-					"name": "Create a new preview job.",
+					"name": "Create a new preview job",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1722,7 +1723,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve the results of a preview job by ID.",
+					"name": "Retrieve the results of a preview job",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1825,7 +1826,7 @@
 					"response": []
 				},
 				{
-					"name": "Cancel or delete a preview job by ID.",
+					"name": "Cancel or delete a preview job",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1925,7 +1926,7 @@
 			"name": "Estimates",
 			"item": [
 				{
-					"name": "Retrieve the results of an estimate job by ID.",
+					"name": "Retrieve the results of an estimate job",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2129,7 +2130,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a schedule, including specifying the time when the schedule should be triggered.",
+					"name": "Create a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2223,12 +2224,12 @@
 								"schedules"
 							]
 						},
-						"description": "The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
+						"description": "This endpoint is used to create a schedule, including specifying the time when the schedule should be triggered. Note that thee scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
 					},
 					"response": []
 				},
 				{
-					"name": "Retrieve a schedule by its ID.",
+					"name": "Retrieve a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2330,7 +2331,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a schedule, including changing the trigger time or enabling/disabling the schedule.",
+					"name": "Update a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2427,12 +2428,12 @@
 								}
 							]
 						},
-						"description": "The scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
+						"description": "This endpoint is ued to update a schedule, including changing the trigger time or enabling/disabling the schedule. . Note that the scheduler is updated periodically (approximately every 30 minutes), so changes to a schedule may not go into effect immediately."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete a schedule by its ID.",
+					"name": "Delete a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2540,7 +2541,7 @@
 			"name": "Segment search",
 			"item": [
 				{
-					"name": "Retrieve a list of search count results, queried across all namespaces.",
+					"name": "List search count results",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2639,12 +2640,13 @@
 									"value": "{{s}}"
 								}
 							]
-						}
+						},
+						"description": "This endpoint is used to retrieve a list of search count results, which is queried across all namespaces."
 					},
 					"response": []
 				},
 				{
-					"name": "Retrieve a list of all full text indexed objects contained within a namespace resulting from a search",
+					"name": "List full-text indexed objects",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2759,12 +2761,13 @@
 									"value": "{{page}}"
 								}
 							]
-						}
+						},
+						"description": "This endpoint retrieves a list of all full text indexed objects contained within a namespace."
 					},
 					"response": []
 				},
 				{
-					"name": "Get the taxonomic information associated with a search object.",
+					"name": "Retrieve a search object's taxonomic information",
 					"event": [
 						{
 							"listen": "prerequest",

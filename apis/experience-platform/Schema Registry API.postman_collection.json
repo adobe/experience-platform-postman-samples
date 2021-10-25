@@ -107,7 +107,7 @@
 			"name": "Field groups",
 			"item": [
 				{
-					"name": "Retrieve a list of field groups within the specified container.",
+					"name": "List field groups",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -220,12 +220,13 @@
 									"id": "CONTAINER_ID"
 								}
 							]
-						}
+						},
+						"description": "Retrieve a list of field groups within the specified container."
 					},
 					"response": []
 				},
 				{
-					"name": "Retrieve a field group within the specified container by ID.",
+					"name": "Retrieve a field group",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -330,7 +331,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new custom field group.",
+					"name": "Create a custom field group",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -421,7 +422,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a custom field group by ID.",
+					"name": "Update a custom field group",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -520,7 +521,7 @@
 					"response": []
 				},
 				{
-					"name": "Update one or more attributes of a custom field group by ID.",
+					"name": "Update a custom field group",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -614,12 +615,12 @@
 								}
 							]
 						},
-						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow you to modify or update resources you have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
+						"description": "You can use this endpoint to update one or more attributes of your custom field group.\nThe Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow you to modify or update resources you have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete a custom field group by ID.",
+					"name": "Delete a custom field group",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -725,7 +726,7 @@
 			"name": "Schemas",
 			"item": [
 				{
-					"name": "Retrieve a list of schemas within the specified container.",
+					"name": "List schemas",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -844,7 +845,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a schema within the specified container by ID.",
+					"name": "Retrieve a schema",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -950,7 +951,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new custom schema.",
+					"name": "Create a custom schema",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1041,7 +1042,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a custom schema by ID.",
+					"name": "Update a custom schema",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1140,7 +1141,7 @@
 					"response": []
 				},
 				{
-					"name": "Update one or more attributes of a custom schema specified by ID.",
+					"name": "Update custom schema",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1234,12 +1235,12 @@
 								}
 							]
 						},
-						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update schemas they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
+						"description": "You can use this endpoint to update one or more attributes of the custom schema.\nThe Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update schemas they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete a custom schema by ID.",
+					"name": "Delete a custom schema",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1345,7 +1346,7 @@
 			"name": "Behaviors",
 			"item": [
 				{
-					"name": "Retrieve a list of behaviors.",
+					"name": "List behaviors",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1439,7 +1440,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a behavior by ID.",
+					"name": "Retrieve a behavior",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1547,7 +1548,7 @@
 			"name": "Mixins (deprecated)",
 			"item": [
 				{
-					"name": "Retrieve a list of mixins within the specified container.",
+					"name": "List all mixins",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1665,7 +1666,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a mixin within the specified container by ID.",
+					"name": "Retrieve a mixin",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1770,7 +1771,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new custom mixin.",
+					"name": "Create a new custom mixin",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1861,7 +1862,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a custom mixin by ID.",
+					"name": "Update a custom mixin",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1960,7 +1961,7 @@
 					"response": []
 				},
 				{
-					"name": "Update one or more attributes of a custom mixin specified by ID.",
+					"name": "Update custom mixin",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2054,12 +2055,12 @@
 								}
 							]
 						},
-						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update mixins they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
+						"description": "You can use this endpoint to update one or more attributes of a custom mixin.\nThe Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update mixins they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete a custom mixin by ID.",
+					"name": "Delete a custom mixin",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2165,7 +2166,7 @@
 			"name": "Classes",
 			"item": [
 				{
-					"name": "Retrieve a list of classes within the specified container.",
+					"name": "List classes",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2283,7 +2284,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a class within the specified container by ID.",
+					"name": "Retrieve a class",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2388,7 +2389,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new custom class.",
+					"name": "Create a custom class",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2479,7 +2480,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a custom class by ID.",
+					"name": "Update a custom class",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2578,7 +2579,7 @@
 					"response": []
 				},
 				{
-					"name": "Update one or more attributes of a custom class specified by ID.",
+					"name": "Update a custom class' attributes",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2672,12 +2673,12 @@
 								}
 							]
 						},
-						"description": "The Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update classes they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
+						"description": "You can use this endpoint to update one or more attributes for a custom class.\nThe Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update classes they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete a custom class by ID.",
+					"name": "Delete a custom class",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2783,7 +2784,7 @@
 			"name": "Data types",
 			"item": [
 				{
-					"name": "Retrieve a list of data types within the specified container.",
+					"name": "List data types",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2901,7 +2902,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a data type within the specified container by ID.",
+					"name": "Retrieve a data type",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3006,7 +3007,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new custom data type.",
+					"name": "Create a custom data type",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3104,7 +3105,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a custom data type by ID.",
+					"name": "Update a custom data type",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3203,7 +3204,7 @@
 					"response": []
 				},
 				{
-					"name": "Update one or more attributes of a custom data type specified by ID.",
+					"name": "Update a custom data type's attributes",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3297,12 +3298,12 @@
 								}
 							]
 						},
-						"description": "\nThe Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update data types they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
+						"description": "You can use this endpoint to update one or more attributes of a custom data type.\nThe Schema Registry supports all standard JSON Patch operations, including add, remove, and replace, to allow users to modify or update data types they have defined.\n\nFor more information on JSON Patch, including all available operations, read [the official JSON Patch documentation](http://jsonpatch.com)."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete a custom class by ID.",
+					"name": "Delete a custom class",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3408,7 +3409,7 @@
 			"name": "Descriptors",
 			"item": [
 				{
-					"name": "Retrieve a list descriptors within the specified container, sorted by type.",
+					"name": "List descriptors",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3527,7 +3528,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a descriptor by within the specified container by ID.",
+					"name": "Retrieve a descriptor",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3630,7 +3631,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new descriptor.",
+					"name": "Create a descriptor",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3722,7 +3723,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a descriptor by ID.",
+					"name": "Update a descriptor",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3821,7 +3822,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete a descriptor by ID.",
+					"name": "Delete a descriptor",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3927,7 +3928,7 @@
 			"name": "Unions",
 			"item": [
 				{
-					"name": "Retrieve a list of union schemas.",
+					"name": "List union schemas",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -4039,7 +4040,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a union schema by ID.",
+					"name": "Retrieve a union schema",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -4147,7 +4148,7 @@
 			"name": "Export/Import",
 			"item": [
 				{
-					"name": "Retrieve an export payload for a specific resource in order to transfer it into a different sandbox or IMS Organization.",
+					"name": "Retrieve an export payload",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -4243,12 +4244,13 @@
 									"id": "RESOURCE_ID"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to retrieve an export payload for a specific resource in order to transfer it into a different sandbox or IMS Organization."
 					},
 					"response": []
 				},
 				{
-					"name": "Use an export payload to import a resource into a different sandbox or IMS Organization.",
+					"name": "Import a resource",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -4334,7 +4336,8 @@
 								"rpc",
 								"import"
 							]
-						}
+						},
+						"description": "Use an export payload to import a resource into a different sandbox or IMS Organization."
 					},
 					"response": []
 				}
@@ -4346,7 +4349,7 @@
 			"name": "Sample data",
 			"item": [
 				{
-					"name": "Retrieve sample data for a schema by ID.",
+					"name": "Retrieve sample data",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -4442,7 +4445,8 @@
 									"id": "SCHEMA_ID"
 								}
 							]
-						}
+						},
+						"description": "Retrieve sample data for a schema."
 					},
 					"response": []
 				}
@@ -4454,7 +4458,7 @@
 			"name": "Audit log",
 			"item": [
 				{
-					"name": "Retrieve a chonological list of changes made to a resource specified by ID.",
+					"name": "Retrieve a resource's audit log",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -4547,7 +4551,8 @@
 									"id": "RESOURCE_ID"
 								}
 							]
-						}
+						},
+						"description": "This endpoint retrieves a resource's audit log, which shows a list of all the changes made to the resource."
 					},
 					"response": []
 				}
