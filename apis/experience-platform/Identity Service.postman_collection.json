@@ -10,7 +10,7 @@
 			"name": "Identity",
 			"item": [
 				{
-					"name": "Given an ID and a namespace, returns an identity string.",
+					"name": "Retrieve an identity",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -132,7 +132,7 @@
 			"name": "Cluster",
 			"item": [
 				{
-					"name": "Given an identity, returns all linked identities in that cluster.",
+					"name": "List linked identities",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -256,7 +256,7 @@
 					"response": []
 				},
 				{
-					"name": "Given set of identities, returns all linked identities in cluster corresponding to each identity.",
+					"name": "Given set of identities, returns all linked identities in cluster corresponding to each identity",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -720,7 +720,7 @@
 					"response": []
 				},
 				{
-					"name": "Given set of identities and target namespace, returns the corresponding linked identities.",
+					"name": "Given set of identities and target namespace, returns the corresponding linked identities",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -828,7 +828,7 @@
 			"name": "Identity Namespace",
 			"item": [
 				{
-					"name": "Lists all identity namespaces available for the IMS Organization.",
+					"name": "Lists all identity namespaces available for the IMS Organization",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -914,7 +914,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new identity namespace.",
+					"name": "Create a new identity namespace",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1004,7 +1004,7 @@
 					"response": []
 				},
 				{
-					"name": "List details of a specific identity namespace by its ID.",
+					"name": "Retrieve details of a specific identity namespace by its ID",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1097,7 +1097,7 @@
 					"response": []
 				},
 				{
-					"name": "Update specific identity namespace by its ID.",
+					"name": "Update specific identity namespace",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1194,7 +1194,7 @@
 					"response": []
 				},
 				{
-					"name": "Lists namespaces shared by the {IMS_ORG}, or all owned namespaces if the IMS Org sent in the path matches the IMS Org sent in the header.",
+					"name": "List all namespaces",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1283,12 +1283,13 @@
 									"id": "IMS_ORG"
 								}
 							]
-						}
+						},
+						"description": "This endpoint lists all the namespaces shared by the {IMS_ORG}, or all owned namespaces if the IMS Org sent in the path matches the IMS Org sent in the header."
 					},
 					"response": []
 				},
 				{
-					"name": "List details of a specific identity namespace owned by the {IMS_ORG} if the ID provided is accessible by the IMS Org sent in the header.",
+					"name": "Retrieve an identity namespace",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1382,7 +1383,8 @@
 									"id": "ID"
 								}
 							]
-						}
+						},
+						"description": "This endpoint retrieves details of a specific identity namespace owned by the {IMS_ORG} if the ID provided is accessible by the IMS Org sent in the header."
 					},
 					"response": []
 				}
