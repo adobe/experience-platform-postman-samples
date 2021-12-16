@@ -11,7 +11,7 @@ The purpose of this repository is to collect Postman samples that show how to in
 
 1. [Install Postman](https://www.getpostman.com/apps)
 
-#### Generate and Import the Postman Environment
+### Generate and Import the Postman Environment
 
 1. Launch Postman
 1. Login to [Adobe I/O Console](https://console.adobe.io/), select _Integrations_, and select the Adobe Experience Platform API Integration you wish to interact with using Postman.
