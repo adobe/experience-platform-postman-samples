@@ -1,10 +1,5 @@
 ## Adobe Experience Platform Postman Samples
 
-A repository that collects Postman samples work with Adobe Experience Platform.
-
-
-## Goals
-
 The purpose of this repository is to collect Postman samples that show how to interact with Adobe Experience Platform. Each of the samples will use a common Postman Environment file in order to make it easier to switch between separate collections.
 
 ### Pre-requisities 
