@@ -1,15 +1,13 @@
-# Adobe APIs
+# Adobe Experience Platform APIs
 
-This folder contains Postman Collections that directly interact with Adobe APIs.
+This set of Postman Collections corresponds to the public [Adobe Experience Platform APIs](https://www.adobe.io/apis/experienceplatform/home/api-reference.html).
 
-The Postman Collections herein constructed to align with the Adobe Experience Platform APIs exported via Adobe I/O Console.
-
-
-## [Adobe Experience Platform](./experience-platform)
-
-Contains Postman Collections for all public Adobe Experience Platform APIs.
+These Postman Collections have been set up to share the Postman Variable collections generated via __[Adobe I/O Console's Integrations](https://console.adobe.io/integrations) > Export Details to Postman__, which generates a Postman Environment file with the selected integrations values.
 
 
-## [Adobe Identity Management Service (IMS)](./ims)
+## Obtaining an Access Token to access the Adobe Experience Platform APIs
 
-Contains Postman Collections for a limited set of Adobe Identity Management Service (IMS) APIs. At this time, these Postman Collections are limited to obtaining Access Tokens for interacting with the [Adobe Experience Platform APIs via those Postman Collections](./experience-platform).
+To obtain a valid access token to interact with the APIs in these Postman Collections, use the provided [Adobe I/O Access Token Generation.postman_collection.json](../ims).
+
+The __Adobe I/O Access Token Generation Postman Collection__ is compatible with the __Export Details to Postman__ from Adobe I/O Console. Note that the only Postman Environment variable you will have to provide is the `PRIVATE_KEY`.
+
