@@ -10,7 +10,7 @@
 			"name": "Engines",
 			"item": [
 				{
-					"name": "Retrieve a list of all engines.",
+					"name": "List all engines",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -82,7 +82,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new Engine.",
+					"name": "Create a new Engine",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -213,7 +213,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Docker registry information.",
+					"name": "Get Docker registry information",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -300,7 +300,7 @@
 					"response": []
 				},
 				{
-					"name": "Lookup an Engine by ID.",
+					"name": "Retrieve an Engine",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -393,7 +393,7 @@
 					"response": []
 				},
 				{
-					"name": "Update an Engine by ID.",
+					"name": "Update an Engine",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -490,7 +490,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete an existing Engine by ID.",
+					"name": "Delete an existing Engine",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -590,7 +590,7 @@
 			"name": "MLInstances",
 			"item": [
 				{
-					"name": "Retrieve a list of MLInstances matching given criteria.",
+					"name": "List MLInstances",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -766,7 +766,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete MLinstances by engineId.",
+					"name": "Delete MLinstances by engineId",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -858,7 +858,7 @@
 					"response": []
 				},
 				{
-					"name": "Lookup a MLInstance by ID.",
+					"name": "Retrieve an MLInstance",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1046,7 +1046,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete an existing MLInstance by ID.",
+					"name": "Delete an MLInstance",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1145,7 +1145,7 @@
 			"name": "Experiments",
 			"item": [
 				{
-					"name": "Retrieve all experiments for a MLInstance.",
+					"name": "Retrieve an MLInstance's experiments",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1230,7 +1230,7 @@
 					"response": []
 				},
 				{
-					"name": "Create an experiment.",
+					"name": "Create an experiment",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1319,7 +1319,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete experiments by mlInstanceId.",
+					"name": "Delete experiments by mlInstanceId",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1406,12 +1406,12 @@
 								}
 							]
 						},
-						"description": "Deletes all experiments for provided mlInstance"
+						"description": "Deletes all experiments for the provided mlInstance."
 					},
 					"response": []
 				},
 				{
-					"name": "Lookup an experiment by ID.",
+					"name": "Retrieve an experiment",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1503,7 +1503,7 @@
 					"response": []
 				},
 				{
-					"name": "Update an experiment by ID.",
+					"name": "Update an experiment",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1599,7 +1599,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete an experiment by ID.",
+					"name": "Delete an experiment",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1691,7 +1691,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a list of all runs for an experiment by ID.",
+					"name": "List experiment runs",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1784,7 +1784,7 @@
 					"response": []
 				},
 				{
-					"name": "Run an experiment with parameter values.",
+					"name": "Create an experiment run",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1881,7 +1881,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve the details of an experiment run by ID.",
+					"name": "Retrieve experiment run information",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1979,7 +1979,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve the status of an experiment run by ID.",
+					"name": "Retrieve an experiment run status",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2085,7 +2085,7 @@
 			"name": "Models",
 			"item": [
 				{
-					"name": "Retrieve a list of all Models.",
+					"name": "List all Models.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2171,7 +2171,7 @@
 					"response": []
 				},
 				{
-					"name": "Register a generated Model.",
+					"name": "Create a Model.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2274,7 +2274,7 @@
 					"response": []
 				},
 				{
-					"name": "Lookup a Model by ID.",
+					"name": "Retrieve a Model",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2367,7 +2367,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a Model by ID.",
+					"name": "Update a Model",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2464,7 +2464,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete a Model by ID.",
+					"name": "Delete a Model",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2557,7 +2557,7 @@
 					"response": []
 				},
 				{
-					"name": "Lookup a binary Model artifact by ID.",
+					"name": "Retrieve a binary Model artifact",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2650,7 +2650,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a list of transcodings for a model by ID.",
+					"name": "List a model's transcodings",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2743,7 +2743,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new transcoding for a Model by ID.",
+					"name": "Create a new transcoding",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2840,7 +2840,7 @@
 					"response": []
 				},
 				{
-					"name": "Lookup a Model transcoding by ID.",
+					"name": "Retrieve a Model transcoding",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2945,7 +2945,7 @@
 			"name": "Insights",
 			"item": [
 				{
-					"name": "Retrieve a list of insights.",
+					"name": "List all insights",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3031,7 +3031,7 @@
 					"response": []
 				},
 				{
-					"name": "Add a new Model insight.",
+					"name": "Create a new Model insight",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3121,7 +3121,7 @@
 					"response": []
 				},
 				{
-					"name": "Lookup an insight by ID.",
+					"name": "Retrieve an insight",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3214,7 +3214,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a list of default metrics for algorithms.",
+					"name": "List default metrics for algorithms",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3314,7 +3314,7 @@
 			"name": "MLServices",
 			"item": [
 				{
-					"name": "Retrieve a list of MLServices matching given criteria.",
+					"name": "List all filtered MLServices",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3400,7 +3400,7 @@
 					"response": []
 				},
 				{
-					"name": "Add a new MLService.",
+					"name": "Create an MLService",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3490,7 +3490,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete MLServices by mlInstanceId.",
+					"name": "Delete all MLServices",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3582,7 +3582,7 @@
 					"response": []
 				},
 				{
-					"name": "Lookup MLService by ID.",
+					"name": "Retrieve an MLService",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3674,7 +3674,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a MLService by ID.",
+					"name": "Update an MLService",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -3770,7 +3770,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete an existing MLService by ID.",
+					"name": "Delete an MLService",
 					"event": [
 						{
 							"listen": "prerequest",

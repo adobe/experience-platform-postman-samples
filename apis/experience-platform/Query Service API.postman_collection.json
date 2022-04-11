@@ -10,7 +10,7 @@
 			"name": "Connections",
 			"item": [
 				{
-					"name": "Requests connection parameters for the interactive interface.",
+					"name": "Retrieve connection parameters",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -109,7 +109,8 @@
 								"query",
 								"connection_parameters"
 							]
-						}
+						},
+						"description": "You can use this endpoint to retrieve the connection parameters which are used for the interactive interface."
 					},
 					"response": []
 				}
@@ -121,7 +122,7 @@
 			"name": "Queries",
 			"item": [
 				{
-					"name": "Retrieve a list of queries for this IMS Organization.",
+					"name": "List queries",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -255,7 +256,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new query.",
+					"name": "Create a query",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -352,7 +353,7 @@
 					"response": []
 				},
 				{
-					"name": "Request query status by ID.",
+					"name": "Retrieve a query",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -463,7 +464,7 @@
 					"response": []
 				},
 				{
-					"name": "Request cancellation or query soft delete.",
+					"name": "Request cancellation or query soft delete",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -581,7 +582,7 @@
 			"name": "Schedules",
 			"item": [
 				{
-					"name": "Retrieve a list of schedules for this IMS Organization.",
+					"name": "List schedules",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -703,7 +704,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new scheduled query.",
+					"name": "Create a scheduled query",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -807,7 +808,7 @@
 					"response": []
 				},
 				{
-					"name": "Request details of a schedule by ID.",
+					"name": "Retrieve a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -918,7 +919,7 @@
 					"response": []
 				},
 				{
-					"name": "Patch an existing schedule.",
+					"name": "Update a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1029,7 +1030,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete a schedule by ID.",
+					"name": "Delete a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1140,7 +1141,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a list of all runs, past and currently running, for a particular query schedule.",
+					"name": "List all runs for a schedule",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1270,7 +1271,7 @@
 					"response": []
 				},
 				{
-					"name": "Trigger an immediate run of a scheduled query.",
+					"name": "Trigger an immediate run of a scheduled query",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1382,7 +1383,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve details of a query schedule run by ID.",
+					"name": "Retrieve details of a query schedule run",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1499,7 +1500,7 @@
 					"response": []
 				},
 				{
-					"name": "Cancel a run of a scheduled query by ID.",
+					"name": "Cancel a run of a scheduled query",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1623,7 +1624,7 @@
 			"name": "Query-Templates",
 			"item": [
 				{
-					"name": "Retrieve a list of query templates for this IMS Organization.",
+					"name": "List query templates",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1749,7 +1750,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a new query template.",
+					"name": "Create a query template",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1853,7 +1854,7 @@
 					"response": []
 				},
 				{
-					"name": "Get the count of the query templates.",
+					"name": "Get the count of the query templates",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1964,7 +1965,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a query template by ID.",
+					"name": "Retrieve a query template",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2075,7 +2076,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a query template by ID.",
+					"name": "Update a query template",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2186,7 +2187,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete a query template by ID.",
+					"name": "Delete a query template",
 					"event": [
 						{
 							"listen": "prerequest",

@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "034bfd63-5506-5e22-8fe3-f30c438b6840",
 		"name": "Dataset Service API",
-		"description": "The Dataset Service API provides several endpoints to help you manage data usage labels for existing datasets within the Data Lake. Data usage labels are part of Adobe Experience Platform Data Governance, which allows you to manage customer data and ensure compliance with regulations, restrictions, and policies applicable to data use. Dataset Service is separate from Catalog Service, which manages other dataset metadata.\n- Related documentation:\n    - [Data Governance documentation](http://www.adobe.com/go/data-governance-overview-en)\n    - [Catalog Service documentation](http://www.adobe.com/go/data-catalog-service-overview-en)\n\n- API paths:\n    - PLATFORM Gateway URL: https://<span>platform.adobe.io/\n    - Base path for this API: /data/foundation/dataset\n    - Example of a complete path: https://<span>platform.adobe.io/data/foundation/dataset/datasets/5abd49645591445e1ba04f87/labels\n\n- Required headers:\n    - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).\n    - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.\n    - All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
+		"description": "The Dataset Service API provides several endpoints to help you manage data usage labels for existing datasets within the Data Lake. Data usage labels are part of Adobe Experience Platform Data Governance, which allows you to manage customer data and ensure compliance with regulations, restrictions, and policies applicable to data use. Dataset Service is separate from Catalog Service, which manages other dataset metadata.\n- Related documentation:\n    - [Data Governance documentation](http://www.adobe.com/go/data-governance-overview-en)\n    - [Catalog Service documentation](http://www.adobe.com/go/data-catalog-service-overview-en)\n\n- Visualize API calls with Postman (a free, third-party software):\n    - [Dataset Service API Postman collection on GitHub](https://github.com/adobe/experience-platform-postman-samples/blob/master/apis/experience-platform/Dataset%20Service%20API.postman_collection.json)\n    - [Video guide for creating the Postman environment](https://video.tv.adobe.com/v/28832)\n    - [Steps for importing environments and collections in Postman](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)\n\n- API paths:\n    - PLATFORM Gateway URL: https://<span>platform.adobe.io/\n    - Base path for this API: /data/foundation/dataset\n    - Example of a complete path: https://<span>platform.adobe.io/data/foundation/dataset/datasets/5abd49645591445e1ba04f87/labels\n\n- Required headers:\n    - All calls require the headers `Authorization`, `x-gw-ims-org-id`, and `x-api-key`. For more information on how to obtain these values, see the [authentication tutorial](http://www.adobe.com/go/platform-api-authentication-en).\n    - All resources in Experience Platform are isolated to specific virtual sandboxes. All requests to Platform APIs require the header `x-sandbox-name` whose value is the all-lowercase name of the sandbox the operation will take place in (for example, \"prod\"). See the [sandboxes overview](https://adobe.com/go/sandbox-overview-en) for more information.\n    - All requests with a payload in the request body (such as POST, PUT, and PATCH calls) must include the header `Content-Type` with a value of `application/json`.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -10,7 +10,7 @@
 			"name": "Datasets",
 			"item": [
 				{
-					"name": "Retrieve data usage labels for a specified dataset.",
+					"name": "Retrieve data usage labels for a specific dataset",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -99,12 +99,13 @@
 									"id": "DATASET_ID"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to retrieve data usage labels for a specified dataset."
 					},
 					"response": []
 				},
 				{
-					"name": "Update the data usage labels for a specified dataset, and/or specific fields within that dataset.",
+					"name": "Update the data usage labels for a specific dataset",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -200,12 +201,13 @@
 									"id": "DATASET_ID"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to update the data usage labels for a specified dataset or fields."
 					},
 					"response": []
 				},
 				{
-					"name": "Add data usage labels to a specified dataset, and/or specific fields within that dataset.",
+					"name": "Add data usage labels to a specific dataset",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -294,12 +296,13 @@
 									"id": "DATASET_ID"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to add data usage labels to a specified dataset or fields."
 					},
 					"response": []
 				},
 				{
-					"name": "Remove all data usage labels for a specified dataset.",
+					"name": "Remove all data usage labels for a specific dataset",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -396,7 +399,7 @@
 								}
 							]
 						},
-						"description": "The deletion is a 'non-strict' delete. That is, the entity, all labels for the entity, and any associated references to the dataset as a child entity will be removed."
+						"description": "You can use this endpoint to remove all data usage labels for a specified dataset. Note that the deletion is a 'non-strict' delete. That is, the entity, all labels for the entity, and any associated references to the dataset as a child entity will be removed."
 					},
 					"response": []
 				}

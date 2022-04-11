@@ -10,7 +10,7 @@
 			"name": "User operations",
 			"item": [
 				{
-					"name": "Retrieve a list of active sandboxes for the current user.",
+					"name": "List active sandboxes",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -110,7 +110,7 @@
 			"name": "Admin operations",
 			"item": [
 				{
-					"name": "Retrieve a list of supported sandbox types.",
+					"name": "List all supported sandbox types",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -196,7 +196,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a list of all sandboxes belonging to your IMS Organization.",
+					"name": "List sandboxes",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -298,12 +298,13 @@
 									"value": "{{orderBy}}"
 								}
 							]
-						}
+						},
+						"description": "This endpoint lists all the sandboxes that belong to your IMS Organization."
 					},
 					"response": []
 				},
 				{
-					"name": "Create a new sandbox.",
+					"name": "Create a sandbox",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -400,7 +401,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve a sandbox by name.",
+					"name": "Retrieve a sandbox",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -499,12 +500,13 @@
 									"id": "sandboxName"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to retrieve a sandbox by name."
 					},
 					"response": []
 				},
 				{
-					"name": "Reset a sandbox by name.",
+					"name": "Reset a sandbox",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -603,12 +605,13 @@
 									"id": "sandboxName"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to reset a sandbox, as specified by the name."
 					},
 					"response": []
 				},
 				{
-					"name": "Update a sandbox by name.",
+					"name": "Update a sandbox",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -707,12 +710,13 @@
 									"id": "sandboxName"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to update a sandbox, as specified by the name."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete a sandbox by name.",
+					"name": "Delete a sandbox",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -811,7 +815,8 @@
 									"id": "sandboxName"
 								}
 							]
-						}
+						},
+						"description": "You can use this endpoint to delete a sandbox by name."
 					},
 					"response": []
 				}

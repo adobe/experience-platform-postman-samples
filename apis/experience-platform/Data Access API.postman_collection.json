@@ -10,7 +10,7 @@
 			"name": "Data Access",
 			"item": [
 				{
-					"name": "List all dataset files under a batch.",
+					"name": "List a batch's dataset files",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -114,7 +114,7 @@
 					"response": []
 				},
 				{
-					"name": "Lists all the dataset files under a failed batch.",
+					"name": "Retrieve a failed batch's dataset files",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -222,7 +222,7 @@
 					"response": []
 				},
 				{
-					"name": "Get the meta files under a batch.",
+					"name": "Retrieve a batch's meta files",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -338,7 +338,7 @@
 			"name": "Files",
 			"item": [
 				{
-					"name": "Access or download a file.",
+					"name": "Retrieve a file",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -453,7 +453,7 @@
 					"response": []
 				},
 				{
-					"name": "Get headers regarding a file.",
+					"name": "Retrieve a file's headers",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -555,7 +555,7 @@
 			"name": "Preview",
 			"item": [
 				{
-					"name": "Preview the first 100 rows of CSV or Parquet files.",
+					"name": "Preview the files",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -644,7 +644,8 @@
 									"id": "id"
 								}
 							]
-						}
+						},
+						"description": "This endpoint lets you preview the first 100 rows of the retrieved CSV or Parquet files."
 					},
 					"response": []
 				}
