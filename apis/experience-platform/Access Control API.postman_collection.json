@@ -10,7 +10,7 @@
 			"name": "Access Control Policies",
 			"item": [
 				{
-					"name": "List all available permission names and resource types.",
+					"name": "List all available permission names and resource types",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -97,7 +97,7 @@
 					"response": []
 				},
 				{
-					"name": "List all effective policies for a user on given resources within a sandbox.",
+					"name": "List all effective policies",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -179,7 +179,8 @@
 								"acl",
 								"effective-policies"
 							]
-						}
+						},
+						"description": "This endpoint lists all the effective policies for a user on given resources within a sandbox."
 					},
 					"response": []
 				}
