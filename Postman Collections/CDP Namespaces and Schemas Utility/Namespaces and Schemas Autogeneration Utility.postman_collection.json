@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "873314a3-8e89-46bf-95c8-e229e2bcc33e",
-		"name": "Adobe I/O Access Token Generation + Automate Namespace and Schema creation",
+		"_postman_id": "e360f8d7-7f32-4c5f-8440-0b4b60763ac1",
+		"name": "Namespaces and Schemas V3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -488,15 +488,6 @@
 			"name": "Get Schemas",
 			"event": [
 				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.environment.set('Start','B2B');"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
 					"listen": "test",
 					"script": {
 						"exec": [
@@ -508,7 +499,10 @@
 							"let entityMixinArray = [];",
 							"",
 							"//For all mixins",
-							"var mixinArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1];",
+							"var mixinArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
+							"                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
+							"                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
+							"                  0, 0, 1, 1, 0, 0, 0];",
 							"pm.environment.set('mixinArray', mixinArray);",
 							"",
 							"//for all relationships",
@@ -543,7 +537,15 @@
 							"var relationshipSchemaArray = [0,0,0,0,0,0,0,0,0,0];",
 							"pm.environment.set('relationshipSchemaArray', relationshipSchemaArray);",
 							"",
-							"entityMixinArray = [\"B2B Account\",\"B2B Person\",\"B2B Person Components\",\"B2B Opportunity\",\"B2B Campaign\",\"B2B Campaign Member\",\"Remove From List\", \"Visit Web Page\", \"Person Identifier\",\"Marketo Web URL\",\"New Lead\",\"Convert Lead\",\"Add To List\",\"Add To Opportunity\",\"Remove From Opportunity\",\"Interesting Moment\",\"Form Filled Out\",\"Link Clicks\",\"Email Delivered\",\"Email Bounced\",\"Email Unsubscribed\",\"Email Opened\",\"Email Clicked\",\"Email Bounced Soft\",\"Score Changed\",\"Opportunity Updated\",\"Status in Campaign Progression Changed\",\"Identity Map\",\"Consents and Preferences\",\"Account Contact Relation Identity Map\"];",
+							"//friendly names used for logging to assist troubleshooting issues",
+							"entityMixinArray = [\"B2B Account\",\"B2B Person\",\"B2B Person Components\",\"B2B Opportunity\",\"B2B Campaign\",",
+							"    \"B2B Campaign Member\",\"Remove From List\", \"Visit Web Page\", \"Person Identifier\",\"Marketo Web URL\",",
+							"    \"New Lead\",\"Convert Lead\",\"Add To List\",\"Add To Opportunity\",\"Remove From Opportunity\",",
+							"    \"Interesting Moment\",\"Form Filled Out\",\"Link Clicks\",\"Email Delivered\",\"Email Bounced\",",
+							"    \"Email Unsubscribed\",\"Email Opened\",\"Email Clicked\",\"Email Bounced Soft\",\"Score Changed\",",
+							"    \"Opportunity Updated\",\"Status in Campaign Progression Changed\",\"Identity Map\",\"Consents and Preferences\",\"Account Contact Relation Identity Map\",",
+							"    \"Call Webhook\",\"Change Campaign Cadence\",\"Add to Nurture\",\"Change Nurture Track\",\"Change Revenue Stage\",",
+							"    \"Merge Leads\",\"Send Email\"];",
 							"",
 							"pm.environment.set('relationshipSourcePropertyArray', '[\"/personComponents[*]/sourceAccountKey/sourceKey\",\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/personKey/sourceKey\",\"/campaignKey/sourceKey\",\"/personKey/sourceKey\",\"/marketingListKey/sourceKey\",\"/accountParentKey/sourceKey\"]');",
 							"pm.environment.set('relationshipDestinationPropertyArray','[\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/personKey/sourceKey\",\"/campaignKey/sourceKey\",\"/personKey/sourceKey\",\"/marketingListKey/sourceKey\"]');",
@@ -551,7 +553,7 @@
 							"//setting up namespace arrays",
 							"let primaryIdentityArray = pm.environment.get('namespaceArray');",
 							"",
-							"pm.environment.set('mixinIdArray', '[\"https://ns.adobe.com/xdm/mixins/account-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-components\",\"https://ns.adobe.com/xdm/mixins/opportunity-details\",\"https://ns.adobe.com/xdm/mixins/campaign-details\",\"https://ns.adobe.com/xdm/context/campaign-member-details\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-list\",\"https://ns.adobe.com/xdm/mixins/events/visit-webpage\",\"https://ns.adobe.com/xdm/mixins/person-identifier\",\"https://ns.adobe.com/b2b/marketo/marketo-web-url\",\"https://ns.adobe.com/xdm/mixins/events/new-lead\",\"https://ns.adobe.com/xdm/mixins/events/convert-lead\",\"https://ns.adobe.com/xdm/mixins/events/add-to-list\",\"https://ns.adobe.com/xdm/mixins/events/add-to-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/interesting-moment\",\"https://ns.adobe.com/xdm/mixins/events/formfilledout\",\"https://ns.adobe.com/xdm/mixins/events/linkclicks\",\"https://ns.adobe.com/xdm/mixins/events/emaildelivered\",\"https://ns.adobe.com/xdm/mixins/events/emailbounced\",\"https://ns.adobe.com/xdm/mixins/events/emailunsubscribed\",\"https://ns.adobe.com/xdm/mixins/events/emailopened\",\"https://ns.adobe.com/xdm/mixins/events/emailclicked\",\"https://ns.adobe.com/xdm/mixins/events/emailbouncedsoft\",\"https://ns.adobe.com/xdm/mixins/events/scorechanged\",\"https://ns.adobe.com/xdm/mixins/events/opportunityupdated\",\"https://ns.adobe.com/xdm/mixins/events/statusincampaignprogressionchanged\",\"https://ns.adobe.com/xdm/context/identitymap\",\"https://ns.adobe.com/xdm/mixins/profile-consents\",\"https://ns.adobe.com/xdm/context/identitymap\", \"https://ns.adobe.com/xdm/mixins/events/callwebhook\", \"https://ns.adobe.com/xdm/mixins/events/change-campaign-cadence\"]');",
+							"pm.environment.set('mixinIdArray', '[\"https://ns.adobe.com/xdm/mixins/account-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-components\",\"https://ns.adobe.com/xdm/mixins/opportunity-details\",\"https://ns.adobe.com/xdm/mixins/campaign-details\",\"https://ns.adobe.com/xdm/context/campaign-member-details\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-list\",\"https://ns.adobe.com/xdm/mixins/events/visit-webpage\",\"https://ns.adobe.com/xdm/mixins/person-identifier\",\"https://ns.adobe.com/b2b/marketo/marketo-web-url\",\"https://ns.adobe.com/xdm/mixins/events/new-lead\",\"https://ns.adobe.com/xdm/mixins/events/convert-lead\",\"https://ns.adobe.com/xdm/mixins/events/add-to-list\",\"https://ns.adobe.com/xdm/mixins/events/add-to-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/interesting-moment\",\"https://ns.adobe.com/xdm/mixins/events/formfilledout\",\"https://ns.adobe.com/xdm/mixins/events/linkclicks\",\"https://ns.adobe.com/xdm/mixins/events/emaildelivered\",\"https://ns.adobe.com/xdm/mixins/events/emailbounced\",\"https://ns.adobe.com/xdm/mixins/events/emailunsubscribed\",\"https://ns.adobe.com/xdm/mixins/events/emailopened\",\"https://ns.adobe.com/xdm/mixins/events/emailclicked\",\"https://ns.adobe.com/xdm/mixins/events/emailbouncedsoft\",\"https://ns.adobe.com/xdm/mixins/events/scorechanged\",\"https://ns.adobe.com/xdm/mixins/events/opportunityupdated\",\"https://ns.adobe.com/xdm/mixins/events/statusincampaignprogressionchanged\",\"https://ns.adobe.com/xdm/context/identitymap\",\"https://ns.adobe.com/xdm/mixins/profile-consents\",\"https://ns.adobe.com/xdm/context/identitymap\",\"https://ns.adobe.com/xdm/mixins/events/callwebhook\", \"https://ns.adobe.com/xdm/mixins/events/change-campaign-cadence\",\"https://ns.adobe.com/xdm/mixins/events/add-to-campaign\",\"https://ns.adobe.com/xdm/mixins/events/change-campaign-stream\",\"https://ns.adobe.com/xdm/mixins/events/revenueStageChanged\",\"https://ns.adobe.com/xdm/mixins/events/emailsent\",\"https://ns.adobe.com/xdm/mixins/events/merge-leads\"]');",
 							"pm.environment.set('entityArray', '[\"B2B Account\",\"B2B Person\",\"B2B Opportunity\",\"B2B Opportunity Person Relation\",\"B2B Campaign\",\"B2B Campaign Member\",\"B2B Marketing List\",\"B2B Marketing List Member\",\"B2B Activity\",\"B2B Account Person Relation\"]');",
 							"pm.environment.set('classIdArray', '[\"https://ns.adobe.com/xdm/context/account\",\"https://ns.adobe.com/xdm/context/profile\",\"https://ns.adobe.com/xdm/context/opportunity\",\"https://ns.adobe.com/xdm/classes/opportunity-person\",\"https://ns.adobe.com/xdm/classes/campaign\",\"https://ns.adobe.com/xdm/context/campaign-member\",\"https://ns.adobe.com/xdm/classes/marketing-list\",\"https://ns.adobe.com/xdm/classes/marketing-list-member\",\"https://ns.adobe.com/xdm/context/experienceevent\",\"https://ns.adobe.com/xdm/classes/account-person\"]');",
 							"pm.environment.set('sourcePropertyArray', '[\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/opportunityPersonKey/sourceKey\",\"/campaignKey/sourceKey\",\"/campaignMemberKey/sourceKey\",\"/marketingListKey/sourceKey\",\"/marketingListMemberKey/sourceKey\",\"/personKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/accountPersonKey/sourceKey\"]');",
@@ -630,6 +632,11 @@
 							"        mixinArray.splice(26, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[26]));",
 							"        mixinArray.splice(30, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[30]));",
 							"        mixinArray.splice(31, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[31]));",
+							"        mixinArray.splice(32, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[32]));",
+							"        mixinArray.splice(33, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[33]));",
+							"        mixinArray.splice(34, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[34]));",
+							"        mixinArray.splice(35, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[35]));",
+							"        mixinArray.splice(36, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[36]));",
 							"    }",
 							"    if (arrayItem.title == entityArray[9]) {",
 							"        console.log('B2B Account Person Relation Schema already exists, adding to array');",
@@ -714,6 +721,15 @@
 							"    }",
 							"}",
 							"//===============================Functions===============================\\\\"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set('Start','B2B');"
 						],
 						"type": "text/javascript"
 					}
@@ -1018,6 +1034,11 @@
 							"                    break;",
 							"                case 30:",
 							"                case 31:",
+							"                case 32:",
+							"                case 33:",
+							"                case 34:",
+							"                case 35:",
+							"                case 36:",
 							"                    //console.log('Setting schema to be added: ' + schemaAltIdArray[8]);",
 							"                    pm.environment.set('schemaAltId', schemaAltIdArray[8]);",
 							"                    break;",
@@ -1122,6 +1143,11 @@
 							"                    break;",
 							"                case 30:",
 							"                case 31:",
+							"                case 32:",
+							"                case 33:",
+							"                case 34:",
+							"                case 35:",
+							"                case 36:",
 							"                    //console.log('Setting schema to be added: ' + schemaAltIdArray[8]);",
 							"                    pm.environment.set('schemaAltId', schemaAltIdArray[8]);",
 							"                    break;",
