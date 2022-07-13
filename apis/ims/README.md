@@ -9,7 +9,7 @@ After Exporting the Postman Environment from Adobe I/O Console, ensure you add y
 
 ## Obtaining an Access Token to access the Adobe Experience Platform APIs for Non-production Use
 
-The Postman Collection __[identity-management-service.postman_collection.json](identity-management-service.postman_collection.json)__ contains a single option for generating an Access Token.
+The Postman Collection __[Identity Management Service.postman_collection.json](Identity Management Service.postman_collection.json)__ contains a single option for generating an Access Token.
 
 This methods is for convenience, and provide a quick way for Developers to obtain an Access Token for non-production use. The reasons these are for non-production use are described below:
 
