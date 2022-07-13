@@ -2,7 +2,7 @@
 
 This set of Postman Collections contains commonly used interactions with [Adobe Identity Management Services (IMS) APIs](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md)
 
-These Postman Collections have been set up to share the Postman Variable collections generated via [Adobe I/O Console's Integrations](https://console.adobe.io/integrations) > Export Details to Postman, which generates a Postman Environment file complete with your Integrations values.
+These Postman Collections have been set up to share the Postman Variable collections generated via [Adobe Developer Console's Integrations](https://console.adobe.io/integrations) > Export Details to Postman, which generates a Postman Environment file complete with your Integrations values.
 
 After Exporting the Postman Environment from Adobe I/O Console, ensure you add your Private Key (`-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----`) to BOTH the Initial and Current values for `PRIVATE_KEY`.
 
