@@ -1,6 +1,6 @@
 # Identity Management Service APIs
 
-This set of Postman Collections contains commonly used interactions with [Adobe Identity Management Services (IMS) APIs](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md);
+This set of Postman Collections contains commonly used interactions with [Adobe Identity Management Services (IMS) APIs](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md)
 
 These Postman Collections have been set up to share the Postman Variable collections generated via [Adobe I/O Console's Integrations](https://console.adobe.io/integrations) > Export Details to Postman, which generates a Postman Environment file complete with your Integrations values.
 
