@@ -19,7 +19,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -111,7 +111,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -203,7 +203,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -302,7 +302,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -401,7 +401,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -507,7 +507,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -599,7 +599,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -691,7 +691,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -790,7 +790,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -889,7 +889,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -995,7 +995,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1087,7 +1087,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1179,7 +1179,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1278,7 +1278,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1377,7 +1377,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1483,7 +1483,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1575,7 +1575,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1667,7 +1667,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1766,7 +1766,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1865,7 +1865,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -1971,7 +1971,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -2073,7 +2073,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -2170,7 +2170,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -2264,7 +2264,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -2371,7 +2371,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -2464,7 +2464,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -2557,7 +2557,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
@@ -2657,7 +2657,7 @@
 								"exec": [
 									"/** Begin Adobe-provided Pre-Request Scripts **/",
 									"// Do not send HTTP Headers with empty variables, as Postman will send the literal variable name",
-									"pm.request.headers.each(header => {",
+									"pm.request.forEachHeader(header => {",
 									"    if (header.value.startsWith(\"{{\") && header.value.endsWith(\"}}\")) {",
 									"        if (!pm.variables.get(header.value.substring(2, header.value.length - 2))) { pm.request.headers.remove(header.key); }",
 									"    }",
