@@ -1,16 +1,16 @@
 {
 	"info": {
-		"_postman_id": "ddcf96f0-4142-4888-9376-a12611bd6e73",
+		"_postman_id": "20b3ea2e-3b52-46f0-8e12-43cdf1b9aa56",
 		"name": "Identity Management Service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "4873061"
+		"_exporter_id": "4873115"
 	},
 	"item": [
 		{
-			"name": "Local Signing (Non-production use-only)",
+			"name": "JWT Deprecated",
 			"item": [
 				{
-					"name": "IMS: JWT Generate + Auth via User Token",
+					"name": "JWT Generate + Request Access Token",
 					"event": [
 						{
 							"listen": "test",
@@ -190,6 +190,66 @@
 							""
 						]
 					}
+				}
+			]
+		},
+		{
+			"name": "OAuth",
+			"item": [
+				{
+					"name": "Request Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"\r",
+									"if (data.access_token) {\r",
+									"    pm.environment.set(\"ACCESS_TOKEN\", data.access_token);\r",
+									"} else {\r",
+									"    console.log(\"Unable to acquire ACCESS_TOKEN from Adobe IMS to make further calls to Adobe I/O APIs.\")\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://{{IMS}}/ims/token/v2?grant_type=client_credentials&client_id={{API_KEY}}&client_secret={{CLIENT_SECRET}}&scope={{SCOPES}}",
+							"protocol": "https",
+							"host": [
+								"{{IMS}}"
+							],
+							"path": [
+								"ims",
+								"token",
+								"v2"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials"
+								},
+								{
+									"key": "client_id",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{CLIENT_SECRET}}"
+								},
+								{
+									"key": "scope",
+									"value": "{{SCOPES}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
