@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "e360f8d7-7f32-4c5f-8440-0b4b60763ac1",
 		"name": "Namespaces and Schemas V3",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7760811"
 	},
 	"item": [
 		{
@@ -502,7 +503,7 @@
 							"var mixinArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
 							"                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
 							"                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
-							"                  0, 0, 0, 0, 0, 0, 0];",
+							"                  0, 0, 1, 1, 0, 0, 0];",
 							"pm.environment.set('mixinArray', mixinArray);",
 							"",
 							"//for all relationships",
@@ -537,6 +538,10 @@
 							"var relationshipSchemaArray = [0,0,0,0,0,0,0,0,0,0];",
 							"pm.environment.set('relationshipSchemaArray', relationshipSchemaArray);",
 							"",
+							"//create an array to store the merge policies that we find",
+							"var mpResultsArray = [0,0,0,0,0,0,0,0,0];",
+							"pm.environment.set('mpResultsArray', mpResultsArray);",
+							"",
 							"//friendly names used for logging to assist troubleshooting issues",
 							"entityMixinArray = [\"B2B Account\",\"B2B Person\",\"B2B Person Components\",\"B2B Opportunity\",\"B2B Campaign\",",
 							"    \"B2B Campaign Member\",\"Remove From List\", \"Visit Web Page\", \"Person Identifier\",\"Marketo Web URL\",",
@@ -557,6 +562,7 @@
 							"pm.environment.set('entityArray', '[\"B2B Account\",\"B2B Person\",\"B2B Opportunity\",\"B2B Opportunity Person Relation\",\"B2B Campaign\",\"B2B Campaign Member\",\"B2B Marketing List\",\"B2B Marketing List Member\",\"B2B Activity\",\"B2B Account Person Relation\"]');",
 							"pm.environment.set('classIdArray', '[\"https://ns.adobe.com/xdm/context/account\",\"https://ns.adobe.com/xdm/context/profile\",\"https://ns.adobe.com/xdm/context/opportunity\",\"https://ns.adobe.com/xdm/classes/opportunity-person\",\"https://ns.adobe.com/xdm/classes/campaign\",\"https://ns.adobe.com/xdm/context/campaign-member\",\"https://ns.adobe.com/xdm/classes/marketing-list\",\"https://ns.adobe.com/xdm/classes/marketing-list-member\",\"https://ns.adobe.com/xdm/context/experienceevent\",\"https://ns.adobe.com/xdm/classes/account-person\"]');",
 							"pm.environment.set('sourcePropertyArray', '[\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/opportunityPersonKey/sourceKey\",\"/campaignKey/sourceKey\",\"/campaignMemberKey/sourceKey\",\"/marketingListKey/sourceKey\",\"/marketingListMemberKey/sourceKey\",\"/personKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/accountPersonKey/sourceKey\"]');",
+							"pm.environment.set('mpArray', '_xdm.context.account,_xdm.context.profile,_xdm.context.opportunity,_xdm.classes.opportunity-person,_xdm.classes.campaign,_xdm.context.campaign-member,_xdm.classes.marketing-list,_xdm.classes.marketing-list-member,_xdm.classes.account-person');",
 							"",
 							"",
 							"pm.environment.set('namespaceArray',primaryIdentityArray);",
@@ -692,6 +698,7 @@
 							"pm.environment.set('legacyRelationshipCounter',0);",
 							"pm.environment.set('secondaryIdentityCounter',0);",
 							"pm.environment.set('descriptorRefIdentityCounter',0);",
+							"pm.environment.set('mpCounter',0);",
 							"",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -1595,7 +1602,7 @@
 							"                    pm.environment.set('destinationSchema', schemaIdArray[1]);",
 							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[1]);",
 							"                    pm.environment.set('destinationToSouceTitle', \"Account\");",
-							"                    pm.environment.set('sourceToDestinationTitle', \"People\");",
+							"                    pm.environment.set('sourceToDestinationTitle', \"Account-Person\");",
 							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[6]);",
 							"                    pm.environment.set('destinationProperty', relationshipDestinationPropertyArray[5]);",
 							"                    break;",
@@ -1604,7 +1611,7 @@
 							"                    pm.environment.set('sourceSchema', schemaIdArray[9]);",
 							"                    pm.environment.set('destinationSchema', schemaIdArray[0]);",
 							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[0]);",
-							"                    pm.environment.set('destinationToSouceTitle', \"People\");",
+							"                    pm.environment.set('destinationToSouceTitle', \"Account-Person\");",
 							"                    pm.environment.set('sourceToDestinationTitle', \"Account\");",
 							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[1]);",
 							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
@@ -1760,7 +1767,7 @@
 							"                    pm.environment.set('destinationSchema', schemaIdArray[1]);",
 							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[1]);",
 							"                    pm.environment.set('destinationToSouceTitle', \"Account\");",
-							"                    pm.environment.set('sourceToDestinationTitle', \"People\");",
+							"                    pm.environment.set('sourceToDestinationTitle', \"Account-Person\");",
 							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[6]);",
 							"                    pm.environment.set('destinationProperty', \"/b2b/personKey/sourceKey\");",
 							"                    break;",
@@ -1769,7 +1776,7 @@
 							"                    pm.environment.set('sourceSchema', schemaIdArray[9]);",
 							"                    pm.environment.set('destinationSchema', schemaIdArray[0]);",
 							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[0]);",
-							"                    pm.environment.set('destinationToSouceTitle', \"People\");",
+							"                    pm.environment.set('destinationToSouceTitle', \"Account-Person\");",
 							"                    pm.environment.set('sourceToDestinationTitle', \"Account\");",
 							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[1]);",
 							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
@@ -2488,65 +2495,7 @@
 							"pm.environment.set('profileCounter', profileCounter);",
 							"if(profileCounter > profileEnabledArray.length)",
 							"{",
-							"    pm.environment.unset('namespaceArray');",
-							"    pm.environment.unset('secondaryNamespaceArray');",
-							"    pm.environment.unset('mixinArray');",
-							"    pm.environment.unset('relationshipArray');",
-							"    pm.environment.unset('profileEnabledArray');",
-							"    pm.environment.unset('schemaIdArray');",
-							"    pm.environment.unset('schemaAltIdArray');",
-							"    pm.environment.unset('discoveredEntityArray');",
-							"    pm.environment.unset('relationshipSchemaArray');",
-							"    pm.environment.unset('relationshipSourcePropertyArray');",
-							"    pm.environment.unset('relationshipDestinationPropertyArray');",
-							"    pm.environment.unset('mixinIdArray');",
-							"    pm.environment.unset('marketoEntityArray');",
-							"    pm.environment.unset('salesforceEntityArray');",
-							"    pm.environment.unset('microsoftEntityArray');",
-							"    pm.environment.unset('classIdArray');",
-							"    pm.environment.unset('sourcePropertyArray');",
-							"    pm.environment.unset('resultsArrayLength');",
-							"    pm.environment.unset('resultsArray');",
-							"    pm.environment.unset('numberToCreate');",
-							"    pm.environment.unset('numOfMixinsToCreate');",
-							"    pm.environment.unset('entityMixinArray');",
-							"    pm.environment.unset('counter');",
-							"    pm.environment.unset('mixinCounter');",
-							"    pm.environment.unset('identityCounter');",
-							"    pm.environment.unset('profileCounter');",
-							"    pm.environment.unset('relationshipCounter');",
-							"    pm.environment.unset('hasRemovedAbmElement');",
-							"    pm.environment.unset('schemaName');",
-							"    pm.environment.unset('classId');",
-							"    pm.environment.unset('schemaAltId');",
-							"    pm.environment.unset('mixinId');",
-							"    pm.environment.unset('mixinIndex');",
-							"    pm.environment.unset('primaryIdentityArray');",
-							"    pm.environment.unset('secondaryIdentityArray');",
-							"    pm.environment.unset('identityArray');",
-							"    pm.environment.unset('schemasToAddIdentitiesTo');",
-							"    pm.environment.unset('schemaId');",
-							"    pm.environment.unset('sourceProperty');",
-							"    pm.environment.unset('namespace');",
-							"    pm.environment.unset('isPrimary');",
-							"    pm.environment.unset('legacyRelationshipCounter');",
-							"    pm.environment.unset('sourceSchema');",
-							"    pm.environment.unset('destinationSchema');",
-							"    pm.environment.unset('destinationNamespace');",
-							"    pm.environment.unset('destinationToSouceTitle');",
-							"    pm.environment.unset('sourceToDestinationTitle');",
-							"    pm.environment.unset('relationshipIndex');",
-							"    pm.environment.unset('destinationProperty');",
-							"    pm.environment.unset('hasSecondary');",
-							"    pm.environment.unset('legacyRelationshipArray');",
-							"    pm.environment.unset('descriptorRefIdentityArray');",
-							"    pm.environment.unset('entityArray');",
-							"    pm.environment.unset('secondaryIdentityCounter');",
-							"    pm.environment.unset('descriptorRefIdentityCounter');",
-							"    pm.environment.unset('cardinality');",
-							"    pm.environment.unset('Start');",
-							"    console.warn('Everything is complete!')",
-							"    postman.setNextRequest(null);",
+							"    postman.setNextRequest('Get Merge Policies');",
 							"}"
 						],
 						"type": "text/javascript"
@@ -2609,6 +2558,204 @@
 						"tenant",
 						"schemas",
 						"{{schemaAltId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Merge Policies",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.warn('pre-request script of enabling profile');",
+							"let mpString = pm.environment.get('mpArray');",
+							"let mpArray = mpString.toString().split(\",\");",
+							"let mpCounter = parseInt(pm.environment.get('mpCounter'));",
+							"let mpResultsString = pm.environment.get('mpResultsArray');",
+							"let mpResultsArray = mpResultsString.toString().split(\",\");",
+							"console.log('mpCounter: ' + mpCounter);",
+							"",
+							"if(mpCounter == 0)",
+							"{",
+							"    pm.environment.set('mpId', mpArray[mpCounter]);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.warn('test script of getting merge policies')",
+							"let mpCounter = parseInt(pm.environment.get('mpCounter'));",
+							"let mpString = pm.environment.get('mpArray');",
+							"let mpArray = mpString.toString().split(\",\");",
+							"let mpResultsString = pm.environment.get('mpResultsArray');",
+							"let mpResultsArray = mpResultsString.toString().split(\",\");",
+							"let profilmpCounterCounter = parseInt(pm.environment.get('mpCounter'));",
+							"let responseData = JSON.parse(responseBody);",
+							"",
+							"if (responseData['_page']['totalCount'] > 0)",
+							"{",
+							"    console.log('Profile Enabling Successful, response ID: ' + responseData['@id']);",
+							"    mpResultsArray.splice(mpCounter, 1, 1);",
+							"    pm.environment.set('mpResultsArray',mpResultsArray);",
+							"    mpCounter++;",
+							"}",
+							"",
+							"while(mpCounter <= mpResultsArray.length)",
+							"{",
+							"    if(mpResultsArray[mpCounter] == 0)",
+							"    {",
+							"        console.log('Found merge policy that needs enabled on schema: ' + mpArray[mpCounter]);",
+							"        pm.environment.set('mpId', mpArray[mpCounter]);",
+							"        postman.setNextRequest(pm.info.requestName);",
+							"        break;",
+							"    } ",
+							"    mpCounter++;",
+							"}",
+							"console.log('MP Counter: ' + mpCounter);",
+							"pm.environment.set('mpCounter', mpCounter);",
+							"if(mpCounter > mpResultsArray.length)",
+							"{",
+							"    pm.environment.unset('namespaceArray');",
+							"    pm.environment.unset('secondaryNamespaceArray');",
+							"    pm.environment.unset('mixinArray');",
+							"    pm.environment.unset('relationshipArray');",
+							"    pm.environment.unset('profileEnabledArray');",
+							"    pm.environment.unset('schemaIdArray');",
+							"    pm.environment.unset('schemaAltIdArray');",
+							"    pm.environment.unset('discoveredEntityArray');",
+							"    pm.environment.unset('relationshipSchemaArray');",
+							"    pm.environment.unset('relationshipSourcePropertyArray');",
+							"    pm.environment.unset('relationshipDestinationPropertyArray');",
+							"    pm.environment.unset('mixinIdArray');",
+							"    pm.environment.unset('marketoEntityArray');",
+							"    pm.environment.unset('salesforceEntityArray');",
+							"    pm.environment.unset('microsoftEntityArray');",
+							"    pm.environment.unset('classIdArray');",
+							"    pm.environment.unset('sourcePropertyArray');",
+							"    pm.environment.unset('resultsArrayLength');",
+							"    pm.environment.unset('resultsArray');",
+							"    pm.environment.unset('numberToCreate');",
+							"    pm.environment.unset('numOfMixinsToCreate');",
+							"    pm.environment.unset('entityMixinArray');",
+							"    pm.environment.unset('counter');",
+							"    pm.environment.unset('mixinCounter');",
+							"    pm.environment.unset('identityCounter');",
+							"    pm.environment.unset('profileCounter');",
+							"    pm.environment.unset('relationshipCounter');",
+							"    pm.environment.unset('hasRemovedAbmElement');",
+							"    pm.environment.unset('schemaName');",
+							"    pm.environment.unset('classId');",
+							"    pm.environment.unset('schemaAltId');",
+							"    pm.environment.unset('mixinId');",
+							"    pm.environment.unset('mixinIndex');",
+							"    pm.environment.unset('primaryIdentityArray');",
+							"    pm.environment.unset('secondaryIdentityArray');",
+							"    pm.environment.unset('identityArray');",
+							"    pm.environment.unset('schemasToAddIdentitiesTo');",
+							"    pm.environment.unset('schemaId');",
+							"    pm.environment.unset('sourceProperty');",
+							"    pm.environment.unset('namespace');",
+							"    pm.environment.unset('isPrimary');",
+							"    pm.environment.unset('legacyRelationshipCounter');",
+							"    pm.environment.unset('sourceSchema');",
+							"    pm.environment.unset('destinationSchema');",
+							"    pm.environment.unset('destinationNamespace');",
+							"    pm.environment.unset('destinationToSouceTitle');",
+							"    pm.environment.unset('sourceToDestinationTitle');",
+							"    pm.environment.unset('relationshipIndex');",
+							"    pm.environment.unset('destinationProperty');",
+							"    pm.environment.unset('hasSecondary');",
+							"    pm.environment.unset('legacyRelationshipArray');",
+							"    pm.environment.unset('descriptorRefIdentityArray');",
+							"    pm.environment.unset('entityArray');",
+							"    pm.environment.unset('secondaryIdentityCounter');",
+							"    pm.environment.unset('descriptorRefIdentityCounter');",
+							"    pm.environment.unset('cardinality');",
+							"    pm.environment.unset('Start');",
+							"    pm.environment.unset('mpCounter');",
+							"    pm.environment.unset('mpArray');",
+							"    pm.environment.unset('mpResultsArray');",
+							"    console.warn('Everything is complete!')",
+							"    postman.setNextRequest(null);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ACCESS_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					},
+					{
+						"key": "x-gw-ims-org-id",
+						"value": "{{IMS_ORG}}",
+						"type": "text"
+					},
+					{
+						"key": "x-sandbox-name",
+						"value": "{{SANDBOX_NAME}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.adobe.xdm-id+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{PLATFORM_URL}}/data/core/ups/config/mergePolicies?default=true&schema.name={{mpId}}",
+					"protocol": "https",
+					"host": [
+						"{{PLATFORM_URL}}"
+					],
+					"path": [
+						"data",
+						"core",
+						"ups",
+						"config",
+						"mergePolicies"
+					],
+					"query": [
+						{
+							"key": "default",
+							"value": "true"
+						},
+						{
+							"key": "schema.name",
+							"value": "{{mpId}}"
+						}
 					]
 				}
 			},
