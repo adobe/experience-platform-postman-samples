@@ -1,20 +1,20 @@
 {
 	"info": {
-		"_postman_id": "85428f8b-1fc3-42c8-8980-c1a8309515e7",
-		"name": "Adobe I/O Access Token Generation",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "20b3ea2e-3b52-46f0-8e12-43cdf1b9aa56",
+		"name": "Identity Management Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4873115"
 	},
 	"item": [
 		{
-			"name": "Local Signing (Non-production use-only)",
+			"name": "JWT Deprecated",
 			"item": [
 				{
-					"name": "IMS: JWT Generate + Auth via User Token",
+					"name": "JWT Generate + Request Access Token",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "fb8d3aab-0cbf-4401-ae93-db56821f6e47",
 								"exec": [
 									"var data = JSON.parse(responseBody);",
 									"",
@@ -30,7 +30,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4fe338c4-c454-4afa-af0a-9089c4af38b5",
 								"exec": [
 									"",
 									"const ERROR_MESSAGE = \" not found in active environment. Please ensure the correct environment is selected and populated.\";",
@@ -177,7 +176,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "65efe4f3-55ac-47d7-b20a-a9a3dfa94759",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -187,22 +185,79 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "38f57e34-550a-4d66-a684-7e9f97f38192",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+		},
+		{
+			"name": "OAuth",
+			"item": [
+				{
+					"name": "Request Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"\r",
+									"if (data.access_token) {\r",
+									"    pm.environment.set(\"ACCESS_TOKEN\", data.access_token);\r",
+									"} else {\r",
+									"    console.log(\"Unable to acquire ACCESS_TOKEN from Adobe IMS to make further calls to Adobe I/O APIs.\")\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://{{IMS}}/ims/token/v2?grant_type=client_credentials&client_id={{API_KEY}}&client_secret={{CLIENT_SECRET}}&scope={{SCOPES}}",
+							"protocol": "https",
+							"host": [
+								"{{IMS}}"
+							],
+							"path": [
+								"ims",
+								"token",
+								"v2"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials"
+								},
+								{
+									"key": "client_id",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{CLIENT_SECRET}}"
+								},
+								{
+									"key": "scope",
+									"value": "{{SCOPES}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "31a6304c-1cdf-4da0-bfbe-fe2ae0a3f437",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -212,13 +267,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a05da4ad-ad63-440b-ae91-ccf0d7e0e6e1",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
