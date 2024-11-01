@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1c19eb0e-516b-43c4-9a0f-2da0d7a57afa",
+		"_postman_id": "e84be33d-0a81-44ca-8926-be1cb608ba93",
 		"name": "Namespaces and Schemas V3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8336612"
@@ -121,26 +121,26 @@
 					{
 						"key": "Authorization",
 						"value": "Bearer {{ACCESS_TOKEN}}",
-						"type": "text",
-						"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html)."
+						"description": "The access token which can be copied from your Experience Platform integration, prefixed with \"Bearer \".  For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+						"type": "text"
 					},
 					{
 						"key": "x-api-key",
 						"value": "{{API_KEY}}",
-						"type": "text",
-						"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html)."
+						"description": "The API key which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+						"type": "text"
 					},
 					{
 						"key": "x-gw-ims-org-id",
 						"value": "{{IMS_ORG}}",
-						"type": "text",
-						"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html)."
+						"description": "The Organization ID which can be copied from your Experience Platform integration. For more information on how to obtain this value, visit the [authentication tutorial](https://docs.adobe.com/content/help/en/experience-platform/tutorials/authentication.html).",
+						"type": "text"
 					},
 					{
 						"key": "x-sandbox-name",
 						"value": "{{SANDBOX_NAME}}",
-						"type": "text",
-						"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'"
+						"description": "Identifies the Adobe Experience Platform sandbox to use. Default sandbox is 'prod'",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -282,11 +282,11 @@
 							"var namespacesToCreate = pm.environment.get(\"namespacesToCreate\");",
 							"",
 							"if(namespacesToCreate && namespacesToCreate.length > 0) {",
-							"    postman.setNextRequest(pm.info.requestName);",
+							"    pm.execution.setNextRequest(pm.info.requestName);",
 							"}",
 							"else {",
 							"    console.log(\"End of creation of namespaces\");",
-							"    postman.setNextRequest(\"Get Schemas\");",
+							"    pm.execution.setNextRequest(\"Get Schemas\");",
 							"    // clear out env variables which were used in the script ",
 							"    pm.environment.unset(\"namespacesLength\");",
 							"    pm.environment.unset(\"namespacesResult\");",
@@ -552,11 +552,11 @@
 							"//If there are no more schemas to create, set next request to mixins",
 							"if (parseInt(numberToCreate) == 0 && parseInt(numOfMixinsToCreate) != 0) {",
 							"    console.log('All Schemas have been created. Setting next request to addin mixins.');",
-							"    postman.setNextRequest('Add Field Groups');",
+							"    pm.execution.setNextRequest('Add Field Groups');",
 							"}",
 							"if (numberToCreate == 0 && numOfMixinsToCreate == 0) {",
 							"    console.log('All Schemas and mixins have been created. Setting next request to add identities.');",
-							"    postman.setNextRequest('Add Identities');",
+							"    pm.execution.setNextRequest('Add Identities');",
 							"}",
 							"console.log('Number of schemas to be created is ' + numberToCreate);",
 							"console.log('Schemas to be created: ' + schemaListToCreate.join());",
@@ -709,12 +709,12 @@
 							"    console.log('The number left to create is ' + numberToCreate);",
 							"    pm.environment.set('numberToCreate', numberToCreate);",
 							"    // using pm.info.requestName in place of the literal request name. This allows the request name to be changed without a code update.",
-							"    postman.setNextRequest(pm.info.requestName);",
+							"    pm.execution.setNextRequest(pm.info.requestName);",
 							"}",
 							"else",
 							"{",
 							"    console.log('All entity schemas have been created. Moving to Mixins')",
-							"    postman.setNextRequest(\"Add Field Groups\");",
+							"    pm.execution.setNextRequest(\"Add Field Groups\");",
 							"}"
 						],
 						"type": "text/javascript"
@@ -927,7 +927,7 @@
 							"            }",
 							"            pm.environment.set('mixinId', mixinIdArray[i]);",
 							"            pm.environment.set('mixinIndex', i);",
-							"            postman.setNextRequest(pm.info.requestName);",
+							"            pm.execution.setNextRequest(pm.info.requestName);",
 							"            break;",
 							"        }",
 							"    }",
@@ -1036,13 +1036,13 @@
 							"            }",
 							"            pm.environment.set('mixinId', mixinIdArray[i]);",
 							"            pm.environment.set('mixinIndex', i);",
-							"            postman.setNextRequest(pm.info.requestName);",
+							"            pm.execution.setNextRequest(pm.info.requestName);",
 							"            break;",
 							"        }",
 							"    }",
 							"} else {",
 							"    console.log('All mixins are created. Moving to adding identities');",
-							"    postman.setNextRequest('Add Identities');",
+							"    pm.execution.setNextRequest('Add Identities');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -1270,10 +1270,10 @@
 							"            pm.environment.set('isPrimary', true);",
 							"            break;",
 							"    }",
-							"    postman.setNextRequest(pm.info.requestName);",
+							"    pm.execution.setNextRequest(pm.info.requestName);",
 							"} else {",
 							"    //console.log('All identities are created. Moving to adding relationships');",
-							"    postman.setNextRequest('Add Relationships');",
+							"    pm.execution.setNextRequest('Add Relationships');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -1663,10 +1663,10 @@
 							"        }",
 							"        relationshipIndex++;",
 							"    }",
-							"    postman.setNextRequest(pm.info.requestName);",
+							"    pm.execution.setNextRequest(pm.info.requestName);",
 							"} else {",
 							"    console.log('All relationships are created. Moving to secondary identities.');",
-							"    postman.setNextRequest('Add Secondary Identities');",
+							"    pm.execution.setNextRequest('Add Secondary Identities');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -1779,7 +1779,7 @@
 					"script": {
 						"exec": [
 							"console.log('All secondary identities are created. Moving to adding Descriptor Reference Identities.');",
-							"postman.setNextRequest('Add Legacy Relationships');"
+							"pm.execution.setNextRequest('Add Legacy Relationships');"
 						],
 						"type": "text/javascript"
 					}
@@ -1997,11 +1997,11 @@
 							"        }",
 							"        relationshipIndex++;",
 							"    }",
-							"    postman.setNextRequest(pm.info.requestName);",
+							"    pm.execution.setNextRequest(pm.info.requestName);",
 							"} else {",
 							"    console.log('All legacy relationships are created. Moving to enabling profile.');",
 							"    pm.environment.set('relationshipIndex', 0);",
-							"    postman.setNextRequest('Add Descriptor Reference Identity');",
+							"    pm.execution.setNextRequest('Add Descriptor Reference Identity');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -2222,10 +2222,10 @@
 							"        }",
 							"        relationshipIndex++;",
 							"    }",
-							"    postman.setNextRequest(pm.info.requestName);",
+							"    pm.execution.setNextRequest(pm.info.requestName);",
 							"} else {",
 							"    console.log('All descriptor reference identities are created. Moving to adding legacy relationships.');",
-							"    postman.setNextRequest('Enable Profile');",
+							"    pm.execution.setNextRequest('Enable Profile');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -2361,7 +2361,7 @@
 							"        console.log('Found profile that needs enabled on schema: ' + schemaAltIdArray[profileCounter]);",
 							"        pm.environment.set('schemaAltId', schemaAltIdArray[profileCounter]);",
 							"        profileCounter++;",
-							"        postman.setNextRequest(pm.info.requestName);",
+							"        pm.execution.setNextRequest(pm.info.requestName);",
 							"        break;",
 							"    } ",
 							"    profileCounter++;",
@@ -2370,7 +2370,7 @@
 							"pm.environment.set('profileCounter', profileCounter);",
 							"if(profileCounter > profileEnabledArray.length)",
 							"{",
-							"    postman.setNextRequest('Get Merge Policies');",
+							"    pm.execution.setNextRequest('Get Merge Policies');",
 							"}"
 						],
 						"type": "text/javascript"
@@ -2488,7 +2488,7 @@
 							"    {",
 							"        console.log('Found merge policy that needs enabled on schema: ' + mpArray[mpCounter]);",
 							"        pm.environment.set('mpId', mpArray[mpCounter]);",
-							"        postman.setNextRequest(pm.info.requestName);",
+							"        pm.execution.setNextRequest(pm.info.requestName);",
 							"        break;",
 							"    } ",
 							"    mpCounter++;",
@@ -2558,7 +2558,7 @@
 							"    pm.environment.unset('mpArray');",
 							"    pm.environment.unset('mpResultsArray');",
 							"    console.warn('Everything is complete!')",
-							"    postman.setNextRequest(null);",
+							"    pm.execution.setNextRequest(null);",
 							"}"
 						],
 						"type": "text/javascript"
