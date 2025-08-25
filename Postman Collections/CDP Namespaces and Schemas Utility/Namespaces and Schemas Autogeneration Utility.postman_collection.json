@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "62762184-a45c-4f44-9b26-bc8b3a0b67c9",
+		"_postman_id": "def167f3-a570-494b-a3e2-3e5b46d83cf8",
 		"name": "Namespaces and Schemas V3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "10236405"
+		"_exporter_id": "8336612"
 	},
 	"item": [
 		{
@@ -193,11 +193,11 @@
 							"*/",
 							"// PROD values ",
 							"",
-							"var displayNames = [\"B2B Account\", \"B2B Person\", \"B2B Opportunity\", \"B2B Opportunity Person Relation\", \"B2B Campaign\", \"B2B Campaign Member\", \"B2B Marketing List\", \"B2B Marketing List Member\", \"B2B Account Person Relation\"];",
+							"var displayNames = [\"B2B Account\", \"B2B Person\", \"B2B Opportunity\", \"B2B Opportunity Person Relation\", \"B2B Campaign\", \"B2B Campaign Member\", \"B2B Marketing List\", \"B2B Marketing List Member\", \"B2B Account Person Relation\",\"B2B Demandbase Account Intent\",\"B2B Bombora Account Intent\"];",
 							"",
-							"var identityTypes = [\"B2B_ACCOUNT\", \"CROSS_DEVICE\", \"B2B_OPPORTUNITY\", \"B2B_OPPORTUNITY_PERSON\", \"B2B_CAMPAIGN\", \"B2B_CAMPAIGN_MEMBER\", \"B2B_MARKETING_LIST\", \"B2B_MARKETING_LIST_MEMBER\", \"B2B_ACCOUNT_PERSON\"];",
+							"var identityTypes = [\"B2B_ACCOUNT\", \"CROSS_DEVICE\", \"B2B_OPPORTUNITY\", \"B2B_OPPORTUNITY_PERSON\", \"B2B_CAMPAIGN\", \"B2B_CAMPAIGN_MEMBER\", \"B2B_MARKETING_LIST\", \"B2B_MARKETING_LIST_MEMBER\", \"B2B_ACCOUNT_PERSON\",\"NON_PEOPLE\",\"NON_PEOPLE\"];",
 							"",
-							"var codeSymbols = [\"b2b_account\", \"b2b_person\", \"b2b_opportunity\", \"b2b_opportunity_person_relation\", \"b2b_campaign\",\"b2b_campaign_member\", \"b2b_marketing_list\", \"b2b_marketing_list_member\", \"b2b_account_person_relation\"];",
+							"var codeSymbols = [\"b2b_account\", \"b2b_person\", \"b2b_opportunity\", \"b2b_opportunity_person_relation\", \"b2b_campaign\",\"b2b_campaign_member\", \"b2b_marketing_list\", \"b2b_marketing_list_member\", \"b2b_account_person_relation\",\"b2b_demandbase_account_intent\",\"b2b_bombora_account_intent\"];",
 							"",
 							"var namespacesToCreate = pm.environment.get(\"namespacesToCreate\");",
 							"var allIdentityTypes = pm.environment.get(\"allIdentityTypes\");",
@@ -268,7 +268,8 @@
 							"    console.log(\"request parameters : \", currDescription, currCode, currIdentityType, currDescription);",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -302,7 +303,8 @@
 							"    pm.environment.unset(\"namespaceArrayNames\");",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -345,7 +347,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{PLATFORM_URL}}/data/core/idnamespace/identities",
+					"raw": "https://{{PLATFORM_URL}}/data/core/idnamespace/identities ",
 					"protocol": "https",
 					"host": [
 						"{{PLATFORM_URL}}"
@@ -354,7 +356,7 @@
 						"data",
 						"core",
 						"idnamespace",
-						"identities"
+						"identities "
 					]
 				}
 			},
@@ -378,11 +380,11 @@
 							"var mixinArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
 							"                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
 							"                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ",
-							"                  0, 0, 0, 0, 0, 0, 0];",
+							"                  0, 0, 0, 0, 0, 0, 0, 0, 0];",
 							"pm.environment.set('mixinArray', mixinArray);",
 							"",
 							"//for all relationships",
-							"var relationshipArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
+							"var relationshipArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
 							"pm.environment.set('relationshipArray', relationshipArray);",
 							"",
 							"//for all legacy relationships",
@@ -394,27 +396,27 @@
 							"pm.environment.set('descriptorRefIdentityArray',descriptorRefIdentityArray);",
 							"",
 							"//create array to store all values if profile is enabled on a schema",
-							"var profileEnabledArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
+							"var profileEnabledArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
 							"pm.environment.set('profileEnabledArray', profileEnabledArray);",
 							"",
 							"//create an array to store our schema Ids in",
-							"var schemaIdArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
+							"var schemaIdArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
 							"pm.environment.set('schemaIdArray', schemaIdArray);",
 							"",
 							"//create an array to store schema alt Ids in",
-							"var schemaAltIdArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
+							"var schemaAltIdArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
 							"pm.environment.set('schemaAltIdArray', schemaAltIdArray);",
 							"",
 							"//create an array to store the entity types that we find",
-							"var discoveredEntityArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
+							"var discoveredEntityArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];",
 							"pm.environment.set('discoveredEntityArray', discoveredEntityArray);",
 							"",
 							"//create an array to store the entity types that we find",
-							"var relationshipSchemaArray = [0,0,0,0,0,0,0,0,0,0];",
+							"var relationshipSchemaArray = [0,0,0,0,0,0,0,0,0,0,0,0];",
 							"pm.environment.set('relationshipSchemaArray', relationshipSchemaArray);",
 							"",
 							"//create an array to store the merge policies that we find",
-							"var mpResultsArray = [0,0,0,0,0,0,0,0,0];",
+							"var mpResultsArray = [0,0,0,0,0,0,0,0,0,0,0];",
 							"pm.environment.set('mpResultsArray', mpResultsArray);",
 							"",
 							"//friendly names used for logging to assist troubleshooting issues",
@@ -425,19 +427,19 @@
 							"    \"Email Unsubscribed\",\"Email Opened\",\"Email Clicked\",\"Email Bounced Soft\",\"Score Changed\",",
 							"    \"Opportunity Updated\",\"Status in Campaign Progression Changed\",\"Identity Map\",\"Consents and Preferences\",\"Account Contact Relation Identity Map\",",
 							"    \"Call Webhook\",\"Change Campaign Cadence\",\"Add to Nurture\",\"Change Nurture Track\",\"Change Revenue Stage\",",
-							"    \"Merge Leads\",\"Send Email\"];",
+							"    \"Merge Leads\",\"Send Email\",\"XDM Demandbase Account Intent Details\",\"XDM Bombora Account Intent Details\"];",
 							"",
-							"pm.environment.set('relationshipSourcePropertyArray', '[\"/personComponents[*]/sourceAccountKey/sourceKey\",\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/personKey/sourceKey\",\"/campaignKey/sourceKey\",\"/personKey/sourceKey\",\"/marketingListKey/sourceKey\",\"/accountParentKey/sourceKey\"]');",
+							"pm.environment.set('relationshipSourcePropertyArray', '[\"/personComponents[*]/sourceAccountKey/sourceKey\",\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/personKey/sourceKey\",\"/campaignKey/sourceKey\",\"/personKey/sourceKey\",\"/marketingListKey/sourceKey\",\"/accountParentKey/sourceKey\",\"/accountID\"]');",
 							"pm.environment.set('relationshipDestinationPropertyArray','[\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/personKey/sourceKey\",\"/campaignKey/sourceKey\",\"/personKey/sourceKey\",\"/marketingListKey/sourceKey\"]');",
 							"",
 							"//setting up namespace arrays",
 							"let primaryIdentityArray = pm.environment.get('namespaceArray');",
 							"",
-							"pm.environment.set('mixinIdArray', '[\"https://ns.adobe.com/xdm/mixins/account-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-components\",\"https://ns.adobe.com/xdm/mixins/opportunity-details\",\"https://ns.adobe.com/xdm/mixins/campaign-details\",\"https://ns.adobe.com/xdm/context/campaign-member-details\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-list\",\"https://ns.adobe.com/xdm/mixins/events/visit-webpage\",\"https://ns.adobe.com/xdm/mixins/person-identifier\",\"https://ns.adobe.com/b2b/marketo/marketo-web-url\",\"https://ns.adobe.com/xdm/mixins/events/new-lead\",\"https://ns.adobe.com/xdm/mixins/events/convert-lead\",\"https://ns.adobe.com/xdm/mixins/events/add-to-list\",\"https://ns.adobe.com/xdm/mixins/events/add-to-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/interesting-moment\",\"https://ns.adobe.com/xdm/mixins/events/formfilledout\",\"https://ns.adobe.com/xdm/mixins/events/linkclicks\",\"https://ns.adobe.com/xdm/mixins/events/emaildelivered\",\"https://ns.adobe.com/xdm/mixins/events/emailbounced\",\"https://ns.adobe.com/xdm/mixins/events/emailunsubscribed\",\"https://ns.adobe.com/xdm/mixins/events/emailopened\",\"https://ns.adobe.com/xdm/mixins/events/emailclicked\",\"https://ns.adobe.com/xdm/mixins/events/emailbouncedsoft\",\"https://ns.adobe.com/xdm/mixins/events/scorechanged\",\"https://ns.adobe.com/xdm/mixins/events/opportunityupdated\",\"https://ns.adobe.com/xdm/mixins/events/statusincampaignprogressionchanged\",\"https://ns.adobe.com/xdm/context/identitymap\",\"https://ns.adobe.com/xdm/mixins/profile-consents\",\"https://ns.adobe.com/xdm/context/identitymap\",\"https://ns.adobe.com/xdm/mixins/events/callwebhook\", \"https://ns.adobe.com/xdm/mixins/events/change-campaign-cadence\",\"https://ns.adobe.com/xdm/mixins/events/add-to-campaign\",\"https://ns.adobe.com/xdm/mixins/events/change-campaign-stream\",\"https://ns.adobe.com/xdm/mixins/events/revenueStageChanged\",\"https://ns.adobe.com/xdm/mixins/events/emailsent\",\"https://ns.adobe.com/xdm/mixins/events/merge-leads\"]');",
-							"pm.environment.set('entityArray', '[\"B2B Account\",\"B2B Person\",\"B2B Opportunity\",\"B2B Opportunity Person Relation\",\"B2B Campaign\",\"B2B Campaign Member\",\"B2B Marketing List\",\"B2B Marketing List Member\",\"B2B Activity\",\"B2B Account Person Relation\"]');",
-							"pm.environment.set('classIdArray', '[\"https://ns.adobe.com/xdm/context/account\",\"https://ns.adobe.com/xdm/context/profile\",\"https://ns.adobe.com/xdm/context/opportunity\",\"https://ns.adobe.com/xdm/classes/opportunity-person\",\"https://ns.adobe.com/xdm/classes/campaign\",\"https://ns.adobe.com/xdm/context/campaign-member\",\"https://ns.adobe.com/xdm/classes/marketing-list\",\"https://ns.adobe.com/xdm/classes/marketing-list-member\",\"https://ns.adobe.com/xdm/context/experienceevent\",\"https://ns.adobe.com/xdm/classes/account-person\"]');",
-							"pm.environment.set('sourcePropertyArray', '[\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/opportunityPersonKey/sourceKey\",\"/campaignKey/sourceKey\",\"/campaignMemberKey/sourceKey\",\"/marketingListKey/sourceKey\",\"/marketingListMemberKey/sourceKey\",\"/personKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/accountPersonKey/sourceKey\"]');",
-							"pm.environment.set('mpArray', '_xdm.context.account,_xdm.context.profile,_xdm.context.opportunity,_xdm.classes.opportunity-person,_xdm.classes.campaign,_xdm.context.campaign-member,_xdm.classes.marketing-list,_xdm.classes.marketing-list-member,_xdm.classes.account-person');",
+							"pm.environment.set('mixinIdArray', '[\"https://ns.adobe.com/xdm/mixins/account-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-details\",\"https://ns.adobe.com/xdm/mixins/b2b-person-components\",\"https://ns.adobe.com/xdm/mixins/opportunity-details\",\"https://ns.adobe.com/xdm/mixins/campaign-details\",\"https://ns.adobe.com/xdm/context/campaign-member-details\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-list\",\"https://ns.adobe.com/xdm/mixins/events/visit-webpage\",\"https://ns.adobe.com/xdm/mixins/person-identifier\",\"https://ns.adobe.com/b2b/marketo/marketo-web-url\",\"https://ns.adobe.com/xdm/mixins/events/new-lead\",\"https://ns.adobe.com/xdm/mixins/events/convert-lead\",\"https://ns.adobe.com/xdm/mixins/events/add-to-list\",\"https://ns.adobe.com/xdm/mixins/events/add-to-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/remove-from-opportunity\",\"https://ns.adobe.com/xdm/mixins/events/interesting-moment\",\"https://ns.adobe.com/xdm/mixins/events/formfilledout\",\"https://ns.adobe.com/xdm/mixins/events/linkclicks\",\"https://ns.adobe.com/xdm/mixins/events/emaildelivered\",\"https://ns.adobe.com/xdm/mixins/events/emailbounced\",\"https://ns.adobe.com/xdm/mixins/events/emailunsubscribed\",\"https://ns.adobe.com/xdm/mixins/events/emailopened\",\"https://ns.adobe.com/xdm/mixins/events/emailclicked\",\"https://ns.adobe.com/xdm/mixins/events/emailbouncedsoft\",\"https://ns.adobe.com/xdm/mixins/events/scorechanged\",\"https://ns.adobe.com/xdm/mixins/events/opportunityupdated\",\"https://ns.adobe.com/xdm/mixins/events/statusincampaignprogressionchanged\",\"https://ns.adobe.com/xdm/context/identitymap\",\"https://ns.adobe.com/xdm/mixins/profile-consents\",\"https://ns.adobe.com/xdm/context/identitymap\",\"https://ns.adobe.com/xdm/mixins/events/callwebhook\", \"https://ns.adobe.com/xdm/mixins/events/change-campaign-cadence\",\"https://ns.adobe.com/xdm/mixins/events/add-to-campaign\",\"https://ns.adobe.com/xdm/mixins/events/change-campaign-stream\",\"https://ns.adobe.com/xdm/mixins/events/revenueStageChanged\",\"https://ns.adobe.com/xdm/mixins/events/emailsent\",\"https://ns.adobe.com/xdm/mixins/events/merge-leads\",\"https://ns.adobe.com/b2b/demandbase/fieldgroups/demandbase-account-intent-details\",\"https://ns.adobe.com/b2b/bombora/fieldgroups/bombora-account-intent-details\"]');",
+							"pm.environment.set('entityArray', '[\"B2B Account\",\"B2B Person\",\"B2B Opportunity\",\"B2B Opportunity Person Relation\",\"B2B Campaign\",\"B2B Campaign Member\",\"B2B Marketing List\",\"B2B Marketing List Member\",\"B2B Activity\",\"B2B Account Person Relation\",\"B2B Demandbase Account Intent\",\"B2B Bombora Account Intent\"]');",
+							"pm.environment.set('classIdArray', '[\"https://ns.adobe.com/xdm/context/account\",\"https://ns.adobe.com/xdm/context/profile\",\"https://ns.adobe.com/xdm/context/opportunity\",\"https://ns.adobe.com/xdm/classes/opportunity-person\",\"https://ns.adobe.com/xdm/classes/campaign\",\"https://ns.adobe.com/xdm/context/campaign-member\",\"https://ns.adobe.com/xdm/classes/marketing-list\",\"https://ns.adobe.com/xdm/classes/marketing-list-member\",\"https://ns.adobe.com/xdm/context/experienceevent\",\"https://ns.adobe.com/xdm/classes/account-person\",\"https://ns.adobe.com/b2b/demandbase/classes/demandbase-account-intent\",\"https://ns.adobe.com/b2b/bombora/classes/bombora-account-intent\"]');",
+							"pm.environment.set('sourcePropertyArray', '[\"/accountKey/sourceKey\",\"/b2b/personKey/sourceKey\",\"/opportunityKey/sourceKey\",\"/opportunityPersonKey/sourceKey\",\"/campaignKey/sourceKey\",\"/campaignMemberKey/sourceKey\",\"/marketingListKey/sourceKey\",\"/marketingListMemberKey/sourceKey\",\"/personKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/extSourceSystemAudit/externalKey/sourceKey\",\"/accountPersonKey/sourceKey\",\"/intentID\"]');",
+							"pm.environment.set('mpArray', '_xdm.context.account,_xdm.context.profile,_xdm.context.opportunity,_xdm.classes.opportunity-person,_xdm.classes.campaign,_xdm.context.campaign-member,_xdm.classes.marketing-list,_xdm.classes.marketing-list-member,_xdm.classes.account-person,_b2b.demandbase.classes.demandbase-account-intent,_b2b.bombora.classes.bombora-account-intent');",
 							"",
 							"",
 							"pm.environment.set('namespaceArray',primaryIdentityArray);",
@@ -524,6 +526,16 @@
 							"        storeIdValues(arrayItem, 9);",
 							"        mixinArray.splice(29, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[29]));",
 							"    }",
+							"    if (arrayItem.title == entityArray[10]) {",
+							"        console.log('B2B Demandbase Account Intent Schema already exists, adding to array');",
+							"        storeIdValues(arrayItem, 10);",
+							"        mixinArray.splice(37, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[37]));",
+							"    }",
+							"    if (arrayItem.title == entityArray[11]) {",
+							"        console.log('B2B Bombora Account Intent Schema already exists, adding to array');",
+							"        storeIdValues(arrayItem, 11);",
+							"        mixinArray.splice(38, 1, traverseAllOfArrayForRef(arrayItem.allOf, mixinIdArray[38]));",
+							"    }",
 							"}",
 							"",
 							"//Set the mixinArray after all splicing has been done",
@@ -604,7 +616,8 @@
 							"}",
 							"//===============================Functions===============================\\\\"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -613,7 +626,8 @@
 						"exec": [
 							"pm.environment.set('Start','B2B');"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -709,15 +723,16 @@
 							"    console.log('The number left to create is ' + numberToCreate);",
 							"    pm.environment.set('numberToCreate', numberToCreate);",
 							"    // using pm.info.requestName in place of the literal request name. This allows the request name to be changed without a code update.",
-							"    pm.execution.setNextRequest(pm.info.requestName);",
+							"    postman.setNextRequest(pm.info.requestName);",
 							"}",
 							"else",
 							"{",
 							"    console.log('All entity schemas have been created. Moving to Mixins')",
-							"    pm.execution.setNextRequest(\"Add Field Groups\");",
+							"    postman.setNextRequest(\"Add Field Groups\");",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -737,8 +752,8 @@
 							"}",
 							"let counter = pm.environment.get('counter');",
 							"",
-							"pm.environment.set('entityArray', '[\"B2B Account\",\"B2B Person\",\"B2B Opportunity\",\"B2B Opportunity Person Relation\",\"B2B Campaign\",\"B2B Campaign Member\",\"B2B Marketing List\",\"B2B Marketing List Member\",\"B2B Activity\",\"B2B Account Person Relation\"]');",
-							"pm.environment.set('classIdArray','[\"https://ns.adobe.com/xdm/context/account\",\"https://ns.adobe.com/xdm/context/profile\",\"https://ns.adobe.com/xdm/context/opportunity\",\"https://ns.adobe.com/xdm/classes/opportunity-person\",\"https://ns.adobe.com/xdm/classes/campaign\",\"https://ns.adobe.com/xdm/context/campaign-member\",\"https://ns.adobe.com/xdm/classes/marketing-list\",\"https://ns.adobe.com/xdm/classes/marketing-list-member\",\"https://ns.adobe.com/xdm/context/experienceevent\",\"https://ns.adobe.com/xdm/classes/account-person\"]');",
+							"pm.environment.set('entityArray', '[\"B2B Account\",\"B2B Person\",\"B2B Opportunity\",\"B2B Opportunity Person Relation\",\"B2B Campaign\",\"B2B Campaign Member\",\"B2B Marketing List\",\"B2B Marketing List Member\",\"B2B Activity\",\"B2B Account Person Relation\",\"B2B Demandbase Account Intent\",\"B2B Bombora Account Intent\"]');",
+							"pm.environment.set('classIdArray','[\"https://ns.adobe.com/xdm/context/account\",\"https://ns.adobe.com/xdm/context/profile\",\"https://ns.adobe.com/xdm/context/opportunity\",\"https://ns.adobe.com/xdm/classes/opportunity-person\",\"https://ns.adobe.com/xdm/classes/campaign\",\"https://ns.adobe.com/xdm/context/campaign-member\",\"https://ns.adobe.com/xdm/classes/marketing-list\",\"https://ns.adobe.com/xdm/classes/marketing-list-member\",\"https://ns.adobe.com/xdm/context/experienceevent\",\"https://ns.adobe.com/xdm/classes/account-person\",\"https://ns.adobe.com/b2b/demandbase/classes/demandbase-account-intent\",\"https://ns.adobe.com/b2b/bombora/classes/bombora-account-intent\"]');",
 							"",
 							"let entityArray = JSON.parse(pm.environment.get('entityArray'));",
 							"",
@@ -780,7 +795,8 @@
 							"counter++;",
 							"pm.environment.set('counter',counter);"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -924,16 +940,20 @@
 							"                    //console.log('Setting schema to be added: ' + schemaAltIdArray[8]);",
 							"                    pm.environment.set('schemaAltId', schemaAltIdArray[8]);",
 							"                    break;",
+							"                case 37:",
+							"                    pm.environment.set('schemaAltId', schemaAltIdArray[10]);",
+							"                    break; ",
 							"            }",
 							"            pm.environment.set('mixinId', mixinIdArray[i]);",
 							"            pm.environment.set('mixinIndex', i);",
-							"            pm.execution.setNextRequest(pm.info.requestName);",
+							"            postman.setNextRequest(pm.info.requestName);",
 							"            break;",
 							"        }",
 							"    }",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1033,16 +1053,22 @@
 							"                    //console.log('Setting schema to be added: ' + schemaAltIdArray[8]);",
 							"                    pm.environment.set('schemaAltId', schemaAltIdArray[8]);",
 							"                    break;",
+							"                case 37:",
+							"                    pm.environment.set('schemaAltId', schemaAltIdArray[10]);",
+							"                    break;  ",
+							"                case 38:",
+							"                    pm.environment.set('schemaAltId', schemaAltIdArray[11]);",
+							"                    break;    ",
 							"            }",
 							"            pm.environment.set('mixinId', mixinIdArray[i]);",
 							"            pm.environment.set('mixinIndex', i);",
-							"            pm.execution.setNextRequest(pm.info.requestName);",
+							"            postman.setNextRequest(pm.info.requestName);",
 							"            break;",
 							"        }",
 							"    }",
 							"} else {",
 							"    console.log('All mixins are created. Moving to adding identities');",
-							"    pm.execution.setNextRequest('Add Identities');",
+							"    postman.setNextRequest('Add Identities');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -1073,7 +1099,8 @@
 							"}",
 							"//===============================Functions===============================\\\\"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1174,7 +1201,8 @@
 							"}",
 							"//===============================Functions===============================\\\\"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1202,7 +1230,7 @@
 							"    //console.warn('Error with response:\\n' + report['detailed-message']);",
 							"}",
 							"",
-							"if (identityCounter < 16)",
+							"if (identityCounter < 18)",
 							"{",
 							"    //console.log( 'identityCounter: ' + identityCounter + '\\nidentity array at index: ' + primaryIdentityArray[identityCounter]);",
 							"    switch(identityCounter)",
@@ -1269,11 +1297,25 @@
 							"            pm.environment.set('namespace', primaryIdentityArray[8]);",
 							"            pm.environment.set('isPrimary', true);",
 							"            break;",
+							"        case 16:",
+							"            console.log('Setting Identity for Demandbase Account Intent');",
+							"            pm.environment.set('schemaId', schemaIdArray[10]);",
+							"            pm.environment.set('sourceProperty', sourcePropertyArray[12]);",
+							"            pm.environment.set('namespace', primaryIdentityArray[9]);",
+							"            pm.environment.set('isPrimary', true);",
+							"            break;",
+							"        case 17:",
+							"            console.log('Setting Identity for Bombora Account Intent');",
+							"            pm.environment.set('schemaId', schemaIdArray[11]);",
+							"            pm.environment.set('sourceProperty', sourcePropertyArray[12]);",
+							"            pm.environment.set('namespace', primaryIdentityArray[10]);",
+							"            pm.environment.set('isPrimary', true);",
+							"            break;",
 							"    }",
-							"    pm.execution.setNextRequest(pm.info.requestName);",
+							"    postman.setNextRequest(pm.info.requestName);",
 							"} else {",
 							"    //console.log('All identities are created. Moving to adding relationships');",
-							"    pm.execution.setNextRequest('Add Relationships');",
+							"    postman.setNextRequest('Add Relationships');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -1287,7 +1329,8 @@
 							"}",
 							"//===============================Functions===============================\\\\"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1491,6 +1534,26 @@
 							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[1]);",
 							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
 							"                    break;",
+							"                case 10:",
+							"                    console.log('Setting relationship info: ' + '\\nsourceSchema: ' + schemaIdArray[10] + '\\ndestinationSchema: ' + schemaIdArray[0] + '\\ndestinationNamespace: ' + primaryIdentityArray[0] + '\\ndestinationToSouceTitle: People' + '\\nsourceToDestinationTitle: Account');",
+							"                    pm.environment.set('sourceSchema', schemaIdArray[10]);",
+							"                    pm.environment.set('destinationSchema', schemaIdArray[0]);",
+							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[0]);",
+							"                    pm.environment.set('destinationToSouceTitle', \"Demandbase Account Intent\");",
+							"                    pm.environment.set('sourceToDestinationTitle', \"Account\");",
+							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[9]);",
+							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
+							"                    break;",
+							"                case 11:",
+							"                    console.log('Setting relationship info: ' + '\\nsourceSchema: ' + schemaIdArray[11] + '\\ndestinationSchema: ' + schemaIdArray[0] + '\\ndestinationNamespace: ' + primaryIdentityArray[0] + '\\ndestinationToSouceTitle: People' + '\\nsourceToDestinationTitle: Account');",
+							"                    pm.environment.set('sourceSchema', schemaIdArray[11]);",
+							"                    pm.environment.set('destinationSchema', schemaIdArray[0]);",
+							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[0]);",
+							"                    pm.environment.set('destinationToSouceTitle', \"Bombora Account Intent\");",
+							"                    pm.environment.set('sourceToDestinationTitle', \"Account\");",
+							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[9]);",
+							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
+							"                    break;",
 							"            }",
 							"            pm.environment.set('relationshipIndex', i);",
 							"            break;",
@@ -1498,7 +1561,8 @@
 							"    }",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1656,6 +1720,26 @@
 							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[1]);",
 							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
 							"                    break;",
+							"                case 10:",
+							"                    console.log('Setting relationship info: ' + '\\nsourceSchema: ' + schemaIdArray[10] + '\\ndestinationSchema: ' + schemaIdArray[0] + '\\ndestinationNamespace: ' + primaryIdentityArray[0] + '\\ndestinationToSouceTitle: People' + '\\nsourceToDestinationTitle: Account');",
+							"                    pm.environment.set('sourceSchema', schemaIdArray[10]);",
+							"                    pm.environment.set('destinationSchema', schemaIdArray[0]);",
+							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[0]);",
+							"                    pm.environment.set('destinationToSouceTitle', \"Demandbase Account Intent\");",
+							"                    pm.environment.set('sourceToDestinationTitle', \"Account\");",
+							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[9]);",
+							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
+							"                    break;",
+							"                case 11:",
+							"                    console.log('Setting relationship info: ' + '\\nsourceSchema: ' + schemaIdArray[10] + '\\ndestinationSchema: ' + schemaIdArray[0] + '\\ndestinationNamespace: ' + primaryIdentityArray[0] + '\\ndestinationToSouceTitle: People' + '\\nsourceToDestinationTitle: Account');",
+							"                    pm.environment.set('sourceSchema', schemaIdArray[11]);",
+							"                    pm.environment.set('destinationSchema', schemaIdArray[0]);",
+							"                    pm.environment.set('destinationNamespace', primaryIdentityArray[0]);",
+							"                    pm.environment.set('destinationToSouceTitle', \"Bombora Account Intent\");",
+							"                    pm.environment.set('sourceToDestinationTitle', \"Account\");",
+							"                    pm.environment.set('sourceProperty', relationshipSourcePropertyArray[9]);",
+							"                    pm.environment.set('destinationProperty', \"/accountKey/sourceKey\");",
+							"                    break;",
 							"                }",
 							"            pm.environment.set('relationshipIndex', relationshipIndex);",
 							"            relationshipIndex++;",
@@ -1663,10 +1747,10 @@
 							"        }",
 							"        relationshipIndex++;",
 							"    }",
-							"    pm.execution.setNextRequest(pm.info.requestName);",
+							"    postman.setNextRequest(pm.info.requestName);",
 							"} else {",
 							"    console.log('All relationships are created. Moving to secondary identities.');",
-							"    pm.execution.setNextRequest('Add Secondary Identities');",
+							"    postman.setNextRequest('Add Secondary Identities');",
 							"}",
 							"",
 							"//===============================Functions===============================\\\\",
@@ -1688,7 +1772,8 @@
 							"}",
 							"//===============================Functions===============================\\\\"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -2331,7 +2416,8 @@
 							"    pm.environment.set('schemaAltId', schemaAltIdArray[profileCounter]);",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -2361,7 +2447,7 @@
 							"        console.log('Found profile that needs enabled on schema: ' + schemaAltIdArray[profileCounter]);",
 							"        pm.environment.set('schemaAltId', schemaAltIdArray[profileCounter]);",
 							"        profileCounter++;",
-							"        pm.execution.setNextRequest(pm.info.requestName);",
+							"        postman.setNextRequest(pm.info.requestName);",
 							"        break;",
 							"    } ",
 							"    profileCounter++;",
@@ -2370,10 +2456,11 @@
 							"pm.environment.set('profileCounter', profileCounter);",
 							"if(profileCounter > profileEnabledArray.length)",
 							"{",
-							"    pm.execution.setNextRequest('Get Merge Policies');",
+							"    postman.setNextRequest('Get Merge Policies');",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -2458,7 +2545,8 @@
 							"    pm.environment.set('mpId', mpArray[mpCounter]);",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -2488,7 +2576,7 @@
 							"    {",
 							"        console.log('Found merge policy that needs enabled on schema: ' + mpArray[mpCounter]);",
 							"        pm.environment.set('mpId', mpArray[mpCounter]);",
-							"        pm.execution.setNextRequest(pm.info.requestName);",
+							"        postman.setNextRequest(pm.info.requestName);",
 							"        break;",
 							"    } ",
 							"    mpCounter++;",
@@ -2558,10 +2646,11 @@
 							"    pm.environment.unset('mpArray');",
 							"    pm.environment.unset('mpResultsArray');",
 							"    console.warn('Everything is complete!')",
-							"    pm.execution.setNextRequest(null);",
+							"    postman.setNextRequest(null);",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
